@@ -1,0 +1,502 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0B09CC74-6793-4DB4-ABFF-EC36181908BC}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>Sapyc.My.MyApplication</StartupObject>
+    <RootNamespace>Sapyc</RootNamespace>
+    <AssemblyName>Sapyc</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionStrict>Off</OptionStrict>
+    <OptionInfer>On</OptionInfer>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>Sapyc.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>Sapyc.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\Consulta2014\Consulta\bin\Release\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="office, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BuscaCtesFis.designer.vb">
+      <DependentUpon>BuscaCtesFis.vb</DependentUpon>
+    </Compile>
+    <Compile Include="BuscaCtesFis.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Actividades.Designer.vb">
+      <DependentUpon>Actividades.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\Actividades.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogos\ComoSeEntero.Designer.vb">
+      <DependentUpon>ComoSeEntero.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\ComoSeEntero.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Divisiones.Designer.vb">
+      <DependentUpon>Divisiones.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\Divisiones.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Giros.Designer.vb">
+      <DependentUpon>Giros.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\Giros.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogos\MedioContacto.Designer.vb">
+      <DependentUpon>MedioContacto.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\MedioContacto.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogos\MttoActv.Designer.vb">
+      <DependentUpon>MttoActv.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\MttoActv.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogos\MttoCEntero.Designer.vb">
+      <DependentUpon>MttoCEntero.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\MttoCEntero.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogos\MttoContacto.Designer.vb">
+      <DependentUpon>MttoContacto.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\MttoContacto.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogos\MttoDivisiones.Designer.vb">
+      <DependentUpon>MttoDivisiones.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\MttoDivisiones.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogos\MttoTpServicio.Designer.vb">
+      <DependentUpon>MttoTpServicio.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\MttoTpServicio.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogos\TipoServicio.Designer.vb">
+      <DependentUpon>TipoServicio.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\TipoServicio.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="clsAccesoDatos.vb" />
+    <Compile Include="frmenviocorreos.Designer.vb">
+      <DependentUpon>frmenviocorreos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmenviocorreos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.designer.vb">
+      <DependentUpon>frmLogin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogin.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Grupos.designer.vb">
+      <DependentUpon>Grupos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Grupos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Independencia\ClientesRestringidosSSGT.Designer.vb">
+      <DependentUpon>ClientesRestringidosSSGT.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Independencia\ClientesRestringidosSSGT.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dlgExcel.designer.vb">
+      <DependentUpon>dlgExcel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="dlgExcel.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Independencia\frmAltaConflick.Designer.vb">
+      <DependentUpon>frmAltaConflick.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Independencia\frmAltaConflick.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Independencia\frmClientesConflick.Designer.vb">
+      <DependentUpon>frmClientesConflick.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Independencia\frmClientesConflick.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Independencia\frmConsultaFolios.Designer.vb">
+      <DependentUpon>frmConsultaFolios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Independencia\frmConsultaFolios.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Independencia\frmPropuesta.Designer.vb">
+      <DependentUpon>frmPropuesta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Independencia\frmPropuesta.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Independencia\frmPropuestas.Designer.vb">
+      <DependentUpon>frmPropuestas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Independencia\frmPropuestas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Independencia\ClientesRestringidos.Designer.vb">
+      <DependentUpon>ClientesRestringidos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Independencia\ClientesRestringidos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Independencia\DlgPropuesta.Designer.vb">
+      <DependentUpon>DlgPropuesta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Independencia\DlgPropuesta.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Independencia\frmRelacionCtes.Designer.vb">
+      <DependentUpon>frmRelacionCtes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Independencia\frmRelacionCtes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Independencia\frmSAPYCAltaCteFiscales.designer.vb">
+      <DependentUpon>frmSAPYCAltaCteFiscales.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Independencia\frmSAPYCAltaCteFiscales.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Independencia\frmSAPYCClientesFiscales.designer.vb">
+      <DependentUpon>frmSAPYCClientesFiscales.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Independencia\frmSAPYCClientesFiscales.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Independencia\frmSolRelacionadas.Designer.vb">
+      <DependentUpon>frmSolRelacionadas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Independencia\frmSolRelacionadas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Independencia\frmTrabajosCliente.Designer.vb">
+      <DependentUpon>frmTrabajosCliente.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Independencia\frmTrabajosCliente.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Independencia\Solicitudes.Designer.vb">
+      <DependentUpon>Solicitudes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Independencia\Solicitudes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LeeCve.designer.vb">
+      <DependentUpon>LeeCve.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LeeCve.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mdlExcel.vb" />
+    <Compile Include="mdlFunciones.vb" />
+    <Compile Include="mdlVariables.vb" />
+    <Compile Include="MttoAccionistaPF.designer.vb">
+      <DependentUpon>MttoAccionistaPF.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MttoAccionistaPF.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MttoAccionistaPM.designer.vb">
+      <DependentUpon>MttoAccionistaPM.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MttoAccionistaPM.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MttoFuncionario.designer.vb">
+      <DependentUpon>MttoFuncionario.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MttoFuncionario.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogos\MttoGiros.Designer.vb">
+      <DependentUpon>MttoGiros.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\MttoGiros.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MttoGrupo.designer.vb">
+      <DependentUpon>MttoGrupo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MttoGrupo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MttoPropuesta.Designer.vb">
+      <DependentUpon>MttoPropuesta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MttoPropuesta.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Principal.Designer.vb">
+      <DependentUpon>Principal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Principal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelOpcion.designer.vb">
+      <DependentUpon>SelOpcion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SelOpcion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Util.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="BuscaCtesFis.resx">
+      <DependentUpon>BuscaCtesFis.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogos\Actividades.resx">
+      <DependentUpon>Actividades.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogos\ComoSeEntero.resx">
+      <DependentUpon>ComoSeEntero.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogos\Divisiones.resx">
+      <DependentUpon>Divisiones.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogos\Giros.resx">
+      <DependentUpon>Giros.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogos\MedioContacto.resx">
+      <DependentUpon>MedioContacto.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogos\MttoActv.resx">
+      <DependentUpon>MttoActv.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogos\MttoCEntero.resx">
+      <DependentUpon>MttoCEntero.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogos\MttoContacto.resx">
+      <DependentUpon>MttoContacto.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogos\MttoDivisiones.resx">
+      <DependentUpon>MttoDivisiones.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogos\MttoTpServicio.resx">
+      <DependentUpon>MttoTpServicio.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogos\TipoServicio.resx">
+      <DependentUpon>TipoServicio.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmenviocorreos.resx">
+      <DependentUpon>frmenviocorreos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Grupos.resx">
+      <DependentUpon>Grupos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Independencia\ClientesRestringidosSSGT.resx">
+      <DependentUpon>ClientesRestringidosSSGT.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dlgExcel.resx">
+      <DependentUpon>dlgExcel.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Independencia\frmAltaConflick.resx">
+      <DependentUpon>frmAltaConflick.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Independencia\frmClientesConflick.resx">
+      <DependentUpon>frmClientesConflick.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Independencia\frmConsultaFolios.resx">
+      <DependentUpon>frmConsultaFolios.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Independencia\frmPropuesta.resx">
+      <DependentUpon>frmPropuesta.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Independencia\frmPropuestas.resx">
+      <DependentUpon>frmPropuestas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Independencia\ClientesRestringidos.resx">
+      <DependentUpon>ClientesRestringidos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Independencia\DlgPropuesta.resx">
+      <DependentUpon>DlgPropuesta.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Independencia\frmRelacionCtes.resx">
+      <DependentUpon>frmRelacionCtes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Independencia\frmSAPYCAltaCteFiscales.resx">
+      <DependentUpon>frmSAPYCAltaCteFiscales.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Independencia\frmSAPYCClientesFiscales.resx">
+      <DependentUpon>frmSAPYCClientesFiscales.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Independencia\frmSolRelacionadas.resx">
+      <DependentUpon>frmSolRelacionadas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Independencia\frmTrabajosCliente.resx">
+      <DependentUpon>frmTrabajosCliente.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Independencia\Solicitudes.resx">
+      <DependentUpon>Solicitudes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LeeCve.resx">
+      <DependentUpon>LeeCve.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MttoAccionistaPF.resx">
+      <DependentUpon>MttoAccionistaPF.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MttoAccionistaPM.resx">
+      <DependentUpon>MttoAccionistaPM.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MttoFuncionario.resx">
+      <DependentUpon>MttoFuncionario.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogos\MttoGiros.resx">
+      <DependentUpon>MttoGiros.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MttoGrupo.resx">
+      <DependentUpon>MttoGrupo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MttoPropuesta.resx">
+      <DependentUpon>MttoPropuesta.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Principal.resx">
+      <DependentUpon>Principal.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelOpcion.resx">
+      <DependentUpon>SelOpcion.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CLOSE.ICO" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Logo_Adesus1400-900.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CRDFLE03.ICO" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="siat.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
