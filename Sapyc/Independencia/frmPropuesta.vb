@@ -573,7 +573,7 @@ Public Class frmPropuesta
                     SoloLectura()
                 End If
 
-                If Ccvegpo.Text <> "" Then
+                If Ccvegpo.Text <> "0099" And Ccvegpo.Text <> "0025" And Ccvegpo.Text <> "" And CveCte = "" And Ccvegpo.Text <> "0001" Then
                     'Cdescgpo.Text = DescGpo
                     'Ccvegpo.Text = Ccvegpo.Text
 
