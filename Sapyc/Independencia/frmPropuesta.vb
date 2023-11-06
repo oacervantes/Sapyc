@@ -388,7 +388,7 @@ Public Class frmPropuesta
                     Crfc.Text = DtDatos(0)("RFC").ToString()
                     txtDivision.Text = DtDatos(0)("DIVISION").ToString()
 
-                    Ccomoentero.SelectedValue = DtDatos(0)("IDCOMO").ToString()
+                    Ccomoentero.Text = DtDatos(0)("IDCOMO").ToString()
                     CveEmpRef = DtDatos(0)("CVEEMPREF").ToString()
                     NombEmpRef = DtDatos(0)("NOMBEMPREF").ToString()
                     txtServOtros.Text = DtDatos(0)("SERVICIOTROS").ToString()
