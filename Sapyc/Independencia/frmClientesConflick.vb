@@ -156,7 +156,7 @@
     Private Sub abrirPropuesta(IdPro As Integer)
 
         If IdPro <> 0 Then
-            IdProp = CInt(gridClaves.Rows(0).Cells("FOLIO").Value)
+            IdProp = CInt(gridClaves.CurrentRow.Cells("FOLIO").Value)
         Else
             IdProp = IdPro
         End If

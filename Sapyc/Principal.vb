@@ -8,7 +8,7 @@
         Try
 
             clsLocal = New clsAccesoDatos("gtmexvts27\sql2016", "SAPYC2", "Contabilidad", "Control2025%Porfis")
-            clsDatosInv = New clsAccesoDatos("gtmexvts27\sql2016", "BDINV2223", "Contabilidad", "Control2025%Porfis")
+            clsDatosInv = New clsAccesoDatos("gtmexvts27\sql2016", "BDINV2324", "Contabilidad", "Control2025%Porfis")
             clsDatosConINV = New clsAccesoDatos("gtmexvts27\sql2016", "CONTROLINV", "Contabilidad", "Control2025%Porfis")
 
             If frm.ShowDialog = DialogResult.OK Then

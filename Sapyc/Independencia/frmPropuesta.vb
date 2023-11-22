@@ -388,7 +388,7 @@ Public Class frmPropuesta
                     Crfc.Text = DtDatos(0)("RFC").ToString()
                     txtDivision.Text = DtDatos(0)("DIVISION").ToString()
 
-                    Ccomoentero.SelectedValue = DtDatos(0)("IDCOMO").ToString()
+                    Ccomoentero.Text = DtDatos(0)("IDCOMO").ToString()
                     CveEmpRef = DtDatos(0)("CVEEMPREF").ToString()
                     NombEmpRef = DtDatos(0)("NOMBEMPREF").ToString()
                     txtServOtros.Text = DtDatos(0)("SERVICIOTROS").ToString()
@@ -573,7 +573,7 @@ Public Class frmPropuesta
                     SoloLectura()
                 End If
 
-                If Ccvegpo.Text <> "" Then
+                If Ccvegpo.Text <> "0099" And Ccvegpo.Text <> "0025" And Ccvegpo.Text <> "" And CveCte = "" And Ccvegpo.Text <> "0001" Then
                     'Cdescgpo.Text = DescGpo
                     'Ccvegpo.Text = Ccvegpo.Text
 
