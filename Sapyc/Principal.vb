@@ -11,6 +11,8 @@
             clsDatosInv = New clsAccesoDatos("gtmexvts27\sql2016", "BDINV2324", "Contabilidad", "Control2025%Porfis")
             clsDatosConINV = New clsAccesoDatos("gtmexvts27\sql2016", "CONTROLINV", "Contabilidad", "Control2025%Porfis")
 
+            Me.Hide()
+
             If frm.ShowDialog = DialogResult.OK Then
                 ''sTipo = "Mercadotecnia"
                 ''sTipo = "Independencia 1"
@@ -22,6 +24,7 @@
 
                 Me.Text = "Clientes Prospectos - Bienvenido(a): " & sNombre
                 Me.WindowState = FormWindowState.Maximized
+                Me.Show()
             Else
                 End
             End If

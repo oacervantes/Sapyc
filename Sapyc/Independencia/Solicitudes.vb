@@ -1,6 +1,6 @@
 ﻿Public Class Solicitudes
 
-    Private dtSolicitudes, DtDatos As DataTable
+    Private dtSolicitudes, DtDatos As New DataTable
     Private bsSol As New BindingSource
     Public IdProp As Integer
     Private drDat As DataRow
@@ -69,7 +69,6 @@
         DtDatos.Columns.Add("REGISTRADAEL", GetType(System.String))
         DtDatos.Columns.Add("ESTATUS", GetType(System.String))
         DtDatos.Columns.Add("FECHSOLIND", GetType(System.String))
-
     End Sub
     Private Sub formatoGrid()
         For Each col As DataGridViewColumn In Lista.Columns

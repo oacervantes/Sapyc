@@ -47,7 +47,7 @@ Partial Class frmLogin
         'UsernameLabel
         '
         Me.UsernameLabel.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.UsernameLabel.Location = New System.Drawing.Point(35, 113)
+        Me.UsernameLabel.Location = New System.Drawing.Point(50, 108)
         Me.UsernameLabel.Name = "UsernameLabel"
         Me.UsernameLabel.Size = New System.Drawing.Size(194, 22)
         Me.UsernameLabel.TabIndex = 0
@@ -57,7 +57,7 @@ Partial Class frmLogin
         'PasswordLabel
         '
         Me.PasswordLabel.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.PasswordLabel.Location = New System.Drawing.Point(250, 113)
+        Me.PasswordLabel.Location = New System.Drawing.Point(265, 108)
         Me.PasswordLabel.Name = "PasswordLabel"
         Me.PasswordLabel.Size = New System.Drawing.Size(194, 22)
         Me.PasswordLabel.TabIndex = 2
@@ -68,7 +68,7 @@ Partial Class frmLogin
         '
         Me.UsernameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.UsernameTextBox.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.UsernameTextBox.Location = New System.Drawing.Point(35, 139)
+        Me.UsernameTextBox.Location = New System.Drawing.Point(50, 138)
         Me.UsernameTextBox.Name = "UsernameTextBox"
         Me.UsernameTextBox.Size = New System.Drawing.Size(194, 23)
         Me.UsernameTextBox.TabIndex = 1
@@ -77,7 +77,7 @@ Partial Class frmLogin
         '
         Me.PasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.PasswordTextBox.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.PasswordTextBox.Location = New System.Drawing.Point(250, 139)
+        Me.PasswordTextBox.Location = New System.Drawing.Point(265, 138)
         Me.PasswordTextBox.Name = "PasswordTextBox"
         Me.PasswordTextBox.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.PasswordTextBox.Size = New System.Drawing.Size(194, 23)
@@ -86,10 +86,10 @@ Partial Class frmLogin
         'OK
         '
         Me.OK.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.OK.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.OK.Location = New System.Drawing.Point(292, 243)
+        Me.OK.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.OK.Location = New System.Drawing.Point(255, 264)
         Me.OK.Name = "OK"
-        Me.OK.Size = New System.Drawing.Size(94, 23)
+        Me.OK.Size = New System.Drawing.Size(130, 25)
         Me.OK.TabIndex = 1
         Me.OK.Text = "&Aceptar"
         '
@@ -97,10 +97,10 @@ Partial Class frmLogin
         '
         Me.Cancel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.Cancel.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Cancel.Location = New System.Drawing.Point(395, 243)
+        Me.Cancel.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Cancel.Location = New System.Drawing.Point(391, 264)
         Me.Cancel.Name = "Cancel"
-        Me.Cancel.Size = New System.Drawing.Size(94, 23)
+        Me.Cancel.Size = New System.Drawing.Size(130, 25)
         Me.Cancel.TabIndex = 2
         Me.Cancel.Text = "&Salir"
         '
@@ -115,7 +115,7 @@ Partial Class frmLogin
         Me.panPrincipal.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.panPrincipal.Location = New System.Drawing.Point(0, 0)
         Me.panPrincipal.Name = "panPrincipal"
-        Me.panPrincipal.Size = New System.Drawing.Size(496, 237)
+        Me.panPrincipal.Size = New System.Drawing.Size(530, 258)
         Me.panPrincipal.TabIndex = 0
         '
         'Panel1
@@ -131,31 +131,32 @@ Partial Class frmLogin
         Me.Panel1.Controls.Add(Me.UsernameLabel)
         Me.Panel1.Controls.Add(Me.PasswordLabel)
         Me.Panel1.Controls.Add(Me.UsernameTextBox)
+        Me.Panel1.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Panel1.Location = New System.Drawing.Point(9, 11)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(477, 213)
+        Me.Panel1.Size = New System.Drawing.Size(511, 234)
         Me.Panel1.TabIndex = 0
         '
         'Label1
         '
-        Me.Label1.Location = New System.Drawing.Point(9, 185)
+        Me.Label1.Location = New System.Drawing.Point(6, 204)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(457, 22)
+        Me.Label1.Size = New System.Drawing.Size(497, 22)
         Me.Label1.TabIndex = 6
-        Me.Label1.Text = "Salles Sainz, Grant Thornton, 2022 - 2023"
-        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Label1.Text = "Salles, Sainz-Grant Thornton, 2022 - 2024"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         '
         'lblTitulo
         '
-        Me.lblTitulo.BackColor = System.Drawing.Color.SteelBlue
-        Me.lblTitulo.Font = New System.Drawing.Font("Arial Rounded MT Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTitulo.BackColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(127, Byte), Integer))
+        Me.lblTitulo.Font = New System.Drawing.Font("Calibri", 23.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTitulo.ForeColor = System.Drawing.Color.White
-        Me.lblTitulo.Location = New System.Drawing.Point(-12, 22)
+        Me.lblTitulo.Location = New System.Drawing.Point(-11, 22)
         Me.lblTitulo.Name = "lblTitulo"
         Me.lblTitulo.Padding = New System.Windows.Forms.Padding(30, 0, 0, 0)
-        Me.lblTitulo.Size = New System.Drawing.Size(489, 35)
+        Me.lblTitulo.Size = New System.Drawing.Size(530, 43)
         Me.lblTitulo.TabIndex = 5
-        Me.lblTitulo.Text = "ACCESO SAPYC"
+        Me.lblTitulo.Text = "SAPYC"
         Me.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'frmLogin
@@ -164,7 +165,7 @@ Partial Class frmLogin
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.Cancel
-        Me.ClientSize = New System.Drawing.Size(496, 273)
+        Me.ClientSize = New System.Drawing.Size(530, 294)
         Me.Controls.Add(Me.panPrincipal)
         Me.Controls.Add(Me.Cancel)
         Me.Controls.Add(Me.OK)
