@@ -114,6 +114,11 @@
         dgCtes.Columns("TIPOPROPUESTA").Width = 90
         dgCtes.Columns("TIPOPROPUESTA").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
 
+        dgCtes.Columns("HONORARIOSPROP").HeaderText = "HONORARIOS PROPUESTA"
+        dgCtes.Columns("HONORARIOSPROP").Width = 90
+        dgCtes.Columns("HONORARIOSPROP").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        dgCtes.Columns("HONORARIOSPROP").DefaultCellStyle.Format = "##,##0.00"
+
         dgCtes.Columns("HONORARIOS").HeaderText = "HONORARIOS"
         dgCtes.Columns("HONORARIOS").Width = 90
         dgCtes.Columns("HONORARIOS").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter

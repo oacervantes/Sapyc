@@ -197,4 +197,15 @@
         End If
     End Sub
 
+    Private Sub TodasLasSolicitudesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TodasLasSolicitudesToolStripMenuItem.Click
+        Dim frm As New frmTodasSolicitudes
+
+        If Not Application.OpenForms("frmTodasSolicitudes") Is Nothing Then
+            Application.OpenForms("frmTodasSolicitudes").Activate()
+        Else
+            frm.MdiParent = Me
+            frm.Show()
+        End If
+    End Sub
+
 End Class

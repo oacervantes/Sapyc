@@ -250,6 +250,12 @@
     <Compile Include="Independencia\frmSolRelacionadas.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Independencia\frmTodasSolicitudes.Designer.vb">
+      <DependentUpon>frmTodasSolicitudes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Independencia\frmTodasSolicitudes.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Independencia\frmTrabajosCliente.Designer.vb">
       <DependentUpon>frmTrabajosCliente.vb</DependentUpon>
     </Compile>
@@ -421,6 +427,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Independencia\frmSolRelacionadas.resx">
       <DependentUpon>frmSolRelacionadas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Independencia\frmTodasSolicitudes.resx">
+      <DependentUpon>frmTodasSolicitudes.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Independencia\frmTrabajosCliente.resx">
       <DependentUpon>frmTrabajosCliente.vb</DependentUpon>
