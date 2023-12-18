@@ -23,6 +23,7 @@
         DtDatos.Columns.Add("DIVISION", GetType(System.String))
         DtDatos.Columns.Add("SOCIO", GetType(System.String))
         DtDatos.Columns.Add("REGISTRADAEL", GetType(System.String))
+        DtDatos.Columns.Add("SOLICITOIND", GetType(System.String))
         DtDatos.Columns.Add("ESTATUS", GetType(System.String))
         DtDatos.Columns.Add("TIPO", GetType(System.String))
 
@@ -69,6 +70,7 @@
                         drDat("DIVISION") = dr("DIVISION").ToString()
                         drDat("SOCIO") = dr("SOCIO").ToString()
                         drDat("REGISTRADAEL") = CDate(dr("REGISTRADAEL")).ToShortDateString()
+                        drDat("SOLICITOIND") = CDate(dr("FECHSOLIND")).ToShortDateString()
                         drDat("ESTATUS") = dr("ESTATUS").ToString()
                         'sCveCliente = dr("CVECTE").ToString()
                         drDat("CVECTE") = dr("CVECTE").ToString()
@@ -133,10 +135,10 @@
         gridClaves.Columns("NOMCONTINICIAL").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
 
         gridClaves.Columns("OFICINA").HeaderText = "OFICINA"
-        gridClaves.Columns("OFICINA").Width = 130
+        gridClaves.Columns("OFICINA").Width = 90
 
         gridClaves.Columns("DIVISION").HeaderText = "DIVISION"
-        gridClaves.Columns("DIVISION").Width = 140
+        gridClaves.Columns("DIVISION").Width = 90
 
         'gridClaves.Columns("SOCIO").HeaderText = "SOCIO"
         'gridClaves.Columns("SOCIO").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
@@ -147,8 +149,12 @@
         gridClaves.Columns("TIPO").HeaderText = "TIPO PROPUESTA"
         gridClaves.Columns("TIPO").Width = 200
 
-        gridClaves.Columns("REGISTRADAEL").HeaderText = "REGISTRADA"
-        gridClaves.Columns("REGISTRADAEL").Width = 85
+        gridClaves.Columns("REGISTRADAEL").HeaderText = "ALTA PROPUESTA"
+        gridClaves.Columns("REGISTRADAEL").Width = 100
+
+        gridClaves.Columns("SOLICITOIND").HeaderText = "SOLICITUD REVISIÓN"
+        gridClaves.Columns("SOLICITOIND").Width = 120
+
 
         gridClaves.Columns("INDEPENDENCIA").HeaderText = "CONFLICT CHECK"
         gridClaves.Columns("INDEPENDENCIA").Width = 100
