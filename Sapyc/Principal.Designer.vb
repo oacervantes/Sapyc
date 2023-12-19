@@ -52,6 +52,7 @@ Partial Class Principal
         Me.ConsultaPropuestasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ConsultaFoliosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ClientesRelacionadosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TodasLasSolicitudesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Barra = New System.Windows.Forms.ToolStrip()
         Me.BotonSalir = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
@@ -59,7 +60,7 @@ Partial Class Principal
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.BotonAltaPropuesta = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
-        Me.TodasLasSolicitudesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ClientesPorClaveDeTrabajoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.Barra.SuspendLayout()
         Me.SuspendLayout()
@@ -187,7 +188,7 @@ Partial Class Principal
         '
         'MnuInde
         '
-        Me.MnuInde.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CargarListasNegrasSSGTToolStripMenuItem, Me.CargarToolStripMenuItem, Me.SolicitudesToolStripMenuItem1, Me.PartesRelacionadasToolStripMenuItem, Me.ClientesFacturaciónToolStripMenuItem, Me.ClientesConflickToolStripMenuItem, Me.EnvioCorreosToolStripMenuItem, Me.ConsultaPropuestasToolStripMenuItem, Me.ConsultaFoliosToolStripMenuItem, Me.ClientesRelacionadosToolStripMenuItem, Me.TodasLasSolicitudesToolStripMenuItem})
+        Me.MnuInde.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CargarListasNegrasSSGTToolStripMenuItem, Me.CargarToolStripMenuItem, Me.SolicitudesToolStripMenuItem1, Me.PartesRelacionadasToolStripMenuItem, Me.ClientesFacturaciónToolStripMenuItem, Me.ClientesConflickToolStripMenuItem, Me.EnvioCorreosToolStripMenuItem, Me.ConsultaPropuestasToolStripMenuItem, Me.ConsultaFoliosToolStripMenuItem, Me.ClientesRelacionadosToolStripMenuItem, Me.TodasLasSolicitudesToolStripMenuItem, Me.ClientesPorClaveDeTrabajoToolStripMenuItem})
         Me.MnuInde.Name = "MnuInde"
         Me.MnuInde.Size = New System.Drawing.Size(101, 20)
         Me.MnuInde.Text = "Independencia"
@@ -254,6 +255,12 @@ Partial Class Principal
         Me.ClientesRelacionadosToolStripMenuItem.Size = New System.Drawing.Size(249, 22)
         Me.ClientesRelacionadosToolStripMenuItem.Text = "Clientes Relacionados"
         '
+        'TodasLasSolicitudesToolStripMenuItem
+        '
+        Me.TodasLasSolicitudesToolStripMenuItem.Name = "TodasLasSolicitudesToolStripMenuItem"
+        Me.TodasLasSolicitudesToolStripMenuItem.Size = New System.Drawing.Size(249, 22)
+        Me.TodasLasSolicitudesToolStripMenuItem.Text = "Todas las solicitudes"
+        '
         'Barra
         '
         Me.Barra.AutoSize = False
@@ -312,11 +319,11 @@ Partial Class Principal
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
         Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 40)
         '
-        'TodasLasSolicitudesToolStripMenuItem
+        'ClientesPorClaveDeTrabajoToolStripMenuItem
         '
-        Me.TodasLasSolicitudesToolStripMenuItem.Name = "TodasLasSolicitudesToolStripMenuItem"
-        Me.TodasLasSolicitudesToolStripMenuItem.Size = New System.Drawing.Size(249, 22)
-        Me.TodasLasSolicitudesToolStripMenuItem.Text = "Todas las solicitudes"
+        Me.ClientesPorClaveDeTrabajoToolStripMenuItem.Name = "ClientesPorClaveDeTrabajoToolStripMenuItem"
+        Me.ClientesPorClaveDeTrabajoToolStripMenuItem.Size = New System.Drawing.Size(249, 22)
+        Me.ClientesPorClaveDeTrabajoToolStripMenuItem.Text = "Clientes por Clave de Trabajo"
         '
         'Principal
         '
@@ -377,4 +384,5 @@ Partial Class Principal
     Friend WithEvents ClientesConflickToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ClientesRelacionadosToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents TodasLasSolicitudesToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ClientesPorClaveDeTrabajoToolStripMenuItem As ToolStripMenuItem
 End Class

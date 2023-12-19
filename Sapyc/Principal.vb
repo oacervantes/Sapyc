@@ -208,4 +208,15 @@
         End If
     End Sub
 
+    Private Sub ClientesPorClaveDeTrabajoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClientesPorClaveDeTrabajoToolStripMenuItem.Click
+        Dim frm As New frmReportePorClaves
+
+        If Not Application.OpenForms("frmReportePorClaves") Is Nothing Then
+            Application.OpenForms("frmReportePorClaves").Activate()
+        Else
+            frm.MdiParent = Me
+            frm.Show()
+        End If
+    End Sub
+
 End Class
