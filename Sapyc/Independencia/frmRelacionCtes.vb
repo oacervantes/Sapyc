@@ -76,6 +76,9 @@
         dgCtes.Columns("CTE_RELACION").HeaderText = "CLIENTE RELACIONADO"
         dgCtes.Columns("CTE_RELACION").Width = 250
 
+        dgCtes.Columns("CTE_REFERENCIA").HeaderText = "CLIENTE REFERENCIADO"
+        dgCtes.Columns("CTE_REFERENCIA").Width = 250
+
         dgCtes.Columns("CVE_TRABAJO").HeaderText = "TRABAJO"
         dgCtes.Columns("CVE_TRABAJO").Width = 155
         dgCtes.Columns("CVE_TRABAJO").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
