@@ -956,7 +956,7 @@ Public Class frmPropuesta
         Try
 
             sMensaje = "Estimado Equipo:  " & NombSoc.TrimEnd(";") & " " & vbNewLine & vbNewLine
-            sMensaje &= "Se ha realizado la verificación de conflictos de interes y/o amenazas de independencia "
+            sMensaje &= "Se ha realizado la verificación de conflictos de interes y/o amenazas de independencia en el ciclo 23-24 "
             sMensaje &= "(interna y/o externa) al prospecto  " & NomEmpresa & "  " & vbNewLine & vbNewLine
             sMensaje &= "De las respuestas recibidas  " & Msnj.ToString() & " se identificó situación que afecta nuestra independencia. " & vbNewLine & vbNewLine
             sMensaje &= "Para cualquier aclaración sobre el tema contactar a cecilia.coronel@mx.gt.com y heidi.martinez@mx.gt.com " & vbNewLine & vbNewLine
@@ -980,7 +980,7 @@ Public Class frmPropuesta
         Try
 
             sMensaje = "Estimado Equipo:  " & NombSoc.TrimEnd(";") & " " & vbNewLine & vbNewLine
-            sMensaje &= "Se ha realizado la verificación de conflictos de interes y/o amenazas de independencia "
+            sMensaje &= "Se ha realizado la verificación de conflictos de interes y/o amenazas de independencia en el ciclo 23-24"
             sMensaje &= "(interna y/o externa) al prospecto  " & NomEmpresa & "  " & vbNewLine & vbNewLine
             sMensaje &= "De las respuestas recibidas  " & Msnj.ToString() & " se identificó situación que afecta nuestra independencia. " & vbNewLine & vbNewLine
             sMensaje &= "Para cualquier aclaración sobre el tema contactar a cecilia.coronel@mx.gt.com y heidi.martinez@mx.gt.com " & vbNewLine & vbNewLine
