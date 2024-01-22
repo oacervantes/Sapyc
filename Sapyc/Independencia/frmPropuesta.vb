@@ -164,6 +164,7 @@ Public Class frmPropuesta
             ActualizaConflict(Ind)
             ConsultaCorreos()
             EnvioCorreoSocios()
+
             DialogResult = Windows.Forms.DialogResult.OK
             MsgBox("Se actualizo la propuesta de manera correcta!", MsgBoxStyle.Information, "Cliente prospecto")
         End If

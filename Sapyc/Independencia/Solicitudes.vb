@@ -22,7 +22,7 @@
                     'dlg.TpCon = "I"
                     If dlg.ShowDialog = Windows.Forms.DialogResult.OK Then
                         Me.Lista.DataSource = bsSol
-                        crearTabla()
+                        'crearTabla()
                         ListaSolicitudes()
                     End If
                 End If
@@ -49,7 +49,7 @@
                     'dlg.TpCon = "I"
                     If dlg.ShowDialog = Windows.Forms.DialogResult.OK Then
                         Me.Lista.DataSource = bsSol
-                        crearTabla()
+                        'crearTabla()
                         ListaSolicitudes()
                     End If
                 End If
