@@ -24,6 +24,7 @@ Partial Class frmAltaConflick
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAltaConflick))
         Me.panPrincipal = New System.Windows.Forms.Panel()
+        Me.gridClaves = New System.Windows.Forms.DataGridView()
         Me.txtServicio = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.txtMotivo = New System.Windows.Forms.TextBox()
@@ -61,10 +62,10 @@ Partial Class frmAltaConflick
         Me.lblDivision = New System.Windows.Forms.Label()
         Me.lblOficina = New System.Windows.Forms.Label()
         Me.lblCliente = New System.Windows.Forms.Label()
-        Me.gridClaves = New System.Windows.Forms.DataGridView()
         Me.btnGuardar = New System.Windows.Forms.Button()
         Me.btnSalir = New System.Windows.Forms.Button()
         Me.panPrincipal.SuspendLayout()
+        CType(Me.gridClaves, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Cuadro.SuspendLayout()
         Me.Funcionarios.SuspendLayout()
         CType(Me.dgvFuncionarios, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -75,7 +76,6 @@ Partial Class frmAltaConflick
         Me.TabPage1.SuspendLayout()
         Me.gpBgc.SuspendLayout()
         Me.GBCC.SuspendLayout()
-        CType(Me.gridClaves, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'panPrincipal
@@ -104,10 +104,26 @@ Partial Class frmAltaConflick
         Me.panPrincipal.Controls.Add(Me.lblOficina)
         Me.panPrincipal.Controls.Add(Me.lblCliente)
         Me.panPrincipal.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.panPrincipal.Location = New System.Drawing.Point(0, 1)
+        Me.panPrincipal.Location = New System.Drawing.Point(0, 0)
         Me.panPrincipal.Name = "panPrincipal"
-        Me.panPrincipal.Size = New System.Drawing.Size(715, 609)
+        Me.panPrincipal.Size = New System.Drawing.Size(715, 618)
         Me.panPrincipal.TabIndex = 2
+        '
+        'gridClaves
+        '
+        Me.gridClaves.AllowUserToAddRows = False
+        Me.gridClaves.AllowUserToDeleteRows = False
+        Me.gridClaves.AllowUserToResizeRows = False
+        Me.gridClaves.BackgroundColor = System.Drawing.Color.WhiteSmoke
+        Me.gridClaves.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
+        Me.gridClaves.GridColor = System.Drawing.Color.Gainsboro
+        Me.gridClaves.Location = New System.Drawing.Point(101, 43)
+        Me.gridClaves.Name = "gridClaves"
+        Me.gridClaves.RowHeadersWidth = 25
+        Me.gridClaves.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.gridClaves.Size = New System.Drawing.Size(583, 211)
+        Me.gridClaves.TabIndex = 6
+        Me.gridClaves.Visible = False
         '
         'txtServicio
         '
@@ -197,10 +213,12 @@ Partial Class frmAltaConflick
         Me.Cuadro.Controls.Add(Me.Accionistas)
         Me.Cuadro.Controls.Add(Me.TabPage2)
         Me.Cuadro.Controls.Add(Me.TabPage1)
+        Me.Cuadro.ItemSize = New System.Drawing.Size(150, 25)
         Me.Cuadro.Location = New System.Drawing.Point(29, 302)
         Me.Cuadro.Name = "Cuadro"
         Me.Cuadro.SelectedIndex = 0
-        Me.Cuadro.Size = New System.Drawing.Size(655, 283)
+        Me.Cuadro.Size = New System.Drawing.Size(655, 292)
+        Me.Cuadro.SizeMode = System.Windows.Forms.TabSizeMode.Fixed
         Me.Cuadro.TabIndex = 7
         '
         'Funcionarios
@@ -208,9 +226,9 @@ Partial Class frmAltaConflick
         Me.Funcionarios.Controls.Add(Me.dgvFuncionarios)
         Me.Funcionarios.Controls.Add(Me.BbajaFun)
         Me.Funcionarios.Controls.Add(Me.BaltaFun)
-        Me.Funcionarios.Location = New System.Drawing.Point(4, 27)
+        Me.Funcionarios.Location = New System.Drawing.Point(4, 29)
         Me.Funcionarios.Name = "Funcionarios"
-        Me.Funcionarios.Size = New System.Drawing.Size(647, 252)
+        Me.Funcionarios.Size = New System.Drawing.Size(647, 259)
         Me.Funcionarios.TabIndex = 1
         Me.Funcionarios.Text = "Funcionarios"
         Me.Funcionarios.UseVisualStyleBackColor = True
@@ -223,15 +241,14 @@ Partial Class frmAltaConflick
         Me.dgvFuncionarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvFuncionarios.Location = New System.Drawing.Point(3, 3)
         Me.dgvFuncionarios.Name = "dgvFuncionarios"
-        Me.dgvFuncionarios.Size = New System.Drawing.Size(641, 207)
+        Me.dgvFuncionarios.Size = New System.Drawing.Size(641, 215)
         Me.dgvFuncionarios.TabIndex = 59
         '
         'BbajaFun
         '
-        Me.BbajaFun.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BbajaFun.Location = New System.Drawing.Point(86, 216)
+        Me.BbajaFun.Location = New System.Drawing.Point(105, 224)
         Me.BbajaFun.Name = "BbajaFun"
-        Me.BbajaFun.Size = New System.Drawing.Size(70, 22)
+        Me.BbajaFun.Size = New System.Drawing.Size(90, 25)
         Me.BbajaFun.TabIndex = 58
         Me.BbajaFun.Text = "Baja"
         Me.BbajaFun.UseVisualStyleBackColor = True
@@ -239,10 +256,9 @@ Partial Class frmAltaConflick
         '
         'BaltaFun
         '
-        Me.BaltaFun.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BaltaFun.Location = New System.Drawing.Point(10, 216)
+        Me.BaltaFun.Location = New System.Drawing.Point(10, 224)
         Me.BaltaFun.Name = "BaltaFun"
-        Me.BaltaFun.Size = New System.Drawing.Size(70, 22)
+        Me.BaltaFun.Size = New System.Drawing.Size(90, 25)
         Me.BaltaFun.TabIndex = 57
         Me.BaltaFun.Text = "Alta"
         Me.BaltaFun.UseVisualStyleBackColor = True
@@ -253,9 +269,9 @@ Partial Class frmAltaConflick
         Me.Accionistas.Controls.Add(Me.dgvAccionistas)
         Me.Accionistas.Controls.Add(Me.BbajaAcc)
         Me.Accionistas.Controls.Add(Me.BaltaAcc)
-        Me.Accionistas.Location = New System.Drawing.Point(4, 27)
+        Me.Accionistas.Location = New System.Drawing.Point(4, 29)
         Me.Accionistas.Name = "Accionistas"
-        Me.Accionistas.Size = New System.Drawing.Size(647, 252)
+        Me.Accionistas.Size = New System.Drawing.Size(647, 259)
         Me.Accionistas.TabIndex = 2
         Me.Accionistas.Text = "Accionistas"
         Me.Accionistas.UseVisualStyleBackColor = True
@@ -296,9 +312,9 @@ Partial Class frmAltaConflick
         'TabPage2
         '
         Me.TabPage2.Controls.Add(Me.dgTrabajos)
-        Me.TabPage2.Location = New System.Drawing.Point(4, 27)
+        Me.TabPage2.Location = New System.Drawing.Point(4, 29)
         Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Size = New System.Drawing.Size(647, 252)
+        Me.TabPage2.Size = New System.Drawing.Size(647, 259)
         Me.TabPage2.TabIndex = 4
         Me.TabPage2.Text = "Trabajos"
         Me.TabPage2.UseVisualStyleBackColor = True
@@ -318,9 +334,9 @@ Partial Class frmAltaConflick
         '
         Me.TabPage1.Controls.Add(Me.gpBgc)
         Me.TabPage1.Controls.Add(Me.GBCC)
-        Me.TabPage1.Location = New System.Drawing.Point(4, 27)
+        Me.TabPage1.Location = New System.Drawing.Point(4, 29)
         Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Size = New System.Drawing.Size(647, 252)
+        Me.TabPage1.Size = New System.Drawing.Size(647, 259)
         Me.TabPage1.TabIndex = 3
         Me.TabPage1.Text = "Calificación de riesgo"
         Me.TabPage1.UseVisualStyleBackColor = True
@@ -329,30 +345,30 @@ Partial Class frmAltaConflick
         '
         Me.gpBgc.Controls.Add(Me.CmbNivel)
         Me.gpBgc.Controls.Add(Me.Label2)
-        Me.gpBgc.Location = New System.Drawing.Point(357, 53)
+        Me.gpBgc.Location = New System.Drawing.Point(359, 36)
         Me.gpBgc.Name = "gpBgc"
-        Me.gpBgc.Size = New System.Drawing.Size(276, 129)
+        Me.gpBgc.Size = New System.Drawing.Size(276, 186)
         Me.gpBgc.TabIndex = 406
         Me.gpBgc.TabStop = False
-        Me.gpBgc.Text = "Back Ground Check"
+        Me.gpBgc.Text = "Background Check"
         '
         'CmbNivel
         '
+        Me.CmbNivel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CmbNivel.FormattingEnabled = True
-        Me.CmbNivel.Location = New System.Drawing.Point(9, 65)
+        Me.CmbNivel.Location = New System.Drawing.Point(21, 92)
         Me.CmbNivel.Name = "CmbNivel"
-        Me.CmbNivel.Size = New System.Drawing.Size(212, 26)
+        Me.CmbNivel.Size = New System.Drawing.Size(234, 26)
         Me.CmbNivel.TabIndex = 369
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(6, 42)
+        Me.Label2.Location = New System.Drawing.Point(21, 69)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(92, 13)
+        Me.Label2.Size = New System.Drawing.Size(105, 18)
         Me.Label2.TabIndex = 368
-        Me.Label2.Text = "Nivel de riesgo"
+        Me.Label2.Text = "Nivel de riesgo:"
         '
         'GBCC
         '
@@ -361,9 +377,9 @@ Partial Class frmAltaConflick
         Me.GBCC.Controls.Add(Me.rbSi)
         Me.GBCC.Controls.Add(Me.txtMotivoIndepen)
         Me.GBCC.Controls.Add(Me.rbNo)
-        Me.GBCC.Location = New System.Drawing.Point(10, 53)
+        Me.GBCC.Location = New System.Drawing.Point(12, 36)
         Me.GBCC.Name = "GBCC"
-        Me.GBCC.Size = New System.Drawing.Size(328, 129)
+        Me.GBCC.Size = New System.Drawing.Size(328, 186)
         Me.GBCC.TabIndex = 405
         Me.GBCC.TabStop = False
         Me.GBCC.Text = "Conflict Check"
@@ -371,27 +387,25 @@ Partial Class frmAltaConflick
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label16.Location = New System.Drawing.Point(16, 23)
+        Me.Label16.Location = New System.Drawing.Point(10, 33)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(290, 13)
+        Me.Label16.Size = New System.Drawing.Size(308, 18)
         Me.Label16.TabIndex = 367
-        Me.Label16.Text = "¿Existe situación de conflicto de independencia ?"
+        Me.Label16.Text = "¿Existe situación de conflicto de independencia?"
         '
         'lblMotivo
         '
         Me.lblMotivo.AutoSize = True
-        Me.lblMotivo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblMotivo.Location = New System.Drawing.Point(19, 70)
+        Me.lblMotivo.Location = New System.Drawing.Point(10, 91)
         Me.lblMotivo.Name = "lblMotivo"
-        Me.lblMotivo.Size = New System.Drawing.Size(123, 13)
+        Me.lblMotivo.Size = New System.Drawing.Size(136, 18)
         Me.lblMotivo.TabIndex = 369
         Me.lblMotivo.Text = "Motivo del conflicto:"
         '
         'rbSi
         '
         Me.rbSi.AutoSize = True
-        Me.rbSi.Location = New System.Drawing.Point(51, 44)
+        Me.rbSi.Location = New System.Drawing.Point(37, 54)
         Me.rbSi.Name = "rbSi"
         Me.rbSi.Size = New System.Drawing.Size(37, 22)
         Me.rbSi.TabIndex = 365
@@ -401,18 +415,17 @@ Partial Class frmAltaConflick
         '
         'txtMotivoIndepen
         '
-        Me.txtMotivoIndepen.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtMotivoIndepen.ForeColor = System.Drawing.Color.Blue
-        Me.txtMotivoIndepen.Location = New System.Drawing.Point(19, 97)
+        Me.txtMotivoIndepen.Location = New System.Drawing.Point(10, 110)
         Me.txtMotivoIndepen.MaxLength = 120
+        Me.txtMotivoIndepen.Multiline = True
         Me.txtMotivoIndepen.Name = "txtMotivoIndepen"
-        Me.txtMotivoIndepen.Size = New System.Drawing.Size(149, 20)
+        Me.txtMotivoIndepen.Size = New System.Drawing.Size(308, 57)
         Me.txtMotivoIndepen.TabIndex = 368
         '
         'rbNo
         '
         Me.rbNo.AutoSize = True
-        Me.rbNo.Location = New System.Drawing.Point(112, 44)
+        Me.rbNo.Location = New System.Drawing.Point(98, 54)
         Me.rbNo.Name = "rbNo"
         Me.rbNo.Size = New System.Drawing.Size(44, 22)
         Me.rbNo.TabIndex = 366
@@ -471,29 +484,13 @@ Partial Class frmAltaConflick
         Me.lblCliente.TabIndex = 0
         Me.lblCliente.Text = "Cliente principal*:"
         '
-        'gridClaves
-        '
-        Me.gridClaves.AllowUserToAddRows = False
-        Me.gridClaves.AllowUserToDeleteRows = False
-        Me.gridClaves.AllowUserToResizeRows = False
-        Me.gridClaves.BackgroundColor = System.Drawing.Color.WhiteSmoke
-        Me.gridClaves.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
-        Me.gridClaves.GridColor = System.Drawing.Color.Gainsboro
-        Me.gridClaves.Location = New System.Drawing.Point(101, 43)
-        Me.gridClaves.Name = "gridClaves"
-        Me.gridClaves.RowHeadersWidth = 25
-        Me.gridClaves.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.gridClaves.Size = New System.Drawing.Size(583, 211)
-        Me.gridClaves.TabIndex = 6
-        Me.gridClaves.Visible = False
-        '
         'btnGuardar
         '
         Me.btnGuardar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.btnGuardar.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnGuardar.Location = New System.Drawing.Point(12, 627)
+        Me.btnGuardar.Location = New System.Drawing.Point(12, 625)
         Me.btnGuardar.Name = "btnGuardar"
-        Me.btnGuardar.Size = New System.Drawing.Size(107, 27)
+        Me.btnGuardar.Size = New System.Drawing.Size(130, 25)
         Me.btnGuardar.TabIndex = 6
         Me.btnGuardar.Text = "Guardar"
         Me.btnGuardar.TextAlign = System.Drawing.ContentAlignment.BottomCenter
@@ -503,9 +500,9 @@ Partial Class frmAltaConflick
         '
         Me.btnSalir.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnSalir.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSalir.Location = New System.Drawing.Point(596, 627)
+        Me.btnSalir.Location = New System.Drawing.Point(573, 625)
         Me.btnSalir.Name = "btnSalir"
-        Me.btnSalir.Size = New System.Drawing.Size(107, 25)
+        Me.btnSalir.Size = New System.Drawing.Size(130, 25)
         Me.btnSalir.TabIndex = 7
         Me.btnSalir.Text = "Cerrar"
         Me.btnSalir.UseVisualStyleBackColor = True
@@ -521,9 +518,10 @@ Partial Class frmAltaConflick
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmAltaConflick"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "DATOS CONFLICK"
+        Me.Text = "Datos de Propuesta"
         Me.panPrincipal.ResumeLayout(False)
         Me.panPrincipal.PerformLayout()
+        CType(Me.gridClaves, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Cuadro.ResumeLayout(False)
         Me.Funcionarios.ResumeLayout(False)
         CType(Me.dgvFuncionarios, System.ComponentModel.ISupportInitialize).EndInit()
@@ -536,7 +534,6 @@ Partial Class frmAltaConflick
         Me.gpBgc.PerformLayout()
         Me.GBCC.ResumeLayout(False)
         Me.GBCC.PerformLayout()
-        CType(Me.gridClaves, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

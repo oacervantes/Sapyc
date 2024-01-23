@@ -175,15 +175,21 @@
     End Sub
 
     Private Sub ConsultaPropuestasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConsultaPropuestasToolStripMenuItem.Click
-        frmPropuestas.ShowDialog()
+        Dim frm As New frmPropuestas
+
+        AbrirPantalla(frm, "frmPropuestas")
     End Sub
 
     Private Sub ConsultaFoliosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConsultaFoliosToolStripMenuItem.Click
-        frmConsultaFolios.ShowDialog()
+        Dim frm As New frmConsultaFolios
+
+        AbrirPantalla(frm, "frmConsultaFolios")
     End Sub
 
     Private Sub ClientesConflickToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClientesConflickToolStripMenuItem.Click
-        frmClientesConflick.ShowDialog()
+        Dim frm As New frmClientesConflick
+
+        AbrirPantalla(frm, "frmClientesConflick")
     End Sub
 
     Private Sub ClientesRelacionadosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClientesRelacionadosToolStripMenuItem.Click
@@ -211,8 +217,12 @@
     Private Sub ClientesPorClaveDeTrabajoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClientesPorClaveDeTrabajoToolStripMenuItem.Click
         Dim frm As New frmReportePorClaves
 
-        If Not Application.OpenForms("frmReportePorClaves") Is Nothing Then
-            Application.OpenForms("frmReportePorClaves").Activate()
+        AbrirPantalla(frm, "frmReportePorClaves")
+    End Sub
+
+    Private Sub AbrirPantalla(ByVal frm As Form, ByVal sNombre As String)
+        If Not Application.OpenForms(sNombre) Is Nothing Then
+            Application.OpenForms(sNombre).Activate()
         Else
             frm.MdiParent = Me
             frm.Show()

@@ -1,16 +1,14 @@
 ﻿Public Class frmReportePorClaves
 
     Private bsSol As New BindingSource
-    Private dtSolicitudes, DtDatos, dtColgados As DataTable
     Private ds As New DataSet
+
+    Private dtSolicitudes, DtDatos, dtColgados As New DataTable
     Private drDat As DataRow
 
-
-    Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
-        Me.Close()
-    End Sub
     Private Sub frmReportePorClaves_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         gridClaves.DataSource = bsSol
+
         crearTabla()
         ListaSolicitudes()
     End Sub
@@ -33,9 +31,11 @@
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
         End Try
     End Sub
+    Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
+        Me.Close()
+    End Sub
 
     Private Sub crearTabla()
-        DtDatos = New DataTable
         DtDatos.Columns.Add("CLIENTE", GetType(System.String))
         DtDatos.Columns.Add("TRABAJO", GetType(System.String))
         DtDatos.Columns.Add("OFICINA", GetType(System.String))
@@ -47,65 +47,8 @@
         DtDatos.Columns.Add("ESTATUS", GetType(System.String))
         DtDatos.Columns.Add("SOCIO", GetType(System.String))
         DtDatos.Columns.Add("HONORARIOS", GetType(System.String))
-
-
-    End Sub
-    Private Sub ListaSolicitudes()
-        Try
-            If DtDatos.Rows.Count > 0 Then
-                DtDatos.Clear()
-            End If
-
-            With ds.Tables
-                With clsLocal
-                    .subClearParameters()
-                    .subAddParameter("@iOpcion", 19, SqlDbType.Int, ParameterDirection.Input)
-                End With
-
-                If .Contains("paIndependencia") Then
-                    .Remove("paIndependencia")
-                End If
-
-                .Add(clsLocal.funExecuteSPDataTable("paIndependencia"))
-                dtSolicitudes = .Item("paIndependencia")
-
-                If dtSolicitudes.Rows.Count > 0 Then
-
-                    For Each dr As DataRow In dtSolicitudes.Rows
-
-                        drDat = DtDatos.NewRow
-                        drDat("CLIENTE") = dr("NOMBRECTE").ToString()
-                        drDat("TRABAJO") = dr("CVETRA").ToString()
-                        drDat("OFICINA") = dr("DESCOFI").ToString()
-                        drDat("DIVISION") = dr("DESCAREA").ToString()
-                        drDat("DESCRIPCION") = dr("DESCRIPCION").ToString()
-                        drDat("SERVICIO") = dr("SERVICIO").ToString()
-                        drDat("ALTA") = CDate(dr("FECHAALTA")).ToShortDateString()
-                        If dr("FECHABAJA") = "1900-01-01" Then
-                            drDat("BAJA") = ""
-                        Else
-                            drDat("BAJA") = CDate(dr("FECHABAJA")).ToShortDateString()
-                        End If
-                        drDat("ESTATUS") = dr("STATUS").ToString()
-                        drDat("SOCIO") = dr("NOMBRE").ToString()
-                        drDat("HONORARIOS") = Format(CDec(dr("HONORARIOS").ToString()), "#,##0.00")
-
-                        DtDatos.Rows.InsertAt(drDat, DtDatos.Rows.Count)
-
-                    Next
-
-                    bsSol.DataSource = DtDatos
-                    formatoGrid()
-                End If
-
-
-            End With
-        Catch ex As Exception
-            MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
-        End Try
     End Sub
     Private Sub formatoGrid()
-
         gridClaves.Columns("CLIENTE").HeaderText = "CLIENTE"
         gridClaves.Columns("CLIENTE").Width = 250
 
@@ -139,7 +82,56 @@
         gridClaves.Columns("HONORARIOS").HeaderText = "HONORARIOS"
         gridClaves.Columns("HONORARIOS").Width = 150
         gridClaves.Columns("HONORARIOS").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+    End Sub
 
+    Private Sub ListaSolicitudes()
+        Try
+            Dim sTabla As String = "tbClientes"
+            limpiarFilasTabla(DtDatos)
+
+            With ds.Tables
+                LimpiarConsultaTabla(ds.Tables, sTabla)
+
+                With clsLocal
+                    .subClearParameters()
+                    .subAddParameter("@iOpcion", 19, SqlDbType.Int, ParameterDirection.Input)
+                End With
+
+                .Add(clsLocal.funExecuteSPDataTable("paIndependencia", sTabla))
+                dtSolicitudes = .Item(sTabla)
+            End With
+
+            If dtSolicitudes.Rows.Count > 0 Then
+
+                For Each dr As DataRow In dtSolicitudes.Rows
+
+                    drDat = DtDatos.NewRow
+                    drDat("CLIENTE") = dr("NOMBRECTE").ToString()
+                    drDat("TRABAJO") = dr("CVETRA").ToString()
+                    drDat("OFICINA") = dr("DESCOFI").ToString()
+                    drDat("DIVISION") = dr("DESCAREA").ToString()
+                    drDat("DESCRIPCION") = dr("DESCRIPCION").ToString()
+                    drDat("SERVICIO") = dr("SERVICIO").ToString()
+                    drDat("ALTA") = CDate(dr("FECHAALTA")).ToShortDateString()
+                    If dr("FECHABAJA") = "1900-01-01" Then
+                        drDat("BAJA") = ""
+                    Else
+                        drDat("BAJA") = CDate(dr("FECHABAJA")).ToShortDateString()
+                    End If
+                    drDat("ESTATUS") = dr("STATUS").ToString()
+                    drDat("SOCIO") = dr("NOMBRE").ToString()
+                    drDat("HONORARIOS") = Format(CDec(dr("HONORARIOS").ToString()), sFmtDbl)
+
+                    DtDatos.Rows.InsertAt(drDat, DtDatos.Rows.Count)
+
+                Next
+
+                bsSol.DataSource = DtDatos
+                formatoGrid()
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
+        End Try
     End Sub
 
 End Class

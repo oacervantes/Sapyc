@@ -147,7 +147,7 @@ Partial Class frmRelacionCtes
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmRelacionCtes"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "CLIENTES RELACIONADOS"
+        Me.Text = "Clientes Relacionados"
         Me.panPrincipal.ResumeLayout(False)
         Me.panPrincipal.PerformLayout()
         CType(Me.dgCtes, System.ComponentModel.ISupportInitialize).EndInit()

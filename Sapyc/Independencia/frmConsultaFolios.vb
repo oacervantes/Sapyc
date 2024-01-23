@@ -3,6 +3,11 @@
     Private dtFolios As DataTable
     Private bsFolios As New BindingSource
 
+    Private Sub frmConsultaFolios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        dgFolios.DataSource = bsFolios
+        ListarFolios()
+
+    End Sub
     Private Sub btnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
         Me.Close()
     End Sub
@@ -25,40 +30,33 @@
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
         End Try
     End Sub
-    Private Sub frmConsultaFolios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.dgFolios.DataSource = bsFolios
-        ListarFolios()
 
-    End Sub
     Private Sub ListarFolios()
         Try
+            Dim sTabla As String = "tbFolios"
+
             With ds.Tables
+                LimpiarConsultaTabla(ds.Tables, sTabla)
+
                 With clsDatosInv
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 7, SqlDbType.Int, ParameterDirection.Input)
 
                 End With
 
-                If .Contains("paFoliosInforme") Then
-                    .Remove("paFoliosInforme")
-                End If
-
-                .Add(clsDatosInv.funExecuteSPDataTable("paFoliosInforme"))
-                dtFolios = .Item("paFoliosInforme")
+                .Add(clsDatosInv.funExecuteSPDataTable("paFoliosInforme", sTabla))
+                dtFolios = .Item(sTabla)
 
                 If dtFolios.Rows.Count > 0 Then
                     bsFolios.DataSource = dtFolios
                     FormatoGrid()
                 End If
-
-
             End With
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
         End Try
     End Sub
     Private Sub FormatoGrid()
-
         dgFolios.Columns("OPINION").Frozen = True
         dgFolios.Columns("PRINCIPAL").Frozen = True
         dgFolios.Columns("OPINION").Width = 150

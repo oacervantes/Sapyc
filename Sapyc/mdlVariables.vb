@@ -26,5 +26,6 @@
 
     Friend sFolderExcel, sFolderUserExcel, sFolderUserPrincipal, sFolderReportes, sRutaReportes, sRutaBDAccess As String
 
+    Friend sFmtDbl As String = "#,##0.00"
 
 End Module

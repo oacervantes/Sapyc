@@ -46,9 +46,9 @@ Partial Class frmClientesConflick
         Me.panPrincipal.Controls.Add(Me.lblTitulo)
         Me.panPrincipal.Controls.Add(Me.gridClaves)
         Me.panPrincipal.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.panPrincipal.Location = New System.Drawing.Point(1, 1)
+        Me.panPrincipal.Location = New System.Drawing.Point(0, 0)
         Me.panPrincipal.Name = "panPrincipal"
-        Me.panPrincipal.Size = New System.Drawing.Size(1114, 561)
+        Me.panPrincipal.Size = New System.Drawing.Size(1182, 643)
         Me.panPrincipal.TabIndex = 2
         '
         'panLinea
@@ -56,9 +56,9 @@ Partial Class frmClientesConflick
         Me.panLinea.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.panLinea.BackColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(127, Byte), Integer))
-        Me.panLinea.Location = New System.Drawing.Point(15, 42)
+        Me.panLinea.Location = New System.Drawing.Point(0, 35)
         Me.panLinea.Name = "panLinea"
-        Me.panLinea.Size = New System.Drawing.Size(1082, 2)
+        Me.panLinea.Size = New System.Drawing.Size(1182, 2)
         Me.panLinea.TabIndex = 1
         '
         'lblTitulo
@@ -66,11 +66,11 @@ Partial Class frmClientesConflick
         Me.lblTitulo.AutoSize = True
         Me.lblTitulo.Font = New System.Drawing.Font("Calibri", 19.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(127, Byte), Integer))
-        Me.lblTitulo.Location = New System.Drawing.Point(15, 8)
+        Me.lblTitulo.Location = New System.Drawing.Point(2, 2)
         Me.lblTitulo.Name = "lblTitulo"
-        Me.lblTitulo.Size = New System.Drawing.Size(227, 32)
+        Me.lblTitulo.Size = New System.Drawing.Size(415, 32)
         Me.lblTitulo.TabIndex = 0
-        Me.lblTitulo.Text = "CLIENTES CONFLICK"
+        Me.lblTitulo.Text = "ACTUALIZACIÓN DE CONFLICT CHECK"
         '
         'gridClaves
         '
@@ -94,7 +94,7 @@ Partial Class frmClientesConflick
         Me.gridClaves.ColumnHeadersHeight = 40
         Me.gridClaves.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.gridClaves.GridColor = System.Drawing.Color.Gainsboro
-        Me.gridClaves.Location = New System.Drawing.Point(15, 61)
+        Me.gridClaves.Location = New System.Drawing.Point(11, 48)
         Me.gridClaves.MultiSelect = False
         Me.gridClaves.Name = "gridClaves"
         Me.gridClaves.RowHeadersWidth = 25
@@ -103,16 +103,16 @@ Partial Class frmClientesConflick
         Me.gridClaves.RowsDefaultCellStyle = DataGridViewCellStyle2
         Me.gridClaves.RowTemplate.Height = 24
         Me.gridClaves.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.gridClaves.Size = New System.Drawing.Size(1082, 490)
+        Me.gridClaves.Size = New System.Drawing.Size(1159, 580)
         Me.gridClaves.TabIndex = 2
         '
         'btnAceptar
         '
         Me.btnAceptar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.btnAceptar.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAceptar.Location = New System.Drawing.Point(17, 568)
+        Me.btnAceptar.Location = New System.Drawing.Point(11, 652)
         Me.btnAceptar.Name = "btnAceptar"
-        Me.btnAceptar.Size = New System.Drawing.Size(112, 25)
+        Me.btnAceptar.Size = New System.Drawing.Size(130, 25)
         Me.btnAceptar.TabIndex = 7
         Me.btnAceptar.Text = "Revisar"
         Me.btnAceptar.UseVisualStyleBackColor = True
@@ -121,25 +121,27 @@ Partial Class frmClientesConflick
         '
         Me.btnSalir.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnSalir.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSalir.Location = New System.Drawing.Point(1008, 568)
+        Me.btnSalir.Location = New System.Drawing.Point(1040, 652)
         Me.btnSalir.Name = "btnSalir"
-        Me.btnSalir.Size = New System.Drawing.Size(91, 25)
+        Me.btnSalir.Size = New System.Drawing.Size(130, 25)
         Me.btnSalir.TabIndex = 8
         Me.btnSalir.Text = "Cerrar"
         Me.btnSalir.UseVisualStyleBackColor = True
         '
         'frmClientesConflick
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1115, 604)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
+        Me.ClientSize = New System.Drawing.Size(1182, 686)
         Me.Controls.Add(Me.btnAceptar)
         Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.panPrincipal)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximumSize = New System.Drawing.Size(1198, 725)
+        Me.MinimumSize = New System.Drawing.Size(1198, 725)
         Me.Name = "frmClientesConflick"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "CLIENTES CONFLICK"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Text = "Actualización de Conflict Check"
         Me.panPrincipal.ResumeLayout(False)
         Me.panPrincipal.PerformLayout()
         CType(Me.gridClaves, System.ComponentModel.ISupportInitialize).EndInit()

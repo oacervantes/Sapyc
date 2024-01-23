@@ -53,6 +53,7 @@ Partial Class Principal
         Me.ConsultaFoliosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ClientesRelacionadosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TodasLasSolicitudesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ClientesPorClaveDeTrabajoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Barra = New System.Windows.Forms.ToolStrip()
         Me.BotonSalir = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
@@ -60,7 +61,6 @@ Partial Class Principal
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.BotonAltaPropuesta = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ClientesPorClaveDeTrabajoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.Barra.SuspendLayout()
         Me.SuspendLayout()
@@ -71,7 +71,7 @@ Partial Class Principal
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ArchivoToolStripMenuItem, Me.MnTablas, Me.MnPropuestas, Me.ClientesToolStripMenuItem, Me.UtileriasToolStripMenuItem, Me.MnuInde})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(844, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1026, 24)
         Me.MenuStrip1.TabIndex = 1
         '
         'ArchivoToolStripMenuItem
@@ -84,7 +84,7 @@ Partial Class Principal
         'mnuSalir
         '
         Me.mnuSalir.Name = "mnuSalir"
-        Me.mnuSalir.Size = New System.Drawing.Size(180, 22)
+        Me.mnuSalir.Size = New System.Drawing.Size(98, 22)
         Me.mnuSalir.Text = "&Salir"
         '
         'MnTablas
@@ -227,8 +227,8 @@ Partial Class Principal
         'ClientesConflickToolStripMenuItem
         '
         Me.ClientesConflickToolStripMenuItem.Name = "ClientesConflickToolStripMenuItem"
-        Me.ClientesConflickToolStripMenuItem.Size = New System.Drawing.Size(249, 22)
-        Me.ClientesConflickToolStripMenuItem.Text = "Actualización de Conflick Check"
+        Me.ClientesConflickToolStripMenuItem.Size = New System.Drawing.Size(247, 22)
+        Me.ClientesConflickToolStripMenuItem.Text = "Actualización de Conflict Check"
         '
         'EnvioCorreosToolStripMenuItem
         '
@@ -241,13 +241,13 @@ Partial Class Principal
         '
         Me.ConsultaPropuestasToolStripMenuItem.Name = "ConsultaPropuestasToolStripMenuItem"
         Me.ConsultaPropuestasToolStripMenuItem.Size = New System.Drawing.Size(249, 22)
-        Me.ConsultaPropuestasToolStripMenuItem.Text = "Consulta Propuestas"
+        Me.ConsultaPropuestasToolStripMenuItem.Text = "Consulta de Propuestas"
         '
         'ConsultaFoliosToolStripMenuItem
         '
         Me.ConsultaFoliosToolStripMenuItem.Name = "ConsultaFoliosToolStripMenuItem"
         Me.ConsultaFoliosToolStripMenuItem.Size = New System.Drawing.Size(249, 22)
-        Me.ConsultaFoliosToolStripMenuItem.Text = "Consulta Folios"
+        Me.ConsultaFoliosToolStripMenuItem.Text = "Consulta de Folios de Informe"
         '
         'ClientesRelacionadosToolStripMenuItem
         '
@@ -261,6 +261,12 @@ Partial Class Principal
         Me.TodasLasSolicitudesToolStripMenuItem.Size = New System.Drawing.Size(249, 22)
         Me.TodasLasSolicitudesToolStripMenuItem.Text = "Todas las solicitudes"
         '
+        'ClientesPorClaveDeTrabajoToolStripMenuItem
+        '
+        Me.ClientesPorClaveDeTrabajoToolStripMenuItem.Name = "ClientesPorClaveDeTrabajoToolStripMenuItem"
+        Me.ClientesPorClaveDeTrabajoToolStripMenuItem.Size = New System.Drawing.Size(249, 22)
+        Me.ClientesPorClaveDeTrabajoToolStripMenuItem.Text = "Clientes por Clave de Trabajo"
+        '
         'Barra
         '
         Me.Barra.AutoSize = False
@@ -268,7 +274,7 @@ Partial Class Principal
         Me.Barra.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BotonSalir, Me.ToolStripSeparator1, Me.BotonTablas, Me.ToolStripSeparator2, Me.BotonAltaPropuesta, Me.ToolStripSeparator3})
         Me.Barra.Location = New System.Drawing.Point(0, 24)
         Me.Barra.Name = "Barra"
-        Me.Barra.Size = New System.Drawing.Size(844, 40)
+        Me.Barra.Size = New System.Drawing.Size(1026, 40)
         Me.Barra.TabIndex = 3
         Me.Barra.Text = "Barra"
         '
@@ -319,18 +325,13 @@ Partial Class Principal
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
         Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 40)
         '
-        'ClientesPorClaveDeTrabajoToolStripMenuItem
-        '
-        Me.ClientesPorClaveDeTrabajoToolStripMenuItem.Name = "ClientesPorClaveDeTrabajoToolStripMenuItem"
-        Me.ClientesPorClaveDeTrabajoToolStripMenuItem.Size = New System.Drawing.Size(249, 22)
-        Me.ClientesPorClaveDeTrabajoToolStripMenuItem.Text = "Clientes por Clave de Trabajo"
-        '
         'Principal
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
-        Me.ClientSize = New System.Drawing.Size(844, 485)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
+        Me.BackgroundImage = Global.Sapyc.My.Resources.Resources.fondo_3
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.ClientSize = New System.Drawing.Size(1026, 577)
         Me.Controls.Add(Me.Barra)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)

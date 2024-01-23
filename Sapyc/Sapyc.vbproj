@@ -282,6 +282,7 @@
     </Compile>
     <Compile Include="mdlExcel.vb" />
     <Compile Include="mdlFunciones.vb" />
+    <Compile Include="mdlMetodos.vb" />
     <Compile Include="mdlVariables.vb" />
     <Compile Include="MttoAccionistaPF.designer.vb">
       <DependentUpon>MttoAccionistaPF.vb</DependentUpon>
@@ -507,6 +508,7 @@
     <None Include="Resources\CRDFLE03.ICO" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\fondo_3.jpg" />
     <Content Include="siat.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
