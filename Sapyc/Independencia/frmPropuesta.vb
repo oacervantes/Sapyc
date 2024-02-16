@@ -536,6 +536,7 @@ Public Class frmPropuesta
                     Csocioref.Text = DtDatos(0)("NOMREFERIDO")
                     Ccvegpo.Text = Ccvegpo.Text
                     Cdescgpo.SelectedValue = Ccvegpo.Text
+                    CveCte = DtDatos(0)("CVECTE").ToString()
 
                     Dim Asig As Boolean
                     If IsDBNull(DtDatos(0)("ASIGNADA")) Then

@@ -34,7 +34,7 @@ Module mdlExcel
                 .Application.ActiveWindow.SplitRow = 4
                 .Application.ActiveWindow.FreezePanes = True
 
-                .Shapes.AddPicture("\\GTMEXVTS32\APLICA\CON2012\IMG\header_RD.jpg", False, True, 40, 5, -1, -1)
+                ' .Shapes.AddPicture("\\GTMEXVTS32\APLICA\CON2012\IMG\header_RD.jpg", False, True, 40, 5, -1, -1)
                 .Visible = Excel.XlSheetVisibility.xlSheetVisible
                 .Activate()
             End With
@@ -132,7 +132,7 @@ Module mdlExcel
                 .Application.ActiveWindow.SplitRow = 4
                 .Application.ActiveWindow.FreezePanes = True
 
-                .Shapes.AddPicture("\\GTMEXVTS32\APLICA\CON2012\IMG\header_RD.jpg", False, True, 40, 5, -1, -1)
+                '.Shapes.AddPicture("\\GTMEXVTS32\APLICA\CON2012\IMG\header_RD.jpg", False, True, 40, 5, -1, -1)
                 .Visible = Excel.XlSheetVisibility.xlSheetVisible
                 .Activate()
             End With
@@ -255,7 +255,7 @@ Module mdlExcel
                 .Application.ActiveWindow.SplitRow = 4
                 .Application.ActiveWindow.FreezePanes = True
 
-                .Shapes.AddPicture("\\GTMEXVTS32\APLICA\CON2012\IMG\header_RD.jpg", False, True, 40, 5, -1, -1)
+                '.Shapes.AddPicture("\\GTMEXVTS32\APLICA\CON2012\IMG\header_RD.jpg", False, True, 40, 5, -1, -1)
                 .Visible = Excel.XlSheetVisibility.xlSheetVisible
                 .Activate()
             End With
