@@ -532,6 +532,35 @@ Module mdlFunciones
         Next
         fncQuitarAcentos = strNombre
     End Function
+    Public Function ListarPermisosUsuariosRD(ByVal sCveUsuario As String, ByVal sTipo As String) As DataTable
+        Dim dt As New DataTable
 
+        Try
+            Dim sTabla As String = "tbPermisosRD"
+
+            With ds.Tables
+                If .Contains(sTabla) Then
+                    .Remove(sTabla)
+                End If
+
+                With clsDatos
+                    .subClearParameters()
+                    .subAddParameter("@iOpcion", 1, SqlDbType.Int, ParameterDirection.Input)
+                    .subAddParameter("@sCveUsr", sCveUsuario, SqlDbType.VarChar, ParameterDirection.Input, 10)
+                    .subAddParameter("@sTipo", sTipo, SqlDbType.VarChar, ParameterDirection.Input, 1)
+                End With
+
+                .Add(clsDatos.funExecuteSPDataTable("paPermisosRD", sTabla))
+
+                dt = .Item(sTabla)
+            End With
+        Catch ex As Exception
+            'insertarErrorLog(100, "Permisos Usuarios RD", ex.Message, sCveUsuario, "ListarPermisosUsuariosRD()")
+            MsgBox("Hubo un inconveniente al consultar la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "SIAT")
+            dt = Nothing
+        End Try
+
+        Return dt
+    End Function
 
 End Module

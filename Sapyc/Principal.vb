@@ -8,6 +8,7 @@
         Try
 
             clsLocal = New clsAccesoDatos("gtmexvts27\sql2016", "SAPYC2", "Contabilidad", "Control2025%Porfis")
+            clsDatos = New clsAccesoDatos("gtmexvts27\sql2016", "BDINV2324", "Contabilidad", "Control2025%Porfis")
             clsDatosInv = New clsAccesoDatos("gtmexvts27\sql2016", "BDINV2324", "Contabilidad", "Control2025%Porfis")
             clsDatosConINV = New clsAccesoDatos("gtmexvts27\sql2016", "CONTROLINV", "Contabilidad", "Control2025%Porfis")
 
@@ -69,6 +70,7 @@
             men.Visible = False
         Next
         ArchivoToolStripMenuItem.Visible = True
+        mnuReportes.Visible = True
 
         Select Case sTipo
             Case "1"
@@ -229,4 +231,9 @@
         End If
     End Sub
 
+    Private Sub itmReporteDireccion_Click(sender As Object, e As EventArgs) Handles itmReporteDireccion.Click
+        Dim frm As New FrmSAPYCReporteDireccion
+
+        AbrirPantalla(frm, "FrmSAPYCReporteDireccion")
+    End Sub
 End Class

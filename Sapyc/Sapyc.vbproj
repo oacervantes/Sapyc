@@ -47,6 +47,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.5.5631.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.5\lib\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -55,6 +58,9 @@
     <Reference Include="office, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
       <EmbedInteropTypes>True</EmbedInteropTypes>
       <HintPath>..\..\SIAT\Consulta\bin\Debug\office.dll</HintPath>
+    </Reference>
+    <Reference Include="SpreadsheetLight, Version=3.4.6.0, Culture=neutral, PublicKeyToken=32fbb46dc1730c57, processorArchitecture=MSIL">
+      <HintPath>..\packages\SpreadsheetLight.3.4.6\lib\SpreadsheetLight.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -284,10 +290,11 @@
     <Compile Include="LeeCve.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="mdlExcel.vb" />
-    <Compile Include="mdlFunciones.vb" />
-    <Compile Include="mdlMetodos.vb" />
-    <Compile Include="mdlVariables.vb" />
+    <Compile Include="Modulos\mdlExcel.vb" />
+    <Compile Include="Modulos\mdlExcelv2.vb" />
+    <Compile Include="Modulos\mdlFunciones.vb" />
+    <Compile Include="Modulos\mdlMetodos.vb" />
+    <Compile Include="Modulos\mdlVariables.vb" />
     <Compile Include="MttoAccionistaPF.designer.vb">
       <DependentUpon>MttoAccionistaPF.vb</DependentUpon>
     </Compile>
@@ -344,6 +351,18 @@
       <DependentUpon>Principal.vb</DependentUpon>
     </Compile>
     <Compile Include="Principal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReporteDireccion\DlgSocioRD.designer.vb">
+      <DependentUpon>DlgSocioRD.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteDireccion\DlgSocioRD.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReporteDireccion\FrmSAPYCReporteDireccion.designer.vb">
+      <DependentUpon>FrmSAPYCReporteDireccion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteDireccion\FrmSAPYCReporteDireccion.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SelOpcion.designer.vb">
@@ -487,6 +506,12 @@
       <DependentUpon>Principal.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReporteDireccion\DlgSocioRD.resx">
+      <DependentUpon>DlgSocioRD.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReporteDireccion\FrmSAPYCReporteDireccion.resx">
+      <DependentUpon>FrmSAPYCReporteDireccion.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SelOpcion.resx">
       <DependentUpon>SelOpcion.vb</DependentUpon>
       <SubType>Designer</SubType>
@@ -505,6 +530,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Resources\CLOSE.ICO" />
   </ItemGroup>
   <ItemGroup>
@@ -515,6 +541,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\fondo_3.jpg" />
+    <None Include="Resources\advertencia.png" />
     <Content Include="siat.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
