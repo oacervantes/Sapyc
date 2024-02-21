@@ -75,10 +75,17 @@
         Select Case sTipo
             Case "1"
                 MnPropuestas.Visible = True
+                mnuReportes.Visible = False
             Case "2"
                 MnuInde.Visible = True
+                mnuReportes.Visible = False
             Case "3"
                 MnuInde.Visible = True
+                mnuReportes.Visible = False
+            Case "4"
+                mnuReportes.Visible = True
+                MnPropuestas.Visible = True
+
         End Select
 
         MenuStrip1.Visible = True

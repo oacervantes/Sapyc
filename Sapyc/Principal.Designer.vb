@@ -55,6 +55,7 @@ Partial Class Principal
         Me.TodasLasSolicitudesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ClientesPorClaveDeTrabajoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuReportes = New System.Windows.Forms.ToolStripMenuItem()
+        Me.itmReporteDireccion = New System.Windows.Forms.ToolStripMenuItem()
         Me.Barra = New System.Windows.Forms.ToolStrip()
         Me.BotonSalir = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
@@ -62,7 +63,6 @@ Partial Class Principal
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.BotonAltaPropuesta = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
-        Me.itmReporteDireccion = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.Barra.SuspendLayout()
         Me.SuspendLayout()
@@ -86,7 +86,7 @@ Partial Class Principal
         'mnuSalir
         '
         Me.mnuSalir.Name = "mnuSalir"
-        Me.mnuSalir.Size = New System.Drawing.Size(180, 22)
+        Me.mnuSalir.Size = New System.Drawing.Size(98, 22)
         Me.mnuSalir.Text = "&Salir"
         '
         'MnTablas
@@ -275,6 +275,13 @@ Partial Class Principal
         Me.mnuReportes.Name = "mnuReportes"
         Me.mnuReportes.Size = New System.Drawing.Size(70, 20)
         Me.mnuReportes.Text = "Reportes"
+        Me.mnuReportes.Visible = False
+        '
+        'itmReporteDireccion
+        '
+        Me.itmReporteDireccion.Name = "itmReporteDireccion"
+        Me.itmReporteDireccion.Size = New System.Drawing.Size(205, 22)
+        Me.itmReporteDireccion.Text = "Reporte de la Dirección"
         '
         'Barra
         '
@@ -333,12 +340,6 @@ Partial Class Principal
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
         Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 40)
-        '
-        'itmReporteDireccion
-        '
-        Me.itmReporteDireccion.Name = "itmReporteDireccion"
-        Me.itmReporteDireccion.Size = New System.Drawing.Size(205, 22)
-        Me.itmReporteDireccion.Text = "Reporte de la Dirección"
         '
         'Principal
         '
