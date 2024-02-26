@@ -7,7 +7,7 @@ Public Class frmSAPYCAltaCteFiscales
     Public CveDivision, sNombreCte, sCveCliente, CveGerente, CveSocio As String
     Private PasaNomb As Boolean = False
     Public Permite As Boolean
-    Private dtRfc, dtPropuesta, DtDatos, dtFuncionarios, dtAccionistas, dtGerentes, dtSocios As DataTable
+    Private dtRfc, dtPropuesta, DtDatos, dtFuncionarios, dtAccionistas, dtGerentes, dtSocios, dtServicios As DataTable
     Public IdPropuesta As Integer
     Private Nom, Apat, Amat, CargoTemp, perMoralTemp, PorcTemp, Colonia, Municipio, Estado, UsrSistema, Respuesta, sCveGerente, sCveSoc, CveCorreo As String
     Public CveOfi, CveArea As String
@@ -30,7 +30,7 @@ Public Class frmSAPYCAltaCteFiscales
             ConsultaPropuesta()
             CargaDatos()
             gridClaves.Visible = False
-
+            ConsultaCartaServicio(IdProp)
 
             PasaNomb = True
 
@@ -253,7 +253,6 @@ Public Class frmSAPYCAltaCteFiscales
     End Sub
     Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
         Try
-
 
             If UsrSistema = "3" Then
                 Dim Resp As String = Valida()
@@ -711,6 +710,8 @@ Public Class frmSAPYCAltaCteFiscales
                     sCveGerente = DtDatos(0)("CVEASOC").ToString()
                     sCveCliente = DtDatos(0)("CVECTE").ToString()
 
+                    txtJustifica.Text = DtDatos(0)("JUSTIFICA").ToString()
+
 
                     If IsDBNull(DtDatos(0)("ANTERIOR")) Or DtDatos(0)("ANTERIOR") = 0 Then
                         rbPSno.Checked = True
@@ -1127,7 +1128,65 @@ Public Class frmSAPYCAltaCteFiscales
 
         End With
     End Sub
+    Private Sub ConsultaPROPUESTAS()
+        With ds.Tables
+            With clsLocal
+                .subClearParameters()
+                .subAddParameter("@iOpcion", 3, SqlDbType.Int, ParameterDirection.Input)
+                .subAddParameter("@iProp", IdProp, SqlDbType.Int, ParameterDirection.Input)
 
+            End With
+
+            If .Contains("paSapyc") Then
+                .Remove("paSapyc")
+            End If
+
+            .Add(clsLocal.funExecuteSPDataTable("paSapyc"))
+            dtAccionistas = .Item("paSapyc")
+
+            If dtAccionistas.Rows.Count > 0 Then
+
+                If dtAccionistas.Rows.Count > 0 Then
+                    bsAcc.DataSource = dtAccionistas
+                End If
+
+            End If
+
+        End With
+    End Sub
+    Public Sub ConsultaCartaServicio(IdProp As String)
+
+        Try
+
+            With ds.Tables
+                With clsLocal
+                    .subClearParameters()
+                    .subAddParameter("@iOpcion", 11, SqlDbType.Int, ParameterDirection.Input)
+                    .subAddParameter("@idPropuesta", IdProp, SqlDbType.VarChar, ParameterDirection.Input)
+
+                End With
+
+                If .Contains("paStatusPropuestas") Then
+                    .Remove("paStatusPropuestas")
+                End If
+
+                .Add(clsLocal.funExecuteSPDataTable("paStatusPropuestas"))
+
+                dtServicios = .Item("paStatusPropuestas")
+                If dtServicios.Rows.Count > 0 Then
+                    lblPdf.Text = "\\Gtmexvts32\aplica\DesarrollosFinanzas\PROPUESTASERVICIO\" & dtServicios(0)("sNombre") & ".pdf"
+
+                End If
+
+
+            End With
+
+
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
+        End Try
+
+    End Sub
 
 
 End Class

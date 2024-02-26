@@ -22,8 +22,8 @@ Partial Class frmSAPYCAltaCteFiscales
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Cuadro = New System.Windows.Forms.TabControl()
         Me.Domicilio = New System.Windows.Forms.TabPage()
         Me.Cnombrecomercial = New System.Windows.Forms.TextBox()
@@ -57,6 +57,12 @@ Partial Class frmSAPYCAltaCteFiscales
         Me.dgvFuncionarios = New System.Windows.Forms.DataGridView()
         Me.Accionistas = New System.Windows.Forms.TabPage()
         Me.dgvAccionistas = New System.Windows.Forms.DataGridView()
+        Me.Servicios = New System.Windows.Forms.TabPage()
+        Me.btnVerPDF = New System.Windows.Forms.Button()
+        Me.lblPdf = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.txtJustifica = New System.Windows.Forms.TextBox()
+        Me.Label15 = New System.Windows.Forms.Label()
         Me.Riesgos = New System.Windows.Forms.TabPage()
         Me.gpBgc = New System.Windows.Forms.GroupBox()
         Me.CmbNivel = New System.Windows.Forms.ComboBox()
@@ -90,6 +96,7 @@ Partial Class frmSAPYCAltaCteFiscales
         CType(Me.dgvFuncionarios, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Accionistas.SuspendLayout()
         CType(Me.dgvAccionistas, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Servicios.SuspendLayout()
         Me.Riesgos.SuspendLayout()
         Me.gpBgc.SuspendLayout()
         Me.GBCC.SuspendLayout()
@@ -101,6 +108,7 @@ Partial Class frmSAPYCAltaCteFiscales
         Me.Cuadro.Controls.Add(Me.Domicilio)
         Me.Cuadro.Controls.Add(Me.Funcionarios)
         Me.Cuadro.Controls.Add(Me.Accionistas)
+        Me.Cuadro.Controls.Add(Me.Servicios)
         Me.Cuadro.Controls.Add(Me.Riesgos)
         Me.Cuadro.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Cuadro.Location = New System.Drawing.Point(12, 214)
@@ -449,6 +457,71 @@ Partial Class frmSAPYCAltaCteFiscales
         Me.dgvAccionistas.Size = New System.Drawing.Size(670, 352)
         Me.dgvAccionistas.TabIndex = 66
         '
+        'Servicios
+        '
+        Me.Servicios.Controls.Add(Me.btnVerPDF)
+        Me.Servicios.Controls.Add(Me.lblPdf)
+        Me.Servicios.Controls.Add(Me.Label11)
+        Me.Servicios.Controls.Add(Me.txtJustifica)
+        Me.Servicios.Controls.Add(Me.Label15)
+        Me.Servicios.Location = New System.Drawing.Point(4, 22)
+        Me.Servicios.Name = "Servicios"
+        Me.Servicios.Padding = New System.Windows.Forms.Padding(3)
+        Me.Servicios.Size = New System.Drawing.Size(679, 361)
+        Me.Servicios.TabIndex = 6
+        Me.Servicios.Text = "Propuesta de Servicio"
+        Me.Servicios.UseVisualStyleBackColor = True
+        '
+        'btnVerPDF
+        '
+        Me.btnVerPDF.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnVerPDF.Location = New System.Drawing.Point(530, 306)
+        Me.btnVerPDF.Name = "btnVerPDF"
+        Me.btnVerPDF.Size = New System.Drawing.Size(90, 25)
+        Me.btnVerPDF.TabIndex = 56
+        Me.btnVerPDF.Text = "Ver PDF"
+        Me.btnVerPDF.UseVisualStyleBackColor = True
+        '
+        'lblPdf
+        '
+        Me.lblPdf.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lblPdf.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblPdf.ForeColor = System.Drawing.Color.Gray
+        Me.lblPdf.Location = New System.Drawing.Point(11, 238)
+        Me.lblPdf.Name = "lblPdf"
+        Me.lblPdf.Size = New System.Drawing.Size(609, 25)
+        Me.lblPdf.TabIndex = 55
+        Me.lblPdf.Text = "Seleccione el archivo PDF..."
+        Me.lblPdf.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.Location = New System.Drawing.Point(6, 201)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(219, 19)
+        Me.Label11.TabIndex = 54
+        Me.Label11.Text = "Adjunte propuesta de servicio."
+        '
+        'txtJustifica
+        '
+        Me.txtJustifica.Location = New System.Drawing.Point(10, 60)
+        Me.txtJustifica.Multiline = True
+        Me.txtJustifica.Name = "txtJustifica"
+        Me.txtJustifica.Size = New System.Drawing.Size(610, 109)
+        Me.txtJustifica.TabIndex = 53
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label15.Location = New System.Drawing.Point(7, 38)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(425, 19)
+        Me.Label15.TabIndex = 52
+        Me.Label15.Text = "Por que se le requiere facturar si no se le prestara el servicio."
+        '
         'Riesgos
         '
         Me.Riesgos.Controls.Add(Me.gpBgc)
@@ -567,14 +640,14 @@ Partial Class frmSAPYCAltaCteFiscales
         Me.gridClaves.BackgroundColor = System.Drawing.Color.White
         Me.gridClaves.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical
         Me.gridClaves.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.gridClaves.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.gridClaves.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.gridClaves.ColumnHeadersHeight = 40
         Me.gridClaves.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.gridClaves.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
@@ -583,9 +656,9 @@ Partial Class frmSAPYCAltaCteFiscales
         Me.gridClaves.MultiSelect = False
         Me.gridClaves.Name = "gridClaves"
         Me.gridClaves.RowHeadersWidth = 25
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(127, Byte), Integer))
-        Me.gridClaves.RowsDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(127, Byte), Integer))
+        Me.gridClaves.RowsDefaultCellStyle = DataGridViewCellStyle2
         Me.gridClaves.RowTemplate.Height = 24
         Me.gridClaves.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.gridClaves.Size = New System.Drawing.Size(578, 217)
@@ -731,13 +804,13 @@ Partial Class frmSAPYCAltaCteFiscales
         Me.rbPSno.Name = "rbPSno"
         Me.rbPSno.Size = New System.Drawing.Size(43, 17)
         Me.rbPSno.TabIndex = 429
-        Me.rbPSno.TabStop = True
         Me.rbPSno.Text = "NO"
         Me.rbPSno.UseVisualStyleBackColor = True
         '
         'rbPSsi
         '
         Me.rbPSsi.AutoSize = True
+        Me.rbPSsi.Checked = True
         Me.rbPSsi.Enabled = False
         Me.rbPSsi.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.rbPSsi.Location = New System.Drawing.Point(214, 170)
@@ -791,6 +864,8 @@ Partial Class frmSAPYCAltaCteFiscales
         CType(Me.dgvFuncionarios, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Accionistas.ResumeLayout(False)
         CType(Me.dgvAccionistas, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Servicios.ResumeLayout(False)
+        Me.Servicios.PerformLayout()
         Me.Riesgos.ResumeLayout(False)
         Me.gpBgc.ResumeLayout(False)
         Me.gpBgc.PerformLayout()
@@ -862,4 +937,10 @@ Partial Class frmSAPYCAltaCteFiscales
     Friend WithEvents rbPSno As RadioButton
     Friend WithEvents rbPSsi As RadioButton
     Friend WithEvents Label9 As Label
+    Friend WithEvents Servicios As TabPage
+    Friend WithEvents btnVerPDF As Button
+    Friend WithEvents lblPdf As Label
+    Friend WithEvents Label11 As Label
+    Friend WithEvents txtJustifica As TextBox
+    Friend WithEvents Label15 As Label
 End Class

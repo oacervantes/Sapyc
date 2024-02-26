@@ -86,6 +86,9 @@
                 mnuReportes.Visible = True
                 MnPropuestas.Visible = True
 
+            Case "5"
+                mnuReportes.Visible = True
+                MnPropuestas.Visible = False
         End Select
 
         MenuStrip1.Visible = True
