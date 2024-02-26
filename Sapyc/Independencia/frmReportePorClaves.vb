@@ -21,7 +21,7 @@
                 dlg.txtArchivo.Text = "Reporte Trabajos por cliente"
                 If dlg.ShowDialog = Windows.Forms.DialogResult.OK Then
 
-                    exportarTrabajos(objExcel, gridClaves, dlg.txtDirectorio.Text, dlg.txtArchivo.Text)
+                    ' exportarTrabajos(objExcel, gridClaves, dlg.txtDirectorio.Text, dlg.txtArchivo.Text)
 
                 Else
                     Exit Sub

@@ -290,7 +290,7 @@ Public Class FrmSAPYCReporteDireccion
                 dlg.txtArchivo.Text = "Reporte de la Dirección"
                 If dlg.ShowDialog = Windows.Forms.DialogResult.OK Then
                     Me.Cursor = Cursors.WaitCursor
-                    'exportarReporteDireccion(tabPaginas, dlg.txtDirectorio.Text, dlg.txtArchivo.Text)
+                    exportarReporteDireccion(tabPaginas, dlg.txtDirectorio.Text, dlg.txtArchivo.Text)
                     Me.Cursor = Cursors.Default
                 Else
                     Exit Sub
@@ -803,6 +803,169 @@ Public Class FrmSAPYCReporteDireccion
         dtConcilSoc.Columns.Add("TOTAL", GetType(System.String))
     End Sub
 
+    'Private Sub CrearTablas()
+    '    'NO RECURRENTES
+    '    dtNoRecurrentesConcil.Columns.Add("TIPO", GetType(System.String))
+    '    dtNoRecurrentesConcil.Columns.Add("PERIODO", GetType(System.String))
+    '    dtNoRecurrentesConcil.Columns.Add("HONORARIOSACTUAL", GetType(System.String))
+    '    dtNoRecurrentesConcil.Columns.Add("MONEDA", GetType(System.String))
+    '    dtNoRecurrentesConcil.Columns.Add("SOCIO", GetType(System.String))
+    '    dtNoRecurrentesConcil.Columns.Add("OFICINA", GetType(System.String))
+    '    dtNoRecurrentesConcil.Columns.Add("DIVISION", GetType(System.String))
+    '    dtNoRecurrentesConcil.Columns.Add("CVETRABAJO", GetType(System.String))
+    '    dtNoRecurrentesConcil.Columns.Add("EMPRESA", GetType(System.String))
+    '    dtNoRecurrentesConcil.Columns.Add("SERVICIO", GetType(System.String))
+    '    dtNoRecurrentesConcil.Columns.Add("HONORARIOSARREGLADOMN", GetType(System.String))
+
+    '    'PERDIDOS
+    '    dtPeridosConcil.Columns.Add("TIPO", GetType(System.String))
+    '    dtPeridosConcil.Columns.Add("CAMBIO", GetType(System.String))
+    '    dtPeridosConcil.Columns.Add("CVEOFI", GetType(System.String))
+    '    dtPeridosConcil.Columns.Add("CVEAREA", GetType(System.String))
+    '    dtPeridosConcil.Columns.Add("PERIODO", GetType(System.String))
+    '    dtPeridosConcil.Columns.Add("HONORARIOSACTUAL", GetType(System.String))
+    '    dtPeridosConcil.Columns.Add("MONEDA", GetType(System.String))
+    '    dtPeridosConcil.Columns.Add("SOCIO", GetType(System.String))
+    '    dtPeridosConcil.Columns.Add("OFICINA", GetType(System.String))
+    '    dtPeridosConcil.Columns.Add("DIVISION", GetType(System.String))
+    '    dtPeridosConcil.Columns.Add("CVETRABAJO", GetType(System.String))
+    '    dtPeridosConcil.Columns.Add("EMPRESA", GetType(System.String))
+    '    dtPeridosConcil.Columns.Add("SERVICIO", GetType(System.String))
+    '    dtPeridosConcil.Columns.Add("HONORARIOSARREGLADOMN", GetType(System.String))
+    '    dtPeridosConcil.Columns.Add("MOTIVO", GetType(System.String))
+
+    '    'NO ARREGLADOS
+    '    dtNoArregladosConcil.Columns.Add("TIPO", GetType(System.String))
+    '    dtNoArregladosConcil.Columns.Add("PERIODO", GetType(System.String))
+    '    dtNoArregladosConcil.Columns.Add("MONEDA", GetType(System.String))
+    '    dtNoArregladosConcil.Columns.Add("SOCIO", GetType(System.String))
+    '    dtNoArregladosConcil.Columns.Add("OFICINA", GetType(System.String))
+    '    dtNoArregladosConcil.Columns.Add("DIVISION", GetType(System.String))
+    '    dtNoArregladosConcil.Columns.Add("CVETRABAJO", GetType(System.String))
+    '    dtNoArregladosConcil.Columns.Add("EMPRESA", GetType(System.String))
+    '    dtNoArregladosConcil.Columns.Add("SERVICIO", GetType(System.String))
+    '    dtNoArregladosConcil.Columns.Add("HONORARIOSACTUAL", GetType(System.String))
+    '    dtNoArregladosConcil.Columns.Add("HONORARIOSARREGLADOMN", GetType(System.String))
+
+    '    'TRABAJOS NUEVOS GANADOS
+    '    dtNuevasGan.Columns.Add("TIPO", GetType(System.String))
+    '    dtNuevasGan.Columns.Add("PERIODO", GetType(System.String))
+    '    dtNuevasGan.Columns.Add("HONORARIOSACTUAL", GetType(System.String))
+    '    dtNuevasGan.Columns.Add("MONEDA", GetType(System.String))
+    '    dtNuevasGan.Columns.Add("SOCIO", GetType(System.String))
+    '    dtNuevasGan.Columns.Add("OFICINA", GetType(System.String))
+    '    dtNuevasGan.Columns.Add("DIVISION", GetType(System.String))
+    '    dtNuevasGan.Columns.Add("CVETRABAJO", GetType(System.String))
+    '    dtNuevasGan.Columns.Add("EMPRESA", GetType(System.String))
+    '    dtNuevasGan.Columns.Add("DESCRIPCION", GetType(System.String))
+    '    dtNuevasGan.Columns.Add("SERVICIO", GetType(System.String))
+    '    dtNuevasGan.Columns.Add("HONORARIOSARREGLADOMN", GetType(System.String))
+
+    '    'TRABAJOS RECURRENTES
+    '    dtRecurrentes.Columns.Add("TIPO", GetType(System.String))
+    '    dtRecurrentes.Columns.Add("PERIODO", GetType(System.String))
+    '    dtRecurrentes.Columns.Add("HONORARIOSACTUAL", GetType(System.String))
+    '    dtRecurrentes.Columns.Add("HONORARIOSANTERIOR", GetType(System.String))
+    '    dtRecurrentes.Columns.Add("DIFERENCIA", GetType(System.String))
+    '    dtRecurrentes.Columns.Add("VARIACION", GetType(System.String))
+    '    dtRecurrentes.Columns.Add("MONEDA", GetType(System.String))
+    '    dtRecurrentes.Columns.Add("SOCIO", GetType(System.String))
+    '    dtRecurrentes.Columns.Add("OFICINA", GetType(System.String))
+    '    dtRecurrentes.Columns.Add("DIVISION", GetType(System.String))
+    '    dtRecurrentes.Columns.Add("CVETRABAJO", GetType(System.String))
+    '    dtRecurrentes.Columns.Add("EMPRESA", GetType(System.String))
+    '    dtRecurrentes.Columns.Add("DESCRIPCION", GetType(System.String))
+    '    dtRecurrentes.Columns.Add("SERVICIO", GetType(System.String))
+    '    dtRecurrentes.Columns.Add("TIPOPROP", GetType(System.String))
+    '    dtRecurrentes.Columns.Add("HONORARIOSPPTO", GetType(System.String))
+    '    dtRecurrentes.Columns.Add("HONORARIOSARREGLADOMN", GetType(System.String))
+    '    dtRecurrentes.Columns.Add("HONORARIOSANTERIORMN", GetType(System.String))
+    '    dtRecurrentes.Columns.Add("DIFERENCIAMN", GetType(System.String))
+
+    '    'POR RESOLVER
+    '    dtPendientes.Columns.Add("TIPO", GetType(System.String))
+    '    dtPendientes.Columns.Add("PERIODO", GetType(System.String))
+    '    dtPendientes.Columns.Add("HONORARIOSACTUAL", GetType(System.String))
+    '    dtPendientes.Columns.Add("MONEDA", GetType(System.String))
+    '    dtPendientes.Columns.Add("SOCIO", GetType(System.String))
+    '    dtPendientes.Columns.Add("OFICINA", GetType(System.String))
+    '    dtPendientes.Columns.Add("DIVISION", GetType(System.String))
+    '    dtPendientes.Columns.Add("EMPRESA", GetType(System.String))
+    '    dtPendientes.Columns.Add("SERVICIO", GetType(System.String))
+    '    dtPendientes.Columns.Add("HONORARIOSARREGLADOMN", GetType(System.String))
+    '    dtPendientes.Columns.Add("FECHAPROPUESTA", GetType(System.String))
+
+    '    'RECHAZADOS
+    '    dtRechazadas.Columns.Add("TIPO", GetType(System.String))
+    '    dtRechazadas.Columns.Add("PERIODO", GetType(System.String))
+    '    dtRechazadas.Columns.Add("HONORARIOSACTUAL", GetType(System.String))
+    '    dtRechazadas.Columns.Add("MONEDA", GetType(System.String))
+    '    dtRechazadas.Columns.Add("SOCIO", GetType(System.String))
+    '    dtRechazadas.Columns.Add("OFICINA", GetType(System.String))
+    '    dtRechazadas.Columns.Add("DIVISION", GetType(System.String))
+    '    dtRechazadas.Columns.Add("EMPRESA", GetType(System.String))
+    '    dtRechazadas.Columns.Add("SERVICIO", GetType(System.String))
+    '    dtRechazadas.Columns.Add("HONORARIOSARREGLADOMN", GetType(System.String))
+    '    dtRechazadas.Columns.Add("DESCRECHAZO", GetType(System.String))
+
+    '    dtHonNoRec = New DataTable
+    '    dtHonNoRec.Columns.Add("HONORARIOS", GetType(System.String))
+    '    dtHonNoRec.Columns.Add("OFICINA", GetType(System.String))
+    '    dtHonNoRec.Columns.Add("DIVISION", GetType(System.String))
+
+    '    dtHonPer = New DataTable
+    '    dtHonPer.Columns.Add("HONORARIOS", GetType(System.String))
+    '    dtHonPer.Columns.Add("OFICINA", GetType(System.String))
+    '    dtHonPer.Columns.Add("DIVISION", GetType(System.String))
+
+    '    dtHonRecNoArr = New DataTable
+    '    dtHonRecNoArr.Columns.Add("HONORARIOS", GetType(System.String))
+    '    dtHonRecNoArr.Columns.Add("OFICINA", GetType(System.String))
+    '    dtHonRecNoArr.Columns.Add("DIVISION", GetType(System.String))
+
+    '    dtHonNuevas = New DataTable
+    '    dtHonNuevas.Columns.Add("HONORARIOS", GetType(System.String))
+    '    dtHonNuevas.Columns.Add("OFICINA", GetType(System.String))
+    '    dtHonNuevas.Columns.Add("DIVISION", GetType(System.String))
+
+    '    dtHonResolver = New DataTable
+    '    dtHonResolver.Columns.Add("HONORARIOS", GetType(System.String))
+    '    dtHonResolver.Columns.Add("OFICINA", GetType(System.String))
+    '    dtHonResolver.Columns.Add("DIVISION", GetType(System.String))
+
+    '    dtHonRech = New DataTable
+    '    dtHonRech.Columns.Add("HONORARIOS", GetType(System.String))
+    '    dtHonRech.Columns.Add("OFICINA", GetType(System.String))
+    '    dtHonRech.Columns.Add("DIVISION", GetType(System.String))
+
+    '    dtHonRec = New DataTable
+    '    dtHonRec.Columns.Add("CVETRA", GetType(System.String))
+    '    dtHonRec.Columns.Add("CVEPPTO", GetType(System.String))
+    '    dtHonRec.Columns.Add("HONORARIOS", GetType(System.String))
+    '    dtHonRec.Columns.Add("OFICINA", GetType(System.String))
+    '    dtHonRec.Columns.Add("DIVISION", GetType(System.String))
+    '    dtHonRec.Columns.Add("TIPOPROP", GetType(System.String))
+
+    '    dtHonTotPro = New DataTable
+    '    dtHonTotPro.Columns.Add("HONORARIOS", GetType(System.String))
+    '    dtHonTotPro.Columns.Add("OFICINA", GetType(System.String))
+    '    dtHonTotPro.Columns.Add("DIVISION", GetType(System.String))
+
+    '    dtDiferenciaPpto = New DataTable
+    '    dtDiferenciaPpto.Columns.Add("SOCIO", GetType(System.String))
+    '    dtDiferenciaPpto.Columns.Add("HONORARIOSPPTO", GetType(System.String))
+    '    dtDiferenciaPpto.Columns.Add("HONORARIOSFAC", GetType(System.String))
+    '    dtDiferenciaPpto.Columns.Add("OFICINA", GetType(System.String))
+    '    dtDiferenciaPpto.Columns.Add("DIVISION", GetType(System.String))
+
+    '    dtTransfSoc = New DataTable
+    '    dtTransfSoc.Columns.Add("HONORARIOSFAC", GetType(System.String))
+    '    dtTransfSoc.Columns.Add("OFICINA", GetType(System.String))
+    '    dtTransfSoc.Columns.Add("DIVISION", GetType(System.String))
+
+    '    ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+    'End Sub
+
     Private Sub CrearTablas()
         'NO RECURRENTES
         dtNoRecurrentesConcil.Columns.Add("TIPO", GetType(System.String))
@@ -851,15 +1014,37 @@ Public Class FrmSAPYCReporteDireccion
         dtNuevasGan.Columns.Add("TIPO", GetType(System.String))
         dtNuevasGan.Columns.Add("PERIODO", GetType(System.String))
         dtNuevasGan.Columns.Add("HONORARIOSACTUAL", GetType(System.String))
+        dtNuevasGan.Columns.Add("HONORARIOSARREGLADOMN", GetType(System.String))
         dtNuevasGan.Columns.Add("MONEDA", GetType(System.String))
         dtNuevasGan.Columns.Add("SOCIO", GetType(System.String))
         dtNuevasGan.Columns.Add("OFICINA", GetType(System.String))
         dtNuevasGan.Columns.Add("DIVISION", GetType(System.String))
         dtNuevasGan.Columns.Add("CVETRABAJO", GetType(System.String))
+        dtNuevasGan.Columns.Add("CICLO", GetType(System.String))
         dtNuevasGan.Columns.Add("EMPRESA", GetType(System.String))
         dtNuevasGan.Columns.Add("DESCRIPCION", GetType(System.String))
         dtNuevasGan.Columns.Add("SERVICIO", GetType(System.String))
-        dtNuevasGan.Columns.Add("HONORARIOSARREGLADOMN", GetType(System.String))
+        dtNuevasGan.Columns.Add("HONETOS", GetType(System.String))
+
+        dtNuevasGan.Columns.Add("HORCOTIZADAS", GetType(System.String))
+        dtNuevasGan.Columns.Add("CUOTA", GetType(System.String))
+        dtNuevasGan.Columns.Add("WOFF", GetType(System.String))
+        dtNuevasGan.Columns.Add("INDUSTRIA", GetType(System.String))
+        dtNuevasGan.Columns.Add("SUBSECTOR", GetType(System.String))
+
+        dtNuevasGan.Columns.Add("COMO", GetType(System.String))
+
+        dtNuevasGan.Columns.Add("REFGTSOCIO", GetType(System.String))
+        dtNuevasGan.Columns.Add("REFGTOFI", GetType(System.String))
+        dtNuevasGan.Columns.Add("REFGTPAIS", GetType(System.String))
+
+        dtNuevasGan.Columns.Add("MEDIO", GetType(System.String))
+
+        dtNuevasGan.Columns.Add("REFNOMB", GetType(System.String))
+        dtNuevasGan.Columns.Add("PUESTO", GetType(System.String))
+        dtNuevasGan.Columns.Add("REFOFI", GetType(System.String))
+        dtNuevasGan.Columns.Add("REFDIV", GetType(System.String))
+
 
         'TRABAJOS RECURRENTES
         dtRecurrentes.Columns.Add("TIPO", GetType(System.String))
@@ -882,31 +1067,75 @@ Public Class FrmSAPYCReporteDireccion
         dtRecurrentes.Columns.Add("HONORARIOSANTERIORMN", GetType(System.String))
         dtRecurrentes.Columns.Add("DIFERENCIAMN", GetType(System.String))
 
+
         'POR RESOLVER
         dtPendientes.Columns.Add("TIPO", GetType(System.String))
         dtPendientes.Columns.Add("PERIODO", GetType(System.String))
         dtPendientes.Columns.Add("HONORARIOSACTUAL", GetType(System.String))
+        dtPendientes.Columns.Add("HONETOS", GetType(System.String))
         dtPendientes.Columns.Add("MONEDA", GetType(System.String))
         dtPendientes.Columns.Add("SOCIO", GetType(System.String))
         dtPendientes.Columns.Add("OFICINA", GetType(System.String))
         dtPendientes.Columns.Add("DIVISION", GetType(System.String))
+        dtPendientes.Columns.Add("CICLO", GetType(System.String))
         dtPendientes.Columns.Add("EMPRESA", GetType(System.String))
         dtPendientes.Columns.Add("SERVICIO", GetType(System.String))
         dtPendientes.Columns.Add("HONORARIOSARREGLADOMN", GetType(System.String))
         dtPendientes.Columns.Add("FECHAPROPUESTA", GetType(System.String))
 
+        dtPendientes.Columns.Add("HORCOTIZADAS", GetType(System.String))
+        dtPendientes.Columns.Add("CUOTA", GetType(System.String))
+        dtPendientes.Columns.Add("WOFF", GetType(System.String))
+        dtPendientes.Columns.Add("INDUSTRIA", GetType(System.String))
+        dtPendientes.Columns.Add("SUBSECTOR", GetType(System.String))
+
+        dtPendientes.Columns.Add("COMO", GetType(System.String))
+
+        dtPendientes.Columns.Add("REFGTSOCIO", GetType(System.String))
+        dtPendientes.Columns.Add("REFGTOFI", GetType(System.String))
+        dtPendientes.Columns.Add("REFGTPAIS", GetType(System.String))
+
+        dtPendientes.Columns.Add("MEDIO", GetType(System.String))
+
+        dtPendientes.Columns.Add("REFNOMB", GetType(System.String))
+        dtPendientes.Columns.Add("PUESTO", GetType(System.String))
+        dtPendientes.Columns.Add("REFOFI", GetType(System.String))
+        dtPendientes.Columns.Add("REFDIV", GetType(System.String))
+
         'RECHAZADOS
         dtRechazadas.Columns.Add("TIPO", GetType(System.String))
         dtRechazadas.Columns.Add("PERIODO", GetType(System.String))
         dtRechazadas.Columns.Add("HONORARIOSACTUAL", GetType(System.String))
+        dtRechazadas.Columns.Add("HONETOS", GetType(System.String))
         dtRechazadas.Columns.Add("MONEDA", GetType(System.String))
         dtRechazadas.Columns.Add("SOCIO", GetType(System.String))
         dtRechazadas.Columns.Add("OFICINA", GetType(System.String))
         dtRechazadas.Columns.Add("DIVISION", GetType(System.String))
+        dtRechazadas.Columns.Add("CICLO", GetType(System.String))
         dtRechazadas.Columns.Add("EMPRESA", GetType(System.String))
         dtRechazadas.Columns.Add("SERVICIO", GetType(System.String))
         dtRechazadas.Columns.Add("HONORARIOSARREGLADOMN", GetType(System.String))
         dtRechazadas.Columns.Add("DESCRECHAZO", GetType(System.String))
+
+
+        dtRechazadas.Columns.Add("HORCOTIZADAS", GetType(System.String))
+        dtRechazadas.Columns.Add("CUOTA", GetType(System.String))
+        dtRechazadas.Columns.Add("WOFF", GetType(System.String))
+        dtRechazadas.Columns.Add("INDUSTRIA", GetType(System.String))
+        dtRechazadas.Columns.Add("SUBSECTOR", GetType(System.String))
+
+        dtRechazadas.Columns.Add("COMO", GetType(System.String))
+
+        dtRechazadas.Columns.Add("REFGTSOCIO", GetType(System.String))
+        dtRechazadas.Columns.Add("REFGTOFI", GetType(System.String))
+        dtRechazadas.Columns.Add("REFGTPAIS", GetType(System.String))
+
+        dtRechazadas.Columns.Add("MEDIO", GetType(System.String))
+
+        dtRechazadas.Columns.Add("REFNOMB", GetType(System.String))
+        dtRechazadas.Columns.Add("PUESTO", GetType(System.String))
+        dtRechazadas.Columns.Add("REFOFI", GetType(System.String))
+        dtRechazadas.Columns.Add("REFDIV", GetType(System.String))
 
         dtHonNoRec = New DataTable
         dtHonNoRec.Columns.Add("HONORARIOS", GetType(System.String))
@@ -965,7 +1194,6 @@ Public Class FrmSAPYCReporteDireccion
 
         ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
     End Sub
-
     Private Sub FormatoGrid()
         bloquearColumnas(gridConciliacion)
         gridConciliacion.Columns("TIPO").Visible = False
@@ -1305,18 +1533,19 @@ Public Class FrmSAPYCReporteDireccion
         bloquearColumnas(gridNuevos)
 
         gridNuevos.Columns("TIPO").Visible = False
-        gridNuevos.Columns("PERIODO").Visible = False
         gridNuevos.Columns("HONORARIOSACTUAL").Visible = False
+        gridNuevos.Columns("HONORARIOSARREGLADOMN").Visible = False
         gridNuevos.Columns("MONEDA").Visible = False
+        gridNuevos.Columns("PERIODO").Visible = False
 
         gridNuevos.Columns("TIPO").Frozen = True
-        gridNuevos.Columns("PERIODO").Frozen = True
         gridNuevos.Columns("HONORARIOSACTUAL").Frozen = True
         gridNuevos.Columns("MONEDA").Frozen = True
         gridNuevos.Columns("SOCIO").Frozen = True
         gridNuevos.Columns("OFICINA").Frozen = True
         gridNuevos.Columns("DIVISION").Frozen = True
         gridNuevos.Columns("CVETRABAJO").Frozen = True
+        '  gridNuevos.Columns("CICLO").Frozen = True
 
         gridNuevos.Columns("SOCIO").HeaderText = "SOCIO / ASOCIADO"
         gridNuevos.Columns("SOCIO").Width = 300
@@ -1325,12 +1554,15 @@ Public Class FrmSAPYCReporteDireccion
         gridNuevos.Columns("OFICINA").Width = 90
         gridNuevos.Columns("OFICINA").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
 
-        gridNuevos.Columns("DIVISION").HeaderText = "DIVISION"
+        gridNuevos.Columns("DIVISION").HeaderText = "DIVISIÓN"
         gridNuevos.Columns("DIVISION").Width = 90
         gridNuevos.Columns("DIVISION").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
 
         gridNuevos.Columns("CVETRABAJO").HeaderText = "CLAVE TRABAJO"
         gridNuevos.Columns("CVETRABAJO").Width = 150
+
+        gridNuevos.Columns("CICLO").HeaderText = "AÑO REVISIÓN"
+        gridNuevos.Columns("CICLO").Width = 100
 
         gridNuevos.Columns("EMPRESA").HeaderText = "EMPRESA"
         gridNuevos.Columns("EMPRESA").Width = 450
@@ -1341,9 +1573,56 @@ Public Class FrmSAPYCReporteDireccion
         gridNuevos.Columns("SERVICIO").HeaderText = "SERVICIO"
         gridNuevos.Columns("SERVICIO").Width = 400
 
-        gridNuevos.Columns("HONORARIOSARREGLADOMN").HeaderText = "HONORARIOS"
-        gridNuevos.Columns("HONORARIOSARREGLADOMN").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
-        gridNuevos.Columns("HONORARIOSARREGLADOMN").Width = 110
+        gridNuevos.Columns("HONETOS").HeaderText = "HONORARIOS NETOS"
+        gridNuevos.Columns("HONETOS").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+        gridNuevos.Columns("HONETOS").Width = 110
+
+        gridNuevos.Columns("HORCOTIZADAS").HeaderText = "HORAS COTIZADAS"
+        gridNuevos.Columns("HORCOTIZADAS").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+        gridNuevos.Columns("HORCOTIZADAS").Width = 110
+
+        gridNuevos.Columns("CUOTA").HeaderText = "CUOTA"
+        gridNuevos.Columns("CUOTA").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+        gridNuevos.Columns("CUOTA").Width = 110
+
+        gridNuevos.Columns("WOFF").HeaderText = "% W/O"
+        gridNuevos.Columns("WOFF").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+        gridNuevos.Columns("WOFF").Width = 110
+
+        gridNuevos.Columns("INDUSTRIA").HeaderText = "INDUSTRIA"
+        gridNuevos.Columns("INDUSTRIA").Width = 200
+
+        gridNuevos.Columns("SUBSECTOR").HeaderText = "SECTOR"
+        gridNuevos.Columns("SUBSECTOR").Width = 200
+
+        gridNuevos.Columns("REFGTSOCIO").HeaderText = "SOCIO REFERENCIA GTI"
+        gridNuevos.Columns("REFGTSOCIO").Width = 300
+
+        gridNuevos.Columns("REFGTOFI").HeaderText = "OFICINA REFRENCIA GTI"
+        gridNuevos.Columns("REFGTOFI").Width = 300
+
+        gridNuevos.Columns("REFGTPAIS").HeaderText = "PAÍS REFERENCIA GTI"
+        gridNuevos.Columns("REFGTPAIS").Width = 300
+
+        gridNuevos.Columns("COMO").HeaderText = "¿COMÓ SE ENTERÓ?"
+        gridNuevos.Columns("COMO").Width = 250
+
+        gridNuevos.Columns("MEDIO").HeaderText = "MEDIO DE CONTACTO"
+        gridNuevos.Columns("MEDIO").Width = 250
+
+        gridNuevos.Columns("PUESTO").HeaderText = "CATEGORÍA"
+        gridNuevos.Columns("PUESTO").Width = 120
+
+        gridNuevos.Columns("REFNOMB").HeaderText = "SOCIO REFERENCIA"
+        gridNuevos.Columns("REFNOMB").Width = 300
+
+        gridNuevos.Columns("REFOFI").HeaderText = "OFICINA REFERENCIA"
+        gridNuevos.Columns("REFOFI").Width = 90
+        gridNuevos.Columns("REFOFI").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+
+        gridNuevos.Columns("REFDIV").HeaderText = "ÁREA REFERENCIA"
+        gridNuevos.Columns("REFDIV").Width = 90
+        gridNuevos.Columns("REFDIV").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
     End Sub
     Private Sub formatoRecurrentes()
         bloquearColumnas(gridRecurrentes)
@@ -1416,6 +1695,7 @@ Public Class FrmSAPYCReporteDireccion
         gridPendientes.Columns("TIPO").Visible = False
         gridPendientes.Columns("PERIODO").Visible = False
         gridPendientes.Columns("HONORARIOSACTUAL").Visible = False
+        gridPendientes.Columns("HONETOS").Visible = False
         gridPendientes.Columns("MONEDA").Visible = False
 
         gridPendientes.Columns("SOCIO").HeaderText = "SOCIO / ASOCIADO"
@@ -1429,18 +1709,72 @@ Public Class FrmSAPYCReporteDireccion
         gridPendientes.Columns("DIVISION").Width = 90
         gridPendientes.Columns("DIVISION").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
 
+        gridPendientes.Columns("CICLO").HeaderText = "CICLO"
+        gridPendientes.Columns("CICLO").Width = 100
+
         gridPendientes.Columns("EMPRESA").HeaderText = "EMPRESA"
         gridPendientes.Columns("EMPRESA").Width = 450
 
         gridPendientes.Columns("SERVICIO").HeaderText = "SERVICIO"
         gridPendientes.Columns("SERVICIO").Width = 450
 
-        gridPendientes.Columns("HONORARIOSARREGLADOMN").HeaderText = "HONORARIOS"
-        gridPendientes.Columns("HONORARIOSARREGLADOMN").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
-        gridPendientes.Columns("HONORARIOSARREGLADOMN").Width = 110
+        'gridPendientes.Columns("HONORARIOSARREGLADOMN").HeaderText = "HONORARIOS"
+        'gridPendientes.Columns("HONORARIOSARREGLADOMN").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+        'gridPendientes.Columns("HONORARIOSARREGLADOMN").Width = 110
 
         gridPendientes.Columns("FECHAPROPUESTA").HeaderText = "FECHA PROPUESTA"
         gridPendientes.Columns("FECHAPROPUESTA").Width = 90
+
+        gridPendientes.Columns("HONORARIOSARREGLADOMN").HeaderText = "HONORARIOS NETOS"
+        gridPendientes.Columns("HONORARIOSARREGLADOMN").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+        gridPendientes.Columns("HONORARIOSARREGLADOMN").Width = 110
+
+        gridPendientes.Columns("HORCOTIZADAS").HeaderText = "HORAS COTIZADAS"
+        gridPendientes.Columns("HORCOTIZADAS").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+        gridPendientes.Columns("HORCOTIZADAS").Width = 110
+
+        gridPendientes.Columns("CUOTA").HeaderText = "CUOTA"
+        gridPendientes.Columns("CUOTA").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+        gridPendientes.Columns("CUOTA").Width = 110
+
+        gridPendientes.Columns("WOFF").HeaderText = "% W/O"
+        gridPendientes.Columns("WOFF").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+        gridPendientes.Columns("WOFF").Width = 110
+
+        gridPendientes.Columns("INDUSTRIA").HeaderText = "INDUSTRIA"
+        gridPendientes.Columns("INDUSTRIA").Width = 200
+
+        gridPendientes.Columns("SUBSECTOR").HeaderText = "SECTOR"
+        gridPendientes.Columns("SUBSECTOR").Width = 200
+
+        gridPendientes.Columns("REFGTSOCIO").HeaderText = "SOCIO REFERENCIA GT"
+        gridPendientes.Columns("REFGTSOCIO").Width = 300
+
+        gridPendientes.Columns("REFGTOFI").HeaderText = "OFICINA REFRENCIA GT"
+        gridPendientes.Columns("REFGTOFI").Width = 300
+
+        gridPendientes.Columns("REFGTPAIS").HeaderText = "PAÍS REFERENCIA GT"
+        gridPendientes.Columns("REFGTPAIS").Width = 300
+
+        gridPendientes.Columns("COMO").HeaderText = "¿CÓMO SE ENTERÓ?"
+        gridPendientes.Columns("COMO").Width = 250
+
+        gridPendientes.Columns("MEDIO").HeaderText = "MEDIO DE CONTACTO"
+        gridPendientes.Columns("MEDIO").Width = 250
+
+        gridPendientes.Columns("PUESTO").HeaderText = "CATEGORÍA"
+        gridPendientes.Columns("PUESTO").Width = 100
+
+        gridPendientes.Columns("REFNOMB").HeaderText = "NOMBRE REFERENCIA"
+        gridPendientes.Columns("REFNOMB").Width = 300
+
+        gridPendientes.Columns("REFOFI").HeaderText = "OFICINA REFERENCIA"
+        gridPendientes.Columns("REFOFI").Width = 90
+        gridPendientes.Columns("REFOFI").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+
+        gridPendientes.Columns("REFDIV").HeaderText = "ÁREA REFERENCIA"
+        gridPendientes.Columns("REFDIV").Width = 90
+        gridPendientes.Columns("REFDIV").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
     End Sub
     Private Sub formatoGridRechazado()
         bloquearColumnas(gridRechazadas)
@@ -1448,6 +1782,7 @@ Public Class FrmSAPYCReporteDireccion
         gridRechazadas.Columns("TIPO").Visible = False
         gridRechazadas.Columns("PERIODO").Visible = False
         gridRechazadas.Columns("HONORARIOSACTUAL").Visible = False
+        gridRechazadas.Columns("HONETOS").Visible = False
         gridRechazadas.Columns("MONEDA").Visible = False
 
         gridRechazadas.Columns("SOCIO").HeaderText = "SOCIO / ASOCIADO"
@@ -1473,6 +1808,53 @@ Public Class FrmSAPYCReporteDireccion
 
         gridRechazadas.Columns("DESCRECHAZO").HeaderText = "MOTIVO DEL RECHAZO"
         gridRechazadas.Columns("DESCRECHAZO").Width = 450
+
+        gridRechazadas.Columns("HORCOTIZADAS").HeaderText = "HORAS COTIZADAS"
+        gridRechazadas.Columns("HORCOTIZADAS").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+        gridRechazadas.Columns("HORCOTIZADAS").Width = 110
+
+        gridRechazadas.Columns("CUOTA").HeaderText = "CUOTA"
+        gridRechazadas.Columns("CUOTA").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+        gridRechazadas.Columns("CUOTA").Width = 110
+
+        gridRechazadas.Columns("WOFF").HeaderText = "% W/O"
+        gridRechazadas.Columns("WOFF").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+        gridRechazadas.Columns("WOFF").Width = 110
+
+        gridRechazadas.Columns("INDUSTRIA").HeaderText = "INDUSTRIA"
+        gridRechazadas.Columns("INDUSTRIA").Width = 200
+
+        gridRechazadas.Columns("SUBSECTOR").HeaderText = "SECTOR"
+        gridRechazadas.Columns("SUBSECTOR").Width = 200
+
+        gridRechazadas.Columns("REFGTSOCIO").HeaderText = "SOCIO REFERENCIA GT"
+        gridRechazadas.Columns("REFGTSOCIO").Width = 300
+
+        gridRechazadas.Columns("REFGTOFI").HeaderText = "OFICINA REFRENCIA GT"
+        gridRechazadas.Columns("REFGTOFI").Width = 300
+
+        gridRechazadas.Columns("REFGTPAIS").HeaderText = "PAÍS REFERENCIA GT"
+        gridRechazadas.Columns("REFGTPAIS").Width = 300
+
+        gridRechazadas.Columns("COMO").HeaderText = "¿CÓMO SE ENTERÓ?"
+        gridRechazadas.Columns("COMO").Width = 250
+
+        gridRechazadas.Columns("MEDIO").HeaderText = "MEDIO DE CONTACTO"
+        gridRechazadas.Columns("MEDIO").Width = 250
+
+        gridRechazadas.Columns("PUESTO").HeaderText = "CATEGORÍA"
+        gridRechazadas.Columns("PUESTO").Width = 100
+
+        gridRechazadas.Columns("REFNOMB").HeaderText = "NOMBRE REFERENCIA"
+        gridRechazadas.Columns("REFNOMB").Width = 250
+
+        gridRechazadas.Columns("REFOFI").HeaderText = "OFICINA REFERENCIA"
+        gridRechazadas.Columns("REFOFI").Width = 90
+        gridRechazadas.Columns("REFOFI").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+
+        gridRechazadas.Columns("REFDIV").HeaderText = "ÁREA REFERENCIA"
+        gridRechazadas.Columns("REFDIV").Width = 90
+        gridRechazadas.Columns("REFDIV").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
     End Sub
 
     Private Sub ListarPresupuesto()
@@ -3867,11 +4249,33 @@ Public Class FrmSAPYCReporteDireccion
                         drGaN("SOCIO") = r.Item("NOMSOC").ToString
                         drGaN("OFICINA") = r.Item("OFICINA").ToString
                         drGaN("DIVISION") = r.Item("DIVISION").ToString
+                        drGaN("CICLO") = r.Item("CICLO").ToString
                         drGaN("EMPRESA") = r.Item("EMPRESA").ToString
                         drGaN("DESCRIPCION") = r.Item("DESCRIPCION").ToString
                         drGaN("SERVICIO") = r.Item("SERVICIO").ToString
                         drGaN("HONORARIOSARREGLADOMN") = Format(CDbl(HonoAct), "$ " & sFmtDbl)
                         drGaN("CVETRABAJO") = r.Item("CVETRA").ToString
+
+                        drGaN("HONETOS") = r.Item("HONETOS").ToString
+                        drGaN("HORCOTIZADAS") = r.Item("HORCOTIZADAS").ToString
+                        drGaN("CUOTA") = r.Item("CUOTA").ToString
+                        drGaN("WOFF") = r.Item("WOFF").ToString
+                        drGaN("INDUSTRIA") = r.Item("INDUSTRIA").ToString
+                        drGaN("SUBSECTOR") = r.Item("SUBSECTOR").ToString
+
+                        drGaN("COMO") = r.Item("COMO").ToString
+                        drGaN("MEDIO") = r.Item("MEDIO").ToString
+
+                        drGaN("REFGTSOCIO") = r.Item("REFGTSOCIO").ToString
+                        drGaN("REFGTOFI") = r.Item("REFGTOFI").ToString
+                        drGaN("REFGTPAIS") = r.Item("REFGTPAIS").ToString
+
+                        drGaN("PUESTO") = r.Item("PUESTO").ToString
+                        drGaN("REFNOMB") = r.Item("REFNOMB").ToString
+                        drGaN("REFOFI") = r.Item("REFOFI").ToString
+                        drGaN("REFDIV") = r.Item("REFDIV").ToString
+
+
                         dtNuevasGan.Rows.InsertAt(drGaN, dtNuevasGan.Rows.Count)
                     Next
                 End With
@@ -3885,11 +4289,28 @@ Public Class FrmSAPYCReporteDireccion
             drGaN("SOCIO") = ""
             drGaN("OFICINA") = ""
             drGaN("DIVISION") = ""
+            drGaN("CICLO") = ""
             drGaN("EMPRESA") = "TOTAL:"
             drGaN("DESCRIPCION") = ""
             drGaN("SERVICIO") = ""
             drGaN("HONORARIOSARREGLADOMN") = Format(dTotHon, "$ " & sFmtDbl)
             drGaN("CVETRABAJO") = ""
+            drGaN("HONETOS") = ""
+            drGaN("HORCOTIZADAS") = ""
+            drGaN("CUOTA") = ""
+            drGaN("WOFF") = ""
+            drGaN("INDUSTRIA") = ""
+            drGaN("SUBSECTOR") = ""
+            drGaN("REFGTSOCIO") = ""
+            drGaN("REFGTOFI") = ""
+            drGaN("REFGTPAIS") = ""
+            drGaN("PUESTO") = ""
+            drGaN("REFNOMB") = ""
+            drGaN("REFOFI") = ""
+            drGaN("REFDIV") = ""
+            drGaN("COMO") = ""
+            drGaN("MEDIO") = ""
+
             dtNuevasGan.Rows.InsertAt(drGaN, dtNuevasGan.Rows.Count)
 
             bsNvo.DataSource = dtNuevasGan
@@ -4144,6 +4565,7 @@ Public Class FrmSAPYCReporteDireccion
                         drPen("PERIODO") = r.Item("PERIODO").ToString
                         drPen("OFICINA") = r.Item("OFICINA").ToString
                         drPen("DIVISION") = r.Item("DIVISION").ToString
+                        drPen("CICLO") = r.Item("CICLO").ToString
                         drPen("EMPRESA") = r.Item("EMPRESA").ToString
                         drPen("SERVICIO") = r.Item("SERVICIO").ToString
                         drPen("HONORARIOSACTUAL") = Format(CDbl(HonoAct), "$ " & sFmtDbl)
@@ -4151,11 +4573,30 @@ Public Class FrmSAPYCReporteDireccion
                         drPen("HONORARIOSARREGLADOMN") = Format(CDbl(HonoAct), "$ " & sFmtDbl)
                         drPen("SOCIO") = r.Item("NOMSOC").ToString
                         drPen("FECHAPROPUESTA") = r.Item("FECHAPROPUESTA").ToString
+
+                        drPen("HONETOS") = r.Item("HONETOS").ToString
+                        drPen("HORCOTIZADAS") = r.Item("HORCOTIZADAS").ToString
+                        drPen("CUOTA") = r.Item("CUOTA").ToString
+                        drPen("WOFF") = r.Item("WOFF").ToString
+                        drPen("INDUSTRIA") = r.Item("INDUSTRIA").ToString
+                        drPen("SUBSECTOR") = r.Item("SUBSECTOR").ToString
+
+                        drPen("COMO") = r.Item("COMO").ToString
+                        drPen("MEDIO") = r.Item("MEDIO").ToString
+
+                        drPen("REFGTSOCIO") = r.Item("REFGTSOCIO").ToString
+                        drPen("REFGTOFI") = r.Item("REFGTOFI").ToString
+                        drPen("REFGTPAIS") = r.Item("REFGTPAIS").ToString
+
+                        drPen("PUESTO") = r.Item("PUESTO").ToString
+                        drPen("REFNOMB") = r.Item("REFNOMB").ToString
+                        drPen("REFOFI") = r.Item("REFOFI").ToString
+                        drPen("REFDIV") = r.Item("REFDIV").ToString
+
                         dtPendientes.Rows.InsertAt(drPen, dtPendientes.Rows.Count)
                     Next
                 End With
             Next
-
             drPen = dtPendientes.NewRow
             drPen("TIPO") = "T"
             drPen("PERIODO") = ""
@@ -4168,6 +4609,21 @@ Public Class FrmSAPYCReporteDireccion
             drPen("HONORARIOSARREGLADOMN") = Format(CDbl(dTotHon), "$ " & sFmtDbl)
             drPen("SOCIO") = ""
             drPen("FECHAPROPUESTA") = ""
+            drPen("HONETOS") = ""
+            drPen("HORCOTIZADAS") = ""
+            drPen("CUOTA") = ""
+            drPen("WOFF") = ""
+            drPen("INDUSTRIA") = ""
+            drPen("SUBSECTOR") = ""
+            drPen("REFGTSOCIO") = ""
+            drPen("REFGTOFI") = ""
+            drPen("REFGTPAIS") = ""
+            drPen("PUESTO") = ""
+            drPen("REFNOMB") = ""
+            drPen("REFOFI") = ""
+            drPen("REFDIV") = ""
+            drPen("COMO") = ""
+            drPen("MEDIO") = ""
             dtPendientes.Rows.InsertAt(drPen, dtPendientes.Rows.Count)
 
             bsPen.DataSource = dtPendientes
@@ -4262,6 +4718,7 @@ Public Class FrmSAPYCReporteDireccion
                         drRecha("PERIODO") = r.Item("PERIODO").ToString
                         drRecha("OFICINA") = r.Item("OFICINA").ToString
                         drRecha("DIVISION") = r.Item("DIVISION").ToString
+                        drRecha("CICLO") = r.Item("CICLO").ToString
                         drRecha("EMPRESA") = r.Item("EMPRESA").ToString
                         drRecha("SERVICIO") = r.Item("SERVICIO").ToString
                         Dim HonoAct As Decimal = 0.0
@@ -4275,6 +4732,26 @@ Public Class FrmSAPYCReporteDireccion
                         drRecha("HONORARIOSARREGLADOMN") = Format(CDbl(HonoAct), "$ " & sFmtDbl)
                         drRecha("SOCIO") = r.Item("NOMSOC").ToString
                         drRecha("DESCRECHAZO") = r.Item("DESCRECHAZO").ToString
+
+                        drRecha("HONETOS") = r.Item("HONETOS").ToString
+                        drRecha("HORCOTIZADAS") = r.Item("HORCOTIZADAS").ToString
+                        drRecha("CUOTA") = r.Item("CUOTA").ToString
+                        drRecha("WOFF") = r.Item("WOFF").ToString
+                        drRecha("INDUSTRIA") = r.Item("INDUSTRIA").ToString
+                        drRecha("SUBSECTOR") = r.Item("SUBSECTOR").ToString
+
+                        drRecha("COMO") = r.Item("COMO").ToString
+                        drRecha("MEDIO") = r.Item("MEDIO").ToString
+
+                        drRecha("REFGTSOCIO") = r.Item("REFGTSOCIO").ToString
+                        drRecha("REFGTOFI") = r.Item("REFGTOFI").ToString
+                        drRecha("REFGTPAIS") = r.Item("REFGTPAIS").ToString
+
+                        drRecha("PUESTO") = r.Item("PUESTO").ToString
+                        drRecha("REFNOMB") = r.Item("REFNOMB").ToString
+                        drRecha("REFOFI") = r.Item("REFOFI").ToString
+                        drRecha("REFDIV") = r.Item("REFDIV").ToString
+
                         dtRechazadas.Rows.InsertAt(drRecha, dtRechazadas.Rows.Count)
 
                     Next
@@ -4296,6 +4773,21 @@ Public Class FrmSAPYCReporteDireccion
             drRecha("HONORARIOSARREGLADOMN") = Format(dTotHon, "$ " & sFmtDbl)
             drRecha("SOCIO") = ""
             drRecha("DESCRECHAZO") = ""
+            drRecha("HONETOS") = ""
+            drRecha("HORCOTIZADAS") = ""
+            drRecha("CUOTA") = ""
+            drRecha("WOFF") = ""
+            drRecha("INDUSTRIA") = ""
+            drRecha("SUBSECTOR") = ""
+            drRecha("REFGTSOCIO") = ""
+            drRecha("REFGTOFI") = ""
+            drRecha("REFGTPAIS") = ""
+            drRecha("PUESTO") = ""
+            drRecha("REFNOMB") = ""
+            drRecha("REFOFI") = ""
+            drRecha("REFDIV") = ""
+            drRecha("COMO") = ""
+            drRecha("MEDIO") = ""
             dtRechazadas.Rows.InsertAt(drRecha, dtRechazadas.Rows.Count)
 
             bsRch.DataSource = dtRechazadas
