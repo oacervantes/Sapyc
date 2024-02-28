@@ -626,7 +626,7 @@ Public Class FrmSAPYCReporteDireccion
 
                     Case 5 'Clientes Ganados.
                         tabPaginas.SelectedIndex = 5
-                        gridNuevos.CurrentCell = gridNuevos(11, gridNuevos.Rows.Count - 1)
+                        gridNuevos.CurrentCell = gridNuevos(13, gridNuevos.Rows.Count - 1)
                         'gridNuevos.FirstDisplayedScrollingColumnIndex = 11
 
                     Case 6 'Recurrentes Arreglados.
@@ -636,12 +636,12 @@ Public Class FrmSAPYCReporteDireccion
 
                     Case 13 'Propuestas por Resolver.
                         tabPaginas.SelectedIndex = 7
-                        gridPendientes.CurrentCell = gridPendientes(9, gridPendientes.Rows.Count - 1)
+                        gridPendientes.CurrentCell = gridPendientes(11, gridPendientes.Rows.Count - 1)
                         'gridPendientes.FirstDisplayedScrollingColumnIndex = 9
 
                     Case 14 'Propuestas Rechazadas.
                         tabPaginas.SelectedIndex = 8
-                        gridRechazadas.CurrentCell = gridRechazadas(9, gridRechazadas.Rows.Count - 1)
+                        gridRechazadas.CurrentCell = gridRechazadas(11, gridRechazadas.Rows.Count - 1)
                         'gridRechazadas.FirstDisplayedScrollingColumnIndex = 9
                 End Select
             End If
@@ -1581,7 +1581,7 @@ Public Class FrmSAPYCReporteDireccion
         gridNuevos.Columns("HORCOTIZADAS").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
         gridNuevos.Columns("HORCOTIZADAS").Width = 110
 
-        gridNuevos.Columns("CUOTA").HeaderText = "CUOTA"
+        gridNuevos.Columns("CUOTA").HeaderText = "CUOTA HORA PROMEDIO"
         gridNuevos.Columns("CUOTA").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
         gridNuevos.Columns("CUOTA").Width = 110
 
@@ -1613,7 +1613,7 @@ Public Class FrmSAPYCReporteDireccion
         gridNuevos.Columns("PUESTO").HeaderText = "CATEGORÍA"
         gridNuevos.Columns("PUESTO").Width = 120
 
-        gridNuevos.Columns("REFNOMB").HeaderText = "SOCIO REFERENCIA"
+        gridNuevos.Columns("REFNOMB").HeaderText = "NOMBRE REFERENCIA"
         gridNuevos.Columns("REFNOMB").Width = 300
 
         gridNuevos.Columns("REFOFI").HeaderText = "OFICINA REFERENCIA"
@@ -1733,7 +1733,7 @@ Public Class FrmSAPYCReporteDireccion
         gridPendientes.Columns("HORCOTIZADAS").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
         gridPendientes.Columns("HORCOTIZADAS").Width = 110
 
-        gridPendientes.Columns("CUOTA").HeaderText = "CUOTA"
+        gridPendientes.Columns("CUOTA").HeaderText = "CUOTA HORA PROMEDIO"
         gridPendientes.Columns("CUOTA").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
         gridPendientes.Columns("CUOTA").Width = 110
 
@@ -1813,7 +1813,7 @@ Public Class FrmSAPYCReporteDireccion
         gridRechazadas.Columns("HORCOTIZADAS").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
         gridRechazadas.Columns("HORCOTIZADAS").Width = 110
 
-        gridRechazadas.Columns("CUOTA").HeaderText = "CUOTA"
+        gridRechazadas.Columns("CUOTA").HeaderText = "CUOTA HORA PROMEDIO"
         gridRechazadas.Columns("CUOTA").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
         gridRechazadas.Columns("CUOTA").Width = 110
 
@@ -4256,7 +4256,7 @@ Public Class FrmSAPYCReporteDireccion
                         drGaN("HONORARIOSARREGLADOMN") = Format(CDbl(HonoAct), "$ " & sFmtDbl)
                         drGaN("CVETRABAJO") = r.Item("CVETRA").ToString
 
-                        drGaN("HONETOS") = r.Item("HONETOS").ToString
+                        drGaN("HONETOS") = Format(CDbl(HonoAct), "$ " & sFmtDbl)
                         drGaN("HORCOTIZADAS") = r.Item("HORCOTIZADAS").ToString
                         drGaN("CUOTA") = r.Item("CUOTA").ToString
                         drGaN("WOFF") = r.Item("WOFF").ToString
@@ -4295,7 +4295,7 @@ Public Class FrmSAPYCReporteDireccion
             drGaN("SERVICIO") = ""
             drGaN("HONORARIOSARREGLADOMN") = Format(dTotHon, "$ " & sFmtDbl)
             drGaN("CVETRABAJO") = ""
-            drGaN("HONETOS") = ""
+            drGaN("HONETOS") = Format(dTotHon, "$ " & sFmtDbl)
             drGaN("HORCOTIZADAS") = ""
             drGaN("CUOTA") = ""
             drGaN("WOFF") = ""
