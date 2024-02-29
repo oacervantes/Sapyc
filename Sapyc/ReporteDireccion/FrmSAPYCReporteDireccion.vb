@@ -980,6 +980,9 @@ Public Class FrmSAPYCReporteDireccion
         dtNoRecurrentesConcil.Columns.Add("SERVICIO", GetType(System.String))
         dtNoRecurrentesConcil.Columns.Add("HONORARIOSARREGLADOMN", GetType(System.String))
 
+        dtNoRecurrentesConcil.Columns.Add("MOTIVO", GetType(System.String))
+
+
         'PERDIDOS
         dtPeridosConcil.Columns.Add("TIPO", GetType(System.String))
         dtPeridosConcil.Columns.Add("CAMBIO", GetType(System.String))
@@ -1438,6 +1441,11 @@ Public Class FrmSAPYCReporteDireccion
         gridNoRecurrentes.Columns("HONORARIOSARREGLADOMN").HeaderText = "HONORARIOS"
         gridNoRecurrentes.Columns("HONORARIOSARREGLADOMN").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
         gridNoRecurrentes.Columns("HONORARIOSARREGLADOMN").Width = 110
+
+        gridNoRecurrentes.Columns("MOTIVO").HeaderText = "MOTIVO"
+        gridNoRecurrentes.Columns("MOTIVO").Width = 450
+
+
     End Sub
     Private Sub FormatoGridPerdidos()
         bloquearColumnas(gridPerdidos)
@@ -3735,6 +3743,8 @@ Public Class FrmSAPYCReporteDireccion
                         dtNoRecConcil("SERVICIO") = r.Item("SERVICIO").ToString
                         dtNoRecConcil("HONORARIOSARREGLADOMN") = Format(CDbl(HonoActArre), "$ " & sFmtDbl)
                         dtNoRecConcil("CVETRABAJO") = r.Item("CVETRABAJO").ToString
+
+                        dtNoRecConcil("MOTIVO") = r.Item("MOTIVO").ToString
                         dtNoRecurrentesConcil.Rows.InsertAt(dtNoRecConcil, dtNoRecurrentesConcil.Rows.Count)
                     Next
                 End With
@@ -3751,6 +3761,7 @@ Public Class FrmSAPYCReporteDireccion
             dtNoRecConcil("SERVICIO") = ""
             dtNoRecConcil("HONORARIOSARREGLADOMN") = Format(dTotHonArre, "$ " & sFmtDbl)
             dtNoRecConcil("CVETRABAJO") = ""
+            dtNoRecConcil("MOTIVO") = ""
             dtNoRecurrentesConcil.Rows.InsertAt(dtNoRecConcil, dtNoRecurrentesConcil.Rows.Count)
             bsNoR.DataSource = dtNoRecurrentesConcil
             FormatoGridNoRecurrentes()
