@@ -17,6 +17,9 @@ Public Class frmSAPYCClientesFiscales
     Private sNombCte, sNombComercial, sRfc, sCalle, sNumInt, sNumext, sCcp, sColonia, sEstado, sMunicipio, sPais, sMail, sRegimen As String
 
     Private Sub frmSAPYCClientesFiscales_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        DtDatos = New DataTable()
+
         gridClaves.DataSource = bsSol
         crearTabla()
         ListaSolicitudes("F")

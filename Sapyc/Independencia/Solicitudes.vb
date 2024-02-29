@@ -6,6 +6,9 @@
     Private drDat As DataRow
 
     Private Sub Solicitudes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        DtDatos = New DataTable()
+
+
         Lista.DataSource = bsSol
 
         crearTabla()
