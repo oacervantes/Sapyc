@@ -359,6 +359,12 @@
     <Compile Include="ReporteDireccion\DlgSocioRD.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ReporteDireccion\FrmClientesReferenciados.designer.vb">
+      <DependentUpon>FrmClientesReferenciados.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteDireccion\FrmClientesReferenciados.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ReporteDireccion\FrmSAPYCReporteDireccion.designer.vb">
       <DependentUpon>FrmSAPYCReporteDireccion.vb</DependentUpon>
     </Compile>
@@ -508,6 +514,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ReporteDireccion\DlgSocioRD.resx">
       <DependentUpon>DlgSocioRD.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReporteDireccion\FrmClientesReferenciados.resx">
+      <DependentUpon>FrmClientesReferenciados.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReporteDireccion\FrmSAPYCReporteDireccion.resx">
       <DependentUpon>FrmSAPYCReporteDireccion.vb</DependentUpon>

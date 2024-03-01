@@ -52,4 +52,145 @@
         End If
     End Sub
 
+    Public Sub listarBasesDatos()
+        Try
+            With ds.Tables
+                LimpiarConsultaTabla(ds.Tables, "tbBD")
+
+                With clsDatosConINV
+                    .subClearParameters()
+                End With
+
+                .Add(clsDatosConINV.funExecuteSPDataTable("paBasesDatos", "tbBD"))
+
+                dtBasesDatos = .Item("tbBD")
+            End With
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
+        End Try
+    End Sub
+
+    Public Sub actualizarFacturacionSocio(ByVal sBaseDatos As String, ByVal iAño As Integer, ByVal iMes As Integer, Optional ByVal iPeriodo As Integer = 0)
+        Try
+            With clsDatos
+                .subClearParameters()
+                .subAddParameter("@iAño", iAño, SqlDbType.Int, ParameterDirection.Input)
+                .subAddParameter("@iMes", iMes, SqlDbType.Int, ParameterDirection.Input)
+                .subAddParameter("@sBaseDatos", sBaseDatos, SqlDbType.VarChar, ParameterDirection.Input, 200)
+                .subAddParameter("@iPeriodo", iPeriodo, SqlDbType.Int, ParameterDirection.Input)
+
+                .funExecuteSP("paActualizarRSNFacturacionSocio")
+            End With
+        Catch ex As Exception
+            'insertarErrorLog(101, "Actualizar Facturación Socio", ex.Message, Usuario_Num, "actualizarFacturacionSocio()")
+        End Try
+    End Sub
+    Public Sub actualizarRSNMovtosFactura(ByVal sBaseDatos As String, ByVal iAño As Integer, ByVal iMes As Integer, Optional ByVal iPeriodo As Integer = 0)
+        Try
+            With clsDatos
+                .subClearParameters()
+                .subAddParameter("@iAño", iAño, SqlDbType.Int, ParameterDirection.Input)
+                .subAddParameter("@iMes", iMes, SqlDbType.Int, ParameterDirection.Input)
+                .subAddParameter("@sBaseDatos", sBaseDatos, SqlDbType.VarChar, ParameterDirection.Input, 200)
+                .subAddParameter("@iPeriodo", iPeriodo, SqlDbType.Int, ParameterDirection.Input)
+
+                .funExecuteSP("paActualizarRSNMovtosFactura")
+            End With
+        Catch ex As Exception
+            'insertarErrorLog(101, "Actualizar Movtos Factura", ex.Message, Usuario_Num, "actualizarRSNMovtosFactura()")
+        End Try
+    End Sub
+    Public Sub actualizarDiferenciasTC(ByVal iAño As Integer, ByVal iMes As Integer, Optional ByVal iPeriodo As Integer = 8)
+        Try
+            With clsDatos
+                .subClearParameters()
+                .subAddParameter("@iAño", iAño, SqlDbType.Int, ParameterDirection.Input)
+                .subAddParameter("@iMes", iMes, SqlDbType.Int, ParameterDirection.Input)
+                .subAddParameter("@iPeriodo", iPeriodo, SqlDbType.Int, ParameterDirection.Input)
+
+                .funExecuteSP("paActualizarDiferenciasTC")
+            End With
+        Catch ex As Exception
+            'insertarErrorLog(101, "Actualizar Diferencias TC", ex.Message, Usuario_Num, "actualizarDiferenciasTC()")
+        End Try
+    End Sub
+
+    Private Sub actualizarNotas(ByVal dFechaInicio As Date, ByVal dFechaFinal As Date, ByVal iPeriodo As Integer)
+        Try
+            With clsDatos
+                .subClearParameters()
+                .subAddParameter("@dFechaInicio", dFechaInicio, SqlDbType.Date, ParameterDirection.Input)
+                .subAddParameter("@dFechaFinal", dFechaFinal, SqlDbType.Date, ParameterDirection.Input)
+                .subAddParameter("@iPeriodo", iPeriodo, SqlDbType.Int, ParameterDirection.Input)
+
+                .funExecuteSP("paActualizarNotas")
+            End With
+        Catch ex As Exception
+            'insertarErrorLog(100, "Actualizar Notas", ex.Message, sCveUsuario, "actualizarNotas()")
+        End Try
+    End Sub
+    Private Sub actualizarPagos(ByVal dFechaInicio As Date, ByVal dFechaFinal As Date, ByVal iPeriodo As Integer)
+        Try
+            With clsDatos
+                .subClearParameters()
+                .subAddParameter("@dFechaInicio", dFechaInicio, SqlDbType.Date, ParameterDirection.Input)
+                .subAddParameter("@dFechaFinal", dFechaFinal, SqlDbType.Date, ParameterDirection.Input)
+                .subAddParameter("@iPeriodo", iPeriodo, SqlDbType.Int, ParameterDirection.Input)
+
+                .funExecuteSP("paActualizarPagos")
+            End With
+        Catch ex As Exception
+            'insertarErrorLog(100, "Actualizar Pagos", ex.Message, sCveUsuario, "actualizarPagos()")
+        End Try
+    End Sub
+    Private Sub actualizarMovtosFI(ByVal dFechaInicio As Date, ByVal dFechaFinal As Date, ByVal iPeriodo As Integer)
+        Try
+            With clsDatos
+                .subClearParameters()
+                .subAddParameter("@dFechaInicio", dFechaInicio, SqlDbType.Date, ParameterDirection.Input)
+                .subAddParameter("@dFechaFinal", dFechaFinal, SqlDbType.Date, ParameterDirection.Input)
+                .subAddParameter("@iPeriodo", iPeriodo, SqlDbType.Int, ParameterDirection.Input)
+
+                .funExecuteSP("paActualizarMovtosFI")
+            End With
+        Catch ex As Exception
+            'insertarErrorLog(100, "Actualizar FI", ex.Message, sCveUsuario, "actualizarMovtosFI()")
+        End Try
+    End Sub
+    Private Sub actualizarMovtosFT(ByVal dFechaInicio As Date, ByVal dFechaFinal As Date, ByVal iPeriodo As Integer)
+        Try
+            With clsDatos
+                .subClearParameters()
+                .subAddParameter("@dFechaInicio", dFechaInicio, SqlDbType.Date, ParameterDirection.Input)
+                .subAddParameter("@dFechaFinal", dFechaFinal, SqlDbType.Date, ParameterDirection.Input)
+                .subAddParameter("@iPeriodo", iPeriodo, SqlDbType.Int, ParameterDirection.Input)
+
+                .funExecuteSP("paActualizarMovtosFT")
+            End With
+        Catch ex As Exception
+            'insertarErrorLog(100, "Actualizar FT", ex.Message, sCveUsuario, "actualizarMovtosFT()")
+        End Try
+    End Sub
+
+    Public Sub actualizarMovtos(Optional ByVal dFechaInicio As Date = Nothing, Optional ByVal dFechaFinal As Date = Nothing, Optional ByVal iPeriodo As Integer = 0)
+        actualizarNotas(dFechaInicio, dFechaFinal, iPeriodo)
+        actualizarPagos(dFechaInicio, dFechaFinal, iPeriodo)
+        actualizarMovtosFI(dFechaInicio, dFechaFinal, iPeriodo)
+        actualizarMovtosFT(dFechaInicio, dFechaFinal, iPeriodo)
+    End Sub
+    Public Sub actualizarAjustesGastos(ByVal iAño As Integer, ByVal iMes As Integer, Optional ByVal iPeriodo As Integer = 0)
+        Try
+            With clsDatos
+                .subClearParameters()
+                .subAddParameter("@iAño", iAño, SqlDbType.Int, ParameterDirection.Input)
+                .subAddParameter("@iMes", iMes, SqlDbType.Int, ParameterDirection.Input)
+                .subAddParameter("@iPeriodo", iPeriodo, SqlDbType.Int, ParameterDirection.Input)
+
+                .funExecuteSP("paActualizarRSNAjustesGastos")
+            End With
+        Catch ex As Exception
+            'insertarErrorLog(101, "Actualizar Ajustes Gastos", ex.Message, Usuario_Num, "actualizarAjustesGastos()")
+        End Try
+    End Sub
+
 End Module

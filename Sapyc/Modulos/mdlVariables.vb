@@ -20,7 +20,7 @@
     Friend sBaseDatosLocal = "SAPYC2"
     Friend sServidorLocal = ".\sqlexpress"
 
-    Friend dtCorreos As New DataTable
+    Friend dtCorreos, dtBasesDatos As New DataTable
     Friend idOficina, idArea, iAñoPpto, idUsuario, idRol, iTipoArea, idSocio, idCveSocio As Integer
     Friend sCveOfi, sCveArea, sOficina, sArea, sUsuario, sNombreSocio, sCorreoUsuario, sCveSocio As String
 
@@ -30,12 +30,14 @@
     Friend sNombreUsuario As String = "DIRECCIÓN GENERAL"
     Friend sFmtDbl As String = "#,##0.00"
 
+    Friend iAñoActAn As Integer = 2023 'BuscaCampoTextoCon("SELECT TOP (1) iAñoAnteriorAc FROM PARAMETROS_REPORTES")
+
     '==================== Variables para el formato de grids ====================
-    Friend FuenteCelda As Font = New Font("Calibri", 11, FontStyle.Regular)
-    Friend FuenteCeldaNgo As Font = New Font("Calibri", 11, FontStyle.Bold)
-    Friend FuenteFila As Font = New Font("Calibri", 11, FontStyle.Bold)
-    Friend FuenteHeader As Font = New Font("Calibri", 10, FontStyle.Bold)
-    Friend FuenteBoton As Font = New Font("Calibri", 10, FontStyle.Bold)
+    Friend FuenteCelda As New Font("Calibri", 11, FontStyle.Regular)
+    Friend FuenteCeldaNgo As New Font("Calibri", 11, FontStyle.Bold)
+    Friend FuenteFila As New Font("Calibri", 11, FontStyle.Bold)
+    Friend FuenteHeader As New Font("Calibri", 10, FontStyle.Bold)
+    Friend FuenteBoton As New Font("Calibri", 10, FontStyle.Bold)
     Friend Morado As Color = Color.FromArgb(79, 45, 127)
     Friend Const colGrid As Integer = 40
     Friend Const filGrid As Integer = 26

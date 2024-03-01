@@ -63,6 +63,7 @@ Partial Class Principal
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.BotonAltaPropuesta = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.itmClientesReferenciados = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.Barra.SuspendLayout()
         Me.SuspendLayout()
@@ -271,7 +272,7 @@ Partial Class Principal
         '
         'mnuReportes
         '
-        Me.mnuReportes.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.itmReporteDireccion})
+        Me.mnuReportes.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.itmReporteDireccion, Me.itmClientesReferenciados})
         Me.mnuReportes.Name = "mnuReportes"
         Me.mnuReportes.Size = New System.Drawing.Size(70, 20)
         Me.mnuReportes.Text = "Reportes"
@@ -341,6 +342,12 @@ Partial Class Principal
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
         Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 40)
         '
+        'itmClientesReferenciados
+        '
+        Me.itmClientesReferenciados.Name = "itmClientesReferenciados"
+        Me.itmClientesReferenciados.Size = New System.Drawing.Size(205, 22)
+        Me.itmClientesReferenciados.Text = "Clientes Referenciados"
+        '
         'Principal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -404,4 +411,5 @@ Partial Class Principal
     Friend WithEvents ClientesPorClaveDeTrabajoToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents mnuReportes As ToolStripMenuItem
     Friend WithEvents itmReporteDireccion As ToolStripMenuItem
+    Friend WithEvents itmClientesReferenciados As ToolStripMenuItem
 End Class

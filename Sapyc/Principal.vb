@@ -14,6 +14,8 @@
 
             Me.Hide()
 
+            listarBasesDatos()
+
             If frm.ShowDialog = DialogResult.OK Then
                 ''sTipo = "Mercadotecnia"
                 ''sTipo = "Independencia 1"
@@ -246,4 +248,10 @@
 
         AbrirPantalla(frm, "FrmSAPYCReporteDireccion")
     End Sub
+    Private Sub itmClientesReferenciados_Click(sender As Object, e As EventArgs) Handles itmClientesReferenciados.Click
+        Dim frm As New frmClientesReferenciados
+
+        AbrirPantalla(frm, "frmClientesReferenciados")
+    End Sub
+
 End Class

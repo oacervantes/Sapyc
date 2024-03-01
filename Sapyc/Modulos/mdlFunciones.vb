@@ -563,4 +563,73 @@ Module mdlFunciones
         Return dt
     End Function
 
+    Public Function obtenerIdBD(ByVal dFecha As Date) As Integer
+        Dim idBD As Integer
+        Dim dr() As DataRow
+
+        Try
+            dr = dtBasesDatos.Select("'" & dFecha.ToShortDateString & "' >= dFechaInicio AND " & "'" & dFecha.ToShortDateString & "' <= dFechaFinal")
+
+            idBD = dr(0).Item("idBaseDatos").ToString
+        Catch ex As Exception
+            'insertarErrorLog(202, "Función global", ex.Message, Usuario_Num, "obtenerIdBD()")
+        End Try
+
+        Return idBD
+    End Function
+    Public Function obtenerActivoBD(ByVal id As Integer) As Boolean
+        Dim bActivo As Boolean
+        Dim dr() As DataRow
+
+        Try
+            dr = dtBasesDatos.Select("idBaseDatos = " & id)
+
+            bActivo = CBool(dr(0).Item("bActivo").ToString)
+        Catch ex As Exception
+            'insertarErrorLog(202, "Función global", ex.Message, Usuario_Num, "obtenerActivoBD()")
+        End Try
+
+        Return bActivo
+    End Function
+    'Función para obtener el número de mes del ciclo operativo de la firma.
+    'Ej. Septiembre (mes 9) => Mes 2.
+    'Ej. Febrero (mes 2) => Mes 7.
+    Public Function obtenerMes(ByVal dFecha As Date) As Integer
+        Dim iMes As Integer
+
+        Try
+            Select Case Month(dFecha)
+                Case 8 To 12
+                    iMes = Month(dFecha) - 7
+
+                Case 1 To 7
+                    iMes = Month(dFecha) + 5
+            End Select
+
+            Return iMes
+        Catch ex As Exception
+            'insertarErrorLog(202, "Función global", ex.Message, Usuario_Num, "obtenerMes()")
+        End Try
+
+        Return iMes
+    End Function
+    Public Function obtenerNombreBD(ByVal id As Integer, ByVal iOpc As Integer) As String
+        Dim sBaseDatos As String = String.Empty
+        Dim dr() As DataRow
+
+        Try
+            dr = dtBasesDatos.Select("idBaseDatos = " & id)
+
+            If iOpc = 1 Then
+                sBaseDatos = dr(0).Item("sNombreBD").ToString
+            Else
+                sBaseDatos = dr(0).Item("sNombreBDSig").ToString
+            End If
+        Catch ex As Exception
+            'insertarErrorLog(202, "Función global", ex.Message, Usuario_Num, "obtenerNombreBD()")
+        End Try
+
+        Return sBaseDatos
+    End Function
+
 End Module
