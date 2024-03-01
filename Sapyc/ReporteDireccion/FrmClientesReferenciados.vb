@@ -140,6 +140,7 @@
         dtCtesNueFacturacion.Columns.Add("IMPFACT", GetType(System.String))
         dtCtesNueFacturacion.Columns.Add("STATUS", GetType(System.String))
         dtCtesNueFacturacion.Columns.Add("COMOSEENTERO", GetType(System.String))
+        dtCtesNueFacturacion.Columns.Add("MEDIO", GetType(System.String))
         dtCtesNueFacturacion.Columns.Add("REGISTRADAEL", GetType(System.String))
         dtCtesNueFacturacion.Columns.Add("NOMBEMPREF", GetType(System.String))
 
@@ -159,10 +160,12 @@
         dtCtesRecFacturacion.Columns.Add("IMPFACT", GetType(System.String))
         dtCtesRecFacturacion.Columns.Add("STATUS", GetType(System.String))
         dtCtesRecFacturacion.Columns.Add("COMOSEENTERO", GetType(System.String))
+        dtCtesRecFacturacion.Columns.Add("MEDIO", GetType(System.String))
         dtCtesRecFacturacion.Columns.Add("REGISTRADAEL", GetType(System.String))
         dtCtesRecFacturacion.Columns.Add("NOMBEMPREF", GetType(System.String))
-    End Sub
 
+
+    End Sub
     Private Sub crearTablaSocio()
         dtConcilSoc.Columns.Add("TIPO", GetType(System.String))
         dtConcilSoc.Columns.Add("ID", GetType(System.String))
@@ -365,6 +368,7 @@
                                 drN("STATUS") = r.Item("STATUS").ToString
                                 drN("IDCOMOSE") = r.Item("IDCOMOSE").ToString
                                 drN("COMOSEENTERO") = r.Item("COMOSEENTERO")
+                                drN("MEDIO") = r.Item("MEDIO")
                                 drN("REGISTRADAEL") = r.Item("REGISTRADAEL").ToString
                                 drN("CVEEMPREF") = r.Item("CVEEMPREF").ToString
                                 drN("NOMBEMPREF") = r.Item("NOMBEMPREF").ToString
@@ -442,6 +446,7 @@
                                 drR("STATUS") = r.Item("STATUS").ToString
                                 drR("IDCOMOSE") = r.Item("IDCOMOSE").ToString
                                 drR("COMOSEENTERO") = r.Item("COMOSEENTERO")
+                                drR("MEDIO") = r.Item("MEDIO")
                                 drR("REGISTRADAEL") = r.Item("REGISTRADAEL").ToString
                                 drR("CVEEMPREF") = r.Item("CVEEMPREF").ToString
                                 drR("NOMBEMPREF") = r.Item("NOMBEMPREF").ToString
