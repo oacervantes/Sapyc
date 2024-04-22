@@ -39,7 +39,13 @@ Partial Class FrmContacto
         Me.panDatosGenerales = New System.Windows.Forms.Panel()
         Me.btnRegistroDatosGenerales = New System.Windows.Forms.Button()
         Me.gpBoxDatosDG = New System.Windows.Forms.GroupBox()
-        Me.Lista = New System.Windows.Forms.DataGridView()
+        Me.btnSubnivel = New System.Windows.Forms.Button()
+        Me.btnSubsector = New System.Windows.Forms.Button()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.lblIndustria = New System.Windows.Forms.Label()
+        Me.btnIndustria = New System.Windows.Forms.Button()
+        Me.txtSubnivel = New System.Windows.Forms.TextBox()
         Me.gpBoxSubsidiaria = New System.Windows.Forms.GroupBox()
         Me.lblSubsidiaria = New System.Windows.Forms.Label()
         Me.lblControladora = New System.Windows.Forms.Label()
@@ -50,10 +56,12 @@ Partial Class FrmContacto
         Me.rdControladoraSi = New System.Windows.Forms.RadioButton()
         Me.rdControladoraNO = New System.Windows.Forms.RadioButton()
         Me.lblMensajeErrorDatosGenerales = New System.Windows.Forms.Label()
+        Me.txtSubsector = New System.Windows.Forms.TextBox()
         Me.lblRazonSocial = New System.Windows.Forms.Label()
         Me.txtRazonSocial = New System.Windows.Forms.TextBox()
         Me.lblNombreComercial = New System.Windows.Forms.Label()
         Me.txtNombreComercial = New System.Windows.Forms.TextBox()
+        Me.txtIndustria = New System.Windows.Forms.TextBox()
         Me.gpBoxEmpresaPublica = New System.Windows.Forms.GroupBox()
         Me.lblBolsaValoresOtra = New System.Windows.Forms.Label()
         Me.lblBolsaValores = New System.Windows.Forms.Label()
@@ -105,6 +113,7 @@ Partial Class FrmContacto
         Me.panRDRepExt = New System.Windows.Forms.Panel()
         Me.rdEmpresaExtranjeroRepSi = New System.Windows.Forms.RadioButton()
         Me.rdEmpresaExtranjeroRepNo = New System.Windows.Forms.RadioButton()
+        Me.Lista = New System.Windows.Forms.DataGridView()
         Me.lblMensajeCargaDatosGenerales = New System.Windows.Forms.Label()
         Me.btnCancelaGeneral = New System.Windows.Forms.Button()
         Me.btnGuardaGeneral = New System.Windows.Forms.Button()
@@ -218,19 +227,9 @@ Partial Class FrmContacto
         Me.txtAccionistasPorcentaje = New System.Windows.Forms.TextBox()
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.lblTituloAccionistas = New System.Windows.Forms.Label()
-        Me.txtIndustria = New System.Windows.Forms.TextBox()
-        Me.txtSubsector = New System.Windows.Forms.TextBox()
-        Me.txtSubnivel = New System.Windows.Forms.TextBox()
-        Me.btnIndustria = New System.Windows.Forms.Button()
-        Me.lblIndustria = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.btnSubsector = New System.Windows.Forms.Button()
-        Me.btnSubnivel = New System.Windows.Forms.Button()
         Me.panMenu.SuspendLayout()
         Me.panDatosGenerales.SuspendLayout()
         Me.gpBoxDatosDG.SuspendLayout()
-        CType(Me.Lista, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gpBoxSubsidiaria.SuspendLayout()
         Me.panRDSubsidiaria.SuspendLayout()
         Me.panRDCompañiaControl.SuspendLayout()
@@ -242,6 +241,7 @@ Partial Class FrmContacto
         Me.panRDDomExt.SuspendLayout()
         Me.panRDSubExt.SuspendLayout()
         Me.panRDRepExt.SuspendLayout()
+        CType(Me.Lista, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panContactoInicial.SuspendLayout()
         Me.gpBoxDatosContactoInicial.SuspendLayout()
         Me.panAcercamiento.SuspendLayout()
@@ -459,6 +459,7 @@ Partial Class FrmContacto
         '
         'gpBoxDatosDG
         '
+        Me.gpBoxDatosDG.Controls.Add(Me.Lista)
         Me.gpBoxDatosDG.Controls.Add(Me.btnSubnivel)
         Me.gpBoxDatosDG.Controls.Add(Me.btnSubsector)
         Me.gpBoxDatosDG.Controls.Add(Me.Label2)
@@ -481,7 +482,6 @@ Partial Class FrmContacto
         Me.gpBoxDatosDG.Controls.Add(Me.gpBoxReferenciaGTI)
         Me.gpBoxDatosDG.Controls.Add(Me.lblPais)
         Me.gpBoxDatosDG.Controls.Add(Me.gpBoxEmpresaExtranjero)
-        Me.gpBoxDatosDG.Controls.Add(Me.Lista)
         Me.gpBoxDatosDG.Enabled = False
         Me.gpBoxDatosDG.Location = New System.Drawing.Point(14, 80)
         Me.gpBoxDatosDG.Name = "gpBoxDatosDG"
@@ -489,27 +489,74 @@ Partial Class FrmContacto
         Me.gpBoxDatosDG.TabIndex = 0
         Me.gpBoxDatosDG.TabStop = False
         '
-        'Lista
+        'btnSubnivel
         '
-        Me.Lista.AllowUserToAddRows = False
-        Me.Lista.AllowUserToDeleteRows = False
-        Me.Lista.AllowUserToResizeColumns = False
-        Me.Lista.AllowUserToResizeRows = False
-        Me.Lista.BackgroundColor = System.Drawing.Color.WhiteSmoke
-        Me.Lista.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
-        Me.Lista.GridColor = System.Drawing.Color.Gainsboro
-        Me.Lista.Location = New System.Drawing.Point(937, 18)
-        Me.Lista.Name = "Lista"
-        Me.Lista.ReadOnly = True
-        Me.Lista.RowHeadersWidth = 25
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(127, Byte), Integer))
-        Me.Lista.RowsDefaultCellStyle = DataGridViewCellStyle1
-        Me.Lista.RowTemplate.Height = 26
-        Me.Lista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.Lista.Size = New System.Drawing.Size(718, 237)
-        Me.Lista.TabIndex = 324
-        Me.Lista.Visible = False
+        Me.btnSubnivel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnSubnivel.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSubnivel.Location = New System.Drawing.Point(313, 246)
+        Me.btnSubnivel.Name = "btnSubnivel"
+        Me.btnSubnivel.Size = New System.Drawing.Size(43, 25)
+        Me.btnSubnivel.TabIndex = 12
+        Me.btnSubnivel.Text = "..."
+        Me.btnSubnivel.UseVisualStyleBackColor = True
+        '
+        'btnSubsector
+        '
+        Me.btnSubsector.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnSubsector.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSubsector.Location = New System.Drawing.Point(313, 187)
+        Me.btnSubsector.Name = "btnSubsector"
+        Me.btnSubsector.Size = New System.Drawing.Size(43, 25)
+        Me.btnSubsector.TabIndex = 9
+        Me.btnSubsector.Text = "..."
+        Me.btnSubsector.UseVisualStyleBackColor = True
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(28, 223)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(62, 18)
+        Me.Label2.TabIndex = 10
+        Me.Label2.Text = "Subnivel"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(28, 164)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(69, 18)
+        Me.Label1.TabIndex = 7
+        Me.Label1.Text = "Subsector"
+        '
+        'lblIndustria
+        '
+        Me.lblIndustria.AutoSize = True
+        Me.lblIndustria.Location = New System.Drawing.Point(25, 108)
+        Me.lblIndustria.Name = "lblIndustria"
+        Me.lblIndustria.Size = New System.Drawing.Size(63, 18)
+        Me.lblIndustria.TabIndex = 4
+        Me.lblIndustria.Text = "Industria"
+        '
+        'btnIndustria
+        '
+        Me.btnIndustria.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnIndustria.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnIndustria.Location = New System.Drawing.Point(313, 131)
+        Me.btnIndustria.Name = "btnIndustria"
+        Me.btnIndustria.Size = New System.Drawing.Size(43, 25)
+        Me.btnIndustria.TabIndex = 6
+        Me.btnIndustria.Text = "..."
+        Me.btnIndustria.UseVisualStyleBackColor = True
+        '
+        'txtSubnivel
+        '
+        Me.txtSubnivel.Font = New System.Drawing.Font("Calibri", 11.0!)
+        Me.txtSubnivel.Location = New System.Drawing.Point(28, 246)
+        Me.txtSubnivel.Name = "txtSubnivel"
+        Me.txtSubnivel.ReadOnly = True
+        Me.txtSubnivel.Size = New System.Drawing.Size(277, 25)
+        Me.txtSubnivel.TabIndex = 11
         '
         'gpBoxSubsidiaria
         '
@@ -616,6 +663,15 @@ Partial Class FrmContacto
         Me.lblMensajeErrorDatosGenerales.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.lblMensajeErrorDatosGenerales.Visible = False
         '
+        'txtSubsector
+        '
+        Me.txtSubsector.Font = New System.Drawing.Font("Calibri", 11.0!)
+        Me.txtSubsector.Location = New System.Drawing.Point(28, 187)
+        Me.txtSubsector.Name = "txtSubsector"
+        Me.txtSubsector.ReadOnly = True
+        Me.txtSubsector.Size = New System.Drawing.Size(277, 25)
+        Me.txtSubsector.TabIndex = 8
+        '
         'lblRazonSocial
         '
         Me.lblRazonSocial.AutoSize = True
@@ -647,6 +703,15 @@ Partial Class FrmContacto
         Me.txtNombreComercial.Name = "txtNombreComercial"
         Me.txtNombreComercial.Size = New System.Drawing.Size(735, 25)
         Me.txtNombreComercial.TabIndex = 3
+        '
+        'txtIndustria
+        '
+        Me.txtIndustria.Font = New System.Drawing.Font("Calibri", 11.0!)
+        Me.txtIndustria.Location = New System.Drawing.Point(28, 131)
+        Me.txtIndustria.Name = "txtIndustria"
+        Me.txtIndustria.ReadOnly = True
+        Me.txtIndustria.Size = New System.Drawing.Size(277, 25)
+        Me.txtIndustria.TabIndex = 5
         '
         'gpBoxEmpresaPublica
         '
@@ -1190,6 +1255,28 @@ Partial Class FrmContacto
         Me.rdEmpresaExtranjeroRepNo.TabIndex = 1
         Me.rdEmpresaExtranjeroRepNo.Text = "No"
         Me.rdEmpresaExtranjeroRepNo.UseVisualStyleBackColor = True
+        '
+        'Lista
+        '
+        Me.Lista.AllowUserToAddRows = False
+        Me.Lista.AllowUserToDeleteRows = False
+        Me.Lista.AllowUserToResizeColumns = False
+        Me.Lista.AllowUserToResizeRows = False
+        Me.Lista.BackgroundColor = System.Drawing.Color.WhiteSmoke
+        Me.Lista.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
+        Me.Lista.GridColor = System.Drawing.Color.Gainsboro
+        Me.Lista.Location = New System.Drawing.Point(157, 53)
+        Me.Lista.Name = "Lista"
+        Me.Lista.ReadOnly = True
+        Me.Lista.RowHeadersWidth = 25
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(127, Byte), Integer))
+        Me.Lista.RowsDefaultCellStyle = DataGridViewCellStyle1
+        Me.Lista.RowTemplate.Height = 26
+        Me.Lista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.Lista.Size = New System.Drawing.Size(735, 237)
+        Me.Lista.TabIndex = 324
+        Me.Lista.Visible = False
         '
         'lblMensajeCargaDatosGenerales
         '
@@ -2424,93 +2511,6 @@ Partial Class FrmContacto
         Me.lblTituloAccionistas.TabIndex = 0
         Me.lblTituloAccionistas.Text = "ACCIONISTAS"
         '
-        'txtIndustria
-        '
-        Me.txtIndustria.Font = New System.Drawing.Font("Calibri", 11.0!)
-        Me.txtIndustria.Location = New System.Drawing.Point(28, 131)
-        Me.txtIndustria.Name = "txtIndustria"
-        Me.txtIndustria.ReadOnly = True
-        Me.txtIndustria.Size = New System.Drawing.Size(277, 25)
-        Me.txtIndustria.TabIndex = 5
-        '
-        'txtSubsector
-        '
-        Me.txtSubsector.Font = New System.Drawing.Font("Calibri", 11.0!)
-        Me.txtSubsector.Location = New System.Drawing.Point(28, 187)
-        Me.txtSubsector.Name = "txtSubsector"
-        Me.txtSubsector.ReadOnly = True
-        Me.txtSubsector.Size = New System.Drawing.Size(277, 25)
-        Me.txtSubsector.TabIndex = 8
-        '
-        'txtSubnivel
-        '
-        Me.txtSubnivel.Font = New System.Drawing.Font("Calibri", 11.0!)
-        Me.txtSubnivel.Location = New System.Drawing.Point(28, 246)
-        Me.txtSubnivel.Name = "txtSubnivel"
-        Me.txtSubnivel.ReadOnly = True
-        Me.txtSubnivel.Size = New System.Drawing.Size(277, 25)
-        Me.txtSubnivel.TabIndex = 11
-        '
-        'btnIndustria
-        '
-        Me.btnIndustria.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnIndustria.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnIndustria.Location = New System.Drawing.Point(313, 131)
-        Me.btnIndustria.Name = "btnIndustria"
-        Me.btnIndustria.Size = New System.Drawing.Size(43, 25)
-        Me.btnIndustria.TabIndex = 6
-        Me.btnIndustria.Text = "..."
-        Me.btnIndustria.UseVisualStyleBackColor = True
-        '
-        'lblIndustria
-        '
-        Me.lblIndustria.AutoSize = True
-        Me.lblIndustria.Location = New System.Drawing.Point(25, 108)
-        Me.lblIndustria.Name = "lblIndustria"
-        Me.lblIndustria.Size = New System.Drawing.Size(63, 18)
-        Me.lblIndustria.TabIndex = 4
-        Me.lblIndustria.Text = "Industria"
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(28, 164)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(69, 18)
-        Me.Label1.TabIndex = 7
-        Me.Label1.Text = "Subsector"
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(28, 223)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(62, 18)
-        Me.Label2.TabIndex = 10
-        Me.Label2.Text = "Subnivel"
-        '
-        'btnSubsector
-        '
-        Me.btnSubsector.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnSubsector.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSubsector.Location = New System.Drawing.Point(313, 187)
-        Me.btnSubsector.Name = "btnSubsector"
-        Me.btnSubsector.Size = New System.Drawing.Size(43, 25)
-        Me.btnSubsector.TabIndex = 9
-        Me.btnSubsector.Text = "..."
-        Me.btnSubsector.UseVisualStyleBackColor = True
-        '
-        'btnSubnivel
-        '
-        Me.btnSubnivel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnSubnivel.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSubnivel.Location = New System.Drawing.Point(313, 246)
-        Me.btnSubnivel.Name = "btnSubnivel"
-        Me.btnSubnivel.Size = New System.Drawing.Size(43, 25)
-        Me.btnSubnivel.TabIndex = 12
-        Me.btnSubnivel.Text = "..."
-        Me.btnSubnivel.UseVisualStyleBackColor = True
-        '
         'FrmContacto
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -2535,7 +2535,6 @@ Partial Class FrmContacto
         Me.panDatosGenerales.PerformLayout()
         Me.gpBoxDatosDG.ResumeLayout(False)
         Me.gpBoxDatosDG.PerformLayout()
-        CType(Me.Lista, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gpBoxSubsidiaria.ResumeLayout(False)
         Me.gpBoxSubsidiaria.PerformLayout()
         Me.panRDSubsidiaria.ResumeLayout(False)
@@ -2558,6 +2557,7 @@ Partial Class FrmContacto
         Me.panRDSubExt.PerformLayout()
         Me.panRDRepExt.ResumeLayout(False)
         Me.panRDRepExt.PerformLayout()
+        CType(Me.Lista, System.ComponentModel.ISupportInitialize).EndInit()
         Me.panContactoInicial.ResumeLayout(False)
         Me.panContactoInicial.PerformLayout()
         Me.gpBoxDatosContactoInicial.ResumeLayout(False)
