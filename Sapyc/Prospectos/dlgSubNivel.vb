@@ -175,7 +175,7 @@ Public Class dlgSubNivel
                 gridDatos.Columns("SUBNIVEL").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
             End If
         Catch ex As Exception
-            insertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarSubNivelesProspectos()")
+            'insertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarSubNivelesProspectos()")
             MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
             dtSubNiveles = Nothing
         End Try

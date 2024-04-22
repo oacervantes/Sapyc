@@ -147,7 +147,7 @@ Public Class dlgIndustria
                 gridDatos.Columns("INDUSTRIA").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
             End If
         Catch ex As Exception
-            insertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarIndustriasProspectos()")
+            'insertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarIndustriasProspectos()")
             MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
             dtIndustrias = Nothing
         End Try

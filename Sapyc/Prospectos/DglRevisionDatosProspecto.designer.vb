@@ -23,6 +23,11 @@ Partial Class DglRevisionDatosProspecto
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.panPrincipal = New System.Windows.Forms.Panel()
+        Me.btnGenerarPropuesta = New System.Windows.Forms.Button()
+        Me.panLinea = New System.Windows.Forms.Panel()
+        Me.gpBoxTipoPropuesta = New System.Windows.Forms.GroupBox()
+        Me.cboSocio = New System.Windows.Forms.ComboBox()
+        Me.lblSocio = New System.Windows.Forms.Label()
         Me.btnSi = New System.Windows.Forms.Button()
         Me.btnNo = New System.Windows.Forms.Button()
         Me.lblPregunta = New System.Windows.Forms.Label()
@@ -30,18 +35,11 @@ Partial Class DglRevisionDatosProspecto
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.chkConfirmacion = New System.Windows.Forms.CheckBox()
         Me.lblMensaje = New System.Windows.Forms.Label()
-        Me.btnCancelar = New System.Windows.Forms.Button()
         Me.lblDatosIncompletos = New System.Windows.Forms.Label()
-        Me.gpBoxTipoPropuesta = New System.Windows.Forms.GroupBox()
-        Me.rdAsignacion = New System.Windows.Forms.RadioButton()
-        Me.rdTrabajo = New System.Windows.Forms.RadioButton()
-        Me.panLinea = New System.Windows.Forms.Panel()
-        Me.lblSocio = New System.Windows.Forms.Label()
-        Me.cboSocio = New System.Windows.Forms.ComboBox()
-        Me.btnGenerarPropuesta = New System.Windows.Forms.Button()
+        Me.btnCancelar = New System.Windows.Forms.Button()
         Me.panPrincipal.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gpBoxTipoPropuesta.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'panPrincipal
@@ -65,8 +63,60 @@ Partial Class DglRevisionDatosProspecto
         Me.panPrincipal.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.panPrincipal.Location = New System.Drawing.Point(0, 0)
         Me.panPrincipal.Name = "panPrincipal"
-        Me.panPrincipal.Size = New System.Drawing.Size(650, 357)
+        Me.panPrincipal.Size = New System.Drawing.Size(704, 370)
         Me.panPrincipal.TabIndex = 0
+        '
+        'btnGenerarPropuesta
+        '
+        Me.btnGenerarPropuesta.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnGenerarPropuesta.Location = New System.Drawing.Point(108, 320)
+        Me.btnGenerarPropuesta.Name = "btnGenerarPropuesta"
+        Me.btnGenerarPropuesta.Size = New System.Drawing.Size(176, 25)
+        Me.btnGenerarPropuesta.TabIndex = 9
+        Me.btnGenerarPropuesta.Text = "Generar propuesta"
+        Me.btnGenerarPropuesta.UseVisualStyleBackColor = True
+        Me.btnGenerarPropuesta.Visible = False
+        '
+        'panLinea
+        '
+        Me.panLinea.BackColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(127, Byte), Integer))
+        Me.panLinea.Location = New System.Drawing.Point(111, 45)
+        Me.panLinea.Name = "panLinea"
+        Me.panLinea.Size = New System.Drawing.Size(260, 3)
+        Me.panLinea.TabIndex = 1
+        '
+        'gpBoxTipoPropuesta
+        '
+        Me.gpBoxTipoPropuesta.Controls.Add(Me.cboSocio)
+        Me.gpBoxTipoPropuesta.Controls.Add(Me.lblSocio)
+        Me.gpBoxTipoPropuesta.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.gpBoxTipoPropuesta.Location = New System.Drawing.Point(108, 242)
+        Me.gpBoxTipoPropuesta.Name = "gpBoxTipoPropuesta"
+        Me.gpBoxTipoPropuesta.Size = New System.Drawing.Size(529, 69)
+        Me.gpBoxTipoPropuesta.TabIndex = 8
+        Me.gpBoxTipoPropuesta.TabStop = False
+        Me.gpBoxTipoPropuesta.Text = "Asignar propuesta por generar"
+        Me.gpBoxTipoPropuesta.Visible = False
+        '
+        'cboSocio
+        '
+        Me.cboSocio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboSocio.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cboSocio.FormattingEnabled = True
+        Me.cboSocio.Location = New System.Drawing.Point(140, 30)
+        Me.cboSocio.Name = "cboSocio"
+        Me.cboSocio.Size = New System.Drawing.Size(369, 26)
+        Me.cboSocio.TabIndex = 3
+        '
+        'lblSocio
+        '
+        Me.lblSocio.AutoSize = True
+        Me.lblSocio.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblSocio.Location = New System.Drawing.Point(20, 34)
+        Me.lblSocio.Name = "lblSocio"
+        Me.lblSocio.Size = New System.Drawing.Size(112, 18)
+        Me.lblSocio.TabIndex = 2
+        Me.lblSocio.Text = "Socio encargado:"
         '
         'btnSi
         '
@@ -101,7 +151,7 @@ Partial Class DglRevisionDatosProspecto
         '
         'PictureBox1
         '
-        Me.PictureBox1.Image = Global.Consulta.My.Resources.Resources.process_1
+        Me.PictureBox1.Image = Global.Sapyc.My.Resources.Resources.ingenieria
         Me.PictureBox1.Location = New System.Drawing.Point(19, 13)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(64, 64)
@@ -142,17 +192,6 @@ Partial Class DglRevisionDatosProspecto
     "s datos solicitados; también que los datos capturados sean correctos."
         Me.lblMensaje.Visible = False
         '
-        'btnCancelar
-        '
-        Me.btnCancelar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnCancelar.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCancelar.Location = New System.Drawing.Point(508, 364)
-        Me.btnCancelar.Name = "btnCancelar"
-        Me.btnCancelar.Size = New System.Drawing.Size(130, 25)
-        Me.btnCancelar.TabIndex = 1
-        Me.btnCancelar.Text = "Cancelar"
-        Me.btnCancelar.UseVisualStyleBackColor = True
-        '
         'lblDatosIncompletos
         '
         Me.lblDatosIncompletos.Location = New System.Drawing.Point(106, 91)
@@ -164,87 +203,22 @@ Partial Class DglRevisionDatosProspecto
     "amiento." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "- Domicilio."
         Me.lblDatosIncompletos.Visible = False
         '
-        'gpBoxTipoPropuesta
+        'btnCancelar
         '
-        Me.gpBoxTipoPropuesta.Controls.Add(Me.cboSocio)
-        Me.gpBoxTipoPropuesta.Controls.Add(Me.lblSocio)
-        Me.gpBoxTipoPropuesta.Controls.Add(Me.rdTrabajo)
-        Me.gpBoxTipoPropuesta.Controls.Add(Me.rdAsignacion)
-        Me.gpBoxTipoPropuesta.Location = New System.Drawing.Point(108, 222)
-        Me.gpBoxTipoPropuesta.Name = "gpBoxTipoPropuesta"
-        Me.gpBoxTipoPropuesta.Size = New System.Drawing.Size(529, 85)
-        Me.gpBoxTipoPropuesta.TabIndex = 8
-        Me.gpBoxTipoPropuesta.TabStop = False
-        Me.gpBoxTipoPropuesta.Visible = False
-        '
-        'rdAsignacion
-        '
-        Me.rdAsignacion.AutoSize = True
-        Me.rdAsignacion.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.rdAsignacion.Location = New System.Drawing.Point(15, 18)
-        Me.rdAsignacion.Name = "rdAsignacion"
-        Me.rdAsignacion.Size = New System.Drawing.Size(227, 22)
-        Me.rdAsignacion.TabIndex = 0
-        Me.rdAsignacion.TabStop = True
-        Me.rdAsignacion.Text = "Asignar la propuesta por generar"
-        Me.rdAsignacion.UseVisualStyleBackColor = True
-        '
-        'rdTrabajo
-        '
-        Me.rdTrabajo.AutoSize = True
-        Me.rdTrabajo.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.rdTrabajo.Location = New System.Drawing.Point(249, 18)
-        Me.rdTrabajo.Name = "rdTrabajo"
-        Me.rdTrabajo.Size = New System.Drawing.Size(255, 22)
-        Me.rdTrabajo.TabIndex = 1
-        Me.rdTrabajo.TabStop = True
-        Me.rdTrabajo.Text = "Trabajar con la propuesta por generar"
-        Me.rdTrabajo.UseVisualStyleBackColor = True
-        '
-        'panLinea
-        '
-        Me.panLinea.BackColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(127, Byte), Integer))
-        Me.panLinea.Location = New System.Drawing.Point(111, 45)
-        Me.panLinea.Name = "panLinea"
-        Me.panLinea.Size = New System.Drawing.Size(300, 3)
-        Me.panLinea.TabIndex = 1
-        '
-        'lblSocio
-        '
-        Me.lblSocio.AutoSize = True
-        Me.lblSocio.Location = New System.Drawing.Point(15, 52)
-        Me.lblSocio.Name = "lblSocio"
-        Me.lblSocio.Size = New System.Drawing.Size(112, 18)
-        Me.lblSocio.TabIndex = 2
-        Me.lblSocio.Text = "Socio encargado:"
-        Me.lblSocio.Visible = False
-        '
-        'cboSocio
-        '
-        Me.cboSocio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboSocio.FormattingEnabled = True
-        Me.cboSocio.Location = New System.Drawing.Point(135, 48)
-        Me.cboSocio.Name = "cboSocio"
-        Me.cboSocio.Size = New System.Drawing.Size(369, 26)
-        Me.cboSocio.TabIndex = 3
-        Me.cboSocio.Visible = False
-        '
-        'btnGenerarPropuesta
-        '
-        Me.btnGenerarPropuesta.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnGenerarPropuesta.Location = New System.Drawing.Point(108, 315)
-        Me.btnGenerarPropuesta.Name = "btnGenerarPropuesta"
-        Me.btnGenerarPropuesta.Size = New System.Drawing.Size(176, 25)
-        Me.btnGenerarPropuesta.TabIndex = 9
-        Me.btnGenerarPropuesta.Text = "Generar propuesta"
-        Me.btnGenerarPropuesta.UseVisualStyleBackColor = True
-        Me.btnGenerarPropuesta.Visible = False
+        Me.btnCancelar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnCancelar.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCancelar.Location = New System.Drawing.Point(562, 377)
+        Me.btnCancelar.Name = "btnCancelar"
+        Me.btnCancelar.Size = New System.Drawing.Size(130, 25)
+        Me.btnCancelar.TabIndex = 1
+        Me.btnCancelar.Text = "Cancelar"
+        Me.btnCancelar.UseVisualStyleBackColor = True
         '
         'DglRevisionDatosProspecto
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(650, 398)
+        Me.ClientSize = New System.Drawing.Size(704, 411)
         Me.Controls.Add(Me.btnCancelar)
         Me.Controls.Add(Me.panPrincipal)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
@@ -256,9 +230,9 @@ Partial Class DglRevisionDatosProspecto
         Me.Text = "Generar propuesta"
         Me.panPrincipal.ResumeLayout(False)
         Me.panPrincipal.PerformLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gpBoxTipoPropuesta.ResumeLayout(False)
         Me.gpBoxTipoPropuesta.PerformLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -274,8 +248,6 @@ Partial Class DglRevisionDatosProspecto
     Friend WithEvents btnNo As Button
     Friend WithEvents lblDatosIncompletos As Label
     Friend WithEvents gpBoxTipoPropuesta As GroupBox
-    Friend WithEvents rdTrabajo As RadioButton
-    Friend WithEvents rdAsignacion As RadioButton
     Friend WithEvents panLinea As Panel
     Friend WithEvents lblSocio As Label
     Friend WithEvents cboSocio As ComboBox

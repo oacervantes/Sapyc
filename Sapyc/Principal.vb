@@ -78,6 +78,7 @@
         Select Case sTipo
             Case "1"
                 MnPropuestas.Visible = True
+                mnuProspectos.Visible = True
                 mnuReportes.Visible = False
             Case "2"
                 MnuInde.Visible = True
@@ -255,4 +256,9 @@
         AbrirPantalla(frm, "frmClientesReferenciados")
     End Sub
 
+    Private Sub RegistrarProspectoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RegistrarProspectoToolStripMenuItem.Click
+        Dim frm As New FrmProspectos
+
+        AbrirPantalla(frm, "FrmProspectos")
+    End Sub
 End Class

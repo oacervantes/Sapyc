@@ -632,4 +632,12 @@ Module mdlFunciones
         Return sBaseDatos
     End Function
 
+    Public Function reemplazarCaracter(ByVal cadena As String) As String
+        If cadena.Contains("&") Then
+            cadena = cadena.Replace("&", "&&")
+        End If
+
+        Return cadena
+    End Function
+
 End Module

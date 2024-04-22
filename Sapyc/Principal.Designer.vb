@@ -34,6 +34,8 @@ Partial Class Principal
         Me.TiposDeServicioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ComoSeEnteroToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MedioDeContactoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuProspectos = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RegistrarProspectoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnPropuestas = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuAltaDePropuesta = New System.Windows.Forms.ToolStripMenuItem()
         Me.PToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -56,6 +58,7 @@ Partial Class Principal
         Me.ClientesPorClaveDeTrabajoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuReportes = New System.Windows.Forms.ToolStripMenuItem()
         Me.itmReporteDireccion = New System.Windows.Forms.ToolStripMenuItem()
+        Me.itmClientesReferenciados = New System.Windows.Forms.ToolStripMenuItem()
         Me.Barra = New System.Windows.Forms.ToolStrip()
         Me.BotonSalir = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
@@ -63,7 +66,6 @@ Partial Class Principal
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.BotonAltaPropuesta = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
-        Me.itmClientesReferenciados = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.Barra.SuspendLayout()
         Me.SuspendLayout()
@@ -71,7 +73,7 @@ Partial Class Principal
         'MenuStrip1
         '
         Me.MenuStrip1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ArchivoToolStripMenuItem, Me.MnTablas, Me.MnPropuestas, Me.ClientesToolStripMenuItem, Me.UtileriasToolStripMenuItem, Me.MnuInde, Me.mnuReportes})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ArchivoToolStripMenuItem, Me.MnTablas, Me.mnuProspectos, Me.MnPropuestas, Me.ClientesToolStripMenuItem, Me.UtileriasToolStripMenuItem, Me.MnuInde, Me.mnuReportes})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(1026, 24)
@@ -140,6 +142,20 @@ Partial Class Principal
         Me.MedioDeContactoToolStripMenuItem.Name = "MedioDeContactoToolStripMenuItem"
         Me.MedioDeContactoToolStripMenuItem.Size = New System.Drawing.Size(178, 22)
         Me.MedioDeContactoToolStripMenuItem.Text = "Medio de contacto"
+        '
+        'mnuProspectos
+        '
+        Me.mnuProspectos.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RegistrarProspectoToolStripMenuItem})
+        Me.mnuProspectos.Name = "mnuProspectos"
+        Me.mnuProspectos.Size = New System.Drawing.Size(80, 20)
+        Me.mnuProspectos.Text = "Prospectos"
+        Me.mnuProspectos.Visible = False
+        '
+        'RegistrarProspectoToolStripMenuItem
+        '
+        Me.RegistrarProspectoToolStripMenuItem.Name = "RegistrarProspectoToolStripMenuItem"
+        Me.RegistrarProspectoToolStripMenuItem.Size = New System.Drawing.Size(184, 22)
+        Me.RegistrarProspectoToolStripMenuItem.Text = "Registrar prospecto"
         '
         'MnPropuestas
         '
@@ -284,6 +300,12 @@ Partial Class Principal
         Me.itmReporteDireccion.Size = New System.Drawing.Size(205, 22)
         Me.itmReporteDireccion.Text = "Reporte de la Dirección"
         '
+        'itmClientesReferenciados
+        '
+        Me.itmClientesReferenciados.Name = "itmClientesReferenciados"
+        Me.itmClientesReferenciados.Size = New System.Drawing.Size(205, 22)
+        Me.itmClientesReferenciados.Text = "Clientes Referenciados"
+        '
         'Barra
         '
         Me.Barra.AutoSize = False
@@ -341,12 +363,6 @@ Partial Class Principal
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
         Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 40)
-        '
-        'itmClientesReferenciados
-        '
-        Me.itmClientesReferenciados.Name = "itmClientesReferenciados"
-        Me.itmClientesReferenciados.Size = New System.Drawing.Size(205, 22)
-        Me.itmClientesReferenciados.Text = "Clientes Referenciados"
         '
         'Principal
         '
@@ -412,4 +428,6 @@ Partial Class Principal
     Friend WithEvents mnuReportes As ToolStripMenuItem
     Friend WithEvents itmReporteDireccion As ToolStripMenuItem
     Friend WithEvents itmClientesReferenciados As ToolStripMenuItem
+    Friend WithEvents mnuProspectos As ToolStripMenuItem
+    Friend WithEvents RegistrarProspectoToolStripMenuItem As ToolStripMenuItem
 End Class

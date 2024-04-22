@@ -156,7 +156,7 @@ Public Class dlgSubSector
                 gridDatos.Columns("SUBSECTOR").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
             End If
         Catch ex As Exception
-            insertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarSubSectoresProspectos()")
+            'insertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarSubSectoresProspectos()")
             MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
             dtSubSectores = Nothing
         End Try

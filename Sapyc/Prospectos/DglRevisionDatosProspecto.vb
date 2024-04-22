@@ -3,7 +3,7 @@
 Public Class DglRevisionDatosProspecto
 
     Private ds As New DataSet
-    Private dtProspectos As DataTable
+    Private dtProspectos, dtSocios As DataTable
 
     Private sNameRpt As String = "Dialog inicio Propuesta"
 
@@ -26,6 +26,8 @@ Public Class DglRevisionDatosProspecto
             lblMensaje.Visible = True
             chkConfirmacion.Visible = True
             chkConfirmacion.Enabled = True
+
+            ListarSociosEncargados()
         End If
 
     End Sub
@@ -50,15 +52,6 @@ Public Class DglRevisionDatosProspecto
     Private Sub btnNo_Click(sender As Object, e As EventArgs) Handles btnNo.Click
         DialogResult = DialogResult.Cancel
         Close()
-    End Sub
-
-    Private Sub rdAsignacion_CheckedChanged(sender As Object, e As EventArgs) Handles rdAsignacion.CheckedChanged
-        lblSocio.Visible = True
-        cboSocio.Visible = True
-    End Sub
-    Private Sub rdTrabajo_CheckedChanged(sender As Object, e As EventArgs) Handles rdTrabajo.CheckedChanged
-        lblSocio.Visible = False
-        cboSocio.Visible = False
     End Sub
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
@@ -124,9 +117,38 @@ Public Class DglRevisionDatosProspecto
 
             End If
         Catch ex As Exception
-            insertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ConsultaDatosCompletos()")
+            'insertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ConsultaDatosCompletos()")
             MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
             dtProspectos = Nothing
+        End Try
+    End Sub
+
+    Private Sub ListarSociosEncargados()
+        Try
+            Dim sTabla As String = "tbSocios"
+
+            With ds.Tables
+                LimpiarConsultaTabla(ds.Tables, sTabla)
+
+                With clsDatosProp
+                    .subClearParameters()
+                    .subAddParameter("@iOpcion", 3, SqlDbType.Int, ParameterDirection.Input)
+                End With
+
+                .Add(clsDatosProp.funExecuteSPDataTable("paSSGTPropuestasProspectos", sTabla))
+
+                dtSocios = .Item(sTabla)
+            End With
+
+            If dtSocios.Rows.Count > 0 Then
+                cboSocio.DataSource = dtSocios
+                cboSocio.DisplayMember = "sNombre"
+                cboSocio.ValueMember = "sCveSocio"
+            End If
+        Catch ex As Exception
+            'insertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarProspectos()")
+            MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
+            dtSocios = Nothing
         End Try
     End Sub
 

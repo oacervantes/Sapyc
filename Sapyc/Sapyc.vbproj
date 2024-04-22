@@ -605,6 +605,7 @@
   <ItemGroup>
     <None Include="Resources\fondo_3.jpg" />
     <None Include="Resources\advertencia.png" />
+    <None Include="Resources\ingenieria.png" />
     <Content Include="siat.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
