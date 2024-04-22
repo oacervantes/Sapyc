@@ -62,6 +62,7 @@ Public Class frmPropuesta
         If IdProp <> 0 Then
 
             ConsultaPropuesta()
+            ConsultaAutorizacion()
 
             ConsultaSocio(sCveSocio)
             ConultaGerente(sCveGerente)
@@ -991,6 +992,37 @@ Public Class frmPropuesta
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
         End Try
     End Sub
+
+    Private Sub ConsultaAutorizacion()
+        With ds.Tables
+            With clsLocal
+                .subClearParameters()
+                .subAddParameter("@iOpcion", 46, SqlDbType.Int, ParameterDirection.Input)
+                .subAddParameter("@iPropuesta", IdProp, SqlDbType.VarChar, ParameterDirection.Input)
+            End With
+
+            If .Contains("paEmpresaPropuesta") Then
+                .Remove("paEmpresaPropuesta")
+            End If
+
+            .Add(clsLocal.funExecuteSPDataTable("paEmpresaPropuesta"))
+            DtDatos = .Item("paEmpresaPropuesta")
+
+            If DtDatos.Rows.Count > 0 Then
+                'txtProp.Text = DtDatos(0)("IDPROP").ToString()
+                'txtFecha.Text = DtDatos(0)("FECHAREG").ToString()
+                'txtProvedor.Text = DtDatos(0)("NOMEMPRESA").ToString()
+                'txtEmpleado.Text = DtDatos(0)("NOMBRE").ToString()
+
+                txtServicio.Text = DtDatos(0)("sServicioPropuesto").ToString()
+                txtAcercamiento.Text = DtDatos(0)("sAcercamiento").ToString()
+                txtIntegrante.Text = DtDatos(0)("sAutorizoPais").ToString()
+                txtAutorizo.Text = DtDatos(0)("sNombreAutoriza").ToString()
+
+            End If
+        End With
+    End Sub
+
 
 #End Region
     Private Sub btnVer_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnVer.Click

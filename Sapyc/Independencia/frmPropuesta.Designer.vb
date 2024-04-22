@@ -183,6 +183,18 @@ Partial Class frmPropuesta
         Me.lblEmpresaTenedora = New System.Windows.Forms.Label()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.gbTrabajos = New System.Windows.Forms.DataGridView()
+        Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.gpBoxPreguntas = New System.Windows.Forms.GroupBox()
+        Me.txtCancela = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label46 = New System.Windows.Forms.Label()
+        Me.txtAutorizo = New System.Windows.Forms.TextBox()
+        Me.Label47 = New System.Windows.Forms.Label()
+        Me.txtIntegrante = New System.Windows.Forms.TextBox()
+        Me.Label48 = New System.Windows.Forms.Label()
+        Me.txtAcercamiento = New System.Windows.Forms.TextBox()
+        Me.txtServicio = New System.Windows.Forms.TextBox()
         Me.GBCC.SuspendLayout()
         Me.gpBgc.SuspendLayout()
         Me.Cuadro.SuspendLayout()
@@ -206,6 +218,8 @@ Partial Class frmPropuesta
         Me.gpBoxCompañia.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         CType(Me.gbTrabajos, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TabPage2.SuspendLayout()
+        Me.gpBoxPreguntas.SuspendLayout()
         Me.SuspendLayout()
         '
         'Bcancelar
@@ -617,6 +631,7 @@ Partial Class frmPropuesta
         Me.Cuadro.Controls.Add(Me.PartesRelacionadas)
         Me.Cuadro.Controls.Add(Me.gp)
         Me.Cuadro.Controls.Add(Me.TabPage1)
+        Me.Cuadro.Controls.Add(Me.TabPage2)
         Me.Cuadro.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Cuadro.Location = New System.Drawing.Point(24, 191)
         Me.Cuadro.Name = "Cuadro"
@@ -1925,6 +1940,115 @@ Partial Class frmPropuesta
         Me.gbTrabajos.Size = New System.Drawing.Size(897, 424)
         Me.gbTrabajos.TabIndex = 0
         '
+        'TabPage2
+        '
+        Me.TabPage2.Controls.Add(Me.gpBoxPreguntas)
+        Me.TabPage2.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage2.Name = "TabPage2"
+        Me.TabPage2.Size = New System.Drawing.Size(928, 449)
+        Me.TabPage2.TabIndex = 8
+        Me.TabPage2.Text = "Clientes Extranjeros"
+        Me.TabPage2.UseVisualStyleBackColor = True
+        '
+        'gpBoxPreguntas
+        '
+        Me.gpBoxPreguntas.Controls.Add(Me.txtCancela)
+        Me.gpBoxPreguntas.Controls.Add(Me.Label3)
+        Me.gpBoxPreguntas.Controls.Add(Me.Label10)
+        Me.gpBoxPreguntas.Controls.Add(Me.Label46)
+        Me.gpBoxPreguntas.Controls.Add(Me.txtAutorizo)
+        Me.gpBoxPreguntas.Controls.Add(Me.Label47)
+        Me.gpBoxPreguntas.Controls.Add(Me.txtIntegrante)
+        Me.gpBoxPreguntas.Controls.Add(Me.Label48)
+        Me.gpBoxPreguntas.Controls.Add(Me.txtAcercamiento)
+        Me.gpBoxPreguntas.Controls.Add(Me.txtServicio)
+        Me.gpBoxPreguntas.Location = New System.Drawing.Point(152, 47)
+        Me.gpBoxPreguntas.Name = "gpBoxPreguntas"
+        Me.gpBoxPreguntas.Size = New System.Drawing.Size(625, 354)
+        Me.gpBoxPreguntas.TabIndex = 11
+        Me.gpBoxPreguntas.TabStop = False
+        '
+        'txtCancela
+        '
+        Me.txtCancela.Location = New System.Drawing.Point(18, 286)
+        Me.txtCancela.Multiline = True
+        Me.txtCancela.Name = "txtCancela"
+        Me.txtCancela.Size = New System.Drawing.Size(588, 48)
+        Me.txtCancela.TabIndex = 9
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(18, 23)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(199, 13)
+        Me.Label3.TabIndex = 0
+        Me.Label3.Text = "Cúal es la naturaleza del servicio:"
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(18, 263)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(276, 13)
+        Me.Label10.TabIndex = 8
+        Me.Label10.Text = "En caso de cancelación, especifique el motivo:"
+        '
+        'Label46
+        '
+        Me.Label46.AutoSize = True
+        Me.Label46.Location = New System.Drawing.Point(18, 83)
+        Me.Label46.Name = "Label46"
+        Me.Label46.Size = New System.Drawing.Size(240, 13)
+        Me.Label46.TabIndex = 2
+        Me.Label46.Text = "Tuvo acercamiento con la oficina de GT:"
+        '
+        'txtAutorizo
+        '
+        Me.txtAutorizo.Location = New System.Drawing.Point(18, 226)
+        Me.txtAutorizo.Name = "txtAutorizo"
+        Me.txtAutorizo.Size = New System.Drawing.Size(588, 20)
+        Me.txtAutorizo.TabIndex = 7
+        '
+        'Label47
+        '
+        Me.Label47.AutoSize = True
+        Me.Label47.Location = New System.Drawing.Point(18, 143)
+        Me.Label47.Name = "Label47"
+        Me.Label47.Size = New System.Drawing.Size(182, 13)
+        Me.Label47.TabIndex = 4
+        Me.Label47.Text = "Integrante de la oficina de GT:"
+        '
+        'txtIntegrante
+        '
+        Me.txtIntegrante.Location = New System.Drawing.Point(18, 166)
+        Me.txtIntegrante.Name = "txtIntegrante"
+        Me.txtIntegrante.Size = New System.Drawing.Size(588, 20)
+        Me.txtIntegrante.TabIndex = 5
+        '
+        'Label48
+        '
+        Me.Label48.AutoSize = True
+        Me.Label48.Location = New System.Drawing.Point(18, 203)
+        Me.Label48.Name = "Label48"
+        Me.Label48.Size = New System.Drawing.Size(238, 13)
+        Me.Label48.TabIndex = 6
+        Me.Label48.Text = "Obtuvo autorización de la oficina de GT:"
+        '
+        'txtAcercamiento
+        '
+        Me.txtAcercamiento.Location = New System.Drawing.Point(18, 106)
+        Me.txtAcercamiento.Name = "txtAcercamiento"
+        Me.txtAcercamiento.Size = New System.Drawing.Size(588, 20)
+        Me.txtAcercamiento.TabIndex = 3
+        '
+        'txtServicio
+        '
+        Me.txtServicio.Location = New System.Drawing.Point(18, 46)
+        Me.txtServicio.Name = "txtServicio"
+        Me.txtServicio.Size = New System.Drawing.Size(588, 20)
+        Me.txtServicio.TabIndex = 1
+        '
         'frmPropuesta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2002,6 +2126,9 @@ Partial Class frmPropuesta
         Me.gpBoxCompañia.PerformLayout()
         Me.TabPage1.ResumeLayout(False)
         CType(Me.gbTrabajos, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TabPage2.ResumeLayout(False)
+        Me.gpBoxPreguntas.ResumeLayout(False)
+        Me.gpBoxPreguntas.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -2167,4 +2294,16 @@ Partial Class frmPropuesta
     Friend WithEvents lblEmpresaTenedora As Label
     Friend WithEvents TabPage1 As TabPage
     Friend WithEvents gbTrabajos As DataGridView
+    Friend WithEvents TabPage2 As TabPage
+    Friend WithEvents gpBoxPreguntas As GroupBox
+    Friend WithEvents txtCancela As TextBox
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Label10 As Label
+    Friend WithEvents Label46 As Label
+    Friend WithEvents txtAutorizo As TextBox
+    Friend WithEvents Label47 As Label
+    Friend WithEvents txtIntegrante As TextBox
+    Friend WithEvents Label48 As Label
+    Friend WithEvents txtAcercamiento As TextBox
+    Friend WithEvents txtServicio As TextBox
 End Class
