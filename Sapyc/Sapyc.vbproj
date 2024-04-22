@@ -353,6 +353,42 @@
     <Compile Include="Principal.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Prospectos\DglRevisionDatosProspecto.designer.vb">
+      <DependentUpon>DglRevisionDatosProspecto.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Prospectos\DglRevisionDatosProspecto.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Prospectos\dlgIndustria.designer.vb">
+      <DependentUpon>dlgIndustria.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Prospectos\dlgIndustria.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Prospectos\dlgSubNivel.designer.vb">
+      <DependentUpon>dlgSubNivel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Prospectos\dlgSubNivel.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Prospectos\dlgSubSector.designer.vb">
+      <DependentUpon>dlgSubSector.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Prospectos\dlgSubSector.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Prospectos\FrmContacto.designer.vb">
+      <DependentUpon>FrmContacto.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Prospectos\FrmContacto.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Prospectos\FrmProspectos.designer.vb">
+      <DependentUpon>FrmProspectos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Prospectos\FrmProspectos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ReporteDireccion\DlgSocioRD.designer.vb">
       <DependentUpon>DlgSocioRD.vb</DependentUpon>
     </Compile>
@@ -511,6 +547,24 @@
     <EmbeddedResource Include="Principal.resx">
       <DependentUpon>Principal.vb</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Prospectos\DglRevisionDatosProspecto.resx">
+      <DependentUpon>DglRevisionDatosProspecto.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Prospectos\dlgIndustria.resx">
+      <DependentUpon>dlgIndustria.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Prospectos\dlgSubNivel.resx">
+      <DependentUpon>dlgSubNivel.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Prospectos\dlgSubSector.resx">
+      <DependentUpon>dlgSubSector.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Prospectos\FrmContacto.resx">
+      <DependentUpon>FrmContacto.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Prospectos\FrmProspectos.resx">
+      <DependentUpon>FrmProspectos.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReporteDireccion\DlgSocioRD.resx">
       <DependentUpon>DlgSocioRD.vb</DependentUpon>
