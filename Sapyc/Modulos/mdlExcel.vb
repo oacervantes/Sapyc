@@ -137,10 +137,10 @@ Module mdlExcel
                 .Activate()
             End With
 
-            objCelda = objHojaExcel.Range("A1:V2")
+            objCelda = objHojaExcel.Range("A1:X2")
             objCelda.Rows.RowHeight = 30
 
-            objCelda = objHojaExcel.Range("A4:V4")
+            objCelda = objHojaExcel.Range("A4:X4")
             objCelda.Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.FromArgb(79, 45, 127))
             objCelda.Font.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.FromArgb(255, 255, 255))
             objCelda.WrapText = True
@@ -150,10 +150,10 @@ Module mdlExcel
 
             For x As Integer = 0 To grid.Rows.Count - 1
                 If x Mod 2 = 0 Then
-                    objCelda = objHojaExcel.Range("A" & x + 5 & ":V" & x + 5)
+                    objCelda = objHojaExcel.Range("A" & x + 5 & ":X" & x + 5)
                     objCelda.Interior.Color = System.Drawing.ColorTranslator.ToOle(Color.Transparent)
                 Else
-                    objCelda = objHojaExcel.Range("A" & x + 5 & ":V" & x + 5)
+                    objCelda = objHojaExcel.Range("A" & x + 5 & ":X" & x + 5)
                     objCelda.Interior.Color = System.Drawing.ColorTranslator.ToOle(Color.FromArgb(227, 231, 237))
                 End If
             Next
@@ -183,7 +183,7 @@ Module mdlExcel
             objCelda = objHojaExcel.Range("K5")
             objCelda.Columns.ColumnWidth = 85
             objCelda = objHojaExcel.Range("L5")
-            objCelda.Columns.ColumnWidth = 30
+            objCelda.Columns.ColumnWidth = 40
             objCelda = objHojaExcel.Range("M5")
             objCelda.Columns.ColumnWidth = 45
             objCelda = objHojaExcel.Range("N5")
@@ -193,7 +193,7 @@ Module mdlExcel
             objCelda = objHojaExcel.Range("P5")
             objCelda.Columns.ColumnWidth = 30
             objCelda = objHojaExcel.Range("Q5")
-            objCelda.Columns.ColumnWidth = 35
+            objCelda.Columns.ColumnWidth = 20
             objCelda = objHojaExcel.Range("R5")
             objCelda.Columns.ColumnWidth = 35
             objCelda = objHojaExcel.Range("S5")
@@ -203,6 +203,10 @@ Module mdlExcel
             objCelda = objHojaExcel.Range("U5")
             objCelda.Columns.ColumnWidth = 30
             objCelda = objHojaExcel.Range("V5")
+            objCelda.Columns.ColumnWidth = 30
+            objCelda = objHojaExcel.Range("W5")
+            objCelda.Columns.ColumnWidth = 30
+            objCelda = objHojaExcel.Range("X5")
             objCelda.Columns.ColumnWidth = 30
 
 
@@ -220,7 +224,7 @@ Module mdlExcel
 
             objLibroExcel.Worksheets(1).Activate()
 
-            objHojaExcel.Range("A4", "V4").AutoFilter(1, Type.Missing, Excel.XlAutoFilterOperator.xlAnd, Type.Missing, True)
+            objHojaExcel.Range("A4", "X4").AutoFilter(1, Type.Missing, Excel.XlAutoFilterOperator.xlAnd, Type.Missing, True)
 
             objExcel.Cursor = Excel.XlMousePointer.xlDefault
             objExcel.ActiveWorkbook.SaveAs(sRutaArchivo & sNombreArchivo & ".xlsx")
