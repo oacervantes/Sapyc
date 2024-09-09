@@ -151,7 +151,17 @@
         dgCtes.Columns("BOLSAEXTRANJERA").Width = 90
         dgCtes.Columns("BOLSAEXTRANJERA").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
 
+        dgCtes.Columns("HRSPROPUESTA").HeaderText = "HRS PROPUESTA"
+        dgCtes.Columns("HRSPROPUESTA").Width = 45
+        dgCtes.Columns("HRSPROPUESTA").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
 
+        dgCtes.Columns("HRSTRABAJO").HeaderText = "HRS TRABAJO"
+        dgCtes.Columns("HRSTRABAJO").Width = 45
+        dgCtes.Columns("HRSTRABAJO").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+
+        dgCtes.Columns("CLASIFICACIONCTE").HeaderText = "CLASIFICACIÓN CLIENTE"
+        dgCtes.Columns("CLASIFICACIONCTE").Width = 100
+        dgCtes.Columns("CLASIFICACIONCTE").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
 
 
     End Sub
