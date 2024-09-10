@@ -425,7 +425,138 @@ Module mdlExcel
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
         End Try
     End Sub
+    Public Sub exportarCtesPeriodo(ByVal objExcel As Excel.Application, ByVal grid As DataGridView, ByVal sRutaArchivo As String, ByVal sNombreArchivo As String)
+        Try
+            If objExcel Is Nothing Then
+                objExcel = New Excel.Application
+                objLibroExcel = objExcel.Workbooks.Add()
+            End If
 
+            ReDim mDatosH(1, grid.Columns.Count)
+            ReDim mCxC(grid.Rows.Count, grid.Columns.Count)
+
+            objHojaExcel = objLibroExcel.Sheets(1)
+
+            With objHojaExcel
+                .Name = "CLIENTES"
+
+                .Application.ActiveWindow.SplitRow = 4
+                .Application.ActiveWindow.FreezePanes = True
+
+                '.Shapes.AddPicture("\\GTMEXVTS32\APLICA\CON2012\IMG\header_RD.jpg", False, True, 40, 5, -1, -1)
+                .Visible = Excel.XlSheetVisibility.xlSheetVisible
+                .Activate()
+            End With
+
+            objCelda = objHojaExcel.Range("A1:AB2")
+            objCelda.Rows.RowHeight = 30
+
+            objCelda = objHojaExcel.Range("A4:AB4")
+            objCelda.Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.FromArgb(79, 45, 127))
+            objCelda.Font.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.FromArgb(255, 255, 255))
+            objCelda.WrapText = True
+            objCelda.Rows.RowHeight = 30
+            objCelda.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter
+            objCelda.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
+
+            For x As Integer = 0 To grid.Rows.Count - 1
+                If x Mod 2 = 0 Then
+                    objCelda = objHojaExcel.Range("A" & x + 5 & ":AB" & x + 5)
+                    objCelda.Interior.Color = System.Drawing.ColorTranslator.ToOle(Color.Transparent)
+                Else
+                    objCelda = objHojaExcel.Range("A" & x + 5 & ":AB" & x + 5)
+                    objCelda.Interior.Color = System.Drawing.ColorTranslator.ToOle(Color.FromArgb(227, 231, 237))
+                End If
+            Next
+
+            nombreReporte(objCelda, "LISTA DE CLIENTES DEL PERIODO", "A3", grid.Columns.Count)
+            objCelda = objHojaExcel.Range("A5")
+            objCelda.Columns.ColumnWidth = 15
+            objCelda = objHojaExcel.Range("B5")
+            objCelda.Columns.ColumnWidth = 85
+            objCelda = objHojaExcel.Range("C5")
+            objCelda.Columns.ColumnWidth = 15
+            objCelda = objHojaExcel.Range("D5")
+            objCelda.Columns.ColumnWidth = 85
+            objCelda = objHojaExcel.Range("E5")
+            objCelda.Columns.ColumnWidth = 85
+            objCelda = objHojaExcel.Range("F5")
+            objCelda.Columns.ColumnWidth = 30
+            objCelda = objHojaExcel.Range("G5")
+            objCelda.Columns.ColumnWidth = 85
+            objCelda = objHojaExcel.Range("H5")
+            objCelda.Columns.ColumnWidth = 85
+            objCelda = objHojaExcel.Range("I5")
+            objCelda.Columns.ColumnWidth = 25
+
+            objCelda = objHojaExcel.Range("J5")
+            objCelda.Columns.ColumnWidth = 25
+            objCelda = objHojaExcel.Range("K5")
+            objCelda.Columns.ColumnWidth = 85
+            objCelda = objHojaExcel.Range("L5")
+            objCelda.Columns.ColumnWidth = 40
+            objCelda = objHojaExcel.Range("M5")
+            objCelda.Columns.ColumnWidth = 45
+            objCelda = objHojaExcel.Range("N5")
+            objCelda.Columns.ColumnWidth = 45
+            objCelda = objHojaExcel.Range("O5")
+            objCelda.Columns.ColumnWidth = 30
+            objCelda = objHojaExcel.Range("P5")
+            objCelda.Columns.ColumnWidth = 30
+            objCelda = objHojaExcel.Range("Q5")
+            objCelda.Columns.ColumnWidth = 20
+            objCelda = objHojaExcel.Range("R5")
+            objCelda.Columns.ColumnWidth = 35
+            objCelda = objHojaExcel.Range("S5")
+            objCelda.Columns.ColumnWidth = 85
+            objCelda = objHojaExcel.Range("T5")
+            objCelda.Columns.ColumnWidth = 45
+            objCelda = objHojaExcel.Range("U5")
+            objCelda.Columns.ColumnWidth = 30
+            objCelda = objHojaExcel.Range("V5")
+            objCelda.Columns.ColumnWidth = 30
+            objCelda = objHojaExcel.Range("W5")
+            objCelda.Columns.ColumnWidth = 30
+            objCelda = objHojaExcel.Range("X5")
+            objCelda.Columns.ColumnWidth = 30
+            objCelda = objHojaExcel.Range("Y5")
+            objCelda.Columns.ColumnWidth = 30
+            objCelda = objHojaExcel.Range("Z5")
+            objCelda.Columns.ColumnWidth = 30
+            objCelda = objHojaExcel.Range("AA5")
+            objCelda.Columns.ColumnWidth = 60
+
+
+
+            objCelda = objHojaExcel.Range("A1").Resize(2, grid.Columns.Count)
+            contenidoReporte(objCelda, grid, 0, mDatosH, mCxC)
+
+            objCelda.MergeCells = True
+            objCelda.Value = sEmpresa
+            objCelda.Font.Bold = True
+            objCelda.Font.Size = 24
+            objCelda.HorizontalAlignment = -4108
+            objCelda.VerticalAlignment = -4108
+
+            objLibroExcel.Worksheets(1).Activate()
+
+            objHojaExcel.Range("A4", "AB4").AutoFilter(1, Type.Missing, Excel.XlAutoFilterOperator.xlAnd, Type.Missing, True)
+
+            objExcel.Cursor = Excel.XlMousePointer.xlDefault
+            objExcel.ActiveWorkbook.SaveAs(sRutaArchivo & sNombreArchivo & ".xlsx")
+            objHojaExcel = Nothing
+            objLibroExcel.Close(False)
+            objLibroExcel = Nothing
+
+            objExcel.Quit()
+            System.Runtime.InteropServices.Marshal.ReleaseComObject(objExcel)
+            objExcel = Nothing
+
+            MsgBox("El reporte se guardó correctamente en " & sRutaArchivo & ".", MsgBoxStyle.Information, "Reporte Generado")
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
+        End Try
+    End Sub
 
 
 End Module

@@ -212,6 +212,12 @@
     <Compile Include="Independencia\frmConsultaFolios.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Independencia\frmCtesDelPeriodo.Designer.vb">
+      <DependentUpon>frmCtesDelPeriodo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Independencia\frmCtesDelPeriodo.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Independencia\frmPropuesta.Designer.vb">
       <DependentUpon>frmPropuesta.vb</DependentUpon>
     </Compile>
@@ -476,6 +482,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Independencia\frmConsultaFolios.resx">
       <DependentUpon>frmConsultaFolios.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Independencia\frmCtesDelPeriodo.resx">
+      <DependentUpon>frmCtesDelPeriodo.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Independencia\frmPropuesta.resx">
       <DependentUpon>frmPropuesta.vb</DependentUpon>

@@ -261,4 +261,11 @@
 
         AbrirPantalla(frm, "FrmProspectos")
     End Sub
+
+    Private Sub ClientesDelPeriodoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClientesDelPeriodoToolStripMenuItem.Click
+        Dim frm As New frmCtesDelPeriodo
+
+        AbrirPantalla(frm, "frmCtesDelPeriodo")
+    End Sub
+
 End Class
