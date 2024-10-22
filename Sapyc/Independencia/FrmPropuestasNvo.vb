@@ -2234,9 +2234,9 @@ Public Class FrmPropuestasNvo
     Private Sub EnvioCorreoSocios()
         Dim sMensaje As String
 
-        If rbSi.Checked Then
+        If rbSiIndepen.Checked Then
             Msnj = txtMotivoIndepen.Text.ToUpper + "    " + "SI" + " ;"
-        ElseIf rbNo.Checked Then
+        ElseIf rbNOIndepen.Checked Then
             Msnj = "NO"
         End If
 
