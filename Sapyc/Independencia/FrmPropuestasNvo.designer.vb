@@ -38,9 +38,9 @@ Partial Class FrmPropuestasNvo
         Me.gpBoxConflict = New System.Windows.Forms.GroupBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
+        Me.rbSiIndepen = New System.Windows.Forms.RadioButton()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.RadioButton2 = New System.Windows.Forms.RadioButton()
+        Me.rbNOIndepen = New System.Windows.Forms.RadioButton()
         Me.gpBoxCheck = New System.Windows.Forms.GroupBox()
         Me.ComboNivel = New System.Windows.Forms.ComboBox()
         Me.Label19 = New System.Windows.Forms.Label()
@@ -60,6 +60,7 @@ Partial Class FrmPropuestasNvo
         Me.txtSocio = New System.Windows.Forms.TextBox()
         Me.txtGnt = New System.Windows.Forms.TextBox()
         Me.gpBoxDatosServicio = New System.Windows.Forms.GroupBox()
+        Me.txtServiciotexto = New System.Windows.Forms.TextBox()
         Me.txtPorWO = New System.Windows.Forms.TextBox()
         Me.lblPorAjuste = New System.Windows.Forms.Label()
         Me.txtHorasEstimadas = New System.Windows.Forms.TextBox()
@@ -94,6 +95,7 @@ Partial Class FrmPropuestasNvo
         Me.CRechazo = New System.Windows.Forms.ComboBox()
         Me.lblCartaArreglo = New System.Windows.Forms.Label()
         Me.lblMotiRecha = New System.Windows.Forms.Label()
+        Me.Ctiposervicio = New System.Windows.Forms.ComboBox()
         Me.txtHonorarios = New System.Windows.Forms.TextBox()
         Me.lblCicloOperativo = New System.Windows.Forms.Label()
         Me.lblHonorariosEstimados = New System.Windows.Forms.Label()
@@ -313,8 +315,6 @@ Partial Class FrmPropuestasNvo
         Me.txtPagWeb = New System.Windows.Forms.TextBox()
         Me.Bcancelar = New System.Windows.Forms.Button()
         Me.Baceptar = New System.Windows.Forms.Button()
-        Me.Ctiposervicio = New System.Windows.Forms.ComboBox()
-        Me.txtServiciotexto = New System.Windows.Forms.TextBox()
         Me.panPrincipal.SuspendLayout()
         Me.Cuadro.SuspendLayout()
         Me.Contacto.SuspendLayout()
@@ -502,9 +502,9 @@ Partial Class FrmPropuestasNvo
         '
         Me.gpBoxConflict.Controls.Add(Me.Label2)
         Me.gpBoxConflict.Controls.Add(Me.Label4)
-        Me.gpBoxConflict.Controls.Add(Me.RadioButton1)
+        Me.gpBoxConflict.Controls.Add(Me.rbSiIndepen)
         Me.gpBoxConflict.Controls.Add(Me.TextBox1)
-        Me.gpBoxConflict.Controls.Add(Me.RadioButton2)
+        Me.gpBoxConflict.Controls.Add(Me.rbNOIndepen)
         Me.gpBoxConflict.Location = New System.Drawing.Point(20, 63)
         Me.gpBoxConflict.Name = "gpBoxConflict"
         Me.gpBoxConflict.Size = New System.Drawing.Size(389, 182)
@@ -533,16 +533,16 @@ Partial Class FrmPropuestasNvo
         Me.Label4.TabIndex = 369
         Me.Label4.Text = "Motivo del conflicto:"
         '
-        'RadioButton1
+        'rbSiIndepen
         '
-        Me.RadioButton1.AutoSize = True
-        Me.RadioButton1.Location = New System.Drawing.Point(51, 44)
-        Me.RadioButton1.Name = "RadioButton1"
-        Me.RadioButton1.Size = New System.Drawing.Size(37, 22)
-        Me.RadioButton1.TabIndex = 365
-        Me.RadioButton1.TabStop = True
-        Me.RadioButton1.Text = "Si"
-        Me.RadioButton1.UseVisualStyleBackColor = True
+        Me.rbSiIndepen.AutoSize = True
+        Me.rbSiIndepen.Location = New System.Drawing.Point(51, 44)
+        Me.rbSiIndepen.Name = "rbSiIndepen"
+        Me.rbSiIndepen.Size = New System.Drawing.Size(37, 22)
+        Me.rbSiIndepen.TabIndex = 365
+        Me.rbSiIndepen.TabStop = True
+        Me.rbSiIndepen.Text = "Si"
+        Me.rbSiIndepen.UseVisualStyleBackColor = True
         '
         'TextBox1
         '
@@ -555,16 +555,16 @@ Partial Class FrmPropuestasNvo
         Me.TextBox1.Size = New System.Drawing.Size(338, 66)
         Me.TextBox1.TabIndex = 368
         '
-        'RadioButton2
+        'rbNOIndepen
         '
-        Me.RadioButton2.AutoSize = True
-        Me.RadioButton2.Location = New System.Drawing.Point(112, 44)
-        Me.RadioButton2.Name = "RadioButton2"
-        Me.RadioButton2.Size = New System.Drawing.Size(44, 22)
-        Me.RadioButton2.TabIndex = 366
-        Me.RadioButton2.TabStop = True
-        Me.RadioButton2.Text = "No"
-        Me.RadioButton2.UseVisualStyleBackColor = True
+        Me.rbNOIndepen.AutoSize = True
+        Me.rbNOIndepen.Location = New System.Drawing.Point(112, 44)
+        Me.rbNOIndepen.Name = "rbNOIndepen"
+        Me.rbNOIndepen.Size = New System.Drawing.Size(44, 22)
+        Me.rbNOIndepen.TabIndex = 366
+        Me.rbNOIndepen.TabStop = True
+        Me.rbNOIndepen.Text = "No"
+        Me.rbNOIndepen.UseVisualStyleBackColor = True
         '
         'gpBoxCheck
         '
@@ -807,6 +807,15 @@ Partial Class FrmPropuestasNvo
         Me.gpBoxDatosServicio.TabIndex = 3
         Me.gpBoxDatosServicio.TabStop = False
         Me.gpBoxDatosServicio.Text = "Datos del servicio"
+        '
+        'txtServiciotexto
+        '
+        Me.txtServiciotexto.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtServiciotexto.Location = New System.Drawing.Point(151, 33)
+        Me.txtServiciotexto.MaxLength = 120
+        Me.txtServiciotexto.Name = "txtServiciotexto"
+        Me.txtServiciotexto.Size = New System.Drawing.Size(263, 25)
+        Me.txtServiciotexto.TabIndex = 372
         '
         'txtPorWO
         '
@@ -1164,6 +1173,18 @@ Partial Class FrmPropuestasNvo
         Me.lblMotiRecha.TabIndex = 27
         Me.lblMotiRecha.Text = "Motivo del rechazo:"
         Me.lblMotiRecha.Visible = False
+        '
+        'Ctiposervicio
+        '
+        Me.Ctiposervicio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.Ctiposervicio.DropDownWidth = 310
+        Me.Ctiposervicio.Enabled = False
+        Me.Ctiposervicio.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Ctiposervicio.FormattingEnabled = True
+        Me.Ctiposervicio.Location = New System.Drawing.Point(150, 33)
+        Me.Ctiposervicio.Name = "Ctiposervicio"
+        Me.Ctiposervicio.Size = New System.Drawing.Size(263, 26)
+        Me.Ctiposervicio.TabIndex = 1
         '
         'txtHonorarios
         '
@@ -3564,27 +3585,6 @@ Partial Class FrmPropuestasNvo
         Me.Baceptar.Text = "&Guardar"
         Me.Baceptar.UseVisualStyleBackColor = True
         '
-        'Ctiposervicio
-        '
-        Me.Ctiposervicio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.Ctiposervicio.DropDownWidth = 310
-        Me.Ctiposervicio.Enabled = False
-        Me.Ctiposervicio.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Ctiposervicio.FormattingEnabled = True
-        Me.Ctiposervicio.Location = New System.Drawing.Point(150, 33)
-        Me.Ctiposervicio.Name = "Ctiposervicio"
-        Me.Ctiposervicio.Size = New System.Drawing.Size(263, 26)
-        Me.Ctiposervicio.TabIndex = 1
-        '
-        'txtServiciotexto
-        '
-        Me.txtServiciotexto.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtServiciotexto.Location = New System.Drawing.Point(151, 33)
-        Me.txtServiciotexto.MaxLength = 120
-        Me.txtServiciotexto.Name = "txtServiciotexto"
-        Me.txtServiciotexto.Size = New System.Drawing.Size(263, 25)
-        Me.txtServiciotexto.TabIndex = 372
-        '
         'FrmPropuestasNvo
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -3957,9 +3957,9 @@ Partial Class FrmPropuestasNvo
     Friend WithEvents gpBoxConflict As GroupBox
     Friend WithEvents Label2 As Label
     Friend WithEvents Label4 As Label
-    Friend WithEvents RadioButton1 As RadioButton
+    Friend WithEvents rbSiIndepen As RadioButton
     Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents RadioButton2 As RadioButton
+    Friend WithEvents rbNOIndepen As RadioButton
     Friend WithEvents gpBoxCheck As GroupBox
     Friend WithEvents ComboNivel As ComboBox
     Friend WithEvents Label19 As Label

@@ -32,6 +32,7 @@
         Prop.IdProp = IdProp
 
         If Prop.ShowDialog() = Windows.Forms.DialogResult.OK Then
+            ListaSolicitudes()
         End If
     End Sub
 

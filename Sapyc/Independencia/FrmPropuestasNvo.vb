@@ -244,9 +244,9 @@ Public Class FrmPropuestasNvo
         ElseIf sTipo = 3 Then
             Dim Ind As Integer
 
-            If rbNo.Checked Then
+            If rbNOIndepen.Checked Then
                 Ind = 1
-            ElseIf rbSi.Checked Then
+            ElseIf rbSiIndepen.Checked Then
                 Ind = 2
             End If
             ActualizaConflict(Ind)
