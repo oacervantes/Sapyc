@@ -101,7 +101,7 @@
             e.Cancel = True
         End If
     End Sub
-    Private Sub Lista_DoubleClick(sender As Object, e As EventArgs) Handles Lista.DoubleClick
+    Private Sub Lista_DoubleClick(sender As Object, e As EventArgs) Handles Lista.Click
 
         Dim dlg As New FrmPropuestasNvo
 
@@ -123,7 +123,7 @@
 
     End Sub
     Private Sub Bguardar_Click(sender As Object, e As EventArgs) Handles Bguardar.Click
-        Dim dlg As New frmPropuesta
+        Dim dlg As New FrmPropuestasNvo
 
         Try
             If Me.Lista.Rows.Count > 0 Then

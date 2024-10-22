@@ -16,7 +16,7 @@
     Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
         IdProp = CInt(Lista.CurrentRow.Cells("FOLIO").Value)
 
-        Dim Prop As New frmPropuesta
+        Dim Prop As New FrmPropuestasNvo
         Prop.IdProp = IdProp
 
         If Prop.ShowDialog() = Windows.Forms.DialogResult.OK Then

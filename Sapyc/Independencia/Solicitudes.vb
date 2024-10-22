@@ -15,7 +15,7 @@
         ListaSolicitudes()
     End Sub
     Private Sub Bguardar_Click(sender As Object, e As EventArgs) Handles Bguardar.Click
-        Dim dlg As New frmPropuesta
+        Dim dlg As New FrmPropuestasNvo
 
         Try
             If Me.Lista.Rows.Count > 0 Then
