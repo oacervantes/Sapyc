@@ -20,6 +20,7 @@
         Prop.IdProp = IdProp
 
         If Prop.ShowDialog() = Windows.Forms.DialogResult.OK Then
+            ListaSolicitudes()
         End If
     End Sub
     Private Sub Bcancelar_Click(sender As Object, e As EventArgs) Handles Bcancelar.Click
