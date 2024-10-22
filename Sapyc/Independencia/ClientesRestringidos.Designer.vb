@@ -35,15 +35,15 @@ Partial Class ClientesRestringidos
         'dgLista
         '
         Me.dgLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgLista.Location = New System.Drawing.Point(13, 13)
+        Me.dgLista.Location = New System.Drawing.Point(25, 18)
         Me.dgLista.Name = "dgLista"
-        Me.dgLista.Size = New System.Drawing.Size(634, 332)
+        Me.dgLista.Size = New System.Drawing.Size(777, 332)
         Me.dgLista.TabIndex = 0
         '
         'Bcancelar
         '
         Me.Bcancelar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Bcancelar.Location = New System.Drawing.Point(554, 395)
+        Me.Bcancelar.Location = New System.Drawing.Point(698, 395)
         Me.Bcancelar.Name = "Bcancelar"
         Me.Bcancelar.Size = New System.Drawing.Size(93, 28)
         Me.Bcancelar.TabIndex = 7
@@ -53,7 +53,7 @@ Partial Class ClientesRestringidos
         'BCargar
         '
         Me.BCargar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BCargar.Location = New System.Drawing.Point(532, 351)
+        Me.BCargar.Location = New System.Drawing.Point(676, 351)
         Me.BCargar.Name = "BCargar"
         Me.BCargar.Size = New System.Drawing.Size(115, 28)
         Me.BCargar.TabIndex = 6
@@ -79,7 +79,7 @@ Partial Class ClientesRestringidos
         '
         Me.txtArchivo.Location = New System.Drawing.Point(82, 356)
         Me.txtArchivo.Name = "txtArchivo"
-        Me.txtArchivo.Size = New System.Drawing.Size(432, 20)
+        Me.txtArchivo.Size = New System.Drawing.Size(588, 20)
         Me.txtArchivo.TabIndex = 9
         '
         'Label1
@@ -96,7 +96,7 @@ Partial Class ClientesRestringidos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(659, 435)
+        Me.ClientSize = New System.Drawing.Size(802, 453)
         Me.ControlBox = False
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.txtArchivo)

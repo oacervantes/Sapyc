@@ -422,6 +422,58 @@ Public Class clsAccesoDatos
             End If
         End Try
     End Function
+    Public Function funExecuteSPTabla(ByVal strSPName As String, ByVal tabla As DataTable) As Integer
+        Dim cmd As New SqlCommand
+        Dim prmtr As New SqlParameter
+        Dim intReturnValue As Integer
+
+        Try
+            If cnn Is Nothing Then
+                cnn = New SqlConnection
+            End If
+
+            If cnn.State = ConnectionState.Closed Then
+                cnn.ConnectionString = sCadenaConexion
+                cnn.Open()
+            End If
+
+            cmd.CommandText = strSPName
+            cmd.CommandType = CommandType.StoredProcedure
+            prmtr = cmd.Parameters.AddWithValue("@listaCtes", tabla)
+            cmd.Connection = cnn
+
+            If Not trTransaccion Is Nothing Then
+                cmd.Transaction = trTransaccion
+            End If
+
+            intReturnValue = cmd.ExecuteNonQuery
+
+            Return intReturnValue
+
+            Exit Function
+        Catch exSqlClient As SqlException
+            If Not trTransaccion Is Nothing Then
+                Me.subCancelTransaction()
+            End If
+
+            If exSqlClient.Number = 50000 Then
+                Err.Raise(vbObjectError + 513, "Capa de acceso a datos", exSqlClient.Message)
+            ElseIf exSqlClient.Number = 229 Then
+                Err.Raise(vbObjectError + 513, "Capa de acceso a datos", "Acceso denegado para el usuario " + sUser)
+            Else
+                Err.Raise(exSqlClient.Number, "Capa de acceso a datos", exSqlClient.Message)
+            End If
+        Catch ex As Exception
+            Err.Raise(vbObjectError + 514, "Capa de acceso a datos", ex.Message)
+        Finally
+            cmd.Dispose()
+
+            If trTransaccion Is Nothing Then
+                cnn.Close()
+                cnn.Dispose()
+            End If
+        End Try
+    End Function
 
 #End Region
 

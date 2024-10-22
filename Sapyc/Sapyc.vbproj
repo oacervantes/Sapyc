@@ -242,6 +242,12 @@
     <Compile Include="Independencia\DlgPropuesta.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Independencia\FrmPropuestasNvo.designer.vb">
+      <DependentUpon>FrmPropuestasNvo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Independencia\FrmPropuestasNvo.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Independencia\frmRelacionCtes.Designer.vb">
       <DependentUpon>frmRelacionCtes.vb</DependentUpon>
     </Compile>
@@ -497,6 +503,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Independencia\DlgPropuesta.resx">
       <DependentUpon>DlgPropuesta.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Independencia\FrmPropuestasNvo.resx">
+      <DependentUpon>FrmPropuestasNvo.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Independencia\frmRelacionCtes.resx">
       <DependentUpon>frmRelacionCtes.vb</DependentUpon>

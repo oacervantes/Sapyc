@@ -28,7 +28,7 @@
     Private Sub Lista_DoubleClick(sender As Object, e As EventArgs) Handles Lista.DoubleClick
         IdProp = CInt(Lista.CurrentRow.Cells("FOLIO").Value)
 
-        Dim Prop As New frmPropuesta
+        Dim Prop As New FrmPropuestasNvo
         Prop.IdProp = IdProp
 
         If Prop.ShowDialog() = Windows.Forms.DialogResult.OK Then

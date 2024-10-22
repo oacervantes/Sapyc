@@ -42,7 +42,7 @@
     End Sub
     Private Sub Lista_DoubleClick(sender As Object, e As EventArgs) Handles Lista.DoubleClick
 
-        Dim dlg As New frmPropuesta
+        Dim dlg As New FrmPropuestasNvo
 
         Try
             If Me.Lista.Rows.Count > 0 Then

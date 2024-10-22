@@ -33,7 +33,6 @@
     Private Sub txtCliente_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtCliente.TextChanged
         bsCtes.Filter = "CTE_PRINCIPAL LIKE '%" & txtCliente.Text & "%' "
     End Sub
-
     Private Sub ListarFolios()
         Try
             Dim sTabla As String = "tbCtes"
@@ -60,7 +59,6 @@
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
         End Try
     End Sub
-
     Private Sub FormatoGrid()
         'dgCtes.Columns("CVECTE_RELACION").Visible = False
 
@@ -160,8 +158,20 @@
         dgCtes.Columns("HRSTRABAJO").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
 
         dgCtes.Columns("CLASIFICACIONCTE").HeaderText = "CLASIFICACIÓN CLIENTE"
-        dgCtes.Columns("CLASIFICACIONCTE").Width = 100
+        dgCtes.Columns("CLASIFICACIONCTE").Width = 150
         dgCtes.Columns("CLASIFICACIONCTE").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+
+        dgCtes.Columns("REFERENCIA").HeaderText = "REFERENCIA"
+        dgCtes.Columns("REFERENCIA").Width = 200
+        dgCtes.Columns("REFERENCIA").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+
+        dgCtes.Columns("SOCIOREFERENCIA").HeaderText = "SOCIO REFERENCIA"
+        dgCtes.Columns("SOCIOREFERENCIA").Width = 200
+        dgCtes.Columns("SOCIOREFERENCIA").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+
+        dgCtes.Columns("OFICINAREFERENCIA").HeaderText = "OFICINA REFERENCIA"
+        dgCtes.Columns("OFICINAREFERENCIA").Width = 200
+        dgCtes.Columns("OFICINAREFERENCIA").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
 
 
     End Sub

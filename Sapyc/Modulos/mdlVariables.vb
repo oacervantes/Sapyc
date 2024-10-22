@@ -14,7 +14,7 @@
     Friend sBaseDatos = "BDPPTO", sServidor = "GTMEXVTS27\SQL2016", sUsuarioBD = "Contabilidad", sContraseñaBD As String = "Control2025%Porfis"
     Friend sBaseDatosUsr As String = "CONUSRSYS"
 
-    Friend sBaseDatosInv = "BDINV2223"
+    Friend sBaseDatosInv = "BDINV2425"
     Friend sServidorInv = "GTMEXVTS27\SQL2016", sUsuarioBDInv = "Contabilidad", sContraseñaBDInv As String = "Control2025%Porfis"
 
     Friend sBaseDatosLocal = "SAPYC2"
@@ -30,7 +30,7 @@
     Friend sNombreUsuario As String = "DIRECCIÓN GENERAL"
     Friend sFmtDbl As String = "#,##0.00"
 
-    Friend iPeriodoFirma = 0, iAñoActAn As Integer = 2023 'BuscaCampoTextoCon("SELECT TOP (1) iAñoAnteriorAc FROM PARAMETROS_REPORTES")
+    Friend iPeriodoFirma = 10, iAñoActAn As Integer = 2023 'BuscaCampoTextoCon("SELECT TOP (1) iAñoAnteriorAc FROM PARAMETROS_REPORTES")
 
     '==================== Variables para el formato de grids ====================
     Friend FuenteCelda As New Font("Calibri", 11, FontStyle.Regular)
@@ -53,5 +53,17 @@
     Friend naranja_Salles As Color = Color.FromArgb(255, 125, 30)
     Friend verde_Salles As Color = Color.FromArgb(155, 215, 50)
     Friend gris_Salles As Color = Color.FromArgb(233, 40, 65)
+
+    Friend bronce_Salles As Color = Color.FromArgb(205, 127, 50)
+    Friend bronce_letra_Salles As Color = Color.FromArgb(108, 44, 18)
+
+    Friend oro_Salles As Color = Color.FromArgb(239, 184, 16)
+    Friend oro_letra_Salles As Color = Color.FromArgb(102, 67, 0)
+
+    Friend platinum_Salles As Color = Color.FromArgb(229, 229, 229)
+    Friend platinum_letra_Salles As Color = Color.FromArgb(85, 85, 85)
+
+    Friend diamante_Salles As Color = Color.FromArgb(250, 250, 250)
+    Friend diamante_letra_Salles As Color = Color.FromArgb(170, 170, 170)
 
 End Module

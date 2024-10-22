@@ -181,7 +181,7 @@
             Prop.IdProp = IdProp
             Prop.IdTipo = IdTipo
         Else
-            Prop = New frmPropuesta
+            Prop = New FrmPropuestasNvo
             Prop.IdProp = IdProp
         End If
 

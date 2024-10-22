@@ -8,8 +8,8 @@
         Try
 
             clsLocal = New clsAccesoDatos("gtmexvts27\sql2016", "SAPYC2", "Contabilidad", "Control2025%Porfis")
-            clsDatos = New clsAccesoDatos("gtmexvts27\sql2016", "BDINV2324", "Contabilidad", "Control2025%Porfis")
-            clsDatosInv = New clsAccesoDatos("gtmexvts27\sql2016", "BDINV2324", "Contabilidad", "Control2025%Porfis")
+            clsDatos = New clsAccesoDatos("gtmexvts27\sql2016", "BDINV2425", "Contabilidad", "Control2025%Porfis")
+            clsDatosInv = New clsAccesoDatos("gtmexvts27\sql2016", "BDINV2425", "Contabilidad", "Control2025%Porfis")
             clsDatosConINV = New clsAccesoDatos("gtmexvts27\sql2016", "CONTROLINV", "Contabilidad", "Control2025%Porfis")
             clsDatosProp = New clsAccesoDatos("gtmexvts27\sql2016", "BDCTRL_PROPS", "Contabilidad", "Control2025%Porfis")
 
