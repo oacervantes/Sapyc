@@ -94,7 +94,6 @@ Partial Class FrmPropuestasNvo
         Me.CRechazo = New System.Windows.Forms.ComboBox()
         Me.lblCartaArreglo = New System.Windows.Forms.Label()
         Me.lblMotiRecha = New System.Windows.Forms.Label()
-        Me.Ctiposervicio = New System.Windows.Forms.ComboBox()
         Me.txtHonorarios = New System.Windows.Forms.TextBox()
         Me.lblCicloOperativo = New System.Windows.Forms.Label()
         Me.lblHonorariosEstimados = New System.Windows.Forms.Label()
@@ -314,6 +313,8 @@ Partial Class FrmPropuestasNvo
         Me.txtPagWeb = New System.Windows.Forms.TextBox()
         Me.Bcancelar = New System.Windows.Forms.Button()
         Me.Baceptar = New System.Windows.Forms.Button()
+        Me.Ctiposervicio = New System.Windows.Forms.ComboBox()
+        Me.txtServiciotexto = New System.Windows.Forms.TextBox()
         Me.panPrincipal.SuspendLayout()
         Me.Cuadro.SuspendLayout()
         Me.Contacto.SuspendLayout()
@@ -766,6 +767,7 @@ Partial Class FrmPropuestasNvo
         '
         'gpBoxDatosServicio
         '
+        Me.gpBoxDatosServicio.Controls.Add(Me.txtServiciotexto)
         Me.gpBoxDatosServicio.Controls.Add(Me.txtPorWO)
         Me.gpBoxDatosServicio.Controls.Add(Me.lblPorAjuste)
         Me.gpBoxDatosServicio.Controls.Add(Me.txtHorasEstimadas)
@@ -1163,17 +1165,6 @@ Partial Class FrmPropuestasNvo
         Me.lblMotiRecha.Text = "Motivo del rechazo:"
         Me.lblMotiRecha.Visible = False
         '
-        'Ctiposervicio
-        '
-        Me.Ctiposervicio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.Ctiposervicio.DropDownWidth = 310
-        Me.Ctiposervicio.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Ctiposervicio.FormattingEnabled = True
-        Me.Ctiposervicio.Location = New System.Drawing.Point(150, 33)
-        Me.Ctiposervicio.Name = "Ctiposervicio"
-        Me.Ctiposervicio.Size = New System.Drawing.Size(263, 26)
-        Me.Ctiposervicio.TabIndex = 1
-        '
         'txtHonorarios
         '
         Me.txtHonorarios.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -1521,13 +1512,9 @@ Partial Class FrmPropuestasNvo
         'dgvFuncionarios
         '
         Me.dgvFuncionarios.AllowUserToAddRows = False
-        Me.dgvFuncionarios.AllowUserToDeleteRows = False
-        Me.dgvFuncionarios.AllowUserToResizeColumns = False
-        Me.dgvFuncionarios.AllowUserToResizeRows = False
         Me.dgvFuncionarios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvFuncionarios.BackgroundColor = System.Drawing.Color.WhiteSmoke
         Me.dgvFuncionarios.ColumnHeadersHeight = 40
-        Me.dgvFuncionarios.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.dgvFuncionarios.GridColor = System.Drawing.Color.Gainsboro
         Me.dgvFuncionarios.Location = New System.Drawing.Point(36, 30)
         Me.dgvFuncionarios.Name = "dgvFuncionarios"
@@ -1536,7 +1523,7 @@ Partial Class FrmPropuestasNvo
         DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(127, Byte), Integer))
         Me.dgvFuncionarios.RowsDefaultCellStyle = DataGridViewCellStyle1
         Me.dgvFuncionarios.RowTemplate.Height = 26
-        Me.dgvFuncionarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvFuncionarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
         Me.dgvFuncionarios.Size = New System.Drawing.Size(648, 254)
         Me.dgvFuncionarios.TabIndex = 0
         '
@@ -3577,6 +3564,27 @@ Partial Class FrmPropuestasNvo
         Me.Baceptar.Text = "&Guardar"
         Me.Baceptar.UseVisualStyleBackColor = True
         '
+        'Ctiposervicio
+        '
+        Me.Ctiposervicio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.Ctiposervicio.DropDownWidth = 310
+        Me.Ctiposervicio.Enabled = False
+        Me.Ctiposervicio.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Ctiposervicio.FormattingEnabled = True
+        Me.Ctiposervicio.Location = New System.Drawing.Point(150, 33)
+        Me.Ctiposervicio.Name = "Ctiposervicio"
+        Me.Ctiposervicio.Size = New System.Drawing.Size(263, 26)
+        Me.Ctiposervicio.TabIndex = 1
+        '
+        'txtServiciotexto
+        '
+        Me.txtServiciotexto.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtServiciotexto.Location = New System.Drawing.Point(151, 33)
+        Me.txtServiciotexto.MaxLength = 120
+        Me.txtServiciotexto.Name = "txtServiciotexto"
+        Me.txtServiciotexto.Size = New System.Drawing.Size(263, 25)
+        Me.txtServiciotexto.TabIndex = 372
+        '
         'FrmPropuestasNvo
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -3741,7 +3749,6 @@ Partial Class FrmPropuestasNvo
     Friend WithEvents CRechazo As ComboBox
     Friend WithEvents lblCartaArreglo As Label
     Friend WithEvents lblMotiRecha As Label
-    Friend WithEvents Ctiposervicio As ComboBox
     Friend WithEvents txtHonorarios As TextBox
     Friend WithEvents lblCicloOperativo As Label
     Friend WithEvents lblHonorariosEstimados As Label
@@ -3970,4 +3977,6 @@ Partial Class FrmPropuestasNvo
     Friend WithEvents Label48 As Label
     Friend WithEvents txtAcercamiento As TextBox
     Friend WithEvents txtServicio As TextBox
+    Friend WithEvents txtServiciotexto As TextBox
+    Friend WithEvents Ctiposervicio As ComboBox
 End Class

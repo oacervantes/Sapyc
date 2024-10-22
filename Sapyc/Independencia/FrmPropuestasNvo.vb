@@ -2376,6 +2376,7 @@ Public Class FrmPropuestasNvo
                     End If
 
                     Ctiposervicio.Text = DtDatos(0)("SERVICIO").ToString()
+                    txtServiciotexto.Text = DtDatos(0)("SERVICIO").ToString()
                     Cayorevision.Text = DtDatos(0)("ANIOREV").ToString()
                     Cciclooperativo.Text = DtDatos(0)("CICLO").ToString()
 
