@@ -58,8 +58,15 @@ Module Util
     Public Usuario_HabilitaPre As String
     Public Usuario_ResumenGpo As String
     Public Usuario_Gpo As String
-
     Public Usuario_Sapyc As String
+
+    Public sServidor As String
+    Public sCorreo As String
+    Public sContraseña As String
+    Public iPuerto As Integer
+    Public bSSL As Boolean
+
+
 
 
     Public Function CadenaConexionSapyc() As String
@@ -79,7 +86,7 @@ Module Util
 
 
         ' ******** Nuevo Servidor de SALLES
-        lacadena = "data source = gtmexvts27\sql2016; initial catalog = BDINV2223; user id = Contabilidad; password = Control2025%Porfis"           ' nuevo servidor
+        lacadena = "data source = gtmexvts27\sql2016; initial catalog = BDINV2425; user id = Contabilidad; password = Control2025%Porfis"           ' nuevo servidor
 
         Return lacadena
     End Function
@@ -90,7 +97,7 @@ Module Util
 
 
         ' ******** Nuevo Servidor de SALLES
-        lacadena = "data source = gtmexvts27\sql2016; initial catalog = BDINV2223; user id = Contabilidad; password = Control2025%Porfis"           ' nuevo servidor
+        lacadena = "data source = gtmexvts27\sql2016; initial catalog = BDINV2425; user id = Contabilidad; password = Control2025%Porfis"           ' nuevo servidor
 
         Return lacadena
     End Function
@@ -293,9 +300,12 @@ Module Util
         End If
 
         Try
-            Dim correo As New MailMessage With {
-                .From = New MailAddress(sCorreo)
-            }
+            'Dim correo As New MailMessage With {
+            '    .From = New MailAddress(sCorreo)
+            '}
+
+            Dim correo As New System.Net.Mail.MailMessage()
+            correo.From = New System.Net.Mail.MailAddress("siat@mx.gt.com")
 
             If cPrioridad = "A" Then
                 correo.Priority = MailPriority.High
@@ -324,14 +334,15 @@ Module Util
 
             'Configuracion del servidor
             Dim Servidor As New SmtpClient With {
-                .Host = sServidor,
-                .Port = iPuerto,
-                .EnableSsl = bSSL,
-                .UseDefaultCredentials = False,
-                .DeliveryMethod = SmtpDeliveryMethod.Network
+                .Host = "smtp.office365.com", 'sServidor,
+            .Port = 587, ' iPuerto,
+            .EnableSsl = True, 'bSSL,
+            .UseDefaultCredentials = False,
+            .DeliveryMethod = SmtpDeliveryMethod.Network
             }
             ServicePointManager.SecurityProtocol = CType(3072, SecurityProtocolType)
-            Servidor.Credentials = New NetworkCredential(sCorreo, sContraseña)
+            Servidor.Credentials = New NetworkCredential("siat@mx.gt.com", "mndwlbkdqkqdpbrk")
+
             Servidor.Send(correo)
             bEnviado = True
         Catch e As Exception

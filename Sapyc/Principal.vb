@@ -1,6 +1,5 @@
 ﻿Public Class Principal
 
-
     Private Sub Principal_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
         Dim frm As New frmLogin
@@ -267,5 +266,6 @@
 
         AbrirPantalla(frm, "frmCtesDelPeriodo")
     End Sub
+
 
 End Class

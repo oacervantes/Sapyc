@@ -3578,7 +3578,7 @@ Partial Class FrmPropuestasNvo
         '
         Me.Baceptar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Baceptar.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Baceptar.Location = New System.Drawing.Point(11, 777)
+        Me.Baceptar.Location = New System.Drawing.Point(20, 777)
         Me.Baceptar.Name = "Baceptar"
         Me.Baceptar.Size = New System.Drawing.Size(130, 25)
         Me.Baceptar.TabIndex = 6
