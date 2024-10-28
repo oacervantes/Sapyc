@@ -39,7 +39,7 @@ Partial Class FrmPropuestasNvo
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.rbSiIndepen = New System.Windows.Forms.RadioButton()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.txtMensaje = New System.Windows.Forms.TextBox()
         Me.rbNOIndepen = New System.Windows.Forms.RadioButton()
         Me.gpBoxCheck = New System.Windows.Forms.GroupBox()
         Me.ComboNivel = New System.Windows.Forms.ComboBox()
@@ -503,7 +503,7 @@ Partial Class FrmPropuestasNvo
         Me.gpBoxConflict.Controls.Add(Me.Label2)
         Me.gpBoxConflict.Controls.Add(Me.Label4)
         Me.gpBoxConflict.Controls.Add(Me.rbSiIndepen)
-        Me.gpBoxConflict.Controls.Add(Me.TextBox1)
+        Me.gpBoxConflict.Controls.Add(Me.txtMensaje)
         Me.gpBoxConflict.Controls.Add(Me.rbNOIndepen)
         Me.gpBoxConflict.Location = New System.Drawing.Point(20, 63)
         Me.gpBoxConflict.Name = "gpBoxConflict"
@@ -544,16 +544,16 @@ Partial Class FrmPropuestasNvo
         Me.rbSiIndepen.Text = "Si"
         Me.rbSiIndepen.UseVisualStyleBackColor = True
         '
-        'TextBox1
+        'txtMensaje
         '
-        Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.ForeColor = System.Drawing.Color.Blue
-        Me.TextBox1.Location = New System.Drawing.Point(19, 97)
-        Me.TextBox1.MaxLength = 120
-        Me.TextBox1.Multiline = True
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(338, 66)
-        Me.TextBox1.TabIndex = 368
+        Me.txtMensaje.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtMensaje.ForeColor = System.Drawing.Color.Blue
+        Me.txtMensaje.Location = New System.Drawing.Point(19, 97)
+        Me.txtMensaje.MaxLength = 120
+        Me.txtMensaje.Multiline = True
+        Me.txtMensaje.Name = "txtMensaje"
+        Me.txtMensaje.Size = New System.Drawing.Size(338, 66)
+        Me.txtMensaje.TabIndex = 368
         '
         'rbNOIndepen
         '
@@ -3958,7 +3958,7 @@ Partial Class FrmPropuestasNvo
     Friend WithEvents Label2 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents rbSiIndepen As RadioButton
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents txtMensaje As TextBox
     Friend WithEvents rbNOIndepen As RadioButton
     Friend WithEvents gpBoxCheck As GroupBox
     Friend WithEvents ComboNivel As ComboBox

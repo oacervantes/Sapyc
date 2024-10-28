@@ -2236,7 +2236,7 @@ Public Class FrmPropuestasNvo
         Dim sMensaje As String
 
         If rbSiIndepen.Checked Then
-            Msnj = txtMotivoIndepen.Text.ToUpper + "    " + "SI" + " ;"
+            Msnj = txtMensaje.Text.ToUpper + "    " + "SI" + " ;"
         ElseIf rbNOIndepen.Checked Then
             Msnj = "NO"
         End If
