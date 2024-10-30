@@ -1219,7 +1219,6 @@ Partial Class FrmPropuestasNvo
         '
         'txtServOtros
         '
-        Me.txtServOtros.Enabled = False
         Me.txtServOtros.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtServOtros.Location = New System.Drawing.Point(150, 66)
         Me.txtServOtros.MaxLength = 120
