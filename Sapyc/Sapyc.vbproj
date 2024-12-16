@@ -206,6 +206,12 @@
     <Compile Include="Independencia\frmClientesConflick.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Independencia\frmClientesRechazados.Designer.vb">
+      <DependentUpon>frmClientesRechazados.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Independencia\frmClientesRechazados.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Independencia\frmConsultaFolios.Designer.vb">
       <DependentUpon>frmConsultaFolios.vb</DependentUpon>
     </Compile>
@@ -485,6 +491,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Independencia\frmClientesConflick.resx">
       <DependentUpon>frmClientesConflick.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Independencia\frmClientesRechazados.resx">
+      <DependentUpon>frmClientesRechazados.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Independencia\frmConsultaFolios.resx">
       <DependentUpon>frmConsultaFolios.vb</DependentUpon>

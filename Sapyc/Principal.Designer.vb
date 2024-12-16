@@ -56,6 +56,7 @@ Partial Class Principal
         Me.ClientesRelacionadosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TodasLasSolicitudesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ClientesPorClaveDeTrabajoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ClientesDelPeriodoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuReportes = New System.Windows.Forms.ToolStripMenuItem()
         Me.itmReporteDireccion = New System.Windows.Forms.ToolStripMenuItem()
         Me.itmClientesReferenciados = New System.Windows.Forms.ToolStripMenuItem()
@@ -66,7 +67,7 @@ Partial Class Principal
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.BotonAltaPropuesta = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ClientesDelPeriodoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ClientesRechazadosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.Barra.SuspendLayout()
         Me.SuspendLayout()
@@ -90,7 +91,7 @@ Partial Class Principal
         'mnuSalir
         '
         Me.mnuSalir.Name = "mnuSalir"
-        Me.mnuSalir.Size = New System.Drawing.Size(98, 22)
+        Me.mnuSalir.Size = New System.Drawing.Size(180, 22)
         Me.mnuSalir.Text = "&Salir"
         '
         'MnTablas
@@ -208,7 +209,7 @@ Partial Class Principal
         '
         'MnuInde
         '
-        Me.MnuInde.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CargarListasNegrasSSGTToolStripMenuItem, Me.CargarToolStripMenuItem, Me.SolicitudesToolStripMenuItem1, Me.PartesRelacionadasToolStripMenuItem, Me.ClientesFacturaciónToolStripMenuItem, Me.ClientesConflickToolStripMenuItem, Me.EnvioCorreosToolStripMenuItem, Me.ConsultaPropuestasToolStripMenuItem, Me.ConsultaFoliosToolStripMenuItem, Me.ClientesRelacionadosToolStripMenuItem, Me.TodasLasSolicitudesToolStripMenuItem, Me.ClientesPorClaveDeTrabajoToolStripMenuItem, Me.ClientesDelPeriodoToolStripMenuItem})
+        Me.MnuInde.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CargarListasNegrasSSGTToolStripMenuItem, Me.CargarToolStripMenuItem, Me.SolicitudesToolStripMenuItem1, Me.PartesRelacionadasToolStripMenuItem, Me.ClientesFacturaciónToolStripMenuItem, Me.ClientesConflickToolStripMenuItem, Me.EnvioCorreosToolStripMenuItem, Me.ConsultaPropuestasToolStripMenuItem, Me.ConsultaFoliosToolStripMenuItem, Me.ClientesRelacionadosToolStripMenuItem, Me.TodasLasSolicitudesToolStripMenuItem, Me.ClientesPorClaveDeTrabajoToolStripMenuItem, Me.ClientesDelPeriodoToolStripMenuItem, Me.ClientesRechazadosToolStripMenuItem})
         Me.MnuInde.Name = "MnuInde"
         Me.MnuInde.Size = New System.Drawing.Size(101, 20)
         Me.MnuInde.Text = "Independencia"
@@ -286,6 +287,12 @@ Partial Class Principal
         Me.ClientesPorClaveDeTrabajoToolStripMenuItem.Name = "ClientesPorClaveDeTrabajoToolStripMenuItem"
         Me.ClientesPorClaveDeTrabajoToolStripMenuItem.Size = New System.Drawing.Size(247, 22)
         Me.ClientesPorClaveDeTrabajoToolStripMenuItem.Text = "Clientes por Clave de Trabajo"
+        '
+        'ClientesDelPeriodoToolStripMenuItem
+        '
+        Me.ClientesDelPeriodoToolStripMenuItem.Name = "ClientesDelPeriodoToolStripMenuItem"
+        Me.ClientesDelPeriodoToolStripMenuItem.Size = New System.Drawing.Size(247, 22)
+        Me.ClientesDelPeriodoToolStripMenuItem.Text = "Clientes del periodo"
         '
         'mnuReportes
         '
@@ -365,11 +372,11 @@ Partial Class Principal
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
         Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 40)
         '
-        'ClientesDelPeriodoToolStripMenuItem
+        'ClientesRechazadosToolStripMenuItem
         '
-        Me.ClientesDelPeriodoToolStripMenuItem.Name = "ClientesDelPeriodoToolStripMenuItem"
-        Me.ClientesDelPeriodoToolStripMenuItem.Size = New System.Drawing.Size(247, 22)
-        Me.ClientesDelPeriodoToolStripMenuItem.Text = "Clientes del periodo"
+        Me.ClientesRechazadosToolStripMenuItem.Name = "ClientesRechazadosToolStripMenuItem"
+        Me.ClientesRechazadosToolStripMenuItem.Size = New System.Drawing.Size(247, 22)
+        Me.ClientesRechazadosToolStripMenuItem.Text = "Clientes Rechazados"
         '
         'Principal
         '
@@ -438,4 +445,5 @@ Partial Class Principal
     Friend WithEvents mnuProspectos As ToolStripMenuItem
     Friend WithEvents RegistrarProspectoToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ClientesDelPeriodoToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ClientesRechazadosToolStripMenuItem As ToolStripMenuItem
 End Class

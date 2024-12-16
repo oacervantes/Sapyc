@@ -832,7 +832,7 @@ Public Class frmAltaConflick
                             ListaNombres += dr("NOMBRE").ToString() + ","
                         End If
                     Next
-                    ListaCorreos = ListaCorreos + "backgroundcheck@mx.gt.com" + "," + "independencia@mx.gt.com"
+                    ListaCorreos = ListaCorreos + "independencia@mx.gt.com"
                     EnvioCorreoSocio(ListaCorreos, ListaNombres.TrimEnd(","))
                 End If
             End With

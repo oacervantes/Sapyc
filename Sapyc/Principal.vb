@@ -267,5 +267,11 @@
         AbrirPantalla(frm, "frmCtesDelPeriodo")
     End Sub
 
+    Private Sub ClientesRechazadosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClientesRechazadosToolStripMenuItem.Click
+        Dim frm As New frmClientesRechazados
+
+        AbrirPantalla(frm, "frmClientesRechazados")
+    End Sub
+
 
 End Class
