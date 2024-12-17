@@ -34,7 +34,7 @@
                     For Each dr As DataRow In dtSolicitudes.Rows
 
                         drDat = DtDatos.NewRow
-                        drDat("IDPROP") = dr("IDPROP").ToString()
+                        'drDat("IDPROP") = dr("IDPROP").ToString()
                         drDat("NOMEMPRESA") = dr("NOMEMPRESA").ToString()
                         drDat("SOCIO") = dr("SOCIO").ToString()
                         drDat("GERENTE") = dr("GERENTE").ToString()
@@ -59,7 +59,7 @@
     End Sub
     Private Sub crearTabla()
         DtDatos = New DataTable
-        DtDatos.Columns.Add("IDPROP", GetType(System.String))
+        'DtDatos.Columns.Add("IDPROP", GetType(System.String))
         DtDatos.Columns.Add("NOMEMPRESA", GetType(System.String))
         DtDatos.Columns.Add("SOCIO", GetType(System.String))
         DtDatos.Columns.Add("GERENTE", GetType(System.String))
@@ -82,8 +82,28 @@
         End If
     End Sub
 
+    Private Sub btnExportar_Click(sender As Object, e As EventArgs) Handles btnExportar.Click
+        Dim dlg As New dlgExcel
+
+        Try
+            If MsgBox("¿Desea exportar la información a Excel?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Envío Excel") = MsgBoxResult.Yes Then
+                dlg.txtArchivo.Focus()
+                dlg.txtArchivo.Text = "Propuestas Rechazadas"
+                If dlg.ShowDialog = Windows.Forms.DialogResult.OK Then
+
+                    exportarRechazados(objExcel, gridClaves, dlg.txtDirectorio.Text, dlg.txtArchivo.Text)
+
+                Else
+                    Exit Sub
+                End If
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
+        End Try
+    End Sub
+
     Private Sub formatoGrid()
-        gridClaves.Columns("IDPROP").Visible = False
+        ' gridClaves.Columns("IDPROP").Visible = False
 
         gridClaves.Columns("NOMEMPRESA").HeaderText = "NOMBRE EMPRESA"
         gridClaves.Columns("NOMEMPRESA").Width = 300
@@ -161,7 +181,7 @@
                     For Each dr As DataRow In dtSolicitudes.Rows
 
                         drDat = DtDatos.NewRow
-                        drDat("IDPROP") = dr("IDPROP").ToString()
+                        'drDat("IDPROP") = dr("IDPROP").ToString()
                         drDat("NOMEMPRESA") = dr("NOMEMPRESA").ToString()
                         drDat("SOCIO") = dr("SOCIO").ToString()
                         drDat("GERENTE") = dr("GERENTE").ToString()
