@@ -6,7 +6,7 @@ Public Class frmAltaConflick
     Public IdTipo As Char
     Private ds As New DataSet
     Private BindingSource1 As Windows.Forms.BindingSource = New BindingSource
-    Public CveDivision, sNombreCte, sCveCliente, CveGerente, CveSocio, CveArea, CveOfi, sCveSocio, sCveGerente As String
+    Public CveDivision, sNombreCte, sCveCliente, CveGerente, CveSocio, CveArea, CveOfi, sCveSocio, sCveGerente, sMailGent, sMailSoc As String
     Private dtRfc, dtPropuesta, DtDatos, dtFuncionarios, dtAccionistas, dtOfiArea, dtGerentes, dtSocios, dtTrabajos As DataTable
     Private Nom, Apat, Amat, CargoTemp, perMoralTemp, PorcTemp, Colonia, Municipio, Estado, UsrSistema, Respuesta, sCveSoc, CveCorreo As String
     Private PasaNomb As Boolean = False
@@ -607,6 +607,7 @@ Public Class frmAltaConflick
                 dtSocios = .Item("paConsultaTrabajoRecurrente")
                 If dtSocios.Rows.Count > 0 Then
                     txtNombreSocio.Text = dtSocios(0)("NOMBRE")
+                    sMailSoc = dtSocios(0)("EMAIL")
                 End If
 
 
@@ -639,6 +640,7 @@ Public Class frmAltaConflick
                 dtGerentes = .Item("paConsultaTrabajoRecurrente")
                 If dtGerentes.Rows.Count > 0 Then
                     txtNombreGerente.Text = dtGerentes(0)("NOMBRE")
+                    sMailGent = dtGerentes(0)("EMAIL")
                 End If
 
 
@@ -933,7 +935,20 @@ Public Class frmAltaConflick
 
         End With
     End Sub
+    Private Sub BtnInfoIncompleta_Click(sender As Object, e As EventArgs) Handles BtnInfoIncompleta.Click
 
+        Dim Dlg As New dlgIncompletos
+
+        Dlg.sCliente = txtNombreCte.Text
+        Dlg.sCorreoSoc = sMailSoc
+        Dlg.sCorreoGnt = sMailGent
+
+        If Dlg.ShowDialog() = DialogResult.OK Then
+            Me.Close()
+        End If
+
+
+    End Sub
 
 
 

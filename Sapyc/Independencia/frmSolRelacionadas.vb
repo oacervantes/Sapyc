@@ -38,6 +38,7 @@
                         drDat = DtDatos.NewRow
                         drDat("FOLIO") = dr("IDPROP").ToString()
                         drDat("NOMCONTINICIAL") = dr("NOMEMPRESA").ToString()
+                        drDat("CTEFISCAL") = dr("CTEFISCAL").ToString()
                         drDat("OFICINA") = dr("OFICINA").ToString()
                         drDat("DIVISION") = dr("DIVISION").ToString()
                         'drDat("SOCIO") = dr("SOCIO").ToString()
@@ -70,6 +71,9 @@
 
             Me.Lista.Columns("NOMCONTINICIAL").HeaderText = "CONTACTO INICIAL"
             Me.Lista.Columns("NOMCONTINICIAL").Width = 250
+
+            Me.Lista.Columns("CTEFISCAL").HeaderText = "CLIENTE FISCAL"
+            Me.Lista.Columns("CTEFISCAL").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
 
             Me.Lista.Columns("OFICINA").HeaderText = "OFICINA"
             Me.Lista.Columns("OFICINA").Width = 100
@@ -145,6 +149,7 @@
         DtDatos = New DataTable
         DtDatos.Columns.Add("FOLIO", GetType(System.String))
         DtDatos.Columns.Add("NOMCONTINICIAL", GetType(System.String))
+        DtDatos.Columns.Add("CTEFISCAL", GetType(System.String))
         DtDatos.Columns.Add("OFICINA", GetType(System.String))
         DtDatos.Columns.Add("DIVISION", GetType(System.String))
         DtDatos.Columns.Add("REGISTRADAEL", GetType(System.String))

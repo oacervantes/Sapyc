@@ -194,6 +194,12 @@
     <Compile Include="dlgExcel.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Independencia\dlgIncompletos.Designer.vb">
+      <DependentUpon>dlgIncompletos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Independencia\dlgIncompletos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Independencia\frmAltaConflick.Designer.vb">
       <DependentUpon>frmAltaConflick.vb</DependentUpon>
     </Compile>
@@ -485,6 +491,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="dlgExcel.resx">
       <DependentUpon>dlgExcel.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Independencia\dlgIncompletos.resx">
+      <DependentUpon>dlgIncompletos.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Independencia\frmAltaConflick.resx">
       <DependentUpon>frmAltaConflick.vb</DependentUpon>

@@ -67,6 +67,7 @@
     Private Sub crearTabla()
         DtDatos.Columns.Add("FOLIO", GetType(System.String))
         DtDatos.Columns.Add("NOMCONTINICIAL", GetType(System.String))
+        DtDatos.Columns.Add("CTEFISCAL", GetType(System.String))
         DtDatos.Columns.Add("OFICINA", GetType(System.String))
         DtDatos.Columns.Add("DIVISION", GetType(System.String))
         DtDatos.Columns.Add("REGISTRADAEL", GetType(System.String))
@@ -82,6 +83,9 @@
 
         Lista.Columns("NOMCONTINICIAL").HeaderText = "CONTACTO INICIAL"
         Lista.Columns("NOMCONTINICIAL").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+
+        Lista.Columns("CTEFISCAL").HeaderText = "CLIENTE FISCAL"
+        Lista.Columns("CTEFISCAL").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
 
         Lista.Columns("OFICINA").HeaderText = "OFICINA"
         Lista.Columns("OFICINA").Width = 150
@@ -126,6 +130,7 @@
                         drDat = DtDatos.NewRow
                         drDat("FOLIO") = dr("IDPROP").ToString()
                         drDat("NOMCONTINICIAL") = dr("NOMEMPRESA").ToString()
+                        drDat("CTEFISCAL") = dr("CTEFISCAL").ToString()
                         drDat("OFICINA") = dr("OFICINA").ToString()
                         drDat("DIVISION") = dr("DIVISION").ToString()
                         'drDat("SOCIO") = dr("SOCIO").ToString()

@@ -64,6 +64,7 @@ Partial Class frmAltaConflick
         Me.lblCliente = New System.Windows.Forms.Label()
         Me.btnGuardar = New System.Windows.Forms.Button()
         Me.btnSalir = New System.Windows.Forms.Button()
+        Me.BtnInfoIncompleta = New System.Windows.Forms.Button()
         Me.panPrincipal.SuspendLayout()
         CType(Me.gridClaves, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Cuadro.SuspendLayout()
@@ -507,11 +508,24 @@ Partial Class frmAltaConflick
         Me.btnSalir.Text = "Cerrar"
         Me.btnSalir.UseVisualStyleBackColor = True
         '
+        'BtnInfoIncompleta
+        '
+        Me.BtnInfoIncompleta.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.BtnInfoIncompleta.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnInfoIncompleta.Location = New System.Drawing.Point(178, 625)
+        Me.BtnInfoIncompleta.Name = "BtnInfoIncompleta"
+        Me.BtnInfoIncompleta.Size = New System.Drawing.Size(258, 25)
+        Me.BtnInfoIncompleta.TabIndex = 8
+        Me.BtnInfoIncompleta.Text = "Rechazo información incompleta"
+        Me.BtnInfoIncompleta.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.BtnInfoIncompleta.UseVisualStyleBackColor = True
+        '
         'frmAltaConflick
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(715, 657)
+        Me.Controls.Add(Me.BtnInfoIncompleta)
         Me.Controls.Add(Me.btnGuardar)
         Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.panPrincipal)
@@ -579,4 +593,5 @@ Partial Class frmAltaConflick
     Friend WithEvents dgTrabajos As DataGridView
     Friend WithEvents txtServicio As TextBox
     Friend WithEvents Label3 As Label
+    Friend WithEvents BtnInfoIncompleta As Button
 End Class

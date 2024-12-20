@@ -19,6 +19,7 @@
         DtDatos = New DataTable
         DtDatos.Columns.Add("FOLIO", GetType(System.String))
         DtDatos.Columns.Add("NOMCONTINICIAL", GetType(System.String))
+        DtDatos.Columns.Add("CTEFISCAL", GetType(System.String))
         DtDatos.Columns.Add("OFICINA", GetType(System.String))
         DtDatos.Columns.Add("DIVISION", GetType(System.String))
         DtDatos.Columns.Add("SOCIO", GetType(System.String))
@@ -66,6 +67,7 @@
                         drDat = DtDatos.NewRow
                         drDat("FOLIO") = dr("IDPROP").ToString()
                         drDat("NOMCONTINICIAL") = dr("NOMEMPRESA").ToString()
+                        drDat("CTEFISCAL") = dr("CTEFISCAL").ToString()
                         drDat("OFICINA") = dr("OFICINA").ToString()
                         drDat("DIVISION") = dr("DIVISION").ToString()
                         drDat("SOCIO") = dr("SOCIO").ToString()
@@ -132,7 +134,11 @@
         gridClaves.Columns("ESTATUS").Visible = False
 
         gridClaves.Columns("NOMCONTINICIAL").HeaderText = "CONTACTO INICIAL"
-        gridClaves.Columns("NOMCONTINICIAL").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        gridClaves.Columns("NOMCONTINICIAL").Width = 250
+
+
+        gridClaves.Columns("CTEFISCAL").HeaderText = "CLIENTE FISCAL"
+        gridClaves.Columns("CTEFISCAL").Width = 250
 
         gridClaves.Columns("OFICINA").HeaderText = "OFICINA"
         gridClaves.Columns("OFICINA").Width = 90
