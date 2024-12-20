@@ -34,10 +34,10 @@ Public Class FrmPropuestasNvo
     Private dtEjeY, dtEjeX, dtMatriz, dtOtrosDatos As DataTable
     Private drPaises As DataRow
     Private sNameRpt As String = "Frm Propuesta."
-    Private Nom, Apat, Amat, CargoTemp, perMoralTemp, PorcTemp, Colonia, Municipio, Estado, SECTOR, sCveSocio, sCveGerente, sSocRef As String
+    Private Nom, Apat, Amat, CargoTemp, perMoralTemp, PorcTemp, Colonia, Municipio, Estado, SECTOR, sCveSocio, sCveGerente, sSocRef, sNombGerente, sNomSocio As String
     Private Referido, Tenedora, tpoRechazo, stProp, stPropH, RevInde As Integer
     Public TpoProp, tpoMoneda As Char
-    Public CveOfi, CveArea, sCveGpo, sGpoDesc, sEstatus As String
+    Public CveOfi, CveArea, sCveGpo, sGpoDesc, sEstatus, sMailGent, sMailSoc As String
     Private Cveofiref, Cvearearef, Cvesocref, Socio, CveSocio, CveGerente, CveCte, NomEmpresa, CveEmpRef, NombEmpRef, Indus, SubSec, SubNiv, sCveProspecto As String
     Private bHabilitar As Boolean = False
     Private iIngSoc, iLiqSoc, iRenSoc, iIma, iRep, iRie, iEsp, iFila, iCargable, iLiquidez, iIngresos, iRentabilidad As Integer
@@ -2256,7 +2256,6 @@ Public Class FrmPropuestasNvo
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
         End Try
     End Sub
-
     Private Sub EnviarCorreoAviso() 'Este correo es para avisar al socio encargado de oficina, que se ha solicitado generar un folio con cobranza incompleta.
         Dim sMensaje As String
 
@@ -2285,9 +2284,6 @@ Public Class FrmPropuestasNvo
             MsgBox("No ha sido posible enviar el correo debido a fallas con el servidor de correo.", MsgBoxStyle.Exclamation, "SIAT")
         End Try
     End Sub
-
-
-
     Private Sub ConsultaPropuesta()
 
         Try
@@ -2931,6 +2927,7 @@ Public Class FrmPropuestasNvo
                 dtSocios = .Item("paConsultaTrabajoRecurrente")
                 If dtSocios.Rows.Count > 0 Then
                     txtSoc.Text = dtSocios(0)("NOMBRE")
+                    sMailSoc = dtSocios(0)("EMAIL")
                 End If
 
 
@@ -2994,6 +2991,7 @@ Public Class FrmPropuestasNvo
                 dtGerentes = .Item("paConsultaTrabajoRecurrente")
                 If dtGerentes.Rows.Count > 0 Then
                     txtGerente.Text = dtGerentes(0)("NOMBRE")
+                    sMailGent = dtGerentes(0)("EMAIL")
                 End If
 
 
@@ -3904,6 +3902,21 @@ Public Class FrmPropuestasNvo
     End Sub
 
 
+    '''RECHAZOS POR DATOS INCOMPLETOS
+    Private Sub BtnInfoIncompleta_Click(sender As Object, e As EventArgs) Handles BtnInfoIncompleta.Click
+        Dim Dlg As New dlgIncompletos
+
+        Dlg.sCliente = Cnombre.Text.ToUpper
+        Dlg.sCorreoSoc = sCveSocio
+        Dlg.sCorreoGnt = sCveGerente
+        Dlg.idProp = IdProp
+        Dlg.sNombeSoc = txtSoc.Text.ToUpper()
+        Dlg.sNombGen = txtGerente.Text.ToUpper()
+
+        If Dlg.ShowDialog() = DialogResult.OK Then
+            Me.Close()
+        End If
+    End Sub
 
 
 End Class

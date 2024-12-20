@@ -315,6 +315,7 @@ Partial Class FrmPropuestasNvo
         Me.txtPagWeb = New System.Windows.Forms.TextBox()
         Me.Bcancelar = New System.Windows.Forms.Button()
         Me.Baceptar = New System.Windows.Forms.Button()
+        Me.BtnInfoIncompleta = New System.Windows.Forms.Button()
         Me.panPrincipal.SuspendLayout()
         Me.Cuadro.SuspendLayout()
         Me.Contacto.SuspendLayout()
@@ -3584,11 +3585,24 @@ Partial Class FrmPropuestasNvo
         Me.Baceptar.Text = "&Guardar"
         Me.Baceptar.UseVisualStyleBackColor = True
         '
+        'BtnInfoIncompleta
+        '
+        Me.BtnInfoIncompleta.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.BtnInfoIncompleta.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnInfoIncompleta.Location = New System.Drawing.Point(183, 777)
+        Me.BtnInfoIncompleta.Name = "BtnInfoIncompleta"
+        Me.BtnInfoIncompleta.Size = New System.Drawing.Size(258, 25)
+        Me.BtnInfoIncompleta.TabIndex = 11
+        Me.BtnInfoIncompleta.Text = "Rechazo información incompleta"
+        Me.BtnInfoIncompleta.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.BtnInfoIncompleta.UseVisualStyleBackColor = True
+        '
         'FrmPropuestasNvo
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.ClientSize = New System.Drawing.Size(1056, 810)
+        Me.Controls.Add(Me.BtnInfoIncompleta)
         Me.Controls.Add(Me.panPrincipal)
         Me.Controls.Add(Me.Bcancelar)
         Me.Controls.Add(Me.Baceptar)
@@ -3978,4 +3992,5 @@ Partial Class FrmPropuestasNvo
     Friend WithEvents txtServicio As TextBox
     Friend WithEvents txtServiciotexto As TextBox
     Friend WithEvents Ctiposervicio As ComboBox
+    Friend WithEvents BtnInfoIncompleta As Button
 End Class

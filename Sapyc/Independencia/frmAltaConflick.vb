@@ -942,6 +942,9 @@ Public Class frmAltaConflick
         Dlg.sCliente = txtNombreCte.Text
         Dlg.sCorreoSoc = sMailSoc
         Dlg.sCorreoGnt = sMailGent
+        Dlg.idProp = IdProp
+        Dlg.sNombeSoc = txtNombreSocio.Text.ToUpper()
+        Dlg.sNombGen = txtNombreGerente.Text.ToUpper()
 
         If Dlg.ShowDialog() = DialogResult.OK Then
             Me.Close()
