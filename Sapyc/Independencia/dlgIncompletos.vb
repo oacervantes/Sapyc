@@ -61,8 +61,9 @@
                 CorreosSoc += sCorreoSoc + ";"
             End If
 
-            Dim sCorreo As String() = CorreosSoc.Split(";")
             CorreosSoc = CorreosSoc.TrimEnd(";")
+            Dim sCorreo As String() = CorreosSoc.Split(";")
+
 
             sMensaje = "<html><head></head><body>" &
             "<img src='cid:imagen1' alt='Salles, Sainz - Grant Thornton' style='width:300px;height:auto;'>" &

@@ -3907,8 +3907,8 @@ Public Class FrmPropuestasNvo
         Dim Dlg As New dlgIncompletos
 
         Dlg.sCliente = Cnombre.Text.ToUpper
-        Dlg.sCorreoSoc = sCveSocio
-        Dlg.sCorreoGnt = sCveGerente
+        Dlg.sCorreoSoc = sMailSoc
+        Dlg.sCorreoGnt = sMailGent
         Dlg.idProp = IdProp
         Dlg.sNombeSoc = txtSoc.Text.ToUpper()
         Dlg.sNombGen = txtGerente.Text.ToUpper()
