@@ -2267,10 +2267,10 @@ Public Class FrmPropuestasNvo
             "<img src='cid:imagen1' alt='Salles, Sainz - Grant Thornton' style='width:300px;height:auto;'>" &
             "<h1 style=""height: 50px; background: #4f2d7f; font-family: Calibri, Arial; color: #FFF; padding-right: 30px; text-align: center;"">REVISIÓN DE PROPUESTAS</h1>" & vbNewLine & vbNewLine & vbNewLine &
             "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 20px; color: #4f2d7f; margin-left: 25px; margin-top: 20px; padding: 15px;"">Estimado Equipo: " & NombSoc.TrimEnd(";") & ", </p> " & vbNewLine & vbNewLine &
-            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 16px; margin-left: 25px; margin-top: 20px; padding: 15px;"">Se ha realizado la actualización de la investigación de antecedentes y de la verificación de conflictos de interés y/o amenazas de independencia en el ciclo 24-25 de la entidad </p> " & vbNewLine & vbNewLine &
+            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 16px; margin-left: 25px; margin-top: 20px; padding: 15px;"">Se ha realizado la investigación de antecedentes y de la verificación de conflictos de interés y/o amenazas de independencia en el ciclo 24-25 de la entidad </p> " & vbNewLine & vbNewLine &
             "<table style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">" & vbNewLine &
             "<tr><td>Cliente:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & NomEmpresa.ToString() & "</b></td></tr>" & vbNewLine &
-            "<tr><td>De las respuestas recibidas :</td> <td></td> <td></td> <td style=""text-align: left;""><b> con la cual " & Msnj.ToString.ToUpper() & "  " & "se identificó situación alguna que afecte nuestra independencia. ""</b></td></tr>" & vbNewLine &
+            "<tr><td>De las respuestas recibidas :</td> <td></td> <td></td> <td style=""text-align: left;""><b> con la cual " & Msnj.ToString.ToUpper() & "  " & "se identificó situación alguna que afecte nuestra independencia,Se deberá continuar con los demás procesos establecidos por la Firma para concluir la aceptación/reaceptación del prospecto/cliente. ""</b></td></tr>" & vbNewLine &
             "<tr><td>RFC:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & Crfc.Text.ToUpper() & "</b></td></tr>" & vbNewLine &
             "<tr><td>Servicio:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & Ctiposervicio.Text.ToUpper() & "</b></td></tr>" & vbNewLine &
             "</table>" & vbNewLine &

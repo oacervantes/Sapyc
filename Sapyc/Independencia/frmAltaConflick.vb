@@ -893,21 +893,37 @@ Public Class frmAltaConflick
         End Try
     End Sub
     Private Sub EnvioCorreoSocio(Correo As String, NombSocio As String)
-        Dim sCorreo(), sMensaje As String
+        'Dim sCorreo(), sMensaje As String
         Try
 
-            sCorreo = Correo.Split(",")
-            sMensaje = "Estimado(a) " & NombSocio & ", " & vbNewLine & vbNewLine
+            'sCorreo = Correo.Split(",")
+            'sMensaje = "Estimado(a) " & NombSocio & ", " & vbNewLine & vbNewLine
 
-            If rbNo.Checked Then
-                Respuesta = "NO"
-            ElseIf rbSi.Checked Then
-                Respuesta = "SI"
+            'If rbNo.Checked Then
+            '    Respuesta = "NO"
+            'ElseIf rbSi.Checked Then
+            '    Respuesta = "SI"
+            'End If
+
+            'sMensaje &= "Se ha realizado la investigación de antecedentes de la entidad para facturar " & txtNombreCte.Text.ToUpper() & "  , con la cual " & Respuesta.ToString() & " se identificó situación alguna que afecte nuestra independencia. "
+            'sMensaje &= "Para cualquier aclaración sobre el tema contactar a cecilia.coronel@mx.gt.com y heidi.martinez@mx.gt.com"
+            'envioCorreos(sCorreo, sMensaje, "Propuestas Clientes - Sapyc")
+
+
+            Dim sMensaje As String = ""
+
+            If rbSi.Checked Then
+                sMensaje = txtMotivoIndepen.Text.ToUpper + "    " + "SI" + " ;"
+            ElseIf rbNo.Checked Then
+                sMensaje = "NO"
             End If
 
-            sMensaje &= "Se ha realizado la investigación de antecedentes de la entidad para facturar " & txtNombreCte.Text.ToUpper() & "  , con la cual " & Respuesta.ToString() & " se identificó situación alguna que afecte nuestra independencia. "
-            sMensaje &= "Para cualquier aclaración sobre el tema contactar a cecilia.coronel@mx.gt.com y heidi.martinez@mx.gt.com"
-            envioCorreos(sCorreo, sMensaje, "Propuestas Clientes - Sapyc")
+            Dim sCorreo As String() = Correo.Split(",")
+            'Dim sCorreo As String() = ("Mario.Rodriguez@mx.gt.com, Mario.Rodriguez@mx.gt.com").Split(",")
+
+            EnviarCorreoAviso(sCorreo, sMensaje, NombSocio)
+
+
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
         End Try
@@ -952,7 +968,30 @@ Public Class frmAltaConflick
 
 
     End Sub
+    Private Sub EnviarCorreoAviso(sCorreos() As String, ByVal sMensajeResp As String, ByVal NombSocio As String) 'Este correo es para avisar al socio encargado de oficina, que se ha solicitado generar un folio con cobranza incompleta.
+        Dim sMensaje As String
+        Try
+            sMensaje = "<html><head></head><body>" &
+            "<img src='cid:imagen1' alt='Salles, Sainz - Grant Thornton' style='width:300px;height:auto;'>" &
+            "<h1 style=""height: 50px; background: #4f2d7f; font-family: Calibri, Arial; color: #FFF; padding-right: 30px; text-align: center;"">REVISIÓN DE PROPUESTAS</h1>" & vbNewLine & vbNewLine & vbNewLine &
+            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 20px; color: #4f2d7f; margin-left: 25px; margin-top: 20px; padding: 15px;"">Estimado Equipo: " & NombSocio.TrimEnd(";") & ", </p> " & vbNewLine & vbNewLine &
+            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 16px; margin-left: 25px; margin-top: 20px; padding: 15px;"">Se ha realizado la investigación de antecedentes y de la verificación de conflictos de interés y/o amenazas de independencia en el ciclo 24-25 de la entidad </p> " & vbNewLine & vbNewLine &
+            "<table style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">" & vbNewLine &
+            "<tr><td>Cliente:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & txtNombreCte.Text.ToString() & "</b></td></tr>" & vbNewLine &
+            "<tr><td>De las respuestas recibidas :</td> <td></td> <td></td> <td style=""text-align: left;""><b> con la cual " & sMensajeResp.ToString.ToUpper() & "  " & "se identificó situación alguna que afecte nuestra independencia,Se deberá continuar con los demás procesos establecidos por la Firma para concluir la aceptación/reaceptación del prospecto/cliente. ""</b></td></tr>" & vbNewLine &
+            "<tr><td>Servicio:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & txtServicio.Text.ToUpper() & "</b></td></tr>" & vbNewLine &
+            "</table>" & vbNewLine &
+            "<p style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">Para cualquier aclaración sobre el tema contactar a cecilia.coronel@mx.gt.com y heidi.martinez@mx.gt.com" & vbNewLine &
+            "<hr>" &
+            "<p style=""margin-left: 20px; font-style: italic; font-family: Arial; font-size: 12px;"">Este es un correo automático, favor de no responder a esta cuenta.</p>" & vbNewLine &
+            "</body></html>"
 
+            EnviarCorreosHTML(sCorreos, sMensaje, "Propuestas Clientes - Sapyc Reacepctación de solicitud de autorización.")
+        Catch ex As Exception
+            MsgBox("No ha sido posible enviar el correo debido a fallas con el servidor de correo.", MsgBoxStyle.Exclamation, "SIAT")
+        End Try
+
+    End Sub
 
 
 End Class
