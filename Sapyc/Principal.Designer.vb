@@ -68,6 +68,8 @@ Partial Class Principal
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.BotonAltaPropuesta = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.menuFolios = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AutorizaFoliosDeInformeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.Barra.SuspendLayout()
         Me.SuspendLayout()
@@ -75,7 +77,7 @@ Partial Class Principal
         'MenuStrip1
         '
         Me.MenuStrip1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ArchivoToolStripMenuItem, Me.MnTablas, Me.mnuProspectos, Me.MnPropuestas, Me.ClientesToolStripMenuItem, Me.UtileriasToolStripMenuItem, Me.MnuInde, Me.mnuReportes})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ArchivoToolStripMenuItem, Me.MnTablas, Me.mnuProspectos, Me.MnPropuestas, Me.ClientesToolStripMenuItem, Me.UtileriasToolStripMenuItem, Me.MnuInde, Me.mnuReportes, Me.menuFolios})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(1026, 24)
@@ -91,7 +93,7 @@ Partial Class Principal
         'mnuSalir
         '
         Me.mnuSalir.Name = "mnuSalir"
-        Me.mnuSalir.Size = New System.Drawing.Size(98, 22)
+        Me.mnuSalir.Size = New System.Drawing.Size(180, 22)
         Me.mnuSalir.Text = "&Salir"
         '
         'MnTablas
@@ -379,6 +381,20 @@ Partial Class Principal
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
         Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 40)
         '
+        'menuFolios
+        '
+        Me.menuFolios.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AutorizaFoliosDeInformeToolStripMenuItem})
+        Me.menuFolios.Name = "menuFolios"
+        Me.menuFolios.Size = New System.Drawing.Size(50, 20)
+        Me.menuFolios.Text = "Folios"
+        Me.menuFolios.Visible = False
+        '
+        'AutorizaFoliosDeInformeToolStripMenuItem
+        '
+        Me.AutorizaFoliosDeInformeToolStripMenuItem.Name = "AutorizaFoliosDeInformeToolStripMenuItem"
+        Me.AutorizaFoliosDeInformeToolStripMenuItem.Size = New System.Drawing.Size(221, 22)
+        Me.AutorizaFoliosDeInformeToolStripMenuItem.Text = "Autoriza Folios de Informe"
+        '
         'Principal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -447,4 +463,6 @@ Partial Class Principal
     Friend WithEvents RegistrarProspectoToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ClientesDelPeriodoToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ClientesRechazadosToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents menuFolios As ToolStripMenuItem
+    Friend WithEvents AutorizaFoliosDeInformeToolStripMenuItem As ToolStripMenuItem
 End Class

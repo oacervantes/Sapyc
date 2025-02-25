@@ -92,6 +92,11 @@
             Case "5"
                 mnuReportes.Visible = True
                 MnPropuestas.Visible = False
+            Case "6"
+                menuFolios.Visible = True
+                MnPropuestas.Visible = False
+                mnuProspectos.Visible = False
+                mnuReportes.Visible = False
         End Select
 
         MenuStrip1.Visible = True
@@ -273,5 +278,9 @@
         AbrirPantalla(frm, "frmClientesRechazados")
     End Sub
 
+    Private Sub AutorizaFoliosDeInformeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AutorizaFoliosDeInformeToolStripMenuItem.Click
+        Dim frm As New frmAutorizaSolicitudFolios
 
+        AbrirPantalla(frm, "frmAutorizaSolicitudFolios")
+    End Sub
 End Class

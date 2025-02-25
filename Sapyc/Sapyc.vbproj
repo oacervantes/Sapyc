@@ -164,6 +164,18 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="clsAccesoDatos.vb" />
+    <Compile Include="Folios\frmAutorizaSolicitudFolios.designer.vb">
+      <DependentUpon>frmAutorizaSolicitudFolios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Folios\frmAutorizaSolicitudFolios.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Folios\frmDetalleAutorizaSolicitudFolio.designer.vb">
+      <DependentUpon>frmDetalleAutorizaSolicitudFolio.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Folios\frmDetalleAutorizaSolicitudFolio.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmenviocorreos.Designer.vb">
       <DependentUpon>frmenviocorreos.vb</DependentUpon>
     </Compile>
@@ -476,6 +488,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Catalogos\TipoServicio.resx">
       <DependentUpon>TipoServicio.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Folios\frmAutorizaSolicitudFolios.resx">
+      <DependentUpon>frmAutorizaSolicitudFolios.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Folios\frmDetalleAutorizaSolicitudFolio.resx">
+      <DependentUpon>frmDetalleAutorizaSolicitudFolio.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmenviocorreos.resx">
       <DependentUpon>frmenviocorreos.vb</DependentUpon>
