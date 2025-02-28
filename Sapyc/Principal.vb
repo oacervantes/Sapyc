@@ -283,4 +283,11 @@
 
         AbrirPantalla(frm, "frmAutorizaSolicitudFolios")
     End Sub
+
+    Private Sub ConsultaDeFoliosDeInformeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConsultaDeFoliosDeInformeToolStripMenuItem.Click
+        Dim frm As New frmConsultaFolios
+
+        AbrirPantalla(frm, "frmConsultaFolios")
+    End Sub
+
 End Class

@@ -61,6 +61,8 @@ Partial Class Principal
         Me.mnuReportes = New System.Windows.Forms.ToolStripMenuItem()
         Me.itmReporteDireccion = New System.Windows.Forms.ToolStripMenuItem()
         Me.itmClientesReferenciados = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menuFolios = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AutorizaFoliosDeInformeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Barra = New System.Windows.Forms.ToolStrip()
         Me.BotonSalir = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
@@ -68,8 +70,7 @@ Partial Class Principal
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.BotonAltaPropuesta = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
-        Me.menuFolios = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AutorizaFoliosDeInformeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ConsultaDeFoliosDeInformeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.Barra.SuspendLayout()
         Me.SuspendLayout()
@@ -323,6 +324,20 @@ Partial Class Principal
         Me.itmClientesReferenciados.Size = New System.Drawing.Size(205, 22)
         Me.itmClientesReferenciados.Text = "Clientes Referenciados"
         '
+        'menuFolios
+        '
+        Me.menuFolios.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AutorizaFoliosDeInformeToolStripMenuItem, Me.ConsultaDeFoliosDeInformeToolStripMenuItem})
+        Me.menuFolios.Name = "menuFolios"
+        Me.menuFolios.Size = New System.Drawing.Size(50, 20)
+        Me.menuFolios.Text = "Folios"
+        Me.menuFolios.Visible = False
+        '
+        'AutorizaFoliosDeInformeToolStripMenuItem
+        '
+        Me.AutorizaFoliosDeInformeToolStripMenuItem.Name = "AutorizaFoliosDeInformeToolStripMenuItem"
+        Me.AutorizaFoliosDeInformeToolStripMenuItem.Size = New System.Drawing.Size(238, 22)
+        Me.AutorizaFoliosDeInformeToolStripMenuItem.Text = "Autoriza Folios de Informe"
+        '
         'Barra
         '
         Me.Barra.AutoSize = False
@@ -381,19 +396,11 @@ Partial Class Principal
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
         Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 40)
         '
-        'menuFolios
+        'ConsultaDeFoliosDeInformeToolStripMenuItem
         '
-        Me.menuFolios.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AutorizaFoliosDeInformeToolStripMenuItem})
-        Me.menuFolios.Name = "menuFolios"
-        Me.menuFolios.Size = New System.Drawing.Size(50, 20)
-        Me.menuFolios.Text = "Folios"
-        Me.menuFolios.Visible = False
-        '
-        'AutorizaFoliosDeInformeToolStripMenuItem
-        '
-        Me.AutorizaFoliosDeInformeToolStripMenuItem.Name = "AutorizaFoliosDeInformeToolStripMenuItem"
-        Me.AutorizaFoliosDeInformeToolStripMenuItem.Size = New System.Drawing.Size(221, 22)
-        Me.AutorizaFoliosDeInformeToolStripMenuItem.Text = "Autoriza Folios de Informe"
+        Me.ConsultaDeFoliosDeInformeToolStripMenuItem.Name = "ConsultaDeFoliosDeInformeToolStripMenuItem"
+        Me.ConsultaDeFoliosDeInformeToolStripMenuItem.Size = New System.Drawing.Size(238, 22)
+        Me.ConsultaDeFoliosDeInformeToolStripMenuItem.Text = "Consulta de Folios de Informe"
         '
         'Principal
         '
@@ -465,4 +472,5 @@ Partial Class Principal
     Friend WithEvents ClientesRechazadosToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents menuFolios As ToolStripMenuItem
     Friend WithEvents AutorizaFoliosDeInformeToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ConsultaDeFoliosDeInformeToolStripMenuItem As ToolStripMenuItem
 End Class

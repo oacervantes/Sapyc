@@ -67,7 +67,7 @@ Partial Class frmAutorizaSolicitudFolios
         DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.gridDatos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
-        Me.gridDatos.ColumnHeadersHeight = 40
+        Me.gridDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.gridDatos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.gridDatos.GridColor = System.Drawing.Color.Gainsboro
         Me.gridDatos.Location = New System.Drawing.Point(11, 49)

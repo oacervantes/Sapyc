@@ -60,8 +60,11 @@
     Private Sub CreaTabla()
         dtSolicitudes.Columns.Add("CVEEMPSOL", GetType(System.String))
         dtSolicitudes.Columns.Add("SOLICITO", GetType(System.String))
+        dtSolicitudes.Columns.Add("SOCIO", GetType(System.String))
+        dtSolicitudes.Columns.Add("ASOCIADO", GetType(System.String))
         dtSolicitudes.Columns.Add("CVETRA", GetType(System.String))
         dtSolicitudes.Columns.Add("CLIENTE", GetType(System.String))
+        dtSolicitudes.Columns.Add("RELACIONADO", GetType(System.String))
         dtSolicitudes.Columns.Add("IMPEST", GetType(System.Decimal))
         dtSolicitudes.Columns.Add("IMPCOB", GetType(System.Decimal))
         dtSolicitudes.Columns.Add("IMPPC", GetType(System.Decimal))
@@ -104,12 +107,22 @@
         gridDatos.Columns("SOLICITO").HeaderText = "SOLICITO"
         gridDatos.Columns("SOLICITO").Width = 250
 
+        gridDatos.Columns("SOCIO").HeaderText = "SOCIO"
+        gridDatos.Columns("SOCIO").Width = 250
+
+        gridDatos.Columns("ASOCIADO").HeaderText = "ASOCIADO"
+        gridDatos.Columns("ASOCIADO").Width = 250
+
         gridDatos.Columns("CVETRA").HeaderText = "CVETRA"
         gridDatos.Columns("CVETRA").Width = 150
 
         gridDatos.Columns("CLIENTE").HeaderText = "CLIENTE"
         gridDatos.Columns("CLIENTE").Width = 250
         gridDatos.Columns("CLIENTE").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
+
+        gridDatos.Columns("RELACIONADO").HeaderText = "RELACIONADO"
+        gridDatos.Columns("RELACIONADO").Width = 250
+        gridDatos.Columns("RELACIONADO").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
 
         gridDatos.Columns("IMPEST").HeaderText = "HONORARIOS ESTIMADOS"
         gridDatos.Columns("IMPEST").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
