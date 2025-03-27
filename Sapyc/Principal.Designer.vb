@@ -63,6 +63,7 @@ Partial Class Principal
         Me.itmClientesReferenciados = New System.Windows.Forms.ToolStripMenuItem()
         Me.menuFolios = New System.Windows.Forms.ToolStripMenuItem()
         Me.AutorizaFoliosDeInformeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ConsultaDeFoliosDeInformeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Barra = New System.Windows.Forms.ToolStrip()
         Me.BotonSalir = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
@@ -70,7 +71,6 @@ Partial Class Principal
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.BotonAltaPropuesta = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ConsultaDeFoliosDeInformeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.Barra.SuspendLayout()
         Me.SuspendLayout()
@@ -94,7 +94,7 @@ Partial Class Principal
         'mnuSalir
         '
         Me.mnuSalir.Name = "mnuSalir"
-        Me.mnuSalir.Size = New System.Drawing.Size(180, 22)
+        Me.mnuSalir.Size = New System.Drawing.Size(98, 22)
         Me.mnuSalir.Text = "&Salir"
         '
         'MnTablas
@@ -317,6 +317,7 @@ Partial Class Principal
         Me.itmReporteDireccion.Name = "itmReporteDireccion"
         Me.itmReporteDireccion.Size = New System.Drawing.Size(205, 22)
         Me.itmReporteDireccion.Text = "Reporte de la Dirección"
+        Me.itmReporteDireccion.Visible = False
         '
         'itmClientesReferenciados
         '
@@ -337,6 +338,12 @@ Partial Class Principal
         Me.AutorizaFoliosDeInformeToolStripMenuItem.Name = "AutorizaFoliosDeInformeToolStripMenuItem"
         Me.AutorizaFoliosDeInformeToolStripMenuItem.Size = New System.Drawing.Size(238, 22)
         Me.AutorizaFoliosDeInformeToolStripMenuItem.Text = "Autoriza Folios de Informe"
+        '
+        'ConsultaDeFoliosDeInformeToolStripMenuItem
+        '
+        Me.ConsultaDeFoliosDeInformeToolStripMenuItem.Name = "ConsultaDeFoliosDeInformeToolStripMenuItem"
+        Me.ConsultaDeFoliosDeInformeToolStripMenuItem.Size = New System.Drawing.Size(238, 22)
+        Me.ConsultaDeFoliosDeInformeToolStripMenuItem.Text = "Consulta de Folios de Informe"
         '
         'Barra
         '
@@ -395,12 +402,6 @@ Partial Class Principal
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
         Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 40)
-        '
-        'ConsultaDeFoliosDeInformeToolStripMenuItem
-        '
-        Me.ConsultaDeFoliosDeInformeToolStripMenuItem.Name = "ConsultaDeFoliosDeInformeToolStripMenuItem"
-        Me.ConsultaDeFoliosDeInformeToolStripMenuItem.Size = New System.Drawing.Size(238, 22)
-        Me.ConsultaDeFoliosDeInformeToolStripMenuItem.Text = "Consulta de Folios de Informe"
         '
         'Principal
         '
