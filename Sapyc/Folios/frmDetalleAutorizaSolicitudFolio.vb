@@ -1,13 +1,17 @@
 ﻿Public Class frmDetalleAutorizaSolicitudFolio
 
-    Public sCvetra, sCliente, sSocioSol, sMotivoSolicitud, sMail, sNombreSol As String
+    Public sCvetra, sCliente, sSocioSol, sMotivoSolicitud, sMail, sNombreSol, sMailSoc, sMailGer As String
     Public dImpest, dImpcob, dImppc As Decimal
     Private sNameRpt As String = "Autoriza folio de informe"
+    Private dtDatos As New DataTable
+    Dim sCorreo As String()
 
     Private Sub frmDetalleAutorizaSolicitudFolio_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         lblCliente.Text = sCliente
         lblTrabajo.Text = sCvetra
         txtObservaciones.Text = sMotivoSolicitud
+
+        ConsultaCoreos(sCvetra)
 
         lblUno.Text = Format(dImpest, sFmtDbl)
         lblDos.Text = Format(dImpcob, sFmtDbl)
@@ -80,7 +84,7 @@
 
         Try
             'sCorreos = "Octavio.A.Cervantes@mx.gt.com, Mario.Rodriguez@mx.gt.com"
-            Dim sCorreo As String() = {Correo, "mario.rodriguez@mx.gt.com"}
+            ' = {Correo, "mario.rodriguez@mx.gt.com"}
 
             sMensaje = "<html><head></head><body>" &
             "<img src='cid:imagen1' alt='Salles, Sainz - Grant Thornton' style='width:300px;height:auto;'>" &
@@ -100,6 +104,39 @@
             EnviarCorreosHTML(sCorreo, sMensaje, "Solicitud de Autorización para Folio de Informe")
         Catch ex As Exception
             MsgBox("No ha sido posible enviar el correo debido a fallas con el servidor de correo.", MsgBoxStyle.Exclamation, "SIAT")
+        End Try
+    End Sub
+    Private Sub ConsultaCoreos(sCvetra As String)
+        Try
+            Dim sTabla As String = "tbDatos"
+
+            With ds.Tables
+                LimpiarConsultaTabla(ds.Tables, sTabla)
+
+                With clsDatosInv
+                    .subClearParameters()
+                    .subAddParameter("@iOpcion", 17, SqlDbType.Int, ParameterDirection.Input)
+                    .subAddParameter("@sCveTra", sCvetra, SqlDbType.VarChar, ParameterDirection.Input)
+                End With
+
+                .Add(clsDatosInv.funExecuteSPDataTable("paFoliosInforme", sTabla))
+
+                dtDatos = .Item(sTabla)
+                If dtDatos.Rows.Count > 0 Then
+                    sMailSoc = dtDatos.Rows(0).Item("MAILSOC").ToString()
+                    sMailGer = dtDatos.Rows(0).Item("MAILGER").ToString()
+
+                    If sMailSoc <> "" Then
+                        sCorreo = {sMailSoc, sMailGer, "mario.rodriguez@mx.gt.com"}
+                    End If
+
+
+                End If
+
+            End With
+
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
         End Try
     End Sub
 
