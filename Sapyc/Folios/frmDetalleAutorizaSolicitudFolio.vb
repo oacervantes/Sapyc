@@ -127,7 +127,7 @@
                     sMailGer = dtDatos.Rows(0).Item("MAILGER").ToString()
 
                     If sMailSoc <> "" Then
-                        sCorreo = {sMailSoc, sMailGer, "mario.rodriguez@mx.gt.com"}
+                        sCorreo = {sMailSoc, sMailGer, "mario.rodriguez@mx.gt.com", "Julio.C.Xicotencatl@mx.gt.com", "pablo.c.chavez@mx.gt.com"}
                     End If
 
 
