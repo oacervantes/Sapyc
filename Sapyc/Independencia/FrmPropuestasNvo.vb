@@ -236,6 +236,7 @@ Public Class FrmPropuestasNvo
         If sTipo = 2 Then
             Dim nivel As Integer = ComboNivel.SelectedValue
             ActualizaNivel(nivel)
+            ActualizaCalificacionConflick(nivel)
             'ConsultaCorreosBack()
 
             DialogResult = Windows.Forms.DialogResult.OK
@@ -250,6 +251,7 @@ Public Class FrmPropuestasNvo
                 Ind = 2
             End If
             ActualizaConflict(Ind)
+            ActualizaCalificacionIndependencia(Ind)
             ConsultaCorreos()
             EnvioCorreoSocios()
 
@@ -2575,6 +2577,57 @@ Public Class FrmPropuestasNvo
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
         End Try
+    End Sub
+    Private Sub ActualizaCalificacionConflick(iCalif As Integer)
+
+        Try
+            With ds.Tables
+                With clsLocal
+                    .subClearParameters()
+
+                    .subAddParameter("@iOpcion", 32, SqlDbType.Int, ParameterDirection.Input)
+                    .subAddParameter("@iProp", IdProp, SqlDbType.Int, ParameterDirection.Input)
+                    .subAddParameter("@iNivRiesgo", iCalif, SqlDbType.Int, ParameterDirection.Input)
+
+
+                End With
+
+                If .Contains("paSapyc") Then
+                    .Remove("paSapyc")
+                End If
+
+                .Add(clsLocal.funExecuteSPDataTable("paSapyc"))
+            End With
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
+        End Try
+
+    End Sub
+    Private Sub ActualizaCalificacionIndependencia(iCalif As Integer)
+
+        Try
+            With ds.Tables
+                With clsLocal
+                    .subClearParameters()
+
+                    .subAddParameter("@iOpcion", 33, SqlDbType.Int, ParameterDirection.Input)
+                    .subAddParameter("@iProp", IdProp, SqlDbType.Int, ParameterDirection.Input)
+                    .subAddParameter("@bIndependencia", iCalif, SqlDbType.Int, ParameterDirection.Input)
+                    .subAddParameter("@sMotInd", txtMotivoIndepen.Text, SqlDbType.VarChar, ParameterDirection.Input)
+
+
+                End With
+
+                If .Contains("paSapyc") Then
+                    .Remove("paSapyc")
+                End If
+
+                .Add(clsLocal.funExecuteSPDataTable("paSapyc"))
+            End With
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
+        End Try
+
     End Sub
 
 #End Region
