@@ -34,7 +34,8 @@ Public Class frmLogin
             If dtUsuario.Rows.Count > 0 Then
                 sNombre = dtUsuario.Rows(0).Item("NOMBREUSR").ToString
                 sTipo = dtUsuario.Rows(0).Item("TIPO").ToString
-                Usuario_Num = dtUsuario.Rows(0).Item("PASSWORD").ToString
+                Usuario_Num = dtUsuario.Rows(0).Item("IDUSR").ToString
+
 
                 DialogResult = DialogResult.OK
             Else
