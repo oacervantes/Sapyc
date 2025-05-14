@@ -163,6 +163,18 @@
         dgCtes.Columns("CLASIFICACIONCTE").Width = 100
         dgCtes.Columns("CLASIFICACIONCTE").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
 
+        dgCtes.Columns("REFERENCIA").HeaderText = "REFERENCIA"
+        dgCtes.Columns("REFERENCIA").Width = 100
+        dgCtes.Columns("REFERENCIA").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+
+        dgCtes.Columns("SOCREF").HeaderText = "SOCIO REFERENCIA"
+        dgCtes.Columns("SOCREF").Width = 150
+        dgCtes.Columns("SOCREF").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+
+        dgCtes.Columns("PAISREF").HeaderText = "OFICINA REFERENCIA"
+        dgCtes.Columns("PAISREF").Width = 150
+        dgCtes.Columns("PAISREF").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+
 
     End Sub
 
