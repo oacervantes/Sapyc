@@ -276,10 +276,10 @@ Module mdlExcel
                 .Activate()
             End With
 
-            objCelda = objHojaExcel.Range("A1:W2")
+            objCelda = objHojaExcel.Range("A1:Z2")
             objCelda.Rows.RowHeight = 30
 
-            objCelda = objHojaExcel.Range("A4:W4")
+            objCelda = objHojaExcel.Range("A4:Z4")
             objCelda.Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.FromArgb(79, 45, 127))
             objCelda.Font.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.FromArgb(255, 255, 255))
             objCelda.WrapText = True
@@ -289,10 +289,10 @@ Module mdlExcel
 
             For x As Integer = 0 To grid.Rows.Count - 1
                 If x Mod 2 = 0 Then
-                    objCelda = objHojaExcel.Range("A" & x + 23 & ":W" & x + 23)
+                    objCelda = objHojaExcel.Range("A" & x + 23 & ":Z" & x + 23)
                     objCelda.Interior.Color = System.Drawing.ColorTranslator.ToOle(Color.Transparent)
                 Else
-                    objCelda = objHojaExcel.Range("A" & x + 23 & ":W" & x + 23)
+                    objCelda = objHojaExcel.Range("A" & x + 23 & ":Z" & x + 23)
                     objCelda.Interior.Color = System.Drawing.ColorTranslator.ToOle(Color.FromArgb(227, 231, 237))
                 End If
             Next
@@ -344,6 +344,13 @@ Module mdlExcel
             objCelda.Columns.ColumnWidth = 40
             objCelda = objHojaExcel.Range("W5")
             objCelda.Columns.ColumnWidth = 65
+            objCelda = objHojaExcel.Range("X5")
+            objCelda.Columns.ColumnWidth = 40
+            objCelda = objHojaExcel.Range("Y5")
+            objCelda.Columns.ColumnWidth = 45
+            objCelda = objHojaExcel.Range("Z5")
+            objCelda.Columns.ColumnWidth = 40
+
 
 
             objCelda = objHojaExcel.Range("A1").Resize(2, grid.Columns.Count)

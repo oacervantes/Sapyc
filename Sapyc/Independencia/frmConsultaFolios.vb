@@ -90,6 +90,11 @@
         dgFolios.Columns("TIENE LEAP | VOYAGER").Width = 100
         dgFolios.Columns("TIENE LEAP | VOYAGER").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
         dgFolios.Columns("ARCHIVO LEAP | VOYAGER").Width = 250
+
+        dgFolios.Columns("AUTORIZO").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        dgFolios.Columns("AUTORIZO").Width = 250
+        dgFolios.Columns("FECHAAUT").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        dgFolios.Columns("FECHAAUT").Width = 250
     End Sub
 
 
