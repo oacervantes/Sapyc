@@ -32,7 +32,7 @@ Partial Class FrmProspectos
         Me.btnEditar = New System.Windows.Forms.Button()
         Me.btnSalir = New System.Windows.Forms.Button()
         Me.btnEliminar = New System.Windows.Forms.Button()
-        Me.btnInicioPropuesta = New System.Windows.Forms.Button()
+        Me.btnAsignarSocio = New System.Windows.Forms.Button()
         CType(Me.gridProspectos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panPrincipal.SuspendLayout()
         Me.SuspendLayout()
@@ -143,23 +143,24 @@ Partial Class FrmProspectos
         Me.btnEliminar.Text = "Eliminar"
         Me.btnEliminar.UseVisualStyleBackColor = True
         '
-        'btnInicioPropuesta
+        'btnAsignarSocio
         '
-        Me.btnInicioPropuesta.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.btnInicioPropuesta.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnInicioPropuesta.Location = New System.Drawing.Point(471, 588)
-        Me.btnInicioPropuesta.Name = "btnInicioPropuesta"
-        Me.btnInicioPropuesta.Size = New System.Drawing.Size(181, 25)
-        Me.btnInicioPropuesta.TabIndex = 4
-        Me.btnInicioPropuesta.Text = "Iniciar Propuesta"
-        Me.btnInicioPropuesta.UseVisualStyleBackColor = True
+        Me.btnAsignarSocio.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.btnAsignarSocio.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAsignarSocio.Location = New System.Drawing.Point(434, 588)
+        Me.btnAsignarSocio.Name = "btnAsignarSocio"
+        Me.btnAsignarSocio.Size = New System.Drawing.Size(181, 25)
+        Me.btnAsignarSocio.TabIndex = 7
+        Me.btnAsignarSocio.Text = "Enviar a socio encargado"
+        Me.btnAsignarSocio.UseVisualStyleBackColor = True
+        Me.btnAsignarSocio.Visible = False
         '
         'FrmProspectos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.ClientSize = New System.Drawing.Size(1084, 621)
-        Me.Controls.Add(Me.btnInicioPropuesta)
+        Me.Controls.Add(Me.btnAsignarSocio)
         Me.Controls.Add(Me.btnEliminar)
         Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.btnEditar)
@@ -185,5 +186,5 @@ Partial Class FrmProspectos
     Friend WithEvents btnEditar As Button
     Friend WithEvents btnSalir As Button
     Friend WithEvents btnEliminar As Button
-    Friend WithEvents btnInicioPropuesta As Button
+    Friend WithEvents btnAsignarSocio As Button
 End Class

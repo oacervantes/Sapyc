@@ -192,5 +192,22 @@
             'insertarErrorLog(101, "Actualizar Ajustes Gastos", ex.Message, Usuario_Num, "actualizarAjustesGastos()")
         End Try
     End Sub
+    Public Sub InsertarErrorLog(iError As Integer, sReporte As String, sDescripcion As String, sUsuario As String, Optional sBloqueCod As String = "")
+        Try
+            With clsDatosConINV
+                .subClearParameters()
+                .subAddParameter("@iOpcion", 1, SqlDbType.Int, ParameterDirection.Input)
+                .subAddParameter("@iError", iError, SqlDbType.Int, ParameterDirection.Input)
+                .subAddParameter("@sReporte", sReporte, SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@sNomBloqCod", sBloqueCod, SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@sDescripcion", sDescripcion, SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@sUsuario", sUsuario, SqlDbType.VarChar, ParameterDirection.Input)
+
+                .funExecuteSP("paLogSIAT")
+            End With
+        Catch ex As Exception
+            MsgBox("Hubo un error al registrar la falla del log, intente de nuevo más tarde", MsgBoxStyle.Critical, "SIAT")
+        End Try
+    End Sub
 
 End Module

@@ -401,6 +401,12 @@
     <Compile Include="Prospectos\dlgIndustria.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Prospectos\DlgRevisionAsignaProspecto.Designer.vb">
+      <DependentUpon>DlgRevisionAsignaProspecto.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Prospectos\DlgRevisionAsignaProspecto.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Prospectos\dlgSubNivel.designer.vb">
       <DependentUpon>dlgSubNivel.vb</DependentUpon>
     </Compile>
@@ -417,6 +423,12 @@
       <DependentUpon>FrmContacto.vb</DependentUpon>
     </Compile>
     <Compile Include="Prospectos\FrmContacto.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Prospectos\FrmContactoBasico.Designer.vb">
+      <DependentUpon>FrmContactoBasico.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Prospectos\FrmContactoBasico.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Prospectos\FrmProspectos.designer.vb">
@@ -608,6 +620,9 @@
     <EmbeddedResource Include="Prospectos\dlgIndustria.resx">
       <DependentUpon>dlgIndustria.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Prospectos\DlgRevisionAsignaProspecto.resx">
+      <DependentUpon>DlgRevisionAsignaProspecto.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Prospectos\dlgSubNivel.resx">
       <DependentUpon>dlgSubNivel.vb</DependentUpon>
     </EmbeddedResource>
@@ -616,6 +631,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Prospectos\FrmContacto.resx">
       <DependentUpon>FrmContacto.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Prospectos\FrmContactoBasico.resx">
+      <DependentUpon>FrmContactoBasico.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Prospectos\FrmProspectos.resx">
       <DependentUpon>FrmProspectos.vb</DependentUpon>
