@@ -209,5 +209,25 @@
             MsgBox("Hubo un error al registrar la falla del log, intente de nuevo más tarde", MsgBoxStyle.Critical, "SIAT")
         End Try
     End Sub
+    Public Sub ConfigurarColumnasGrid(grid As DataGridView, columnName As String, headerText As String, width As Integer, alignment As Integer, bloqueo As Boolean)
+        grid.Columns(columnName).Frozen = bloqueo
+        grid.Columns(columnName).HeaderText = headerText
+
+        If width <> 0 Then
+            grid.Columns(columnName).Width = width
+        Else
+            grid.Columns(columnName).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        End If
+
+        Select Case alignment
+            Case 1
+                grid.Columns(columnName).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
+            Case 2
+                grid.Columns(columnName).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+            Case 3
+                grid.Columns(columnName).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        End Select
+    End Sub
+
 
 End Module

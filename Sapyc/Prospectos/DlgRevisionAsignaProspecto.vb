@@ -2,19 +2,23 @@
 Imports PdfSharp.Pdf.Content.Objects
 
 Public Class DlgRevisionAsignaProspecto
+
     Private ds As New DataSet
     Private sNameRpt As String = "Dialog asignar cliente prospecto a encargado"
 
-    Private dtProspectos, dtSocios, dtOficinas, dtDivisiones As DataTable
+    Private dtProspectos, dtSocios, dtOficinas, dtDivisiones, dtServicios As DataTable
 
-    Public sCliente, sCveProspecto As String
+    Public sCliente, sCveProspecto, sCveArea, sCveSocio As String
 
-    Private sCveSocio, sNombreSocio, sMailSocio As String
+    Private sNombreSocio, sMailSocio As String
     Private Resp As Boolean = True
 
     Private Sub DglRevisionDatosProspecto_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ListarOficinas()
         ListarDivisiones()
+        ListarServicio()
+        cboDivisiones.SelectedValue = sCveArea
+        cboDivisiones.Enabled = False
 
         lblCliente.Text = sCliente
     End Sub
@@ -82,41 +86,43 @@ Public Class DlgRevisionAsignaProspecto
 
         If cboOficinas.SelectedIndex <> 0 Then
             If cboOficinas.SelectedValue = "MEX" Then
-                cboDivisiones.Enabled = True
-                cboDivisiones.SelectedIndex = 0
+                'cboDivisiones.Enabled = True
+                'cboDivisiones.SelectedIndex = 0
 
-                cboSocio.DataSource = Nothing
-                cboSocio.Enabled = False
+                ListarSocios()
+                'cboSocio.DataSource = Nothing
+                'cboSocio.Enabled = False
             Else
-                cboDivisiones.Enabled = False
-                cboDivisiones.SelectedIndex = 0
+                'cboDivisiones.Enabled = False
+                'cboDivisiones.SelectedIndex = 0
 
-                ListarSociosEncargados()
-                cboSocio.Enabled = True
+                ListarSocios()
+                'cboSocio.Enabled = True
             End If
         Else
-            cboDivisiones.Enabled = False
-
-            cboSocio.DataSource = Nothing
-            cboSocio.Enabled = False
+            ' cboDivisiones.Enabled = False
+            'cboSocio.DataSource = Nothing
+            'cboSocio.Enabled = False
         End If
+
     End Sub
     Private Sub cboDivisiones_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboDivisiones.SelectedIndexChanged
-        If cboDivisiones.SelectedIndex = -1 Then
-            Exit Sub
-        End If
+        'If cboDivisiones.SelectedIndex = -1 Then
+        '    Exit Sub
+        'End If
 
-        If cboDivisiones.SelectedIndex <> 0 Then
-            cboSocio.Enabled = True
+        'If cboDivisiones.SelectedIndex <> 0 Then
+        '    cboSocio.Enabled = True
 
-            If cboOficinas.SelectedValue = "MEX" Then
-                ListarSociosEncargados()
-            End If
-        Else
-            cboSocio.DataSource = Nothing
-            cboSocio.Enabled = False
-        End If
+        '    If cboOficinas.SelectedValue = "MEX" Then
+        '        ListarSociosEncargados()
+        '    End If
+        'Else
+        '    cboSocio.DataSource = Nothing
+        '    cboSocio.Enabled = False
+        'End If
     End Sub
+
     Private Sub cboSocio_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles cboSocio.SelectionChangeCommitted
         sCveSocio = cboSocio.SelectedValue
         sNombreSocio = cboSocio.SelectedItem("sNombre").ToString
@@ -212,11 +218,71 @@ Public Class DlgRevisionAsignaProspecto
             dtSocios = Nothing
         End Try
     End Sub
+    Private Sub ListarSocios()
+        Try
+            Dim sTabla As String = "tbSocios"
+
+            With ds.Tables
+                LimpiarConsultaTabla(ds.Tables, sTabla)
+
+                With clsDatosProp
+                    .subClearParameters()
+                    .subAddParameter("@iOpcion", 13, SqlDbType.Int, ParameterDirection.Input)
+                    .subAddParameter("@sCveOficina", cboOficinas.SelectedValue, SqlDbType.VarChar, ParameterDirection.Input)
+
+                    If cboOficinas.SelectedIndex <> 0 Then
+                        .subAddParameter("@sCveDivision", cboDivisiones.SelectedValue, SqlDbType.VarChar, ParameterDirection.Input)
+                    End If
+                End With
+
+                .Add(clsDatosProp.funExecuteSPDataTable("paSSGTPropuestasProspectos", sTabla))
+
+                dtSocios = .Item(sTabla)
+            End With
+
+            If dtSocios.Rows.Count > 0 Then
+                cboSocio.DataSource = dtSocios
+                cboSocio.DisplayMember = "sNombre"
+                cboSocio.ValueMember = "sCveSocio"
+            End If
+        Catch ex As Exception
+            InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarSociosEncargados()")
+            MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
+            dtSocios = Nothing
+        End Try
+    End Sub
+    Private Sub ListarServicio()
+        Try
+            Dim sTabla As String = "tbServ"
+
+            With ds.Tables
+                LimpiarConsultaTabla(ds.Tables, sTabla)
+
+                With clsDatosProp
+                    .subClearParameters()
+                    .subAddParameter("@iOpcion", 15, SqlDbType.Int, ParameterDirection.Input)
+                    .subAddParameter("@sCveProspecto", sCveProspecto, SqlDbType.VarChar, ParameterDirection.Input)
+                End With
+
+                .Add(clsDatosProp.funExecuteSPDataTable("paSSGTPropuestasProspectos", sTabla))
+
+                dtServicios = .Item(sTabla)
+            End With
+
+            If dtServicios.Rows.Count > 0 Then
+                txtServicio.Text = dtServicios(0)("sDescripcionServicio")
+            End If
+        Catch ex As Exception
+            InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarDivisiones()")
+            MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
+            dtDivisiones = Nothing
+        End Try
+    End Sub
     Private Sub AsignarProspecto()
         Try
             With clsDatosProp
                 .subClearParameters()
-                .subAddParameter("@iOpcion", 4, SqlDbType.Int, ParameterDirection.Input)
+                .subAddParameter("@iOpcion", 14, SqlDbType.Int, ParameterDirection.Input)
                 .subAddParameter("@sCveProspecto", sCveProspecto, SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@iStatus", 2, SqlDbType.Int, ParameterDirection.Input)
                 .subAddParameter("@sCveEmp", sCveUsuario, SqlDbType.VarChar, ParameterDirection.Input)
@@ -229,7 +295,7 @@ Public Class DlgRevisionAsignaProspecto
                 ElseIf cboOficinas.SelectedValue = "PTN" Then
                     .subAddParameter("@sCveDivision", "PT", SqlDbType.VarChar, ParameterDirection.Input)
                 Else
-                    .subAddParameter("@sCveDivision", "", SqlDbType.VarChar, ParameterDirection.Input)
+                    .subAddParameter("@sCveDivision", cboDivisiones.SelectedValue, SqlDbType.VarChar, ParameterDirection.Input)
                 End If
 
                 .funExecuteSP("paSSGTPropuestasProspectos")
@@ -249,8 +315,8 @@ Public Class DlgRevisionAsignaProspecto
 
         Try
 
-            Dim sCorreo As String() = {Correo, "mario.rodriguez@mx.gt.com", "octavio.a.cervantes@mx.gt.com"}
-            'Dim sCorreo As String() = {"mario.rodriguez@mx.gt.com", "octavio.a.cervantes@mx.gt.com"}
+            ' Dim sCorreo As String() = {Correo, "mario.rodriguez@mx.gt.com", "octavio.a.cervantes@mx.gt.com"}
+            Dim sCorreo As String() = {"mario.rodriguez@mx.gt.com", "octavio.a.cervantes@mx.gt.com"}
 
             sMensaje = "<html><head></head><body>" &
             "<img src='cid:imagen1' alt='Salles, Sainz - Grant Thornton' style='width:300px;height:auto;'>" &
