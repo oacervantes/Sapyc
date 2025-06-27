@@ -86,49 +86,47 @@ Public Class DlgRevisionAsignaProspecto
 
         If cboOficinas.SelectedIndex <> 0 Then
             If cboOficinas.SelectedValue = "MEX" Then
-                'cboDivisiones.Enabled = True
-                'cboDivisiones.SelectedIndex = 0
+                cboDivisiones.Enabled = True
+                cboDivisiones.SelectedIndex = 0
 
                 ListarSocios()
-                'cboSocio.DataSource = Nothing
-                'cboSocio.Enabled = False
+                cboSocio.DataSource = Nothing
+                cboSocio.Enabled = False
             Else
-                'cboDivisiones.Enabled = False
-                'cboDivisiones.SelectedIndex = 0
+                cboDivisiones.Enabled = False
+                cboDivisiones.SelectedIndex = 0
 
                 ListarSocios()
-                'cboSocio.Enabled = True
+                cboSocio.Enabled = True
             End If
         Else
-            ' cboDivisiones.Enabled = False
-            'cboSocio.DataSource = Nothing
-            'cboSocio.Enabled = False
+            cboDivisiones.Enabled = False
+            cboSocio.DataSource = Nothing
+            cboSocio.Enabled = False
         End If
 
     End Sub
     Private Sub cboDivisiones_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboDivisiones.SelectedIndexChanged
-        'If cboDivisiones.SelectedIndex = -1 Then
-        '    Exit Sub
-        'End If
+        If cboDivisiones.SelectedIndex = -1 Then
+            Exit Sub
+        End If
 
-        'If cboDivisiones.SelectedIndex <> 0 Then
-        '    cboSocio.Enabled = True
+        If cboDivisiones.SelectedIndex <> 0 Then
+            cboSocio.Enabled = True
 
-        '    If cboOficinas.SelectedValue = "MEX" Then
-        '        ListarSociosEncargados()
-        '    End If
-        'Else
-        '    cboSocio.DataSource = Nothing
-        '    cboSocio.Enabled = False
-        'End If
+            If cboOficinas.SelectedValue = "MEX" Then
+                ListarSociosEncargados()
+            End If
+        Else
+            cboSocio.DataSource = Nothing
+            cboSocio.Enabled = False
+        End If
     End Sub
-
     Private Sub cboSocio_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles cboSocio.SelectionChangeCommitted
         sCveSocio = cboSocio.SelectedValue
         sNombreSocio = cboSocio.SelectedItem("sNombre").ToString
         sMailSocio = cboSocio.SelectedItem("EMAIL").ToString
     End Sub
-
     Private Sub ListarOficinas()
         Try
             Dim sTabla As String = "tbOficinas"
@@ -298,10 +296,10 @@ Public Class DlgRevisionAsignaProspecto
                     .subAddParameter("@sCveDivision", cboDivisiones.SelectedValue, SqlDbType.VarChar, ParameterDirection.Input)
                 End If
 
-                .funExecuteSP("paSSGTPropuestasProspectos")
+                '.funExecuteSP("paSSGTPropuestasProspectos")
             End With
 
-            EnviarCorreoAviso(sMailSocio, sNombreSocio)
+            'EnviarCorreoAviso(sMailSocio, sNombreSocio)
 
             MsgBox("Se asignó al cliente prospecto correctamente.", MsgBoxStyle.Information, "SIAT")
             DialogResult = DialogResult.OK

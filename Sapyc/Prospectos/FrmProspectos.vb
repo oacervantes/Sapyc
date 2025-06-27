@@ -129,7 +129,7 @@
 
     End Sub
     Private Sub BtnAsignarSocio_Click(sender As Object, e As EventArgs) Handles btnAsignarSocio.Click
-        'Dim dlg As New DlgRevisionAsignaProspecto
+        Dim dlg As New DlgRevisionAsignaProspecto
 
         If gridProspectos.CurrentRow IsNot Nothing Then
 
@@ -144,16 +144,17 @@
                 Exit Sub
             End If
 
-            'dlg.sCveProspecto = gridProspectos.CurrentRow.Cells("sCveProspecto").Value
-            'dlg.sCliente = gridProspectos.CurrentRow.Cells("sCliente").Value
+            dlg.sCveProspecto = gridProspectos.CurrentRow.Cells("sCveProspecto").Value
+            dlg.sCliente = gridProspectos.CurrentRow.Cells("sCliente").Value
+            dlg.sCveArea = sCveArea
 
-            'If dlg.ShowDialog = DialogResult.OK Then
-            ConsultaEnviaCorreos()
-            AsignarProspecto()
-            ListarProspectos()
-            'Else
-            '    Exit Sub
-            'End If
+            If dlg.ShowDialog = DialogResult.OK Then
+                ConsultaEnviaCorreos()
+                AsignarProspecto()
+                ListarProspectos()
+            Else
+                Exit Sub
+            End If
         Else
             MsgBox("Seleccione a un prospecto para poder generar una propuesta.", MsgBoxStyle.Exclamation, "SIAT")
         End If
