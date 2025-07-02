@@ -4,7 +4,7 @@ Partial Class FrmContacto
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
     <System.Diagnostics.DebuggerNonUserCode()>
-    Protected Overrides Sub Dispose( disposing As Boolean)
+    Protected Overrides Sub Dispose(disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
                 components.Dispose()
@@ -27,6 +27,9 @@ Partial Class FrmContacto
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmContacto))
         Me.panMenu = New System.Windows.Forms.Panel()
+        Me.panMensajesError = New System.Windows.Forms.Panel()
+        Me.txtMensaje = New System.Windows.Forms.TextBox()
+        Me.lblTituloError = New System.Windows.Forms.Label()
         Me.txtClaveProspecto = New System.Windows.Forms.Label()
         Me.lnkAccionistas = New System.Windows.Forms.LinkLabel()
         Me.lnkFuncionarios = New System.Windows.Forms.LinkLabel()
@@ -41,11 +44,31 @@ Partial Class FrmContacto
         Me.panDatosGenerales = New System.Windows.Forms.Panel()
         Me.gpBoxDatosDG = New System.Windows.Forms.GroupBox()
         Me.Lista = New System.Windows.Forms.DataGridView()
+        Me.txtRazonSocial = New System.Windows.Forms.TextBox()
+        Me.lblIdSAC = New System.Windows.Forms.Label()
+        Me.txtIdSAC = New System.Windows.Forms.TextBox()
         Me.gpBoxTipoNegocio = New System.Windows.Forms.GroupBox()
         Me.rdPersonaFisica = New System.Windows.Forms.RadioButton()
         Me.rdPersonalMoral = New System.Windows.Forms.RadioButton()
-        Me.txtRazonSocial = New System.Windows.Forms.TextBox()
         Me.gpBoxServicio = New System.Windows.Forms.GroupBox()
+        Me.cboModalidades = New System.Windows.Forms.ComboBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.DateTimePicker4 = New System.Windows.Forms.DateTimePicker()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.txtFechaEntregaReporte = New System.Windows.Forms.DateTimePicker()
+        Me.lblFechaEntregaReporte = New System.Windows.Forms.Label()
+        Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
+        Me.lblPeriodoServicioA = New System.Windows.Forms.Label()
+        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.lblPeriodoServicio = New System.Windows.Forms.Label()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.cboIdioma = New System.Windows.Forms.ComboBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.rdIdiomaNo = New System.Windows.Forms.RadioButton()
+        Me.rdIdiomaSi = New System.Windows.Forms.RadioButton()
+        Me.cboDatosGeneralesServicio = New System.Windows.Forms.ComboBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.lblDatosGeneralesDivision = New System.Windows.Forms.Label()
         Me.panDivisiones = New System.Windows.Forms.Panel()
         Me.rdAuditoria = New System.Windows.Forms.RadioButton()
         Me.rdIBC = New System.Windows.Forms.RadioButton()
@@ -76,7 +99,6 @@ Partial Class FrmContacto
         Me.panRDCompañiaControl = New System.Windows.Forms.Panel()
         Me.rdControladoraSi = New System.Windows.Forms.RadioButton()
         Me.rdControladoraNO = New System.Windows.Forms.RadioButton()
-        Me.lblMensajeErrorDatosGenerales = New System.Windows.Forms.Label()
         Me.txtSubsector = New System.Windows.Forms.TextBox()
         Me.lblRazonSocial = New System.Windows.Forms.Label()
         Me.lblNombreComercial = New System.Windows.Forms.Label()
@@ -105,6 +127,14 @@ Partial Class FrmContacto
         Me.rdEntidadSupervisadaSi = New System.Windows.Forms.RadioButton()
         Me.cboPais = New System.Windows.Forms.ComboBox()
         Me.gpBoxReferenciaGTI = New System.Windows.Forms.GroupBox()
+        Me.txtEstadoGTI = New System.Windows.Forms.TextBox()
+        Me.lblEstadoGTI = New System.Windows.Forms.Label()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.lblCorreoGerenteGTI = New System.Windows.Forms.Label()
+        Me.txtGerenteGTI = New System.Windows.Forms.TextBox()
+        Me.lblGerenteGTI = New System.Windows.Forms.Label()
+        Me.txtCorreoSocioGTI = New System.Windows.Forms.TextBox()
+        Me.lblCorreoSocioGTI = New System.Windows.Forms.Label()
         Me.cboReferenciaGTIOficina = New System.Windows.Forms.ComboBox()
         Me.cboReferenciaGTIPais = New System.Windows.Forms.ComboBox()
         Me.lblReferenciaGTIPais = New System.Windows.Forms.Label()
@@ -139,12 +169,21 @@ Partial Class FrmContacto
         Me.btnRegistroDatosGenerales = New System.Windows.Forms.Button()
         Me.panContactoInicial = New System.Windows.Forms.Panel()
         Me.lblMensajeCargaContactoInicial = New System.Windows.Forms.Label()
-        Me.btnCancelarContactoInicial = New System.Windows.Forms.Button()
-        Me.btnGuardarContactoInicial = New System.Windows.Forms.Button()
-        Me.btnRegistroContactoInicial = New System.Windows.Forms.Button()
-        Me.lblMensajeErrorContactoInicial = New System.Windows.Forms.Label()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.lblTituloCI = New System.Windows.Forms.Label()
+        Me.panDatosContactoInicial = New System.Windows.Forms.Panel()
+        Me.lblContactoInicialObligatorios = New System.Windows.Forms.Label()
+        Me.lblTituloDatosContacto = New System.Windows.Forms.Label()
+        Me.txtContactoInicialFecha = New System.Windows.Forms.DateTimePicker()
+        Me.lblContactoInicialFecha = New System.Windows.Forms.Label()
+        Me.lblContactoInicialPrimeraPersona = New System.Windows.Forms.Label()
+        Me.txtContactoInicialPrimerContacto = New System.Windows.Forms.TextBox()
         Me.gpBoxDatosContactoInicial = New System.Windows.Forms.GroupBox()
+        Me.txtContactoInicialCelular = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.lblAcercamientoWebProspecto = New System.Windows.Forms.Label()
         Me.lblContactoInicialNombre = New System.Windows.Forms.Label()
+        Me.txtAcercamientoWebProspecto = New System.Windows.Forms.TextBox()
         Me.txtContactoInicialExtension = New System.Windows.Forms.TextBox()
         Me.txtContactoInicialNombre = New System.Windows.Forms.TextBox()
         Me.lblContactoInicialExtension = New System.Windows.Forms.Label()
@@ -154,19 +193,13 @@ Partial Class FrmContacto
         Me.lblContactoInicialTelefono = New System.Windows.Forms.Label()
         Me.lblContactoInicialCorreo = New System.Windows.Forms.Label()
         Me.txtContactoInicialCorreo = New System.Windows.Forms.TextBox()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.lblTituloCI = New System.Windows.Forms.Label()
         Me.panAcercamiento = New System.Windows.Forms.Panel()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.lblMensajeCargaAcercamiento = New System.Windows.Forms.Label()
         Me.lblMensajeErrorAcercamiento = New System.Windows.Forms.Label()
-        Me.btnCancelarAcercamiento = New System.Windows.Forms.Button()
-        Me.btnGuardarAcercamiento = New System.Windows.Forms.Button()
-        Me.btnRegistroAcercamiento = New System.Windows.Forms.Button()
         Me.gpBoxDatosAcercamiento = New System.Windows.Forms.GroupBox()
-        Me.lblAcercamientoWebProspecto = New System.Windows.Forms.Label()
         Me.lblMedioContactoOtro = New System.Windows.Forms.Label()
         Me.lblAcercamientoOtro = New System.Windows.Forms.Label()
-        Me.txtAcercamientoWebProspecto = New System.Windows.Forms.TextBox()
         Me.cboAcercamientoMedioContacto = New System.Windows.Forms.ComboBox()
         Me.lblAcercamientoComoEntero = New System.Windows.Forms.Label()
         Me.txtAcercamientoEnteroOtro = New System.Windows.Forms.TextBox()
@@ -176,33 +209,39 @@ Partial Class FrmContacto
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.lblTituloAcercamiento = New System.Windows.Forms.Label()
         Me.panDireccion = New System.Windows.Forms.Panel()
-        Me.btnCancelarDomicilio = New System.Windows.Forms.Button()
-        Me.btnGuardarDomicilio = New System.Windows.Forms.Button()
-        Me.btnRegistroDomicilio = New System.Windows.Forms.Button()
-        Me.lblMensajeErrorDomicilio = New System.Windows.Forms.Label()
         Me.lblMensajeCargaDomicilio = New System.Windows.Forms.Label()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.lblTituloDomicilio = New System.Windows.Forms.Label()
         Me.gpBoxDatosDomicilio = New System.Windows.Forms.GroupBox()
-        Me.cboDomicilioEstado = New System.Windows.Forms.ComboBox()
-        Me.cboDomicilioMunicipio = New System.Windows.Forms.ComboBox()
-        Me.cboDomicilioColonia = New System.Windows.Forms.ComboBox()
-        Me.lblDomicilioEstado = New System.Windows.Forms.Label()
-        Me.lblDomicilioMunicipio = New System.Windows.Forms.Label()
-        Me.lblDomicilioColonia = New System.Windows.Forms.Label()
-        Me.lblDomicilioCP = New System.Windows.Forms.Label()
-        Me.txtDomicilioCP = New System.Windows.Forms.TextBox()
-        Me.lblDomicilioNoExt = New System.Windows.Forms.Label()
-        Me.lblDomicilioNoInt = New System.Windows.Forms.Label()
-        Me.lblDomicilioCalle = New System.Windows.Forms.Label()
-        Me.txtDomicilioNoExt = New System.Windows.Forms.TextBox()
+        Me.lblCamposDomicilio = New System.Windows.Forms.Label()
         Me.lblDomicilioPais = New System.Windows.Forms.Label()
-        Me.txtDomicilioCalle = New System.Windows.Forms.TextBox()
         Me.cboDomicilioPais = New System.Windows.Forms.ComboBox()
+        Me.panDomicilioExt = New System.Windows.Forms.Panel()
+        Me.txtDomicilioExtCP = New System.Windows.Forms.TextBox()
+        Me.lblDomicilioExtCP = New System.Windows.Forms.Label()
+        Me.lblDomicilioExtDireccion2 = New System.Windows.Forms.Label()
+        Me.txtDomicilioExtDireccion2 = New System.Windows.Forms.TextBox()
+        Me.lblDomicilioExtDireccion1 = New System.Windows.Forms.Label()
+        Me.lblDomicilioExtEstado = New System.Windows.Forms.Label()
+        Me.lblDomicilioExtLocalidad = New System.Windows.Forms.Label()
+        Me.txtDomicilioExtLocalidad = New System.Windows.Forms.TextBox()
+        Me.txtDomicilioExtDireccion1 = New System.Windows.Forms.TextBox()
+        Me.txtDomicilioExtEstado = New System.Windows.Forms.TextBox()
+        Me.panDomicilioNac = New System.Windows.Forms.Panel()
+        Me.lblDomicilioCalle = New System.Windows.Forms.Label()
+        Me.cboDomicilioEstado = New System.Windows.Forms.ComboBox()
         Me.txtDomicilioNoInt = New System.Windows.Forms.TextBox()
-        Me.txtDomicilioMunicipio = New System.Windows.Forms.TextBox()
-        Me.txtDomicilioEstado = New System.Windows.Forms.TextBox()
-        Me.txtDomicilioColonia = New System.Windows.Forms.TextBox()
+        Me.cboDomicilioMunicipio = New System.Windows.Forms.ComboBox()
+        Me.txtDomicilioCalle = New System.Windows.Forms.TextBox()
+        Me.cboDomicilioColonia = New System.Windows.Forms.ComboBox()
+        Me.txtDomicilioNoExt = New System.Windows.Forms.TextBox()
+        Me.lblDomicilioEstado = New System.Windows.Forms.Label()
+        Me.lblDomicilioNoInt = New System.Windows.Forms.Label()
+        Me.lblDomicilioMunicipio = New System.Windows.Forms.Label()
+        Me.lblDomicilioNoExt = New System.Windows.Forms.Label()
+        Me.lblDomicilioColonia = New System.Windows.Forms.Label()
+        Me.txtDomicilioCP = New System.Windows.Forms.TextBox()
+        Me.lblDomicilioCP = New System.Windows.Forms.Label()
         Me.panFuncionarios = New System.Windows.Forms.Panel()
         Me.lblMensajeCargaFuncionarios = New System.Windows.Forms.Label()
         Me.btnCancelarFuncionario = New System.Windows.Forms.Button()
@@ -245,13 +284,14 @@ Partial Class FrmContacto
         Me.txtAccionistasPorcentaje = New System.Windows.Forms.TextBox()
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.lblTituloAccionistas = New System.Windows.Forms.Label()
-        Me.lblMensaje = New System.Windows.Forms.Label()
         Me.panMenu.SuspendLayout()
+        Me.panMensajesError.SuspendLayout()
         Me.panDatosGenerales.SuspendLayout()
         Me.gpBoxDatosDG.SuspendLayout()
         CType(Me.Lista, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gpBoxTipoNegocio.SuspendLayout()
         Me.gpBoxServicio.SuspendLayout()
+        Me.GroupBox1.SuspendLayout()
         Me.panDivisiones.SuspendLayout()
         Me.gpBoxSubsidiaria.SuspendLayout()
         Me.panRDSubsidiaria.SuspendLayout()
@@ -265,11 +305,14 @@ Partial Class FrmContacto
         Me.panRDSubExt.SuspendLayout()
         Me.panRDRepExt.SuspendLayout()
         Me.panContactoInicial.SuspendLayout()
+        Me.panDatosContactoInicial.SuspendLayout()
         Me.gpBoxDatosContactoInicial.SuspendLayout()
         Me.panAcercamiento.SuspendLayout()
         Me.gpBoxDatosAcercamiento.SuspendLayout()
         Me.panDireccion.SuspendLayout()
         Me.gpBoxDatosDomicilio.SuspendLayout()
+        Me.panDomicilioExt.SuspendLayout()
+        Me.panDomicilioNac.SuspendLayout()
         Me.panFuncionarios.SuspendLayout()
         CType(Me.gridFuncionarios, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gpBoxDatosFuncionarios.SuspendLayout()
@@ -282,7 +325,7 @@ Partial Class FrmContacto
         '
         Me.panMenu.BackColor = System.Drawing.Color.WhiteSmoke
         Me.panMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.panMenu.Controls.Add(Me.lblMensaje)
+        Me.panMenu.Controls.Add(Me.panMensajesError)
         Me.panMenu.Controls.Add(Me.txtClaveProspecto)
         Me.panMenu.Controls.Add(Me.lnkAccionistas)
         Me.panMenu.Controls.Add(Me.lnkFuncionarios)
@@ -297,6 +340,45 @@ Partial Class FrmContacto
         Me.panMenu.Name = "panMenu"
         Me.panMenu.Size = New System.Drawing.Size(212, 700)
         Me.panMenu.TabIndex = 0
+        '
+        'panMensajesError
+        '
+        Me.panMensajesError.Controls.Add(Me.txtMensaje)
+        Me.panMensajesError.Controls.Add(Me.lblTituloError)
+        Me.panMensajesError.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.panMensajesError.Location = New System.Drawing.Point(0, 325)
+        Me.panMensajesError.Name = "panMensajesError"
+        Me.panMensajesError.Size = New System.Drawing.Size(210, 373)
+        Me.panMensajesError.TabIndex = 28
+        Me.panMensajesError.Visible = False
+        '
+        'txtMensaje
+        '
+        Me.txtMensaje.BackColor = System.Drawing.Color.White
+        Me.txtMensaje.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtMensaje.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.txtMensaje.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.txtMensaje.ForeColor = System.Drawing.Color.FromArgb(CType(CType(233, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(65, Byte), Integer))
+        Me.txtMensaje.Location = New System.Drawing.Point(0, 30)
+        Me.txtMensaje.Multiline = True
+        Me.txtMensaje.Name = "txtMensaje"
+        Me.txtMensaje.ReadOnly = True
+        Me.txtMensaje.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.txtMensaje.Size = New System.Drawing.Size(210, 343)
+        Me.txtMensaje.TabIndex = 14
+        '
+        'lblTituloError
+        '
+        Me.lblTituloError.BackColor = System.Drawing.Color.FromArgb(CType(CType(233, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(65, Byte), Integer))
+        Me.lblTituloError.Dock = System.Windows.Forms.DockStyle.Top
+        Me.lblTituloError.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTituloError.ForeColor = System.Drawing.Color.White
+        Me.lblTituloError.Location = New System.Drawing.Point(0, 0)
+        Me.lblTituloError.Name = "lblTituloError"
+        Me.lblTituloError.Size = New System.Drawing.Size(210, 28)
+        Me.lblTituloError.TabIndex = 28
+        Me.lblTituloError.Text = "INFORMACIÓN FALTANTE"
+        Me.lblTituloError.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'txtClaveProspecto
         '
@@ -318,7 +400,7 @@ Partial Class FrmContacto
         Me.lnkAccionistas.ForeColor = System.Drawing.Color.White
         Me.lnkAccionistas.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline
         Me.lnkAccionistas.LinkColor = System.Drawing.Color.White
-        Me.lnkAccionistas.Location = New System.Drawing.Point(0, 335)
+        Me.lnkAccionistas.Location = New System.Drawing.Point(0, 325)
         Me.lnkAccionistas.Name = "lnkAccionistas"
         Me.lnkAccionistas.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
         Me.lnkAccionistas.Size = New System.Drawing.Size(212, 34)
@@ -338,7 +420,7 @@ Partial Class FrmContacto
         Me.lnkFuncionarios.ForeColor = System.Drawing.Color.White
         Me.lnkFuncionarios.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline
         Me.lnkFuncionarios.LinkColor = System.Drawing.Color.White
-        Me.lnkFuncionarios.Location = New System.Drawing.Point(0, 291)
+        Me.lnkFuncionarios.Location = New System.Drawing.Point(0, 281)
         Me.lnkFuncionarios.Name = "lnkFuncionarios"
         Me.lnkFuncionarios.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
         Me.lnkFuncionarios.Size = New System.Drawing.Size(212, 34)
@@ -358,7 +440,7 @@ Partial Class FrmContacto
         Me.lnkDireccion.ForeColor = System.Drawing.Color.White
         Me.lnkDireccion.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline
         Me.lnkDireccion.LinkColor = System.Drawing.Color.White
-        Me.lnkDireccion.Location = New System.Drawing.Point(0, 247)
+        Me.lnkDireccion.Location = New System.Drawing.Point(0, 237)
         Me.lnkDireccion.Name = "lnkDireccion"
         Me.lnkDireccion.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
         Me.lnkDireccion.Size = New System.Drawing.Size(212, 34)
@@ -377,7 +459,7 @@ Partial Class FrmContacto
         Me.lnkAcercamiento.ForeColor = System.Drawing.Color.White
         Me.lnkAcercamiento.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline
         Me.lnkAcercamiento.LinkColor = System.Drawing.Color.White
-        Me.lnkAcercamiento.Location = New System.Drawing.Point(0, 203)
+        Me.lnkAcercamiento.Location = New System.Drawing.Point(0, 193)
         Me.lnkAcercamiento.Name = "lnkAcercamiento"
         Me.lnkAcercamiento.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
         Me.lnkAcercamiento.Size = New System.Drawing.Size(212, 34)
@@ -396,7 +478,7 @@ Partial Class FrmContacto
         Me.lnkContactoInicial.ForeColor = System.Drawing.Color.White
         Me.lnkContactoInicial.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline
         Me.lnkContactoInicial.LinkColor = System.Drawing.Color.White
-        Me.lnkContactoInicial.Location = New System.Drawing.Point(0, 159)
+        Me.lnkContactoInicial.Location = New System.Drawing.Point(0, 149)
         Me.lnkContactoInicial.Name = "lnkContactoInicial"
         Me.lnkContactoInicial.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
         Me.lnkContactoInicial.Size = New System.Drawing.Size(212, 34)
@@ -415,7 +497,7 @@ Partial Class FrmContacto
         Me.lnkDatosGenerales.ForeColor = System.Drawing.Color.White
         Me.lnkDatosGenerales.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline
         Me.lnkDatosGenerales.LinkColor = System.Drawing.Color.White
-        Me.lnkDatosGenerales.Location = New System.Drawing.Point(0, 115)
+        Me.lnkDatosGenerales.Location = New System.Drawing.Point(0, 105)
         Me.lnkDatosGenerales.Name = "lnkDatosGenerales"
         Me.lnkDatosGenerales.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
         Me.lnkDatosGenerales.Size = New System.Drawing.Size(212, 34)
@@ -463,7 +545,7 @@ Partial Class FrmContacto
         '
         Me.btnCerrar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnCerrar.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCerrar.Location = New System.Drawing.Point(1096, 668)
+        Me.btnCerrar.Location = New System.Drawing.Point(1176, 668)
         Me.btnCerrar.Name = "btnCerrar"
         Me.btnCerrar.Size = New System.Drawing.Size(130, 25)
         Me.btnCerrar.TabIndex = 5
@@ -476,7 +558,7 @@ Partial Class FrmContacto
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.panDatosGenerales.AutoScroll = True
-        Me.panDatosGenerales.AutoScrollMargin = New System.Drawing.Size(0, 10)
+        Me.panDatosGenerales.AutoScrollMargin = New System.Drawing.Size(0, 15)
         Me.panDatosGenerales.BackColor = System.Drawing.Color.White
         Me.panDatosGenerales.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.panDatosGenerales.Controls.Add(Me.gpBoxDatosDG)
@@ -486,7 +568,7 @@ Partial Class FrmContacto
         Me.panDatosGenerales.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold)
         Me.panDatosGenerales.Location = New System.Drawing.Point(212, 0)
         Me.panDatosGenerales.Name = "panDatosGenerales"
-        Me.panDatosGenerales.Size = New System.Drawing.Size(1026, 660)
+        Me.panDatosGenerales.Size = New System.Drawing.Size(1106, 660)
         Me.panDatosGenerales.TabIndex = 1
         Me.panDatosGenerales.Tag = "1"
         Me.panDatosGenerales.Visible = False
@@ -494,8 +576,10 @@ Partial Class FrmContacto
         'gpBoxDatosDG
         '
         Me.gpBoxDatosDG.Controls.Add(Me.Lista)
-        Me.gpBoxDatosDG.Controls.Add(Me.gpBoxTipoNegocio)
         Me.gpBoxDatosDG.Controls.Add(Me.txtRazonSocial)
+        Me.gpBoxDatosDG.Controls.Add(Me.lblIdSAC)
+        Me.gpBoxDatosDG.Controls.Add(Me.txtIdSAC)
+        Me.gpBoxDatosDG.Controls.Add(Me.gpBoxTipoNegocio)
         Me.gpBoxDatosDG.Controls.Add(Me.gpBoxServicio)
         Me.gpBoxDatosDG.Controls.Add(Me.lblRFC)
         Me.gpBoxDatosDG.Controls.Add(Me.txtRFC)
@@ -507,7 +591,6 @@ Partial Class FrmContacto
         Me.gpBoxDatosDG.Controls.Add(Me.btnIndustria)
         Me.gpBoxDatosDG.Controls.Add(Me.txtSubnivel)
         Me.gpBoxDatosDG.Controls.Add(Me.gpBoxSubsidiaria)
-        Me.gpBoxDatosDG.Controls.Add(Me.lblMensajeErrorDatosGenerales)
         Me.gpBoxDatosDG.Controls.Add(Me.txtSubsector)
         Me.gpBoxDatosDG.Controls.Add(Me.lblRazonSocial)
         Me.gpBoxDatosDG.Controls.Add(Me.lblNombreComercial)
@@ -523,7 +606,7 @@ Partial Class FrmContacto
         Me.gpBoxDatosDG.Enabled = False
         Me.gpBoxDatosDG.Location = New System.Drawing.Point(14, 80)
         Me.gpBoxDatosDG.Name = "gpBoxDatosDG"
-        Me.gpBoxDatosDG.Size = New System.Drawing.Size(980, 1223)
+        Me.gpBoxDatosDG.Size = New System.Drawing.Size(1060, 1549)
         Me.gpBoxDatosDG.TabIndex = 3
         Me.gpBoxDatosDG.TabStop = False
         '
@@ -536,7 +619,7 @@ Partial Class FrmContacto
         Me.Lista.BackgroundColor = System.Drawing.Color.WhiteSmoke
         Me.Lista.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.Lista.GridColor = System.Drawing.Color.Gainsboro
-        Me.Lista.Location = New System.Drawing.Point(172, 53)
+        Me.Lista.Location = New System.Drawing.Point(153, 60)
         Me.Lista.Name = "Lista"
         Me.Lista.ReadOnly = True
         Me.Lista.RowHeadersWidth = 25
@@ -549,11 +632,36 @@ Partial Class FrmContacto
         Me.Lista.TabIndex = 2
         Me.Lista.Visible = False
         '
+        'txtRazonSocial
+        '
+        Me.txtRazonSocial.Location = New System.Drawing.Point(153, 60)
+        Me.txtRazonSocial.Name = "txtRazonSocial"
+        Me.txtRazonSocial.Size = New System.Drawing.Size(771, 25)
+        Me.txtRazonSocial.TabIndex = 1
+        '
+        'lblIdSAC
+        '
+        Me.lblIdSAC.AutoSize = True
+        Me.lblIdSAC.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblIdSAC.Location = New System.Drawing.Point(19, 26)
+        Me.lblIdSAC.Name = "lblIdSAC"
+        Me.lblIdSAC.Size = New System.Drawing.Size(129, 18)
+        Me.lblIdSAC.TabIndex = 6
+        Me.lblIdSAC.Text = "ID Asignación SAC*:"
+        '
+        'txtIdSAC
+        '
+        Me.txtIdSAC.Location = New System.Drawing.Point(153, 23)
+        Me.txtIdSAC.Name = "txtIdSAC"
+        Me.txtIdSAC.Size = New System.Drawing.Size(114, 25)
+        Me.txtIdSAC.TabIndex = 7
+        Me.txtIdSAC.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
         'gpBoxTipoNegocio
         '
         Me.gpBoxTipoNegocio.Controls.Add(Me.rdPersonaFisica)
         Me.gpBoxTipoNegocio.Controls.Add(Me.rdPersonalMoral)
-        Me.gpBoxTipoNegocio.Location = New System.Drawing.Point(515, 101)
+        Me.gpBoxTipoNegocio.Location = New System.Drawing.Point(496, 132)
         Me.gpBoxTipoNegocio.Name = "gpBoxTipoNegocio"
         Me.gpBoxTipoNegocio.Size = New System.Drawing.Size(428, 55)
         Me.gpBoxTipoNegocio.TabIndex = 7
@@ -584,28 +692,212 @@ Partial Class FrmContacto
         Me.rdPersonalMoral.Text = "Persona moral"
         Me.rdPersonalMoral.UseVisualStyleBackColor = True
         '
-        'txtRazonSocial
-        '
-        Me.txtRazonSocial.Location = New System.Drawing.Point(172, 29)
-        Me.txtRazonSocial.Name = "txtRazonSocial"
-        Me.txtRazonSocial.Size = New System.Drawing.Size(771, 25)
-        Me.txtRazonSocial.TabIndex = 1
-        '
         'gpBoxServicio
         '
+        Me.gpBoxServicio.Controls.Add(Me.cboModalidades)
+        Me.gpBoxServicio.Controls.Add(Me.Label7)
+        Me.gpBoxServicio.Controls.Add(Me.DateTimePicker4)
+        Me.gpBoxServicio.Controls.Add(Me.Label9)
+        Me.gpBoxServicio.Controls.Add(Me.txtFechaEntregaReporte)
+        Me.gpBoxServicio.Controls.Add(Me.lblFechaEntregaReporte)
+        Me.gpBoxServicio.Controls.Add(Me.DateTimePicker2)
+        Me.gpBoxServicio.Controls.Add(Me.lblPeriodoServicioA)
+        Me.gpBoxServicio.Controls.Add(Me.DateTimePicker1)
+        Me.gpBoxServicio.Controls.Add(Me.lblPeriodoServicio)
+        Me.gpBoxServicio.Controls.Add(Me.GroupBox1)
+        Me.gpBoxServicio.Controls.Add(Me.cboDatosGeneralesServicio)
+        Me.gpBoxServicio.Controls.Add(Me.Label5)
+        Me.gpBoxServicio.Controls.Add(Me.lblDatosGeneralesDivision)
         Me.gpBoxServicio.Controls.Add(Me.panDivisiones)
         Me.gpBoxServicio.Controls.Add(Me.lblDescripcionSolicitud)
         Me.gpBoxServicio.Controls.Add(Me.txtDescripcionSolicitud)
         Me.gpBoxServicio.Enabled = False
-        Me.gpBoxServicio.Location = New System.Drawing.Point(38, 230)
+        Me.gpBoxServicio.Location = New System.Drawing.Point(17, 255)
         Me.gpBoxServicio.Name = "gpBoxServicio"
-        Me.gpBoxServicio.Size = New System.Drawing.Size(905, 232)
+        Me.gpBoxServicio.Size = New System.Drawing.Size(1022, 588)
         Me.gpBoxServicio.TabIndex = 16
         Me.gpBoxServicio.TabStop = False
-        Me.gpBoxServicio.Text = "Servicio"
+        Me.gpBoxServicio.Text = "Datos del Servicio"
+        '
+        'cboModalidades
+        '
+        Me.cboModalidades.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboModalidades.DropDownWidth = 260
+        Me.cboModalidades.FormattingEnabled = True
+        Me.cboModalidades.Location = New System.Drawing.Point(471, 534)
+        Me.cboModalidades.Name = "cboModalidades"
+        Me.cboModalidades.Size = New System.Drawing.Size(285, 26)
+        Me.cboModalidades.TabIndex = 32
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(41, 537)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(417, 18)
+        Me.Label7.TabIndex = 31
+        Me.Label7.Text = "Indique la modalidad en que se requiere la ejecución del trabajo*:"
+        '
+        'DateTimePicker4
+        '
+        Me.DateTimePicker4.Font = New System.Drawing.Font("Calibri", 11.0!)
+        Me.DateTimePicker4.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DateTimePicker4.Location = New System.Drawing.Point(471, 486)
+        Me.DateTimePicker4.Name = "DateTimePicker4"
+        Me.DateTimePicker4.Size = New System.Drawing.Size(125, 25)
+        Me.DateTimePicker4.TabIndex = 30
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(41, 489)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(398, 18)
+        Me.Label9.TabIndex = 29
+        Me.Label9.Text = "Fecha en la que se solicita presentar la propuesta de servicios*:"
+        '
+        'txtFechaEntregaReporte
+        '
+        Me.txtFechaEntregaReporte.Font = New System.Drawing.Font("Calibri", 11.0!)
+        Me.txtFechaEntregaReporte.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.txtFechaEntregaReporte.Location = New System.Drawing.Point(471, 452)
+        Me.txtFechaEntregaReporte.Name = "txtFechaEntregaReporte"
+        Me.txtFechaEntregaReporte.Size = New System.Drawing.Size(125, 25)
+        Me.txtFechaEntregaReporte.TabIndex = 28
+        '
+        'lblFechaEntregaReporte
+        '
+        Me.lblFechaEntregaReporte.AutoSize = True
+        Me.lblFechaEntregaReporte.Location = New System.Drawing.Point(41, 455)
+        Me.lblFechaEntregaReporte.Name = "lblFechaEntregaReporte"
+        Me.lblFechaEntregaReporte.Size = New System.Drawing.Size(322, 18)
+        Me.lblFechaEntregaReporte.TabIndex = 27
+        Me.lblFechaEntregaReporte.Text = "Fecha estimada de entrega del informe o reporte*:"
+        '
+        'DateTimePicker2
+        '
+        Me.DateTimePicker2.Font = New System.Drawing.Font("Calibri", 11.0!)
+        Me.DateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DateTimePicker2.Location = New System.Drawing.Point(631, 418)
+        Me.DateTimePicker2.Name = "DateTimePicker2"
+        Me.DateTimePicker2.Size = New System.Drawing.Size(125, 25)
+        Me.DateTimePicker2.TabIndex = 26
+        '
+        'lblPeriodoServicioA
+        '
+        Me.lblPeriodoServicioA.AutoSize = True
+        Me.lblPeriodoServicioA.Location = New System.Drawing.Point(604, 421)
+        Me.lblPeriodoServicioA.Name = "lblPeriodoServicioA"
+        Me.lblPeriodoServicioA.Size = New System.Drawing.Size(19, 18)
+        Me.lblPeriodoServicioA.TabIndex = 25
+        Me.lblPeriodoServicioA.Text = "al"
+        '
+        'DateTimePicker1
+        '
+        Me.DateTimePicker1.Font = New System.Drawing.Font("Calibri", 11.0!)
+        Me.DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DateTimePicker1.Location = New System.Drawing.Point(471, 418)
+        Me.DateTimePicker1.Name = "DateTimePicker1"
+        Me.DateTimePicker1.Size = New System.Drawing.Size(125, 25)
+        Me.DateTimePicker1.TabIndex = 24
+        '
+        'lblPeriodoServicio
+        '
+        Me.lblPeriodoServicio.AutoSize = True
+        Me.lblPeriodoServicio.Location = New System.Drawing.Point(41, 421)
+        Me.lblPeriodoServicio.Name = "lblPeriodoServicio"
+        Me.lblPeriodoServicio.Size = New System.Drawing.Size(272, 18)
+        Me.lblPeriodoServicio.TabIndex = 23
+        Me.lblPeriodoServicio.Text = "Periodo por el cual se prestará el servicio*:"
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.cboIdioma)
+        Me.GroupBox1.Controls.Add(Me.Label6)
+        Me.GroupBox1.Controls.Add(Me.rdIdiomaNo)
+        Me.GroupBox1.Controls.Add(Me.rdIdiomaSi)
+        Me.GroupBox1.Location = New System.Drawing.Point(43, 211)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(871, 65)
+        Me.GroupBox1.TabIndex = 22
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "¿Se requiere de personal bilingüe para la preparación y/o ejecución del servicio?" &
+    ""
+        '
+        'cboIdioma
+        '
+        Me.cboIdioma.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboIdioma.DropDownWidth = 260
+        Me.cboIdioma.FormattingEnabled = True
+        Me.cboIdioma.Location = New System.Drawing.Point(270, 27)
+        Me.cboIdioma.Name = "cboIdioma"
+        Me.cboIdioma.Size = New System.Drawing.Size(268, 26)
+        Me.cboIdioma.TabIndex = 23
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(201, 31)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(62, 18)
+        Me.Label6.TabIndex = 22
+        Me.Label6.Text = "Idioma*:"
+        '
+        'rdIdiomaNo
+        '
+        Me.rdIdiomaNo.AutoSize = True
+        Me.rdIdiomaNo.Font = New System.Drawing.Font("Calibri", 11.0!)
+        Me.rdIdiomaNo.Location = New System.Drawing.Point(100, 29)
+        Me.rdIdiomaNo.Name = "rdIdiomaNo"
+        Me.rdIdiomaNo.Size = New System.Drawing.Size(44, 22)
+        Me.rdIdiomaNo.TabIndex = 1
+        Me.rdIdiomaNo.Text = "No"
+        Me.rdIdiomaNo.UseVisualStyleBackColor = True
+        '
+        'rdIdiomaSi
+        '
+        Me.rdIdiomaSi.AutoSize = True
+        Me.rdIdiomaSi.Checked = True
+        Me.rdIdiomaSi.Font = New System.Drawing.Font("Calibri", 11.0!)
+        Me.rdIdiomaSi.Location = New System.Drawing.Point(48, 29)
+        Me.rdIdiomaSi.Name = "rdIdiomaSi"
+        Me.rdIdiomaSi.Size = New System.Drawing.Size(36, 22)
+        Me.rdIdiomaSi.TabIndex = 0
+        Me.rdIdiomaSi.TabStop = True
+        Me.rdIdiomaSi.Text = "Sí"
+        Me.rdIdiomaSi.UseVisualStyleBackColor = True
+        '
+        'cboDatosGeneralesServicio
+        '
+        Me.cboDatosGeneralesServicio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboDatosGeneralesServicio.DropDownWidth = 260
+        Me.cboDatosGeneralesServicio.FormattingEnabled = True
+        Me.cboDatosGeneralesServicio.Location = New System.Drawing.Point(114, 160)
+        Me.cboDatosGeneralesServicio.Name = "cboDatosGeneralesServicio"
+        Me.cboDatosGeneralesServicio.Size = New System.Drawing.Size(481, 26)
+        Me.cboDatosGeneralesServicio.TabIndex = 21
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(40, 163)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(68, 18)
+        Me.Label5.TabIndex = 20
+        Me.Label5.Text = "Servicio*:"
+        '
+        'lblDatosGeneralesDivision
+        '
+        Me.lblDatosGeneralesDivision.AutoSize = True
+        Me.lblDatosGeneralesDivision.Location = New System.Drawing.Point(57, 34)
+        Me.lblDatosGeneralesDivision.Name = "lblDatosGeneralesDivision"
+        Me.lblDatosGeneralesDivision.Size = New System.Drawing.Size(65, 18)
+        Me.lblDatosGeneralesDivision.TabIndex = 9
+        Me.lblDatosGeneralesDivision.Text = "División*"
         '
         'panDivisiones
         '
+        Me.panDivisiones.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.panDivisiones.Controls.Add(Me.rdAuditoria)
         Me.panDivisiones.Controls.Add(Me.rdIBC)
         Me.panDivisiones.Controls.Add(Me.rdPLD)
@@ -616,7 +908,7 @@ Partial Class FrmContacto
         Me.panDivisiones.Controls.Add(Me.rdPreciosTransferencia)
         Me.panDivisiones.Controls.Add(Me.rdBPS)
         Me.panDivisiones.Enabled = False
-        Me.panDivisiones.Location = New System.Drawing.Point(14, 24)
+        Me.panDivisiones.Location = New System.Drawing.Point(39, 58)
         Me.panDivisiones.Name = "panDivisiones"
         Me.panDivisiones.Size = New System.Drawing.Size(875, 78)
         Me.panDivisiones.TabIndex = 0
@@ -735,33 +1027,33 @@ Partial Class FrmContacto
         '
         Me.lblDescripcionSolicitud.AutoSize = True
         Me.lblDescripcionSolicitud.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDescripcionSolicitud.Location = New System.Drawing.Point(14, 112)
+        Me.lblDescripcionSolicitud.Location = New System.Drawing.Point(39, 286)
         Me.lblDescripcionSolicitud.Name = "lblDescripcionSolicitud"
-        Me.lblDescripcionSolicitud.Size = New System.Drawing.Size(221, 18)
+        Me.lblDescripcionSolicitud.Size = New System.Drawing.Size(313, 18)
         Me.lblDescripcionSolicitud.TabIndex = 1
-        Me.lblDescripcionSolicitud.Text = "Descripción del servicio solicitado:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.lblDescripcionSolicitud.Text = "Información adicional del cliente y/o del servicio:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
         'txtDescripcionSolicitud
         '
-        Me.txtDescripcionSolicitud.Location = New System.Drawing.Point(14, 136)
+        Me.txtDescripcionSolicitud.Location = New System.Drawing.Point(39, 310)
         Me.txtDescripcionSolicitud.Multiline = True
         Me.txtDescripcionSolicitud.Name = "txtDescripcionSolicitud"
-        Me.txtDescripcionSolicitud.Size = New System.Drawing.Size(880, 81)
+        Me.txtDescripcionSolicitud.Size = New System.Drawing.Size(875, 81)
         Me.txtDescripcionSolicitud.TabIndex = 2
         '
         'lblRFC
         '
         Me.lblRFC.AutoSize = True
         Me.lblRFC.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblRFC.Location = New System.Drawing.Point(38, 104)
+        Me.lblRFC.Location = New System.Drawing.Point(19, 138)
         Me.lblRFC.Name = "lblRFC"
-        Me.lblRFC.Size = New System.Drawing.Size(35, 18)
+        Me.lblRFC.Size = New System.Drawing.Size(42, 18)
         Me.lblRFC.TabIndex = 5
-        Me.lblRFC.Text = "RFC:"
+        Me.lblRFC.Text = "RFC*:"
         '
         'txtRFC
         '
-        Me.txtRFC.Location = New System.Drawing.Point(172, 101)
+        Me.txtRFC.Location = New System.Drawing.Point(153, 135)
         Me.txtRFC.Name = "txtRFC"
         Me.txtRFC.Size = New System.Drawing.Size(274, 25)
         Me.txtRFC.TabIndex = 6
@@ -769,7 +1061,7 @@ Partial Class FrmContacto
         'btnSubnivel
         '
         Me.btnSubnivel.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSubnivel.Location = New System.Drawing.Point(900, 188)
+        Me.btnSubnivel.Location = New System.Drawing.Point(881, 219)
         Me.btnSubnivel.Name = "btnSubnivel"
         Me.btnSubnivel.Size = New System.Drawing.Size(43, 25)
         Me.btnSubnivel.TabIndex = 15
@@ -779,7 +1071,7 @@ Partial Class FrmContacto
         'btnSubsector
         '
         Me.btnSubsector.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSubsector.Location = New System.Drawing.Point(556, 188)
+        Me.btnSubsector.Location = New System.Drawing.Point(537, 219)
         Me.btnSubsector.Name = "btnSubsector"
         Me.btnSubsector.Size = New System.Drawing.Size(43, 25)
         Me.btnSubsector.TabIndex = 13
@@ -789,34 +1081,34 @@ Partial Class FrmContacto
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(618, 164)
+        Me.Label2.Location = New System.Drawing.Point(599, 195)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(62, 18)
+        Me.Label2.Size = New System.Drawing.Size(69, 18)
         Me.Label2.TabIndex = 17
-        Me.Label2.Text = "Subnivel"
+        Me.Label2.Text = "Subnivel*"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(328, 165)
+        Me.Label1.Location = New System.Drawing.Point(309, 196)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(69, 18)
+        Me.Label1.Size = New System.Drawing.Size(76, 18)
         Me.Label1.TabIndex = 11
-        Me.Label1.Text = "Subsector"
+        Me.Label1.Text = "Subsector*"
         '
         'lblIndustria
         '
         Me.lblIndustria.AutoSize = True
-        Me.lblIndustria.Location = New System.Drawing.Point(38, 165)
+        Me.lblIndustria.Location = New System.Drawing.Point(19, 196)
         Me.lblIndustria.Name = "lblIndustria"
-        Me.lblIndustria.Size = New System.Drawing.Size(63, 18)
+        Me.lblIndustria.Size = New System.Drawing.Size(70, 18)
         Me.lblIndustria.TabIndex = 8
-        Me.lblIndustria.Text = "Industria"
+        Me.lblIndustria.Text = "Industria*"
         '
         'btnIndustria
         '
         Me.btnIndustria.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnIndustria.Location = New System.Drawing.Point(267, 188)
+        Me.btnIndustria.Location = New System.Drawing.Point(248, 219)
         Me.btnIndustria.Name = "btnIndustria"
         Me.btnIndustria.Size = New System.Drawing.Size(43, 25)
         Me.btnIndustria.TabIndex = 10
@@ -826,7 +1118,7 @@ Partial Class FrmContacto
         'txtSubnivel
         '
         Me.txtSubnivel.Font = New System.Drawing.Font("Calibri", 10.0!)
-        Me.txtSubnivel.Location = New System.Drawing.Point(618, 188)
+        Me.txtSubnivel.Location = New System.Drawing.Point(599, 219)
         Me.txtSubnivel.Name = "txtSubnivel"
         Me.txtSubnivel.ReadOnly = True
         Me.txtSubnivel.Size = New System.Drawing.Size(277, 24)
@@ -838,9 +1130,9 @@ Partial Class FrmContacto
         Me.gpBoxSubsidiaria.Controls.Add(Me.lblControladora)
         Me.gpBoxSubsidiaria.Controls.Add(Me.panRDSubsidiaria)
         Me.gpBoxSubsidiaria.Controls.Add(Me.panRDCompañiaControl)
-        Me.gpBoxSubsidiaria.Location = New System.Drawing.Point(556, 523)
+        Me.gpBoxSubsidiaria.Location = New System.Drawing.Point(533, 904)
         Me.gpBoxSubsidiaria.Name = "gpBoxSubsidiaria"
-        Me.gpBoxSubsidiaria.Size = New System.Drawing.Size(387, 112)
+        Me.gpBoxSubsidiaria.Size = New System.Drawing.Size(506, 112)
         Me.gpBoxSubsidiaria.TabIndex = 21
         Me.gpBoxSubsidiaria.TabStop = False
         '
@@ -923,24 +1215,10 @@ Partial Class FrmContacto
         Me.rdControladoraNO.Text = "No"
         Me.rdControladoraNO.UseVisualStyleBackColor = True
         '
-        'lblMensajeErrorDatosGenerales
-        '
-        Me.lblMensajeErrorDatosGenerales.BackColor = System.Drawing.Color.FromArgb(CType(CType(233, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(65, Byte), Integer))
-        Me.lblMensajeErrorDatosGenerales.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.lblMensajeErrorDatosGenerales.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblMensajeErrorDatosGenerales.ForeColor = System.Drawing.Color.White
-        Me.lblMensajeErrorDatosGenerales.Location = New System.Drawing.Point(3, 1195)
-        Me.lblMensajeErrorDatosGenerales.Name = "lblMensajeErrorDatosGenerales"
-        Me.lblMensajeErrorDatosGenerales.Size = New System.Drawing.Size(974, 25)
-        Me.lblMensajeErrorDatosGenerales.TabIndex = 26
-        Me.lblMensajeErrorDatosGenerales.Text = "Mensaje de error"
-        Me.lblMensajeErrorDatosGenerales.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.lblMensajeErrorDatosGenerales.Visible = False
-        '
         'txtSubsector
         '
         Me.txtSubsector.Font = New System.Drawing.Font("Calibri", 10.0!)
-        Me.txtSubsector.Location = New System.Drawing.Point(328, 188)
+        Me.txtSubsector.Location = New System.Drawing.Point(309, 219)
         Me.txtSubsector.Name = "txtSubsector"
         Me.txtSubsector.ReadOnly = True
         Me.txtSubsector.Size = New System.Drawing.Size(222, 24)
@@ -949,24 +1227,24 @@ Partial Class FrmContacto
         'lblRazonSocial
         '
         Me.lblRazonSocial.AutoSize = True
-        Me.lblRazonSocial.Location = New System.Drawing.Point(38, 32)
+        Me.lblRazonSocial.Location = New System.Drawing.Point(19, 63)
         Me.lblRazonSocial.Name = "lblRazonSocial"
-        Me.lblRazonSocial.Size = New System.Drawing.Size(87, 18)
+        Me.lblRazonSocial.Size = New System.Drawing.Size(94, 18)
         Me.lblRazonSocial.TabIndex = 0
-        Me.lblRazonSocial.Text = "Razón social:"
+        Me.lblRazonSocial.Text = "Razón social*:"
         '
         'lblNombreComercial
         '
         Me.lblNombreComercial.AutoSize = True
-        Me.lblNombreComercial.Location = New System.Drawing.Point(38, 69)
+        Me.lblNombreComercial.Location = New System.Drawing.Point(19, 100)
         Me.lblNombreComercial.Name = "lblNombreComercial"
-        Me.lblNombreComercial.Size = New System.Drawing.Size(126, 18)
+        Me.lblNombreComercial.Size = New System.Drawing.Size(133, 18)
         Me.lblNombreComercial.TabIndex = 3
-        Me.lblNombreComercial.Text = "Nombre comercial:"
+        Me.lblNombreComercial.Text = "Nombre comercial*:"
         '
         'txtNombreComercial
         '
-        Me.txtNombreComercial.Location = New System.Drawing.Point(172, 65)
+        Me.txtNombreComercial.Location = New System.Drawing.Point(153, 96)
         Me.txtNombreComercial.Name = "txtNombreComercial"
         Me.txtNombreComercial.Size = New System.Drawing.Size(771, 25)
         Me.txtNombreComercial.TabIndex = 4
@@ -974,7 +1252,7 @@ Partial Class FrmContacto
         'txtIndustria
         '
         Me.txtIndustria.Font = New System.Drawing.Font("Calibri", 10.0!)
-        Me.txtIndustria.Location = New System.Drawing.Point(38, 188)
+        Me.txtIndustria.Location = New System.Drawing.Point(19, 219)
         Me.txtIndustria.Name = "txtIndustria"
         Me.txtIndustria.ReadOnly = True
         Me.txtIndustria.Size = New System.Drawing.Size(222, 24)
@@ -988,7 +1266,7 @@ Partial Class FrmContacto
         Me.gpBoxEmpresaPublica.Controls.Add(Me.rdEmpresaPublicaSi)
         Me.gpBoxEmpresaPublica.Controls.Add(Me.txtBolsaValoresOtro)
         Me.gpBoxEmpresaPublica.Controls.Add(Me.cboBolsaValores)
-        Me.gpBoxEmpresaPublica.Location = New System.Drawing.Point(38, 523)
+        Me.gpBoxEmpresaPublica.Location = New System.Drawing.Point(17, 904)
         Me.gpBoxEmpresaPublica.Name = "gpBoxEmpresaPublica"
         Me.gpBoxEmpresaPublica.Size = New System.Drawing.Size(506, 112)
         Me.gpBoxEmpresaPublica.TabIndex = 20
@@ -1063,7 +1341,7 @@ Partial Class FrmContacto
         Me.gpBoxEntidadReguladora.Controls.Add(Me.cboEntidadReguladora)
         Me.gpBoxEntidadReguladora.Controls.Add(Me.rdEntidadReguladaNo)
         Me.gpBoxEntidadReguladora.Controls.Add(Me.rdEntidadReguladaSi)
-        Me.gpBoxEntidadReguladora.Location = New System.Drawing.Point(38, 651)
+        Me.gpBoxEntidadReguladora.Location = New System.Drawing.Point(17, 1031)
         Me.gpBoxEntidadReguladora.Name = "gpBoxEntidadReguladora"
         Me.gpBoxEntidadReguladora.Size = New System.Drawing.Size(506, 89)
         Me.gpBoxEntidadReguladora.TabIndex = 22
@@ -1139,7 +1417,7 @@ Partial Class FrmContacto
         Me.gpBoxEntidadSupervisada.Controls.Add(Me.cboEntidadSupervisada)
         Me.gpBoxEntidadSupervisada.Controls.Add(Me.rdEntidadSupervisadaNo)
         Me.gpBoxEntidadSupervisada.Controls.Add(Me.rdEntidadSupervisadaSi)
-        Me.gpBoxEntidadSupervisada.Location = New System.Drawing.Point(38, 752)
+        Me.gpBoxEntidadSupervisada.Location = New System.Drawing.Point(533, 1031)
         Me.gpBoxEntidadSupervisada.Name = "gpBoxEntidadSupervisada"
         Me.gpBoxEntidadSupervisada.Size = New System.Drawing.Size(506, 89)
         Me.gpBoxEntidadSupervisada.TabIndex = 23
@@ -1211,13 +1489,21 @@ Partial Class FrmContacto
         Me.cboPais.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboPais.DropDownWidth = 260
         Me.cboPais.FormattingEnabled = True
-        Me.cboPais.Location = New System.Drawing.Point(78, 483)
+        Me.cboPais.Location = New System.Drawing.Point(55, 861)
         Me.cboPais.Name = "cboPais"
         Me.cboPais.Size = New System.Drawing.Size(293, 26)
         Me.cboPais.TabIndex = 19
         '
         'gpBoxReferenciaGTI
         '
+        Me.gpBoxReferenciaGTI.Controls.Add(Me.txtEstadoGTI)
+        Me.gpBoxReferenciaGTI.Controls.Add(Me.lblEstadoGTI)
+        Me.gpBoxReferenciaGTI.Controls.Add(Me.TextBox1)
+        Me.gpBoxReferenciaGTI.Controls.Add(Me.lblCorreoGerenteGTI)
+        Me.gpBoxReferenciaGTI.Controls.Add(Me.txtGerenteGTI)
+        Me.gpBoxReferenciaGTI.Controls.Add(Me.lblGerenteGTI)
+        Me.gpBoxReferenciaGTI.Controls.Add(Me.txtCorreoSocioGTI)
+        Me.gpBoxReferenciaGTI.Controls.Add(Me.lblCorreoSocioGTI)
         Me.gpBoxReferenciaGTI.Controls.Add(Me.cboReferenciaGTIOficina)
         Me.gpBoxReferenciaGTI.Controls.Add(Me.cboReferenciaGTIPais)
         Me.gpBoxReferenciaGTI.Controls.Add(Me.lblReferenciaGTIPais)
@@ -1226,18 +1512,86 @@ Partial Class FrmContacto
         Me.gpBoxReferenciaGTI.Controls.Add(Me.lbRefGTISocio)
         Me.gpBoxReferenciaGTI.Controls.Add(Me.rdReferenciaGTINo)
         Me.gpBoxReferenciaGTI.Controls.Add(Me.rdReferenciaGTISi)
-        Me.gpBoxReferenciaGTI.Location = New System.Drawing.Point(38, 859)
+        Me.gpBoxReferenciaGTI.Location = New System.Drawing.Point(17, 1135)
         Me.gpBoxReferenciaGTI.Name = "gpBoxReferenciaGTI"
-        Me.gpBoxReferenciaGTI.Size = New System.Drawing.Size(905, 115)
+        Me.gpBoxReferenciaGTI.Size = New System.Drawing.Size(1022, 191)
         Me.gpBoxReferenciaGTI.TabIndex = 24
         Me.gpBoxReferenciaGTI.TabStop = False
         Me.gpBoxReferenciaGTI.Text = "Referencia GTI"
+        '
+        'txtEstadoGTI
+        '
+        Me.txtEstadoGTI.Location = New System.Drawing.Point(734, 64)
+        Me.txtEstadoGTI.Name = "txtEstadoGTI"
+        Me.txtEstadoGTI.Size = New System.Drawing.Size(214, 25)
+        Me.txtEstadoGTI.TabIndex = 15
+        '
+        'lblEstadoGTI
+        '
+        Me.lblEstadoGTI.AutoSize = True
+        Me.lblEstadoGTI.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.lblEstadoGTI.Location = New System.Drawing.Point(665, 69)
+        Me.lblEstadoGTI.Name = "lblEstadoGTI"
+        Me.lblEstadoGTI.Size = New System.Drawing.Size(53, 18)
+        Me.lblEstadoGTI.TabIndex = 14
+        Me.lblEstadoGTI.Text = "Estado:"
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(266, 137)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(358, 25)
+        Me.TextBox1.TabIndex = 13
+        '
+        'lblCorreoGerenteGTI
+        '
+        Me.lblCorreoGerenteGTI.AutoSize = True
+        Me.lblCorreoGerenteGTI.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.lblCorreoGerenteGTI.Location = New System.Drawing.Point(127, 140)
+        Me.lblCorreoGerenteGTI.Name = "lblCorreoGerenteGTI"
+        Me.lblCorreoGerenteGTI.Size = New System.Drawing.Size(127, 18)
+        Me.lblCorreoGerenteGTI.TabIndex = 12
+        Me.lblCorreoGerenteGTI.Text = "Correo electrónico:"
+        '
+        'txtGerenteGTI
+        '
+        Me.txtGerenteGTI.Location = New System.Drawing.Point(265, 101)
+        Me.txtGerenteGTI.Name = "txtGerenteGTI"
+        Me.txtGerenteGTI.Size = New System.Drawing.Size(358, 25)
+        Me.txtGerenteGTI.TabIndex = 11
+        '
+        'lblGerenteGTI
+        '
+        Me.lblGerenteGTI.AutoSize = True
+        Me.lblGerenteGTI.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.lblGerenteGTI.Location = New System.Drawing.Point(127, 104)
+        Me.lblGerenteGTI.Name = "lblGerenteGTI"
+        Me.lblGerenteGTI.Size = New System.Drawing.Size(60, 18)
+        Me.lblGerenteGTI.TabIndex = 10
+        Me.lblGerenteGTI.Text = "Gerente"
+        '
+        'txtCorreoSocioGTI
+        '
+        Me.txtCorreoSocioGTI.Location = New System.Drawing.Point(265, 65)
+        Me.txtCorreoSocioGTI.Name = "txtCorreoSocioGTI"
+        Me.txtCorreoSocioGTI.Size = New System.Drawing.Size(358, 25)
+        Me.txtCorreoSocioGTI.TabIndex = 9
+        '
+        'lblCorreoSocioGTI
+        '
+        Me.lblCorreoSocioGTI.AutoSize = True
+        Me.lblCorreoSocioGTI.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.lblCorreoSocioGTI.Location = New System.Drawing.Point(127, 68)
+        Me.lblCorreoSocioGTI.Name = "lblCorreoSocioGTI"
+        Me.lblCorreoSocioGTI.Size = New System.Drawing.Size(134, 18)
+        Me.lblCorreoSocioGTI.TabIndex = 8
+        Me.lblCorreoSocioGTI.Text = "Correo electrónico*:"
         '
         'cboReferenciaGTIOficina
         '
         Me.cboReferenciaGTIOficina.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboReferenciaGTIOficina.FormattingEnabled = True
-        Me.cboReferenciaGTIOficina.Location = New System.Drawing.Point(642, 55)
+        Me.cboReferenciaGTIOficina.Location = New System.Drawing.Point(734, 100)
         Me.cboReferenciaGTIOficina.Name = "cboReferenciaGTIOficina"
         Me.cboReferenciaGTIOficina.Size = New System.Drawing.Size(214, 26)
         Me.cboReferenciaGTIOficina.TabIndex = 7
@@ -1247,53 +1601,53 @@ Partial Class FrmContacto
         Me.cboReferenciaGTIPais.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboReferenciaGTIPais.DropDownWidth = 260
         Me.cboReferenciaGTIPais.FormattingEnabled = True
-        Me.cboReferenciaGTIPais.Location = New System.Drawing.Point(420, 55)
+        Me.cboReferenciaGTIPais.Location = New System.Drawing.Point(734, 28)
         Me.cboReferenciaGTIPais.Name = "cboReferenciaGTIPais"
-        Me.cboReferenciaGTIPais.Size = New System.Drawing.Size(206, 26)
+        Me.cboReferenciaGTIPais.Size = New System.Drawing.Size(214, 26)
         Me.cboReferenciaGTIPais.TabIndex = 5
         '
         'lblReferenciaGTIPais
         '
         Me.lblReferenciaGTIPais.AutoSize = True
-        Me.lblReferenciaGTIPais.Font = New System.Drawing.Font("Calibri", 11.0!)
-        Me.lblReferenciaGTIPais.Location = New System.Drawing.Point(420, 33)
+        Me.lblReferenciaGTIPais.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.lblReferenciaGTIPais.Location = New System.Drawing.Point(665, 32)
         Me.lblReferenciaGTIPais.Name = "lblReferenciaGTIPais"
-        Me.lblReferenciaGTIPais.Size = New System.Drawing.Size(32, 18)
+        Me.lblReferenciaGTIPais.Size = New System.Drawing.Size(40, 18)
         Me.lblReferenciaGTIPais.TabIndex = 4
-        Me.lblReferenciaGTIPais.Text = "País"
+        Me.lblReferenciaGTIPais.Text = "País*"
         '
         'lblRefGTIOficina
         '
         Me.lblRefGTIOficina.AutoSize = True
-        Me.lblRefGTIOficina.Font = New System.Drawing.Font("Calibri", 11.0!)
-        Me.lblRefGTIOficina.Location = New System.Drawing.Point(642, 33)
+        Me.lblRefGTIOficina.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.lblRefGTIOficina.Location = New System.Drawing.Point(665, 104)
         Me.lblRefGTIOficina.Name = "lblRefGTIOficina"
-        Me.lblRefGTIOficina.Size = New System.Drawing.Size(51, 18)
+        Me.lblRefGTIOficina.Size = New System.Drawing.Size(58, 18)
         Me.lblRefGTIOficina.TabIndex = 6
-        Me.lblRefGTIOficina.Text = "Oficina"
+        Me.lblRefGTIOficina.Text = "Oficina*"
         '
         'txtReferenciaGTISocio
         '
-        Me.txtReferenciaGTISocio.Location = New System.Drawing.Point(128, 56)
+        Me.txtReferenciaGTISocio.Location = New System.Drawing.Point(264, 29)
         Me.txtReferenciaGTISocio.Name = "txtReferenciaGTISocio"
-        Me.txtReferenciaGTISocio.Size = New System.Drawing.Size(276, 25)
+        Me.txtReferenciaGTISocio.Size = New System.Drawing.Size(358, 25)
         Me.txtReferenciaGTISocio.TabIndex = 3
         '
         'lbRefGTISocio
         '
         Me.lbRefGTISocio.AutoSize = True
-        Me.lbRefGTISocio.Font = New System.Drawing.Font("Calibri", 11.0!)
-        Me.lbRefGTISocio.Location = New System.Drawing.Point(128, 33)
+        Me.lbRefGTISocio.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.lbRefGTISocio.Location = New System.Drawing.Point(127, 32)
         Me.lbRefGTISocio.Name = "lbRefGTISocio"
-        Me.lbRefGTISocio.Size = New System.Drawing.Size(41, 18)
+        Me.lbRefGTISocio.Size = New System.Drawing.Size(52, 18)
         Me.lbRefGTISocio.TabIndex = 2
-        Me.lbRefGTISocio.Text = "Socio"
+        Me.lbRefGTISocio.Text = "Socio*:"
         '
         'rdReferenciaGTINo
         '
         Me.rdReferenciaGTINo.AutoSize = True
         Me.rdReferenciaGTINo.Font = New System.Drawing.Font("Calibri", 11.0!)
-        Me.rdReferenciaGTINo.Location = New System.Drawing.Point(63, 52)
+        Me.rdReferenciaGTINo.Location = New System.Drawing.Point(63, 84)
         Me.rdReferenciaGTINo.Name = "rdReferenciaGTINo"
         Me.rdReferenciaGTINo.Size = New System.Drawing.Size(44, 22)
         Me.rdReferenciaGTINo.TabIndex = 1
@@ -1304,7 +1658,7 @@ Partial Class FrmContacto
         '
         Me.rdReferenciaGTISi.AutoSize = True
         Me.rdReferenciaGTISi.Font = New System.Drawing.Font("Calibri", 11.0!)
-        Me.rdReferenciaGTISi.Location = New System.Drawing.Point(18, 52)
+        Me.rdReferenciaGTISi.Location = New System.Drawing.Point(18, 84)
         Me.rdReferenciaGTISi.Name = "rdReferenciaGTISi"
         Me.rdReferenciaGTISi.Size = New System.Drawing.Size(36, 22)
         Me.rdReferenciaGTISi.TabIndex = 0
@@ -1314,7 +1668,7 @@ Partial Class FrmContacto
         'lblPais
         '
         Me.lblPais.AutoSize = True
-        Me.lblPais.Location = New System.Drawing.Point(38, 487)
+        Me.lblPais.Location = New System.Drawing.Point(17, 865)
         Me.lblPais.Name = "lblPais"
         Me.lblPais.Size = New System.Drawing.Size(37, 18)
         Me.lblPais.TabIndex = 18
@@ -1334,9 +1688,9 @@ Partial Class FrmContacto
         Me.gpBoxEmpresaExtranjero.Controls.Add(Me.txtEmpresaTenedora)
         Me.gpBoxEmpresaExtranjero.Controls.Add(Me.lblEmpresaTenedora)
         Me.gpBoxEmpresaExtranjero.Controls.Add(Me.panRDRepExt)
-        Me.gpBoxEmpresaExtranjero.Location = New System.Drawing.Point(38, 987)
+        Me.gpBoxEmpresaExtranjero.Location = New System.Drawing.Point(17, 1338)
         Me.gpBoxEmpresaExtranjero.Name = "gpBoxEmpresaExtranjero"
-        Me.gpBoxEmpresaExtranjero.Size = New System.Drawing.Size(905, 193)
+        Me.gpBoxEmpresaExtranjero.Size = New System.Drawing.Size(1022, 193)
         Me.gpBoxEmpresaExtranjero.TabIndex = 25
         Me.gpBoxEmpresaExtranjero.TabStop = False
         Me.gpBoxEmpresaExtranjero.Text = "Empresa en el Extranjero"
@@ -1532,7 +1886,7 @@ Partial Class FrmContacto
         Me.lblMensajeCargaDatosGenerales.ForeColor = System.Drawing.Color.White
         Me.lblMensajeCargaDatosGenerales.Location = New System.Drawing.Point(0, 44)
         Me.lblMensajeCargaDatosGenerales.Name = "lblMensajeCargaDatosGenerales"
-        Me.lblMensajeCargaDatosGenerales.Size = New System.Drawing.Size(1024, 25)
+        Me.lblMensajeCargaDatosGenerales.Size = New System.Drawing.Size(1104, 25)
         Me.lblMensajeCargaDatosGenerales.TabIndex = 2
         Me.lblMensajeCargaDatosGenerales.Text = "No se ha cargado información de los Datos Generales para el prospecto."
         Me.lblMensajeCargaDatosGenerales.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -1576,17 +1930,13 @@ Partial Class FrmContacto
         Me.panContactoInicial.BackColor = System.Drawing.Color.White
         Me.panContactoInicial.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.panContactoInicial.Controls.Add(Me.lblMensajeCargaContactoInicial)
-        Me.panContactoInicial.Controls.Add(Me.btnCancelarContactoInicial)
-        Me.panContactoInicial.Controls.Add(Me.btnGuardarContactoInicial)
-        Me.panContactoInicial.Controls.Add(Me.btnRegistroContactoInicial)
-        Me.panContactoInicial.Controls.Add(Me.lblMensajeErrorContactoInicial)
-        Me.panContactoInicial.Controls.Add(Me.gpBoxDatosContactoInicial)
         Me.panContactoInicial.Controls.Add(Me.Panel1)
         Me.panContactoInicial.Controls.Add(Me.lblTituloCI)
+        Me.panContactoInicial.Controls.Add(Me.panDatosContactoInicial)
         Me.panContactoInicial.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold)
         Me.panContactoInicial.Location = New System.Drawing.Point(212, 0)
         Me.panContactoInicial.Name = "panContactoInicial"
-        Me.panContactoInicial.Size = New System.Drawing.Size(1026, 660)
+        Me.panContactoInicial.Size = New System.Drawing.Size(1106, 660)
         Me.panContactoInicial.TabIndex = 0
         Me.panContactoInicial.Tag = "2"
         Me.panContactoInicial.Visible = False
@@ -1600,157 +1950,11 @@ Partial Class FrmContacto
         Me.lblMensajeCargaContactoInicial.ForeColor = System.Drawing.Color.White
         Me.lblMensajeCargaContactoInicial.Location = New System.Drawing.Point(0, 44)
         Me.lblMensajeCargaContactoInicial.Name = "lblMensajeCargaContactoInicial"
-        Me.lblMensajeCargaContactoInicial.Size = New System.Drawing.Size(1024, 25)
-        Me.lblMensajeCargaContactoInicial.TabIndex = 6
+        Me.lblMensajeCargaContactoInicial.Size = New System.Drawing.Size(1104, 25)
+        Me.lblMensajeCargaContactoInicial.TabIndex = 2
         Me.lblMensajeCargaContactoInicial.Text = "No se ha cargado información de Contacto Inicial para el prospecto."
         Me.lblMensajeCargaContactoInicial.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.lblMensajeCargaContactoInicial.Visible = False
-        '
-        'btnCancelarContactoInicial
-        '
-        Me.btnCancelarContactoInicial.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCancelarContactoInicial.Location = New System.Drawing.Point(625, 327)
-        Me.btnCancelarContactoInicial.Name = "btnCancelarContactoInicial"
-        Me.btnCancelarContactoInicial.Size = New System.Drawing.Size(130, 25)
-        Me.btnCancelarContactoInicial.TabIndex = 2
-        Me.btnCancelarContactoInicial.Text = "Cancelar"
-        Me.btnCancelarContactoInicial.UseVisualStyleBackColor = True
-        Me.btnCancelarContactoInicial.Visible = False
-        '
-        'btnGuardarContactoInicial
-        '
-        Me.btnGuardarContactoInicial.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnGuardarContactoInicial.Location = New System.Drawing.Point(765, 327)
-        Me.btnGuardarContactoInicial.Name = "btnGuardarContactoInicial"
-        Me.btnGuardarContactoInicial.Size = New System.Drawing.Size(130, 25)
-        Me.btnGuardarContactoInicial.TabIndex = 3
-        Me.btnGuardarContactoInicial.Text = "Guardar"
-        Me.btnGuardarContactoInicial.UseVisualStyleBackColor = True
-        Me.btnGuardarContactoInicial.Visible = False
-        '
-        'btnRegistroContactoInicial
-        '
-        Me.btnRegistroContactoInicial.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnRegistroContactoInicial.Location = New System.Drawing.Point(75, 327)
-        Me.btnRegistroContactoInicial.Name = "btnRegistroContactoInicial"
-        Me.btnRegistroContactoInicial.Size = New System.Drawing.Size(130, 25)
-        Me.btnRegistroContactoInicial.TabIndex = 1
-        Me.btnRegistroContactoInicial.Text = "Registrar"
-        Me.btnRegistroContactoInicial.UseVisualStyleBackColor = True
-        Me.btnRegistroContactoInicial.Visible = False
-        '
-        'lblMensajeErrorContactoInicial
-        '
-        Me.lblMensajeErrorContactoInicial.BackColor = System.Drawing.Color.FromArgb(CType(CType(233, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(65, Byte), Integer))
-        Me.lblMensajeErrorContactoInicial.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.lblMensajeErrorContactoInicial.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblMensajeErrorContactoInicial.ForeColor = System.Drawing.Color.White
-        Me.lblMensajeErrorContactoInicial.Location = New System.Drawing.Point(0, 633)
-        Me.lblMensajeErrorContactoInicial.Name = "lblMensajeErrorContactoInicial"
-        Me.lblMensajeErrorContactoInicial.Size = New System.Drawing.Size(1024, 25)
-        Me.lblMensajeErrorContactoInicial.TabIndex = 5
-        Me.lblMensajeErrorContactoInicial.Text = "Mensaje de error"
-        Me.lblMensajeErrorContactoInicial.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.lblMensajeErrorContactoInicial.Visible = False
-        '
-        'gpBoxDatosContactoInicial
-        '
-        Me.gpBoxDatosContactoInicial.Controls.Add(Me.lblContactoInicialNombre)
-        Me.gpBoxDatosContactoInicial.Controls.Add(Me.txtContactoInicialExtension)
-        Me.gpBoxDatosContactoInicial.Controls.Add(Me.txtContactoInicialNombre)
-        Me.gpBoxDatosContactoInicial.Controls.Add(Me.lblContactoInicialExtension)
-        Me.gpBoxDatosContactoInicial.Controls.Add(Me.lblContactoInicialCargo)
-        Me.gpBoxDatosContactoInicial.Controls.Add(Me.txtContactoInicialTelefono)
-        Me.gpBoxDatosContactoInicial.Controls.Add(Me.txtContactoInicialCargo)
-        Me.gpBoxDatosContactoInicial.Controls.Add(Me.lblContactoInicialTelefono)
-        Me.gpBoxDatosContactoInicial.Controls.Add(Me.lblContactoInicialCorreo)
-        Me.gpBoxDatosContactoInicial.Controls.Add(Me.txtContactoInicialCorreo)
-        Me.gpBoxDatosContactoInicial.Enabled = False
-        Me.gpBoxDatosContactoInicial.Location = New System.Drawing.Point(75, 72)
-        Me.gpBoxDatosContactoInicial.Name = "gpBoxDatosContactoInicial"
-        Me.gpBoxDatosContactoInicial.Size = New System.Drawing.Size(820, 244)
-        Me.gpBoxDatosContactoInicial.TabIndex = 0
-        Me.gpBoxDatosContactoInicial.TabStop = False
-        '
-        'lblContactoInicialNombre
-        '
-        Me.lblContactoInicialNombre.AutoSize = True
-        Me.lblContactoInicialNombre.Location = New System.Drawing.Point(79, 61)
-        Me.lblContactoInicialNombre.Name = "lblContactoInicialNombre"
-        Me.lblContactoInicialNombre.Size = New System.Drawing.Size(59, 18)
-        Me.lblContactoInicialNombre.TabIndex = 0
-        Me.lblContactoInicialNombre.Text = "Nombre"
-        '
-        'txtContactoInicialExtension
-        '
-        Me.txtContactoInicialExtension.Location = New System.Drawing.Point(577, 159)
-        Me.txtContactoInicialExtension.Name = "txtContactoInicialExtension"
-        Me.txtContactoInicialExtension.Size = New System.Drawing.Size(92, 25)
-        Me.txtContactoInicialExtension.TabIndex = 9
-        '
-        'txtContactoInicialNombre
-        '
-        Me.txtContactoInicialNombre.Location = New System.Drawing.Point(79, 84)
-        Me.txtContactoInicialNombre.Name = "txtContactoInicialNombre"
-        Me.txtContactoInicialNombre.Size = New System.Drawing.Size(332, 25)
-        Me.txtContactoInicialNombre.TabIndex = 1
-        '
-        'lblContactoInicialExtension
-        '
-        Me.lblContactoInicialExtension.AutoSize = True
-        Me.lblContactoInicialExtension.Location = New System.Drawing.Point(577, 136)
-        Me.lblContactoInicialExtension.Name = "lblContactoInicialExtension"
-        Me.lblContactoInicialExtension.Size = New System.Drawing.Size(69, 18)
-        Me.lblContactoInicialExtension.TabIndex = 8
-        Me.lblContactoInicialExtension.Text = "Extensión"
-        '
-        'lblContactoInicialCargo
-        '
-        Me.lblContactoInicialCargo.AutoSize = True
-        Me.lblContactoInicialCargo.Location = New System.Drawing.Point(436, 61)
-        Me.lblContactoInicialCargo.Name = "lblContactoInicialCargo"
-        Me.lblContactoInicialCargo.Size = New System.Drawing.Size(139, 18)
-        Me.lblContactoInicialCargo.TabIndex = 2
-        Me.lblContactoInicialCargo.Text = "Cargo en la compañia"
-        '
-        'txtContactoInicialTelefono
-        '
-        Me.txtContactoInicialTelefono.Location = New System.Drawing.Point(436, 159)
-        Me.txtContactoInicialTelefono.Name = "txtContactoInicialTelefono"
-        Me.txtContactoInicialTelefono.Size = New System.Drawing.Size(128, 25)
-        Me.txtContactoInicialTelefono.TabIndex = 7
-        '
-        'txtContactoInicialCargo
-        '
-        Me.txtContactoInicialCargo.Location = New System.Drawing.Point(436, 84)
-        Me.txtContactoInicialCargo.Name = "txtContactoInicialCargo"
-        Me.txtContactoInicialCargo.Size = New System.Drawing.Size(305, 25)
-        Me.txtContactoInicialCargo.TabIndex = 3
-        '
-        'lblContactoInicialTelefono
-        '
-        Me.lblContactoInicialTelefono.AutoSize = True
-        Me.lblContactoInicialTelefono.Location = New System.Drawing.Point(436, 136)
-        Me.lblContactoInicialTelefono.Name = "lblContactoInicialTelefono"
-        Me.lblContactoInicialTelefono.Size = New System.Drawing.Size(63, 18)
-        Me.lblContactoInicialTelefono.TabIndex = 6
-        Me.lblContactoInicialTelefono.Text = "Teléfono"
-        '
-        'lblContactoInicialCorreo
-        '
-        Me.lblContactoInicialCorreo.AutoSize = True
-        Me.lblContactoInicialCorreo.Location = New System.Drawing.Point(79, 136)
-        Me.lblContactoInicialCorreo.Name = "lblContactoInicialCorreo"
-        Me.lblContactoInicialCorreo.Size = New System.Drawing.Size(123, 18)
-        Me.lblContactoInicialCorreo.TabIndex = 4
-        Me.lblContactoInicialCorreo.Text = "Correo electrónico"
-        '
-        'txtContactoInicialCorreo
-        '
-        Me.txtContactoInicialCorreo.Location = New System.Drawing.Point(79, 159)
-        Me.txtContactoInicialCorreo.Name = "txtContactoInicialCorreo"
-        Me.txtContactoInicialCorreo.Size = New System.Drawing.Size(332, 25)
-        Me.txtContactoInicialCorreo.TabIndex = 5
         '
         'Panel1
         '
@@ -1771,6 +1975,214 @@ Partial Class FrmContacto
         Me.lblTituloCI.TabIndex = 0
         Me.lblTituloCI.Text = "CONTACTO INICIAL"
         '
+        'panDatosContactoInicial
+        '
+        Me.panDatosContactoInicial.Controls.Add(Me.lblContactoInicialObligatorios)
+        Me.panDatosContactoInicial.Controls.Add(Me.lblTituloDatosContacto)
+        Me.panDatosContactoInicial.Controls.Add(Me.txtContactoInicialFecha)
+        Me.panDatosContactoInicial.Controls.Add(Me.lblContactoInicialFecha)
+        Me.panDatosContactoInicial.Controls.Add(Me.lblContactoInicialPrimeraPersona)
+        Me.panDatosContactoInicial.Controls.Add(Me.txtContactoInicialPrimerContacto)
+        Me.panDatosContactoInicial.Controls.Add(Me.gpBoxDatosContactoInicial)
+        Me.panDatosContactoInicial.Enabled = False
+        Me.panDatosContactoInicial.Location = New System.Drawing.Point(21, 88)
+        Me.panDatosContactoInicial.Name = "panDatosContactoInicial"
+        Me.panDatosContactoInicial.Size = New System.Drawing.Size(1038, 534)
+        Me.panDatosContactoInicial.TabIndex = 12
+        '
+        'lblContactoInicialObligatorios
+        '
+        Me.lblContactoInicialObligatorios.AutoSize = True
+        Me.lblContactoInicialObligatorios.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Italic)
+        Me.lblContactoInicialObligatorios.Location = New System.Drawing.Point(11, 480)
+        Me.lblContactoInicialObligatorios.Name = "lblContactoInicialObligatorios"
+        Me.lblContactoInicialObligatorios.Size = New System.Drawing.Size(266, 17)
+        Me.lblContactoInicialObligatorios.TabIndex = 12
+        Me.lblContactoInicialObligatorios.Text = "Los campos marcados con (*) son obligatorios."
+        '
+        'lblTituloDatosContacto
+        '
+        Me.lblTituloDatosContacto.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(161, Byte), Integer), CType(CType(187, Byte), Integer))
+        Me.lblTituloDatosContacto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lblTituloDatosContacto.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTituloDatosContacto.ForeColor = System.Drawing.Color.White
+        Me.lblTituloDatosContacto.Location = New System.Drawing.Point(11, 142)
+        Me.lblTituloDatosContacto.Name = "lblTituloDatosContacto"
+        Me.lblTituloDatosContacto.Padding = New System.Windows.Forms.Padding(8, 0, 0, 0)
+        Me.lblTituloDatosContacto.Size = New System.Drawing.Size(1015, 23)
+        Me.lblTituloDatosContacto.TabIndex = 7
+        Me.lblTituloDatosContacto.Text = "Datos de Contacto"
+        Me.lblTituloDatosContacto.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'txtContactoInicialFecha
+        '
+        Me.txtContactoInicialFecha.Font = New System.Drawing.Font("Calibri", 11.0!)
+        Me.txtContactoInicialFecha.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.txtContactoInicialFecha.Location = New System.Drawing.Point(184, 18)
+        Me.txtContactoInicialFecha.Name = "txtContactoInicialFecha"
+        Me.txtContactoInicialFecha.Size = New System.Drawing.Size(125, 25)
+        Me.txtContactoInicialFecha.TabIndex = 4
+        '
+        'lblContactoInicialFecha
+        '
+        Me.lblContactoInicialFecha.AutoSize = True
+        Me.lblContactoInicialFecha.Location = New System.Drawing.Point(10, 21)
+        Me.lblContactoInicialFecha.Name = "lblContactoInicialFecha"
+        Me.lblContactoInicialFecha.Size = New System.Drawing.Size(163, 18)
+        Me.lblContactoInicialFecha.TabIndex = 3
+        Me.lblContactoInicialFecha.Text = "Fecha del contacto inicial"
+        '
+        'lblContactoInicialPrimeraPersona
+        '
+        Me.lblContactoInicialPrimeraPersona.AutoSize = True
+        Me.lblContactoInicialPrimeraPersona.Location = New System.Drawing.Point(11, 67)
+        Me.lblContactoInicialPrimeraPersona.Name = "lblContactoInicialPrimeraPersona"
+        Me.lblContactoInicialPrimeraPersona.Size = New System.Drawing.Size(239, 18)
+        Me.lblContactoInicialPrimeraPersona.TabIndex = 5
+        Me.lblContactoInicialPrimeraPersona.Text = "Persona que tuvo el primer contacto*"
+        '
+        'txtContactoInicialPrimerContacto
+        '
+        Me.txtContactoInicialPrimerContacto.Location = New System.Drawing.Point(11, 93)
+        Me.txtContactoInicialPrimerContacto.Name = "txtContactoInicialPrimerContacto"
+        Me.txtContactoInicialPrimerContacto.Size = New System.Drawing.Size(1015, 25)
+        Me.txtContactoInicialPrimerContacto.TabIndex = 6
+        '
+        'gpBoxDatosContactoInicial
+        '
+        Me.gpBoxDatosContactoInicial.Controls.Add(Me.txtContactoInicialCelular)
+        Me.gpBoxDatosContactoInicial.Controls.Add(Me.Label3)
+        Me.gpBoxDatosContactoInicial.Controls.Add(Me.lblAcercamientoWebProspecto)
+        Me.gpBoxDatosContactoInicial.Controls.Add(Me.lblContactoInicialNombre)
+        Me.gpBoxDatosContactoInicial.Controls.Add(Me.txtAcercamientoWebProspecto)
+        Me.gpBoxDatosContactoInicial.Controls.Add(Me.txtContactoInicialExtension)
+        Me.gpBoxDatosContactoInicial.Controls.Add(Me.txtContactoInicialNombre)
+        Me.gpBoxDatosContactoInicial.Controls.Add(Me.lblContactoInicialExtension)
+        Me.gpBoxDatosContactoInicial.Controls.Add(Me.lblContactoInicialCargo)
+        Me.gpBoxDatosContactoInicial.Controls.Add(Me.txtContactoInicialTelefono)
+        Me.gpBoxDatosContactoInicial.Controls.Add(Me.txtContactoInicialCargo)
+        Me.gpBoxDatosContactoInicial.Controls.Add(Me.lblContactoInicialTelefono)
+        Me.gpBoxDatosContactoInicial.Controls.Add(Me.lblContactoInicialCorreo)
+        Me.gpBoxDatosContactoInicial.Controls.Add(Me.txtContactoInicialCorreo)
+        Me.gpBoxDatosContactoInicial.Location = New System.Drawing.Point(11, 142)
+        Me.gpBoxDatosContactoInicial.Name = "gpBoxDatosContactoInicial"
+        Me.gpBoxDatosContactoInicial.Size = New System.Drawing.Size(1015, 332)
+        Me.gpBoxDatosContactoInicial.TabIndex = 8
+        Me.gpBoxDatosContactoInicial.TabStop = False
+        '
+        'txtContactoInicialCelular
+        '
+        Me.txtContactoInicialCelular.Location = New System.Drawing.Point(380, 202)
+        Me.txtContactoInicialCelular.Name = "txtContactoInicialCelular"
+        Me.txtContactoInicialCelular.Size = New System.Drawing.Size(189, 25)
+        Me.txtContactoInicialCelular.TabIndex = 11
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(380, 178)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(115, 18)
+        Me.Label3.TabIndex = 10
+        Me.Label3.Text = "Teléfono celular*"
+        '
+        'lblAcercamientoWebProspecto
+        '
+        Me.lblAcercamientoWebProspecto.AutoSize = True
+        Me.lblAcercamientoWebProspecto.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAcercamientoWebProspecto.Location = New System.Drawing.Point(55, 245)
+        Me.lblAcercamientoWebProspecto.Name = "lblAcercamientoWebProspecto"
+        Me.lblAcercamientoWebProspecto.Size = New System.Drawing.Size(167, 18)
+        Me.lblAcercamientoWebProspecto.TabIndex = 12
+        Me.lblAcercamientoWebProspecto.Text = "Página web del prospecto"
+        '
+        'lblContactoInicialNombre
+        '
+        Me.lblContactoInicialNombre.AutoSize = True
+        Me.lblContactoInicialNombre.Location = New System.Drawing.Point(55, 51)
+        Me.lblContactoInicialNombre.Name = "lblContactoInicialNombre"
+        Me.lblContactoInicialNombre.Size = New System.Drawing.Size(82, 18)
+        Me.lblContactoInicialNombre.TabIndex = 0
+        Me.lblContactoInicialNombre.Text = "Nombre(s)*"
+        '
+        'txtAcercamientoWebProspecto
+        '
+        Me.txtAcercamientoWebProspecto.Location = New System.Drawing.Point(55, 269)
+        Me.txtAcercamientoWebProspecto.Name = "txtAcercamientoWebProspecto"
+        Me.txtAcercamientoWebProspecto.Size = New System.Drawing.Size(898, 25)
+        Me.txtAcercamientoWebProspecto.TabIndex = 13
+        '
+        'txtContactoInicialExtension
+        '
+        Me.txtContactoInicialExtension.Location = New System.Drawing.Point(254, 202)
+        Me.txtContactoInicialExtension.Name = "txtContactoInicialExtension"
+        Me.txtContactoInicialExtension.Size = New System.Drawing.Size(92, 25)
+        Me.txtContactoInicialExtension.TabIndex = 9
+        '
+        'txtContactoInicialNombre
+        '
+        Me.txtContactoInicialNombre.Location = New System.Drawing.Point(55, 74)
+        Me.txtContactoInicialNombre.Name = "txtContactoInicialNombre"
+        Me.txtContactoInicialNombre.Size = New System.Drawing.Size(898, 25)
+        Me.txtContactoInicialNombre.TabIndex = 1
+        '
+        'lblContactoInicialExtension
+        '
+        Me.lblContactoInicialExtension.AutoSize = True
+        Me.lblContactoInicialExtension.Location = New System.Drawing.Point(254, 178)
+        Me.lblContactoInicialExtension.Name = "lblContactoInicialExtension"
+        Me.lblContactoInicialExtension.Size = New System.Drawing.Size(69, 18)
+        Me.lblContactoInicialExtension.TabIndex = 8
+        Me.lblContactoInicialExtension.Text = "Extensión"
+        '
+        'lblContactoInicialCargo
+        '
+        Me.lblContactoInicialCargo.AutoSize = True
+        Me.lblContactoInicialCargo.Location = New System.Drawing.Point(596, 113)
+        Me.lblContactoInicialCargo.Name = "lblContactoInicialCargo"
+        Me.lblContactoInicialCargo.Size = New System.Drawing.Size(146, 18)
+        Me.lblContactoInicialCargo.TabIndex = 4
+        Me.lblContactoInicialCargo.Text = "Cargo en la compañia*"
+        '
+        'txtContactoInicialTelefono
+        '
+        Me.txtContactoInicialTelefono.Location = New System.Drawing.Point(55, 202)
+        Me.txtContactoInicialTelefono.Name = "txtContactoInicialTelefono"
+        Me.txtContactoInicialTelefono.Size = New System.Drawing.Size(189, 25)
+        Me.txtContactoInicialTelefono.TabIndex = 7
+        '
+        'txtContactoInicialCargo
+        '
+        Me.txtContactoInicialCargo.Location = New System.Drawing.Point(596, 136)
+        Me.txtContactoInicialCargo.Name = "txtContactoInicialCargo"
+        Me.txtContactoInicialCargo.Size = New System.Drawing.Size(357, 25)
+        Me.txtContactoInicialCargo.TabIndex = 5
+        '
+        'lblContactoInicialTelefono
+        '
+        Me.lblContactoInicialTelefono.AutoSize = True
+        Me.lblContactoInicialTelefono.Location = New System.Drawing.Point(55, 179)
+        Me.lblContactoInicialTelefono.Name = "lblContactoInicialTelefono"
+        Me.lblContactoInicialTelefono.Size = New System.Drawing.Size(114, 18)
+        Me.lblContactoInicialTelefono.TabIndex = 6
+        Me.lblContactoInicialTelefono.Text = "Teléfono oficina*"
+        '
+        'lblContactoInicialCorreo
+        '
+        Me.lblContactoInicialCorreo.AutoSize = True
+        Me.lblContactoInicialCorreo.Location = New System.Drawing.Point(55, 113)
+        Me.lblContactoInicialCorreo.Name = "lblContactoInicialCorreo"
+        Me.lblContactoInicialCorreo.Size = New System.Drawing.Size(130, 18)
+        Me.lblContactoInicialCorreo.TabIndex = 2
+        Me.lblContactoInicialCorreo.Text = "Correo electrónico*"
+        '
+        'txtContactoInicialCorreo
+        '
+        Me.txtContactoInicialCorreo.Location = New System.Drawing.Point(55, 136)
+        Me.txtContactoInicialCorreo.Name = "txtContactoInicialCorreo"
+        Me.txtContactoInicialCorreo.Size = New System.Drawing.Size(514, 25)
+        Me.txtContactoInicialCorreo.TabIndex = 3
+        '
         'panAcercamiento
         '
         Me.panAcercamiento.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -1778,21 +2190,29 @@ Partial Class FrmContacto
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.panAcercamiento.BackColor = System.Drawing.Color.White
         Me.panAcercamiento.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.panAcercamiento.Controls.Add(Me.Label4)
         Me.panAcercamiento.Controls.Add(Me.lblMensajeCargaAcercamiento)
         Me.panAcercamiento.Controls.Add(Me.lblMensajeErrorAcercamiento)
-        Me.panAcercamiento.Controls.Add(Me.btnCancelarAcercamiento)
-        Me.panAcercamiento.Controls.Add(Me.btnGuardarAcercamiento)
-        Me.panAcercamiento.Controls.Add(Me.btnRegistroAcercamiento)
         Me.panAcercamiento.Controls.Add(Me.gpBoxDatosAcercamiento)
         Me.panAcercamiento.Controls.Add(Me.Panel2)
         Me.panAcercamiento.Controls.Add(Me.lblTituloAcercamiento)
         Me.panAcercamiento.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.panAcercamiento.Location = New System.Drawing.Point(212, 0)
         Me.panAcercamiento.Name = "panAcercamiento"
-        Me.panAcercamiento.Size = New System.Drawing.Size(1026, 660)
+        Me.panAcercamiento.Size = New System.Drawing.Size(1106, 660)
         Me.panAcercamiento.TabIndex = 6
         Me.panAcercamiento.Tag = "3"
         Me.panAcercamiento.Visible = False
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Italic)
+        Me.Label4.Location = New System.Drawing.Point(91, 371)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(266, 17)
+        Me.Label4.TabIndex = 13
+        Me.Label4.Text = "Los campos marcados con (*) son obligatorios."
         '
         'lblMensajeCargaAcercamiento
         '
@@ -1803,7 +2223,7 @@ Partial Class FrmContacto
         Me.lblMensajeCargaAcercamiento.ForeColor = System.Drawing.Color.White
         Me.lblMensajeCargaAcercamiento.Location = New System.Drawing.Point(0, 44)
         Me.lblMensajeCargaAcercamiento.Name = "lblMensajeCargaAcercamiento"
-        Me.lblMensajeCargaAcercamiento.Size = New System.Drawing.Size(1024, 25)
+        Me.lblMensajeCargaAcercamiento.Size = New System.Drawing.Size(1104, 25)
         Me.lblMensajeCargaAcercamiento.TabIndex = 11
         Me.lblMensajeCargaAcercamiento.Text = "No se ha cargado información de Acercamiento para el prospecto."
         Me.lblMensajeCargaAcercamiento.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -1817,51 +2237,16 @@ Partial Class FrmContacto
         Me.lblMensajeErrorAcercamiento.ForeColor = System.Drawing.Color.White
         Me.lblMensajeErrorAcercamiento.Location = New System.Drawing.Point(0, 633)
         Me.lblMensajeErrorAcercamiento.Name = "lblMensajeErrorAcercamiento"
-        Me.lblMensajeErrorAcercamiento.Size = New System.Drawing.Size(1024, 25)
+        Me.lblMensajeErrorAcercamiento.Size = New System.Drawing.Size(1104, 25)
         Me.lblMensajeErrorAcercamiento.TabIndex = 4
         Me.lblMensajeErrorAcercamiento.Text = "Mensaje de error"
         Me.lblMensajeErrorAcercamiento.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.lblMensajeErrorAcercamiento.Visible = False
         '
-        'btnCancelarAcercamiento
-        '
-        Me.btnCancelarAcercamiento.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCancelarAcercamiento.Location = New System.Drawing.Point(691, 360)
-        Me.btnCancelarAcercamiento.Name = "btnCancelarAcercamiento"
-        Me.btnCancelarAcercamiento.Size = New System.Drawing.Size(130, 25)
-        Me.btnCancelarAcercamiento.TabIndex = 2
-        Me.btnCancelarAcercamiento.Text = "Cancelar"
-        Me.btnCancelarAcercamiento.UseVisualStyleBackColor = True
-        Me.btnCancelarAcercamiento.Visible = False
-        '
-        'btnGuardarAcercamiento
-        '
-        Me.btnGuardarAcercamiento.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnGuardarAcercamiento.Location = New System.Drawing.Point(831, 360)
-        Me.btnGuardarAcercamiento.Name = "btnGuardarAcercamiento"
-        Me.btnGuardarAcercamiento.Size = New System.Drawing.Size(130, 25)
-        Me.btnGuardarAcercamiento.TabIndex = 3
-        Me.btnGuardarAcercamiento.Text = "Guardar"
-        Me.btnGuardarAcercamiento.UseVisualStyleBackColor = True
-        Me.btnGuardarAcercamiento.Visible = False
-        '
-        'btnRegistroAcercamiento
-        '
-        Me.btnRegistroAcercamiento.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnRegistroAcercamiento.Location = New System.Drawing.Point(63, 360)
-        Me.btnRegistroAcercamiento.Name = "btnRegistroAcercamiento"
-        Me.btnRegistroAcercamiento.Size = New System.Drawing.Size(130, 25)
-        Me.btnRegistroAcercamiento.TabIndex = 1
-        Me.btnRegistroAcercamiento.Text = "Registrar"
-        Me.btnRegistroAcercamiento.UseVisualStyleBackColor = True
-        Me.btnRegistroAcercamiento.Visible = False
-        '
         'gpBoxDatosAcercamiento
         '
-        Me.gpBoxDatosAcercamiento.Controls.Add(Me.lblAcercamientoWebProspecto)
         Me.gpBoxDatosAcercamiento.Controls.Add(Me.lblMedioContactoOtro)
         Me.gpBoxDatosAcercamiento.Controls.Add(Me.lblAcercamientoOtro)
-        Me.gpBoxDatosAcercamiento.Controls.Add(Me.txtAcercamientoWebProspecto)
         Me.gpBoxDatosAcercamiento.Controls.Add(Me.cboAcercamientoMedioContacto)
         Me.gpBoxDatosAcercamiento.Controls.Add(Me.lblAcercamientoComoEntero)
         Me.gpBoxDatosAcercamiento.Controls.Add(Me.txtAcercamientoEnteroOtro)
@@ -1869,27 +2254,17 @@ Partial Class FrmContacto
         Me.gpBoxDatosAcercamiento.Controls.Add(Me.lblAcercamientoMedioContacto)
         Me.gpBoxDatosAcercamiento.Controls.Add(Me.txtAcercamientoContactoOtro)
         Me.gpBoxDatosAcercamiento.Enabled = False
-        Me.gpBoxDatosAcercamiento.Location = New System.Drawing.Point(63, 80)
+        Me.gpBoxDatosAcercamiento.Location = New System.Drawing.Point(91, 94)
         Me.gpBoxDatosAcercamiento.Name = "gpBoxDatosAcercamiento"
         Me.gpBoxDatosAcercamiento.Size = New System.Drawing.Size(898, 266)
         Me.gpBoxDatosAcercamiento.TabIndex = 0
         Me.gpBoxDatosAcercamiento.TabStop = False
         '
-        'lblAcercamientoWebProspecto
-        '
-        Me.lblAcercamientoWebProspecto.AutoSize = True
-        Me.lblAcercamientoWebProspecto.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblAcercamientoWebProspecto.Location = New System.Drawing.Point(128, 180)
-        Me.lblAcercamientoWebProspecto.Name = "lblAcercamientoWebProspecto"
-        Me.lblAcercamientoWebProspecto.Size = New System.Drawing.Size(167, 18)
-        Me.lblAcercamientoWebProspecto.TabIndex = 8
-        Me.lblAcercamientoWebProspecto.Text = "Página web del prospecto"
-        '
         'lblMedioContactoOtro
         '
         Me.lblMedioContactoOtro.AutoSize = True
         Me.lblMedioContactoOtro.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblMedioContactoOtro.Location = New System.Drawing.Point(474, 103)
+        Me.lblMedioContactoOtro.Location = New System.Drawing.Point(437, 69)
         Me.lblMedioContactoOtro.Name = "lblMedioContactoOtro"
         Me.lblMedioContactoOtro.Size = New System.Drawing.Size(36, 18)
         Me.lblMedioContactoOtro.TabIndex = 6
@@ -1899,71 +2274,64 @@ Partial Class FrmContacto
         '
         Me.lblAcercamientoOtro.AutoSize = True
         Me.lblAcercamientoOtro.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblAcercamientoOtro.Location = New System.Drawing.Point(474, 35)
+        Me.lblAcercamientoOtro.Location = New System.Drawing.Point(437, 146)
         Me.lblAcercamientoOtro.Name = "lblAcercamientoOtro"
         Me.lblAcercamientoOtro.Size = New System.Drawing.Size(36, 18)
         Me.lblAcercamientoOtro.TabIndex = 2
         Me.lblAcercamientoOtro.Text = "Otro"
         '
-        'txtAcercamientoWebProspecto
-        '
-        Me.txtAcercamientoWebProspecto.Location = New System.Drawing.Point(128, 206)
-        Me.txtAcercamientoWebProspecto.Name = "txtAcercamientoWebProspecto"
-        Me.txtAcercamientoWebProspecto.Size = New System.Drawing.Size(332, 25)
-        Me.txtAcercamientoWebProspecto.TabIndex = 9
-        '
         'cboAcercamientoMedioContacto
         '
         Me.cboAcercamientoMedioContacto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboAcercamientoMedioContacto.FormattingEnabled = True
-        Me.cboAcercamientoMedioContacto.Location = New System.Drawing.Point(128, 129)
+        Me.cboAcercamientoMedioContacto.Location = New System.Drawing.Point(45, 95)
         Me.cboAcercamientoMedioContacto.Name = "cboAcercamientoMedioContacto"
-        Me.cboAcercamientoMedioContacto.Size = New System.Drawing.Size(332, 26)
+        Me.cboAcercamientoMedioContacto.Size = New System.Drawing.Size(375, 26)
         Me.cboAcercamientoMedioContacto.TabIndex = 5
         '
         'lblAcercamientoComoEntero
         '
         Me.lblAcercamientoComoEntero.AutoSize = True
         Me.lblAcercamientoComoEntero.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblAcercamientoComoEntero.Location = New System.Drawing.Point(128, 35)
+        Me.lblAcercamientoComoEntero.Location = New System.Drawing.Point(45, 146)
         Me.lblAcercamientoComoEntero.Name = "lblAcercamientoComoEntero"
-        Me.lblAcercamientoComoEntero.Size = New System.Drawing.Size(196, 18)
+        Me.lblAcercamientoComoEntero.Size = New System.Drawing.Size(203, 18)
         Me.lblAcercamientoComoEntero.TabIndex = 0
-        Me.lblAcercamientoComoEntero.Text = "¿Cómo se enteró de nosotros?"
+        Me.lblAcercamientoComoEntero.Text = "¿Cómo se enteró de nosotros?*"
         '
         'txtAcercamientoEnteroOtro
         '
         Me.txtAcercamientoEnteroOtro.Enabled = False
-        Me.txtAcercamientoEnteroOtro.Location = New System.Drawing.Point(474, 62)
+        Me.txtAcercamientoEnteroOtro.Location = New System.Drawing.Point(437, 173)
         Me.txtAcercamientoEnteroOtro.Name = "txtAcercamientoEnteroOtro"
-        Me.txtAcercamientoEnteroOtro.Size = New System.Drawing.Size(297, 25)
+        Me.txtAcercamientoEnteroOtro.Size = New System.Drawing.Size(350, 25)
         Me.txtAcercamientoEnteroOtro.TabIndex = 3
         '
         'cboAcercamientoComoEntero
         '
         Me.cboAcercamientoComoEntero.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboAcercamientoComoEntero.FormattingEnabled = True
-        Me.cboAcercamientoComoEntero.Location = New System.Drawing.Point(128, 61)
+        Me.cboAcercamientoComoEntero.Location = New System.Drawing.Point(45, 172)
         Me.cboAcercamientoComoEntero.Name = "cboAcercamientoComoEntero"
-        Me.cboAcercamientoComoEntero.Size = New System.Drawing.Size(332, 26)
+        Me.cboAcercamientoComoEntero.Size = New System.Drawing.Size(375, 26)
         Me.cboAcercamientoComoEntero.TabIndex = 1
         '
         'lblAcercamientoMedioContacto
         '
         Me.lblAcercamientoMedioContacto.AutoSize = True
         Me.lblAcercamientoMedioContacto.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblAcercamientoMedioContacto.Location = New System.Drawing.Point(128, 103)
+        Me.lblAcercamientoMedioContacto.Location = New System.Drawing.Point(45, 69)
         Me.lblAcercamientoMedioContacto.Name = "lblAcercamientoMedioContacto"
-        Me.lblAcercamientoMedioContacto.Size = New System.Drawing.Size(124, 18)
+        Me.lblAcercamientoMedioContacto.Size = New System.Drawing.Size(131, 18)
         Me.lblAcercamientoMedioContacto.TabIndex = 4
-        Me.lblAcercamientoMedioContacto.Text = "Medio de contacto"
+        Me.lblAcercamientoMedioContacto.Text = "Medio de contacto*"
         '
         'txtAcercamientoContactoOtro
         '
         Me.txtAcercamientoContactoOtro.Enabled = False
-        Me.txtAcercamientoContactoOtro.Location = New System.Drawing.Point(474, 129)
+        Me.txtAcercamientoContactoOtro.Location = New System.Drawing.Point(437, 95)
         Me.txtAcercamientoContactoOtro.Name = "txtAcercamientoContactoOtro"
-        Me.txtAcercamientoContactoOtro.Size = New System.Drawing.Size(297, 25)
+        Me.txtAcercamientoContactoOtro.Size = New System.Drawing.Size(350, 25)
         Me.txtAcercamientoContactoOtro.TabIndex = 7
         '
         'Panel2
@@ -1992,10 +2360,6 @@ Partial Class FrmContacto
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.panDireccion.BackColor = System.Drawing.Color.White
         Me.panDireccion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.panDireccion.Controls.Add(Me.btnCancelarDomicilio)
-        Me.panDireccion.Controls.Add(Me.btnGuardarDomicilio)
-        Me.panDireccion.Controls.Add(Me.btnRegistroDomicilio)
-        Me.panDireccion.Controls.Add(Me.lblMensajeErrorDomicilio)
         Me.panDireccion.Controls.Add(Me.lblMensajeCargaDomicilio)
         Me.panDireccion.Controls.Add(Me.Panel3)
         Me.panDireccion.Controls.Add(Me.lblTituloDomicilio)
@@ -2003,59 +2367,10 @@ Partial Class FrmContacto
         Me.panDireccion.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.panDireccion.Location = New System.Drawing.Point(212, 0)
         Me.panDireccion.Name = "panDireccion"
-        Me.panDireccion.Size = New System.Drawing.Size(1026, 660)
+        Me.panDireccion.Size = New System.Drawing.Size(1106, 660)
         Me.panDireccion.TabIndex = 0
         Me.panDireccion.Tag = "4"
         Me.panDireccion.Visible = False
-        '
-        'btnCancelarDomicilio
-        '
-        Me.btnCancelarDomicilio.Enabled = False
-        Me.btnCancelarDomicilio.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCancelarDomicilio.Location = New System.Drawing.Point(625, 468)
-        Me.btnCancelarDomicilio.Name = "btnCancelarDomicilio"
-        Me.btnCancelarDomicilio.Size = New System.Drawing.Size(130, 25)
-        Me.btnCancelarDomicilio.TabIndex = 4
-        Me.btnCancelarDomicilio.Text = "Cancelar"
-        Me.btnCancelarDomicilio.UseVisualStyleBackColor = True
-        Me.btnCancelarDomicilio.Visible = False
-        '
-        'btnGuardarDomicilio
-        '
-        Me.btnGuardarDomicilio.Enabled = False
-        Me.btnGuardarDomicilio.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnGuardarDomicilio.Location = New System.Drawing.Point(765, 468)
-        Me.btnGuardarDomicilio.Name = "btnGuardarDomicilio"
-        Me.btnGuardarDomicilio.Size = New System.Drawing.Size(130, 25)
-        Me.btnGuardarDomicilio.TabIndex = 5
-        Me.btnGuardarDomicilio.Text = "Guardar"
-        Me.btnGuardarDomicilio.UseVisualStyleBackColor = True
-        Me.btnGuardarDomicilio.Visible = False
-        '
-        'btnRegistroDomicilio
-        '
-        Me.btnRegistroDomicilio.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnRegistroDomicilio.Location = New System.Drawing.Point(75, 468)
-        Me.btnRegistroDomicilio.Name = "btnRegistroDomicilio"
-        Me.btnRegistroDomicilio.Size = New System.Drawing.Size(130, 25)
-        Me.btnRegistroDomicilio.TabIndex = 3
-        Me.btnRegistroDomicilio.Text = "Registrar"
-        Me.btnRegistroDomicilio.UseVisualStyleBackColor = True
-        Me.btnRegistroDomicilio.Visible = False
-        '
-        'lblMensajeErrorDomicilio
-        '
-        Me.lblMensajeErrorDomicilio.BackColor = System.Drawing.Color.FromArgb(CType(CType(233, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(65, Byte), Integer))
-        Me.lblMensajeErrorDomicilio.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.lblMensajeErrorDomicilio.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblMensajeErrorDomicilio.ForeColor = System.Drawing.Color.White
-        Me.lblMensajeErrorDomicilio.Location = New System.Drawing.Point(0, 633)
-        Me.lblMensajeErrorDomicilio.Name = "lblMensajeErrorDomicilio"
-        Me.lblMensajeErrorDomicilio.Size = New System.Drawing.Size(1024, 25)
-        Me.lblMensajeErrorDomicilio.TabIndex = 12
-        Me.lblMensajeErrorDomicilio.Text = "Mensaje de error"
-        Me.lblMensajeErrorDomicilio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.lblMensajeErrorDomicilio.Visible = False
         '
         'lblMensajeCargaDomicilio
         '
@@ -2066,7 +2381,7 @@ Partial Class FrmContacto
         Me.lblMensajeCargaDomicilio.ForeColor = System.Drawing.Color.White
         Me.lblMensajeCargaDomicilio.Location = New System.Drawing.Point(0, 44)
         Me.lblMensajeCargaDomicilio.Name = "lblMensajeCargaDomicilio"
-        Me.lblMensajeCargaDomicilio.Size = New System.Drawing.Size(1024, 25)
+        Me.lblMensajeCargaDomicilio.Size = New System.Drawing.Size(1104, 25)
         Me.lblMensajeCargaDomicilio.TabIndex = 11
         Me.lblMensajeCargaDomicilio.Text = "No se ha cargado información de Domicilio para el prospecto."
         Me.lblMensajeCargaDomicilio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -2093,189 +2408,282 @@ Partial Class FrmContacto
         '
         'gpBoxDatosDomicilio
         '
-        Me.gpBoxDatosDomicilio.Controls.Add(Me.cboDomicilioEstado)
-        Me.gpBoxDatosDomicilio.Controls.Add(Me.cboDomicilioMunicipio)
-        Me.gpBoxDatosDomicilio.Controls.Add(Me.cboDomicilioColonia)
-        Me.gpBoxDatosDomicilio.Controls.Add(Me.lblDomicilioEstado)
-        Me.gpBoxDatosDomicilio.Controls.Add(Me.lblDomicilioMunicipio)
-        Me.gpBoxDatosDomicilio.Controls.Add(Me.lblDomicilioColonia)
-        Me.gpBoxDatosDomicilio.Controls.Add(Me.lblDomicilioCP)
-        Me.gpBoxDatosDomicilio.Controls.Add(Me.txtDomicilioCP)
-        Me.gpBoxDatosDomicilio.Controls.Add(Me.lblDomicilioNoExt)
-        Me.gpBoxDatosDomicilio.Controls.Add(Me.lblDomicilioNoInt)
-        Me.gpBoxDatosDomicilio.Controls.Add(Me.lblDomicilioCalle)
-        Me.gpBoxDatosDomicilio.Controls.Add(Me.txtDomicilioNoExt)
+        Me.gpBoxDatosDomicilio.Controls.Add(Me.lblCamposDomicilio)
         Me.gpBoxDatosDomicilio.Controls.Add(Me.lblDomicilioPais)
-        Me.gpBoxDatosDomicilio.Controls.Add(Me.txtDomicilioCalle)
         Me.gpBoxDatosDomicilio.Controls.Add(Me.cboDomicilioPais)
-        Me.gpBoxDatosDomicilio.Controls.Add(Me.txtDomicilioNoInt)
-        Me.gpBoxDatosDomicilio.Controls.Add(Me.txtDomicilioMunicipio)
-        Me.gpBoxDatosDomicilio.Controls.Add(Me.txtDomicilioEstado)
-        Me.gpBoxDatosDomicilio.Controls.Add(Me.txtDomicilioColonia)
+        Me.gpBoxDatosDomicilio.Controls.Add(Me.panDomicilioExt)
+        Me.gpBoxDatosDomicilio.Controls.Add(Me.panDomicilioNac)
         Me.gpBoxDatosDomicilio.Enabled = False
-        Me.gpBoxDatosDomicilio.Location = New System.Drawing.Point(75, 72)
+        Me.gpBoxDatosDomicilio.Location = New System.Drawing.Point(91, 101)
         Me.gpBoxDatosDomicilio.Name = "gpBoxDatosDomicilio"
-        Me.gpBoxDatosDomicilio.Size = New System.Drawing.Size(820, 384)
-        Me.gpBoxDatosDomicilio.TabIndex = 2
+        Me.gpBoxDatosDomicilio.Size = New System.Drawing.Size(898, 478)
+        Me.gpBoxDatosDomicilio.TabIndex = 0
         Me.gpBoxDatosDomicilio.TabStop = False
         '
-        'cboDomicilioEstado
+        'lblCamposDomicilio
         '
-        Me.cboDomicilioEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboDomicilioEstado.FormattingEnabled = True
-        Me.cboDomicilioEstado.Location = New System.Drawing.Point(77, 306)
-        Me.cboDomicilioEstado.Name = "cboDomicilioEstado"
-        Me.cboDomicilioEstado.Size = New System.Drawing.Size(255, 26)
-        Me.cboDomicilioEstado.TabIndex = 15
-        '
-        'cboDomicilioMunicipio
-        '
-        Me.cboDomicilioMunicipio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboDomicilioMunicipio.FormattingEnabled = True
-        Me.cboDomicilioMunicipio.Location = New System.Drawing.Point(489, 229)
-        Me.cboDomicilioMunicipio.Name = "cboDomicilioMunicipio"
-        Me.cboDomicilioMunicipio.Size = New System.Drawing.Size(255, 26)
-        Me.cboDomicilioMunicipio.TabIndex = 13
-        '
-        'cboDomicilioColonia
-        '
-        Me.cboDomicilioColonia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboDomicilioColonia.FormattingEnabled = True
-        Me.cboDomicilioColonia.Location = New System.Drawing.Point(223, 229)
-        Me.cboDomicilioColonia.Name = "cboDomicilioColonia"
-        Me.cboDomicilioColonia.Size = New System.Drawing.Size(255, 26)
-        Me.cboDomicilioColonia.TabIndex = 11
-        '
-        'lblDomicilioEstado
-        '
-        Me.lblDomicilioEstado.AutoSize = True
-        Me.lblDomicilioEstado.Location = New System.Drawing.Point(77, 283)
-        Me.lblDomicilioEstado.Name = "lblDomicilioEstado"
-        Me.lblDomicilioEstado.Size = New System.Drawing.Size(49, 18)
-        Me.lblDomicilioEstado.TabIndex = 14
-        Me.lblDomicilioEstado.Text = "Estado"
-        '
-        'lblDomicilioMunicipio
-        '
-        Me.lblDomicilioMunicipio.AutoSize = True
-        Me.lblDomicilioMunicipio.Location = New System.Drawing.Point(490, 207)
-        Me.lblDomicilioMunicipio.Name = "lblDomicilioMunicipio"
-        Me.lblDomicilioMunicipio.Size = New System.Drawing.Size(132, 18)
-        Me.lblDomicilioMunicipio.TabIndex = 12
-        Me.lblDomicilioMunicipio.Text = "Municipio / Alcaldia"
-        '
-        'lblDomicilioColonia
-        '
-        Me.lblDomicilioColonia.AutoSize = True
-        Me.lblDomicilioColonia.Location = New System.Drawing.Point(223, 207)
-        Me.lblDomicilioColonia.Name = "lblDomicilioColonia"
-        Me.lblDomicilioColonia.Size = New System.Drawing.Size(55, 18)
-        Me.lblDomicilioColonia.TabIndex = 10
-        Me.lblDomicilioColonia.Text = "Colonia"
-        '
-        'lblDomicilioCP
-        '
-        Me.lblDomicilioCP.AutoSize = True
-        Me.lblDomicilioCP.Location = New System.Drawing.Point(77, 207)
-        Me.lblDomicilioCP.Name = "lblDomicilioCP"
-        Me.lblDomicilioCP.Size = New System.Drawing.Size(92, 18)
-        Me.lblDomicilioCP.TabIndex = 8
-        Me.lblDomicilioCP.Text = "Código Postal"
-        '
-        'txtDomicilioCP
-        '
-        Me.txtDomicilioCP.Location = New System.Drawing.Point(77, 230)
-        Me.txtDomicilioCP.Name = "txtDomicilioCP"
-        Me.txtDomicilioCP.Size = New System.Drawing.Size(135, 25)
-        Me.txtDomicilioCP.TabIndex = 9
-        '
-        'lblDomicilioNoExt
-        '
-        Me.lblDomicilioNoExt.AutoSize = True
-        Me.lblDomicilioNoExt.Location = New System.Drawing.Point(655, 131)
-        Me.lblDomicilioNoExt.Name = "lblDomicilioNoExt"
-        Me.lblDomicilioNoExt.Size = New System.Drawing.Size(68, 18)
-        Me.lblDomicilioNoExt.TabIndex = 6
-        Me.lblDomicilioNoExt.Text = "Núm. Ext."
-        '
-        'lblDomicilioNoInt
-        '
-        Me.lblDomicilioNoInt.AutoSize = True
-        Me.lblDomicilioNoInt.Location = New System.Drawing.Point(550, 131)
-        Me.lblDomicilioNoInt.Name = "lblDomicilioNoInt"
-        Me.lblDomicilioNoInt.Size = New System.Drawing.Size(66, 18)
-        Me.lblDomicilioNoInt.TabIndex = 0
-        Me.lblDomicilioNoInt.Text = "Núm. Int."
-        '
-        'lblDomicilioCalle
-        '
-        Me.lblDomicilioCalle.AutoSize = True
-        Me.lblDomicilioCalle.Location = New System.Drawing.Point(77, 131)
-        Me.lblDomicilioCalle.Name = "lblDomicilioCalle"
-        Me.lblDomicilioCalle.Size = New System.Drawing.Size(39, 18)
-        Me.lblDomicilioCalle.TabIndex = 2
-        Me.lblDomicilioCalle.Text = "Calle"
-        '
-        'txtDomicilioNoExt
-        '
-        Me.txtDomicilioNoExt.Location = New System.Drawing.Point(655, 154)
-        Me.txtDomicilioNoExt.Name = "txtDomicilioNoExt"
-        Me.txtDomicilioNoExt.Size = New System.Drawing.Size(89, 25)
-        Me.txtDomicilioNoExt.TabIndex = 7
+        Me.lblCamposDomicilio.AutoSize = True
+        Me.lblCamposDomicilio.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Italic)
+        Me.lblCamposDomicilio.Location = New System.Drawing.Point(13, 446)
+        Me.lblCamposDomicilio.Name = "lblCamposDomicilio"
+        Me.lblCamposDomicilio.Size = New System.Drawing.Size(266, 17)
+        Me.lblCamposDomicilio.TabIndex = 14
+        Me.lblCamposDomicilio.Text = "Los campos marcados con (*) son obligatorios."
         '
         'lblDomicilioPais
         '
         Me.lblDomicilioPais.AutoSize = True
-        Me.lblDomicilioPais.Location = New System.Drawing.Point(77, 54)
+        Me.lblDomicilioPais.Location = New System.Drawing.Point(127, 48)
         Me.lblDomicilioPais.Name = "lblDomicilioPais"
         Me.lblDomicilioPais.Size = New System.Drawing.Size(33, 18)
         Me.lblDomicilioPais.TabIndex = 0
         Me.lblDomicilioPais.Text = "País"
-        '
-        'txtDomicilioCalle
-        '
-        Me.txtDomicilioCalle.Location = New System.Drawing.Point(77, 154)
-        Me.txtDomicilioCalle.Name = "txtDomicilioCalle"
-        Me.txtDomicilioCalle.Size = New System.Drawing.Size(457, 25)
-        Me.txtDomicilioCalle.TabIndex = 3
         '
         'cboDomicilioPais
         '
         Me.cboDomicilioPais.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboDomicilioPais.DropDownWidth = 300
         Me.cboDomicilioPais.FormattingEnabled = True
-        Me.cboDomicilioPais.Location = New System.Drawing.Point(77, 77)
+        Me.cboDomicilioPais.Location = New System.Drawing.Point(166, 45)
         Me.cboDomicilioPais.Name = "cboDomicilioPais"
         Me.cboDomicilioPais.Size = New System.Drawing.Size(255, 26)
         Me.cboDomicilioPais.TabIndex = 1
         '
+        'panDomicilioExt
+        '
+        Me.panDomicilioExt.Controls.Add(Me.txtDomicilioExtCP)
+        Me.panDomicilioExt.Controls.Add(Me.lblDomicilioExtCP)
+        Me.panDomicilioExt.Controls.Add(Me.lblDomicilioExtDireccion2)
+        Me.panDomicilioExt.Controls.Add(Me.txtDomicilioExtDireccion2)
+        Me.panDomicilioExt.Controls.Add(Me.lblDomicilioExtDireccion1)
+        Me.panDomicilioExt.Controls.Add(Me.lblDomicilioExtEstado)
+        Me.panDomicilioExt.Controls.Add(Me.lblDomicilioExtLocalidad)
+        Me.panDomicilioExt.Controls.Add(Me.txtDomicilioExtLocalidad)
+        Me.panDomicilioExt.Controls.Add(Me.txtDomicilioExtDireccion1)
+        Me.panDomicilioExt.Controls.Add(Me.txtDomicilioExtEstado)
+        Me.panDomicilioExt.Location = New System.Drawing.Point(80, 83)
+        Me.panDomicilioExt.Name = "panDomicilioExt"
+        Me.panDomicilioExt.Size = New System.Drawing.Size(738, 340)
+        Me.panDomicilioExt.TabIndex = 15
+        '
+        'txtDomicilioExtCP
+        '
+        Me.txtDomicilioExtCP.Location = New System.Drawing.Point(84, 298)
+        Me.txtDomicilioExtCP.Name = "txtDomicilioExtCP"
+        Me.txtDomicilioExtCP.Size = New System.Drawing.Size(309, 25)
+        Me.txtDomicilioExtCP.TabIndex = 9
+        '
+        'lblDomicilioExtCP
+        '
+        Me.lblDomicilioExtCP.AutoSize = True
+        Me.lblDomicilioExtCP.Location = New System.Drawing.Point(84, 273)
+        Me.lblDomicilioExtCP.Name = "lblDomicilioExtCP"
+        Me.lblDomicilioExtCP.Size = New System.Drawing.Size(286, 18)
+        Me.lblDomicilioExtCP.TabIndex = 8
+        Me.lblDomicilioExtCP.Text = "Código Postal / Código ZIP / Código de Área*:"
+        '
+        'lblDomicilioExtDireccion2
+        '
+        Me.lblDomicilioExtDireccion2.AutoSize = True
+        Me.lblDomicilioExtDireccion2.Location = New System.Drawing.Point(84, 81)
+        Me.lblDomicilioExtDireccion2.Name = "lblDomicilioExtDireccion2"
+        Me.lblDomicilioExtDireccion2.Size = New System.Drawing.Size(284, 18)
+        Me.lblDomicilioExtDireccion2.TabIndex = 2
+        Me.lblDomicilioExtDireccion2.Text = "Línea de Dirección 2 (Información Adicional):"
+        '
+        'txtDomicilioExtDireccion2
+        '
+        Me.txtDomicilioExtDireccion2.Location = New System.Drawing.Point(84, 106)
+        Me.txtDomicilioExtDireccion2.Name = "txtDomicilioExtDireccion2"
+        Me.txtDomicilioExtDireccion2.Size = New System.Drawing.Size(560, 25)
+        Me.txtDomicilioExtDireccion2.TabIndex = 3
+        '
+        'lblDomicilioExtDireccion1
+        '
+        Me.lblDomicilioExtDireccion1.AutoSize = True
+        Me.lblDomicilioExtDireccion1.Location = New System.Drawing.Point(84, 17)
+        Me.lblDomicilioExtDireccion1.Name = "lblDomicilioExtDireccion1"
+        Me.lblDomicilioExtDireccion1.Size = New System.Drawing.Size(323, 18)
+        Me.lblDomicilioExtDireccion1.TabIndex = 0
+        Me.lblDomicilioExtDireccion1.Text = "Línea de Dirección 1 (Número y Nombre de Calle)*:"
+        '
+        'lblDomicilioExtEstado
+        '
+        Me.lblDomicilioExtEstado.AutoSize = True
+        Me.lblDomicilioExtEstado.Location = New System.Drawing.Point(84, 209)
+        Me.lblDomicilioExtEstado.Name = "lblDomicilioExtEstado"
+        Me.lblDomicilioExtEstado.Size = New System.Drawing.Size(251, 18)
+        Me.lblDomicilioExtEstado.TabIndex = 6
+        Me.lblDomicilioExtEstado.Text = "Estado / Provincia / Región / Condado*:"
+        '
+        'lblDomicilioExtLocalidad
+        '
+        Me.lblDomicilioExtLocalidad.AutoSize = True
+        Me.lblDomicilioExtLocalidad.Location = New System.Drawing.Point(84, 145)
+        Me.lblDomicilioExtLocalidad.Name = "lblDomicilioExtLocalidad"
+        Me.lblDomicilioExtLocalidad.Size = New System.Drawing.Size(132, 18)
+        Me.lblDomicilioExtLocalidad.TabIndex = 4
+        Me.lblDomicilioExtLocalidad.Text = "Ciudad / Localidad*:"
+        '
+        'txtDomicilioExtLocalidad
+        '
+        Me.txtDomicilioExtLocalidad.Location = New System.Drawing.Point(84, 170)
+        Me.txtDomicilioExtLocalidad.Name = "txtDomicilioExtLocalidad"
+        Me.txtDomicilioExtLocalidad.Size = New System.Drawing.Size(560, 25)
+        Me.txtDomicilioExtLocalidad.TabIndex = 5
+        '
+        'txtDomicilioExtDireccion1
+        '
+        Me.txtDomicilioExtDireccion1.Location = New System.Drawing.Point(84, 42)
+        Me.txtDomicilioExtDireccion1.Name = "txtDomicilioExtDireccion1"
+        Me.txtDomicilioExtDireccion1.Size = New System.Drawing.Size(560, 25)
+        Me.txtDomicilioExtDireccion1.TabIndex = 1
+        '
+        'txtDomicilioExtEstado
+        '
+        Me.txtDomicilioExtEstado.Location = New System.Drawing.Point(84, 234)
+        Me.txtDomicilioExtEstado.Name = "txtDomicilioExtEstado"
+        Me.txtDomicilioExtEstado.Size = New System.Drawing.Size(560, 25)
+        Me.txtDomicilioExtEstado.TabIndex = 7
+        '
+        'panDomicilioNac
+        '
+        Me.panDomicilioNac.Controls.Add(Me.lblDomicilioCalle)
+        Me.panDomicilioNac.Controls.Add(Me.cboDomicilioEstado)
+        Me.panDomicilioNac.Controls.Add(Me.txtDomicilioNoInt)
+        Me.panDomicilioNac.Controls.Add(Me.cboDomicilioMunicipio)
+        Me.panDomicilioNac.Controls.Add(Me.txtDomicilioCalle)
+        Me.panDomicilioNac.Controls.Add(Me.cboDomicilioColonia)
+        Me.panDomicilioNac.Controls.Add(Me.txtDomicilioNoExt)
+        Me.panDomicilioNac.Controls.Add(Me.lblDomicilioEstado)
+        Me.panDomicilioNac.Controls.Add(Me.lblDomicilioNoInt)
+        Me.panDomicilioNac.Controls.Add(Me.lblDomicilioMunicipio)
+        Me.panDomicilioNac.Controls.Add(Me.lblDomicilioNoExt)
+        Me.panDomicilioNac.Controls.Add(Me.lblDomicilioColonia)
+        Me.panDomicilioNac.Controls.Add(Me.txtDomicilioCP)
+        Me.panDomicilioNac.Controls.Add(Me.lblDomicilioCP)
+        Me.panDomicilioNac.Location = New System.Drawing.Point(80, 83)
+        Me.panDomicilioNac.Name = "panDomicilioNac"
+        Me.panDomicilioNac.Size = New System.Drawing.Size(738, 340)
+        Me.panDomicilioNac.TabIndex = 2
+        '
+        'lblDomicilioCalle
+        '
+        Me.lblDomicilioCalle.AutoSize = True
+        Me.lblDomicilioCalle.Location = New System.Drawing.Point(49, 29)
+        Me.lblDomicilioCalle.Name = "lblDomicilioCalle"
+        Me.lblDomicilioCalle.Size = New System.Drawing.Size(39, 18)
+        Me.lblDomicilioCalle.TabIndex = 0
+        Me.lblDomicilioCalle.Text = "Calle"
+        '
+        'cboDomicilioEstado
+        '
+        Me.cboDomicilioEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboDomicilioEstado.FormattingEnabled = True
+        Me.cboDomicilioEstado.Location = New System.Drawing.Point(197, 233)
+        Me.cboDomicilioEstado.Name = "cboDomicilioEstado"
+        Me.cboDomicilioEstado.Size = New System.Drawing.Size(309, 26)
+        Me.cboDomicilioEstado.TabIndex = 13
+        '
         'txtDomicilioNoInt
         '
-        Me.txtDomicilioNoInt.Location = New System.Drawing.Point(550, 154)
+        Me.txtDomicilioNoInt.Location = New System.Drawing.Point(522, 52)
         Me.txtDomicilioNoInt.Name = "txtDomicilioNoInt"
         Me.txtDomicilioNoInt.Size = New System.Drawing.Size(89, 25)
-        Me.txtDomicilioNoInt.TabIndex = 5
+        Me.txtDomicilioNoInt.TabIndex = 3
         '
-        'txtDomicilioMunicipio
+        'cboDomicilioMunicipio
         '
-        Me.txtDomicilioMunicipio.Location = New System.Drawing.Point(489, 229)
-        Me.txtDomicilioMunicipio.Name = "txtDomicilioMunicipio"
-        Me.txtDomicilioMunicipio.Size = New System.Drawing.Size(255, 25)
-        Me.txtDomicilioMunicipio.TabIndex = 17
+        Me.cboDomicilioMunicipio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboDomicilioMunicipio.FormattingEnabled = True
+        Me.cboDomicilioMunicipio.Location = New System.Drawing.Point(197, 188)
+        Me.cboDomicilioMunicipio.Name = "cboDomicilioMunicipio"
+        Me.cboDomicilioMunicipio.Size = New System.Drawing.Size(309, 26)
+        Me.cboDomicilioMunicipio.TabIndex = 11
         '
-        'txtDomicilioEstado
+        'txtDomicilioCalle
         '
-        Me.txtDomicilioEstado.Location = New System.Drawing.Point(77, 306)
-        Me.txtDomicilioEstado.Name = "txtDomicilioEstado"
-        Me.txtDomicilioEstado.Size = New System.Drawing.Size(255, 25)
-        Me.txtDomicilioEstado.TabIndex = 18
+        Me.txtDomicilioCalle.Location = New System.Drawing.Point(49, 52)
+        Me.txtDomicilioCalle.Name = "txtDomicilioCalle"
+        Me.txtDomicilioCalle.Size = New System.Drawing.Size(457, 25)
+        Me.txtDomicilioCalle.TabIndex = 1
         '
-        'txtDomicilioColonia
+        'cboDomicilioColonia
         '
-        Me.txtDomicilioColonia.Location = New System.Drawing.Point(223, 229)
-        Me.txtDomicilioColonia.Name = "txtDomicilioColonia"
-        Me.txtDomicilioColonia.Size = New System.Drawing.Size(255, 25)
-        Me.txtDomicilioColonia.TabIndex = 16
+        Me.cboDomicilioColonia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboDomicilioColonia.FormattingEnabled = True
+        Me.cboDomicilioColonia.Location = New System.Drawing.Point(197, 143)
+        Me.cboDomicilioColonia.Name = "cboDomicilioColonia"
+        Me.cboDomicilioColonia.Size = New System.Drawing.Size(309, 26)
+        Me.cboDomicilioColonia.TabIndex = 9
+        '
+        'txtDomicilioNoExt
+        '
+        Me.txtDomicilioNoExt.Location = New System.Drawing.Point(627, 52)
+        Me.txtDomicilioNoExt.Name = "txtDomicilioNoExt"
+        Me.txtDomicilioNoExt.Size = New System.Drawing.Size(89, 25)
+        Me.txtDomicilioNoExt.TabIndex = 5
+        '
+        'lblDomicilioEstado
+        '
+        Me.lblDomicilioEstado.AutoSize = True
+        Me.lblDomicilioEstado.Location = New System.Drawing.Point(132, 238)
+        Me.lblDomicilioEstado.Name = "lblDomicilioEstado"
+        Me.lblDomicilioEstado.Size = New System.Drawing.Size(53, 18)
+        Me.lblDomicilioEstado.TabIndex = 12
+        Me.lblDomicilioEstado.Text = "Estado:"
+        '
+        'lblDomicilioNoInt
+        '
+        Me.lblDomicilioNoInt.AutoSize = True
+        Me.lblDomicilioNoInt.Location = New System.Drawing.Point(522, 29)
+        Me.lblDomicilioNoInt.Name = "lblDomicilioNoInt"
+        Me.lblDomicilioNoInt.Size = New System.Drawing.Size(66, 18)
+        Me.lblDomicilioNoInt.TabIndex = 2
+        Me.lblDomicilioNoInt.Text = "Núm. Int."
+        '
+        'lblDomicilioMunicipio
+        '
+        Me.lblDomicilioMunicipio.AutoSize = True
+        Me.lblDomicilioMunicipio.Location = New System.Drawing.Point(49, 193)
+        Me.lblDomicilioMunicipio.Name = "lblDomicilioMunicipio"
+        Me.lblDomicilioMunicipio.Size = New System.Drawing.Size(136, 18)
+        Me.lblDomicilioMunicipio.TabIndex = 10
+        Me.lblDomicilioMunicipio.Text = "Municipio / Alcaldia:"
+        '
+        'lblDomicilioNoExt
+        '
+        Me.lblDomicilioNoExt.AutoSize = True
+        Me.lblDomicilioNoExt.Location = New System.Drawing.Point(627, 29)
+        Me.lblDomicilioNoExt.Name = "lblDomicilioNoExt"
+        Me.lblDomicilioNoExt.Size = New System.Drawing.Size(68, 18)
+        Me.lblDomicilioNoExt.TabIndex = 4
+        Me.lblDomicilioNoExt.Text = "Núm. Ext."
+        '
+        'lblDomicilioColonia
+        '
+        Me.lblDomicilioColonia.AutoSize = True
+        Me.lblDomicilioColonia.Location = New System.Drawing.Point(126, 148)
+        Me.lblDomicilioColonia.Name = "lblDomicilioColonia"
+        Me.lblDomicilioColonia.Size = New System.Drawing.Size(59, 18)
+        Me.lblDomicilioColonia.TabIndex = 8
+        Me.lblDomicilioColonia.Text = "Colonia:"
+        '
+        'txtDomicilioCP
+        '
+        Me.txtDomicilioCP.Location = New System.Drawing.Point(197, 99)
+        Me.txtDomicilioCP.Name = "txtDomicilioCP"
+        Me.txtDomicilioCP.Size = New System.Drawing.Size(135, 25)
+        Me.txtDomicilioCP.TabIndex = 7
+        '
+        'lblDomicilioCP
+        '
+        Me.lblDomicilioCP.AutoSize = True
+        Me.lblDomicilioCP.Location = New System.Drawing.Point(89, 103)
+        Me.lblDomicilioCP.Name = "lblDomicilioCP"
+        Me.lblDomicilioCP.Size = New System.Drawing.Size(96, 18)
+        Me.lblDomicilioCP.TabIndex = 6
+        Me.lblDomicilioCP.Text = "Código Postal:"
         '
         'panFuncionarios
         '
@@ -2296,7 +2704,7 @@ Partial Class FrmContacto
         Me.panFuncionarios.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.panFuncionarios.Location = New System.Drawing.Point(212, 0)
         Me.panFuncionarios.Name = "panFuncionarios"
-        Me.panFuncionarios.Size = New System.Drawing.Size(1026, 660)
+        Me.panFuncionarios.Size = New System.Drawing.Size(1106, 660)
         Me.panFuncionarios.TabIndex = 7
         Me.panFuncionarios.Tag = "5"
         Me.panFuncionarios.Visible = False
@@ -2310,7 +2718,7 @@ Partial Class FrmContacto
         Me.lblMensajeCargaFuncionarios.ForeColor = System.Drawing.Color.White
         Me.lblMensajeCargaFuncionarios.Location = New System.Drawing.Point(0, 44)
         Me.lblMensajeCargaFuncionarios.Name = "lblMensajeCargaFuncionarios"
-        Me.lblMensajeCargaFuncionarios.Size = New System.Drawing.Size(1024, 25)
+        Me.lblMensajeCargaFuncionarios.Size = New System.Drawing.Size(1104, 25)
         Me.lblMensajeCargaFuncionarios.TabIndex = 15
         Me.lblMensajeCargaFuncionarios.Text = "No se ha cargado información de Funcionarios para el prospecto."
         Me.lblMensajeCargaFuncionarios.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -2358,7 +2766,7 @@ Partial Class FrmContacto
         Me.gridFuncionarios.RowsDefaultCellStyle = DataGridViewCellStyle2
         Me.gridFuncionarios.RowTemplate.Height = 25
         Me.gridFuncionarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.gridFuncionarios.Size = New System.Drawing.Size(873, 304)
+        Me.gridFuncionarios.Size = New System.Drawing.Size(953, 304)
         Me.gridFuncionarios.TabIndex = 12
         '
         'btnNuevoFuncionarios
@@ -2543,7 +2951,7 @@ Partial Class FrmContacto
         Me.panAccionistas.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.panAccionistas.Location = New System.Drawing.Point(212, 0)
         Me.panAccionistas.Name = "panAccionistas"
-        Me.panAccionistas.Size = New System.Drawing.Size(1026, 660)
+        Me.panAccionistas.Size = New System.Drawing.Size(1106, 660)
         Me.panAccionistas.TabIndex = 0
         Me.panAccionistas.Tag = "6"
         Me.panAccionistas.Visible = False
@@ -2557,7 +2965,7 @@ Partial Class FrmContacto
         Me.lblMensajeCargaAccionistas.ForeColor = System.Drawing.Color.White
         Me.lblMensajeCargaAccionistas.Location = New System.Drawing.Point(0, 44)
         Me.lblMensajeCargaAccionistas.Name = "lblMensajeCargaAccionistas"
-        Me.lblMensajeCargaAccionistas.Size = New System.Drawing.Size(1024, 25)
+        Me.lblMensajeCargaAccionistas.Size = New System.Drawing.Size(1104, 25)
         Me.lblMensajeCargaAccionistas.TabIndex = 10
         Me.lblMensajeCargaAccionistas.Text = "No se ha cargado información de Accionistas para el prospecto."
         Me.lblMensajeCargaAccionistas.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -2605,7 +3013,7 @@ Partial Class FrmContacto
         Me.gridAccionistas.RowsDefaultCellStyle = DataGridViewCellStyle3
         Me.gridAccionistas.RowTemplate.Height = 25
         Me.gridAccionistas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.gridAccionistas.Size = New System.Drawing.Size(873, 304)
+        Me.gridAccionistas.Size = New System.Drawing.Size(953, 304)
         Me.gridAccionistas.TabIndex = 7
         '
         'btnNuevoAccionista
@@ -2756,25 +3164,11 @@ Partial Class FrmContacto
         Me.lblTituloAccionistas.TabIndex = 0
         Me.lblTituloAccionistas.Text = "ACCIONISTAS"
         '
-        'lblMensaje
-        '
-        Me.lblMensaje.BackColor = System.Drawing.Color.FromArgb(CType(CType(233, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(65, Byte), Integer))
-        Me.lblMensaje.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.lblMensaje.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblMensaje.ForeColor = System.Drawing.Color.White
-        Me.lblMensaje.Location = New System.Drawing.Point(0, 434)
-        Me.lblMensaje.Name = "lblMensaje"
-        Me.lblMensaje.Size = New System.Drawing.Size(210, 264)
-        Me.lblMensaje.TabIndex = 27
-        Me.lblMensaje.Text = "Mensaje de error"
-        Me.lblMensaje.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.lblMensaje.Visible = False
-        '
         'FrmContacto
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        Me.ClientSize = New System.Drawing.Size(1238, 700)
+        Me.ClientSize = New System.Drawing.Size(1318, 700)
         Me.Controls.Add(Me.btnRegistroDatosGenerales)
         Me.Controls.Add(Me.btnGuardaGeneral)
         Me.Controls.Add(Me.btnCancelaGeneral)
@@ -2786,13 +3180,17 @@ Partial Class FrmContacto
         Me.Controls.Add(Me.panAcercamiento)
         Me.Controls.Add(Me.panDireccion)
         Me.Controls.Add(Me.panContactoInicial)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
         Me.Name = "FrmContacto"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.ShowIcon = False
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Alta de cliente prospecto"
         Me.panMenu.ResumeLayout(False)
         Me.panMenu.PerformLayout()
+        Me.panMensajesError.ResumeLayout(False)
+        Me.panMensajesError.PerformLayout()
         Me.panDatosGenerales.ResumeLayout(False)
         Me.panDatosGenerales.PerformLayout()
         Me.gpBoxDatosDG.ResumeLayout(False)
@@ -2802,6 +3200,8 @@ Partial Class FrmContacto
         Me.gpBoxTipoNegocio.PerformLayout()
         Me.gpBoxServicio.ResumeLayout(False)
         Me.gpBoxServicio.PerformLayout()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
         Me.panDivisiones.ResumeLayout(False)
         Me.panDivisiones.PerformLayout()
         Me.gpBoxSubsidiaria.ResumeLayout(False)
@@ -2828,6 +3228,8 @@ Partial Class FrmContacto
         Me.panRDRepExt.PerformLayout()
         Me.panContactoInicial.ResumeLayout(False)
         Me.panContactoInicial.PerformLayout()
+        Me.panDatosContactoInicial.ResumeLayout(False)
+        Me.panDatosContactoInicial.PerformLayout()
         Me.gpBoxDatosContactoInicial.ResumeLayout(False)
         Me.gpBoxDatosContactoInicial.PerformLayout()
         Me.panAcercamiento.ResumeLayout(False)
@@ -2838,6 +3240,10 @@ Partial Class FrmContacto
         Me.panDireccion.PerformLayout()
         Me.gpBoxDatosDomicilio.ResumeLayout(False)
         Me.gpBoxDatosDomicilio.PerformLayout()
+        Me.panDomicilioExt.ResumeLayout(False)
+        Me.panDomicilioExt.PerformLayout()
+        Me.panDomicilioNac.ResumeLayout(False)
+        Me.panDomicilioNac.PerformLayout()
         Me.panFuncionarios.ResumeLayout(False)
         Me.panFuncionarios.PerformLayout()
         CType(Me.gridFuncionarios, System.ComponentModel.ISupportInitialize).EndInit()
@@ -3003,15 +3409,8 @@ Partial Class FrmContacto
     Friend WithEvents gridFuncionarios As DataGridView
     Friend WithEvents btnNuevoFuncionarios As Button
     Friend WithEvents btnGuardarFuncionarios As Button
-    Friend WithEvents btnCancelarAcercamiento As Button
-    Friend WithEvents btnGuardarAcercamiento As Button
-    Friend WithEvents btnRegistroAcercamiento As Button
     Friend WithEvents lblMensajeErrorAcercamiento As Label
     Friend WithEvents txtClaveProspecto As Label
-    Friend WithEvents lblMensajeErrorContactoInicial As Label
-    Friend WithEvents btnCancelarContactoInicial As Button
-    Friend WithEvents btnGuardarContactoInicial As Button
-    Friend WithEvents btnRegistroContactoInicial As Button
     Friend WithEvents lblMensajeCargaContactoInicial As Label
     Friend WithEvents lblMensajeCargaAccionistas As Label
     Friend WithEvents lblMensajeCargaFuncionarios As Label
@@ -3019,22 +3418,15 @@ Partial Class FrmContacto
     Friend WithEvents lblMensajeCargaDomicilio As Label
     Friend WithEvents btnCancelaGeneral As Button
     Friend WithEvents btnGuardaGeneral As Button
-    Friend WithEvents lblMensajeErrorDomicilio As Label
-    Friend WithEvents txtDomicilioEstado As TextBox
-    Friend WithEvents txtDomicilioMunicipio As TextBox
-    Friend WithEvents txtDomicilioColonia As TextBox
-    Friend WithEvents btnCancelarDomicilio As Button
-    Friend WithEvents btnGuardarDomicilio As Button
-    Friend WithEvents btnRegistroDomicilio As Button
-    Friend WithEvents lblAcercamientoWebProspecto As Label
-    Friend WithEvents txtAcercamientoWebProspecto As TextBox
+    Friend WithEvents txtDomicilioExtEstado As TextBox
+    Friend WithEvents txtDomicilioExtLocalidad As TextBox
+    Friend WithEvents txtDomicilioExtDireccion1 As TextBox
     Friend WithEvents lblMensajeCargaDatosGenerales As Label
     Friend WithEvents gpBoxDatosDG As GroupBox
     Friend WithEvents btnRegistroDatosGenerales As Button
     Friend WithEvents panRDDomExt As Panel
     Friend WithEvents panRDRepExt As Panel
     Friend WithEvents panRDSubExt As Panel
-    Friend WithEvents lblMensajeErrorDatosGenerales As Label
     Friend WithEvents gpBoxSubsidiaria As GroupBox
     Friend WithEvents txtSubnivel As TextBox
     Friend WithEvents txtSubsector As TextBox
@@ -3071,5 +3463,57 @@ Partial Class FrmContacto
     Friend WithEvents gpBoxTipoNegocio As GroupBox
     Friend WithEvents rdPersonaFisica As RadioButton
     Friend WithEvents rdPersonalMoral As RadioButton
-    Friend WithEvents lblMensaje As Label
+    Friend WithEvents lblIdSAC As Label
+    Friend WithEvents txtIdSAC As TextBox
+    Friend WithEvents lblAcercamientoWebProspecto As Label
+    Friend WithEvents txtAcercamientoWebProspecto As TextBox
+    Friend WithEvents lblTituloDatosContacto As Label
+    Friend WithEvents txtContactoInicialCelular As TextBox
+    Friend WithEvents Label3 As Label
+    Friend WithEvents lblContactoInicialPrimeraPersona As Label
+    Friend WithEvents txtContactoInicialPrimerContacto As TextBox
+    Friend WithEvents lblContactoInicialFecha As Label
+    Friend WithEvents txtContactoInicialFecha As DateTimePicker
+    Friend WithEvents panDatosContactoInicial As Panel
+    Friend WithEvents lblContactoInicialObligatorios As Label
+    Friend WithEvents panMensajesError As Panel
+    Friend WithEvents lblTituloError As Label
+    Friend WithEvents txtMensaje As TextBox
+    Friend WithEvents Label4 As Label
+    Friend WithEvents lblCamposDomicilio As Label
+    Friend WithEvents panDomicilioExt As Panel
+    Friend WithEvents lblDomicilioExtDireccion1 As Label
+    Friend WithEvents lblDomicilioExtEstado As Label
+    Friend WithEvents lblDomicilioExtLocalidad As Label
+    Friend WithEvents panDomicilioNac As Panel
+    Friend WithEvents lblDomicilioExtDireccion2 As Label
+    Friend WithEvents txtDomicilioExtDireccion2 As TextBox
+    Friend WithEvents txtDomicilioExtCP As TextBox
+    Friend WithEvents lblDomicilioExtCP As Label
+    Friend WithEvents lblDatosGeneralesDivision As Label
+    Friend WithEvents cboDatosGeneralesServicio As ComboBox
+    Friend WithEvents Label5 As Label
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents rdIdiomaNo As RadioButton
+    Friend WithEvents rdIdiomaSi As RadioButton
+    Friend WithEvents txtCorreoSocioGTI As TextBox
+    Friend WithEvents lblCorreoSocioGTI As Label
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents lblCorreoGerenteGTI As Label
+    Friend WithEvents txtGerenteGTI As TextBox
+    Friend WithEvents lblGerenteGTI As Label
+    Friend WithEvents txtEstadoGTI As TextBox
+    Friend WithEvents lblEstadoGTI As Label
+    Friend WithEvents DateTimePicker4 As DateTimePicker
+    Friend WithEvents Label9 As Label
+    Friend WithEvents txtFechaEntregaReporte As DateTimePicker
+    Friend WithEvents lblFechaEntregaReporte As Label
+    Friend WithEvents DateTimePicker2 As DateTimePicker
+    Friend WithEvents lblPeriodoServicioA As Label
+    Friend WithEvents DateTimePicker1 As DateTimePicker
+    Friend WithEvents lblPeriodoServicio As Label
+    Friend WithEvents cboModalidades As ComboBox
+    Friend WithEvents Label7 As Label
+    Friend WithEvents cboIdioma As ComboBox
+    Friend WithEvents Label6 As Label
 End Class
