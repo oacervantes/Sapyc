@@ -20,7 +20,7 @@ Public Class FrmContacto
     Private dtComoSeEntero, dtMedioContacto, dtAcercamiento As New DataTable
     Private dtDomicilio, dtPaisDomicilio, dtColoniasDomicilio, dtMunicipiosDomicilio, dtEstadosDomicilio As New DataTable
     Private dtFuncionarios, dtTipoPersonaAc, dtAccionistas As New DataTable
-    Private dtDatGrals, dtBolsaValores, dtEntidadReg, dtNormatividad, dtPais, dtPaisGT, dtPaisResidencia, dtTipoEntidad, dtModalidades, dtIdiomas, dtServicios, dtOfGt As DataTable
+    Private dtDatGrals, dtBolsaValores, dtEntidadReg, dtNormatividad, dtPais, dtPaisGT, dtPaisResidencia, dtTipoEntidad, dtModalidades, dtIdiomas, dtServicios, dtOficinas, dtDivisiones, dtOfGt As DataTable
 
     Private dtIndustria, dtSubSector, dtSubNivel As DataTable
     Private sInd, sSS, sGTI As String
@@ -111,6 +111,8 @@ Public Class FrmContacto
         ListarTipoEntidad()
         ListarModalidades()
         ListarIdiomas()
+        ListarOficinas()
+        ListarDivisiones()
 
         ListarDatosGenerales()
 
@@ -133,7 +135,7 @@ Public Class FrmContacto
         End If
     End Sub
 
-    Private Sub LnkSecciones(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lnkDatosGenerales.LinkClicked, lnkContactoInicial.LinkClicked, lnkAcercamiento.LinkClicked, lnkDireccion.LinkClicked, lnkFuncionarios.LinkClicked, lnkAccionistas.LinkClicked
+    Private Sub LnkSecciones(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lnkDatosGenerales.LinkClicked, lnkContactoInicial.LinkClicked, lnkAcercamiento.LinkClicked, lnkDireccion.LinkClicked, lnkAccionistas.LinkClicked
         For Each obj As Object In Controls
             If obj.GetType.Name = "Panel" Then
                 If DirectCast(obj, Panel).Name = "panMenu" Then
@@ -1667,6 +1669,64 @@ Public Class FrmContacto
             'insertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarServicios()")
             MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
             dtServicios = Nothing
+        End Try
+    End Sub
+    Private Sub ListarOficinas()
+        Try
+            Dim sTabla As String = "tbOficinas"
+
+            With ds.Tables
+                LimpiarConsultaTabla(ds.Tables, sTabla)
+
+                With clsDatosProp
+                    .subClearParameters()
+                    .subAddParameter("@iOpcion", 22, SqlDbType.Int, ParameterDirection.Input)
+                End With
+
+                .Add(clsDatosProp.funExecuteSPDataTable("paSSGTDatosGenerales", sTabla))
+
+                dtOficinas = .Item(sTabla)
+            End With
+
+            If dtOficinas.Rows.Count > 0 Then
+                cboOficina.DataSource = dtOficinas
+
+                cboOficina.ValueMember = "idOficina"
+                cboOficina.DisplayMember = "sOficina"
+            End If
+        Catch ex As Exception
+            'insertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarServicios()")
+            MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "SIAT")
+            dtOficinas = Nothing
+        End Try
+    End Sub
+    Private Sub ListarDivisiones()
+        Try
+            Dim sTabla As String = "tbDivision"
+
+            With ds.Tables
+                LimpiarConsultaTabla(ds.Tables, sTabla)
+
+                With clsDatosProp
+                    .subClearParameters()
+                    .subAddParameter("@iOpcion", 23, SqlDbType.Int, ParameterDirection.Input)
+                End With
+
+                .Add(clsDatosProp.funExecuteSPDataTable("paSSGTDatosGenerales", sTabla))
+
+                dtDivisiones = .Item(sTabla)
+            End With
+
+            If dtDivisiones.Rows.Count > 0 Then
+                cboDivision.DataSource = dtDivisiones
+
+                cboDivision.ValueMember = "idServicio"
+                cboDivision.DisplayMember = "sServicio"
+            End If
+        Catch ex As Exception
+            'insertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarServicios()")
+            MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
+            dtDivisiones = Nothing
         End Try
     End Sub
 
