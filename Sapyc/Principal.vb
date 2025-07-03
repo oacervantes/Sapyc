@@ -290,4 +290,10 @@
         AbrirPantalla(frm, "frmConsultaFolios")
     End Sub
 
+    Private Sub ClientesSacToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClientesSacToolStripMenuItem.Click
+        Dim frm As New frmListaNumSac
+
+        AbrirPantalla(frm, "frmListaNumSac")
+    End Sub
+
 End Class

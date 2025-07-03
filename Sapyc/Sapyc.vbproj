@@ -431,6 +431,12 @@
     <Compile Include="Prospectos\FrmContactoBasico.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Prospectos\frmListaNumSac.Designer.vb">
+      <DependentUpon>frmListaNumSac.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Prospectos\frmListaNumSac.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Prospectos\FrmProspectos.designer.vb">
       <DependentUpon>FrmProspectos.vb</DependentUpon>
     </Compile>
@@ -634,6 +640,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Prospectos\FrmContactoBasico.resx">
       <DependentUpon>FrmContactoBasico.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Prospectos\frmListaNumSac.resx">
+      <DependentUpon>frmListaNumSac.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Prospectos\FrmProspectos.resx">
       <DependentUpon>FrmProspectos.vb</DependentUpon>

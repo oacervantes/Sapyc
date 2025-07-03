@@ -71,6 +71,7 @@ Partial Class Principal
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.BotonAltaPropuesta = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ClientesSacToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.Barra.SuspendLayout()
         Me.SuspendLayout()
@@ -150,7 +151,7 @@ Partial Class Principal
         '
         'mnuProspectos
         '
-        Me.mnuProspectos.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RegistrarProspectoToolStripMenuItem})
+        Me.mnuProspectos.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RegistrarProspectoToolStripMenuItem, Me.ClientesSacToolStripMenuItem})
         Me.mnuProspectos.Name = "mnuProspectos"
         Me.mnuProspectos.Size = New System.Drawing.Size(80, 20)
         Me.mnuProspectos.Text = "Prospectos"
@@ -403,6 +404,12 @@ Partial Class Principal
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
         Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 40)
         '
+        'ClientesSacToolStripMenuItem
+        '
+        Me.ClientesSacToolStripMenuItem.Name = "ClientesSacToolStripMenuItem"
+        Me.ClientesSacToolStripMenuItem.Size = New System.Drawing.Size(184, 22)
+        Me.ClientesSacToolStripMenuItem.Text = "Clientes Sac"
+        '
         'Principal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -474,4 +481,5 @@ Partial Class Principal
     Friend WithEvents menuFolios As ToolStripMenuItem
     Friend WithEvents AutorizaFoliosDeInformeToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ConsultaDeFoliosDeInformeToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ClientesSacToolStripMenuItem As ToolStripMenuItem
 End Class
