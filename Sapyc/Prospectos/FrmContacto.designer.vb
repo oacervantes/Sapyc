@@ -23,15 +23,12 @@ Partial Class FrmContacto
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmContacto))
         Me.panMenu = New System.Windows.Forms.Panel()
         Me.panMensajesError = New System.Windows.Forms.Panel()
         Me.txtMensaje = New System.Windows.Forms.TextBox()
         Me.lblTituloError = New System.Windows.Forms.Label()
         Me.txtClaveProspecto = New System.Windows.Forms.Label()
-        Me.lnkAccionistas = New System.Windows.Forms.LinkLabel()
         Me.lnkDireccion = New System.Windows.Forms.LinkLabel()
         Me.lnkAcercamiento = New System.Windows.Forms.LinkLabel()
         Me.lnkContactoInicial = New System.Windows.Forms.LinkLabel()
@@ -42,7 +39,6 @@ Partial Class FrmContacto
         Me.btnCerrar = New System.Windows.Forms.Button()
         Me.panDatosGenerales = New System.Windows.Forms.Panel()
         Me.gpBoxDatosDG = New System.Windows.Forms.GroupBox()
-        Me.Lista = New System.Windows.Forms.DataGridView()
         Me.txtRazonSocial = New System.Windows.Forms.TextBox()
         Me.lblIdSAC = New System.Windows.Forms.Label()
         Me.txtIdSAC = New System.Windows.Forms.TextBox()
@@ -50,15 +46,21 @@ Partial Class FrmContacto
         Me.rdPersonaFisica = New System.Windows.Forms.RadioButton()
         Me.rdPersonalMoral = New System.Windows.Forms.RadioButton()
         Me.gpBoxServicio = New System.Windows.Forms.GroupBox()
+        Me.cboSocio = New System.Windows.Forms.ComboBox()
+        Me.lblDatosGeneralesSocio = New System.Windows.Forms.Label()
+        Me.cboDivision = New System.Windows.Forms.ComboBox()
+        Me.lblDivision = New System.Windows.Forms.Label()
+        Me.cboOficina = New System.Windows.Forms.ComboBox()
+        Me.lblOficina = New System.Windows.Forms.Label()
         Me.cboModalidades = New System.Windows.Forms.ComboBox()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.DateTimePicker4 = New System.Windows.Forms.DateTimePicker()
+        Me.txtFechaSolicitud = New System.Windows.Forms.DateTimePicker()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.txtFechaEntregaReporte = New System.Windows.Forms.DateTimePicker()
         Me.lblFechaEntregaReporte = New System.Windows.Forms.Label()
-        Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
+        Me.txtPeriodoFinal = New System.Windows.Forms.DateTimePicker()
         Me.lblPeriodoServicioA = New System.Windows.Forms.Label()
-        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.txtPeriodoInicio = New System.Windows.Forms.DateTimePicker()
         Me.lblPeriodoServicio = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.cboIdioma = New System.Windows.Forms.ComboBox()
@@ -67,17 +69,6 @@ Partial Class FrmContacto
         Me.rdIdiomaSi = New System.Windows.Forms.RadioButton()
         Me.cboDatosGeneralesServicio = New System.Windows.Forms.ComboBox()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.lblDatosGeneralesDivision = New System.Windows.Forms.Label()
-        Me.panDivisiones = New System.Windows.Forms.Panel()
-        Me.rdAuditoria = New System.Windows.Forms.RadioButton()
-        Me.rdIBC = New System.Windows.Forms.RadioButton()
-        Me.rdPLD = New System.Windows.Forms.RadioButton()
-        Me.rdJBG = New System.Windows.Forms.RadioButton()
-        Me.rdImpuestos = New System.Windows.Forms.RadioButton()
-        Me.rdComercioExterior = New System.Windows.Forms.RadioButton()
-        Me.rdBAS = New System.Windows.Forms.RadioButton()
-        Me.rdPreciosTransferencia = New System.Windows.Forms.RadioButton()
-        Me.rdBPS = New System.Windows.Forms.RadioButton()
         Me.lblDescripcionSolicitud = New System.Windows.Forms.Label()
         Me.txtDescripcionSolicitud = New System.Windows.Forms.TextBox()
         Me.lblRFC = New System.Windows.Forms.Label()
@@ -162,6 +153,7 @@ Partial Class FrmContacto
         Me.panRDRepExt = New System.Windows.Forms.Panel()
         Me.rdEmpresaExtranjeroRepSi = New System.Windows.Forms.RadioButton()
         Me.rdEmpresaExtranjeroRepNo = New System.Windows.Forms.RadioButton()
+        Me.Lista = New System.Windows.Forms.DataGridView()
         Me.lblMensajeCargaDatosGenerales = New System.Windows.Forms.Label()
         Me.panLinea = New System.Windows.Forms.Panel()
         Me.lblTituloDatosGenerales = New System.Windows.Forms.Label()
@@ -241,63 +233,14 @@ Partial Class FrmContacto
         Me.lblDomicilioColonia = New System.Windows.Forms.Label()
         Me.txtDomicilioCP = New System.Windows.Forms.TextBox()
         Me.lblDomicilioCP = New System.Windows.Forms.Label()
-        Me.panFuncionarios = New System.Windows.Forms.Panel()
-        Me.lblMensajeCargaFuncionarios = New System.Windows.Forms.Label()
-        Me.btnCancelarFuncionario = New System.Windows.Forms.Button()
-        Me.btnActualizarFuncionario = New System.Windows.Forms.Button()
-        Me.gridFuncionarios = New System.Windows.Forms.DataGridView()
-        Me.btnNuevoFuncionarios = New System.Windows.Forms.Button()
-        Me.btnGuardarFuncionarios = New System.Windows.Forms.Button()
-        Me.gpBoxDatosFuncionarios = New System.Windows.Forms.GroupBox()
-        Me.lblFuncionariosCargo = New System.Windows.Forms.Label()
-        Me.lblFuncionariosApellidoMaterno = New System.Windows.Forms.Label()
-        Me.lblFuncionariosCorreo = New System.Windows.Forms.Label()
-        Me.lblFuncionariosTelefono = New System.Windows.Forms.Label()
-        Me.txtFuncionariosNombre = New System.Windows.Forms.TextBox()
-        Me.lblFuncionariosApellidoPaterno = New System.Windows.Forms.Label()
-        Me.txtFuncionariosApellidoPaterno = New System.Windows.Forms.TextBox()
-        Me.txtFuncionariosApellidoMaterno = New System.Windows.Forms.TextBox()
-        Me.lblFuncionariosNombre = New System.Windows.Forms.Label()
-        Me.txtFuncionariosCorreo = New System.Windows.Forms.TextBox()
-        Me.txtFuncionariosCargo = New System.Windows.Forms.TextBox()
-        Me.txtFuncionariosTelefono = New System.Windows.Forms.TextBox()
-        Me.Panel4 = New System.Windows.Forms.Panel()
-        Me.lblTituloFuncionarios = New System.Windows.Forms.Label()
-        Me.panAccionistas = New System.Windows.Forms.Panel()
-        Me.lblMensajeCargaAccionistas = New System.Windows.Forms.Label()
-        Me.btnCancelarAccionistas = New System.Windows.Forms.Button()
-        Me.btnActualizarAccionistas = New System.Windows.Forms.Button()
-        Me.gridAccionistas = New System.Windows.Forms.DataGridView()
-        Me.btnNuevoAccionista = New System.Windows.Forms.Button()
-        Me.btnGuardarAccionistas = New System.Windows.Forms.Button()
-        Me.gpBoxDatosAccionistas = New System.Windows.Forms.GroupBox()
-        Me.lblAccionistasTipoPersona = New System.Windows.Forms.Label()
-        Me.cboAccionistasTipoPersona = New System.Windows.Forms.ComboBox()
-        Me.lblAccionistasPorcentaje = New System.Windows.Forms.Label()
-        Me.lblAccionistasApellidoMaterno = New System.Windows.Forms.Label()
-        Me.txtAccionistasNombre = New System.Windows.Forms.TextBox()
-        Me.lblAccionistasApellidoPaterno = New System.Windows.Forms.Label()
-        Me.txtAccionistasApellidoPaterno = New System.Windows.Forms.TextBox()
-        Me.txtAccionistasApellidoMaterno = New System.Windows.Forms.TextBox()
-        Me.lblAccionistasNombre = New System.Windows.Forms.Label()
-        Me.txtAccionistasPorcentaje = New System.Windows.Forms.TextBox()
-        Me.Panel6 = New System.Windows.Forms.Panel()
-        Me.lblTituloAccionistas = New System.Windows.Forms.Label()
-        Me.cboOficina = New System.Windows.Forms.ComboBox()
-        Me.lblOficina = New System.Windows.Forms.Label()
-        Me.cboDivision = New System.Windows.Forms.ComboBox()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.lblDatosGeneralesSocio = New System.Windows.Forms.Label()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.btnGuardarAvance = New System.Windows.Forms.Button()
         Me.panMenu.SuspendLayout()
         Me.panMensajesError.SuspendLayout()
         Me.panDatosGenerales.SuspendLayout()
         Me.gpBoxDatosDG.SuspendLayout()
-        CType(Me.Lista, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gpBoxTipoNegocio.SuspendLayout()
         Me.gpBoxServicio.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
-        Me.panDivisiones.SuspendLayout()
         Me.gpBoxSubsidiaria.SuspendLayout()
         Me.panRDSubsidiaria.SuspendLayout()
         Me.panRDCompañiaControl.SuspendLayout()
@@ -309,6 +252,7 @@ Partial Class FrmContacto
         Me.panRDDomExt.SuspendLayout()
         Me.panRDSubExt.SuspendLayout()
         Me.panRDRepExt.SuspendLayout()
+        CType(Me.Lista, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panContactoInicial.SuspendLayout()
         Me.panDatosContactoInicial.SuspendLayout()
         Me.gpBoxDatosContactoInicial.SuspendLayout()
@@ -318,12 +262,6 @@ Partial Class FrmContacto
         Me.gpBoxDatosDomicilio.SuspendLayout()
         Me.panDomicilioExt.SuspendLayout()
         Me.panDomicilioNac.SuspendLayout()
-        Me.panFuncionarios.SuspendLayout()
-        CType(Me.gridFuncionarios, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.gpBoxDatosFuncionarios.SuspendLayout()
-        Me.panAccionistas.SuspendLayout()
-        CType(Me.gridAccionistas, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.gpBoxDatosAccionistas.SuspendLayout()
         Me.SuspendLayout()
         '
         'panMenu
@@ -332,7 +270,6 @@ Partial Class FrmContacto
         Me.panMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.panMenu.Controls.Add(Me.panMensajesError)
         Me.panMenu.Controls.Add(Me.txtClaveProspecto)
-        Me.panMenu.Controls.Add(Me.lnkAccionistas)
         Me.panMenu.Controls.Add(Me.lnkDireccion)
         Me.panMenu.Controls.Add(Me.lnkAcercamiento)
         Me.panMenu.Controls.Add(Me.lnkContactoInicial)
@@ -347,12 +284,13 @@ Partial Class FrmContacto
         '
         'panMensajesError
         '
+        Me.panMensajesError.Controls.Add(Me.btnGuardarAvance)
         Me.panMensajesError.Controls.Add(Me.txtMensaje)
         Me.panMensajesError.Controls.Add(Me.lblTituloError)
         Me.panMensajesError.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.panMensajesError.Location = New System.Drawing.Point(0, 325)
+        Me.panMensajesError.Location = New System.Drawing.Point(0, 290)
         Me.panMensajesError.Name = "panMensajesError"
-        Me.panMensajesError.Size = New System.Drawing.Size(210, 373)
+        Me.panMensajesError.Size = New System.Drawing.Size(210, 408)
         Me.panMensajesError.TabIndex = 28
         Me.panMensajesError.Visible = False
         '
@@ -360,7 +298,6 @@ Partial Class FrmContacto
         '
         Me.txtMensaje.BackColor = System.Drawing.Color.White
         Me.txtMensaje.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txtMensaje.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.txtMensaje.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Bold)
         Me.txtMensaje.ForeColor = System.Drawing.Color.FromArgb(CType(CType(233, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(65, Byte), Integer))
         Me.txtMensaje.Location = New System.Drawing.Point(0, 30)
@@ -368,8 +305,8 @@ Partial Class FrmContacto
         Me.txtMensaje.Name = "txtMensaje"
         Me.txtMensaje.ReadOnly = True
         Me.txtMensaje.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.txtMensaje.Size = New System.Drawing.Size(210, 343)
-        Me.txtMensaje.TabIndex = 14
+        Me.txtMensaje.Size = New System.Drawing.Size(210, 338)
+        Me.txtMensaje.TabIndex = 1
         '
         'lblTituloError
         '
@@ -380,7 +317,7 @@ Partial Class FrmContacto
         Me.lblTituloError.Location = New System.Drawing.Point(0, 0)
         Me.lblTituloError.Name = "lblTituloError"
         Me.lblTituloError.Size = New System.Drawing.Size(210, 28)
-        Me.lblTituloError.TabIndex = 28
+        Me.lblTituloError.TabIndex = 0
         Me.lblTituloError.Text = "INFORMACIÓN FALTANTE"
         Me.lblTituloError.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
@@ -395,26 +332,6 @@ Partial Class FrmContacto
         Me.txtClaveProspecto.TabIndex = 11
         Me.txtClaveProspecto.Text = "PRS000000"
         Me.txtClaveProspecto.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'lnkAccionistas
-        '
-        Me.lnkAccionistas.ActiveLinkColor = System.Drawing.Color.White
-        Me.lnkAccionistas.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(167, Byte), Integer), CType(CType(181, Byte), Integer))
-        Me.lnkAccionistas.Font = New System.Drawing.Font("Calibri", 11.0!)
-        Me.lnkAccionistas.ForeColor = System.Drawing.Color.White
-        Me.lnkAccionistas.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline
-        Me.lnkAccionistas.LinkColor = System.Drawing.Color.White
-        Me.lnkAccionistas.Location = New System.Drawing.Point(0, 325)
-        Me.lnkAccionistas.Name = "lnkAccionistas"
-        Me.lnkAccionistas.Padding = New System.Windows.Forms.Padding(13, 0, 0, 0)
-        Me.lnkAccionistas.Size = New System.Drawing.Size(212, 34)
-        Me.lnkAccionistas.TabIndex = 9
-        Me.lnkAccionistas.TabStop = True
-        Me.lnkAccionistas.Tag = "6"
-        Me.lnkAccionistas.Text = "Accionistas"
-        Me.lnkAccionistas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.lnkAccionistas.Visible = False
-        Me.lnkAccionistas.VisitedLinkColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(167, Byte), Integer), CType(CType(181, Byte), Integer))
         '
         'lnkDireccion
         '
@@ -553,7 +470,7 @@ Partial Class FrmContacto
         Me.panDatosGenerales.Location = New System.Drawing.Point(212, 0)
         Me.panDatosGenerales.Name = "panDatosGenerales"
         Me.panDatosGenerales.Size = New System.Drawing.Size(1106, 660)
-        Me.panDatosGenerales.TabIndex = 1
+        Me.panDatosGenerales.TabIndex = 0
         Me.panDatosGenerales.Tag = "1"
         Me.panDatosGenerales.Visible = False
         '
@@ -594,43 +511,21 @@ Partial Class FrmContacto
         Me.gpBoxDatosDG.TabIndex = 3
         Me.gpBoxDatosDG.TabStop = False
         '
-        'Lista
-        '
-        Me.Lista.AllowUserToAddRows = False
-        Me.Lista.AllowUserToDeleteRows = False
-        Me.Lista.AllowUserToResizeColumns = False
-        Me.Lista.AllowUserToResizeRows = False
-        Me.Lista.BackgroundColor = System.Drawing.Color.WhiteSmoke
-        Me.Lista.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
-        Me.Lista.GridColor = System.Drawing.Color.Gainsboro
-        Me.Lista.Location = New System.Drawing.Point(153, 84)
-        Me.Lista.Name = "Lista"
-        Me.Lista.ReadOnly = True
-        Me.Lista.RowHeadersWidth = 25
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(127, Byte), Integer))
-        Me.Lista.RowsDefaultCellStyle = DataGridViewCellStyle1
-        Me.Lista.RowTemplate.Height = 26
-        Me.Lista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.Lista.Size = New System.Drawing.Size(771, 270)
-        Me.Lista.TabIndex = 2
-        Me.Lista.Visible = False
-        '
         'txtRazonSocial
         '
         Me.txtRazonSocial.Location = New System.Drawing.Point(153, 60)
         Me.txtRazonSocial.Name = "txtRazonSocial"
         Me.txtRazonSocial.Size = New System.Drawing.Size(771, 25)
-        Me.txtRazonSocial.TabIndex = 1
+        Me.txtRazonSocial.TabIndex = 3
         '
         'lblIdSAC
         '
         Me.lblIdSAC.AutoSize = True
-        Me.lblIdSAC.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblIdSAC.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblIdSAC.Location = New System.Drawing.Point(19, 26)
         Me.lblIdSAC.Name = "lblIdSAC"
         Me.lblIdSAC.Size = New System.Drawing.Size(129, 18)
-        Me.lblIdSAC.TabIndex = 6
+        Me.lblIdSAC.TabIndex = 0
         Me.lblIdSAC.Text = "ID Asignación SAC*:"
         '
         'txtIdSAC
@@ -638,7 +533,7 @@ Partial Class FrmContacto
         Me.txtIdSAC.Location = New System.Drawing.Point(153, 23)
         Me.txtIdSAC.Name = "txtIdSAC"
         Me.txtIdSAC.Size = New System.Drawing.Size(114, 25)
-        Me.txtIdSAC.TabIndex = 7
+        Me.txtIdSAC.TabIndex = 1
         Me.txtIdSAC.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'gpBoxTipoNegocio
@@ -648,7 +543,7 @@ Partial Class FrmContacto
         Me.gpBoxTipoNegocio.Location = New System.Drawing.Point(496, 132)
         Me.gpBoxTipoNegocio.Name = "gpBoxTipoNegocio"
         Me.gpBoxTipoNegocio.Size = New System.Drawing.Size(428, 55)
-        Me.gpBoxTipoNegocio.TabIndex = 7
+        Me.gpBoxTipoNegocio.TabIndex = 9
         Me.gpBoxTipoNegocio.TabStop = False
         Me.gpBoxTipoNegocio.Text = "Tipo de Negocio"
         '
@@ -678,72 +573,132 @@ Partial Class FrmContacto
         '
         'gpBoxServicio
         '
-        Me.gpBoxServicio.Controls.Add(Me.ComboBox1)
+        Me.gpBoxServicio.Controls.Add(Me.cboSocio)
         Me.gpBoxServicio.Controls.Add(Me.lblDatosGeneralesSocio)
         Me.gpBoxServicio.Controls.Add(Me.cboDivision)
-        Me.gpBoxServicio.Controls.Add(Me.Label10)
+        Me.gpBoxServicio.Controls.Add(Me.lblDivision)
         Me.gpBoxServicio.Controls.Add(Me.cboOficina)
         Me.gpBoxServicio.Controls.Add(Me.lblOficina)
         Me.gpBoxServicio.Controls.Add(Me.cboModalidades)
         Me.gpBoxServicio.Controls.Add(Me.Label7)
-        Me.gpBoxServicio.Controls.Add(Me.DateTimePicker4)
+        Me.gpBoxServicio.Controls.Add(Me.txtFechaSolicitud)
         Me.gpBoxServicio.Controls.Add(Me.Label9)
         Me.gpBoxServicio.Controls.Add(Me.txtFechaEntregaReporte)
         Me.gpBoxServicio.Controls.Add(Me.lblFechaEntregaReporte)
-        Me.gpBoxServicio.Controls.Add(Me.DateTimePicker2)
+        Me.gpBoxServicio.Controls.Add(Me.txtPeriodoFinal)
         Me.gpBoxServicio.Controls.Add(Me.lblPeriodoServicioA)
-        Me.gpBoxServicio.Controls.Add(Me.DateTimePicker1)
+        Me.gpBoxServicio.Controls.Add(Me.txtPeriodoInicio)
         Me.gpBoxServicio.Controls.Add(Me.lblPeriodoServicio)
         Me.gpBoxServicio.Controls.Add(Me.GroupBox1)
         Me.gpBoxServicio.Controls.Add(Me.cboDatosGeneralesServicio)
         Me.gpBoxServicio.Controls.Add(Me.Label5)
-        Me.gpBoxServicio.Controls.Add(Me.lblDatosGeneralesDivision)
-        Me.gpBoxServicio.Controls.Add(Me.panDivisiones)
         Me.gpBoxServicio.Controls.Add(Me.lblDescripcionSolicitud)
         Me.gpBoxServicio.Controls.Add(Me.txtDescripcionSolicitud)
         Me.gpBoxServicio.Enabled = False
         Me.gpBoxServicio.Location = New System.Drawing.Point(17, 255)
         Me.gpBoxServicio.Name = "gpBoxServicio"
         Me.gpBoxServicio.Size = New System.Drawing.Size(1022, 575)
-        Me.gpBoxServicio.TabIndex = 16
+        Me.gpBoxServicio.TabIndex = 19
         Me.gpBoxServicio.TabStop = False
         Me.gpBoxServicio.Text = "Datos del Servicio"
+        '
+        'cboSocio
+        '
+        Me.cboSocio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboSocio.DropDownWidth = 260
+        Me.cboSocio.FormattingEnabled = True
+        Me.cboSocio.Location = New System.Drawing.Point(114, 114)
+        Me.cboSocio.Name = "cboSocio"
+        Me.cboSocio.Size = New System.Drawing.Size(347, 26)
+        Me.cboSocio.TabIndex = 5
+        '
+        'lblDatosGeneralesSocio
+        '
+        Me.lblDatosGeneralesSocio.AutoSize = True
+        Me.lblDatosGeneralesSocio.Font = New System.Drawing.Font("Calibri", 11.0!)
+        Me.lblDatosGeneralesSocio.Location = New System.Drawing.Point(40, 118)
+        Me.lblDatosGeneralesSocio.Name = "lblDatosGeneralesSocio"
+        Me.lblDatosGeneralesSocio.Size = New System.Drawing.Size(52, 18)
+        Me.lblDatosGeneralesSocio.TabIndex = 4
+        Me.lblDatosGeneralesSocio.Text = "Socio*:"
+        '
+        'cboDivision
+        '
+        Me.cboDivision.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboDivision.DropDownWidth = 260
+        Me.cboDivision.FormattingEnabled = True
+        Me.cboDivision.Location = New System.Drawing.Point(114, 74)
+        Me.cboDivision.Name = "cboDivision"
+        Me.cboDivision.Size = New System.Drawing.Size(347, 26)
+        Me.cboDivision.TabIndex = 3
+        '
+        'lblDivision
+        '
+        Me.lblDivision.AutoSize = True
+        Me.lblDivision.Font = New System.Drawing.Font("Calibri", 11.0!)
+        Me.lblDivision.Location = New System.Drawing.Point(40, 78)
+        Me.lblDivision.Name = "lblDivision"
+        Me.lblDivision.Size = New System.Drawing.Size(69, 18)
+        Me.lblDivision.TabIndex = 2
+        Me.lblDivision.Text = "División*:"
+        '
+        'cboOficina
+        '
+        Me.cboOficina.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboOficina.DropDownWidth = 260
+        Me.cboOficina.FormattingEnabled = True
+        Me.cboOficina.Location = New System.Drawing.Point(114, 34)
+        Me.cboOficina.Name = "cboOficina"
+        Me.cboOficina.Size = New System.Drawing.Size(347, 26)
+        Me.cboOficina.TabIndex = 1
+        '
+        'lblOficina
+        '
+        Me.lblOficina.AutoSize = True
+        Me.lblOficina.Font = New System.Drawing.Font("Calibri", 11.0!)
+        Me.lblOficina.Location = New System.Drawing.Point(40, 38)
+        Me.lblOficina.Name = "lblOficina"
+        Me.lblOficina.Size = New System.Drawing.Size(62, 18)
+        Me.lblOficina.TabIndex = 0
+        Me.lblOficina.Text = "Oficina*:"
         '
         'cboModalidades
         '
         Me.cboModalidades.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboModalidades.DropDownWidth = 260
         Me.cboModalidades.FormattingEnabled = True
-        Me.cboModalidades.Location = New System.Drawing.Point(471, 531)
+        Me.cboModalidades.Location = New System.Drawing.Point(471, 527)
         Me.cboModalidades.Name = "cboModalidades"
         Me.cboModalidades.Size = New System.Drawing.Size(285, 26)
-        Me.cboModalidades.TabIndex = 32
+        Me.cboModalidades.TabIndex = 20
         '
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(41, 534)
+        Me.Label7.Font = New System.Drawing.Font("Calibri", 11.0!)
+        Me.Label7.Location = New System.Drawing.Point(41, 530)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(417, 18)
-        Me.Label7.TabIndex = 31
+        Me.Label7.TabIndex = 19
         Me.Label7.Text = "Indique la modalidad en que se requiere la ejecución del trabajo*:"
         '
-        'DateTimePicker4
+        'txtFechaSolicitud
         '
-        Me.DateTimePicker4.Font = New System.Drawing.Font("Calibri", 11.0!)
-        Me.DateTimePicker4.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTimePicker4.Location = New System.Drawing.Point(471, 483)
-        Me.DateTimePicker4.Name = "DateTimePicker4"
-        Me.DateTimePicker4.Size = New System.Drawing.Size(125, 25)
-        Me.DateTimePicker4.TabIndex = 30
+        Me.txtFechaSolicitud.Font = New System.Drawing.Font("Calibri", 11.0!)
+        Me.txtFechaSolicitud.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.txtFechaSolicitud.Location = New System.Drawing.Point(471, 483)
+        Me.txtFechaSolicitud.Name = "txtFechaSolicitud"
+        Me.txtFechaSolicitud.Size = New System.Drawing.Size(125, 25)
+        Me.txtFechaSolicitud.TabIndex = 18
         '
         'Label9
         '
         Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("Calibri", 11.0!)
         Me.Label9.Location = New System.Drawing.Point(41, 486)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(398, 18)
-        Me.Label9.TabIndex = 29
+        Me.Label9.TabIndex = 17
         Me.Label9.Text = "Fecha en la que se solicita presentar la propuesta de servicios*:"
         '
         'txtFechaEntregaReporte
@@ -753,51 +708,54 @@ Partial Class FrmContacto
         Me.txtFechaEntregaReporte.Location = New System.Drawing.Point(471, 449)
         Me.txtFechaEntregaReporte.Name = "txtFechaEntregaReporte"
         Me.txtFechaEntregaReporte.Size = New System.Drawing.Size(125, 25)
-        Me.txtFechaEntregaReporte.TabIndex = 28
+        Me.txtFechaEntregaReporte.TabIndex = 16
         '
         'lblFechaEntregaReporte
         '
         Me.lblFechaEntregaReporte.AutoSize = True
+        Me.lblFechaEntregaReporte.Font = New System.Drawing.Font("Calibri", 11.0!)
         Me.lblFechaEntregaReporte.Location = New System.Drawing.Point(41, 452)
         Me.lblFechaEntregaReporte.Name = "lblFechaEntregaReporte"
-        Me.lblFechaEntregaReporte.Size = New System.Drawing.Size(322, 18)
-        Me.lblFechaEntregaReporte.TabIndex = 27
+        Me.lblFechaEntregaReporte.Size = New System.Drawing.Size(321, 18)
+        Me.lblFechaEntregaReporte.TabIndex = 15
         Me.lblFechaEntregaReporte.Text = "Fecha estimada de entrega del informe o reporte*:"
         '
-        'DateTimePicker2
+        'txtPeriodoFinal
         '
-        Me.DateTimePicker2.Font = New System.Drawing.Font("Calibri", 11.0!)
-        Me.DateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTimePicker2.Location = New System.Drawing.Point(631, 415)
-        Me.DateTimePicker2.Name = "DateTimePicker2"
-        Me.DateTimePicker2.Size = New System.Drawing.Size(125, 25)
-        Me.DateTimePicker2.TabIndex = 26
+        Me.txtPeriodoFinal.Font = New System.Drawing.Font("Calibri", 11.0!)
+        Me.txtPeriodoFinal.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.txtPeriodoFinal.Location = New System.Drawing.Point(631, 415)
+        Me.txtPeriodoFinal.Name = "txtPeriodoFinal"
+        Me.txtPeriodoFinal.Size = New System.Drawing.Size(125, 25)
+        Me.txtPeriodoFinal.TabIndex = 14
         '
         'lblPeriodoServicioA
         '
         Me.lblPeriodoServicioA.AutoSize = True
+        Me.lblPeriodoServicioA.Font = New System.Drawing.Font("Calibri", 11.0!)
         Me.lblPeriodoServicioA.Location = New System.Drawing.Point(604, 418)
         Me.lblPeriodoServicioA.Name = "lblPeriodoServicioA"
         Me.lblPeriodoServicioA.Size = New System.Drawing.Size(19, 18)
-        Me.lblPeriodoServicioA.TabIndex = 25
+        Me.lblPeriodoServicioA.TabIndex = 13
         Me.lblPeriodoServicioA.Text = "al"
         '
-        'DateTimePicker1
+        'txtPeriodoInicio
         '
-        Me.DateTimePicker1.Font = New System.Drawing.Font("Calibri", 11.0!)
-        Me.DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTimePicker1.Location = New System.Drawing.Point(471, 415)
-        Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(125, 25)
-        Me.DateTimePicker1.TabIndex = 24
+        Me.txtPeriodoInicio.Font = New System.Drawing.Font("Calibri", 11.0!)
+        Me.txtPeriodoInicio.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.txtPeriodoInicio.Location = New System.Drawing.Point(471, 415)
+        Me.txtPeriodoInicio.Name = "txtPeriodoInicio"
+        Me.txtPeriodoInicio.Size = New System.Drawing.Size(125, 25)
+        Me.txtPeriodoInicio.TabIndex = 12
         '
         'lblPeriodoServicio
         '
         Me.lblPeriodoServicio.AutoSize = True
+        Me.lblPeriodoServicio.Font = New System.Drawing.Font("Calibri", 11.0!)
         Me.lblPeriodoServicio.Location = New System.Drawing.Point(41, 418)
         Me.lblPeriodoServicio.Name = "lblPeriodoServicio"
         Me.lblPeriodoServicio.Size = New System.Drawing.Size(272, 18)
-        Me.lblPeriodoServicio.TabIndex = 23
+        Me.lblPeriodoServicio.TabIndex = 11
         Me.lblPeriodoServicio.Text = "Periodo por el cual se prestará el servicio*:"
         '
         'GroupBox1
@@ -809,7 +767,7 @@ Partial Class FrmContacto
         Me.GroupBox1.Location = New System.Drawing.Point(43, 208)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(871, 65)
-        Me.GroupBox1.TabIndex = 22
+        Me.GroupBox1.TabIndex = 8
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "¿Se requiere de personal bilingüe para la preparación y/o ejecución del servicio?" &
     ""
@@ -822,15 +780,16 @@ Partial Class FrmContacto
         Me.cboIdioma.Location = New System.Drawing.Point(270, 27)
         Me.cboIdioma.Name = "cboIdioma"
         Me.cboIdioma.Size = New System.Drawing.Size(268, 26)
-        Me.cboIdioma.TabIndex = 23
+        Me.cboIdioma.TabIndex = 3
         '
         'Label6
         '
         Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Calibri", 11.0!)
         Me.Label6.Location = New System.Drawing.Point(201, 31)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(62, 18)
-        Me.Label6.TabIndex = 22
+        Me.Label6.TabIndex = 2
         Me.Label6.Text = "Idioma*:"
         '
         'rdIdiomaNo
@@ -865,162 +824,26 @@ Partial Class FrmContacto
         Me.cboDatosGeneralesServicio.Location = New System.Drawing.Point(114, 157)
         Me.cboDatosGeneralesServicio.Name = "cboDatosGeneralesServicio"
         Me.cboDatosGeneralesServicio.Size = New System.Drawing.Size(481, 26)
-        Me.cboDatosGeneralesServicio.TabIndex = 21
+        Me.cboDatosGeneralesServicio.TabIndex = 7
         '
         'Label5
         '
         Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Calibri", 11.0!)
         Me.Label5.Location = New System.Drawing.Point(40, 161)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(68, 18)
-        Me.Label5.TabIndex = 20
+        Me.Label5.TabIndex = 6
         Me.Label5.Text = "Servicio*:"
-        '
-        'lblDatosGeneralesDivision
-        '
-        Me.lblDatosGeneralesDivision.AutoSize = True
-        Me.lblDatosGeneralesDivision.Location = New System.Drawing.Point(951, 34)
-        Me.lblDatosGeneralesDivision.Name = "lblDatosGeneralesDivision"
-        Me.lblDatosGeneralesDivision.Size = New System.Drawing.Size(65, 18)
-        Me.lblDatosGeneralesDivision.TabIndex = 9
-        Me.lblDatosGeneralesDivision.Text = "División*"
-        '
-        'panDivisiones
-        '
-        Me.panDivisiones.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.panDivisiones.Controls.Add(Me.rdAuditoria)
-        Me.panDivisiones.Controls.Add(Me.rdIBC)
-        Me.panDivisiones.Controls.Add(Me.rdPLD)
-        Me.panDivisiones.Controls.Add(Me.rdJBG)
-        Me.panDivisiones.Controls.Add(Me.rdImpuestos)
-        Me.panDivisiones.Controls.Add(Me.rdComercioExterior)
-        Me.panDivisiones.Controls.Add(Me.rdBAS)
-        Me.panDivisiones.Controls.Add(Me.rdPreciosTransferencia)
-        Me.panDivisiones.Controls.Add(Me.rdBPS)
-        Me.panDivisiones.Enabled = False
-        Me.panDivisiones.Location = New System.Drawing.Point(933, 58)
-        Me.panDivisiones.Name = "panDivisiones"
-        Me.panDivisiones.Size = New System.Drawing.Size(875, 78)
-        Me.panDivisiones.TabIndex = 0
-        '
-        'rdAuditoria
-        '
-        Me.rdAuditoria.AutoSize = True
-        Me.rdAuditoria.Font = New System.Drawing.Font("Calibri", 11.0!)
-        Me.rdAuditoria.Location = New System.Drawing.Point(21, 12)
-        Me.rdAuditoria.Name = "rdAuditoria"
-        Me.rdAuditoria.Size = New System.Drawing.Size(83, 22)
-        Me.rdAuditoria.TabIndex = 0
-        Me.rdAuditoria.TabStop = True
-        Me.rdAuditoria.Text = "Auditoría"
-        Me.rdAuditoria.UseVisualStyleBackColor = True
-        '
-        'rdIBC
-        '
-        Me.rdIBC.AutoSize = True
-        Me.rdIBC.Font = New System.Drawing.Font("Calibri", 11.0!)
-        Me.rdIBC.Location = New System.Drawing.Point(550, 42)
-        Me.rdIBC.Name = "rdIBC"
-        Me.rdIBC.Size = New System.Drawing.Size(208, 22)
-        Me.rdIBC.TabIndex = 8
-        Me.rdIBC.TabStop = True
-        Me.rdIBC.Text = "International Business Center"
-        Me.rdIBC.UseVisualStyleBackColor = True
-        Me.rdIBC.Visible = False
-        '
-        'rdPLD
-        '
-        Me.rdPLD.AutoSize = True
-        Me.rdPLD.Font = New System.Drawing.Font("Calibri", 11.0!)
-        Me.rdPLD.Location = New System.Drawing.Point(372, 42)
-        Me.rdPLD.Name = "rdPLD"
-        Me.rdPLD.Size = New System.Drawing.Size(225, 22)
-        Me.rdPLD.TabIndex = 6
-        Me.rdPLD.TabStop = True
-        Me.rdPLD.Text = "Prevención de Lavado de Dinero"
-        Me.rdPLD.UseVisualStyleBackColor = True
-        '
-        'rdJBG
-        '
-        Me.rdJBG.AutoSize = True
-        Me.rdJBG.Font = New System.Drawing.Font("Calibri", 11.0!)
-        Me.rdJBG.Location = New System.Drawing.Point(372, 42)
-        Me.rdJBG.Name = "rdJBG"
-        Me.rdJBG.Size = New System.Drawing.Size(159, 22)
-        Me.rdJBG.TabIndex = 7
-        Me.rdJBG.TabStop = True
-        Me.rdJBG.Text = "Japan Business Group"
-        Me.rdJBG.UseVisualStyleBackColor = True
-        Me.rdJBG.Visible = False
-        '
-        'rdImpuestos
-        '
-        Me.rdImpuestos.AutoSize = True
-        Me.rdImpuestos.Font = New System.Drawing.Font("Calibri", 11.0!)
-        Me.rdImpuestos.Location = New System.Drawing.Point(132, 12)
-        Me.rdImpuestos.Name = "rdImpuestos"
-        Me.rdImpuestos.Size = New System.Drawing.Size(91, 22)
-        Me.rdImpuestos.TabIndex = 1
-        Me.rdImpuestos.TabStop = True
-        Me.rdImpuestos.Text = "Impuestos"
-        Me.rdImpuestos.UseVisualStyleBackColor = True
-        '
-        'rdComercioExterior
-        '
-        Me.rdComercioExterior.AutoSize = True
-        Me.rdComercioExterior.Font = New System.Drawing.Font("Calibri", 11.0!)
-        Me.rdComercioExterior.Location = New System.Drawing.Point(216, 42)
-        Me.rdComercioExterior.Name = "rdComercioExterior"
-        Me.rdComercioExterior.Size = New System.Drawing.Size(137, 22)
-        Me.rdComercioExterior.TabIndex = 5
-        Me.rdComercioExterior.TabStop = True
-        Me.rdComercioExterior.Text = "Comercio Exterior"
-        Me.rdComercioExterior.UseVisualStyleBackColor = True
-        '
-        'rdBAS
-        '
-        Me.rdBAS.AutoSize = True
-        Me.rdBAS.Font = New System.Drawing.Font("Calibri", 11.0!)
-        Me.rdBAS.Location = New System.Drawing.Point(251, 12)
-        Me.rdBAS.Name = "rdBAS"
-        Me.rdBAS.Size = New System.Drawing.Size(191, 22)
-        Me.rdBAS.TabIndex = 2
-        Me.rdBAS.TabStop = True
-        Me.rdBAS.Text = "Business Advisory Services"
-        Me.rdBAS.UseVisualStyleBackColor = True
-        '
-        'rdPreciosTransferencia
-        '
-        Me.rdPreciosTransferencia.AutoSize = True
-        Me.rdPreciosTransferencia.Font = New System.Drawing.Font("Calibri", 11.0!)
-        Me.rdPreciosTransferencia.Location = New System.Drawing.Point(21, 42)
-        Me.rdPreciosTransferencia.Name = "rdPreciosTransferencia"
-        Me.rdPreciosTransferencia.Size = New System.Drawing.Size(176, 22)
-        Me.rdPreciosTransferencia.TabIndex = 4
-        Me.rdPreciosTransferencia.TabStop = True
-        Me.rdPreciosTransferencia.Text = "Precios de Transferencia"
-        Me.rdPreciosTransferencia.UseVisualStyleBackColor = True
-        '
-        'rdBPS
-        '
-        Me.rdBPS.AutoSize = True
-        Me.rdBPS.Font = New System.Drawing.Font("Calibri", 11.0!)
-        Me.rdBPS.Location = New System.Drawing.Point(470, 12)
-        Me.rdBPS.Name = "rdBPS"
-        Me.rdBPS.Size = New System.Drawing.Size(190, 22)
-        Me.rdBPS.TabIndex = 3
-        Me.rdBPS.TabStop = True
-        Me.rdBPS.Text = "Business Process Solutions"
-        Me.rdBPS.UseVisualStyleBackColor = True
         '
         'lblDescripcionSolicitud
         '
         Me.lblDescripcionSolicitud.AutoSize = True
-        Me.lblDescripcionSolicitud.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDescripcionSolicitud.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblDescripcionSolicitud.Location = New System.Drawing.Point(39, 291)
         Me.lblDescripcionSolicitud.Name = "lblDescripcionSolicitud"
         Me.lblDescripcionSolicitud.Size = New System.Drawing.Size(313, 18)
-        Me.lblDescripcionSolicitud.TabIndex = 1
+        Me.lblDescripcionSolicitud.TabIndex = 9
         Me.lblDescripcionSolicitud.Text = "Información adicional del cliente y/o del servicio:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
         'txtDescripcionSolicitud
@@ -1029,16 +852,16 @@ Partial Class FrmContacto
         Me.txtDescripcionSolicitud.Multiline = True
         Me.txtDescripcionSolicitud.Name = "txtDescripcionSolicitud"
         Me.txtDescripcionSolicitud.Size = New System.Drawing.Size(875, 81)
-        Me.txtDescripcionSolicitud.TabIndex = 2
+        Me.txtDescripcionSolicitud.TabIndex = 10
         '
         'lblRFC
         '
         Me.lblRFC.AutoSize = True
-        Me.lblRFC.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblRFC.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblRFC.Location = New System.Drawing.Point(19, 138)
         Me.lblRFC.Name = "lblRFC"
         Me.lblRFC.Size = New System.Drawing.Size(42, 18)
-        Me.lblRFC.TabIndex = 5
+        Me.lblRFC.TabIndex = 7
         Me.lblRFC.Text = "RFC*:"
         '
         'txtRFC
@@ -1046,7 +869,7 @@ Partial Class FrmContacto
         Me.txtRFC.Location = New System.Drawing.Point(153, 135)
         Me.txtRFC.Name = "txtRFC"
         Me.txtRFC.Size = New System.Drawing.Size(274, 25)
-        Me.txtRFC.TabIndex = 6
+        Me.txtRFC.TabIndex = 8
         '
         'btnSubnivel
         '
@@ -1054,7 +877,7 @@ Partial Class FrmContacto
         Me.btnSubnivel.Location = New System.Drawing.Point(881, 219)
         Me.btnSubnivel.Name = "btnSubnivel"
         Me.btnSubnivel.Size = New System.Drawing.Size(43, 25)
-        Me.btnSubnivel.TabIndex = 15
+        Me.btnSubnivel.TabIndex = 18
         Me.btnSubnivel.Text = "..."
         Me.btnSubnivel.UseVisualStyleBackColor = True
         '
@@ -1064,35 +887,38 @@ Partial Class FrmContacto
         Me.btnSubsector.Location = New System.Drawing.Point(537, 219)
         Me.btnSubsector.Name = "btnSubsector"
         Me.btnSubsector.Size = New System.Drawing.Size(43, 25)
-        Me.btnSubsector.TabIndex = 13
+        Me.btnSubsector.TabIndex = 15
         Me.btnSubsector.Text = "..."
         Me.btnSubsector.UseVisualStyleBackColor = True
         '
         'Label2
         '
         Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Calibri", 11.0!)
         Me.Label2.Location = New System.Drawing.Point(599, 195)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(69, 18)
-        Me.Label2.TabIndex = 17
+        Me.Label2.TabIndex = 16
         Me.Label2.Text = "Subnivel*"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Calibri", 11.0!)
         Me.Label1.Location = New System.Drawing.Point(309, 196)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(76, 18)
-        Me.Label1.TabIndex = 11
+        Me.Label1.TabIndex = 13
         Me.Label1.Text = "Subsector*"
         '
         'lblIndustria
         '
         Me.lblIndustria.AutoSize = True
+        Me.lblIndustria.Font = New System.Drawing.Font("Calibri", 11.0!)
         Me.lblIndustria.Location = New System.Drawing.Point(19, 196)
         Me.lblIndustria.Name = "lblIndustria"
         Me.lblIndustria.Size = New System.Drawing.Size(70, 18)
-        Me.lblIndustria.TabIndex = 8
+        Me.lblIndustria.TabIndex = 10
         Me.lblIndustria.Text = "Industria*"
         '
         'btnIndustria
@@ -1101,7 +927,7 @@ Partial Class FrmContacto
         Me.btnIndustria.Location = New System.Drawing.Point(248, 219)
         Me.btnIndustria.Name = "btnIndustria"
         Me.btnIndustria.Size = New System.Drawing.Size(43, 25)
-        Me.btnIndustria.TabIndex = 10
+        Me.btnIndustria.TabIndex = 12
         Me.btnIndustria.Text = "..."
         Me.btnIndustria.UseVisualStyleBackColor = True
         '
@@ -1112,7 +938,7 @@ Partial Class FrmContacto
         Me.txtSubnivel.Name = "txtSubnivel"
         Me.txtSubnivel.ReadOnly = True
         Me.txtSubnivel.Size = New System.Drawing.Size(277, 24)
-        Me.txtSubnivel.TabIndex = 14
+        Me.txtSubnivel.TabIndex = 17
         '
         'gpBoxSubsidiaria
         '
@@ -1123,24 +949,26 @@ Partial Class FrmContacto
         Me.gpBoxSubsidiaria.Location = New System.Drawing.Point(533, 890)
         Me.gpBoxSubsidiaria.Name = "gpBoxSubsidiaria"
         Me.gpBoxSubsidiaria.Size = New System.Drawing.Size(506, 112)
-        Me.gpBoxSubsidiaria.TabIndex = 21
+        Me.gpBoxSubsidiaria.TabIndex = 23
         Me.gpBoxSubsidiaria.TabStop = False
         '
         'lblSubsidiaria
         '
         Me.lblSubsidiaria.AutoSize = True
+        Me.lblSubsidiaria.Font = New System.Drawing.Font("Calibri", 11.0!)
         Me.lblSubsidiaria.Location = New System.Drawing.Point(20, 27)
         Me.lblSubsidiaria.Name = "lblSubsidiaria"
         Me.lblSubsidiaria.Size = New System.Drawing.Size(90, 18)
-        Me.lblSubsidiaria.TabIndex = 9
+        Me.lblSubsidiaria.TabIndex = 0
         Me.lblSubsidiaria.Text = "¿Subsidiaria?"
         '
         'lblControladora
         '
+        Me.lblControladora.Font = New System.Drawing.Font("Calibri", 11.0!)
         Me.lblControladora.Location = New System.Drawing.Point(20, 57)
         Me.lblControladora.Name = "lblControladora"
         Me.lblControladora.Size = New System.Drawing.Size(163, 40)
-        Me.lblControladora.TabIndex = 12
+        Me.lblControladora.TabIndex = 2
         Me.lblControladora.Text = "¿Reportará a su compañia controladora?"
         '
         'panRDSubsidiaria
@@ -1150,7 +978,7 @@ Partial Class FrmContacto
         Me.panRDSubsidiaria.Location = New System.Drawing.Point(192, 19)
         Me.panRDSubsidiaria.Name = "panRDSubsidiaria"
         Me.panRDSubsidiaria.Size = New System.Drawing.Size(122, 35)
-        Me.panRDSubsidiaria.TabIndex = 328
+        Me.panRDSubsidiaria.TabIndex = 1
         '
         'rdSubsidiariaSi
         '
@@ -1159,7 +987,7 @@ Partial Class FrmContacto
         Me.rdSubsidiariaSi.Location = New System.Drawing.Point(9, 6)
         Me.rdSubsidiariaSi.Name = "rdSubsidiariaSi"
         Me.rdSubsidiariaSi.Size = New System.Drawing.Size(36, 22)
-        Me.rdSubsidiariaSi.TabIndex = 10
+        Me.rdSubsidiariaSi.TabIndex = 0
         Me.rdSubsidiariaSi.Text = "Sí"
         Me.rdSubsidiariaSi.UseVisualStyleBackColor = True
         '
@@ -1170,7 +998,7 @@ Partial Class FrmContacto
         Me.rdSubsidiariaNo.Location = New System.Drawing.Point(62, 6)
         Me.rdSubsidiariaNo.Name = "rdSubsidiariaNo"
         Me.rdSubsidiariaNo.Size = New System.Drawing.Size(44, 22)
-        Me.rdSubsidiariaNo.TabIndex = 11
+        Me.rdSubsidiariaNo.TabIndex = 1
         Me.rdSubsidiariaNo.Text = "No"
         Me.rdSubsidiariaNo.UseVisualStyleBackColor = True
         '
@@ -1181,7 +1009,7 @@ Partial Class FrmContacto
         Me.panRDCompañiaControl.Location = New System.Drawing.Point(192, 67)
         Me.panRDCompañiaControl.Name = "panRDCompañiaControl"
         Me.panRDCompañiaControl.Size = New System.Drawing.Size(122, 35)
-        Me.panRDCompañiaControl.TabIndex = 329
+        Me.panRDCompañiaControl.TabIndex = 3
         '
         'rdControladoraSi
         '
@@ -1190,7 +1018,7 @@ Partial Class FrmContacto
         Me.rdControladoraSi.Location = New System.Drawing.Point(9, 6)
         Me.rdControladoraSi.Name = "rdControladoraSi"
         Me.rdControladoraSi.Size = New System.Drawing.Size(36, 22)
-        Me.rdControladoraSi.TabIndex = 13
+        Me.rdControladoraSi.TabIndex = 0
         Me.rdControladoraSi.Text = "Sí"
         Me.rdControladoraSi.UseVisualStyleBackColor = True
         '
@@ -1201,7 +1029,7 @@ Partial Class FrmContacto
         Me.rdControladoraNO.Location = New System.Drawing.Point(62, 6)
         Me.rdControladoraNO.Name = "rdControladoraNO"
         Me.rdControladoraNO.Size = New System.Drawing.Size(44, 22)
-        Me.rdControladoraNO.TabIndex = 14
+        Me.rdControladoraNO.TabIndex = 1
         Me.rdControladoraNO.Text = "No"
         Me.rdControladoraNO.UseVisualStyleBackColor = True
         '
@@ -1212,24 +1040,26 @@ Partial Class FrmContacto
         Me.txtSubsector.Name = "txtSubsector"
         Me.txtSubsector.ReadOnly = True
         Me.txtSubsector.Size = New System.Drawing.Size(222, 24)
-        Me.txtSubsector.TabIndex = 12
+        Me.txtSubsector.TabIndex = 14
         '
         'lblRazonSocial
         '
         Me.lblRazonSocial.AutoSize = True
+        Me.lblRazonSocial.Font = New System.Drawing.Font("Calibri", 11.0!)
         Me.lblRazonSocial.Location = New System.Drawing.Point(19, 63)
         Me.lblRazonSocial.Name = "lblRazonSocial"
         Me.lblRazonSocial.Size = New System.Drawing.Size(94, 18)
-        Me.lblRazonSocial.TabIndex = 0
+        Me.lblRazonSocial.TabIndex = 2
         Me.lblRazonSocial.Text = "Razón social*:"
         '
         'lblNombreComercial
         '
         Me.lblNombreComercial.AutoSize = True
+        Me.lblNombreComercial.Font = New System.Drawing.Font("Calibri", 11.0!)
         Me.lblNombreComercial.Location = New System.Drawing.Point(19, 100)
         Me.lblNombreComercial.Name = "lblNombreComercial"
         Me.lblNombreComercial.Size = New System.Drawing.Size(133, 18)
-        Me.lblNombreComercial.TabIndex = 3
+        Me.lblNombreComercial.TabIndex = 5
         Me.lblNombreComercial.Text = "Nombre comercial*:"
         '
         'txtNombreComercial
@@ -1237,7 +1067,7 @@ Partial Class FrmContacto
         Me.txtNombreComercial.Location = New System.Drawing.Point(153, 96)
         Me.txtNombreComercial.Name = "txtNombreComercial"
         Me.txtNombreComercial.Size = New System.Drawing.Size(771, 25)
-        Me.txtNombreComercial.TabIndex = 4
+        Me.txtNombreComercial.TabIndex = 6
         '
         'txtIndustria
         '
@@ -1246,7 +1076,7 @@ Partial Class FrmContacto
         Me.txtIndustria.Name = "txtIndustria"
         Me.txtIndustria.ReadOnly = True
         Me.txtIndustria.Size = New System.Drawing.Size(222, 24)
-        Me.txtIndustria.TabIndex = 9
+        Me.txtIndustria.TabIndex = 11
         '
         'gpBoxEmpresaPublica
         '
@@ -1259,7 +1089,7 @@ Partial Class FrmContacto
         Me.gpBoxEmpresaPublica.Location = New System.Drawing.Point(17, 890)
         Me.gpBoxEmpresaPublica.Name = "gpBoxEmpresaPublica"
         Me.gpBoxEmpresaPublica.Size = New System.Drawing.Size(506, 112)
-        Me.gpBoxEmpresaPublica.TabIndex = 20
+        Me.gpBoxEmpresaPublica.TabIndex = 22
         Me.gpBoxEmpresaPublica.TabStop = False
         Me.gpBoxEmpresaPublica.Text = "Empresa pública"
         '
@@ -1334,7 +1164,7 @@ Partial Class FrmContacto
         Me.gpBoxEntidadReguladora.Location = New System.Drawing.Point(17, 1017)
         Me.gpBoxEntidadReguladora.Name = "gpBoxEntidadReguladora"
         Me.gpBoxEntidadReguladora.Size = New System.Drawing.Size(506, 89)
-        Me.gpBoxEntidadReguladora.TabIndex = 22
+        Me.gpBoxEntidadReguladora.TabIndex = 24
         Me.gpBoxEntidadReguladora.TabStop = False
         Me.gpBoxEntidadReguladora.Text = "Entidad regulada"
         '
@@ -1410,7 +1240,7 @@ Partial Class FrmContacto
         Me.gpBoxEntidadSupervisada.Location = New System.Drawing.Point(533, 1017)
         Me.gpBoxEntidadSupervisada.Name = "gpBoxEntidadSupervisada"
         Me.gpBoxEntidadSupervisada.Size = New System.Drawing.Size(506, 89)
-        Me.gpBoxEntidadSupervisada.TabIndex = 23
+        Me.gpBoxEntidadSupervisada.TabIndex = 25
         Me.gpBoxEntidadSupervisada.TabStop = False
         Me.gpBoxEntidadSupervisada.Text = "Entidad supervisada"
         '
@@ -1482,7 +1312,7 @@ Partial Class FrmContacto
         Me.cboPais.Location = New System.Drawing.Point(55, 847)
         Me.cboPais.Name = "cboPais"
         Me.cboPais.Size = New System.Drawing.Size(293, 26)
-        Me.cboPais.TabIndex = 19
+        Me.cboPais.TabIndex = 21
         '
         'gpBoxReferenciaGTI
         '
@@ -1505,7 +1335,7 @@ Partial Class FrmContacto
         Me.gpBoxReferenciaGTI.Location = New System.Drawing.Point(17, 1121)
         Me.gpBoxReferenciaGTI.Name = "gpBoxReferenciaGTI"
         Me.gpBoxReferenciaGTI.Size = New System.Drawing.Size(1022, 191)
-        Me.gpBoxReferenciaGTI.TabIndex = 24
+        Me.gpBoxReferenciaGTI.TabIndex = 26
         Me.gpBoxReferenciaGTI.TabStop = False
         Me.gpBoxReferenciaGTI.Text = "Referencia GTI"
         '
@@ -1514,33 +1344,33 @@ Partial Class FrmContacto
         Me.txtEstadoGTI.Location = New System.Drawing.Point(734, 64)
         Me.txtEstadoGTI.Name = "txtEstadoGTI"
         Me.txtEstadoGTI.Size = New System.Drawing.Size(214, 25)
-        Me.txtEstadoGTI.TabIndex = 15
+        Me.txtEstadoGTI.TabIndex = 13
         '
         'lblEstadoGTI
         '
         Me.lblEstadoGTI.AutoSize = True
-        Me.lblEstadoGTI.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.lblEstadoGTI.Font = New System.Drawing.Font("Calibri", 11.0!)
         Me.lblEstadoGTI.Location = New System.Drawing.Point(665, 69)
         Me.lblEstadoGTI.Name = "lblEstadoGTI"
-        Me.lblEstadoGTI.Size = New System.Drawing.Size(53, 18)
-        Me.lblEstadoGTI.TabIndex = 14
-        Me.lblEstadoGTI.Text = "Estado:"
+        Me.lblEstadoGTI.Size = New System.Drawing.Size(60, 18)
+        Me.lblEstadoGTI.TabIndex = 12
+        Me.lblEstadoGTI.Text = "Estado*:"
         '
         'TextBox1
         '
         Me.TextBox1.Location = New System.Drawing.Point(266, 137)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(358, 25)
-        Me.TextBox1.TabIndex = 13
+        Me.TextBox1.TabIndex = 9
         '
         'lblCorreoGerenteGTI
         '
         Me.lblCorreoGerenteGTI.AutoSize = True
-        Me.lblCorreoGerenteGTI.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.lblCorreoGerenteGTI.Font = New System.Drawing.Font("Calibri", 11.0!)
         Me.lblCorreoGerenteGTI.Location = New System.Drawing.Point(127, 140)
         Me.lblCorreoGerenteGTI.Name = "lblCorreoGerenteGTI"
         Me.lblCorreoGerenteGTI.Size = New System.Drawing.Size(127, 18)
-        Me.lblCorreoGerenteGTI.TabIndex = 12
+        Me.lblCorreoGerenteGTI.TabIndex = 8
         Me.lblCorreoGerenteGTI.Text = "Correo electrónico:"
         '
         'txtGerenteGTI
@@ -1548,33 +1378,33 @@ Partial Class FrmContacto
         Me.txtGerenteGTI.Location = New System.Drawing.Point(265, 101)
         Me.txtGerenteGTI.Name = "txtGerenteGTI"
         Me.txtGerenteGTI.Size = New System.Drawing.Size(358, 25)
-        Me.txtGerenteGTI.TabIndex = 11
+        Me.txtGerenteGTI.TabIndex = 7
         '
         'lblGerenteGTI
         '
         Me.lblGerenteGTI.AutoSize = True
-        Me.lblGerenteGTI.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.lblGerenteGTI.Font = New System.Drawing.Font("Calibri", 11.0!)
         Me.lblGerenteGTI.Location = New System.Drawing.Point(127, 104)
         Me.lblGerenteGTI.Name = "lblGerenteGTI"
-        Me.lblGerenteGTI.Size = New System.Drawing.Size(60, 18)
-        Me.lblGerenteGTI.TabIndex = 10
-        Me.lblGerenteGTI.Text = "Gerente"
+        Me.lblGerenteGTI.Size = New System.Drawing.Size(63, 18)
+        Me.lblGerenteGTI.TabIndex = 6
+        Me.lblGerenteGTI.Text = "Gerente:"
         '
         'txtCorreoSocioGTI
         '
         Me.txtCorreoSocioGTI.Location = New System.Drawing.Point(265, 65)
         Me.txtCorreoSocioGTI.Name = "txtCorreoSocioGTI"
         Me.txtCorreoSocioGTI.Size = New System.Drawing.Size(358, 25)
-        Me.txtCorreoSocioGTI.TabIndex = 9
+        Me.txtCorreoSocioGTI.TabIndex = 5
         '
         'lblCorreoSocioGTI
         '
         Me.lblCorreoSocioGTI.AutoSize = True
-        Me.lblCorreoSocioGTI.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.lblCorreoSocioGTI.Font = New System.Drawing.Font("Calibri", 11.0!)
         Me.lblCorreoSocioGTI.Location = New System.Drawing.Point(127, 68)
         Me.lblCorreoSocioGTI.Name = "lblCorreoSocioGTI"
         Me.lblCorreoSocioGTI.Size = New System.Drawing.Size(134, 18)
-        Me.lblCorreoSocioGTI.TabIndex = 8
+        Me.lblCorreoSocioGTI.TabIndex = 4
         Me.lblCorreoSocioGTI.Text = "Correo electrónico*:"
         '
         'cboReferenciaGTIOficina
@@ -1584,7 +1414,7 @@ Partial Class FrmContacto
         Me.cboReferenciaGTIOficina.Location = New System.Drawing.Point(734, 100)
         Me.cboReferenciaGTIOficina.Name = "cboReferenciaGTIOficina"
         Me.cboReferenciaGTIOficina.Size = New System.Drawing.Size(214, 26)
-        Me.cboReferenciaGTIOficina.TabIndex = 7
+        Me.cboReferenciaGTIOficina.TabIndex = 15
         '
         'cboReferenciaGTIPais
         '
@@ -1594,27 +1424,27 @@ Partial Class FrmContacto
         Me.cboReferenciaGTIPais.Location = New System.Drawing.Point(734, 28)
         Me.cboReferenciaGTIPais.Name = "cboReferenciaGTIPais"
         Me.cboReferenciaGTIPais.Size = New System.Drawing.Size(214, 26)
-        Me.cboReferenciaGTIPais.TabIndex = 5
+        Me.cboReferenciaGTIPais.TabIndex = 11
         '
         'lblReferenciaGTIPais
         '
         Me.lblReferenciaGTIPais.AutoSize = True
-        Me.lblReferenciaGTIPais.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.lblReferenciaGTIPais.Font = New System.Drawing.Font("Calibri", 11.0!)
         Me.lblReferenciaGTIPais.Location = New System.Drawing.Point(665, 32)
         Me.lblReferenciaGTIPais.Name = "lblReferenciaGTIPais"
-        Me.lblReferenciaGTIPais.Size = New System.Drawing.Size(40, 18)
-        Me.lblReferenciaGTIPais.TabIndex = 4
-        Me.lblReferenciaGTIPais.Text = "País*"
+        Me.lblReferenciaGTIPais.Size = New System.Drawing.Size(43, 18)
+        Me.lblReferenciaGTIPais.TabIndex = 10
+        Me.lblReferenciaGTIPais.Text = "País*:"
         '
         'lblRefGTIOficina
         '
         Me.lblRefGTIOficina.AutoSize = True
-        Me.lblRefGTIOficina.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.lblRefGTIOficina.Font = New System.Drawing.Font("Calibri", 11.0!)
         Me.lblRefGTIOficina.Location = New System.Drawing.Point(665, 104)
         Me.lblRefGTIOficina.Name = "lblRefGTIOficina"
-        Me.lblRefGTIOficina.Size = New System.Drawing.Size(58, 18)
-        Me.lblRefGTIOficina.TabIndex = 6
-        Me.lblRefGTIOficina.Text = "Oficina*"
+        Me.lblRefGTIOficina.Size = New System.Drawing.Size(62, 18)
+        Me.lblRefGTIOficina.TabIndex = 14
+        Me.lblRefGTIOficina.Text = "Oficina*:"
         '
         'txtReferenciaGTISocio
         '
@@ -1626,7 +1456,7 @@ Partial Class FrmContacto
         'lbRefGTISocio
         '
         Me.lbRefGTISocio.AutoSize = True
-        Me.lbRefGTISocio.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold)
+        Me.lbRefGTISocio.Font = New System.Drawing.Font("Calibri", 11.0!)
         Me.lbRefGTISocio.Location = New System.Drawing.Point(127, 32)
         Me.lbRefGTISocio.Name = "lbRefGTISocio"
         Me.lbRefGTISocio.Size = New System.Drawing.Size(52, 18)
@@ -1661,7 +1491,7 @@ Partial Class FrmContacto
         Me.lblPais.Location = New System.Drawing.Point(17, 851)
         Me.lblPais.Name = "lblPais"
         Me.lblPais.Size = New System.Drawing.Size(37, 18)
-        Me.lblPais.TabIndex = 18
+        Me.lblPais.TabIndex = 20
         Me.lblPais.Text = "País:"
         '
         'gpBoxEmpresaExtranjero
@@ -1681,7 +1511,7 @@ Partial Class FrmContacto
         Me.gpBoxEmpresaExtranjero.Location = New System.Drawing.Point(17, 1324)
         Me.gpBoxEmpresaExtranjero.Name = "gpBoxEmpresaExtranjero"
         Me.gpBoxEmpresaExtranjero.Size = New System.Drawing.Size(1022, 193)
-        Me.gpBoxEmpresaExtranjero.TabIndex = 25
+        Me.gpBoxEmpresaExtranjero.TabIndex = 27
         Me.gpBoxEmpresaExtranjero.TabStop = False
         Me.gpBoxEmpresaExtranjero.Text = "Empresa en el Extranjero"
         '
@@ -1867,6 +1697,28 @@ Partial Class FrmContacto
         Me.rdEmpresaExtranjeroRepNo.Text = "No"
         Me.rdEmpresaExtranjeroRepNo.UseVisualStyleBackColor = True
         '
+        'Lista
+        '
+        Me.Lista.AllowUserToAddRows = False
+        Me.Lista.AllowUserToDeleteRows = False
+        Me.Lista.AllowUserToResizeColumns = False
+        Me.Lista.AllowUserToResizeRows = False
+        Me.Lista.BackgroundColor = System.Drawing.Color.WhiteSmoke
+        Me.Lista.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
+        Me.Lista.GridColor = System.Drawing.Color.Gainsboro
+        Me.Lista.Location = New System.Drawing.Point(153, 84)
+        Me.Lista.Name = "Lista"
+        Me.Lista.ReadOnly = True
+        Me.Lista.RowHeadersWidth = 25
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(127, Byte), Integer))
+        Me.Lista.RowsDefaultCellStyle = DataGridViewCellStyle1
+        Me.Lista.RowTemplate.Height = 26
+        Me.Lista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.Lista.Size = New System.Drawing.Size(771, 270)
+        Me.Lista.TabIndex = 4
+        Me.Lista.Visible = False
+        '
         'lblMensajeCargaDatosGenerales
         '
         Me.lblMensajeCargaDatosGenerales.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
@@ -1876,7 +1728,7 @@ Partial Class FrmContacto
         Me.lblMensajeCargaDatosGenerales.ForeColor = System.Drawing.Color.White
         Me.lblMensajeCargaDatosGenerales.Location = New System.Drawing.Point(0, 44)
         Me.lblMensajeCargaDatosGenerales.Name = "lblMensajeCargaDatosGenerales"
-        Me.lblMensajeCargaDatosGenerales.Size = New System.Drawing.Size(369, 25)
+        Me.lblMensajeCargaDatosGenerales.Size = New System.Drawing.Size(1106, 25)
         Me.lblMensajeCargaDatosGenerales.TabIndex = 2
         Me.lblMensajeCargaDatosGenerales.Text = "No se ha cargado información de los Datos Generales para el prospecto."
         Me.lblMensajeCargaDatosGenerales.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -1949,7 +1801,7 @@ Partial Class FrmContacto
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(167, Byte), Integer), CType(CType(181, Byte), Integer))
-        Me.Panel1.Location = New System.Drawing.Point(9, 32)
+        Me.Panel1.Location = New System.Drawing.Point(19, 34)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(300, 3)
         Me.Panel1.TabIndex = 1
@@ -1959,7 +1811,7 @@ Partial Class FrmContacto
         Me.lblTituloCI.AutoSize = True
         Me.lblTituloCI.Font = New System.Drawing.Font("Calibri", 18.0!, System.Drawing.FontStyle.Bold)
         Me.lblTituloCI.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(167, Byte), Integer), CType(CType(181, Byte), Integer))
-        Me.lblTituloCI.Location = New System.Drawing.Point(9, 5)
+        Me.lblTituloCI.Location = New System.Drawing.Point(19, 4)
         Me.lblTituloCI.Name = "lblTituloCI"
         Me.lblTituloCI.Size = New System.Drawing.Size(200, 29)
         Me.lblTituloCI.TabIndex = 0
@@ -2327,7 +2179,7 @@ Partial Class FrmContacto
         'Panel2
         '
         Me.Panel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(167, Byte), Integer), CType(CType(181, Byte), Integer))
-        Me.Panel2.Location = New System.Drawing.Point(9, 32)
+        Me.Panel2.Location = New System.Drawing.Point(19, 34)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(300, 3)
         Me.Panel2.TabIndex = 1
@@ -2337,7 +2189,7 @@ Partial Class FrmContacto
         Me.lblTituloAcercamiento.AutoSize = True
         Me.lblTituloAcercamiento.Font = New System.Drawing.Font("Calibri", 18.0!, System.Drawing.FontStyle.Bold)
         Me.lblTituloAcercamiento.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(167, Byte), Integer), CType(CType(181, Byte), Integer))
-        Me.lblTituloAcercamiento.Location = New System.Drawing.Point(9, 5)
+        Me.lblTituloAcercamiento.Location = New System.Drawing.Point(19, 4)
         Me.lblTituloAcercamiento.Name = "lblTituloAcercamiento"
         Me.lblTituloAcercamiento.Size = New System.Drawing.Size(177, 29)
         Me.lblTituloAcercamiento.TabIndex = 0
@@ -2380,7 +2232,7 @@ Partial Class FrmContacto
         'Panel3
         '
         Me.Panel3.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(167, Byte), Integer), CType(CType(181, Byte), Integer))
-        Me.Panel3.Location = New System.Drawing.Point(9, 32)
+        Me.Panel3.Location = New System.Drawing.Point(19, 34)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(300, 3)
         Me.Panel3.TabIndex = 1
@@ -2390,7 +2242,7 @@ Partial Class FrmContacto
         Me.lblTituloDomicilio.AutoSize = True
         Me.lblTituloDomicilio.Font = New System.Drawing.Font("Calibri", 18.0!, System.Drawing.FontStyle.Bold)
         Me.lblTituloDomicilio.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(167, Byte), Integer), CType(CType(181, Byte), Integer))
-        Me.lblTituloDomicilio.Location = New System.Drawing.Point(9, 5)
+        Me.lblTituloDomicilio.Location = New System.Drawing.Point(19, 4)
         Me.lblTituloDomicilio.Name = "lblTituloDomicilio"
         Me.lblTituloDomicilio.Size = New System.Drawing.Size(122, 29)
         Me.lblTituloDomicilio.TabIndex = 0
@@ -2675,541 +2527,16 @@ Partial Class FrmContacto
         Me.lblDomicilioCP.TabIndex = 6
         Me.lblDomicilioCP.Text = "Código Postal:"
         '
-        'panFuncionarios
-        '
-        Me.panFuncionarios.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.panFuncionarios.BackColor = System.Drawing.Color.White
-        Me.panFuncionarios.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.panFuncionarios.Controls.Add(Me.lblMensajeCargaFuncionarios)
-        Me.panFuncionarios.Controls.Add(Me.btnCancelarFuncionario)
-        Me.panFuncionarios.Controls.Add(Me.btnActualizarFuncionario)
-        Me.panFuncionarios.Controls.Add(Me.gridFuncionarios)
-        Me.panFuncionarios.Controls.Add(Me.btnNuevoFuncionarios)
-        Me.panFuncionarios.Controls.Add(Me.btnGuardarFuncionarios)
-        Me.panFuncionarios.Controls.Add(Me.gpBoxDatosFuncionarios)
-        Me.panFuncionarios.Controls.Add(Me.Panel4)
-        Me.panFuncionarios.Controls.Add(Me.lblTituloFuncionarios)
-        Me.panFuncionarios.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.panFuncionarios.Location = New System.Drawing.Point(212, 0)
-        Me.panFuncionarios.Name = "panFuncionarios"
-        Me.panFuncionarios.Size = New System.Drawing.Size(1106, 660)
-        Me.panFuncionarios.TabIndex = 7
-        Me.panFuncionarios.Tag = "5"
-        Me.panFuncionarios.Visible = False
-        '
-        'lblMensajeCargaFuncionarios
-        '
-        Me.lblMensajeCargaFuncionarios.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lblMensajeCargaFuncionarios.BackColor = System.Drawing.Color.DarkSalmon
-        Me.lblMensajeCargaFuncionarios.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblMensajeCargaFuncionarios.ForeColor = System.Drawing.Color.White
-        Me.lblMensajeCargaFuncionarios.Location = New System.Drawing.Point(0, 44)
-        Me.lblMensajeCargaFuncionarios.Name = "lblMensajeCargaFuncionarios"
-        Me.lblMensajeCargaFuncionarios.Size = New System.Drawing.Size(1104, 25)
-        Me.lblMensajeCargaFuncionarios.TabIndex = 15
-        Me.lblMensajeCargaFuncionarios.Text = "No se ha cargado información de Funcionarios para el prospecto."
-        Me.lblMensajeCargaFuncionarios.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.lblMensajeCargaFuncionarios.Visible = False
-        '
-        'btnCancelarFuncionario
-        '
-        Me.btnCancelarFuncionario.Enabled = False
-        Me.btnCancelarFuncionario.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCancelarFuncionario.Location = New System.Drawing.Point(624, 281)
-        Me.btnCancelarFuncionario.Name = "btnCancelarFuncionario"
-        Me.btnCancelarFuncionario.Size = New System.Drawing.Size(130, 25)
-        Me.btnCancelarFuncionario.TabIndex = 14
-        Me.btnCancelarFuncionario.Text = "Cancelar"
-        Me.btnCancelarFuncionario.UseVisualStyleBackColor = True
-        '
-        'btnActualizarFuncionario
-        '
-        Me.btnActualizarFuncionario.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnActualizarFuncionario.Location = New System.Drawing.Point(220, 281)
-        Me.btnActualizarFuncionario.Name = "btnActualizarFuncionario"
-        Me.btnActualizarFuncionario.Size = New System.Drawing.Size(130, 25)
-        Me.btnActualizarFuncionario.TabIndex = 13
-        Me.btnActualizarFuncionario.Text = "Actualizar"
-        Me.btnActualizarFuncionario.UseVisualStyleBackColor = True
-        '
-        'gridFuncionarios
-        '
-        Me.gridFuncionarios.AllowUserToAddRows = False
-        Me.gridFuncionarios.AllowUserToDeleteRows = False
-        Me.gridFuncionarios.AllowUserToResizeRows = False
-        Me.gridFuncionarios.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.gridFuncionarios.BackgroundColor = System.Drawing.Color.Gainsboro
-        Me.gridFuncionarios.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
-        Me.gridFuncionarios.ColumnHeadersHeight = 40
-        Me.gridFuncionarios.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
-        Me.gridFuncionarios.GridColor = System.Drawing.Color.WhiteSmoke
-        Me.gridFuncionarios.Location = New System.Drawing.Point(75, 328)
-        Me.gridFuncionarios.Name = "gridFuncionarios"
-        Me.gridFuncionarios.RowHeadersWidth = 25
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(127, Byte), Integer))
-        Me.gridFuncionarios.RowsDefaultCellStyle = DataGridViewCellStyle2
-        Me.gridFuncionarios.RowTemplate.Height = 25
-        Me.gridFuncionarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.gridFuncionarios.Size = New System.Drawing.Size(953, 304)
-        Me.gridFuncionarios.TabIndex = 12
-        '
-        'btnNuevoFuncionarios
-        '
-        Me.btnNuevoFuncionarios.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnNuevoFuncionarios.Location = New System.Drawing.Point(75, 281)
-        Me.btnNuevoFuncionarios.Name = "btnNuevoFuncionarios"
-        Me.btnNuevoFuncionarios.Size = New System.Drawing.Size(130, 25)
-        Me.btnNuevoFuncionarios.TabIndex = 11
-        Me.btnNuevoFuncionarios.Text = "Nuevo"
-        Me.btnNuevoFuncionarios.UseVisualStyleBackColor = True
-        '
-        'btnGuardarFuncionarios
-        '
-        Me.btnGuardarFuncionarios.Enabled = False
-        Me.btnGuardarFuncionarios.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnGuardarFuncionarios.Location = New System.Drawing.Point(765, 281)
-        Me.btnGuardarFuncionarios.Name = "btnGuardarFuncionarios"
-        Me.btnGuardarFuncionarios.Size = New System.Drawing.Size(130, 25)
-        Me.btnGuardarFuncionarios.TabIndex = 10
-        Me.btnGuardarFuncionarios.Text = "Guardar"
-        Me.btnGuardarFuncionarios.UseVisualStyleBackColor = True
-        '
-        'gpBoxDatosFuncionarios
-        '
-        Me.gpBoxDatosFuncionarios.Controls.Add(Me.lblFuncionariosCargo)
-        Me.gpBoxDatosFuncionarios.Controls.Add(Me.lblFuncionariosApellidoMaterno)
-        Me.gpBoxDatosFuncionarios.Controls.Add(Me.lblFuncionariosCorreo)
-        Me.gpBoxDatosFuncionarios.Controls.Add(Me.lblFuncionariosTelefono)
-        Me.gpBoxDatosFuncionarios.Controls.Add(Me.txtFuncionariosNombre)
-        Me.gpBoxDatosFuncionarios.Controls.Add(Me.lblFuncionariosApellidoPaterno)
-        Me.gpBoxDatosFuncionarios.Controls.Add(Me.txtFuncionariosApellidoPaterno)
-        Me.gpBoxDatosFuncionarios.Controls.Add(Me.txtFuncionariosApellidoMaterno)
-        Me.gpBoxDatosFuncionarios.Controls.Add(Me.lblFuncionariosNombre)
-        Me.gpBoxDatosFuncionarios.Controls.Add(Me.txtFuncionariosCorreo)
-        Me.gpBoxDatosFuncionarios.Controls.Add(Me.txtFuncionariosCargo)
-        Me.gpBoxDatosFuncionarios.Controls.Add(Me.txtFuncionariosTelefono)
-        Me.gpBoxDatosFuncionarios.Enabled = False
-        Me.gpBoxDatosFuncionarios.Location = New System.Drawing.Point(75, 72)
-        Me.gpBoxDatosFuncionarios.Name = "gpBoxDatosFuncionarios"
-        Me.gpBoxDatosFuncionarios.Size = New System.Drawing.Size(820, 204)
-        Me.gpBoxDatosFuncionarios.TabIndex = 4
-        Me.gpBoxDatosFuncionarios.TabStop = False
-        '
-        'lblFuncionariosCargo
-        '
-        Me.lblFuncionariosCargo.AutoSize = True
-        Me.lblFuncionariosCargo.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblFuncionariosCargo.Location = New System.Drawing.Point(36, 77)
-        Me.lblFuncionariosCargo.Name = "lblFuncionariosCargo"
-        Me.lblFuncionariosCargo.Size = New System.Drawing.Size(43, 18)
-        Me.lblFuncionariosCargo.TabIndex = 6
-        Me.lblFuncionariosCargo.Text = "Cargo"
-        '
-        'lblFuncionariosApellidoMaterno
-        '
-        Me.lblFuncionariosApellidoMaterno.AutoSize = True
-        Me.lblFuncionariosApellidoMaterno.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblFuncionariosApellidoMaterno.Location = New System.Drawing.Point(546, 19)
-        Me.lblFuncionariosApellidoMaterno.Name = "lblFuncionariosApellidoMaterno"
-        Me.lblFuncionariosApellidoMaterno.Size = New System.Drawing.Size(118, 18)
-        Me.lblFuncionariosApellidoMaterno.TabIndex = 4
-        Me.lblFuncionariosApellidoMaterno.Text = "Apellido Materno"
-        '
-        'lblFuncionariosCorreo
-        '
-        Me.lblFuncionariosCorreo.AutoSize = True
-        Me.lblFuncionariosCorreo.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblFuncionariosCorreo.Location = New System.Drawing.Point(351, 138)
-        Me.lblFuncionariosCorreo.Name = "lblFuncionariosCorreo"
-        Me.lblFuncionariosCorreo.Size = New System.Drawing.Size(123, 18)
-        Me.lblFuncionariosCorreo.TabIndex = 10
-        Me.lblFuncionariosCorreo.Text = "Correo electrónico"
-        '
-        'lblFuncionariosTelefono
-        '
-        Me.lblFuncionariosTelefono.AutoSize = True
-        Me.lblFuncionariosTelefono.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblFuncionariosTelefono.Location = New System.Drawing.Point(36, 138)
-        Me.lblFuncionariosTelefono.Name = "lblFuncionariosTelefono"
-        Me.lblFuncionariosTelefono.Size = New System.Drawing.Size(63, 18)
-        Me.lblFuncionariosTelefono.TabIndex = 8
-        Me.lblFuncionariosTelefono.Text = "Teléfono"
-        '
-        'txtFuncionariosNombre
-        '
-        Me.txtFuncionariosNombre.Location = New System.Drawing.Point(36, 42)
-        Me.txtFuncionariosNombre.Name = "txtFuncionariosNombre"
-        Me.txtFuncionariosNombre.Size = New System.Drawing.Size(239, 25)
-        Me.txtFuncionariosNombre.TabIndex = 1
-        '
-        'lblFuncionariosApellidoPaterno
-        '
-        Me.lblFuncionariosApellidoPaterno.AutoSize = True
-        Me.lblFuncionariosApellidoPaterno.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblFuncionariosApellidoPaterno.Location = New System.Drawing.Point(291, 19)
-        Me.lblFuncionariosApellidoPaterno.Name = "lblFuncionariosApellidoPaterno"
-        Me.lblFuncionariosApellidoPaterno.Size = New System.Drawing.Size(113, 18)
-        Me.lblFuncionariosApellidoPaterno.TabIndex = 2
-        Me.lblFuncionariosApellidoPaterno.Text = "Apellido Paterno"
-        '
-        'txtFuncionariosApellidoPaterno
-        '
-        Me.txtFuncionariosApellidoPaterno.Location = New System.Drawing.Point(291, 42)
-        Me.txtFuncionariosApellidoPaterno.Name = "txtFuncionariosApellidoPaterno"
-        Me.txtFuncionariosApellidoPaterno.Size = New System.Drawing.Size(239, 25)
-        Me.txtFuncionariosApellidoPaterno.TabIndex = 3
-        '
-        'txtFuncionariosApellidoMaterno
-        '
-        Me.txtFuncionariosApellidoMaterno.Location = New System.Drawing.Point(546, 42)
-        Me.txtFuncionariosApellidoMaterno.Name = "txtFuncionariosApellidoMaterno"
-        Me.txtFuncionariosApellidoMaterno.Size = New System.Drawing.Size(239, 25)
-        Me.txtFuncionariosApellidoMaterno.TabIndex = 5
-        '
-        'lblFuncionariosNombre
-        '
-        Me.lblFuncionariosNombre.AutoSize = True
-        Me.lblFuncionariosNombre.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblFuncionariosNombre.Location = New System.Drawing.Point(36, 19)
-        Me.lblFuncionariosNombre.Name = "lblFuncionariosNombre"
-        Me.lblFuncionariosNombre.Size = New System.Drawing.Size(59, 18)
-        Me.lblFuncionariosNombre.TabIndex = 0
-        Me.lblFuncionariosNombre.Text = "Nombre"
-        '
-        'txtFuncionariosCorreo
-        '
-        Me.txtFuncionariosCorreo.Location = New System.Drawing.Point(351, 161)
-        Me.txtFuncionariosCorreo.Name = "txtFuncionariosCorreo"
-        Me.txtFuncionariosCorreo.Size = New System.Drawing.Size(297, 25)
-        Me.txtFuncionariosCorreo.TabIndex = 11
-        '
-        'txtFuncionariosCargo
-        '
-        Me.txtFuncionariosCargo.Location = New System.Drawing.Point(36, 100)
-        Me.txtFuncionariosCargo.Name = "txtFuncionariosCargo"
-        Me.txtFuncionariosCargo.Size = New System.Drawing.Size(494, 25)
-        Me.txtFuncionariosCargo.TabIndex = 7
-        '
-        'txtFuncionariosTelefono
-        '
-        Me.txtFuncionariosTelefono.Location = New System.Drawing.Point(36, 161)
-        Me.txtFuncionariosTelefono.Name = "txtFuncionariosTelefono"
-        Me.txtFuncionariosTelefono.Size = New System.Drawing.Size(297, 25)
-        Me.txtFuncionariosTelefono.TabIndex = 9
-        '
-        'Panel4
-        '
-        Me.Panel4.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(167, Byte), Integer), CType(CType(181, Byte), Integer))
-        Me.Panel4.Location = New System.Drawing.Point(9, 32)
-        Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(300, 3)
-        Me.Panel4.TabIndex = 3
-        '
-        'lblTituloFuncionarios
-        '
-        Me.lblTituloFuncionarios.AutoSize = True
-        Me.lblTituloFuncionarios.Font = New System.Drawing.Font("Calibri", 18.0!, System.Drawing.FontStyle.Bold)
-        Me.lblTituloFuncionarios.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(167, Byte), Integer), CType(CType(181, Byte), Integer))
-        Me.lblTituloFuncionarios.Location = New System.Drawing.Point(9, 5)
-        Me.lblTituloFuncionarios.Name = "lblTituloFuncionarios"
-        Me.lblTituloFuncionarios.Size = New System.Drawing.Size(169, 29)
-        Me.lblTituloFuncionarios.TabIndex = 2
-        Me.lblTituloFuncionarios.Text = "FUNCIONARIOS"
-        '
-        'panAccionistas
-        '
-        Me.panAccionistas.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.panAccionistas.BackColor = System.Drawing.Color.White
-        Me.panAccionistas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.panAccionistas.Controls.Add(Me.lblMensajeCargaAccionistas)
-        Me.panAccionistas.Controls.Add(Me.btnCancelarAccionistas)
-        Me.panAccionistas.Controls.Add(Me.btnActualizarAccionistas)
-        Me.panAccionistas.Controls.Add(Me.gridAccionistas)
-        Me.panAccionistas.Controls.Add(Me.btnNuevoAccionista)
-        Me.panAccionistas.Controls.Add(Me.btnGuardarAccionistas)
-        Me.panAccionistas.Controls.Add(Me.gpBoxDatosAccionistas)
-        Me.panAccionistas.Controls.Add(Me.Panel6)
-        Me.panAccionistas.Controls.Add(Me.lblTituloAccionistas)
-        Me.panAccionistas.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.panAccionistas.Location = New System.Drawing.Point(212, 0)
-        Me.panAccionistas.Name = "panAccionistas"
-        Me.panAccionistas.Size = New System.Drawing.Size(1106, 660)
-        Me.panAccionistas.TabIndex = 0
-        Me.panAccionistas.Tag = "6"
-        Me.panAccionistas.Visible = False
-        '
-        'lblMensajeCargaAccionistas
-        '
-        Me.lblMensajeCargaAccionistas.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lblMensajeCargaAccionistas.BackColor = System.Drawing.Color.DarkSalmon
-        Me.lblMensajeCargaAccionistas.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblMensajeCargaAccionistas.ForeColor = System.Drawing.Color.White
-        Me.lblMensajeCargaAccionistas.Location = New System.Drawing.Point(0, 44)
-        Me.lblMensajeCargaAccionistas.Name = "lblMensajeCargaAccionistas"
-        Me.lblMensajeCargaAccionistas.Size = New System.Drawing.Size(1104, 25)
-        Me.lblMensajeCargaAccionistas.TabIndex = 10
-        Me.lblMensajeCargaAccionistas.Text = "No se ha cargado información de Accionistas para el prospecto."
-        Me.lblMensajeCargaAccionistas.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.lblMensajeCargaAccionistas.Visible = False
-        '
-        'btnCancelarAccionistas
-        '
-        Me.btnCancelarAccionistas.Enabled = False
-        Me.btnCancelarAccionistas.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCancelarAccionistas.Location = New System.Drawing.Point(624, 243)
-        Me.btnCancelarAccionistas.Name = "btnCancelarAccionistas"
-        Me.btnCancelarAccionistas.Size = New System.Drawing.Size(130, 25)
-        Me.btnCancelarAccionistas.TabIndex = 9
-        Me.btnCancelarAccionistas.Text = "Cancelar"
-        Me.btnCancelarAccionistas.UseVisualStyleBackColor = True
-        '
-        'btnActualizarAccionistas
-        '
-        Me.btnActualizarAccionistas.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnActualizarAccionistas.Location = New System.Drawing.Point(220, 243)
-        Me.btnActualizarAccionistas.Name = "btnActualizarAccionistas"
-        Me.btnActualizarAccionistas.Size = New System.Drawing.Size(130, 25)
-        Me.btnActualizarAccionistas.TabIndex = 8
-        Me.btnActualizarAccionistas.Text = "Actualizar"
-        Me.btnActualizarAccionistas.UseVisualStyleBackColor = True
-        '
-        'gridAccionistas
-        '
-        Me.gridAccionistas.AllowUserToAddRows = False
-        Me.gridAccionistas.AllowUserToDeleteRows = False
-        Me.gridAccionistas.AllowUserToResizeRows = False
-        Me.gridAccionistas.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.gridAccionistas.BackgroundColor = System.Drawing.Color.Gainsboro
-        Me.gridAccionistas.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
-        Me.gridAccionistas.ColumnHeadersHeight = 40
-        Me.gridAccionistas.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
-        Me.gridAccionistas.GridColor = System.Drawing.Color.WhiteSmoke
-        Me.gridAccionistas.Location = New System.Drawing.Point(75, 295)
-        Me.gridAccionistas.Name = "gridAccionistas"
-        Me.gridAccionistas.RowHeadersWidth = 25
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(127, Byte), Integer))
-        Me.gridAccionistas.RowsDefaultCellStyle = DataGridViewCellStyle3
-        Me.gridAccionistas.RowTemplate.Height = 25
-        Me.gridAccionistas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.gridAccionistas.Size = New System.Drawing.Size(953, 304)
-        Me.gridAccionistas.TabIndex = 7
-        '
-        'btnNuevoAccionista
-        '
-        Me.btnNuevoAccionista.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnNuevoAccionista.Location = New System.Drawing.Point(75, 243)
-        Me.btnNuevoAccionista.Name = "btnNuevoAccionista"
-        Me.btnNuevoAccionista.Size = New System.Drawing.Size(130, 25)
-        Me.btnNuevoAccionista.TabIndex = 0
-        Me.btnNuevoAccionista.Text = "Nuevo"
-        Me.btnNuevoAccionista.UseVisualStyleBackColor = True
-        '
-        'btnGuardarAccionistas
-        '
-        Me.btnGuardarAccionistas.Enabled = False
-        Me.btnGuardarAccionistas.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnGuardarAccionistas.Location = New System.Drawing.Point(765, 243)
-        Me.btnGuardarAccionistas.Name = "btnGuardarAccionistas"
-        Me.btnGuardarAccionistas.Size = New System.Drawing.Size(130, 25)
-        Me.btnGuardarAccionistas.TabIndex = 5
-        Me.btnGuardarAccionistas.Text = "Guardar"
-        Me.btnGuardarAccionistas.UseVisualStyleBackColor = True
-        '
-        'gpBoxDatosAccionistas
-        '
-        Me.gpBoxDatosAccionistas.Controls.Add(Me.lblAccionistasTipoPersona)
-        Me.gpBoxDatosAccionistas.Controls.Add(Me.cboAccionistasTipoPersona)
-        Me.gpBoxDatosAccionistas.Controls.Add(Me.lblAccionistasPorcentaje)
-        Me.gpBoxDatosAccionistas.Controls.Add(Me.lblAccionistasApellidoMaterno)
-        Me.gpBoxDatosAccionistas.Controls.Add(Me.txtAccionistasNombre)
-        Me.gpBoxDatosAccionistas.Controls.Add(Me.lblAccionistasApellidoPaterno)
-        Me.gpBoxDatosAccionistas.Controls.Add(Me.txtAccionistasApellidoPaterno)
-        Me.gpBoxDatosAccionistas.Controls.Add(Me.txtAccionistasApellidoMaterno)
-        Me.gpBoxDatosAccionistas.Controls.Add(Me.lblAccionistasNombre)
-        Me.gpBoxDatosAccionistas.Controls.Add(Me.txtAccionistasPorcentaje)
-        Me.gpBoxDatosAccionistas.Enabled = False
-        Me.gpBoxDatosAccionistas.Location = New System.Drawing.Point(75, 72)
-        Me.gpBoxDatosAccionistas.Name = "gpBoxDatosAccionistas"
-        Me.gpBoxDatosAccionistas.Size = New System.Drawing.Size(820, 164)
-        Me.gpBoxDatosAccionistas.TabIndex = 2
-        Me.gpBoxDatosAccionistas.TabStop = False
-        '
-        'lblAccionistasTipoPersona
-        '
-        Me.lblAccionistasTipoPersona.AutoSize = True
-        Me.lblAccionistasTipoPersona.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblAccionistasTipoPersona.Location = New System.Drawing.Point(36, 90)
-        Me.lblAccionistasTipoPersona.Name = "lblAccionistasTipoPersona"
-        Me.lblAccionistasTipoPersona.Size = New System.Drawing.Size(107, 18)
-        Me.lblAccionistasTipoPersona.TabIndex = 6
-        Me.lblAccionistasTipoPersona.Text = "Tipo de Persona"
-        '
-        'cboAccionistasTipoPersona
-        '
-        Me.cboAccionistasTipoPersona.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboAccionistasTipoPersona.FormattingEnabled = True
-        Me.cboAccionistasTipoPersona.Location = New System.Drawing.Point(36, 116)
-        Me.cboAccionistasTipoPersona.Name = "cboAccionistasTipoPersona"
-        Me.cboAccionistasTipoPersona.Size = New System.Drawing.Size(239, 26)
-        Me.cboAccionistasTipoPersona.TabIndex = 7
-        '
-        'lblAccionistasPorcentaje
-        '
-        Me.lblAccionistasPorcentaje.AutoSize = True
-        Me.lblAccionistasPorcentaje.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblAccionistasPorcentaje.Location = New System.Drawing.Point(291, 90)
-        Me.lblAccionistasPorcentaje.Name = "lblAccionistasPorcentaje"
-        Me.lblAccionistasPorcentaje.Size = New System.Drawing.Size(19, 18)
-        Me.lblAccionistasPorcentaje.TabIndex = 8
-        Me.lblAccionistasPorcentaje.Text = "%"
-        '
-        'lblAccionistasApellidoMaterno
-        '
-        Me.lblAccionistasApellidoMaterno.AutoSize = True
-        Me.lblAccionistasApellidoMaterno.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblAccionistasApellidoMaterno.Location = New System.Drawing.Point(546, 26)
-        Me.lblAccionistasApellidoMaterno.Name = "lblAccionistasApellidoMaterno"
-        Me.lblAccionistasApellidoMaterno.Size = New System.Drawing.Size(118, 18)
-        Me.lblAccionistasApellidoMaterno.TabIndex = 4
-        Me.lblAccionistasApellidoMaterno.Text = "Apellido Materno"
-        '
-        'txtAccionistasNombre
-        '
-        Me.txtAccionistasNombre.Location = New System.Drawing.Point(36, 49)
-        Me.txtAccionistasNombre.Name = "txtAccionistasNombre"
-        Me.txtAccionistasNombre.Size = New System.Drawing.Size(239, 25)
-        Me.txtAccionistasNombre.TabIndex = 1
-        '
-        'lblAccionistasApellidoPaterno
-        '
-        Me.lblAccionistasApellidoPaterno.AutoSize = True
-        Me.lblAccionistasApellidoPaterno.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblAccionistasApellidoPaterno.Location = New System.Drawing.Point(291, 26)
-        Me.lblAccionistasApellidoPaterno.Name = "lblAccionistasApellidoPaterno"
-        Me.lblAccionistasApellidoPaterno.Size = New System.Drawing.Size(113, 18)
-        Me.lblAccionistasApellidoPaterno.TabIndex = 2
-        Me.lblAccionistasApellidoPaterno.Text = "Apellido Paterno"
-        '
-        'txtAccionistasApellidoPaterno
-        '
-        Me.txtAccionistasApellidoPaterno.Location = New System.Drawing.Point(291, 49)
-        Me.txtAccionistasApellidoPaterno.Name = "txtAccionistasApellidoPaterno"
-        Me.txtAccionistasApellidoPaterno.Size = New System.Drawing.Size(239, 25)
-        Me.txtAccionistasApellidoPaterno.TabIndex = 3
-        '
-        'txtAccionistasApellidoMaterno
-        '
-        Me.txtAccionistasApellidoMaterno.Location = New System.Drawing.Point(546, 49)
-        Me.txtAccionistasApellidoMaterno.Name = "txtAccionistasApellidoMaterno"
-        Me.txtAccionistasApellidoMaterno.Size = New System.Drawing.Size(239, 25)
-        Me.txtAccionistasApellidoMaterno.TabIndex = 5
-        '
-        'lblAccionistasNombre
-        '
-        Me.lblAccionistasNombre.AutoSize = True
-        Me.lblAccionistasNombre.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblAccionistasNombre.Location = New System.Drawing.Point(36, 26)
-        Me.lblAccionistasNombre.Name = "lblAccionistasNombre"
-        Me.lblAccionistasNombre.Size = New System.Drawing.Size(59, 18)
-        Me.lblAccionistasNombre.TabIndex = 0
-        Me.lblAccionistasNombre.Text = "Nombre"
-        '
-        'txtAccionistasPorcentaje
-        '
-        Me.txtAccionistasPorcentaje.Location = New System.Drawing.Point(291, 117)
-        Me.txtAccionistasPorcentaje.Name = "txtAccionistasPorcentaje"
-        Me.txtAccionistasPorcentaje.Size = New System.Drawing.Size(85, 25)
-        Me.txtAccionistasPorcentaje.TabIndex = 9
-        Me.txtAccionistasPorcentaje.Text = "0"
-        Me.txtAccionistasPorcentaje.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'Panel6
-        '
-        Me.Panel6.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(167, Byte), Integer), CType(CType(181, Byte), Integer))
-        Me.Panel6.Location = New System.Drawing.Point(9, 32)
-        Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(300, 3)
-        Me.Panel6.TabIndex = 1
-        '
-        'lblTituloAccionistas
-        '
-        Me.lblTituloAccionistas.AutoSize = True
-        Me.lblTituloAccionistas.Font = New System.Drawing.Font("Calibri", 18.0!, System.Drawing.FontStyle.Bold)
-        Me.lblTituloAccionistas.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(167, Byte), Integer), CType(CType(181, Byte), Integer))
-        Me.lblTituloAccionistas.Location = New System.Drawing.Point(9, 5)
-        Me.lblTituloAccionistas.Name = "lblTituloAccionistas"
-        Me.lblTituloAccionistas.Size = New System.Drawing.Size(145, 29)
-        Me.lblTituloAccionistas.TabIndex = 0
-        Me.lblTituloAccionistas.Text = "ACCIONISTAS"
-        '
-        'cboOficina
-        '
-        Me.cboOficina.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboOficina.DropDownWidth = 260
-        Me.cboOficina.FormattingEnabled = True
-        Me.cboOficina.Location = New System.Drawing.Point(114, 34)
-        Me.cboOficina.Name = "cboOficina"
-        Me.cboOficina.Size = New System.Drawing.Size(347, 26)
-        Me.cboOficina.TabIndex = 34
-        '
-        'lblOficina
-        '
-        Me.lblOficina.AutoSize = True
-        Me.lblOficina.Location = New System.Drawing.Point(40, 38)
-        Me.lblOficina.Name = "lblOficina"
-        Me.lblOficina.Size = New System.Drawing.Size(62, 18)
-        Me.lblOficina.TabIndex = 33
-        Me.lblOficina.Text = "Oficina*:"
-        '
-        'cboDivision
-        '
-        Me.cboDivision.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboDivision.DropDownWidth = 260
-        Me.cboDivision.FormattingEnabled = True
-        Me.cboDivision.Location = New System.Drawing.Point(114, 74)
-        Me.cboDivision.Name = "cboDivision"
-        Me.cboDivision.Size = New System.Drawing.Size(347, 26)
-        Me.cboDivision.TabIndex = 36
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(40, 78)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(69, 18)
-        Me.Label10.TabIndex = 35
-        Me.Label10.Text = "División*:"
-        '
-        'lblDatosGeneralesSocio
-        '
-        Me.lblDatosGeneralesSocio.AutoSize = True
-        Me.lblDatosGeneralesSocio.Location = New System.Drawing.Point(40, 118)
-        Me.lblDatosGeneralesSocio.Name = "lblDatosGeneralesSocio"
-        Me.lblDatosGeneralesSocio.Size = New System.Drawing.Size(52, 18)
-        Me.lblDatosGeneralesSocio.TabIndex = 37
-        Me.lblDatosGeneralesSocio.Text = "Socio*:"
-        '
-        'ComboBox1
-        '
-        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox1.DropDownWidth = 260
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(114, 114)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(347, 26)
-        Me.ComboBox1.TabIndex = 38
+        'btnGuardarAvance
+        '
+        Me.btnGuardarAvance.Enabled = False
+        Me.btnGuardarAvance.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnGuardarAvance.Location = New System.Drawing.Point(40, 375)
+        Me.btnGuardarAvance.Name = "btnGuardarAvance"
+        Me.btnGuardarAvance.Size = New System.Drawing.Size(130, 25)
+        Me.btnGuardarAvance.TabIndex = 2
+        Me.btnGuardarAvance.Text = "Guardar avance"
+        Me.btnGuardarAvance.UseVisualStyleBackColor = True
         '
         'FrmContacto
         '
@@ -3221,12 +2548,10 @@ Partial Class FrmContacto
         Me.Controls.Add(Me.btnCancelaGeneral)
         Me.Controls.Add(Me.btnCerrar)
         Me.Controls.Add(Me.panMenu)
+        Me.Controls.Add(Me.panContactoInicial)
         Me.Controls.Add(Me.panDatosGenerales)
-        Me.Controls.Add(Me.panAccionistas)
-        Me.Controls.Add(Me.panFuncionarios)
         Me.Controls.Add(Me.panAcercamiento)
         Me.Controls.Add(Me.panDireccion)
-        Me.Controls.Add(Me.panContactoInicial)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
@@ -3242,15 +2567,12 @@ Partial Class FrmContacto
         Me.panDatosGenerales.PerformLayout()
         Me.gpBoxDatosDG.ResumeLayout(False)
         Me.gpBoxDatosDG.PerformLayout()
-        CType(Me.Lista, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gpBoxTipoNegocio.ResumeLayout(False)
         Me.gpBoxTipoNegocio.PerformLayout()
         Me.gpBoxServicio.ResumeLayout(False)
         Me.gpBoxServicio.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        Me.panDivisiones.ResumeLayout(False)
-        Me.panDivisiones.PerformLayout()
         Me.gpBoxSubsidiaria.ResumeLayout(False)
         Me.gpBoxSubsidiaria.PerformLayout()
         Me.panRDSubsidiaria.ResumeLayout(False)
@@ -3273,6 +2595,7 @@ Partial Class FrmContacto
         Me.panRDSubExt.PerformLayout()
         Me.panRDRepExt.ResumeLayout(False)
         Me.panRDRepExt.PerformLayout()
+        CType(Me.Lista, System.ComponentModel.ISupportInitialize).EndInit()
         Me.panContactoInicial.ResumeLayout(False)
         Me.panContactoInicial.PerformLayout()
         Me.panDatosContactoInicial.ResumeLayout(False)
@@ -3291,16 +2614,6 @@ Partial Class FrmContacto
         Me.panDomicilioExt.PerformLayout()
         Me.panDomicilioNac.ResumeLayout(False)
         Me.panDomicilioNac.PerformLayout()
-        Me.panFuncionarios.ResumeLayout(False)
-        Me.panFuncionarios.PerformLayout()
-        CType(Me.gridFuncionarios, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.gpBoxDatosFuncionarios.ResumeLayout(False)
-        Me.gpBoxDatosFuncionarios.PerformLayout()
-        Me.panAccionistas.ResumeLayout(False)
-        Me.panAccionistas.PerformLayout()
-        CType(Me.gridAccionistas, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.gpBoxDatosAccionistas.ResumeLayout(False)
-        Me.gpBoxDatosAccionistas.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -3354,12 +2667,10 @@ Partial Class FrmContacto
     Friend WithEvents rdEmpresaExtranjeroDomSi As RadioButton
     Friend WithEvents panLinea As Panel
     Friend WithEvents lnkContactoInicial As LinkLabel
-    Friend WithEvents lnkAccionistas As LinkLabel
     Friend WithEvents lnkDireccion As LinkLabel
     Friend WithEvents lnkAcercamiento As LinkLabel
     Friend WithEvents panContactoInicial As Panel
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents lblTituloCI As Label
     Friend WithEvents txtContactoInicialExtension As TextBox
     Friend WithEvents lblContactoInicialExtension As Label
     Friend WithEvents txtContactoInicialTelefono As TextBox
@@ -3414,52 +2725,10 @@ Partial Class FrmContacto
     Friend WithEvents cboDomicilioEstado As ComboBox
     Friend WithEvents cboDomicilioMunicipio As ComboBox
     Friend WithEvents cboDomicilioColonia As ComboBox
-    Friend WithEvents panFuncionarios As Panel
-    Friend WithEvents Panel4 As Panel
-    Friend WithEvents lblTituloFuncionarios As Label
-    Friend WithEvents lblFuncionariosCargo As Label
-    Friend WithEvents lblFuncionariosTelefono As Label
-    Friend WithEvents lblFuncionariosCorreo As Label
-    Friend WithEvents gpBoxDatosFuncionarios As GroupBox
-    Friend WithEvents lblFuncionariosApellidoMaterno As Label
-    Friend WithEvents txtFuncionariosNombre As TextBox
-    Friend WithEvents lblFuncionariosApellidoPaterno As Label
-    Friend WithEvents txtFuncionariosApellidoPaterno As TextBox
-    Friend WithEvents txtFuncionariosApellidoMaterno As TextBox
-    Friend WithEvents lblFuncionariosNombre As Label
-    Friend WithEvents txtFuncionariosCorreo As TextBox
-    Friend WithEvents txtFuncionariosCargo As TextBox
-    Friend WithEvents txtFuncionariosTelefono As TextBox
-    Friend WithEvents panAccionistas As Panel
-    Friend WithEvents gpBoxDatosAccionistas As GroupBox
-    Friend WithEvents lblAccionistasPorcentaje As Label
-    Friend WithEvents lblAccionistasApellidoMaterno As Label
-    Friend WithEvents txtAccionistasNombre As TextBox
-    Friend WithEvents lblAccionistasApellidoPaterno As Label
-    Friend WithEvents txtAccionistasApellidoPaterno As TextBox
-    Friend WithEvents txtAccionistasApellidoMaterno As TextBox
-    Friend WithEvents lblAccionistasNombre As Label
-    Friend WithEvents txtAccionistasPorcentaje As TextBox
-    Friend WithEvents Panel6 As Panel
-    Friend WithEvents lblTituloAccionistas As Label
-    Friend WithEvents lblAccionistasTipoPersona As Label
-    Friend WithEvents cboAccionistasTipoPersona As ComboBox
-    Friend WithEvents gridAccionistas As DataGridView
-    Friend WithEvents btnNuevoAccionista As Button
-    Friend WithEvents btnGuardarAccionistas As Button
-    Friend WithEvents btnActualizarAccionistas As Button
     Friend WithEvents Lista As DataGridView
-    Friend WithEvents btnCancelarAccionistas As Button
-    Friend WithEvents btnCancelarFuncionario As Button
-    Friend WithEvents btnActualizarFuncionario As Button
-    Friend WithEvents gridFuncionarios As DataGridView
-    Friend WithEvents btnNuevoFuncionarios As Button
-    Friend WithEvents btnGuardarFuncionarios As Button
     Friend WithEvents lblMensajeErrorAcercamiento As Label
     Friend WithEvents txtClaveProspecto As Label
     Friend WithEvents lblMensajeCargaContactoInicial As Label
-    Friend WithEvents lblMensajeCargaAccionistas As Label
-    Friend WithEvents lblMensajeCargaFuncionarios As Label
     Friend WithEvents lblMensajeCargaAcercamiento As Label
     Friend WithEvents lblMensajeCargaDomicilio As Label
     Friend WithEvents btnCancelaGeneral As Button
@@ -3486,16 +2755,6 @@ Partial Class FrmContacto
     Friend WithEvents lblRFC As Label
     Friend WithEvents txtRFC As TextBox
     Friend WithEvents gpBoxServicio As GroupBox
-    Friend WithEvents panDivisiones As Panel
-    Friend WithEvents rdAuditoria As RadioButton
-    Friend WithEvents rdIBC As RadioButton
-    Friend WithEvents rdPLD As RadioButton
-    Friend WithEvents rdJBG As RadioButton
-    Friend WithEvents rdImpuestos As RadioButton
-    Friend WithEvents rdComercioExterior As RadioButton
-    Friend WithEvents rdBAS As RadioButton
-    Friend WithEvents rdPreciosTransferencia As RadioButton
-    Friend WithEvents rdBPS As RadioButton
     Friend WithEvents lblDescripcionSolicitud As Label
     Friend WithEvents txtDescripcionSolicitud As TextBox
     Friend WithEvents lblSubsidiaria As Label
@@ -3536,7 +2795,6 @@ Partial Class FrmContacto
     Friend WithEvents txtDomicilioExtDireccion2 As TextBox
     Friend WithEvents txtDomicilioExtCP As TextBox
     Friend WithEvents lblDomicilioExtCP As Label
-    Friend WithEvents lblDatosGeneralesDivision As Label
     Friend WithEvents cboDatosGeneralesServicio As ComboBox
     Friend WithEvents Label5 As Label
     Friend WithEvents GroupBox1 As GroupBox
@@ -3550,22 +2808,24 @@ Partial Class FrmContacto
     Friend WithEvents lblGerenteGTI As Label
     Friend WithEvents txtEstadoGTI As TextBox
     Friend WithEvents lblEstadoGTI As Label
-    Friend WithEvents DateTimePicker4 As DateTimePicker
+    Friend WithEvents txtFechaSolicitud As DateTimePicker
     Friend WithEvents Label9 As Label
     Friend WithEvents txtFechaEntregaReporte As DateTimePicker
     Friend WithEvents lblFechaEntregaReporte As Label
-    Friend WithEvents DateTimePicker2 As DateTimePicker
+    Friend WithEvents txtPeriodoFinal As DateTimePicker
     Friend WithEvents lblPeriodoServicioA As Label
-    Friend WithEvents DateTimePicker1 As DateTimePicker
+    Friend WithEvents txtPeriodoInicio As DateTimePicker
     Friend WithEvents lblPeriodoServicio As Label
     Friend WithEvents cboModalidades As ComboBox
     Friend WithEvents Label7 As Label
     Friend WithEvents cboIdioma As ComboBox
     Friend WithEvents Label6 As Label
     Friend WithEvents cboDivision As ComboBox
-    Friend WithEvents Label10 As Label
+    Friend WithEvents lblDivision As Label
     Friend WithEvents cboOficina As ComboBox
     Friend WithEvents lblOficina As Label
     Friend WithEvents lblDatosGeneralesSocio As Label
-    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents cboSocio As ComboBox
+    Friend WithEvents btnGuardarAvance As Button
+    Friend WithEvents lblTituloCI As Label
 End Class
