@@ -191,8 +191,8 @@ Partial Class FrmProspectos
         Me.Controls.Add(Me.panPrincipal)
         Me.Controls.Add(Me.btnNuevo)
         Me.Controls.Add(Me.btnGenerarPropuesta)
-        Me.Controls.Add(Me.btnAsignarSocio)
         Me.Controls.Add(Me.btnAsignarProspecto)
+        Me.Controls.Add(Me.btnAsignarSocio)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "FrmProspectos"

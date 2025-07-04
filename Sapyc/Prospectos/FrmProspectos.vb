@@ -170,39 +170,39 @@
                     btnEditar.Enabled = True
                     btnEliminar.Enabled = True
 
-                    btnAsignarProspecto.Visible = False
-                    btnAsignarSocio.Visible = True
-                    btnGenerarPropuesta.Visible = False
+                    'btnAsignarProspecto.Visible = False
+                    '  btnAsignarSocio.Visible = True
+                   ' btnGenerarPropuesta.Visible = False
 
                 Case 2 'Solicitud asignada a socio encargado
                     btnEditar.Enabled = True
                     btnEditar.Text = "Revisar"
                     btnEliminar.Enabled = False
 
-                    If CInt(gridProspectos.CurrentRow.Cells("iSocEnc").Value) = 1 Then
-                        btnAsignarProspecto.Visible = True
-                    Else
-                        btnAsignarProspecto.Visible = True
-                    End If
-                    btnAsignarSocio.Visible = False
-                    btnGenerarPropuesta.Visible = False
+                    'If CInt(gridProspectos.CurrentRow.Cells("iSocEnc").Value) = 1 Then
+                    '    btnAsignarProspecto.Visible = True
+                    'Else
+                    '    btnAsignarProspecto.Visible = True
+                    'End If
+                    ''btnAsignarSocio.Visible = False
+                    'btnGenerarPropuesta.Visible = False
 
                 Case 3 'Solicitud asignada a socio para trabajar
                     btnEditar.Enabled = True
                     btnEditar.Text = "Revisar"
                     btnEliminar.Enabled = False
 
-                    btnAsignarProspecto.Visible = False
-                    btnAsignarSocio.Visible = False
-                    btnGenerarPropuesta.Visible = True
+                    'btnAsignarProspecto.Visible = False
+                    '' btnAsignarSocio.Visible = False
+                    'btnGenerarPropuesta.Visible = True
 
                 Case Else 'Solicitud terminada, cancelada o sin status
                     btnEditar.Enabled = False
                     btnEliminar.Enabled = False
 
-                    btnAsignarProspecto.Visible = False
-                    btnAsignarSocio.Visible = False
-                    btnGenerarPropuesta.Visible = False
+                    'btnAsignarProspecto.Visible = False
+                    ''btnAsignarSocio.Visible = False
+                    'btnGenerarPropuesta.Visible = False
 
             End Select
         End If
@@ -261,6 +261,11 @@
     Private Sub LblActualizar_Click(sender As Object, e As EventArgs)
         ListarProspectos()
     End Sub
+
+    Private Sub btnGenerarPropuesta_Click_1(sender As Object, e As EventArgs) Handles btnGenerarPropuesta.Click
+
+    End Sub
+
     Private Sub ListarProspectos()
         Try
             Dim sTabla As String = "tbProspectos"
@@ -379,7 +384,7 @@
             With clsLocal
                 .subClearParameters()
                 .subAddParameter("@iOpcion", 1, SqlDbType.Int, ParameterDirection.Input)
-                .subAddParameter("@iPeriodo", iPeriodoFirma, SqlDbType.Int, ParameterDirection.Input)
+                .subAddParameter("@iPeriodo", 11, SqlDbType.Int, ParameterDirection.Input)
                 .subAddParameter("@sCveProspecto", sCveProspecto, SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@sCveSocio", sCveSocio, SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@sCveGerente", "", SqlDbType.VarChar, ParameterDirection.Input)
