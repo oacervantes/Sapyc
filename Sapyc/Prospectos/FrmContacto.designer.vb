@@ -893,9 +893,9 @@ Partial Class FrmContacto
         Me.lblRFC.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblRFC.Location = New System.Drawing.Point(19, 138)
         Me.lblRFC.Name = "lblRFC"
-        Me.lblRFC.Size = New System.Drawing.Size(42, 18)
+        Me.lblRFC.Size = New System.Drawing.Size(35, 18)
         Me.lblRFC.TabIndex = 7
-        Me.lblRFC.Text = "RFC*:"
+        Me.lblRFC.Text = "RFC:"
         '
         'txtRFC
         '
@@ -1935,9 +1935,9 @@ Partial Class FrmContacto
         Me.Label3.AutoSize = True
         Me.Label3.Location = New System.Drawing.Point(380, 178)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(115, 18)
+        Me.Label3.Size = New System.Drawing.Size(108, 18)
         Me.Label3.TabIndex = 10
-        Me.Label3.Text = "Teléfono celular*"
+        Me.Label3.Text = "Teléfono celular"
         '
         'lblAcercamientoWebProspecto
         '
@@ -2548,10 +2548,10 @@ Partial Class FrmContacto
         Me.Controls.Add(Me.btnCancelaGeneral)
         Me.Controls.Add(Me.btnCerrar)
         Me.Controls.Add(Me.panMenu)
-        Me.Controls.Add(Me.panDireccion)
         Me.Controls.Add(Me.panContactoInicial)
         Me.Controls.Add(Me.panDatosGenerales)
         Me.Controls.Add(Me.panAcercamiento)
+        Me.Controls.Add(Me.panDireccion)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False

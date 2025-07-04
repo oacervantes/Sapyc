@@ -2637,11 +2637,11 @@
             bValidacion = False
         End If
 
-        If Trim(txtContactoInicialCelular.Text) = "" Then
-            sMsgContacto &= "- Especifíque el número celular del contacto inicial." & vbNewLine & vbNewLine
+        'If Trim(txtContactoInicialCelular.Text) = "" Then
+        '    sMsgContacto &= "- Especifíque el número celular del contacto inicial." & vbNewLine & vbNewLine
 
-            bValidacion = False
-        End If
+        '    bValidacion = False
+        'End If
 
         'If Trim(txtAcercamientoWebProspecto.Text) = "" Then
         '    sMsgContacto &= "- Especifíque la página web del prospecto." & vbNewLine & vbNewLine
@@ -2768,10 +2768,10 @@
             bValidacion = False
         End If
 
-        If Trim(txtRFC.Text) = "" Then
-            sMsgDatosGenerales &= "- Especifíque el RFC del prospecto." & vbNewLine & vbNewLine
-            bValidacion = False
-        End If
+        'If Trim(txtRFC.Text) = "" Then
+        '    sMsgDatosGenerales &= "- Especifíque el RFC del prospecto." & vbNewLine & vbNewLine
+        '    bValidacion = False
+        'End If
 
         If sCveInd = "" Then
             sMsgDatosGenerales &= "- Especifíque la industria del prospecto." & vbNewLine & vbNewLine
