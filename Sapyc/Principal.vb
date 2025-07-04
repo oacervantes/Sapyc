@@ -78,7 +78,7 @@
 
         Select Case sTipo
             Case "1"
-                MnPropuestas.Visible = True
+                'MnPropuestas.Visible = True
                 mnuProspectos.Visible = True
                 mnuReportes.Visible = False
             Case "2"
