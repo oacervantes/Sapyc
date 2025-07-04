@@ -1,4 +1,9 @@
-﻿Module mdlMetodos
+﻿Imports System.Reflection
+
+Module mdlMetodos
+
+    Public dtColsExcel As New DataTable
+    Public drColsExcel As DataRow
 
     Public Sub LimpiarConsultaTabla(dt As DataTableCollection, sTabla As String)
         If dt.Contains(sTabla) Then
@@ -6,49 +11,29 @@
         End If
     End Sub
 
-    'Public Sub limpiarArreglosDbl(ByVal arr() As Double, ByVal iPos As Integer)
-    '    For x As Integer = 0 To iPos
-    '        arr(x) = 0
-    '    Next
-    'End Sub
-    'Public Sub limpiarArreglosInt(ByVal arr() As Integer, ByVal iPos As Integer)
-    '    For x As Integer = 0 To iPos
-    '        arr(x) = 0
-    '    Next
-    'End Sub
-    'Public Sub bloquearColumnas(ByVal grid As DataGridView)
-    '    For Each col As DataGridViewColumn In grid.Columns
-    '        col.SortMode = DataGridViewColumnSortMode.NotSortable
-    '    Next
-    'End Sub
-    Public Sub LimpiarTabla(ByVal dt As DataTable)
+    Public Sub LimpiarArreglosDbl(arr() As Double, iPos As Integer)
+        For x As Integer = 0 To iPos
+            arr(x) = 0
+        Next
+    End Sub
+    Public Sub LimpiarArreglosInt(arr() As Integer, iPos As Integer)
+        For x As Integer = 0 To iPos
+            arr(x) = 0
+        Next
+    End Sub
+    Public Sub BloquearColumnas(grid As DataGridView)
+        For Each col As DataGridViewColumn In grid.Columns
+            col.SortMode = DataGridViewColumnSortMode.NotSortable
+        Next
+    End Sub
+    Public Sub LimpiarTabla(dt As DataTable)
         If dt.Rows.Count > 0 Then
             dt.Clear()
         End If
     End Sub
-    Public Sub LimpiarTablaCols(ByVal dt As DataTable)
+    Public Sub LimpiarTablaCols(dt As DataTable)
         If dt.Columns.Count > 0 Then
             dt.Columns.Clear()
-        End If
-    End Sub
-    Public Sub DiseñoGrid(ByVal grid As DataGridView)
-        With grid
-            .DefaultCellStyle.Font = FuenteCelda
-            .DefaultCellStyle.SelectionBackColor = Morado
-            .RowTemplate.Height = filGrid
-            .ColumnHeadersDefaultCellStyle.Font = FuenteHeader
-            .ColumnHeadersHeight = colGrid
-        End With
-    End Sub
-    Public Sub formatoDiseñoGridTotales(grid As DataGridView, iRow As Integer)
-        If grid.Rows(iRow).Cells("TIPO").Value = "T" Then
-            grid.Rows(iRow).DefaultCellStyle.BackColor = total
-            grid.Rows(iRow).DefaultCellStyle.ForeColor = negro
-            grid.Rows(iRow).DefaultCellStyle.Font = FuenteFila
-        ElseIf grid.Rows(iRow).Cells("TIPO").Value = "TS" Or grid.Rows(iRow).Cells("TIPO").Value = "TD" Or grid.Rows(iRow).Cells("TIPO").Value = "TA" Or grid.Rows(iRow).Cells("TIPO").Value = "TO" Or grid.Rows(iRow).Cells("TIPO").Value.ToString.Contains("TS") Then
-            grid.Rows(iRow).DefaultCellStyle.BackColor = totalGrupo
-            grid.Rows(iRow).DefaultCellStyle.ForeColor = negro
-            grid.Rows(iRow).DefaultCellStyle.Font = FuenteFila
         End If
     End Sub
 
@@ -70,7 +55,7 @@
         End Try
     End Sub
 
-    Public Sub actualizarFacturacionSocio(ByVal sBaseDatos As String, ByVal iAño As Integer, ByVal iMes As Integer, Optional ByVal iPeriodo As Integer = 0)
+    Public Sub actualizarFacturacionSocio(sBaseDatos As String, iAño As Integer, iMes As Integer, Optional iPeriodo As Integer = 0)
         Try
             With clsDatos
                 .subClearParameters()
@@ -85,7 +70,7 @@
             'insertarErrorLog(101, "Actualizar Facturación Socio", ex.Message, Usuario_Num, "actualizarFacturacionSocio()")
         End Try
     End Sub
-    Public Sub actualizarRSNMovtosFactura(ByVal sBaseDatos As String, ByVal iAño As Integer, ByVal iMes As Integer, Optional ByVal iPeriodo As Integer = 0)
+    Public Sub actualizarRSNMovtosFactura(sBaseDatos As String, iAño As Integer, iMes As Integer, Optional iPeriodo As Integer = 0)
         Try
             With clsDatos
                 .subClearParameters()
@@ -100,7 +85,7 @@
             'insertarErrorLog(101, "Actualizar Movtos Factura", ex.Message, Usuario_Num, "actualizarRSNMovtosFactura()")
         End Try
     End Sub
-    Public Sub actualizarDiferenciasTC(ByVal iAño As Integer, ByVal iMes As Integer, Optional ByVal iPeriodo As Integer = 8)
+    Public Sub actualizarDiferenciasTC(iAño As Integer, iMes As Integer, Optional iPeriodo As Integer = 8)
         Try
             With clsDatos
                 .subClearParameters()
@@ -115,7 +100,7 @@
         End Try
     End Sub
 
-    Private Sub actualizarNotas(ByVal dFechaInicio As Date, ByVal dFechaFinal As Date, ByVal iPeriodo As Integer)
+    Private Sub actualizarNotas(dFechaInicio As Date, dFechaFinal As Date, iPeriodo As Integer)
         Try
             With clsDatos
                 .subClearParameters()
@@ -129,7 +114,7 @@
             'insertarErrorLog(100, "Actualizar Notas", ex.Message, sCveUsuario, "actualizarNotas()")
         End Try
     End Sub
-    Private Sub actualizarPagos(ByVal dFechaInicio As Date, ByVal dFechaFinal As Date, ByVal iPeriodo As Integer)
+    Private Sub actualizarPagos(dFechaInicio As Date, dFechaFinal As Date, iPeriodo As Integer)
         Try
             With clsDatos
                 .subClearParameters()
@@ -143,7 +128,7 @@
             'insertarErrorLog(100, "Actualizar Pagos", ex.Message, sCveUsuario, "actualizarPagos()")
         End Try
     End Sub
-    Private Sub actualizarMovtosFI(ByVal dFechaInicio As Date, ByVal dFechaFinal As Date, ByVal iPeriodo As Integer)
+    Private Sub actualizarMovtosFI(dFechaInicio As Date, dFechaFinal As Date, iPeriodo As Integer)
         Try
             With clsDatos
                 .subClearParameters()
@@ -157,7 +142,7 @@
             'insertarErrorLog(100, "Actualizar FI", ex.Message, sCveUsuario, "actualizarMovtosFI()")
         End Try
     End Sub
-    Private Sub actualizarMovtosFT(ByVal dFechaInicio As Date, ByVal dFechaFinal As Date, ByVal iPeriodo As Integer)
+    Private Sub actualizarMovtosFT(dFechaInicio As Date, dFechaFinal As Date, iPeriodo As Integer)
         Try
             With clsDatos
                 .subClearParameters()
@@ -172,13 +157,13 @@
         End Try
     End Sub
 
-    Public Sub actualizarMovtos(Optional ByVal dFechaInicio As Date = Nothing, Optional ByVal dFechaFinal As Date = Nothing, Optional ByVal iPeriodo As Integer = 0)
+    Public Sub actualizarMovtos(Optional dFechaInicio As Date = Nothing, Optional dFechaFinal As Date = Nothing, Optional iPeriodo As Integer = 0)
         actualizarNotas(dFechaInicio, dFechaFinal, iPeriodo)
         actualizarPagos(dFechaInicio, dFechaFinal, iPeriodo)
         actualizarMovtosFI(dFechaInicio, dFechaFinal, iPeriodo)
         actualizarMovtosFT(dFechaInicio, dFechaFinal, iPeriodo)
     End Sub
-    Public Sub actualizarAjustesGastos(ByVal iAño As Integer, ByVal iMes As Integer, Optional ByVal iPeriodo As Integer = 0)
+    Public Sub actualizarAjustesGastos(iAño As Integer, iMes As Integer, Optional iPeriodo As Integer = 0)
         Try
             With clsDatos
                 .subClearParameters()
@@ -209,6 +194,52 @@
             MsgBox("Hubo un error al registrar la falla del log, intente de nuevo más tarde", MsgBoxStyle.Critical, "SIAT")
         End Try
     End Sub
+
+    Public Sub FormatoDiseñoGridTotales(grid As DataGridView, iRow As Integer)
+        If grid.Rows(iRow).Cells("TIPO").Value = "T" Then
+            grid.Rows(iRow).DefaultCellStyle.BackColor = total
+            grid.Rows(iRow).DefaultCellStyle.ForeColor = negro
+            grid.Rows(iRow).DefaultCellStyle.Font = FuenteFila
+        ElseIf grid.Rows(iRow).Cells("TIPO").Value = "TD" Or grid.Rows(iRow).Cells("TIPO").Value = "TA" Or grid.Rows(iRow).Cells("TIPO").Value = "TO" Then
+            grid.Rows(iRow).DefaultCellStyle.BackColor = totalDivision
+            grid.Rows(iRow).DefaultCellStyle.ForeColor = negro
+            grid.Rows(iRow).DefaultCellStyle.Font = FuenteFila
+        ElseIf grid.Rows(iRow).Cells("TIPO").Value = "TT" Or grid.Rows(iRow).Cells("TIPO").Value.ToString.Contains("TS") Then
+            grid.Rows(iRow).DefaultCellStyle.BackColor = totalGrupo
+            grid.Rows(iRow).DefaultCellStyle.ForeColor = negro
+            grid.Rows(iRow).DefaultCellStyle.Font = FuenteFila
+        ElseIf grid.Rows(iRow).Cells("TIPO").Value = "A" Then
+            grid.Rows(iRow).DefaultCellStyle.BackColor = azul_Salles
+            grid.Rows(iRow).DefaultCellStyle.ForeColor = blanco
+            grid.Rows(iRow).DefaultCellStyle.Font = FuenteFila
+        ElseIf grid.Rows(iRow).Cells("TIPO").Value = "M" Then
+            grid.Rows(iRow).DefaultCellStyle.BackColor = morado_Salles
+            grid.Rows(iRow).DefaultCellStyle.ForeColor = blanco
+            grid.Rows(iRow).DefaultCellStyle.Font = FuenteFila
+        ElseIf grid.Rows(iRow).Cells("TIPO").Value = "R" Then
+            grid.Rows(iRow).DefaultCellStyle.BackColor = rojo_Salles
+            grid.Rows(iRow).DefaultCellStyle.ForeColor = blanco
+            grid.Rows(iRow).DefaultCellStyle.Font = FuenteFila
+        End If
+    End Sub
+    Public Sub HabilitarCasillas(grid As DataGridView, sCol As String, bValor As Boolean)
+        For Each row As DataGridViewRow In grid.Rows
+            row.Cells(sCol).Value = bValor
+        Next
+    End Sub
+    Public Sub DesplazamientoGrid(grid As DataGridView)
+        grid.VirtualMode = True
+        grid.GetType().GetProperty("DoubleBuffered", BindingFlags.Instance Or BindingFlags.NonPublic).SetValue(grid, True, Nothing)
+    End Sub
+    Public Sub DiseñoGrid(grid As DataGridView)
+        With grid
+            .DefaultCellStyle.Font = FuenteCelda
+            .DefaultCellStyle.SelectionBackColor = Morado
+            .RowTemplate.Height = filGrid
+            .ColumnHeadersDefaultCellStyle.Font = FuenteHeader
+            .ColumnHeadersHeight = colGrid
+        End With
+    End Sub
     Public Sub ConfigurarColumnasGrid(grid As DataGridView, columnName As String, headerText As String, width As Integer, alignment As Integer, bloqueo As Boolean)
         grid.Columns(columnName).Frozen = bloqueo
         grid.Columns(columnName).HeaderText = headerText
@@ -229,5 +260,36 @@
         End Select
     End Sub
 
+
+    Public Sub ListarColumnasExcel()
+        Dim sCols As String() = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"}
+        Dim iColA, iColumna As Integer
+
+        dtColsExcel.Columns.Add("COLUMNA", GetType(String))
+        dtColsExcel.Columns.Add("NUMERO", GetType(Integer))
+
+        LimpiarTabla(dtColsExcel)
+        iColA = 0
+        iColumna = 1
+
+        For v As Integer = 0 To 7
+            For c As Integer = 0 To sCols.Count - 1
+                drColsExcel = dtColsExcel.NewRow()
+                If v = 0 Then
+                    drColsExcel("COLUMNA") = sCols(c)
+                Else
+                    drColsExcel("COLUMNA") = sCols(iColA) & sCols(c)
+                End If
+                drColsExcel("NUMERO") = iColumna
+                dtColsExcel.Rows.InsertAt(drColsExcel, dtColsExcel.Rows.Count)
+
+                iColumna += 1
+            Next
+
+            If v > 0 Then
+                iColA += 1
+            End If
+        Next
+    End Sub
 
 End Module

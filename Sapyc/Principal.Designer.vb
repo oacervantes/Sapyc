@@ -36,6 +36,7 @@ Partial Class Principal
         Me.MedioDeContactoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuProspectos = New System.Windows.Forms.ToolStripMenuItem()
         Me.RegistrarProspectoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ClientesSacToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnPropuestas = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuAltaDePropuesta = New System.Windows.Forms.ToolStripMenuItem()
         Me.PToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -71,7 +72,6 @@ Partial Class Principal
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.BotonAltaPropuesta = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ClientesSacToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.Barra.SuspendLayout()
         Me.SuspendLayout()
@@ -95,7 +95,7 @@ Partial Class Principal
         'mnuSalir
         '
         Me.mnuSalir.Name = "mnuSalir"
-        Me.mnuSalir.Size = New System.Drawing.Size(98, 22)
+        Me.mnuSalir.Size = New System.Drawing.Size(180, 22)
         Me.mnuSalir.Text = "&Salir"
         '
         'MnTablas
@@ -160,8 +160,14 @@ Partial Class Principal
         'RegistrarProspectoToolStripMenuItem
         '
         Me.RegistrarProspectoToolStripMenuItem.Name = "RegistrarProspectoToolStripMenuItem"
-        Me.RegistrarProspectoToolStripMenuItem.Size = New System.Drawing.Size(184, 22)
-        Me.RegistrarProspectoToolStripMenuItem.Text = "Registrar prospecto"
+        Me.RegistrarProspectoToolStripMenuItem.Size = New System.Drawing.Size(202, 22)
+        Me.RegistrarProspectoToolStripMenuItem.Text = "Registrar Prospecto"
+        '
+        'ClientesSacToolStripMenuItem
+        '
+        Me.ClientesSacToolStripMenuItem.Name = "ClientesSacToolStripMenuItem"
+        Me.ClientesSacToolStripMenuItem.Size = New System.Drawing.Size(202, 22)
+        Me.ClientesSacToolStripMenuItem.Text = "Revisión de Prospectos"
         '
         'MnPropuestas
         '
@@ -403,12 +409,6 @@ Partial Class Principal
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
         Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 40)
-        '
-        'ClientesSacToolStripMenuItem
-        '
-        Me.ClientesSacToolStripMenuItem.Name = "ClientesSacToolStripMenuItem"
-        Me.ClientesSacToolStripMenuItem.Size = New System.Drawing.Size(184, 22)
-        Me.ClientesSacToolStripMenuItem.Text = "Clientes Sac"
         '
         'Principal
         '

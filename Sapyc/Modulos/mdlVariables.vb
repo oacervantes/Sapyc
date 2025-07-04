@@ -45,14 +45,17 @@
     '==================== Colores de Salles ===========================
     Friend negro As Color = Color.Black
     Friend blanco As Color = Color.White
+    Friend gris As Color = Color.FromArgb(217, 217, 217)
     Friend total As Color = Color.Gainsboro
     Friend totalGrupo As Color = Color.WhiteSmoke
+    Friend totalDivision As Color = Color.FromArgb(234, 234, 234)
     Friend morado_Salles As Color = Color.FromArgb(79, 45, 127)
     Friend azul_Salles As Color = Color.FromArgb(0, 167, 181)
     Friend rojo_Salles As Color = Color.FromArgb(233, 40, 65)
     Friend naranja_Salles As Color = Color.FromArgb(255, 125, 30)
     Friend verde_Salles As Color = Color.FromArgb(155, 215, 50)
     Friend gris_Salles As Color = Color.FromArgb(233, 40, 65)
+    Friend amarillo_Salles As Color = Color.FromArgb(250, 224, 60)
 
     Friend bronce_Salles As Color = Color.FromArgb(205, 127, 50)
     Friend bronce_letra_Salles As Color = Color.FromArgb(108, 44, 18)

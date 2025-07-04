@@ -1,4 +1,4 @@
-﻿Imports DocumentFormat.OpenXml.Drawing.Wordprocessing
+﻿Imports DocumentFormat.OpenXml
 Imports SpreadsheetLight
 
 Module mdlExcelv2
@@ -322,6 +322,28 @@ Module mdlExcelv2
         Next
     End Sub
 
+    Public Sub ExportarProspectosSAC(grid As DataGridView, sRutaArchivo As String, sNombreArchivo As String)
+        Dim exc As New SLDocument
+
+        '==================== OFICINAS ====================
+        nombreEmpresa(exc, "A1", "G2")
+        nombreReporte(exc, "A3", "G3", "REVISIÓN DE PROSPECTOS")
+        nombreColumnas(exc, grid, 1)
+
+        nombreHoja(exc, "Prospectos")
+        LlenarReporteTabla(exc, grid, 5, 1, {}, {})
+        FormatoColumnasTexto(exc, 5, grid.Rows.Count + 4, {1, 2, 3, 4, 5, 6, 7})
+
+        exc.SetColumnWidth("A", 20)
+        exc.SetColumnWidth("B", 49)
+        exc.SetColumnWidth("C", "D", 18)
+        exc.SetColumnWidth("E", "F", 35)
+        exc.SetColumnWidth("G", 20)
+
+        exc.SaveAs(sRutaArchivo & sNombreArchivo & ".xlsx")
+        MsgBox("La información se ha exportado correctamente.", MsgBoxStyle.Information, "SIAT")
+    End Sub
+
 #End Region
 
     Private Sub nombreEmpresa(exc As SLDocument, sRngIni As String, sRngFin As String)
@@ -426,21 +448,190 @@ Module mdlExcelv2
         exc.RenameWorksheet(exc.GetCurrentWorksheetName, sNombre)
     End Sub
 
-    Private Sub mostrarTotal(exc As SLDocument, grid As DataGridView, indice As Integer)
-        For Each col As DataGridViewColumn In grid.Columns
-            If col.Index >= indice Then
-                If col.Visible Then
-                    For Each row As DataGridViewRow In grid.Rows
-                        If row.Cells("TIPO").Value = "T" Then
-                            formatoTotal(exc, row.Index + 5, col.Index - indice)
-                        ElseIf row.Cells("TIPO").Value = "TO" Or row.Cells("TIPO").Value = "TD" Or row.Cells("TIPO").Value = "TA" Or row.Cells("TIPO").Value = "TS" Or row.Cells("TIPO").Value.ToString.Contains("TS") Then
-                            formatoTotalGpo(exc, row.Index + 5, col.Index - indice)
-                        End If
-                    Next
+    Private Sub LlenarReporteTabla(exc As SLDocument, grid As DataGridView, fila As Integer, columna As Integer, colsInt() As Integer, colsDbl() As Integer, Optional colsOcu() As Integer = Nothing)
+        Dim dt As New DataTable
+
+        For Each column As DataGridViewColumn In grid.Columns
+            If colsOcu IsNot Nothing Then
+                If Array.IndexOf(colsOcu, column.Index) <> -1 Then
+                    Continue For
+                End If
+            End If
+
+            If column.Visible = True And column.Index > 0 Then
+                If Array.IndexOf(colsInt, column.Index) <> -1 Then
+                    dt.Columns.Add(column.Name, GetType(Integer))
+                ElseIf Array.IndexOf(colsDbl, column.Index) <> -1 Then
+                    dt.Columns.Add(column.Name, GetType(Double))
+                Else
+                    dt.Columns.Add(column.Name, column.ValueType)
                 End If
             End If
         Next
+
+        For Each row As DataGridViewRow In grid.Rows
+            If Not row.IsNewRow Then
+                Dim dataRow As DataRow = dt.NewRow()
+                For Each column As DataGridViewColumn In grid.Columns
+                    If colsOcu IsNot Nothing Then
+                        If Array.IndexOf(colsOcu, column.Index) <> -1 Then
+                            Continue For
+                        End If
+                    End If
+
+                    If column.Visible = True And column.Index > 0 Then
+                        If Array.IndexOf(colsInt, column.Index) <> -1 Then
+                            If row.Cells(column.Name).Value.ToString = "" Then
+                                dataRow(column.Name) = DBNull.Value
+                            Else
+                                dataRow(column.Name) = CInt(row.Cells(column.Name).Value)
+                            End If
+                        ElseIf Array.IndexOf(colsDbl, column.Index) <> -1 Then
+                            If row.Cells(column.Name).Value.ToString = "" Then
+                                dataRow(column.Name) = DBNull.Value
+                            Else
+                                dataRow(column.Name) = CDbl(row.Cells(column.Name).Value)
+                            End If
+                        Else
+                            dataRow(column.Name) = IIf(row.Cells(column.Name).Value = "", DBNull.Value, row.Cells(column.Name).Value)
+                        End If
+                    End If
+                Next
+                dt.Rows.Add(dataRow)
+            End If
+        Next
+
+        exc.ImportDataTable(fila, columna, dt, False)
     End Sub
+    Private Sub FormatoColumnasTexto(exc As SLDocument, iFilaIni As Integer, iFilaFin As Integer, iCols() As Integer)
+        Dim sCol As String
+
+        styleCell.Fill.SetPatternType(Spreadsheet.PatternValues.Solid)
+        styleCell.Fill.SetPatternForegroundColor(blanco)
+        styleCell.SetHorizontalAlignment(Spreadsheet.HorizontalAlignmentValues.Left)
+        styleCell.SetVerticalAlignment(Spreadsheet.VerticalAlignmentValues.Center)
+
+        For c As Integer = 0 To iCols.Count - 1
+            sCol = ObtenerLetraColumna(iCols(c))
+            exc.SetCellStyle(sCol & iFilaIni, sCol & iFilaFin, styleCell)
+        Next
+    End Sub
+    Private Sub FormatoColumnasNumero(exc As SLDocument, iTipo As Integer, iFilaIni As Integer, iFilaFin As Integer, iCols() As Integer)
+        Dim sCol As String
+
+        Select Case iTipo
+            Case 0
+                styleCell.FormatCode = "###0_);[Red](###0)"
+            Case 1 'Formato Entero
+                styleCell.FormatCode = "#,##0_);[Red](#,##0)"
+            Case 2 'Formato Doble
+                styleCell.FormatCode = "#,##0.00_);[Red](#,##0.00)"
+            Case 3 'Formato porcentaje
+                styleCell.FormatCode = "0.00%_);[Red](0.00%)"
+        End Select
+
+        styleCell.Fill.SetPatternType(Spreadsheet.PatternValues.Solid)
+        styleCell.Fill.SetPatternForegroundColor(blanco)
+        styleCell.SetHorizontalAlignment(Spreadsheet.HorizontalAlignmentValues.Right)
+        styleCell.SetVerticalAlignment(Spreadsheet.VerticalAlignmentValues.Center)
+
+        For c As Integer = 0 To iCols.Count - 1
+            sCol = ObtenerLetraColumna(iCols(c))
+            exc.SetCellStyle(sCol & iFilaIni, sCol & iFilaFin, styleCell)
+        Next
+    End Sub
+
+    Private Sub MostrarTotal(exc As SLDocument, grid As DataGridView, indice As Integer, Optional sCol As String = "TIPO", Optional sColIni As String = "", Optional sColFin As String = "")
+        'For Each col As DataGridViewColumn In grid.Columns
+        '    If col.Index >= indice Then
+        '        If col.Visible Then
+        For Each row As DataGridViewRow In grid.Rows
+            If row.Cells(sCol).Value = "T" Then
+                formatoTotal(exc, row.Index + 5, 0, sColIni, sColFin)
+
+            ElseIf row.Cells(sCol).Value = "TCN" Or row.Cells(sCol).Value.ToString.Contains("TS") Or row.Cells(sCol).Value.ToString.Contains("TG") Then
+                formatoTotalGpo(exc, row.Index + 5, 0, sColIni, sColFin)
+
+            ElseIf row.Cells(sCol).Value = "TO" Or row.Cells(sCol).Value = "TD" Or row.Cells(sCol).Value = "TA" Or row.Cells(sCol).Value = "TR" Or row.Cells(sCol).Value = "TPC" Or row.Cells(sCol).Value = "TP" Then
+                FormatoTotalDivision(exc, row.Index + 5, 0, sColIni, sColFin)
+
+            ElseIf row.Cells(sCol).Value = "O" Or row.Cells(sCol).Value = "D" Or row.Cells(sCol).Value = "H" Or row.Cells(sCol).Value = "A" Or row.Cells(sCol).Value = "M" Then
+                formatoHeadersPrincipal(exc, row.Index + 5, 0, sColIni, sColFin)
+
+            End If
+        Next
+        '        End If
+        '    End If
+        'Next
+    End Sub
+
+    Private Sub FormatoTotal(exc As SLDocument, iRow As Integer, iCol As Integer, Optional sColIni As String = "", Optional sColFin As String = "")
+        styleTotal.Fill.SetPatternType(Spreadsheet.PatternValues.Solid)
+        styleTotal.Fill.SetPatternForegroundColor(total)
+        styleTotal.SetTopBorder(Spreadsheet.BorderStyleValues.Thin, negro)
+        styleTotal.SetBottomBorder(Spreadsheet.BorderStyleValues.Double, negro)
+        styleTotal.SetFontBold(True)
+        styleTotal.SetFontColor(negro)
+        styleTotal.SetFont("Calibri", 11)
+        styleTotal.SetVerticalAlignment(Spreadsheet.VerticalAlignmentValues.Center)
+
+        'exc.SetCellStyle(iRow, iCol, styleTotal)
+        exc.SetCellStyle(sColIni & iRow, sColFin & iRow, styleTotal)
+    End Sub
+    Private Sub FormatoTotalDivision(exc As SLDocument, iRow As Integer, iCol As Integer, Optional sColIni As String = "", Optional sColFin As String = "")
+        styleTotalGpo.Fill.SetPatternType(Spreadsheet.PatternValues.Solid)
+        styleTotalGpo.Fill.SetPatternForegroundColor(totalDivision)
+        styleTotalGpo.SetTopBorder(Spreadsheet.BorderStyleValues.Thin, negro)
+        styleTotalGpo.SetBottomBorder(Spreadsheet.BorderStyleValues.Double, negro)
+        styleTotalGpo.SetFontBold(True)
+        styleTotalGpo.SetFontColor(negro)
+        styleTotalGpo.SetFont("Calibri", 11)
+        styleTotalGpo.SetVerticalAlignment(Spreadsheet.VerticalAlignmentValues.Center)
+
+        'exc.SetCellStyle(iRow, iCol, styleTotalGpo)
+        exc.SetCellStyle(sColIni & iRow, sColFin & iRow, styleTotalGpo)
+    End Sub
+    Private Sub FormatoTotalGpo(exc As SLDocument, iRow As Integer, iCol As Integer, Optional sColIni As String = "", Optional sColFin As String = "")
+        styleTotalGpo.Fill.SetPatternType(Spreadsheet.PatternValues.Solid)
+        styleTotalGpo.Fill.SetPatternForegroundColor(totalGrupo)
+        styleTotalGpo.SetTopBorder(Spreadsheet.BorderStyleValues.Thin, negro)
+        styleTotalGpo.SetBottomBorder(Spreadsheet.BorderStyleValues.Double, negro)
+        styleTotalGpo.SetFontBold(True)
+        styleTotalGpo.SetFontColor(negro)
+        styleTotalGpo.SetFont("Calibri", 11)
+        styleTotalGpo.SetVerticalAlignment(Spreadsheet.VerticalAlignmentValues.Center)
+
+        'exc.SetCellStyle(iRow, iCol, styleTotalGpo)
+        exc.SetCellStyle(sColIni & iRow, sColFin & iRow, styleTotalGpo)
+    End Sub
+    Private Sub formatoHeadersPrincipal(exc As SLDocument, iRow As Integer, iCol As Integer, Optional sColIni As String = "", Optional sColFin As String = "")
+        styleHeader.Fill.SetPatternType(Spreadsheet.PatternValues.Solid)
+        styleHeader.Fill.SetPatternForegroundColor(blanco)
+        styleHeader.SetWrapText(True)
+        styleHeader.SetFontBold(True)
+        styleHeader.SetFontColor(negro)
+        styleHeader.SetFont("Calibri", 11)
+        styleHeader.SetHorizontalAlignment(Spreadsheet.HorizontalAlignmentValues.Left)
+        styleHeader.SetVerticalAlignment(Spreadsheet.VerticalAlignmentValues.Center)
+
+        'exc.SetCellStyle(iRow, iCol, styleHeader)
+        exc.SetCellStyle(sColIni & iRow, sColFin & iRow, styleHeader)
+    End Sub
+    'Private Sub mostrarTotal(exc As SLDocument, grid As DataGridView, indice As Integer)
+    '    For Each col As DataGridViewColumn In grid.Columns
+    '        If col.Index >= indice Then
+    '            If col.Visible Then
+    '                For Each row As DataGridViewRow In grid.Rows
+    '                    If row.Cells("TIPO").Value = "T" Then
+    '                        formatoTotal(exc, row.Index + 5, col.Index - indice)
+    '                    ElseIf row.Cells("TIPO").Value = "TO" Or row.Cells("TIPO").Value = "TD" Or row.Cells("TIPO").Value = "TA" Or row.Cells("TIPO").Value = "TS" Or row.Cells("TIPO").Value.ToString.Contains("TS") Then
+    '                        formatoTotalGpo(exc, row.Index + 5, col.Index - indice)
+    '                    End If
+    '                Next
+    '            End If
+    '        End If
+    '    Next
+    'End Sub
 
     Private Sub llenarReporte(exc As SLDocument, grid As DataGridView, indice As Integer, columna As Integer)
         For Each col As DataGridViewColumn In grid.Columns
@@ -673,5 +864,16 @@ Module mdlExcelv2
 
         exc.SetCellStyle(iRow, iCol, styleTotalGpo)
     End Sub
+
+    Private Function ObtenerLetraColumna(iCol As Integer) As String
+        Dim drF() As DataRow
+        Dim sCol As String
+
+        drF = dtColsExcel.Select("NUMERO = " & iCol)
+
+        sCol = drF(0).Item("COLUMNA").ToString
+
+        Return sCol
+    End Function
 
 End Module

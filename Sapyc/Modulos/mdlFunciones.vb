@@ -9,11 +9,11 @@ Module mdlFunciones
     Public iPuerto As Integer
     Public bSSL As Boolean
 
-    Public Sub bloquearColumnas(ByVal grid As DataGridView)
-        For Each col As DataGridViewColumn In grid.Columns
-            col.SortMode = DataGridViewColumnSortMode.NotSortable
-        Next
-    End Sub
+    'Public Sub bloquearColumnas(ByVal grid As DataGridView)
+    '    For Each col As DataGridViewColumn In grid.Columns
+    '        col.SortMode = DataGridViewColumnSortMode.NotSortable
+    '    Next
+    'End Sub
 
     Public Sub limpiarFilasTabla(ByRef dt As DataTable)
         If dt.Rows.Count > 0 Then

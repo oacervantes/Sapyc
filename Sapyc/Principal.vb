@@ -1,6 +1,6 @@
 ﻿Public Class Principal
 
-    Private Sub Principal_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub Principal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Dim frm As New frmLogin
 
@@ -12,7 +12,7 @@
             clsDatosConINV = New clsAccesoDatos("gtmexvts27\sql2016", "CONTROLINV", "Contabilidad", "Control2025%Porfis")
             clsDatosProp = New clsAccesoDatos("gtmexvts27\sql2016", "BDCTRL_PROPS", "Contabilidad", "Control2025%Porfis")
 
-            Me.Hide()
+            Hide()
 
             listarBasesDatos()
 
@@ -20,14 +20,16 @@
                 ''sTipo = "Mercadotecnia"
                 ''sTipo = "Independencia 1"
                 ''sTipo = "Independencia 2"
+                ListarColumnasExcel()
+
                 sNombre = frm.sNombre
                 sTipo = frm.sTipo
 
-                ocultarMenu(sTipo)
+                OcultarMenu(sTipo)
 
-                Me.Text = "Clientes Prospectos - Bienvenido(a): " & sNombre
-                Me.WindowState = FormWindowState.Maximized
-                Me.Show()
+                Text = "Clientes Prospectos - Bienvenido(a): " & sNombre
+                WindowState = FormWindowState.Maximized
+                Show()
             Else
                 End
             End If
@@ -36,11 +38,11 @@
             End
         End Try
 
-        listarCarpetas()
+        ListarCarpetas()
 
     End Sub
 
-    Private Sub listarCarpetas()
+    Private Sub ListarCarpetas()
         Try
             With ds.Tables
                 With clsDatosConINV
@@ -67,7 +69,7 @@
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
         End Try
     End Sub
-    Private Sub ocultarMenu(sTipo As String)
+    Private Sub OcultarMenu(sTipo As String)
         For Each men As ToolStripMenuItem In MenuStrip1.Items
             men.Visible = False
         Next
@@ -102,25 +104,25 @@
         MenuStrip1.Visible = True
 
     End Sub
-    Private Sub mnuSalir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuSalir.Click, BotonSalir.Click
+    Private Sub mnuSalir_Click(sender As Object, e As EventArgs) Handles mnuSalir.Click, BotonSalir.Click
 
         If MsgBox("¿Estas seguro de salir?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Salir del Sistema") = MsgBoxResult.Yes Then
             End
         End If
     End Sub
 
-    Private Sub Principal_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+    Private Sub Principal_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         If MsgBox("¿Estas seguro de salir?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Salir del Sistema") = MsgBoxResult.No Then
             e.Cancel = True
             Exit Sub
         End If
     End Sub
 
-    Private Sub TablasDelSistemaToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TablasDelSistemaToolStripMenuItem.Click
+    Private Sub TablasDelSistemaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TablasDelSistemaToolStripMenuItem.Click
 
     End Sub
 
-    Private Sub BotonAltaPropuesta_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BotonAltaPropuesta.Click
+    Private Sub BotonAltaPropuesta_Click(sender As Object, e As EventArgs) Handles BotonAltaPropuesta.Click
         If MsgBox("¿Estas seguro de dar de alta una nueva propuesta?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Alta de Propuesta") = MsgBoxResult.No Then
             Exit Sub
         End If
@@ -129,7 +131,7 @@
 
     End Sub
 
-    Private Sub GirosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles GirosToolStripMenuItem.Click
+    Private Sub GirosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GirosToolStripMenuItem.Click
         'Giros.LimpiaPan()
         Giros.ShowDialog()
 
@@ -240,7 +242,7 @@
         AbrirPantalla(frm, "frmReportePorClaves")
     End Sub
 
-    Private Sub AbrirPantalla(ByVal frm As Form, ByVal sNombre As String)
+    Private Sub AbrirPantalla(frm As Form, sNombre As String)
         If Not Application.OpenForms(sNombre) Is Nothing Then
             Application.OpenForms(sNombre).Activate()
         Else
