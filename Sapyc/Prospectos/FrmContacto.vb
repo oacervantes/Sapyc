@@ -29,7 +29,7 @@
     Private sMsgDatosGenerales, sMsgContacto, sMsgAcercamiento, sMsgDomicilio As String
 
     Private bCargaInfo As Boolean = False
-
+    Private CorreosSoc, sNombSocio, sMailSocio As String
     Public sCveProspecto, sCveArea As String
     Public iOrigen, idProspecto, iModifica As Integer
 
@@ -187,9 +187,7 @@
                 InsertarPropuestaNuevos()
             End If
 
-
-
-
+            EnvioCorreoSocio()
 
             MsgBox("Se registraron los datos del prospecto correctamente.", MsgBoxStyle.Information, "SIAT")
 
@@ -1079,6 +1077,62 @@
         Catch ex As Exception
             InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "InsertarPropuesta()")
             MsgBox("Hubo un problema al registrar la información del domicilio, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
+        End Try
+    End Sub
+    Private Sub EnvioCorreoSocio()
+        Try
+            With ds.Tables
+                With clsLocal
+                    .subClearParameters()
+                    .subAddParameter("@iOpcion", 10, SqlDbType.Int, ParameterDirection.Input)
+                    .subAddParameter("@sCveSocio", cboSocio.SelectedValue, SqlDbType.VarChar, ParameterDirection.Input)
+
+                End With
+
+                If .Contains("paControlSac") Then
+                    .Remove("paControlSac")
+                End If
+
+                .Add(clsLocal.funExecuteSPDataTable("paControlSac"))
+
+                dtCorreos = .Item("paControlSac")
+                If dtCorreos.Rows.Count > 0 Then
+                    sMailSocio = dtCorreos(0)("EMAIL").ToString()
+                    sNombSocio = dtCorreos(0)("NOMBRE").ToString()
+                End If
+            End With
+
+            Dim sCorreo As String() = sMailSocio.Split(";")
+            EnviarCorreoAviso()
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
+        End Try
+    End Sub
+    Private Sub EnviarCorreoAviso() 'Este correo es para avisar al socio encargado de oficina, que se ha solicitado generar un folio con cobranza incompleta.
+        Dim sMensaje As String
+
+        Try
+            'sCorreos = "Octavio.A.Cervantes@mx.gt.com, Mario.Rodriguez@mx.gt.com"
+            'Dim sCorreo As String() = {"Octavio.A.Cervantes@mx.gt.com, Mario.Rodriguez@mx.gt.com"}
+            Dim sCorreo As String() = CorreosSoc.Split(";")
+
+            sMensaje = "<html><head></head><body>" &
+            "<img src='cid:imagen1' alt='Salles, Sainz - Grant Thornton' style='width:300px;height:auto;'>" &
+            "<h1 style=""height: 50px; background: #4f2d7f; font-family: Calibri, Arial; color: #FFF; padding-right: 30px; text-align: center;"">NUEVO PROSPECTO ASIGNADO</h1>" & vbNewLine & vbNewLine & vbNewLine &
+            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 20px; color: #4f2d7f; margin-left: 25px; margin-top: 20px; padding: 15px;"">Estimada/o: " & sNombSocio & ", </p> " & vbNewLine & vbNewLine &
+            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 16px; margin-left: 25px; margin-top: 20px; padding: 15px;"">Queremos informarte que se te ha asignado un nuevo prospecto para su seguimiento y gestión.</p> " & vbNewLine & vbNewLine &
+            "<table style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">" & vbNewLine &
+            "<tr><td>Nombre del Prospecto:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & txtRazonSocial.Text.ToString() & "</b></td></tr>" & vbNewLine &
+            "<tr><td>Servicio solicitado:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & cboDatosGeneralesServicio.Text.ToUpper() & "</b></td></tr>" & vbNewLine &
+            "</table>" & vbNewLine &
+            "<p style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">Por favor, revisa la información dentro de SIAT > SAPYC > Control de Prospectos, y comienza el proceso de contacto." & vbNewLine &
+            "<hr>" &
+            "<p style=""margin-left: 20px; font-style: italic; font-family: Arial; font-size: 12px;"">Este es un correo automático, favor de no responder a esta cuenta.</p>" & vbNewLine &
+            "</body></html>"
+
+            EnviarCorreosHTML(sCorreo, sMensaje, "Nuevo prospecto asignado")
+        Catch ex As Exception
+            MsgBox("No ha sido posible enviar el correo debido a fallas con el servidor de correo.", MsgBoxStyle.Exclamation, "SIAT")
         End Try
     End Sub
 
