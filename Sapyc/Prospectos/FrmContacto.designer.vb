@@ -26,6 +26,7 @@ Partial Class FrmContacto
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmContacto))
         Me.panMenu = New System.Windows.Forms.Panel()
         Me.panMensajesError = New System.Windows.Forms.Panel()
+        Me.btnGuardarAvance = New System.Windows.Forms.Button()
         Me.txtMensaje = New System.Windows.Forms.TextBox()
         Me.lblTituloError = New System.Windows.Forms.Label()
         Me.txtClaveProspecto = New System.Windows.Forms.Label()
@@ -39,6 +40,7 @@ Partial Class FrmContacto
         Me.btnCerrar = New System.Windows.Forms.Button()
         Me.panDatosGenerales = New System.Windows.Forms.Panel()
         Me.gpBoxDatosDG = New System.Windows.Forms.GroupBox()
+        Me.Lista = New System.Windows.Forms.DataGridView()
         Me.txtRazonSocial = New System.Windows.Forms.TextBox()
         Me.lblIdSAC = New System.Windows.Forms.Label()
         Me.txtIdSAC = New System.Windows.Forms.TextBox()
@@ -119,7 +121,7 @@ Partial Class FrmContacto
         Me.gpBoxReferenciaGTI = New System.Windows.Forms.GroupBox()
         Me.txtEstadoGTI = New System.Windows.Forms.TextBox()
         Me.lblEstadoGTI = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.txtCorreoGerenteGTI = New System.Windows.Forms.TextBox()
         Me.lblCorreoGerenteGTI = New System.Windows.Forms.Label()
         Me.txtGerenteGTI = New System.Windows.Forms.TextBox()
         Me.lblGerenteGTI = New System.Windows.Forms.Label()
@@ -153,7 +155,6 @@ Partial Class FrmContacto
         Me.panRDRepExt = New System.Windows.Forms.Panel()
         Me.rdEmpresaExtranjeroRepSi = New System.Windows.Forms.RadioButton()
         Me.rdEmpresaExtranjeroRepNo = New System.Windows.Forms.RadioButton()
-        Me.Lista = New System.Windows.Forms.DataGridView()
         Me.lblMensajeCargaDatosGenerales = New System.Windows.Forms.Label()
         Me.panLinea = New System.Windows.Forms.Panel()
         Me.lblTituloDatosGenerales = New System.Windows.Forms.Label()
@@ -233,11 +234,11 @@ Partial Class FrmContacto
         Me.lblDomicilioColonia = New System.Windows.Forms.Label()
         Me.txtDomicilioCP = New System.Windows.Forms.TextBox()
         Me.lblDomicilioCP = New System.Windows.Forms.Label()
-        Me.btnGuardarAvance = New System.Windows.Forms.Button()
         Me.panMenu.SuspendLayout()
         Me.panMensajesError.SuspendLayout()
         Me.panDatosGenerales.SuspendLayout()
         Me.gpBoxDatosDG.SuspendLayout()
+        CType(Me.Lista, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gpBoxTipoNegocio.SuspendLayout()
         Me.gpBoxServicio.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -252,7 +253,6 @@ Partial Class FrmContacto
         Me.panRDDomExt.SuspendLayout()
         Me.panRDSubExt.SuspendLayout()
         Me.panRDRepExt.SuspendLayout()
-        CType(Me.Lista, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panContactoInicial.SuspendLayout()
         Me.panDatosContactoInicial.SuspendLayout()
         Me.gpBoxDatosContactoInicial.SuspendLayout()
@@ -293,6 +293,17 @@ Partial Class FrmContacto
         Me.panMensajesError.Size = New System.Drawing.Size(210, 408)
         Me.panMensajesError.TabIndex = 28
         Me.panMensajesError.Visible = False
+        '
+        'btnGuardarAvance
+        '
+        Me.btnGuardarAvance.Enabled = False
+        Me.btnGuardarAvance.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnGuardarAvance.Location = New System.Drawing.Point(40, 375)
+        Me.btnGuardarAvance.Name = "btnGuardarAvance"
+        Me.btnGuardarAvance.Size = New System.Drawing.Size(130, 25)
+        Me.btnGuardarAvance.TabIndex = 2
+        Me.btnGuardarAvance.Text = "Guardar avance"
+        Me.btnGuardarAvance.UseVisualStyleBackColor = True
         '
         'txtMensaje
         '
@@ -510,6 +521,28 @@ Partial Class FrmContacto
         Me.gpBoxDatosDG.Size = New System.Drawing.Size(1060, 1534)
         Me.gpBoxDatosDG.TabIndex = 3
         Me.gpBoxDatosDG.TabStop = False
+        '
+        'Lista
+        '
+        Me.Lista.AllowUserToAddRows = False
+        Me.Lista.AllowUserToDeleteRows = False
+        Me.Lista.AllowUserToResizeColumns = False
+        Me.Lista.AllowUserToResizeRows = False
+        Me.Lista.BackgroundColor = System.Drawing.Color.WhiteSmoke
+        Me.Lista.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
+        Me.Lista.GridColor = System.Drawing.Color.Gainsboro
+        Me.Lista.Location = New System.Drawing.Point(153, 84)
+        Me.Lista.Name = "Lista"
+        Me.Lista.ReadOnly = True
+        Me.Lista.RowHeadersWidth = 25
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(127, Byte), Integer))
+        Me.Lista.RowsDefaultCellStyle = DataGridViewCellStyle1
+        Me.Lista.RowTemplate.Height = 26
+        Me.Lista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.Lista.Size = New System.Drawing.Size(771, 270)
+        Me.Lista.TabIndex = 4
+        Me.Lista.Visible = False
         '
         'txtRazonSocial
         '
@@ -1318,7 +1351,7 @@ Partial Class FrmContacto
         '
         Me.gpBoxReferenciaGTI.Controls.Add(Me.txtEstadoGTI)
         Me.gpBoxReferenciaGTI.Controls.Add(Me.lblEstadoGTI)
-        Me.gpBoxReferenciaGTI.Controls.Add(Me.TextBox1)
+        Me.gpBoxReferenciaGTI.Controls.Add(Me.txtCorreoGerenteGTI)
         Me.gpBoxReferenciaGTI.Controls.Add(Me.lblCorreoGerenteGTI)
         Me.gpBoxReferenciaGTI.Controls.Add(Me.txtGerenteGTI)
         Me.gpBoxReferenciaGTI.Controls.Add(Me.lblGerenteGTI)
@@ -1356,12 +1389,12 @@ Partial Class FrmContacto
         Me.lblEstadoGTI.TabIndex = 12
         Me.lblEstadoGTI.Text = "Estado*:"
         '
-        'TextBox1
+        'txtCorreoGerenteGTI
         '
-        Me.TextBox1.Location = New System.Drawing.Point(266, 137)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(358, 25)
-        Me.TextBox1.TabIndex = 9
+        Me.txtCorreoGerenteGTI.Location = New System.Drawing.Point(266, 137)
+        Me.txtCorreoGerenteGTI.Name = "txtCorreoGerenteGTI"
+        Me.txtCorreoGerenteGTI.Size = New System.Drawing.Size(358, 25)
+        Me.txtCorreoGerenteGTI.TabIndex = 9
         '
         'lblCorreoGerenteGTI
         '
@@ -1696,28 +1729,6 @@ Partial Class FrmContacto
         Me.rdEmpresaExtranjeroRepNo.TabIndex = 1
         Me.rdEmpresaExtranjeroRepNo.Text = "No"
         Me.rdEmpresaExtranjeroRepNo.UseVisualStyleBackColor = True
-        '
-        'Lista
-        '
-        Me.Lista.AllowUserToAddRows = False
-        Me.Lista.AllowUserToDeleteRows = False
-        Me.Lista.AllowUserToResizeColumns = False
-        Me.Lista.AllowUserToResizeRows = False
-        Me.Lista.BackgroundColor = System.Drawing.Color.WhiteSmoke
-        Me.Lista.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
-        Me.Lista.GridColor = System.Drawing.Color.Gainsboro
-        Me.Lista.Location = New System.Drawing.Point(153, 84)
-        Me.Lista.Name = "Lista"
-        Me.Lista.ReadOnly = True
-        Me.Lista.RowHeadersWidth = 25
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(127, Byte), Integer))
-        Me.Lista.RowsDefaultCellStyle = DataGridViewCellStyle1
-        Me.Lista.RowTemplate.Height = 26
-        Me.Lista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.Lista.Size = New System.Drawing.Size(771, 270)
-        Me.Lista.TabIndex = 4
-        Me.Lista.Visible = False
         '
         'lblMensajeCargaDatosGenerales
         '
@@ -2527,17 +2538,6 @@ Partial Class FrmContacto
         Me.lblDomicilioCP.TabIndex = 6
         Me.lblDomicilioCP.Text = "Código Postal:"
         '
-        'btnGuardarAvance
-        '
-        Me.btnGuardarAvance.Enabled = False
-        Me.btnGuardarAvance.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnGuardarAvance.Location = New System.Drawing.Point(40, 375)
-        Me.btnGuardarAvance.Name = "btnGuardarAvance"
-        Me.btnGuardarAvance.Size = New System.Drawing.Size(130, 25)
-        Me.btnGuardarAvance.TabIndex = 2
-        Me.btnGuardarAvance.Text = "Guardar avance"
-        Me.btnGuardarAvance.UseVisualStyleBackColor = True
-        '
         'FrmContacto
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -2548,10 +2548,10 @@ Partial Class FrmContacto
         Me.Controls.Add(Me.btnCancelaGeneral)
         Me.Controls.Add(Me.btnCerrar)
         Me.Controls.Add(Me.panMenu)
-        Me.Controls.Add(Me.panContactoInicial)
         Me.Controls.Add(Me.panDatosGenerales)
         Me.Controls.Add(Me.panAcercamiento)
         Me.Controls.Add(Me.panDireccion)
+        Me.Controls.Add(Me.panContactoInicial)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
@@ -2567,6 +2567,7 @@ Partial Class FrmContacto
         Me.panDatosGenerales.PerformLayout()
         Me.gpBoxDatosDG.ResumeLayout(False)
         Me.gpBoxDatosDG.PerformLayout()
+        CType(Me.Lista, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gpBoxTipoNegocio.ResumeLayout(False)
         Me.gpBoxTipoNegocio.PerformLayout()
         Me.gpBoxServicio.ResumeLayout(False)
@@ -2595,7 +2596,6 @@ Partial Class FrmContacto
         Me.panRDSubExt.PerformLayout()
         Me.panRDRepExt.ResumeLayout(False)
         Me.panRDRepExt.PerformLayout()
-        CType(Me.Lista, System.ComponentModel.ISupportInitialize).EndInit()
         Me.panContactoInicial.ResumeLayout(False)
         Me.panContactoInicial.PerformLayout()
         Me.panDatosContactoInicial.ResumeLayout(False)
@@ -2802,7 +2802,7 @@ Partial Class FrmContacto
     Friend WithEvents rdIdiomaSi As RadioButton
     Friend WithEvents txtCorreoSocioGTI As TextBox
     Friend WithEvents lblCorreoSocioGTI As Label
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents txtCorreoGerenteGTI As TextBox
     Friend WithEvents lblCorreoGerenteGTI As Label
     Friend WithEvents txtGerenteGTI As TextBox
     Friend WithEvents lblGerenteGTI As Label
