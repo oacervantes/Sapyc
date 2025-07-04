@@ -2643,11 +2643,11 @@
             bValidacion = False
         End If
 
-        If Trim(txtAcercamientoWebProspecto.Text) = "" Then
-            sMsgContacto &= "- Especifíque la página web del prospecto." & vbNewLine & vbNewLine
+        'If Trim(txtAcercamientoWebProspecto.Text) = "" Then
+        '    sMsgContacto &= "- Especifíque la página web del prospecto." & vbNewLine & vbNewLine
 
-            bValidacion = False
-        End If
+        '    bValidacion = False
+        'End If
 
         sMsgContacto = sMsgContacto.Remove(sMsgContacto.Length - vbNewLine.Length * 2)
         sMsgContacto &= vbNewLine & "===============================" & vbNewLine

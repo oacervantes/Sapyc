@@ -875,9 +875,9 @@ Partial Class FrmContacto
         Me.lblDescripcionSolicitud.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblDescripcionSolicitud.Location = New System.Drawing.Point(39, 291)
         Me.lblDescripcionSolicitud.Name = "lblDescripcionSolicitud"
-        Me.lblDescripcionSolicitud.Size = New System.Drawing.Size(313, 18)
+        Me.lblDescripcionSolicitud.Size = New System.Drawing.Size(320, 18)
         Me.lblDescripcionSolicitud.TabIndex = 9
-        Me.lblDescripcionSolicitud.Text = "Información adicional del cliente y/o del servicio:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.lblDescripcionSolicitud.Text = "Información adicional del cliente y/o del servicio*:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
         'txtDescripcionSolicitud
         '
@@ -2548,10 +2548,10 @@ Partial Class FrmContacto
         Me.Controls.Add(Me.btnCancelaGeneral)
         Me.Controls.Add(Me.btnCerrar)
         Me.Controls.Add(Me.panMenu)
-        Me.Controls.Add(Me.panDatosGenerales)
-        Me.Controls.Add(Me.panAcercamiento)
         Me.Controls.Add(Me.panDireccion)
         Me.Controls.Add(Me.panContactoInicial)
+        Me.Controls.Add(Me.panDatosGenerales)
+        Me.Controls.Add(Me.panAcercamiento)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
