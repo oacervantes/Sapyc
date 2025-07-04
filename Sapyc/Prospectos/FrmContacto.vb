@@ -168,16 +168,28 @@
                 InsertarAcercamiento()
                 InsertarContactoInicial()
                 InsertarDomicilio()
+
+                '''INSERTA TABLAS PROSPECTOS NUEVOS'''
+                InsertaGeneralProspectos()
+                InsertarContactoInicialProspectos()
+                InsertarAcercamientoProspectos()
+                InsertarDomicilioProspectos()
+
+                '''INSERTA PROPUESTA SIAT ACTUALIZA SOCIO AREA Y OFICINA EN PROSPECTOS'''
+                InsertarPropuesta()
+            Else
+                '''INSERTA TABLAS PROSPECTOS NUEVOS'''
+                InsertaGeneralProspectos()
+                InsertarContactoInicialProspectos()
+                InsertarAcercamientoProspectos()
+                InsertarDomicilioProspectos()
+                '''INSERTA PROPUESTA SIAT ACTUALIZA SOCIO AREA Y OFICINA EN PROSPECTOS'''
+                InsertarPropuestaNuevos()
             End If
 
-            '''INSERTA TABLAS PROSPECTOS NUEVOS'''
-            InsertaGeneralProspectos()
-            InsertarContactoInicialProspectos()
-            InsertarAcercamientoProspectos()
-            InsertarDomicilioProspectos()
 
-            '''INSERTA PROPUESTA SIAT ACTUALIZA SOCIO AREA Y OFICINA EN PROSPECTOS'''
-            InsertarPropuesta()
+
+
 
             MsgBox("Se registraron los datos del prospecto correctamente.", MsgBoxStyle.Information, "SIAT")
 
@@ -994,6 +1006,76 @@
             End With
 
             MsgBox("Se registró la propuesta correctamente.", MsgBoxStyle.Information, "SIAT")
+        Catch ex As Exception
+            InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "InsertarPropuesta()")
+            MsgBox("Hubo un problema al registrar la información del domicilio, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
+        End Try
+    End Sub
+    Private Sub InsertarPropuestaNuevos()
+        Try
+            With clsLocal
+                .subClearParameters()
+                .subAddParameter("@iOpcion", 2, SqlDbType.Int, ParameterDirection.Input)
+                .subAddParameter("@iPeriodo", iPeriodoFirma, SqlDbType.Int, ParameterDirection.Input)
+                .subAddParameter("@sCveSocio", "0008", SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@sCveProspecto", sCveProspecto, SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@sSocioPropuesta", cboSocio.SelectedValue, SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@sCveGerente", "", SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@sCveOfi", cboOficina.SelectedValue, SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@sCveArea", cboDivision.SelectedValue, SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@sNombreCteN", txtRazonSocial.Text.ToUpper(), SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@sContactoInicialN", txtContactoInicialNombre.Text.ToUpper(), SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@sCargoN", txtContactoInicialCargo.Text.ToUpper(), SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@sCorreosN", txtContactoInicialCorreo.Text.ToUpper(), SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@sTelefonoN", txtContactoInicialTelefono.Text.ToUpper(), SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@sExtensionN", txtContactoInicialExtension.Text.ToUpper(), SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@sRfc", txtRFC.Text.ToUpper(), SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@idPaisN", cboDomicilioPais.SelectedValue, SqlDbType.Int, ParameterDirection.Input)
+
+                If cboDomicilioPais.SelectedValue = 151 Then
+                    .subAddParameter("@sCalleN", txtDomicilioCalle.Text, SqlDbType.VarChar, ParameterDirection.Input)
+                    .subAddParameter("@sNumIntN", txtDomicilioNoExt.Text, SqlDbType.VarChar, ParameterDirection.Input)
+                    .subAddParameter("@sNumExtN", txtDomicilioNoInt.Text, SqlDbType.VarChar, ParameterDirection.Input)
+                    .subAddParameter("@sCPN", txtDomicilioCP.Text, SqlDbType.VarChar, ParameterDirection.Input)
+
+                    .subAddParameter("@sColoniaN", cboDomicilioColonia.Text, SqlDbType.VarChar, ParameterDirection.Input)
+                    .subAddParameter("@sEstadoN", cboDomicilioEstado.Text, SqlDbType.VarChar, ParameterDirection.Input)
+                    .subAddParameter("@sMunicipioN", cboDomicilioMunicipio.Text, SqlDbType.VarChar, ParameterDirection.Input)
+
+                Else
+                    .subAddParameter("@sCalleN", txtDomicilioExtDireccion1.Text, SqlDbType.VarChar, ParameterDirection.Input)
+                    .subAddParameter("@sColonia", txtDomicilioExtDireccion2.Text, SqlDbType.VarChar, ParameterDirection.Input)
+                    .subAddParameter("@sMunicipio", txtDomicilioExtLocalidad.Text, SqlDbType.VarChar, ParameterDirection.Input)
+                    .subAddParameter("@sEstado", txtDomicilioExtEstado.Text, SqlDbType.VarChar, ParameterDirection.Input)
+                    .subAddParameter("@sCPN", txtDomicilioExtCP.Text, SqlDbType.VarChar, ParameterDirection.Input)
+                End If
+                .subAddParameter("@sPaginaWebN", txtContactoInicialTelefono.Text.ToUpper(), SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@iComoSeEnteroN", cboAcercamientoComoEntero.SelectedValue, SqlDbType.Int, ParameterDirection.Input)
+                .subAddParameter("@iMedioContactoN", cboAcercamientoMedioContacto.SelectedValue, SqlDbType.Int, ParameterDirection.Input)
+                .subAddParameter("@sComoSeEnteroOtroN", txtAcercamientoEnteroOtro.Text.ToUpper(), SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@sMedioContactoOtroN", txtAcercamientoContactoOtro.Text.ToUpper(), SqlDbType.VarChar, ParameterDirection.Input)
+
+                If rdReferenciaGTISi.Checked Then
+                    .subAddParameter("@bRefGTI", 1, SqlDbType.Bit, ParameterDirection.Input)
+                    .subAddParameter("@sSocioRefGTIN", txtReferenciaGTISocio.Text.ToUpper, SqlDbType.VarChar, ParameterDirection.Input)
+                    .subAddParameter("@idPaisRefGTIN", cboReferenciaGTIPais.SelectedValue, SqlDbType.Int, ParameterDirection.Input)
+                    .subAddParameter("@sOficinaRefGTIN", cboReferenciaGTIOficina.Text, SqlDbType.VarChar, ParameterDirection.Input)
+                Else
+                    .subAddParameter("@bRefGTI", 0, SqlDbType.Bit, ParameterDirection.Input)
+                    .subAddParameter("@sSocioRefGTIN", 0, SqlDbType.VarChar, ParameterDirection.Input)
+                    .subAddParameter("@idPaisRefGTIN", 0, SqlDbType.Int, ParameterDirection.Input)
+                    .subAddParameter("@sOficinaRefGTIN", "", SqlDbType.VarChar, ParameterDirection.Input)
+                End If
+                .subAddParameter("@sNombreComercialN", txtNombreComercial.Text.ToUpper(), SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@sCveIndN", sCveInd, SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@sCveSSN", sCveSS, SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@sCveSNN", sCveGTI, SqlDbType.VarChar, ParameterDirection.Input)
+
+                .funExecuteSP("paPropuestasCtesProspectos")
+
+            End With
+
+            'MsgBox("Se registró la propuesta correctamente.", MsgBoxStyle.Information, "SIAT")
         Catch ex As Exception
             InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "InsertarPropuesta()")
             MsgBox("Hubo un problema al registrar la información del domicilio, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
@@ -1892,7 +1974,7 @@
                 txtContactoInicialTelefono.Text = dtContactoInicial.Rows(0).Item("sTelefono").ToString
                 txtContactoInicialExtension.Text = dtContactoInicial.Rows(0).Item("sExtension").ToString
                 txtContactoInicialPrimerContacto.Text = dtContactoInicial.Rows(0).Item("sNombPrimerContacto").ToString
-                txtContactoInicialTelefono.Text = dtContactoInicial.Rows(0).Item("sTelefonoCelular").ToString
+                txtContactoInicialCelular.Text = dtContactoInicial.Rows(0).Item("sTelefonoCelular").ToString
                 txtAcercamientoWebProspecto.Text = dtContactoInicial.Rows(0).Item("sPaginaWeb").ToString
                 txtContactoInicialFecha.Value = dtContactoInicial.Rows(0).Item("dFechaCaptura").ToString
             Else
