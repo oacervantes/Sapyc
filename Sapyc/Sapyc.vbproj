@@ -299,6 +299,18 @@
     <Compile Include="Independencia\frmSAPYCClientesFiscales.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Independencia\frmServicios.Designer.vb">
+      <DependentUpon>frmServicios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Independencia\frmServicios.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Independencia\frmServiciosGT.Designer.vb">
+      <DependentUpon>frmServiciosGT.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Independencia\frmServiciosGT.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Independencia\frmSolRelacionadas.Designer.vb">
       <DependentUpon>frmSolRelacionadas.vb</DependentUpon>
     </Compile>
