@@ -301,7 +301,14 @@
     End Sub
 
     Private Sub GestiónServiciosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GestiónServiciosToolStripMenuItem.Click
+        Dim frm As New FrmTipoServicios
 
+        If Not Application.OpenForms("FrmTipoServicios") Is Nothing Then
+            Application.OpenForms("FrmTipoServicios").Activate()
+        Else
+            frm.MdiParent = Me
+            frm.Show()
+        End If
     End Sub
 
 

@@ -160,6 +160,12 @@
     <Compile Include="Catalogos\MttoTpServicio.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Catalogos\Servicios\DlgServicioGTI.Designer.vb">
+      <DependentUpon>DlgServicioGTI.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\Servicios\DlgServicioGTI.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Catalogos\TipoServicio.Designer.vb">
       <DependentUpon>TipoServicio.vb</DependentUpon>
     </Compile>
@@ -482,10 +488,16 @@
     <Compile Include="SelOpcion.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Servicios\FrmTipoServicios.Designer.vb">
+    <Compile Include="Catalogos\Servicios\DlgTipoServicio.Designer.vb">
+      <DependentUpon>DlgTipoServicio.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\Servicios\DlgTipoServicio.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogos\Servicios\FrmTipoServicios.Designer.vb">
       <DependentUpon>FrmTipoServicios.vb</DependentUpon>
     </Compile>
-    <Compile Include="Servicios\FrmTipoServicios.vb">
+    <Compile Include="Catalogos\Servicios\FrmTipoServicios.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Util.vb" />
@@ -524,6 +536,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Catalogos\MttoTpServicio.resx">
       <DependentUpon>MttoTpServicio.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogos\Servicios\DlgServicioGTI.resx">
+      <DependentUpon>DlgServicioGTI.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Catalogos\TipoServicio.resx">
       <DependentUpon>TipoServicio.vb</DependentUpon>
@@ -681,7 +696,10 @@
       <DependentUpon>SelOpcion.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Servicios\FrmTipoServicios.resx">
+    <EmbeddedResource Include="Catalogos\Servicios\DlgTipoServicio.resx">
+      <DependentUpon>DlgTipoServicio.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogos\Servicios\FrmTipoServicios.resx">
       <DependentUpon>FrmTipoServicios.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
