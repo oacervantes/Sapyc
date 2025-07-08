@@ -930,9 +930,9 @@ Partial Class FrmContacto
         Me.Label2.Font = New System.Drawing.Font("Calibri", 11.0!)
         Me.Label2.Location = New System.Drawing.Point(599, 195)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(69, 18)
+        Me.Label2.Size = New System.Drawing.Size(62, 18)
         Me.Label2.TabIndex = 16
-        Me.Label2.Text = "Subnivel*"
+        Me.Label2.Text = "Subnivel"
         '
         'Label1
         '
@@ -940,9 +940,9 @@ Partial Class FrmContacto
         Me.Label1.Font = New System.Drawing.Font("Calibri", 11.0!)
         Me.Label1.Location = New System.Drawing.Point(309, 196)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(76, 18)
+        Me.Label1.Size = New System.Drawing.Size(69, 18)
         Me.Label1.TabIndex = 13
-        Me.Label1.Text = "Subsector*"
+        Me.Label1.Text = "Subsector"
         '
         'lblIndustria
         '
@@ -950,9 +950,9 @@ Partial Class FrmContacto
         Me.lblIndustria.Font = New System.Drawing.Font("Calibri", 11.0!)
         Me.lblIndustria.Location = New System.Drawing.Point(19, 196)
         Me.lblIndustria.Name = "lblIndustria"
-        Me.lblIndustria.Size = New System.Drawing.Size(70, 18)
+        Me.lblIndustria.Size = New System.Drawing.Size(63, 18)
         Me.lblIndustria.TabIndex = 10
-        Me.lblIndustria.Text = "Industria*"
+        Me.lblIndustria.Text = "Industria"
         '
         'btnIndustria
         '
@@ -2548,10 +2548,10 @@ Partial Class FrmContacto
         Me.Controls.Add(Me.btnCancelaGeneral)
         Me.Controls.Add(Me.btnCerrar)
         Me.Controls.Add(Me.panMenu)
-        Me.Controls.Add(Me.panContactoInicial)
         Me.Controls.Add(Me.panDatosGenerales)
         Me.Controls.Add(Me.panAcercamiento)
         Me.Controls.Add(Me.panDireccion)
+        Me.Controls.Add(Me.panContactoInicial)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False

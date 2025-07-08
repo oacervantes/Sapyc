@@ -84,9 +84,11 @@
             Case "2"
                 MnuInde.Visible = True
                 mnuReportes.Visible = False
+                MnTablas.Visible = True
             Case "3"
                 MnuInde.Visible = True
                 mnuReportes.Visible = False
+                MnTablas.Visible = True
             Case "4"
                 mnuReportes.Visible = True
                 MnPropuestas.Visible = True
@@ -297,5 +299,11 @@
 
         AbrirPantalla(frm, "frmListaNumSac")
     End Sub
+
+    Private Sub GestiónServiciosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GestiónServiciosToolStripMenuItem.Click
+
+    End Sub
+
+
 
 End Class

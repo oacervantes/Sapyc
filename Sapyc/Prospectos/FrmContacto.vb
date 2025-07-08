@@ -999,6 +999,7 @@
                 .subAddParameter("@sCveGerente", "", SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@sCveOfi", cboOficina.SelectedValue, SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@sCveArea", cboDivision.SelectedValue, SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@iIdsac", txtIdSAC.Text, SqlDbType.VarChar, ParameterDirection.Input)
 
                 .funExecuteSP("paPropuestasCtesProspectos")
             End With
@@ -1068,6 +1069,7 @@
                 .subAddParameter("@sCveIndN", sCveInd, SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@sCveSSN", sCveSS, SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@sCveSNN", sCveGTI, SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@iIdsac", txtIdSAC.Text, SqlDbType.VarChar, ParameterDirection.Input)
 
                 .funExecuteSP("paPropuestasCtesProspectos")
 
@@ -2773,20 +2775,20 @@
         '    bValidacion = False
         'End If
 
-        If sCveInd = "" Then
-            sMsgDatosGenerales &= "- Especifíque la industria del prospecto." & vbNewLine & vbNewLine
-            bValidacion = False
-        End If
+        'If sCveInd = "" Then
+        '    sMsgDatosGenerales &= "- Especifíque la industria del prospecto." & vbNewLine & vbNewLine
+        '    bValidacion = False
+        'End If
 
-        If sCveSS = "" Then
-            sMsgDatosGenerales &= "- Especifíque el subsector del prospecto." & vbNewLine & vbNewLine
-            bValidacion = False
-        End If
+        'If sCveSS = "" Then
+        '    sMsgDatosGenerales &= "- Especifíque el subsector del prospecto." & vbNewLine & vbNewLine
+        '    bValidacion = False
+        'End If
 
-        If sCveGTI = "" Then
-            sMsgDatosGenerales &= "- Especifíque el subnivel del prospecto." & vbNewLine & vbNewLine
-            bValidacion = False
-        End If
+        'If sCveGTI = "" Then
+        '    sMsgDatosGenerales &= "- Especifíque el subnivel del prospecto." & vbNewLine & vbNewLine
+        '    bValidacion = False
+        'End If
 
         If cboOficina.SelectedValue = "" Then
             sMsgDatosGenerales &= "- Seleccione la oficina donde se asignará el prospecto." & vbNewLine & vbNewLine

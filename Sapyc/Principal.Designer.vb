@@ -72,6 +72,7 @@ Partial Class Principal
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.BotonAltaPropuesta = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.GestiónServiciosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.Barra.SuspendLayout()
         Me.SuspendLayout()
@@ -100,53 +101,54 @@ Partial Class Principal
         '
         'MnTablas
         '
-        Me.MnTablas.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TablasDelSistemaToolStripMenuItem})
+        Me.MnTablas.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TablasDelSistemaToolStripMenuItem, Me.GestiónServiciosToolStripMenuItem})
         Me.MnTablas.Name = "MnTablas"
-        Me.MnTablas.Size = New System.Drawing.Size(52, 20)
-        Me.MnTablas.Text = "&Tablas"
+        Me.MnTablas.Size = New System.Drawing.Size(72, 20)
+        Me.MnTablas.Text = "Catalogos"
         Me.MnTablas.Visible = False
         '
         'TablasDelSistemaToolStripMenuItem
         '
         Me.TablasDelSistemaToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GirosToolStripMenuItem, Me.ActividadToolStripMenuItem, Me.DivisionesToolStripMenuItem, Me.TiposDeServicioToolStripMenuItem, Me.ComoSeEnteroToolStripMenuItem, Me.MedioDeContactoToolStripMenuItem})
         Me.TablasDelSistemaToolStripMenuItem.Name = "TablasDelSistemaToolStripMenuItem"
-        Me.TablasDelSistemaToolStripMenuItem.Size = New System.Drawing.Size(174, 22)
+        Me.TablasDelSistemaToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.TablasDelSistemaToolStripMenuItem.Text = "Tablas del Sistema"
+        Me.TablasDelSistemaToolStripMenuItem.Visible = False
         '
         'GirosToolStripMenuItem
         '
         Me.GirosToolStripMenuItem.Name = "GirosToolStripMenuItem"
-        Me.GirosToolStripMenuItem.Size = New System.Drawing.Size(178, 22)
+        Me.GirosToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.GirosToolStripMenuItem.Text = "Giros"
         '
         'ActividadToolStripMenuItem
         '
         Me.ActividadToolStripMenuItem.Name = "ActividadToolStripMenuItem"
-        Me.ActividadToolStripMenuItem.Size = New System.Drawing.Size(178, 22)
+        Me.ActividadToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ActividadToolStripMenuItem.Text = "Actividades"
         '
         'DivisionesToolStripMenuItem
         '
         Me.DivisionesToolStripMenuItem.Name = "DivisionesToolStripMenuItem"
-        Me.DivisionesToolStripMenuItem.Size = New System.Drawing.Size(178, 22)
+        Me.DivisionesToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.DivisionesToolStripMenuItem.Text = "Divisiones"
         '
         'TiposDeServicioToolStripMenuItem
         '
         Me.TiposDeServicioToolStripMenuItem.Name = "TiposDeServicioToolStripMenuItem"
-        Me.TiposDeServicioToolStripMenuItem.Size = New System.Drawing.Size(178, 22)
+        Me.TiposDeServicioToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.TiposDeServicioToolStripMenuItem.Text = "Tipos de servicio"
         '
         'ComoSeEnteroToolStripMenuItem
         '
         Me.ComoSeEnteroToolStripMenuItem.Name = "ComoSeEnteroToolStripMenuItem"
-        Me.ComoSeEnteroToolStripMenuItem.Size = New System.Drawing.Size(178, 22)
+        Me.ComoSeEnteroToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ComoSeEnteroToolStripMenuItem.Text = "Como se entero"
         '
         'MedioDeContactoToolStripMenuItem
         '
         Me.MedioDeContactoToolStripMenuItem.Name = "MedioDeContactoToolStripMenuItem"
-        Me.MedioDeContactoToolStripMenuItem.Size = New System.Drawing.Size(178, 22)
+        Me.MedioDeContactoToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.MedioDeContactoToolStripMenuItem.Text = "Medio de contacto"
         '
         'mnuProspectos
@@ -180,13 +182,13 @@ Partial Class Principal
         'mnuAltaDePropuesta
         '
         Me.mnuAltaDePropuesta.Name = "mnuAltaDePropuesta"
-        Me.mnuAltaDePropuesta.Size = New System.Drawing.Size(172, 22)
+        Me.mnuAltaDePropuesta.Size = New System.Drawing.Size(180, 22)
         Me.mnuAltaDePropuesta.Text = "Alta de Propuesta"
         '
         'PToolStripMenuItem
         '
         Me.PToolStripMenuItem.Name = "PToolStripMenuItem"
-        Me.PToolStripMenuItem.Size = New System.Drawing.Size(172, 22)
+        Me.PToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.PToolStripMenuItem.Text = "Propuestas"
         '
         'ClientesToolStripMenuItem
@@ -200,7 +202,7 @@ Partial Class Principal
         'ManejoDeClientesToolStripMenuItem
         '
         Me.ManejoDeClientesToolStripMenuItem.Name = "ManejoDeClientesToolStripMenuItem"
-        Me.ManejoDeClientesToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
+        Me.ManejoDeClientesToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ManejoDeClientesToolStripMenuItem.Text = "Manejo de Clientes"
         '
         'UtileriasToolStripMenuItem
@@ -410,6 +412,12 @@ Partial Class Principal
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
         Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 40)
         '
+        'GestiónServiciosToolStripMenuItem
+        '
+        Me.GestiónServiciosToolStripMenuItem.Name = "GestiónServiciosToolStripMenuItem"
+        Me.GestiónServiciosToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.GestiónServiciosToolStripMenuItem.Text = "Gestión Servicios"
+        '
         'Principal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -482,4 +490,5 @@ Partial Class Principal
     Friend WithEvents AutorizaFoliosDeInformeToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ConsultaDeFoliosDeInformeToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ClientesSacToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents GestiónServiciosToolStripMenuItem As ToolStripMenuItem
 End Class
