@@ -1104,19 +1104,19 @@
                 End If
             End With
 
-            Dim sCorreo As String() = sMailSocio.Split(";")
-            EnviarCorreoAviso()
+            'Dim sCorreo As String() = sMailSocio.Split(";")
+            EnviarCorreoAviso(sMailSocio)
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
         End Try
     End Sub
-    Private Sub EnviarCorreoAviso() 'Este correo es para avisar al socio encargado de oficina, que se ha solicitado generar un folio con cobranza incompleta.
+    Private Sub EnviarCorreoAviso(sMail As String) 'Este correo es para avisar al socio encargado de oficina, que se ha solicitado generar un folio con cobranza incompleta.
         Dim sMensaje As String
 
         Try
             'sCorreos = "Octavio.A.Cervantes@mx.gt.com, Mario.Rodriguez@mx.gt.com"
-            'Dim sCorreo As String() = {"Octavio.A.Cervantes@mx.gt.com, Mario.Rodriguez@mx.gt.com"}
-            Dim sCorreo As String() = CorreosSoc.Split(";")
+            'Dim sCorreo As String() = {"Octavio.A.Cervantes@mx.gt.com", "Mario.Rodriguez@mx.gt.com"}
+            Dim sCorreo As String() = {sMail}
 
             sMensaje = "<html><head></head><body>" &
             "<img src='cid:imagen1' alt='Salles, Sainz - Grant Thornton' style='width:300px;height:auto;'>" &
