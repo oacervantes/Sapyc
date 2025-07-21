@@ -2548,10 +2548,10 @@ Partial Class FrmContacto
         Me.Controls.Add(Me.btnCancelaGeneral)
         Me.Controls.Add(Me.btnCerrar)
         Me.Controls.Add(Me.panMenu)
+        Me.Controls.Add(Me.panDireccion)
         Me.Controls.Add(Me.panContactoInicial)
         Me.Controls.Add(Me.panDatosGenerales)
         Me.Controls.Add(Me.panAcercamiento)
-        Me.Controls.Add(Me.panDireccion)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
