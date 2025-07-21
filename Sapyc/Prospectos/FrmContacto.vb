@@ -1043,9 +1043,9 @@
 
                 Else
                     .subAddParameter("@sCalleN", txtDomicilioExtDireccion1.Text, SqlDbType.VarChar, ParameterDirection.Input)
-                    .subAddParameter("@sColonia", txtDomicilioExtDireccion2.Text, SqlDbType.VarChar, ParameterDirection.Input)
-                    .subAddParameter("@sMunicipio", txtDomicilioExtLocalidad.Text, SqlDbType.VarChar, ParameterDirection.Input)
-                    .subAddParameter("@sEstado", txtDomicilioExtEstado.Text, SqlDbType.VarChar, ParameterDirection.Input)
+                    .subAddParameter("@sColoniaN", txtDomicilioExtDireccion2.Text, SqlDbType.VarChar, ParameterDirection.Input)
+                    .subAddParameter("@sMunicipioN", txtDomicilioExtLocalidad.Text, SqlDbType.VarChar, ParameterDirection.Input)
+                    .subAddParameter("@sEstadoN", txtDomicilioExtEstado.Text, SqlDbType.VarChar, ParameterDirection.Input)
                     .subAddParameter("@sCPN", txtDomicilioExtCP.Text, SqlDbType.VarChar, ParameterDirection.Input)
                 End If
                 .subAddParameter("@sPaginaWebN", txtContactoInicialTelefono.Text.ToUpper(), SqlDbType.VarChar, ParameterDirection.Input)
