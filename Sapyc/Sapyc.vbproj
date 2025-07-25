@@ -422,10 +422,22 @@
     <Compile Include="Prospectos\DglRevisionDatosProspecto.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Prospectos\DlgIdiomas.Designer.vb">
+      <DependentUpon>DlgIdiomas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Prospectos\DlgIdiomas.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Prospectos\dlgIndustria.designer.vb">
       <DependentUpon>dlgIndustria.vb</DependentUpon>
     </Compile>
     <Compile Include="Prospectos\dlgIndustria.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Prospectos\DlgPaises.Designer.vb">
+      <DependentUpon>DlgPaises.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Prospectos\DlgPaises.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Prospectos\DlgRevisionAsignaProspecto.Designer.vb">
@@ -668,8 +680,14 @@
     <EmbeddedResource Include="Prospectos\DglRevisionDatosProspecto.resx">
       <DependentUpon>DglRevisionDatosProspecto.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Prospectos\DlgIdiomas.resx">
+      <DependentUpon>DlgIdiomas.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Prospectos\dlgIndustria.resx">
       <DependentUpon>dlgIndustria.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Prospectos\DlgPaises.resx">
+      <DependentUpon>DlgPaises.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Prospectos\DlgRevisionAsignaProspecto.resx">
       <DependentUpon>DlgRevisionAsignaProspecto.vb</DependentUpon>

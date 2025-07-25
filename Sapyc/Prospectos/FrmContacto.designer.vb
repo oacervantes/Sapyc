@@ -49,6 +49,7 @@ Partial Class FrmContacto
         Me.rdPersonalMoral = New System.Windows.Forms.RadioButton()
         Me.gpBoxServicio = New System.Windows.Forms.GroupBox()
         Me.cboSocio = New System.Windows.Forms.ComboBox()
+        Me.cboIdioma = New System.Windows.Forms.ComboBox()
         Me.lblDatosGeneralesSocio = New System.Windows.Forms.Label()
         Me.cboDivision = New System.Windows.Forms.ComboBox()
         Me.lblDivision = New System.Windows.Forms.Label()
@@ -65,7 +66,8 @@ Partial Class FrmContacto
         Me.txtPeriodoInicio = New System.Windows.Forms.DateTimePicker()
         Me.lblPeriodoServicio = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.cboIdioma = New System.Windows.Forms.ComboBox()
+        Me.txtIdioma = New System.Windows.Forms.TextBox()
+        Me.btnIdiomas = New System.Windows.Forms.Button()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.rdIdiomaNo = New System.Windows.Forms.RadioButton()
         Me.rdIdiomaSi = New System.Windows.Forms.RadioButton()
@@ -457,7 +459,7 @@ Partial Class FrmContacto
         '
         Me.btnCerrar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnCerrar.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCerrar.Location = New System.Drawing.Point(1176, 668)
+        Me.btnCerrar.Location = New System.Drawing.Point(1165, 668)
         Me.btnCerrar.Name = "btnCerrar"
         Me.btnCerrar.Size = New System.Drawing.Size(130, 25)
         Me.btnCerrar.TabIndex = 5
@@ -480,7 +482,7 @@ Partial Class FrmContacto
         Me.panDatosGenerales.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold)
         Me.panDatosGenerales.Location = New System.Drawing.Point(212, 0)
         Me.panDatosGenerales.Name = "panDatosGenerales"
-        Me.panDatosGenerales.Size = New System.Drawing.Size(1106, 660)
+        Me.panDatosGenerales.Size = New System.Drawing.Size(1095, 660)
         Me.panDatosGenerales.TabIndex = 0
         Me.panDatosGenerales.Tag = "1"
         Me.panDatosGenerales.Visible = False
@@ -607,6 +609,7 @@ Partial Class FrmContacto
         'gpBoxServicio
         '
         Me.gpBoxServicio.Controls.Add(Me.cboSocio)
+        Me.gpBoxServicio.Controls.Add(Me.cboIdioma)
         Me.gpBoxServicio.Controls.Add(Me.lblDatosGeneralesSocio)
         Me.gpBoxServicio.Controls.Add(Me.cboDivision)
         Me.gpBoxServicio.Controls.Add(Me.lblDivision)
@@ -644,6 +647,17 @@ Partial Class FrmContacto
         Me.cboSocio.Name = "cboSocio"
         Me.cboSocio.Size = New System.Drawing.Size(347, 26)
         Me.cboSocio.TabIndex = 5
+        '
+        'cboIdioma
+        '
+        Me.cboIdioma.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboIdioma.DropDownWidth = 260
+        Me.cboIdioma.FormattingEnabled = True
+        Me.cboIdioma.Location = New System.Drawing.Point(520, 283)
+        Me.cboIdioma.Name = "cboIdioma"
+        Me.cboIdioma.Size = New System.Drawing.Size(268, 26)
+        Me.cboIdioma.TabIndex = 3
+        Me.cboIdioma.Visible = False
         '
         'lblDatosGeneralesSocio
         '
@@ -793,7 +807,8 @@ Partial Class FrmContacto
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.cboIdioma)
+        Me.GroupBox1.Controls.Add(Me.txtIdioma)
+        Me.GroupBox1.Controls.Add(Me.btnIdiomas)
         Me.GroupBox1.Controls.Add(Me.Label6)
         Me.GroupBox1.Controls.Add(Me.rdIdiomaNo)
         Me.GroupBox1.Controls.Add(Me.rdIdiomaSi)
@@ -805,15 +820,25 @@ Partial Class FrmContacto
         Me.GroupBox1.Text = "¿Se requiere de personal bilingüe para la preparación y/o ejecución del servicio?" &
     ""
         '
-        'cboIdioma
+        'txtIdioma
         '
-        Me.cboIdioma.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboIdioma.DropDownWidth = 260
-        Me.cboIdioma.FormattingEnabled = True
-        Me.cboIdioma.Location = New System.Drawing.Point(270, 27)
-        Me.cboIdioma.Name = "cboIdioma"
-        Me.cboIdioma.Size = New System.Drawing.Size(268, 26)
-        Me.cboIdioma.TabIndex = 3
+        Me.txtIdioma.Enabled = False
+        Me.txtIdioma.Location = New System.Drawing.Point(270, 28)
+        Me.txtIdioma.Name = "txtIdioma"
+        Me.txtIdioma.ReadOnly = True
+        Me.txtIdioma.Size = New System.Drawing.Size(287, 25)
+        Me.txtIdioma.TabIndex = 3
+        '
+        'btnIdiomas
+        '
+        Me.btnIdiomas.Enabled = False
+        Me.btnIdiomas.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnIdiomas.Location = New System.Drawing.Point(564, 28)
+        Me.btnIdiomas.Name = "btnIdiomas"
+        Me.btnIdiomas.Size = New System.Drawing.Size(50, 25)
+        Me.btnIdiomas.TabIndex = 4
+        Me.btnIdiomas.Text = "..."
+        Me.btnIdiomas.UseVisualStyleBackColor = True
         '
         'Label6
         '
@@ -839,13 +864,11 @@ Partial Class FrmContacto
         'rdIdiomaSi
         '
         Me.rdIdiomaSi.AutoSize = True
-        Me.rdIdiomaSi.Checked = True
         Me.rdIdiomaSi.Font = New System.Drawing.Font("Calibri", 11.0!)
         Me.rdIdiomaSi.Location = New System.Drawing.Point(48, 29)
         Me.rdIdiomaSi.Name = "rdIdiomaSi"
         Me.rdIdiomaSi.Size = New System.Drawing.Size(36, 22)
         Me.rdIdiomaSi.TabIndex = 0
-        Me.rdIdiomaSi.TabStop = True
         Me.rdIdiomaSi.Text = "Sí"
         Me.rdIdiomaSi.UseVisualStyleBackColor = True
         '
@@ -1739,7 +1762,7 @@ Partial Class FrmContacto
         Me.lblMensajeCargaDatosGenerales.ForeColor = System.Drawing.Color.White
         Me.lblMensajeCargaDatosGenerales.Location = New System.Drawing.Point(0, 44)
         Me.lblMensajeCargaDatosGenerales.Name = "lblMensajeCargaDatosGenerales"
-        Me.lblMensajeCargaDatosGenerales.Size = New System.Drawing.Size(1106, 25)
+        Me.lblMensajeCargaDatosGenerales.Size = New System.Drawing.Size(1095, 25)
         Me.lblMensajeCargaDatosGenerales.TabIndex = 2
         Me.lblMensajeCargaDatosGenerales.Text = "No se ha cargado información de los Datos Generales para el prospecto."
         Me.lblMensajeCargaDatosGenerales.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -1789,7 +1812,7 @@ Partial Class FrmContacto
         Me.panContactoInicial.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold)
         Me.panContactoInicial.Location = New System.Drawing.Point(212, 0)
         Me.panContactoInicial.Name = "panContactoInicial"
-        Me.panContactoInicial.Size = New System.Drawing.Size(1106, 660)
+        Me.panContactoInicial.Size = New System.Drawing.Size(1095, 660)
         Me.panContactoInicial.TabIndex = 0
         Me.panContactoInicial.Tag = "2"
         Me.panContactoInicial.Visible = False
@@ -1803,7 +1826,7 @@ Partial Class FrmContacto
         Me.lblMensajeCargaContactoInicial.ForeColor = System.Drawing.Color.White
         Me.lblMensajeCargaContactoInicial.Location = New System.Drawing.Point(0, 44)
         Me.lblMensajeCargaContactoInicial.Name = "lblMensajeCargaContactoInicial"
-        Me.lblMensajeCargaContactoInicial.Size = New System.Drawing.Size(1104, 25)
+        Me.lblMensajeCargaContactoInicial.Size = New System.Drawing.Size(1093, 25)
         Me.lblMensajeCargaContactoInicial.TabIndex = 2
         Me.lblMensajeCargaContactoInicial.Text = "No se ha cargado información de Contacto Inicial para el prospecto."
         Me.lblMensajeCargaContactoInicial.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -2052,7 +2075,7 @@ Partial Class FrmContacto
         Me.panAcercamiento.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.panAcercamiento.Location = New System.Drawing.Point(212, 0)
         Me.panAcercamiento.Name = "panAcercamiento"
-        Me.panAcercamiento.Size = New System.Drawing.Size(1106, 660)
+        Me.panAcercamiento.Size = New System.Drawing.Size(1095, 660)
         Me.panAcercamiento.TabIndex = 6
         Me.panAcercamiento.Tag = "3"
         Me.panAcercamiento.Visible = False
@@ -2076,7 +2099,7 @@ Partial Class FrmContacto
         Me.lblMensajeCargaAcercamiento.ForeColor = System.Drawing.Color.White
         Me.lblMensajeCargaAcercamiento.Location = New System.Drawing.Point(0, 44)
         Me.lblMensajeCargaAcercamiento.Name = "lblMensajeCargaAcercamiento"
-        Me.lblMensajeCargaAcercamiento.Size = New System.Drawing.Size(1104, 25)
+        Me.lblMensajeCargaAcercamiento.Size = New System.Drawing.Size(1093, 25)
         Me.lblMensajeCargaAcercamiento.TabIndex = 11
         Me.lblMensajeCargaAcercamiento.Text = "No se ha cargado información de Acercamiento para el prospecto."
         Me.lblMensajeCargaAcercamiento.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -2090,7 +2113,7 @@ Partial Class FrmContacto
         Me.lblMensajeErrorAcercamiento.ForeColor = System.Drawing.Color.White
         Me.lblMensajeErrorAcercamiento.Location = New System.Drawing.Point(0, 633)
         Me.lblMensajeErrorAcercamiento.Name = "lblMensajeErrorAcercamiento"
-        Me.lblMensajeErrorAcercamiento.Size = New System.Drawing.Size(1104, 25)
+        Me.lblMensajeErrorAcercamiento.Size = New System.Drawing.Size(1093, 25)
         Me.lblMensajeErrorAcercamiento.TabIndex = 4
         Me.lblMensajeErrorAcercamiento.Text = "Mensaje de error"
         Me.lblMensajeErrorAcercamiento.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -2220,7 +2243,7 @@ Partial Class FrmContacto
         Me.panDireccion.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.panDireccion.Location = New System.Drawing.Point(212, 0)
         Me.panDireccion.Name = "panDireccion"
-        Me.panDireccion.Size = New System.Drawing.Size(1106, 660)
+        Me.panDireccion.Size = New System.Drawing.Size(1095, 660)
         Me.panDireccion.TabIndex = 0
         Me.panDireccion.Tag = "4"
         Me.panDireccion.Visible = False
@@ -2234,7 +2257,7 @@ Partial Class FrmContacto
         Me.lblMensajeCargaDomicilio.ForeColor = System.Drawing.Color.White
         Me.lblMensajeCargaDomicilio.Location = New System.Drawing.Point(0, 44)
         Me.lblMensajeCargaDomicilio.Name = "lblMensajeCargaDomicilio"
-        Me.lblMensajeCargaDomicilio.Size = New System.Drawing.Size(1104, 25)
+        Me.lblMensajeCargaDomicilio.Size = New System.Drawing.Size(1093, 25)
         Me.lblMensajeCargaDomicilio.TabIndex = 11
         Me.lblMensajeCargaDomicilio.Text = "No se ha cargado información de Domicilio para el prospecto."
         Me.lblMensajeCargaDomicilio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -2542,16 +2565,16 @@ Partial Class FrmContacto
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        Me.ClientSize = New System.Drawing.Size(1318, 700)
+        Me.ClientSize = New System.Drawing.Size(1307, 700)
         Me.Controls.Add(Me.btnRegistroDatosGenerales)
         Me.Controls.Add(Me.btnGuardaGeneral)
         Me.Controls.Add(Me.btnCancelaGeneral)
         Me.Controls.Add(Me.btnCerrar)
         Me.Controls.Add(Me.panMenu)
-        Me.Controls.Add(Me.panDireccion)
-        Me.Controls.Add(Me.panContactoInicial)
         Me.Controls.Add(Me.panDatosGenerales)
         Me.Controls.Add(Me.panAcercamiento)
+        Me.Controls.Add(Me.panDireccion)
+        Me.Controls.Add(Me.panContactoInicial)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
@@ -2828,4 +2851,6 @@ Partial Class FrmContacto
     Friend WithEvents cboSocio As ComboBox
     Friend WithEvents btnGuardarAvance As Button
     Friend WithEvents lblTituloCI As Label
+    Friend WithEvents txtIdioma As TextBox
+    Friend WithEvents btnIdiomas As Button
 End Class

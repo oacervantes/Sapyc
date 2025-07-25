@@ -1,4 +1,7 @@
-﻿Public Class FrmReportesGRD
+﻿Imports System.IO
+Imports System.Text
+
+Public Class FrmReportesGRD
 
     Private bsEnt, bsServ, bsProv, bsRol As New BindingSource
     Private ds As New DataSet
@@ -32,10 +35,42 @@
         ListarRolesEntidad()
     End Sub
     Private Sub BtnExportar_Click(sender As Object, e As EventArgs) Handles btnExportar.Click
+        Dim dlg As New dlgExcel
 
+        Try
+            If MsgBox("¿Desea exportar la información a Excel?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Envío Excel") = MsgBoxResult.Yes Then
+                dlg.txtArchivo.Focus()
+                dlg.txtArchivo.Text = "Reportes GRD"
+                If dlg.ShowDialog = Windows.Forms.DialogResult.OK Then
+
+                    'Clientes.
+                    CrearCsv(gridClientes, dlg.txtDirectorio.Text, "GRD_Clientes.csv")
+
+                    'Servicios.
+                    CrearCsv(gridServicios, dlg.txtDirectorio.Text, "GRD_Servicios.csv")
+                Else
+                    Exit Sub
+                End If
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
+        End Try
     End Sub
     Private Sub BtnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
         Close()
+    End Sub
+
+    Private Sub FormatoGrid(id As Integer, grid As DataGridView)
+        Dim dr() As DataRow
+
+        dr = dtReportes.Select("IDREP = " & id)
+
+        grid.Columns("TIPO").Visible = False
+
+        For Each d As DataRow In dr
+            ConfigurarColumnasGrid(grid, d("REP_COL").ToString(), d("REP_COL").ToString(), 150, 1, False)
+        Next
+
     End Sub
 
     Private Sub ListarReportes()
@@ -62,7 +97,7 @@
         Dim dr() As DataRow
 
         'Crear tabla de entidades.
-        dr = dtReportes.Select("IDERP = 1")
+        dr = dtReportes.Select("IDREP = 1")
 
         If dr.Count > 0 Then
             dtEntidades.Columns.Add("TIPO", GetType(String))
@@ -73,7 +108,7 @@
         End If
 
         'Crear tabla de Servicios.
-        dr = dtReportes.Select("IDERP = 2")
+        dr = dtReportes.Select("IDREP = 2")
 
         If dr.Count > 0 Then
             dtServicios.Columns.Add("TIPO", GetType(String))
@@ -84,7 +119,7 @@
         End If
 
         'Crear tabla de Proveedores.
-        dr = dtReportes.Select("IDERP = 3")
+        dr = dtReportes.Select("IDREP = 3")
 
         If dr.Count > 0 Then
             dtProveedores.Columns.Add("TIPO", GetType(String))
@@ -95,7 +130,7 @@
         End If
 
         'Crear tabla de Roles de Entidad.
-        dr = dtReportes.Select("IDERP = 4")
+        dr = dtReportes.Select("IDREP = 4")
 
         If dr.Count > 0 Then
             dtRolesEntidad.Columns.Add("TIPO", GetType(String))
@@ -116,12 +151,12 @@
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsLocal
+                With clsDatos
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 2, SqlDbType.Int, ParameterDirection.Input)
                 End With
 
-                .Add(clsLocal.funExecuteSPDataTable(sStoredProc, sTabla))
+                .Add(clsDatos.funExecuteSPDataTable(sStoredProc, sTabla))
                 dtEnt = .Item(sTabla)
 
                 If dtEnt.Rows.Count > 0 Then
@@ -130,7 +165,7 @@
                         drEnt = dtEntidades.NewRow
                         drEnt("TIPO") = "S"
 
-                        drRep = dtReportes.Select("IDERP = 1")
+                        drRep = dtReportes.Select("IDREP = 1")
                         For Each d As DataRow In drRep
                             drEnt(d("REP_COL").ToString()) = dr(d("REP_COL").ToString()).ToString()
                         Next
@@ -139,7 +174,7 @@
                     Next
 
                     bsEnt.DataSource = dtEntidades
-                    'FormatoGrid()
+                    FormatoGrid(1, gridClientes)
                 End If
             End With
         Catch ex As Exception
@@ -157,12 +192,13 @@
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsLocal
+                With clsDatos
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 3, SqlDbType.Int, ParameterDirection.Input)
+                    .subAddParameter("@iPeriodo", 11, SqlDbType.Int, ParameterDirection.Input)
                 End With
 
-                .Add(clsLocal.funExecuteSPDataTable(sStoredProc, sTabla))
+                .Add(clsDatos.funExecuteSPDataTable(sStoredProc, sTabla))
                 dtServ = .Item(sTabla)
 
                 If dtServ.Rows.Count > 0 Then
@@ -171,7 +207,7 @@
                         drServ = dtServicios.NewRow
                         drServ("TIPO") = "S"
 
-                        drRep = dtReportes.Select("IDERP = 1")
+                        drRep = dtReportes.Select("IDREP = 2")
                         For Each d As DataRow In drRep
                             drServ(d("REP_COL").ToString()) = dr(d("REP_COL").ToString()).ToString()
                         Next
@@ -180,7 +216,7 @@
                     Next
 
                     bsServ.DataSource = dtServicios
-                    'FormatoGrid()
+                    FormatoGrid(2, gridServicios)
                 End If
             End With
         Catch ex As Exception
@@ -198,12 +234,12 @@
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsLocal
+                With clsDatos
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 4, SqlDbType.Int, ParameterDirection.Input)
                 End With
 
-                .Add(clsLocal.funExecuteSPDataTable(sStoredProc, sTabla))
+                .Add(clsDatos.funExecuteSPDataTable(sStoredProc, sTabla))
                 dtProv = .Item(sTabla)
 
                 If dtProv.Rows.Count > 0 Then
@@ -212,7 +248,7 @@
                         drProv = dtProveedores.NewRow
                         drProv("TIPO") = "S"
 
-                        drRep = dtReportes.Select("IDERP = 1")
+                        drRep = dtReportes.Select("IDREP = 3")
                         For Each d As DataRow In drRep
                             drProv(d("REP_COL").ToString()) = dr(d("REP_COL").ToString()).ToString()
                         Next
@@ -221,7 +257,7 @@
                     Next
 
                     bsProv.DataSource = dtProveedores
-                    'FormatoGrid()
+                    FormatoGrid(3, gridProveedores)
                 End If
             End With
         Catch ex As Exception
@@ -239,12 +275,12 @@
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsLocal
+                With clsDatos
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 5, SqlDbType.Int, ParameterDirection.Input)
                 End With
 
-                .Add(clsLocal.funExecuteSPDataTable(sStoredProc, sTabla))
+                .Add(clsDatos.funExecuteSPDataTable(sStoredProc, sTabla))
                 dtRolEnt = .Item(sTabla)
 
                 If dtRolEnt.Rows.Count > 0 Then
@@ -253,7 +289,7 @@
                         drRol = dtRolesEntidad.NewRow
                         drRol("TIPO") = "S"
 
-                        drRep = dtReportes.Select("IDERP = 1")
+                        drRep = dtReportes.Select("IDREP = 4")
                         For Each d As DataRow In drRep
                             drRol(d("REP_COL").ToString()) = dr(d("REP_COL").ToString()).ToString()
                         Next
@@ -262,13 +298,38 @@
                     Next
 
                     bsRol.DataSource = dtRolesEntidad
-                    'FormatoGrid()
+                    FormatoGrid(4, gridRolesEntidad)
                 End If
             End With
         Catch ex As Exception
             MsgBox("Por el momento no es posible mostrar el reporte, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "SIAT")
             dtRolEnt = Nothing
         End Try
+    End Sub
+
+    Private Sub CrearCsv(grid As DataGridView, sRuta As String, sArchivo As String)
+        Using sw As New StreamWriter(Path.Combine(sRuta, sArchivo), False, Encoding.UTF8)
+            For Each col As DataGridViewColumn In grid.Columns
+                If col.Visible Then
+                    sw.Write(col.HeaderText & ",")
+                End If
+            Next
+            sw.WriteLine()
+            For Each row As DataGridViewRow In grid.Rows
+                For Each cell As DataGridViewCell In row.Cells
+                    If cell.Visible Then
+                        If cell.Value Is Nothing OrElse String.IsNullOrEmpty(cell.Value.ToString()) Then
+                            sw.Write(""""" ,")
+                        Else
+                            sw.Write(cell.Value.ToString() & ",")
+                        End If
+                    End If
+                Next
+                sw.WriteLine()
+            Next
+        End Using
+
+        MsgBox("Archivo " & sArchivo & " creado exitosamente ", MsgBoxStyle.Information, "SIAT")
     End Sub
 
 End Class

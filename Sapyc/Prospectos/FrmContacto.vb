@@ -22,7 +22,7 @@
     Private dtIndustria, dtSubSector, dtSubNivel As DataTable
     Private sInd, sSS, sGTI As String
 
-    Private iOpcionFun, iOpcionAcc, idProspectos As Integer
+    Private iOpcionFun, iOpcionAcc, idProspectos, idIdioma, idPais, idPaisTenedora, idPaisGT As Integer
     Private sCveInd, sCveSS, sCveGTI As String
 
     Private sCveSoc, sNomSoc, sCorreoSoc As String
@@ -86,14 +86,14 @@
         ListarPaisResidencia()
         ListarTipoEntidad()
         ListarModalidades()
-        ListarIdiomas()
+        'ListarIdiomas()
         ListarOficinas()
         ListarDivisiones()
 
         ListarDatosGenerales()
 
         listarIndustrias()
-        listarSubSector()
+        ListarSubSector()
         listarSubNivel()
         '============================== CONSULTA DATOS ==============================
         ListarContactoInicial()
@@ -295,7 +295,7 @@
                 ListarDatosGenerales()
 
                 listarIndustrias()
-                listarSubSector()
+                ListarSubSector()
                 listarSubNivel()
 
             Case 2
@@ -380,6 +380,28 @@
         Else
             sCveGTI = ""
             txtSubnivel.Text = ""
+        End If
+    End Sub
+
+    Private Sub RdIdiomaSi_CheckedChanged(sender As Object, e As EventArgs) Handles rdIdiomaSi.CheckedChanged
+        If rdIdiomaSi.Checked Then
+            txtIdioma.ReadOnly = True
+            btnIdiomas.Enabled = True
+        End If
+    End Sub
+    Private Sub RdIdiomaNo_CheckedChanged(sender As Object, e As EventArgs) Handles rdIdiomaNo.CheckedChanged
+        If rdIdiomaNo.Checked Then
+            idIdioma = 0
+            txtIdioma.Text = ""
+            btnIdiomas.Enabled = False
+        End If
+    End Sub
+    Private Sub BtnIdiomas_Click(sender As Object, e As EventArgs) Handles btnIdiomas.Click
+        Dim dlg As New DlgIdiomas
+
+        If dlg.ShowDialog = DialogResult.OK Then
+            idIdioma = dlg.idIdioma
+            txtIdioma.Text = dlg.sIdioma
         End If
     End Sub
 
@@ -927,7 +949,7 @@
             dtProspectos = Nothing
         End Try
     End Sub
-    Private Sub listarSubSector()
+    Private Sub ListarSubSector()
         Try
             Dim sTabla As String = "tbProspectos"
 
@@ -1081,6 +1103,7 @@
             MsgBox("Hubo un problema al registrar la información del domicilio, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
         End Try
     End Sub
+
     Private Sub EnvioCorreoSocio()
         Try
             With ds.Tables
@@ -1734,10 +1757,16 @@
 
                 If dtDatosGenerales.Rows(0).Item("bIdioma").ToString Then
                     rdIdiomaSi.Checked = True
+
+                    idIdioma = dtDatosGenerales.Rows(0).Item("idIdioma").ToString
+                    'cboIdioma.SelectedValue = dtDatosGenerales.Rows(0).Item("idIdioma").ToString
+                    txtIdioma.Text = dtDatosGenerales.Rows(0).Item("sIdioma").ToString
                 Else
                     rdIdiomaNo.Checked = True
+                    idIdioma = 0
+                    txtIdioma.Text = ""
                 End If
-                cboIdioma.SelectedValue = dtDatosGenerales.Rows(0).Item("idIdioma").ToString
+
                 txtContactoInicialFecha.Value = dtDatosGenerales.Rows(0).Item("dFechaIni").ToString
                 txtPeriodoInicio.Value = dtDatosGenerales.Rows(0).Item("dFechaFin").ToString
                 txtFechaEntregaReporte.Value = dtDatosGenerales.Rows(0).Item("dFechaEntrega").ToString
@@ -2810,7 +2839,12 @@
             bValidacion = False
         End If
 
-        If rdIdiomaSi.Checked = False And cboIdioma.SelectedValue <= 0 Then
+        If rdIdiomaSi.Checked = False And rdIdiomaNo.Checked = False Then
+            sMsgDatosGenerales &= "- Especifíque si se requiere de personal bilingüe." & vbNewLine & vbNewLine
+            bValidacion = False
+        End If
+
+        If rdIdiomaSi.Checked = False And idIdioma <= 0 Then
             sMsgDatosGenerales &= "- Especifíque el idioma del personal bilingüe." & vbNewLine & vbNewLine
             bValidacion = False
         End If

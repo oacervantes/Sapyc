@@ -1,4 +1,5 @@
-﻿Imports DocumentFormat.OpenXml
+﻿Imports System.Text
+Imports DocumentFormat.OpenXml
 Imports SpreadsheetLight
 
 Module mdlExcelv2
@@ -81,7 +82,7 @@ Module mdlExcelv2
             End If
         Next
 
-        mostrarTotal(exc, grid, ind)
+        MostrarTotal(exc, grid, ind)
 
         If grid.Columns(7).Visible = False Then
             exc.SetColumnWidth("A", 20)
@@ -165,7 +166,7 @@ Module mdlExcelv2
         nombreReporte(exc, "A3", "G3", "REPORTE DE LA DIRECCIÓN - TRABAJOS NO RECURRENTES")
         nombreColumnas(exc, grid, 3)
         llenarReporte(exc, grid, 3, 10)
-        mostrarTotal(exc, grid, 3)
+        MostrarTotal(exc, grid, 3)
 
         exc.SetColumnWidth("A", 49)
         exc.SetColumnWidth("B", "D", 20)
@@ -180,7 +181,7 @@ Module mdlExcelv2
         nombreReporte(exc, "A3", "H3", "REPORTE DE LA DIRECCIÓN - TRABAJOS PERDIDOS")
         nombreColumnas(exc, grid, 6)
         llenarReporte(exc, grid, 6, 13)
-        mostrarTotal(exc, grid, 6)
+        MostrarTotal(exc, grid, 6)
 
         exc.SetColumnWidth("A", 49)
         exc.SetColumnWidth("B", "D", 20)
@@ -196,7 +197,7 @@ Module mdlExcelv2
         nombreReporte(exc, "A3", "H3", "REPORTE DE LA DIRECCIÓN - TRABAJOS RECURRENTES POR ARREGLAR")
         nombreColumnas(exc, grid, 2)
         llenarReporteCols(exc, grid, 2, 9)
-        mostrarTotal(exc, grid, 2)
+        MostrarTotal(exc, grid, 2)
 
         exc.SetColumnWidth("A", 49)
         exc.SetColumnWidth("B", "D", 20)
@@ -211,7 +212,7 @@ Module mdlExcelv2
         nombreReporte(exc, "A3", "W3", "REPORTE DE LA DIRECCIÓN - TRABAJOS NUEVOS GANADOS")
         nombreColumnas(exc, grid, 4)
         llenarReporte(exc, grid, 4, 13)
-        mostrarTotal(exc, grid, 4)
+        MostrarTotal(exc, grid, 4)
 
         exc.SetColumnWidth("A", 49)
         exc.SetColumnWidth("B", "D", 20)
@@ -227,7 +228,7 @@ Module mdlExcelv2
         nombreReporte(exc, "A3", "L3", "REPORTE DE LA DIRECCIÓN - TRABAJOS RECURRENTES ARREGLADOS")
         nombreColumnas(exc, grid, 6)
         llenarReporteCols(exc, grid, 6, 15)
-        mostrarTotal(exc, grid, 6)
+        MostrarTotal(exc, grid, 6)
 
         exc.SetColumnWidth("A", 49)
         exc.SetColumnWidth("B", "D", 20)
@@ -242,7 +243,7 @@ Module mdlExcelv2
         nombreReporte(exc, "A3", "V3", "REPORTE DE LA DIRECCIÓN - PROPUESTAS POR RESOLVER")
         nombreColumnas(exc, grid, 4)
         llenarReporte(exc, grid, 4, 11)
-        mostrarTotal(exc, grid, 4)
+        MostrarTotal(exc, grid, 4)
 
         exc.SetColumnWidth("A", 49)
         exc.SetColumnWidth("B", "C", 20)
@@ -259,7 +260,7 @@ Module mdlExcelv2
         nombreReporte(exc, "A3", "V3", "REPORTE DE LA DIRECCIÓN - PROPUESTAS RECHAZADAS")
         nombreColumnas(exc, grid, 4)
         llenarReporte(exc, grid, 4, 11)
-        mostrarTotal(exc, grid, 4)
+        MostrarTotal(exc, grid, 4)
 
         exc.SetColumnWidth("A", 49)
         exc.SetColumnWidth("B", "C", 20)
@@ -282,7 +283,7 @@ Module mdlExcelv2
         nombreReporte(exc, "A3", "J3", "CLIENTES NUEVOS REFERENCIADOS")
         nombreColumnas(exc, grid, 7)
         llenarReporteDosCol(exc, grid, 7, 12, 13)
-        mostrarTotal(exc, grid, 7)
+        MostrarTotal(exc, grid, 7)
 
         exc.SetColumnWidth("A", 20)
         exc.SetColumnWidth("B", 45)
@@ -300,7 +301,7 @@ Module mdlExcelv2
         nombreReporte(exc, "A3", "J3", "CLIENTES RECURRENTES REFERENCIADOS")
         nombreColumnas(exc, grid, 7)
         llenarReporteDosCol(exc, grid, 7, 12, 13)
-        mostrarTotal(exc, grid, 7)
+        MostrarTotal(exc, grid, 7)
 
         exc.SetColumnWidth("A", 20)
         exc.SetColumnWidth("B", 45)
@@ -341,6 +342,33 @@ Module mdlExcelv2
         exc.SetColumnWidth("G", 20)
 
         exc.SaveAs(sRutaArchivo & sNombreArchivo & ".xlsx")
+        MsgBox("La información se ha exportado correctamente.", MsgBoxStyle.Information, "SIAT")
+    End Sub
+
+    Public Sub ExportarGRD(grid As DataGridView, sRutaArchivo As String, sNombreArchivo As String)
+        Dim exc As New SLDocument
+
+        '==================== RESUMEN ====================
+        'nombreEmpresa(exc, "A1", "BA2")
+        'nombreReporte(exc, "A3", "BA3", "GRD - CLIENTES")
+
+        'nombreColumnas(exc, grid, 1)
+
+        nombreHoja(exc, "GRD")
+        LlenarReporteTabla(exc, grid, 5, 1, {}, {})
+        'FormatoColumnasTexto(exc, 5, grid.Rows.Count + 4, {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12})
+        'FormatoColumnasNumero(exc, 2, 5, grid.Rows.Count + 4, {13, 14, 15, 16, 17, 18, 19, 20, 21, 22,
+        '                                                       23, 24, 25, 26, 27, 28, 29, 30, 31, 32,
+        '                                                       33, 34, 35, 36, 37, 38, 39, 40, 41, 42,
+        '                                                       43, 44, 45, 46, 47, 48, 49, 50, 51, 52,
+        '                                                       53})
+        'MostrarTotal(exc, grid, 1, "TIPO", "A", "BA")
+
+        exc.SetColumnWidth("A", 49)
+        exc.SetColumnWidth("B", 20)
+        exc.SetColumnWidth("C", 49)
+        exc.SetColumnWidth("D", "BA", 20)
+        exc.SaveAs(sRutaArchivo & sNombreArchivo & ".csv")
         MsgBox("La información se ha exportado correctamente.", MsgBoxStyle.Information, "SIAT")
     End Sub
 
@@ -547,10 +575,10 @@ Module mdlExcelv2
         '        If col.Visible Then
         For Each row As DataGridViewRow In grid.Rows
             If row.Cells(sCol).Value = "T" Then
-                formatoTotal(exc, row.Index + 5, 0, sColIni, sColFin)
+                FormatoTotal(exc, row.Index + 5, 0, sColIni, sColFin)
 
             ElseIf row.Cells(sCol).Value = "TCN" Or row.Cells(sCol).Value.ToString.Contains("TS") Or row.Cells(sCol).Value.ToString.Contains("TG") Then
-                formatoTotalGpo(exc, row.Index + 5, 0, sColIni, sColFin)
+                FormatoTotalGpo(exc, row.Index + 5, 0, sColIni, sColFin)
 
             ElseIf row.Cells(sCol).Value = "TO" Or row.Cells(sCol).Value = "TD" Or row.Cells(sCol).Value = "TA" Or row.Cells(sCol).Value = "TR" Or row.Cells(sCol).Value = "TPC" Or row.Cells(sCol).Value = "TP" Then
                 FormatoTotalDivision(exc, row.Index + 5, 0, sColIni, sColFin)

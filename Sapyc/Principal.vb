@@ -300,7 +300,7 @@
         AbrirPantalla(frm, "frmListaNumSac")
     End Sub
 
-    Private Sub GestiónServiciosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GestiónServiciosToolStripMenuItem.Click
+    Private Sub GestiónServiciosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles itmTipoServicios.Click
         Dim frm As New FrmTipoServicios
 
         If Not Application.OpenForms("FrmTipoServicios") Is Nothing Then
@@ -311,6 +311,9 @@
         End If
     End Sub
 
+    Private Sub itmReportesGRD_Click(sender As Object, e As EventArgs) Handles itmReportesGRD.Click
+        Dim frm As New FrmReportesGRD
 
-
+        AbrirPantalla(frm, "FrmReportesGRD")
+    End Sub
 End Class
