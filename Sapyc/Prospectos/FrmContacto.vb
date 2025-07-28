@@ -22,8 +22,8 @@
     Private dtIndustria, dtSubSector, dtSubNivel As DataTable
     Private sInd, sSS, sGTI As String
 
-    Private iOpcionFun, iOpcionAcc, idProspectos, idIdioma, idPais, idPaisTenedora, idPaisGT As Integer
-    Private sCveInd, sCveSS, sCveGTI As String
+    Private iOpcionFun, iOpcionAcc, idProspectos, idIdioma, idPais, idPaisTenedora, idPaisGT, idPaisDom As Integer
+    Private sCveInd, sCveSS, sCveGTI, sPaisDom As String
 
     Private sCveSoc, sNomSoc, sCorreoSoc As String
     Private sMsgDatosGenerales, sMsgContacto, sMsgAcercamiento, sMsgDomicilio As String
@@ -979,6 +979,26 @@
             dtProspectos = Nothing
         End Try
     End Sub
+
+    Private Sub BtnPaisDomicilio_Click(sender As Object, e As EventArgs) Handles btnPaisDomicilio.Click
+        Dim dlg As New DlgPaises
+
+        If dlg.ShowDialog = DialogResult.OK Then
+            idPaisDom = dlg.idPais
+            sPaisDom = dlg.sPais
+            txtPaisDomicilio.Text = sPaisDom
+            lblMensajeBloqueoDomicilio.Visible = False
+
+            If idPaisDom = 151 Then
+                panDomicilioNac.Visible = True
+                panDomicilioExt.Visible = False
+            Else
+                panDomicilioNac.Visible = False
+                panDomicilioExt.Visible = True
+            End If
+        End If
+    End Sub
+
     Private Sub ListarSubSector()
         Try
             Dim sTabla As String = "tbProspectos"
@@ -1725,7 +1745,7 @@
                 End If
 
                 idPais = CInt(dtDatosGenerales.Rows(0).Item("idPais").ToString)
-                'cboPais.SelectedValue = CInt(dtDatosGenerales.Rows(0).Item("idPais").ToString)
+                txtPaisProspecto.Text = dtDatosGenerales.Rows(0).Item("sPais").ToString
 
                 If CBool(dtDatosGenerales.Rows(0).Item("bEntidadReguladora").ToString) = True Then
                     rdEntidadReguladaSi.Checked = True
@@ -1753,9 +1773,8 @@
 
                 txtReferenciaGTISocio.Text = dtDatosGenerales.Rows(0).Item("sSocioRefGTI").ToString
                 idPaisGT = CInt(dtDatosGenerales.Rows(0).Item("idPaisRefGTI").ToString)
-                'cboReferenciaGTIPais.SelectedValue = CInt(dtDatosGenerales.Rows(0).Item("idPaisRefGTI").ToString)
-                'Call cboReferenciaGTIPais_SelectionChangeCommitted(Nothing, Nothing)
-
+                txtPaisGTI.Text = dtDatosGenerales.Rows(0).Item("sPaisGTI").ToString
+                ListarOficinasGT(idPaisGT)
                 cboReferenciaGTIOficina.Text = dtDatosGenerales.Rows(0).Item("sOficinaRefGTI").ToString
 
                 If CBool(dtDatosGenerales.Rows(0).Item("bReportaExtranjero").ToString) = True Then
@@ -1766,7 +1785,7 @@
 
                 txtEmpresaTenedora.Text = dtDatosGenerales.Rows(0).Item("sNombreTenedora").ToString
                 idPaisTenedora = CInt(dtDatosGenerales.Rows(0).Item("idPaisTenedora").ToString)
-                'cboPaisResidencia.SelectedValue = CInt(dtDatosGenerales.Rows(0).Item("idPaisTenedora").ToString)
+                txtPaisResidencia.Text = dtDatosGenerales.Rows(0).Item("sPaisTenedora").ToString
 
                 If CBool(dtDatosGenerales.Rows(0).Item("bDomiciliadasExt").ToString) = True Then
                     rdEmpresaExtranjeroDomSi.Checked = True
@@ -1870,7 +1889,7 @@
 
                 .subAddParameter("@idEntidadReguladora", cboEntidadReguladora.SelectedValue, SqlDbType.Int, ParameterDirection.Input)
                 .subAddParameter("@sOtraEntidad", txtEntidadReguladoraOtro.Text, SqlDbType.VarChar, ParameterDirection.Input)
-                .subAddParameter("@idPais", cboPais.SelectedValue, SqlDbType.Int, ParameterDirection.Input)
+                .subAddParameter("@idPais", idPais, SqlDbType.Int, ParameterDirection.Input)
 
                 If rdEntidadSupervisadaSi.Checked Then
                     .subAddParameter("@bEntidadSupervisada", 1, SqlDbType.Bit, ParameterDirection.Input)
@@ -1884,7 +1903,7 @@
                 If rdReferenciaGTISi.Checked Then
                     .subAddParameter("@bRefGTI", 1, SqlDbType.Bit, ParameterDirection.Input)
                     .subAddParameter("@sNombSocioRefGTI", txtReferenciaGTISocio.Text.ToUpper, SqlDbType.VarChar, ParameterDirection.Input)
-                    .subAddParameter("@IdPaisRefGTI", cboReferenciaGTIPais.SelectedValue, SqlDbType.Int, ParameterDirection.Input)
+                    .subAddParameter("@IdPaisRefGTI", idPaisGT, SqlDbType.Int, ParameterDirection.Input)
                     .subAddParameter("@idOficinaRefGTI", cboReferenciaGTIOficina.Text, SqlDbType.VarChar, ParameterDirection.Input)
                 Else
                     .subAddParameter("@bRefGTI", 0, SqlDbType.Bit, ParameterDirection.Input)
@@ -1900,7 +1919,7 @@
                 End If
 
                 .subAddParameter("@sNombTenedora", txtEmpresaTenedora.Text, SqlDbType.VarChar, ParameterDirection.Input)
-                .subAddParameter("@idPaisTenedora", cboPaisResidencia.SelectedValue, SqlDbType.Int, ParameterDirection.Input)
+                .subAddParameter("@idPaisTenedora", idPaisTenedora, SqlDbType.Int, ParameterDirection.Input)
 
                 If rdEmpresaExtranjeroDomSi.Checked Then
                     .subAddParameter("@bDomiciliadas", 1, SqlDbType.Bit, ParameterDirection.Input)
@@ -1979,7 +1998,7 @@
 
                 .subAddParameter("@idEntidadReguladora", cboEntidadReguladora.SelectedValue, SqlDbType.Int, ParameterDirection.Input)
                 .subAddParameter("@sOtraEntidad", txtEntidadReguladoraOtro.Text, SqlDbType.VarChar, ParameterDirection.Input)
-                .subAddParameter("@idPais", cboPais.SelectedValue, SqlDbType.Int, ParameterDirection.Input)
+                .subAddParameter("@idPais", idPais, SqlDbType.Int, ParameterDirection.Input)
 
                 If rdEntidadSupervisadaSi.Checked Then
                     .subAddParameter("@bEntidadSupervisada", 1, SqlDbType.Bit, ParameterDirection.Input)
@@ -1993,7 +2012,7 @@
                 If rdReferenciaGTISi.Checked Then
                     .subAddParameter("@bRefGTI", 1, SqlDbType.Bit, ParameterDirection.Input)
                     .subAddParameter("@sNombSocioRefGTI", txtReferenciaGTISocio.Text.ToUpper, SqlDbType.VarChar, ParameterDirection.Input)
-                    .subAddParameter("@IdPaisRefGTI", cboReferenciaGTIPais.SelectedValue, SqlDbType.Int, ParameterDirection.Input)
+                    .subAddParameter("@IdPaisRefGTI", idPaisGT, SqlDbType.Int, ParameterDirection.Input)
                     .subAddParameter("@idOficinaRefGTI", cboReferenciaGTIOficina.Text, SqlDbType.VarChar, ParameterDirection.Input)
                 Else
                     .subAddParameter("@bRefGTI", 0, SqlDbType.Bit, ParameterDirection.Input)
@@ -2009,7 +2028,7 @@
                 End If
 
                 .subAddParameter("@sNombTenedora", txtEmpresaTenedora.Text, SqlDbType.VarChar, ParameterDirection.Input)
-                .subAddParameter("@idPaisTenedora", cboPaisResidencia.SelectedValue, SqlDbType.Int, ParameterDirection.Input)
+                .subAddParameter("@idPaisTenedora", idPaisTenedora, SqlDbType.Int, ParameterDirection.Input)
 
                 If rdEmpresaExtranjeroDomSi.Checked Then
                     .subAddParameter("@bDomiciliadas", 1, SqlDbType.Bit, ParameterDirection.Input)
@@ -2036,7 +2055,7 @@
                 Else
                     .subAddParameter("@bIdioma", 0, SqlDbType.Bit, ParameterDirection.Input)
                 End If
-                .subAddParameter("@idIdioma", cboIdioma.SelectedValue, SqlDbType.Int, ParameterDirection.Input)
+                .subAddParameter("@idIdioma", idIdioma, SqlDbType.Int, ParameterDirection.Input)
                 .subAddParameter("@dFechaIni", txtPeriodoInicio.Value, SqlDbType.DateTime, ParameterDirection.Input)
                 .subAddParameter("@dFechaFin", txtPeriodoFinal.Value, SqlDbType.DateTime, ParameterDirection.Input)
                 .subAddParameter("@dFechaEntrega", txtFechaEntregaReporte.Value, SqlDbType.DateTime, ParameterDirection.Input)
@@ -2046,7 +2065,6 @@
                 .subAddParameter("@sGerenteRefGTI", txtGerenteGTI.Text, SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@sCorreoGerenteRefGTI", txtCorreoGerenteGTI.Text, SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@sEstadoRefGTI", txtEstadoGTI.Text, SqlDbType.VarChar, ParameterDirection.Input)
-
 
                 .funExecuteSP("paControlSac")
             End With
@@ -2482,21 +2500,22 @@
 
             If dtDomicilio.Rows.Count > 0 Then
                 lblMensajeCargaDomicilio.Visible = False
+                lblMensajeBloqueoDomicilio.Visible = False
 
-                If CInt(dtDomicilio.Rows(0).Item("idPais").ToString) = 151 Then
+                idPaisDom = CInt(dtDomicilio.Rows(0).Item("idPais").ToString)
+                sPaisDom = dtDomicilio.Rows(0).Item("sPais").ToString
+                txtPaisDomicilio.Text = sPaisDom
+
+                If idPaisDom = 151 Then
                     panDomicilioNac.Visible = True
                     panDomicilioExt.Visible = False
 
                 Else
                     panDomicilioNac.Visible = False
                     panDomicilioExt.Visible = True
-
                 End If
 
-
-                cboDomicilioPais.SelectedValue = CInt(dtDomicilio.Rows(0).Item("idPais").ToString)
-
-                If CInt(dtDomicilio.Rows(0).Item("idPais").ToString) = 151 Then
+                If idPaisDom = 151 Then
                     cboDomicilioPais.SelectedValue = CInt(dtDomicilio.Rows(0).Item("idPais").ToString())
                     txtDomicilioCalle.Text = dtDomicilio.Rows(0).Item("sCalle").ToString
                     txtDomicilioNoExt.Text = dtDomicilio.Rows(0).Item("sNumExt").ToString
@@ -2510,20 +2529,23 @@
                     cboDomicilioColonia.SelectedValue = CInt(dtDomicilio.Rows(0).Item("idColonia").ToString)
 
                     txtDomicilioExtDireccion1.Text = ""
+                    txtDomicilioExtDireccion2.Text = ""
                     txtDomicilioExtLocalidad.Text = ""
                     txtDomicilioExtEstado.Text = ""
+                    txtDomicilioExtCP.Text = ""
                 Else
-                    txtDomicilioExtDireccion1.Text = dtDomicilio.Rows(0).Item("sColonia").ToString
+                    txtDomicilioExtDireccion1.Text = dtDomicilio.Rows(0).Item("sCalle").ToString
+                    txtDomicilioExtDireccion2.Text = dtDomicilio.Rows(0).Item("sColonia").ToString
                     txtDomicilioExtLocalidad.Text = dtDomicilio.Rows(0).Item("sMunicipio").ToString
                     txtDomicilioExtEstado.Text = dtDomicilio.Rows(0).Item("sEstado").ToString
-
-                    txtDomicilioCalle.Text = dtDomicilio.Rows(0).Item("sCalle").ToString
-                    txtDomicilioNoExt.Text = dtDomicilio.Rows(0).Item("sNumExt").ToString
-                    txtDomicilioNoInt.Text = dtDomicilio.Rows(0).Item("sNumInt").ToString
-                    txtDomicilioCP.Text = dtDomicilio.Rows(0).Item("sCP").ToString
+                    txtDomicilioExtCP.Text = dtDomicilio.Rows(0).Item("sCP").ToString
                 End If
             Else
                 lblMensajeCargaDomicilio.Visible = True
+                lblMensajeBloqueoDomicilio.Visible = True
+
+                panDomicilioNac.Visible = False
+                panDomicilioExt.Visible = False
 
                 LimpiarDatosDomicilio()
             End If
@@ -2539,8 +2561,8 @@
                 .subClearParameters()
                 .subAddParameter("@iOpcion", 6, SqlDbType.Int, ParameterDirection.Input)
                 .subAddParameter("@sCveProspecto", sCveProspecto, SqlDbType.VarChar, ParameterDirection.Input)
-                .subAddParameter("@idPais", cboDomicilioPais.SelectedValue, SqlDbType.Int, ParameterDirection.Input)
-                If cboDomicilioPais.SelectedValue = 151 Then
+                .subAddParameter("@idPais", idPaisDom, SqlDbType.Int, ParameterDirection.Input)
+                If idPaisDom = 151 Then
                     .subAddParameter("@sCalle", txtDomicilioCalle.Text, SqlDbType.VarChar, ParameterDirection.Input)
                     .subAddParameter("@sNumExt", txtDomicilioNoExt.Text, SqlDbType.VarChar, ParameterDirection.Input)
                     .subAddParameter("@sNumInt", txtDomicilioNoInt.Text, SqlDbType.VarChar, ParameterDirection.Input)
@@ -2583,8 +2605,8 @@
                 .subClearParameters()
                 .subAddParameter("@iOpcion", 5, SqlDbType.Int, ParameterDirection.Input)
                 .subAddParameter("@sCveProspecto", sCveProspecto, SqlDbType.VarChar, ParameterDirection.Input)
-                .subAddParameter("@idPais", cboDomicilioPais.SelectedValue, SqlDbType.Int, ParameterDirection.Input)
-                If cboDomicilioPais.SelectedValue = 151 Then
+                .subAddParameter("@idPais", idPaisDom, SqlDbType.Int, ParameterDirection.Input)
+                If idPaisDom = 151 Then
                     .subAddParameter("@sCalle", txtDomicilioCalle.Text, SqlDbType.VarChar, ParameterDirection.Input)
                     .subAddParameter("@sNumExt", txtDomicilioNoExt.Text, SqlDbType.VarChar, ParameterDirection.Input)
                     .subAddParameter("@sNumInt", txtDomicilioNoInt.Text, SqlDbType.VarChar, ParameterDirection.Input)
@@ -2764,12 +2786,12 @@
         sMsgDomicilio = vbNewLine & DOMICILIO & vbNewLine
         sMsgDomicilio &= "===============================" & vbNewLine
 
-        If cboDomicilioPais.SelectedValue <= 0 Then
+        If idPaisDom <= 0 Then
             sMsgDomicilio &= "- Seleccione el país del domicilio del prospecto." & vbNewLine & vbNewLine
             bValidacion = False
         End If
 
-        If cboDomicilioPais.SelectedIndex <> 151 Then
+        If idPaisDom <> 151 Then
             If Trim(txtDomicilioExtDireccion1.Text) = "" Then
                 sMsgDomicilio &= "- Especifíque calle y número de la dirección del prospecto." & vbNewLine & vbNewLine
                 bValidacion = False
@@ -2923,7 +2945,7 @@
             bValidacion = False
         End If
 
-        If rdSubsidiariaSi.Checked = True And (rdControladoraSi.Checked = False And rdControladoraNO.Checked = False) Then
+        If rdSubsidiariaSi.Checked = True And rdControladoraSi.Checked = False And rdControladoraNO.Checked = False Then
             sMsgDatosGenerales &= "- Especifíque si el prospecto reportará a su compañia controladora." & vbNewLine & vbNewLine
             bValidacion = False
         End If
