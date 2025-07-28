@@ -169,21 +169,21 @@
                 InsertarContactoInicial()
                 InsertarDomicilio()
 
-                '''INSERTA TABLAS PROSPECTOS NUEVOS'''
+                'INSERTA TABLAS PROSPECTOS NUEVOS
                 InsertaGeneralProspectos()
                 InsertarContactoInicialProspectos()
                 InsertarAcercamientoProspectos()
                 InsertarDomicilioProspectos()
 
-                '''INSERTA PROPUESTA SIAT ACTUALIZA SOCIO AREA Y OFICINA EN PROSPECTOS'''
+                'INSERTA PROPUESTA SIAT ACTUALIZA SOCIO AREA Y OFICINA EN PROSPECTOS
                 InsertarPropuesta()
             Else
-                '''INSERTA TABLAS PROSPECTOS NUEVOS'''
+                'INSERTA TABLAS PROSPECTOS NUEVOS
                 InsertaGeneralProspectos()
                 InsertarContactoInicialProspectos()
                 InsertarAcercamientoProspectos()
                 InsertarDomicilioProspectos()
-                '''INSERTA PROPUESTA SIAT ACTUALIZA SOCIO AREA Y OFICINA EN PROSPECTOS'''
+                'INSERTA PROPUESTA SIAT ACTUALIZA SOCIO AREA Y OFICINA EN PROSPECTOS
                 InsertarPropuestaNuevos()
             End If
 
@@ -404,6 +404,34 @@
             txtIdioma.Text = dlg.sIdioma
         End If
     End Sub
+    Private Sub BtnPaisProspecto_Click(sender As Object, e As EventArgs) Handles btnPaisProspecto.Click
+        Dim dlg As New DlgPaises
+
+        If dlg.ShowDialog = DialogResult.OK Then
+            idPais = dlg.idPais
+            txtPaisProspecto.Text = dlg.sPais
+        End If
+    End Sub
+    Private Sub BtnPaisGTI_Click(sender As Object, e As EventArgs) Handles btnPaisGTI.Click
+        Dim dlg As New DlgPaises
+
+        If dlg.ShowDialog = DialogResult.OK Then
+            idPaisGT = dlg.idPais
+            txtPaisGTI.Text = dlg.sPais
+
+            If idPaisGT <> 0 Then
+                ListarOficinasGT(idPaisGT)
+            End If
+        End If
+    End Sub
+    Private Sub BtnPaisResidencia_Click(sender As Object, e As EventArgs) Handles btnPaisResidencia.Click
+        Dim dlg As New DlgPaises
+
+        If dlg.ShowDialog = DialogResult.OK Then
+            idPaisTenedora = dlg.idPais
+            txtPaisResidencia.Text = dlg.sPais
+        End If
+    End Sub
 
     Private Sub CboOficinas_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboOficina.SelectedIndexChanged
         If cboOficina.SelectedIndex = -1 Then
@@ -499,14 +527,16 @@
         End If
     End Sub
 
-    Private Sub rdReferenciaGTISi_CheckedChanged(sender As Object, e As EventArgs) Handles rdReferenciaGTISi.CheckedChanged
+    Private Sub RdReferenciaGTISi_CheckedChanged(sender As Object, e As EventArgs) Handles rdReferenciaGTISi.CheckedChanged
         txtReferenciaGTISocio.Enabled = True
-        cboReferenciaGTIPais.Enabled = True
+        'cboReferenciaGTIPais.Enabled = True
+        btnPaisGTI.Enabled = True
         cboReferenciaGTIOficina.Enabled = True
     End Sub
-    Private Sub rdReferenciaGTINo_CheckedChanged(sender As Object, e As EventArgs) Handles rdReferenciaGTINo.CheckedChanged
+    Private Sub RdReferenciaGTINo_CheckedChanged(sender As Object, e As EventArgs) Handles rdReferenciaGTINo.CheckedChanged
         txtReferenciaGTISocio.Enabled = False
-        cboReferenciaGTIPais.Enabled = False
+        'cboReferenciaGTIPais.Enabled = False
+        btnPaisGTI.Enabled = False
         cboReferenciaGTIOficina.Enabled = False
     End Sub
 
@@ -578,11 +608,11 @@
 
     End Function
 
-    Private Sub cboReferenciaGTIPais_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles cboReferenciaGTIPais.SelectionChangeCommitted
-        If cboReferenciaGTIPais.SelectedIndex <> 0 Then
-            ListarOficinasGT(cboReferenciaGTIPais.SelectedValue)
-        End If
-    End Sub
+    'Private Sub cboReferenciaGTIPais_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles cboReferenciaGTIPais.SelectionChangeCommitted
+    '    If cboReferenciaGTIPais.SelectedIndex <> 0 Then
+    '        ListarOficinasGT(cboReferenciaGTIPais.SelectedValue)
+    '    End If
+    'End Sub
 
 #End Region
 
@@ -1694,7 +1724,8 @@
                     rdControladoraNO.Checked = True
                 End If
 
-                cboPais.SelectedValue = CInt(dtDatosGenerales.Rows(0).Item("idPais").ToString)
+                idPais = CInt(dtDatosGenerales.Rows(0).Item("idPais").ToString)
+                'cboPais.SelectedValue = CInt(dtDatosGenerales.Rows(0).Item("idPais").ToString)
 
                 If CBool(dtDatosGenerales.Rows(0).Item("bEntidadReguladora").ToString) = True Then
                     rdEntidadReguladaSi.Checked = True
@@ -1721,8 +1752,9 @@
                 End If
 
                 txtReferenciaGTISocio.Text = dtDatosGenerales.Rows(0).Item("sSocioRefGTI").ToString
-                cboReferenciaGTIPais.SelectedValue = CInt(dtDatosGenerales.Rows(0).Item("idPaisRefGTI").ToString)
-                Call cboReferenciaGTIPais_SelectionChangeCommitted(Nothing, Nothing)
+                idPaisGT = CInt(dtDatosGenerales.Rows(0).Item("idPaisRefGTI").ToString)
+                'cboReferenciaGTIPais.SelectedValue = CInt(dtDatosGenerales.Rows(0).Item("idPaisRefGTI").ToString)
+                'Call cboReferenciaGTIPais_SelectionChangeCommitted(Nothing, Nothing)
 
                 cboReferenciaGTIOficina.Text = dtDatosGenerales.Rows(0).Item("sOficinaRefGTI").ToString
 
@@ -1733,7 +1765,8 @@
                 End If
 
                 txtEmpresaTenedora.Text = dtDatosGenerales.Rows(0).Item("sNombreTenedora").ToString
-                cboPaisResidencia.SelectedValue = CInt(dtDatosGenerales.Rows(0).Item("idPaisTenedora").ToString)
+                idPaisTenedora = CInt(dtDatosGenerales.Rows(0).Item("idPaisTenedora").ToString)
+                'cboPaisResidencia.SelectedValue = CInt(dtDatosGenerales.Rows(0).Item("idPaisTenedora").ToString)
 
                 If CBool(dtDatosGenerales.Rows(0).Item("bDomiciliadasExt").ToString) = True Then
                     rdEmpresaExtranjeroDomSi.Checked = True
@@ -2864,7 +2897,8 @@
             bValidacion = False
         End If
 
-        If cboPais.SelectedValue <= 0 Then
+        'If cboPais.SelectedValue <= 0 Then
+        If idPais <= 0 Then
             sMsgDatosGenerales &= "- Seleccione el país del prospecto." & vbNewLine & vbNewLine
             bValidacion = False
         End If
@@ -2939,7 +2973,8 @@
             bValidacion = False
         End If
 
-        If rdReferenciaGTISi.Checked = True And cboReferenciaGTIPais.SelectedIndex = 0 Then
+        'If rdReferenciaGTISi.Checked = True And cboReferenciaGTIPais.SelectedIndex = 0 Then
+        If rdReferenciaGTISi.Checked = True And idPaisGT <= 0 Then
             sMsgDatosGenerales &= "- Especifíque el país de referencia de GTI." & vbNewLine & vbNewLine
             bValidacion = False
         End If
@@ -2959,7 +2994,8 @@
             bValidacion = False
         End If
 
-        If rdEmpresaExtranjeroRepSi.Checked = True And cboPaisResidencia.SelectedIndex = 0 Then
+        'If rdEmpresaExtranjeroRepSi.Checked = True And cboPaisResidencia.SelectedIndex = 0 Then
+        If rdEmpresaExtranjeroRepSi.Checked = True And idPaisTenedora <= 0 Then
             sMsgDatosGenerales &= "- Especifíque el país de residencia de la empresa tenedora." & vbNewLine & vbNewLine
             bValidacion = False
         End If

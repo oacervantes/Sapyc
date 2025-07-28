@@ -40,6 +40,8 @@ Partial Class FrmContacto
         Me.btnCerrar = New System.Windows.Forms.Button()
         Me.panDatosGenerales = New System.Windows.Forms.Panel()
         Me.gpBoxDatosDG = New System.Windows.Forms.GroupBox()
+        Me.txtPaisProspecto = New System.Windows.Forms.TextBox()
+        Me.btnPaisProspecto = New System.Windows.Forms.Button()
         Me.Lista = New System.Windows.Forms.DataGridView()
         Me.txtRazonSocial = New System.Windows.Forms.TextBox()
         Me.lblIdSAC = New System.Windows.Forms.Label()
@@ -121,6 +123,8 @@ Partial Class FrmContacto
         Me.rdEntidadSupervisadaSi = New System.Windows.Forms.RadioButton()
         Me.cboPais = New System.Windows.Forms.ComboBox()
         Me.gpBoxReferenciaGTI = New System.Windows.Forms.GroupBox()
+        Me.btnPaisGTI = New System.Windows.Forms.Button()
+        Me.txtPaisGTI = New System.Windows.Forms.TextBox()
         Me.txtEstadoGTI = New System.Windows.Forms.TextBox()
         Me.lblEstadoGTI = New System.Windows.Forms.Label()
         Me.txtCorreoGerenteGTI = New System.Windows.Forms.TextBox()
@@ -139,6 +143,8 @@ Partial Class FrmContacto
         Me.rdReferenciaGTISi = New System.Windows.Forms.RadioButton()
         Me.lblPais = New System.Windows.Forms.Label()
         Me.gpBoxEmpresaExtranjero = New System.Windows.Forms.GroupBox()
+        Me.btnPaisResidencia = New System.Windows.Forms.Button()
+        Me.txtPaisResidencia = New System.Windows.Forms.TextBox()
         Me.panRDDomExt = New System.Windows.Forms.Panel()
         Me.rdEmpresaExtranjeroDomSi = New System.Windows.Forms.RadioButton()
         Me.rdEmpresaExtranjeroDomNo = New System.Windows.Forms.RadioButton()
@@ -149,7 +155,6 @@ Partial Class FrmContacto
         Me.cboTipoEntidad = New System.Windows.Forms.ComboBox()
         Me.lblTipoEntidad = New System.Windows.Forms.Label()
         Me.lblCompañiaSubsidiaria = New System.Windows.Forms.Label()
-        Me.cboPaisResidencia = New System.Windows.Forms.ComboBox()
         Me.lblReporteExtranjero = New System.Windows.Forms.Label()
         Me.lblPaisResidencia = New System.Windows.Forms.Label()
         Me.txtEmpresaTenedora = New System.Windows.Forms.TextBox()
@@ -157,6 +162,7 @@ Partial Class FrmContacto
         Me.panRDRepExt = New System.Windows.Forms.Panel()
         Me.rdEmpresaExtranjeroRepSi = New System.Windows.Forms.RadioButton()
         Me.rdEmpresaExtranjeroRepNo = New System.Windows.Forms.RadioButton()
+        Me.cboPaisResidencia = New System.Windows.Forms.ComboBox()
         Me.lblMensajeCargaDatosGenerales = New System.Windows.Forms.Label()
         Me.panLinea = New System.Windows.Forms.Panel()
         Me.lblTituloDatosGenerales = New System.Windows.Forms.Label()
@@ -489,6 +495,8 @@ Partial Class FrmContacto
         '
         'gpBoxDatosDG
         '
+        Me.gpBoxDatosDG.Controls.Add(Me.txtPaisProspecto)
+        Me.gpBoxDatosDG.Controls.Add(Me.btnPaisProspecto)
         Me.gpBoxDatosDG.Controls.Add(Me.Lista)
         Me.gpBoxDatosDG.Controls.Add(Me.txtRazonSocial)
         Me.gpBoxDatosDG.Controls.Add(Me.lblIdSAC)
@@ -520,9 +528,28 @@ Partial Class FrmContacto
         Me.gpBoxDatosDG.Enabled = False
         Me.gpBoxDatosDG.Location = New System.Drawing.Point(14, 80)
         Me.gpBoxDatosDG.Name = "gpBoxDatosDG"
-        Me.gpBoxDatosDG.Size = New System.Drawing.Size(1060, 1534)
+        Me.gpBoxDatosDG.Size = New System.Drawing.Size(1059, 1534)
         Me.gpBoxDatosDG.TabIndex = 3
         Me.gpBoxDatosDG.TabStop = False
+        '
+        'txtPaisProspecto
+        '
+        Me.txtPaisProspecto.Enabled = False
+        Me.txtPaisProspecto.Location = New System.Drawing.Point(60, 848)
+        Me.txtPaisProspecto.Name = "txtPaisProspecto"
+        Me.txtPaisProspecto.ReadOnly = True
+        Me.txtPaisProspecto.Size = New System.Drawing.Size(304, 25)
+        Me.txtPaisProspecto.TabIndex = 21
+        '
+        'btnPaisProspecto
+        '
+        Me.btnPaisProspecto.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnPaisProspecto.Location = New System.Drawing.Point(375, 848)
+        Me.btnPaisProspecto.Name = "btnPaisProspecto"
+        Me.btnPaisProspecto.Size = New System.Drawing.Size(50, 25)
+        Me.btnPaisProspecto.TabIndex = 22
+        Me.btnPaisProspecto.Text = "..."
+        Me.btnPaisProspecto.UseVisualStyleBackColor = True
         '
         'Lista
         '
@@ -1005,7 +1032,7 @@ Partial Class FrmContacto
         Me.gpBoxSubsidiaria.Location = New System.Drawing.Point(533, 890)
         Me.gpBoxSubsidiaria.Name = "gpBoxSubsidiaria"
         Me.gpBoxSubsidiaria.Size = New System.Drawing.Size(506, 112)
-        Me.gpBoxSubsidiaria.TabIndex = 23
+        Me.gpBoxSubsidiaria.TabIndex = 24
         Me.gpBoxSubsidiaria.TabStop = False
         '
         'lblSubsidiaria
@@ -1145,7 +1172,7 @@ Partial Class FrmContacto
         Me.gpBoxEmpresaPublica.Location = New System.Drawing.Point(17, 890)
         Me.gpBoxEmpresaPublica.Name = "gpBoxEmpresaPublica"
         Me.gpBoxEmpresaPublica.Size = New System.Drawing.Size(506, 112)
-        Me.gpBoxEmpresaPublica.TabIndex = 22
+        Me.gpBoxEmpresaPublica.TabIndex = 23
         Me.gpBoxEmpresaPublica.TabStop = False
         Me.gpBoxEmpresaPublica.Text = "Empresa pública"
         '
@@ -1202,6 +1229,7 @@ Partial Class FrmContacto
         'cboBolsaValores
         '
         Me.cboBolsaValores.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboBolsaValores.DropDownWidth = 300
         Me.cboBolsaValores.Enabled = False
         Me.cboBolsaValores.FormattingEnabled = True
         Me.cboBolsaValores.Location = New System.Drawing.Point(136, 55)
@@ -1220,7 +1248,7 @@ Partial Class FrmContacto
         Me.gpBoxEntidadReguladora.Location = New System.Drawing.Point(17, 1017)
         Me.gpBoxEntidadReguladora.Name = "gpBoxEntidadReguladora"
         Me.gpBoxEntidadReguladora.Size = New System.Drawing.Size(506, 89)
-        Me.gpBoxEntidadReguladora.TabIndex = 24
+        Me.gpBoxEntidadReguladora.TabIndex = 25
         Me.gpBoxEntidadReguladora.TabStop = False
         Me.gpBoxEntidadReguladora.Text = "Entidad regulada"
         '
@@ -1296,7 +1324,7 @@ Partial Class FrmContacto
         Me.gpBoxEntidadSupervisada.Location = New System.Drawing.Point(533, 1017)
         Me.gpBoxEntidadSupervisada.Name = "gpBoxEntidadSupervisada"
         Me.gpBoxEntidadSupervisada.Size = New System.Drawing.Size(506, 89)
-        Me.gpBoxEntidadSupervisada.TabIndex = 25
+        Me.gpBoxEntidadSupervisada.TabIndex = 26
         Me.gpBoxEntidadSupervisada.TabStop = False
         Me.gpBoxEntidadSupervisada.Text = "Entidad supervisada"
         '
@@ -1365,13 +1393,16 @@ Partial Class FrmContacto
         Me.cboPais.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboPais.DropDownWidth = 260
         Me.cboPais.FormattingEnabled = True
-        Me.cboPais.Location = New System.Drawing.Point(55, 847)
+        Me.cboPais.Location = New System.Drawing.Point(740, 836)
         Me.cboPais.Name = "cboPais"
         Me.cboPais.Size = New System.Drawing.Size(293, 26)
         Me.cboPais.TabIndex = 21
+        Me.cboPais.Visible = False
         '
         'gpBoxReferenciaGTI
         '
+        Me.gpBoxReferenciaGTI.Controls.Add(Me.btnPaisGTI)
+        Me.gpBoxReferenciaGTI.Controls.Add(Me.txtPaisGTI)
         Me.gpBoxReferenciaGTI.Controls.Add(Me.txtEstadoGTI)
         Me.gpBoxReferenciaGTI.Controls.Add(Me.lblEstadoGTI)
         Me.gpBoxReferenciaGTI.Controls.Add(Me.txtCorreoGerenteGTI)
@@ -1391,30 +1422,49 @@ Partial Class FrmContacto
         Me.gpBoxReferenciaGTI.Location = New System.Drawing.Point(17, 1121)
         Me.gpBoxReferenciaGTI.Name = "gpBoxReferenciaGTI"
         Me.gpBoxReferenciaGTI.Size = New System.Drawing.Size(1022, 191)
-        Me.gpBoxReferenciaGTI.TabIndex = 26
+        Me.gpBoxReferenciaGTI.TabIndex = 27
         Me.gpBoxReferenciaGTI.TabStop = False
         Me.gpBoxReferenciaGTI.Text = "Referencia GTI"
         '
+        'btnPaisGTI
+        '
+        Me.btnPaisGTI.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnPaisGTI.Location = New System.Drawing.Point(950, 29)
+        Me.btnPaisGTI.Name = "btnPaisGTI"
+        Me.btnPaisGTI.Size = New System.Drawing.Size(50, 25)
+        Me.btnPaisGTI.TabIndex = 12
+        Me.btnPaisGTI.Text = "..."
+        Me.btnPaisGTI.UseVisualStyleBackColor = True
+        '
+        'txtPaisGTI
+        '
+        Me.txtPaisGTI.Enabled = False
+        Me.txtPaisGTI.Location = New System.Drawing.Point(698, 29)
+        Me.txtPaisGTI.Name = "txtPaisGTI"
+        Me.txtPaisGTI.ReadOnly = True
+        Me.txtPaisGTI.Size = New System.Drawing.Size(246, 25)
+        Me.txtPaisGTI.TabIndex = 11
+        '
         'txtEstadoGTI
         '
-        Me.txtEstadoGTI.Location = New System.Drawing.Point(734, 64)
+        Me.txtEstadoGTI.Location = New System.Drawing.Point(698, 64)
         Me.txtEstadoGTI.Name = "txtEstadoGTI"
-        Me.txtEstadoGTI.Size = New System.Drawing.Size(214, 25)
-        Me.txtEstadoGTI.TabIndex = 13
+        Me.txtEstadoGTI.Size = New System.Drawing.Size(302, 25)
+        Me.txtEstadoGTI.TabIndex = 14
         '
         'lblEstadoGTI
         '
         Me.lblEstadoGTI.AutoSize = True
         Me.lblEstadoGTI.Font = New System.Drawing.Font("Calibri", 11.0!)
-        Me.lblEstadoGTI.Location = New System.Drawing.Point(665, 69)
+        Me.lblEstadoGTI.Location = New System.Drawing.Point(629, 69)
         Me.lblEstadoGTI.Name = "lblEstadoGTI"
         Me.lblEstadoGTI.Size = New System.Drawing.Size(60, 18)
-        Me.lblEstadoGTI.TabIndex = 12
+        Me.lblEstadoGTI.TabIndex = 13
         Me.lblEstadoGTI.Text = "Estado*:"
         '
         'txtCorreoGerenteGTI
         '
-        Me.txtCorreoGerenteGTI.Location = New System.Drawing.Point(266, 137)
+        Me.txtCorreoGerenteGTI.Location = New System.Drawing.Point(254, 137)
         Me.txtCorreoGerenteGTI.Name = "txtCorreoGerenteGTI"
         Me.txtCorreoGerenteGTI.Size = New System.Drawing.Size(358, 25)
         Me.txtCorreoGerenteGTI.TabIndex = 9
@@ -1423,7 +1473,7 @@ Partial Class FrmContacto
         '
         Me.lblCorreoGerenteGTI.AutoSize = True
         Me.lblCorreoGerenteGTI.Font = New System.Drawing.Font("Calibri", 11.0!)
-        Me.lblCorreoGerenteGTI.Location = New System.Drawing.Point(127, 140)
+        Me.lblCorreoGerenteGTI.Location = New System.Drawing.Point(115, 140)
         Me.lblCorreoGerenteGTI.Name = "lblCorreoGerenteGTI"
         Me.lblCorreoGerenteGTI.Size = New System.Drawing.Size(127, 18)
         Me.lblCorreoGerenteGTI.TabIndex = 8
@@ -1431,7 +1481,7 @@ Partial Class FrmContacto
         '
         'txtGerenteGTI
         '
-        Me.txtGerenteGTI.Location = New System.Drawing.Point(265, 101)
+        Me.txtGerenteGTI.Location = New System.Drawing.Point(253, 101)
         Me.txtGerenteGTI.Name = "txtGerenteGTI"
         Me.txtGerenteGTI.Size = New System.Drawing.Size(358, 25)
         Me.txtGerenteGTI.TabIndex = 7
@@ -1440,7 +1490,7 @@ Partial Class FrmContacto
         '
         Me.lblGerenteGTI.AutoSize = True
         Me.lblGerenteGTI.Font = New System.Drawing.Font("Calibri", 11.0!)
-        Me.lblGerenteGTI.Location = New System.Drawing.Point(127, 104)
+        Me.lblGerenteGTI.Location = New System.Drawing.Point(115, 104)
         Me.lblGerenteGTI.Name = "lblGerenteGTI"
         Me.lblGerenteGTI.Size = New System.Drawing.Size(63, 18)
         Me.lblGerenteGTI.TabIndex = 6
@@ -1448,7 +1498,7 @@ Partial Class FrmContacto
         '
         'txtCorreoSocioGTI
         '
-        Me.txtCorreoSocioGTI.Location = New System.Drawing.Point(265, 65)
+        Me.txtCorreoSocioGTI.Location = New System.Drawing.Point(253, 65)
         Me.txtCorreoSocioGTI.Name = "txtCorreoSocioGTI"
         Me.txtCorreoSocioGTI.Size = New System.Drawing.Size(358, 25)
         Me.txtCorreoSocioGTI.TabIndex = 5
@@ -1457,7 +1507,7 @@ Partial Class FrmContacto
         '
         Me.lblCorreoSocioGTI.AutoSize = True
         Me.lblCorreoSocioGTI.Font = New System.Drawing.Font("Calibri", 11.0!)
-        Me.lblCorreoSocioGTI.Location = New System.Drawing.Point(127, 68)
+        Me.lblCorreoSocioGTI.Location = New System.Drawing.Point(115, 68)
         Me.lblCorreoSocioGTI.Name = "lblCorreoSocioGTI"
         Me.lblCorreoSocioGTI.Size = New System.Drawing.Size(134, 18)
         Me.lblCorreoSocioGTI.TabIndex = 4
@@ -1467,26 +1517,27 @@ Partial Class FrmContacto
         '
         Me.cboReferenciaGTIOficina.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboReferenciaGTIOficina.FormattingEnabled = True
-        Me.cboReferenciaGTIOficina.Location = New System.Drawing.Point(734, 100)
+        Me.cboReferenciaGTIOficina.Location = New System.Drawing.Point(698, 100)
         Me.cboReferenciaGTIOficina.Name = "cboReferenciaGTIOficina"
-        Me.cboReferenciaGTIOficina.Size = New System.Drawing.Size(214, 26)
-        Me.cboReferenciaGTIOficina.TabIndex = 15
+        Me.cboReferenciaGTIOficina.Size = New System.Drawing.Size(302, 26)
+        Me.cboReferenciaGTIOficina.TabIndex = 16
         '
         'cboReferenciaGTIPais
         '
         Me.cboReferenciaGTIPais.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboReferenciaGTIPais.DropDownWidth = 260
         Me.cboReferenciaGTIPais.FormattingEnabled = True
-        Me.cboReferenciaGTIPais.Location = New System.Drawing.Point(734, 28)
+        Me.cboReferenciaGTIPais.Location = New System.Drawing.Point(31, 161)
         Me.cboReferenciaGTIPais.Name = "cboReferenciaGTIPais"
         Me.cboReferenciaGTIPais.Size = New System.Drawing.Size(214, 26)
         Me.cboReferenciaGTIPais.TabIndex = 11
+        Me.cboReferenciaGTIPais.Visible = False
         '
         'lblReferenciaGTIPais
         '
         Me.lblReferenciaGTIPais.AutoSize = True
         Me.lblReferenciaGTIPais.Font = New System.Drawing.Font("Calibri", 11.0!)
-        Me.lblReferenciaGTIPais.Location = New System.Drawing.Point(665, 32)
+        Me.lblReferenciaGTIPais.Location = New System.Drawing.Point(629, 32)
         Me.lblReferenciaGTIPais.Name = "lblReferenciaGTIPais"
         Me.lblReferenciaGTIPais.Size = New System.Drawing.Size(43, 18)
         Me.lblReferenciaGTIPais.TabIndex = 10
@@ -1496,15 +1547,15 @@ Partial Class FrmContacto
         '
         Me.lblRefGTIOficina.AutoSize = True
         Me.lblRefGTIOficina.Font = New System.Drawing.Font("Calibri", 11.0!)
-        Me.lblRefGTIOficina.Location = New System.Drawing.Point(665, 104)
+        Me.lblRefGTIOficina.Location = New System.Drawing.Point(629, 104)
         Me.lblRefGTIOficina.Name = "lblRefGTIOficina"
         Me.lblRefGTIOficina.Size = New System.Drawing.Size(62, 18)
-        Me.lblRefGTIOficina.TabIndex = 14
+        Me.lblRefGTIOficina.TabIndex = 15
         Me.lblRefGTIOficina.Text = "Oficina*:"
         '
         'txtReferenciaGTISocio
         '
-        Me.txtReferenciaGTISocio.Location = New System.Drawing.Point(264, 29)
+        Me.txtReferenciaGTISocio.Location = New System.Drawing.Point(252, 29)
         Me.txtReferenciaGTISocio.Name = "txtReferenciaGTISocio"
         Me.txtReferenciaGTISocio.Size = New System.Drawing.Size(358, 25)
         Me.txtReferenciaGTISocio.TabIndex = 3
@@ -1513,7 +1564,7 @@ Partial Class FrmContacto
         '
         Me.lbRefGTISocio.AutoSize = True
         Me.lbRefGTISocio.Font = New System.Drawing.Font("Calibri", 11.0!)
-        Me.lbRefGTISocio.Location = New System.Drawing.Point(127, 32)
+        Me.lbRefGTISocio.Location = New System.Drawing.Point(115, 32)
         Me.lbRefGTISocio.Name = "lbRefGTISocio"
         Me.lbRefGTISocio.Size = New System.Drawing.Size(52, 18)
         Me.lbRefGTISocio.TabIndex = 2
@@ -1552,24 +1603,45 @@ Partial Class FrmContacto
         '
         'gpBoxEmpresaExtranjero
         '
+        Me.gpBoxEmpresaExtranjero.Controls.Add(Me.btnPaisResidencia)
+        Me.gpBoxEmpresaExtranjero.Controls.Add(Me.txtPaisResidencia)
         Me.gpBoxEmpresaExtranjero.Controls.Add(Me.panRDDomExt)
         Me.gpBoxEmpresaExtranjero.Controls.Add(Me.panRDSubExt)
         Me.gpBoxEmpresaExtranjero.Controls.Add(Me.lblDomicilioExtranjero)
         Me.gpBoxEmpresaExtranjero.Controls.Add(Me.cboTipoEntidad)
         Me.gpBoxEmpresaExtranjero.Controls.Add(Me.lblTipoEntidad)
         Me.gpBoxEmpresaExtranjero.Controls.Add(Me.lblCompañiaSubsidiaria)
-        Me.gpBoxEmpresaExtranjero.Controls.Add(Me.cboPaisResidencia)
         Me.gpBoxEmpresaExtranjero.Controls.Add(Me.lblReporteExtranjero)
         Me.gpBoxEmpresaExtranjero.Controls.Add(Me.lblPaisResidencia)
         Me.gpBoxEmpresaExtranjero.Controls.Add(Me.txtEmpresaTenedora)
         Me.gpBoxEmpresaExtranjero.Controls.Add(Me.lblEmpresaTenedora)
         Me.gpBoxEmpresaExtranjero.Controls.Add(Me.panRDRepExt)
+        Me.gpBoxEmpresaExtranjero.Controls.Add(Me.cboPaisResidencia)
         Me.gpBoxEmpresaExtranjero.Location = New System.Drawing.Point(17, 1324)
         Me.gpBoxEmpresaExtranjero.Name = "gpBoxEmpresaExtranjero"
         Me.gpBoxEmpresaExtranjero.Size = New System.Drawing.Size(1022, 193)
-        Me.gpBoxEmpresaExtranjero.TabIndex = 27
+        Me.gpBoxEmpresaExtranjero.TabIndex = 28
         Me.gpBoxEmpresaExtranjero.TabStop = False
         Me.gpBoxEmpresaExtranjero.Text = "Empresa en el Extranjero"
+        '
+        'btnPaisResidencia
+        '
+        Me.btnPaisResidencia.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnPaisResidencia.Location = New System.Drawing.Point(717, 101)
+        Me.btnPaisResidencia.Name = "btnPaisResidencia"
+        Me.btnPaisResidencia.Size = New System.Drawing.Size(50, 25)
+        Me.btnPaisResidencia.TabIndex = 10
+        Me.btnPaisResidencia.Text = "..."
+        Me.btnPaisResidencia.UseVisualStyleBackColor = True
+        '
+        'txtPaisResidencia
+        '
+        Me.txtPaisResidencia.Enabled = False
+        Me.txtPaisResidencia.Location = New System.Drawing.Point(450, 101)
+        Me.txtPaisResidencia.Name = "txtPaisResidencia"
+        Me.txtPaisResidencia.ReadOnly = True
+        Me.txtPaisResidencia.Size = New System.Drawing.Size(261, 25)
+        Me.txtPaisResidencia.TabIndex = 9
         '
         'panRDDomExt
         '
@@ -1651,19 +1723,19 @@ Partial Class FrmContacto
         '
         Me.cboTipoEntidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboTipoEntidad.FormattingEnabled = True
-        Me.cboTipoEntidad.Location = New System.Drawing.Point(677, 100)
+        Me.cboTipoEntidad.Location = New System.Drawing.Point(789, 100)
         Me.cboTipoEntidad.Name = "cboTipoEntidad"
         Me.cboTipoEntidad.Size = New System.Drawing.Size(212, 26)
-        Me.cboTipoEntidad.TabIndex = 11
+        Me.cboTipoEntidad.TabIndex = 12
         '
         'lblTipoEntidad
         '
         Me.lblTipoEntidad.AutoSize = True
         Me.lblTipoEntidad.Font = New System.Drawing.Font("Calibri", 11.0!)
-        Me.lblTipoEntidad.Location = New System.Drawing.Point(677, 77)
+        Me.lblTipoEntidad.Location = New System.Drawing.Point(789, 77)
         Me.lblTipoEntidad.Name = "lblTipoEntidad"
         Me.lblTipoEntidad.Size = New System.Drawing.Size(104, 18)
-        Me.lblTipoEntidad.TabIndex = 10
+        Me.lblTipoEntidad.TabIndex = 11
         Me.lblTipoEntidad.Text = "Tipo de entidad"
         '
         'lblCompañiaSubsidiaria
@@ -1674,16 +1746,6 @@ Partial Class FrmContacto
         Me.lblCompañiaSubsidiaria.Size = New System.Drawing.Size(270, 36)
         Me.lblCompañiaSubsidiaria.TabIndex = 4
         Me.lblCompañiaSubsidiaria.Text = "¿Compañia en México con subsidiarias en el extranjero?"
-        '
-        'cboPaisResidencia
-        '
-        Me.cboPaisResidencia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboPaisResidencia.DropDownWidth = 260
-        Me.cboPaisResidencia.FormattingEnabled = True
-        Me.cboPaisResidencia.Location = New System.Drawing.Point(450, 100)
-        Me.cboPaisResidencia.Name = "cboPaisResidencia"
-        Me.cboPaisResidencia.Size = New System.Drawing.Size(212, 26)
-        Me.cboPaisResidencia.TabIndex = 9
         '
         'lblReporteExtranjero
         '
@@ -1699,7 +1761,7 @@ Partial Class FrmContacto
         '
         Me.lblPaisResidencia.AutoSize = True
         Me.lblPaisResidencia.Font = New System.Drawing.Font("Calibri", 11.0!)
-        Me.lblPaisResidencia.Location = New System.Drawing.Point(450, 82)
+        Me.lblPaisResidencia.Location = New System.Drawing.Point(450, 77)
         Me.lblPaisResidencia.Name = "lblPaisResidencia"
         Me.lblPaisResidencia.Size = New System.Drawing.Size(102, 18)
         Me.lblPaisResidencia.TabIndex = 8
@@ -1709,7 +1771,7 @@ Partial Class FrmContacto
         '
         Me.txtEmpresaTenedora.Location = New System.Drawing.Point(450, 45)
         Me.txtEmpresaTenedora.Name = "txtEmpresaTenedora"
-        Me.txtEmpresaTenedora.Size = New System.Drawing.Size(439, 25)
+        Me.txtEmpresaTenedora.Size = New System.Drawing.Size(551, 25)
         Me.txtEmpresaTenedora.TabIndex = 7
         '
         'lblEmpresaTenedora
@@ -1752,6 +1814,17 @@ Partial Class FrmContacto
         Me.rdEmpresaExtranjeroRepNo.TabIndex = 1
         Me.rdEmpresaExtranjeroRepNo.Text = "No"
         Me.rdEmpresaExtranjeroRepNo.UseVisualStyleBackColor = True
+        '
+        'cboPaisResidencia
+        '
+        Me.cboPaisResidencia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboPaisResidencia.DropDownWidth = 260
+        Me.cboPaisResidencia.FormattingEnabled = True
+        Me.cboPaisResidencia.Location = New System.Drawing.Point(921, 12)
+        Me.cboPaisResidencia.Name = "cboPaisResidencia"
+        Me.cboPaisResidencia.Size = New System.Drawing.Size(212, 26)
+        Me.cboPaisResidencia.TabIndex = 9
+        Me.cboPaisResidencia.Visible = False
         '
         'lblMensajeCargaDatosGenerales
         '
@@ -2853,4 +2926,10 @@ Partial Class FrmContacto
     Friend WithEvents lblTituloCI As Label
     Friend WithEvents txtIdioma As TextBox
     Friend WithEvents btnIdiomas As Button
+    Friend WithEvents txtPaisProspecto As TextBox
+    Friend WithEvents btnPaisProspecto As Button
+    Friend WithEvents btnPaisGTI As Button
+    Friend WithEvents txtPaisGTI As TextBox
+    Friend WithEvents btnPaisResidencia As Button
+    Friend WithEvents txtPaisResidencia As TextBox
 End Class
