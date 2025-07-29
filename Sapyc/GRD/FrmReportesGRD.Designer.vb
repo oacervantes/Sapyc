@@ -32,6 +32,7 @@ Partial Class FrmReportesGRD
         Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmReportesGRD))
         Me.panPrincipal = New System.Windows.Forms.Panel()
+        Me.btnGenerar = New System.Windows.Forms.Button()
         Me.tabReportes = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.gridClientes = New System.Windows.Forms.DataGridView()
@@ -45,7 +46,6 @@ Partial Class FrmReportesGRD
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.btnSalir = New System.Windows.Forms.Button()
         Me.btnExportar = New System.Windows.Forms.Button()
-        Me.btnGenerar = New System.Windows.Forms.Button()
         Me.panPrincipal.SuspendLayout()
         Me.tabReportes.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -74,6 +74,16 @@ Partial Class FrmReportesGRD
         Me.panPrincipal.Name = "panPrincipal"
         Me.panPrincipal.Size = New System.Drawing.Size(1131, 634)
         Me.panPrincipal.TabIndex = 0
+        '
+        'btnGenerar
+        '
+        Me.btnGenerar.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnGenerar.Location = New System.Drawing.Point(11, 43)
+        Me.btnGenerar.Name = "btnGenerar"
+        Me.btnGenerar.Size = New System.Drawing.Size(130, 25)
+        Me.btnGenerar.TabIndex = 5
+        Me.btnGenerar.Text = "Generar"
+        Me.btnGenerar.UseVisualStyleBackColor = True
         '
         'tabReportes
         '
@@ -123,14 +133,13 @@ Partial Class FrmReportesGRD
         Me.gridClientes.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.gridClientes.GridColor = System.Drawing.Color.Gainsboro
         Me.gridClientes.Location = New System.Drawing.Point(0, 0)
-        Me.gridClientes.MultiSelect = False
         Me.gridClientes.Name = "gridClientes"
         Me.gridClientes.RowHeadersWidth = 25
         DataGridViewCellStyle2.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(127, Byte), Integer))
         Me.gridClientes.RowsDefaultCellStyle = DataGridViewCellStyle2
         Me.gridClientes.RowTemplate.Height = 24
-        Me.gridClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.gridClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
         Me.gridClientes.Size = New System.Drawing.Size(1121, 524)
         Me.gridClientes.TabIndex = 3
         '
@@ -165,14 +174,13 @@ Partial Class FrmReportesGRD
         Me.gridServicios.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.gridServicios.GridColor = System.Drawing.Color.Gainsboro
         Me.gridServicios.Location = New System.Drawing.Point(0, 0)
-        Me.gridServicios.MultiSelect = False
         Me.gridServicios.Name = "gridServicios"
         Me.gridServicios.RowHeadersWidth = 25
         DataGridViewCellStyle4.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(127, Byte), Integer))
         Me.gridServicios.RowsDefaultCellStyle = DataGridViewCellStyle4
         Me.gridServicios.RowTemplate.Height = 24
-        Me.gridServicios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.gridServicios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
         Me.gridServicios.Size = New System.Drawing.Size(1121, 524)
         Me.gridServicios.TabIndex = 3
         '
@@ -302,16 +310,6 @@ Partial Class FrmReportesGRD
         Me.btnExportar.TabIndex = 1
         Me.btnExportar.Text = "Exportar"
         Me.btnExportar.UseVisualStyleBackColor = True
-        '
-        'btnGenerar
-        '
-        Me.btnGenerar.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnGenerar.Location = New System.Drawing.Point(11, 43)
-        Me.btnGenerar.Name = "btnGenerar"
-        Me.btnGenerar.Size = New System.Drawing.Size(130, 25)
-        Me.btnGenerar.TabIndex = 5
-        Me.btnGenerar.Text = "Generar"
-        Me.btnGenerar.UseVisualStyleBackColor = True
         '
         'FrmReportesGRD
         '
