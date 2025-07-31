@@ -91,7 +91,7 @@
                 MnTablas.Visible = True
             Case "4"
                 mnuReportes.Visible = True
-                MnPropuestas.Visible = True
+                mnuProspectos.Visible = True
 
             Case "5"
                 mnuReportes.Visible = True
