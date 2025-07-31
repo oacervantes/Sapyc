@@ -33,7 +33,7 @@ Public Class dlgSubNivel
 #Region "EVENTOS"
 
     Private Sub dlgSubSector_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        lblSubSector.Text = reemplazarCaracter(sSS)
+        lblSubSector.Text = ReemplazarCaracter(sSS)
 
         If iFuente = 1 Then
             listarSubNiveles()

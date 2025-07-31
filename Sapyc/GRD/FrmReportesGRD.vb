@@ -44,10 +44,10 @@ Public Class FrmReportesGRD
                 If dlg.ShowDialog = Windows.Forms.DialogResult.OK Then
 
                     'Clientes.
-                    CrearCsv(gridClientes, dlg.txtDirectorio.Text, "GRD_Clientes.csv")
+                    CrearCsv(gridClientes, dlg.txtDirectorio.Text, "Entity sample " & Now.Day & "-" & Now.Month & "-" & Now.Year & " GT Mexico.csv")
 
                     'Servicios.
-                    CrearCsv(gridServicios, dlg.txtDirectorio.Text, "GRD_Servicios.csv")
+                    CrearCsv(gridServicios, dlg.txtDirectorio.Text, "Client relationship sample " & Now.Day & "-" & Now.Month & "-" & Now.Year & " GT Mexico.csv")
                 Else
                     Exit Sub
                 End If
@@ -167,7 +167,7 @@ Public Class FrmReportesGRD
 
                         drRep = dtReportes.Select("IDREP = 1")
                         For Each d As DataRow In drRep
-                            drEnt(d("REP_COL").ToString()) = dr(d("REP_COL").ToString()).ToString()
+                            drEnt(d("REP_COL").ToString()) = ReemplazarCaracter(dr(d("REP_COL").ToString()).ToString())
                         Next
 
                         dtEntidades.Rows.InsertAt(drEnt, dtEntidades.Rows.Count)
@@ -209,7 +209,7 @@ Public Class FrmReportesGRD
 
                         drRep = dtReportes.Select("IDREP = 2")
                         For Each d As DataRow In drRep
-                            drServ(d("REP_COL").ToString()) = dr(d("REP_COL").ToString()).ToString()
+                            drServ(d("REP_COL").ToString()) = ReemplazarCaracter(dr(d("REP_COL").ToString()).ToString())
                         Next
 
                         dtServicios.Rows.InsertAt(drServ, dtServicios.Rows.Count)
@@ -250,7 +250,7 @@ Public Class FrmReportesGRD
 
                         drRep = dtReportes.Select("IDREP = 3")
                         For Each d As DataRow In drRep
-                            drProv(d("REP_COL").ToString()) = dr(d("REP_COL").ToString()).ToString()
+                            drProv(d("REP_COL").ToString()) = ReemplazarCaracter(dr(d("REP_COL").ToString()).ToString())
                         Next
 
                         dtProveedores.Rows.InsertAt(drProv, dtProveedores.Rows.Count)
@@ -291,7 +291,7 @@ Public Class FrmReportesGRD
 
                         drRep = dtReportes.Select("IDREP = 4")
                         For Each d As DataRow In drRep
-                            drRol(d("REP_COL").ToString()) = dr(d("REP_COL").ToString()).ToString()
+                            drRol(d("REP_COL").ToString()) = ReemplazarCaracter(dr(d("REP_COL").ToString()).ToString())
                         Next
 
                         dtRolesEntidad.Rows.InsertAt(drRol, dtRolesEntidad.Rows.Count)
@@ -309,23 +309,30 @@ Public Class FrmReportesGRD
 
     Private Sub CrearCsv(grid As DataGridView, sRuta As String, sArchivo As String)
         Using sw As New StreamWriter(Path.Combine(sRuta, sArchivo), False, Encoding.UTF8)
+            ' Escribir encabezados
+            Dim headerCols As New List(Of String)
             For Each col As DataGridViewColumn In grid.Columns
                 If col.Visible Then
-                    sw.Write(col.HeaderText & ",")
+                    headerCols.Add(col.HeaderText)
                 End If
             Next
-            sw.WriteLine()
+            sw.WriteLine(String.Join(",", headerCols))
+
+            ' Escribir filas
             For Each row As DataGridViewRow In grid.Rows
-                For Each cell As DataGridViewCell In row.Cells
-                    If cell.Visible Then
-                        If cell.Value Is Nothing OrElse String.IsNullOrEmpty(cell.Value.ToString()) Then
-                            sw.Write(""""" ,")
-                        Else
-                            sw.Write(cell.Value.ToString() & ",")
+                If Not row.IsNewRow Then
+                    Dim cellValues As New List(Of String)
+                    For Each cell As DataGridViewCell In row.Cells
+                        If cell.Visible Then
+                            If cell.Value Is Nothing OrElse String.IsNullOrEmpty(cell.Value.ToString()) Then
+                                cellValues.Add("""""")
+                            Else
+                                cellValues.Add(cell.Value.ToString())
+                            End If
                         End If
-                    End If
-                Next
-                sw.WriteLine()
+                    Next
+                    sw.WriteLine(String.Join(",", cellValues))
+                End If
             Next
         End Using
 

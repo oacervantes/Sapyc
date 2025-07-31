@@ -33,7 +33,7 @@ Public Class dlgSubSector
 #Region "EVENTOS"
 
     Private Sub dlgSubSector_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        lblIndustria.Text = reemplazarCaracter(sIndustria)
+        lblIndustria.Text = ReemplazarCaracter(sIndustria)
 
         If iFuente = 1 Then
             listarSubSectores()
