@@ -213,9 +213,11 @@ Partial Class FrmContacto
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.lblTituloDomicilio = New System.Windows.Forms.Label()
         Me.gpBoxDatosDomicilio = New System.Windows.Forms.GroupBox()
+        Me.lblMensajeBloqueoDomicilio = New System.Windows.Forms.Label()
+        Me.txtPaisDomicilio = New System.Windows.Forms.TextBox()
+        Me.btnPaisDomicilio = New System.Windows.Forms.Button()
         Me.lblCamposDomicilio = New System.Windows.Forms.Label()
         Me.lblDomicilioPais = New System.Windows.Forms.Label()
-        Me.cboDomicilioPais = New System.Windows.Forms.ComboBox()
         Me.panDomicilioExt = New System.Windows.Forms.Panel()
         Me.txtDomicilioExtCP = New System.Windows.Forms.TextBox()
         Me.lblDomicilioExtCP = New System.Windows.Forms.Label()
@@ -242,9 +244,7 @@ Partial Class FrmContacto
         Me.lblDomicilioColonia = New System.Windows.Forms.Label()
         Me.txtDomicilioCP = New System.Windows.Forms.TextBox()
         Me.lblDomicilioCP = New System.Windows.Forms.Label()
-        Me.txtPaisDomicilio = New System.Windows.Forms.TextBox()
-        Me.btnPaisDomicilio = New System.Windows.Forms.Button()
-        Me.lblMensajeBloqueoDomicilio = New System.Windows.Forms.Label()
+        Me.cboDomicilioPais = New System.Windows.Forms.ComboBox()
         Me.panMenu.SuspendLayout()
         Me.panMensajesError.SuspendLayout()
         Me.panDatosGenerales.SuspendLayout()
@@ -2366,14 +2366,44 @@ Partial Class FrmContacto
         Me.gpBoxDatosDomicilio.Controls.Add(Me.btnPaisDomicilio)
         Me.gpBoxDatosDomicilio.Controls.Add(Me.lblCamposDomicilio)
         Me.gpBoxDatosDomicilio.Controls.Add(Me.lblDomicilioPais)
-        Me.gpBoxDatosDomicilio.Controls.Add(Me.panDomicilioExt)
         Me.gpBoxDatosDomicilio.Controls.Add(Me.panDomicilioNac)
+        Me.gpBoxDatosDomicilio.Controls.Add(Me.panDomicilioExt)
         Me.gpBoxDatosDomicilio.Enabled = False
         Me.gpBoxDatosDomicilio.Location = New System.Drawing.Point(91, 101)
         Me.gpBoxDatosDomicilio.Name = "gpBoxDatosDomicilio"
         Me.gpBoxDatosDomicilio.Size = New System.Drawing.Size(898, 478)
         Me.gpBoxDatosDomicilio.TabIndex = 0
         Me.gpBoxDatosDomicilio.TabStop = False
+        '
+        'lblMensajeBloqueoDomicilio
+        '
+        Me.lblMensajeBloqueoDomicilio.AutoSize = True
+        Me.lblMensajeBloqueoDomicilio.Font = New System.Drawing.Font("Calibri", 10.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle))
+        Me.lblMensajeBloqueoDomicilio.ForeColor = System.Drawing.Color.IndianRed
+        Me.lblMensajeBloqueoDomicilio.Location = New System.Drawing.Point(536, 49)
+        Me.lblMensajeBloqueoDomicilio.Name = "lblMensajeBloqueoDomicilio"
+        Me.lblMensajeBloqueoDomicilio.Size = New System.Drawing.Size(330, 17)
+        Me.lblMensajeBloqueoDomicilio.TabIndex = 44
+        Me.lblMensajeBloqueoDomicilio.Text = "*Seleccione un país para capturar los datos del domicilio."
+        '
+        'txtPaisDomicilio
+        '
+        Me.txtPaisDomicilio.Enabled = False
+        Me.txtPaisDomicilio.Location = New System.Drawing.Point(166, 45)
+        Me.txtPaisDomicilio.Name = "txtPaisDomicilio"
+        Me.txtPaisDomicilio.ReadOnly = True
+        Me.txtPaisDomicilio.Size = New System.Drawing.Size(304, 25)
+        Me.txtPaisDomicilio.TabIndex = 23
+        '
+        'btnPaisDomicilio
+        '
+        Me.btnPaisDomicilio.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnPaisDomicilio.Location = New System.Drawing.Point(481, 45)
+        Me.btnPaisDomicilio.Name = "btnPaisDomicilio"
+        Me.btnPaisDomicilio.Size = New System.Drawing.Size(50, 25)
+        Me.btnPaisDomicilio.TabIndex = 24
+        Me.btnPaisDomicilio.Text = "..."
+        Me.btnPaisDomicilio.UseVisualStyleBackColor = True
         '
         'lblCamposDomicilio
         '
@@ -2393,17 +2423,6 @@ Partial Class FrmContacto
         Me.lblDomicilioPais.Size = New System.Drawing.Size(37, 18)
         Me.lblDomicilioPais.TabIndex = 0
         Me.lblDomicilioPais.Text = "País:"
-        '
-        'cboDomicilioPais
-        '
-        Me.cboDomicilioPais.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboDomicilioPais.DropDownWidth = 300
-        Me.cboDomicilioPais.FormattingEnabled = True
-        Me.cboDomicilioPais.Location = New System.Drawing.Point(739, 80)
-        Me.cboDomicilioPais.Name = "cboDomicilioPais"
-        Me.cboDomicilioPais.Size = New System.Drawing.Size(255, 26)
-        Me.cboDomicilioPais.TabIndex = 1
-        Me.cboDomicilioPais.Visible = False
         '
         'panDomicilioExt
         '
@@ -2643,35 +2662,16 @@ Partial Class FrmContacto
         Me.lblDomicilioCP.TabIndex = 6
         Me.lblDomicilioCP.Text = "Código Postal:"
         '
-        'txtPaisDomicilio
+        'cboDomicilioPais
         '
-        Me.txtPaisDomicilio.Enabled = False
-        Me.txtPaisDomicilio.Location = New System.Drawing.Point(166, 45)
-        Me.txtPaisDomicilio.Name = "txtPaisDomicilio"
-        Me.txtPaisDomicilio.ReadOnly = True
-        Me.txtPaisDomicilio.Size = New System.Drawing.Size(304, 25)
-        Me.txtPaisDomicilio.TabIndex = 23
-        '
-        'btnPaisDomicilio
-        '
-        Me.btnPaisDomicilio.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnPaisDomicilio.Location = New System.Drawing.Point(481, 45)
-        Me.btnPaisDomicilio.Name = "btnPaisDomicilio"
-        Me.btnPaisDomicilio.Size = New System.Drawing.Size(50, 25)
-        Me.btnPaisDomicilio.TabIndex = 24
-        Me.btnPaisDomicilio.Text = "..."
-        Me.btnPaisDomicilio.UseVisualStyleBackColor = True
-        '
-        'lblMensajeBloqueoDomicilio
-        '
-        Me.lblMensajeBloqueoDomicilio.AutoSize = True
-        Me.lblMensajeBloqueoDomicilio.Font = New System.Drawing.Font("Calibri", 10.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle))
-        Me.lblMensajeBloqueoDomicilio.ForeColor = System.Drawing.Color.IndianRed
-        Me.lblMensajeBloqueoDomicilio.Location = New System.Drawing.Point(536, 49)
-        Me.lblMensajeBloqueoDomicilio.Name = "lblMensajeBloqueoDomicilio"
-        Me.lblMensajeBloqueoDomicilio.Size = New System.Drawing.Size(330, 17)
-        Me.lblMensajeBloqueoDomicilio.TabIndex = 44
-        Me.lblMensajeBloqueoDomicilio.Text = "*Seleccione un país para capturar los datos del domicilio."
+        Me.cboDomicilioPais.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboDomicilioPais.DropDownWidth = 300
+        Me.cboDomicilioPais.FormattingEnabled = True
+        Me.cboDomicilioPais.Location = New System.Drawing.Point(739, 80)
+        Me.cboDomicilioPais.Name = "cboDomicilioPais"
+        Me.cboDomicilioPais.Size = New System.Drawing.Size(255, 26)
+        Me.cboDomicilioPais.TabIndex = 1
+        Me.cboDomicilioPais.Visible = False
         '
         'FrmContacto
         '
@@ -2683,10 +2683,10 @@ Partial Class FrmContacto
         Me.Controls.Add(Me.btnCancelaGeneral)
         Me.Controls.Add(Me.btnCerrar)
         Me.Controls.Add(Me.panMenu)
-        Me.Controls.Add(Me.panDireccion)
-        Me.Controls.Add(Me.panContactoInicial)
         Me.Controls.Add(Me.panDatosGenerales)
         Me.Controls.Add(Me.panAcercamiento)
+        Me.Controls.Add(Me.panDireccion)
+        Me.Controls.Add(Me.panContactoInicial)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
