@@ -3006,10 +3006,10 @@
             bValidacion = False
         End If
 
-        If rdReferenciaGTISi.Checked = True And cboReferenciaGTIPais.SelectedIndex = 0 And cboReferenciaGTIOficina.SelectedIndex = 0 Then
-            sMsgDatosGenerales &= "- Especifíque la oficina de referencia de GTI." & vbNewLine & vbNewLine
-            bValidacion = False
-        End If
+        'If rdReferenciaGTISi.Checked = True And cboReferenciaGTIPais.SelectedIndex = 0 And cboReferenciaGTIOficina.SelectedIndex = 0 Then
+        '    sMsgDatosGenerales &= "- Especifíque la oficina de referencia de GTI." & vbNewLine & vbNewLine
+        '    bValidacion = False
+        'End If
 
         If rdEmpresaExtranjeroRepSi.Checked = False And rdEmpresaExtranjeroRepNo.Checked = False Then
             sMsgDatosGenerales &= "- Especifíque si el prospecto reporta al extranjero." & vbNewLine & vbNewLine
