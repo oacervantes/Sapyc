@@ -12,7 +12,7 @@
     Private Const ACERCAMIENTO As String = "ACERCAMIENTO"
     Private Const DOMICILIO As String = "DOMICILIO"
 
-    Private dtCvesProspectos, dtProspectos, dtRfc As New DataTable
+    Private dtCvesProspectos, dtProspectos, dtRfc, dtIdSac As New DataTable
     Private dtDatosGenerales As New DataTable
     Private dtContactoInicial As New DataTable
     Private dtComoSeEntero, dtMedioContacto, dtAcercamiento As New DataTable
@@ -948,7 +948,24 @@
         'lblMensajeErrorAcercamiento.Visible = False
         'lblMensajeErrorDomicilio.Visible = False
     End Sub
+    Private Sub txtIdSAC_Leave(sender As Object, e As EventArgs) Handles txtIdSAC.Leave
+        If txtIdSAC.Text = "" Then
+            MsgBox("Debes indicar un ID SAC .", MsgBoxStyle.Exclamation, "Dato Incorrecto")
+            Exit Sub
+        End If
 
+        If ExisteIDSAC(Me.txtIdSAC.Text) Then
+
+            MsgBox("No se puede dar de alta este ID SAC, ya se dio de alta", MsgBoxStyle.Exclamation, "Nombre Incorrecto")
+            txtIdSAC.Text = ""
+        Else
+            txtIdSAC.CharacterCasing = CharacterCasing.Upper
+        End If
+
+    End Sub
+    Private Sub txtIdSAC_TextChanged(sender As Object, e As EventArgs) Handles txtIdSAC.TextChanged
+        txtIdSAC.CharacterCasing = CharacterCasing.Upper
+    End Sub
     Private Sub listarIndustrias()
         Try
             Dim sTabla As String = "tbProspectos"
@@ -979,7 +996,6 @@
             dtProspectos = Nothing
         End Try
     End Sub
-
     Private Sub BtnPaisDomicilio_Click(sender As Object, e As EventArgs) Handles btnPaisDomicilio.Click
         Dim dlg As New DlgPaises
 
@@ -998,7 +1014,6 @@
             End If
         End If
     End Sub
-
     Private Sub ListarSubSector()
         Try
             Dim sTabla As String = "tbProspectos"
@@ -1153,7 +1168,6 @@
             MsgBox("Hubo un problema al registrar la información del domicilio, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
         End Try
     End Sub
-
     Private Sub EnvioCorreoSocio()
         Try
             With ds.Tables
@@ -1387,7 +1401,6 @@
             dtPais = Nothing
         End Try
     End Sub
-
     Private Sub ListarPaisGT()
         Try
             Dim sTabla As String = "tbPais"
@@ -1682,7 +1695,6 @@
             dtSocios = Nothing
         End Try
     End Sub
-
     Private Sub ListarDatosGenerales()
         Try
             Dim sTabla As String = "tbDatosGenerales"
@@ -2205,7 +2217,6 @@
             dtComoSeEntero = Nothing
         End Try
     End Sub
-
     Private Sub ListarMedioContactoAcerca()
         Try
             Dim sTabla As String = "tbMedioContactoAcerca"
@@ -3055,6 +3066,34 @@
 
                 dtRfc = .Item("paConsultaTrabajoRecurrente")
                 If dtRfc.Rows.Count > 0 Then
+                    Resp = True
+                End If
+            End With
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
+        End Try
+
+        Return Resp
+
+    End Function
+    Private Function ExisteIDSAC(idsac As String) As Boolean
+        Dim Resp As Boolean = False
+        Try
+            With ds.Tables
+                With clsLocal
+                    .subClearParameters()
+                    .subAddParameter("@iOpcion", 11, SqlDbType.Int, ParameterDirection.Input)
+                    .subAddParameter("@IdSac", idsac, SqlDbType.VarChar, ParameterDirection.Input)
+                End With
+
+                If .Contains("paControlSac") Then
+                    .Remove("paControlSac")
+                End If
+
+                .Add(clsLocal.funExecuteSPDataTable("paControlSac"))
+
+                dtIdSac = .Item("paControlSac")
+                If dtIdSac.Rows.Count > 0 Then
                     Resp = True
                 End If
             End With
