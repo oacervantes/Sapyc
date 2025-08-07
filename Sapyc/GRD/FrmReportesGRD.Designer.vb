@@ -72,7 +72,7 @@ Partial Class FrmReportesGRD
         Me.panPrincipal.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.panPrincipal.Location = New System.Drawing.Point(0, 0)
         Me.panPrincipal.Name = "panPrincipal"
-        Me.panPrincipal.Size = New System.Drawing.Size(1131, 634)
+        Me.panPrincipal.Size = New System.Drawing.Size(1234, 634)
         Me.panPrincipal.TabIndex = 0
         '
         'btnGenerar
@@ -98,7 +98,7 @@ Partial Class FrmReportesGRD
         Me.tabReportes.Location = New System.Drawing.Point(1, 74)
         Me.tabReportes.Name = "tabReportes"
         Me.tabReportes.SelectedIndex = 0
-        Me.tabReportes.Size = New System.Drawing.Size(1129, 557)
+        Me.tabReportes.Size = New System.Drawing.Size(1232, 557)
         Me.tabReportes.SizeMode = System.Windows.Forms.TabSizeMode.Fixed
         Me.tabReportes.TabIndex = 4
         '
@@ -107,7 +107,7 @@ Partial Class FrmReportesGRD
         Me.TabPage1.Controls.Add(Me.gridClientes)
         Me.TabPage1.Location = New System.Drawing.Point(4, 29)
         Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Size = New System.Drawing.Size(1121, 524)
+        Me.TabPage1.Size = New System.Drawing.Size(1224, 524)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "CLIENTES"
         Me.TabPage1.UseVisualStyleBackColor = True
@@ -140,7 +140,7 @@ Partial Class FrmReportesGRD
         Me.gridClientes.RowsDefaultCellStyle = DataGridViewCellStyle2
         Me.gridClientes.RowTemplate.Height = 24
         Me.gridClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
-        Me.gridClientes.Size = New System.Drawing.Size(1121, 524)
+        Me.gridClientes.Size = New System.Drawing.Size(1224, 524)
         Me.gridClientes.TabIndex = 3
         '
         'TabPage2
@@ -275,7 +275,7 @@ Partial Class FrmReportesGRD
         Me.panLinea.BackColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(127, Byte), Integer))
         Me.panLinea.Location = New System.Drawing.Point(0, 36)
         Me.panLinea.Name = "panLinea"
-        Me.panLinea.Size = New System.Drawing.Size(1131, 2)
+        Me.panLinea.Size = New System.Drawing.Size(1234, 2)
         Me.panLinea.TabIndex = 3
         '
         'lblTitulo
@@ -293,7 +293,7 @@ Partial Class FrmReportesGRD
         '
         Me.btnSalir.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnSalir.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSalir.Location = New System.Drawing.Point(989, 640)
+        Me.btnSalir.Location = New System.Drawing.Point(1092, 640)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(130, 25)
         Me.btnSalir.TabIndex = 0
@@ -315,7 +315,7 @@ Partial Class FrmReportesGRD
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        Me.ClientSize = New System.Drawing.Size(1131, 672)
+        Me.ClientSize = New System.Drawing.Size(1234, 672)
         Me.Controls.Add(Me.btnExportar)
         Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.panPrincipal)

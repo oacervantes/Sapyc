@@ -48,6 +48,9 @@ Public Class FrmReportesGRD
 
                     'Servicios.
                     CrearCsv(gridServicios, dlg.txtDirectorio.Text, "Client relationship sample " & Now.Day & "-" & Now.Month & "-" & Now.Year & " GT Mexico.csv")
+
+                    'Proveedores.
+                    CrearCsv(gridProveedores, dlg.txtDirectorio.Text, "Business relationship sample " & Now.Day & "-" & Now.Month & "-" & Now.Year & " GT Mexico.csv")
                 Else
                     Exit Sub
                 End If
