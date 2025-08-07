@@ -44,6 +44,14 @@
         DtDatos.Columns.Add("SOCIO", GetType(String))
         DtDatos.Columns.Add("GERENTE", GetType(String))
         DtDatos.Columns.Add("FECHA", GetType(String))
+
+        DtDatos.Columns.Add("ESTATUS", GetType(String))
+        DtDatos.Columns.Add("SOLICITO", GetType(String))
+        DtDatos.Columns.Add("HONORARIOS", GetType(String))
+        DtDatos.Columns.Add("ELIMINADO", GetType(String))
+        DtDatos.Columns.Add("CVETRA", GetType(String))
+        DtDatos.Columns.Add("ALTATRABAJO", GetType(String))
+
     End Sub
     Private Sub FormatoGrid()
         BloquearColumnas(gridDatos)
@@ -58,6 +66,16 @@
         ConfigurarColumnasGrid(gridDatos, "GERENTE", "GERENTE", 250, 1, False)
         ConfigurarColumnasGrid(gridDatos, "sSacDesc", "ID ASIGNACIÓN SAC", 120, 1, False)
         ConfigurarColumnasGrid(gridDatos, "FECHA", "FECHA ALTA", 100, 3, False)
+
+        ConfigurarColumnasGrid(gridDatos, "ESTATUS", "ESTATUS PROPUESTA", 120, 3, False)
+        ConfigurarColumnasGrid(gridDatos, "SOLICITO", "SOLICITO REVISIÓN", 90, 3, False)
+        ConfigurarColumnasGrid(gridDatos, "HONORARIOS", "HONORARIOS PROPUESTA", 100, 3, False)
+        ConfigurarColumnasGrid(gridDatos, "ELIMINADO", "PROPUESTA ELIMINADA", 90, 3, False)
+        ConfigurarColumnasGrid(gridDatos, "CVETRA", "CLAVE TRABAJO", 110, 3, False)
+        ConfigurarColumnasGrid(gridDatos, "ALTATRABAJO", "FECHA ALTA TRABAJO", 100, 3, False)
+
+
+
     End Sub
 
     Private Sub ListaSolicitudes()
@@ -89,6 +107,14 @@
                         drDat("GERENTE") = dr("GERENTE").ToString()
                         drDat("sSacDesc") = dr("sSacDesc").ToString()
                         drDat("FECHA") = dr("FECHA").ToString()
+
+                        drDat("ESTATUS") = dr("ESTATUS").ToString()
+                        drDat("SOLICITO") = dr("SOLICITO").ToString()
+                        drDat("HONORARIOS") = dr("HONORARIOS").ToString()
+                        drDat("ELIMINADO") = dr("ELIMINADO").ToString()
+                        drDat("CVETRA") = dr("CVETRA").ToString()
+                        drDat("ALTATRABAJO") = dr("ALTATRABAJO").ToString()
+
                         DtDatos.Rows.InsertAt(drDat, DtDatos.Rows.Count)
                     Next
 
