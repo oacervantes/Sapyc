@@ -218,17 +218,6 @@ Partial Class FrmContacto
         Me.btnPaisDomicilio = New System.Windows.Forms.Button()
         Me.lblCamposDomicilio = New System.Windows.Forms.Label()
         Me.lblDomicilioPais = New System.Windows.Forms.Label()
-        Me.panDomicilioExt = New System.Windows.Forms.Panel()
-        Me.txtDomicilioExtCP = New System.Windows.Forms.TextBox()
-        Me.lblDomicilioExtCP = New System.Windows.Forms.Label()
-        Me.lblDomicilioExtDireccion2 = New System.Windows.Forms.Label()
-        Me.txtDomicilioExtDireccion2 = New System.Windows.Forms.TextBox()
-        Me.lblDomicilioExtDireccion1 = New System.Windows.Forms.Label()
-        Me.lblDomicilioExtEstado = New System.Windows.Forms.Label()
-        Me.lblDomicilioExtLocalidad = New System.Windows.Forms.Label()
-        Me.txtDomicilioExtLocalidad = New System.Windows.Forms.TextBox()
-        Me.txtDomicilioExtDireccion1 = New System.Windows.Forms.TextBox()
-        Me.txtDomicilioExtEstado = New System.Windows.Forms.TextBox()
         Me.panDomicilioNac = New System.Windows.Forms.Panel()
         Me.lblDomicilioCalle = New System.Windows.Forms.Label()
         Me.cboDomicilioEstado = New System.Windows.Forms.ComboBox()
@@ -244,6 +233,17 @@ Partial Class FrmContacto
         Me.lblDomicilioColonia = New System.Windows.Forms.Label()
         Me.txtDomicilioCP = New System.Windows.Forms.TextBox()
         Me.lblDomicilioCP = New System.Windows.Forms.Label()
+        Me.panDomicilioExt = New System.Windows.Forms.Panel()
+        Me.txtDomicilioExtCP = New System.Windows.Forms.TextBox()
+        Me.lblDomicilioExtCP = New System.Windows.Forms.Label()
+        Me.lblDomicilioExtDireccion2 = New System.Windows.Forms.Label()
+        Me.txtDomicilioExtDireccion2 = New System.Windows.Forms.TextBox()
+        Me.lblDomicilioExtDireccion1 = New System.Windows.Forms.Label()
+        Me.lblDomicilioExtEstado = New System.Windows.Forms.Label()
+        Me.lblDomicilioExtLocalidad = New System.Windows.Forms.Label()
+        Me.txtDomicilioExtLocalidad = New System.Windows.Forms.TextBox()
+        Me.txtDomicilioExtDireccion1 = New System.Windows.Forms.TextBox()
+        Me.txtDomicilioExtEstado = New System.Windows.Forms.TextBox()
         Me.cboDomicilioPais = New System.Windows.Forms.ComboBox()
         Me.panMenu.SuspendLayout()
         Me.panMensajesError.SuspendLayout()
@@ -271,8 +271,8 @@ Partial Class FrmContacto
         Me.gpBoxDatosAcercamiento.SuspendLayout()
         Me.panDireccion.SuspendLayout()
         Me.gpBoxDatosDomicilio.SuspendLayout()
-        Me.panDomicilioExt.SuspendLayout()
         Me.panDomicilioNac.SuspendLayout()
+        Me.panDomicilioExt.SuspendLayout()
         Me.SuspendLayout()
         '
         'panMenu
@@ -2424,104 +2424,6 @@ Partial Class FrmContacto
         Me.lblDomicilioPais.TabIndex = 0
         Me.lblDomicilioPais.Text = "País:"
         '
-        'panDomicilioExt
-        '
-        Me.panDomicilioExt.Controls.Add(Me.txtDomicilioExtCP)
-        Me.panDomicilioExt.Controls.Add(Me.lblDomicilioExtCP)
-        Me.panDomicilioExt.Controls.Add(Me.lblDomicilioExtDireccion2)
-        Me.panDomicilioExt.Controls.Add(Me.txtDomicilioExtDireccion2)
-        Me.panDomicilioExt.Controls.Add(Me.lblDomicilioExtDireccion1)
-        Me.panDomicilioExt.Controls.Add(Me.lblDomicilioExtEstado)
-        Me.panDomicilioExt.Controls.Add(Me.lblDomicilioExtLocalidad)
-        Me.panDomicilioExt.Controls.Add(Me.txtDomicilioExtLocalidad)
-        Me.panDomicilioExt.Controls.Add(Me.txtDomicilioExtDireccion1)
-        Me.panDomicilioExt.Controls.Add(Me.txtDomicilioExtEstado)
-        Me.panDomicilioExt.Location = New System.Drawing.Point(80, 83)
-        Me.panDomicilioExt.Name = "panDomicilioExt"
-        Me.panDomicilioExt.Size = New System.Drawing.Size(738, 340)
-        Me.panDomicilioExt.TabIndex = 15
-        Me.panDomicilioExt.Visible = False
-        '
-        'txtDomicilioExtCP
-        '
-        Me.txtDomicilioExtCP.Location = New System.Drawing.Point(84, 298)
-        Me.txtDomicilioExtCP.Name = "txtDomicilioExtCP"
-        Me.txtDomicilioExtCP.Size = New System.Drawing.Size(309, 25)
-        Me.txtDomicilioExtCP.TabIndex = 9
-        '
-        'lblDomicilioExtCP
-        '
-        Me.lblDomicilioExtCP.AutoSize = True
-        Me.lblDomicilioExtCP.Location = New System.Drawing.Point(84, 273)
-        Me.lblDomicilioExtCP.Name = "lblDomicilioExtCP"
-        Me.lblDomicilioExtCP.Size = New System.Drawing.Size(286, 18)
-        Me.lblDomicilioExtCP.TabIndex = 8
-        Me.lblDomicilioExtCP.Text = "Código Postal / Código ZIP / Código de Área*:"
-        '
-        'lblDomicilioExtDireccion2
-        '
-        Me.lblDomicilioExtDireccion2.AutoSize = True
-        Me.lblDomicilioExtDireccion2.Location = New System.Drawing.Point(84, 81)
-        Me.lblDomicilioExtDireccion2.Name = "lblDomicilioExtDireccion2"
-        Me.lblDomicilioExtDireccion2.Size = New System.Drawing.Size(284, 18)
-        Me.lblDomicilioExtDireccion2.TabIndex = 2
-        Me.lblDomicilioExtDireccion2.Text = "Línea de Dirección 2 (Información Adicional):"
-        '
-        'txtDomicilioExtDireccion2
-        '
-        Me.txtDomicilioExtDireccion2.Location = New System.Drawing.Point(84, 106)
-        Me.txtDomicilioExtDireccion2.Name = "txtDomicilioExtDireccion2"
-        Me.txtDomicilioExtDireccion2.Size = New System.Drawing.Size(560, 25)
-        Me.txtDomicilioExtDireccion2.TabIndex = 3
-        '
-        'lblDomicilioExtDireccion1
-        '
-        Me.lblDomicilioExtDireccion1.AutoSize = True
-        Me.lblDomicilioExtDireccion1.Location = New System.Drawing.Point(84, 17)
-        Me.lblDomicilioExtDireccion1.Name = "lblDomicilioExtDireccion1"
-        Me.lblDomicilioExtDireccion1.Size = New System.Drawing.Size(323, 18)
-        Me.lblDomicilioExtDireccion1.TabIndex = 0
-        Me.lblDomicilioExtDireccion1.Text = "Línea de Dirección 1 (Número y Nombre de Calle)*:"
-        '
-        'lblDomicilioExtEstado
-        '
-        Me.lblDomicilioExtEstado.AutoSize = True
-        Me.lblDomicilioExtEstado.Location = New System.Drawing.Point(84, 209)
-        Me.lblDomicilioExtEstado.Name = "lblDomicilioExtEstado"
-        Me.lblDomicilioExtEstado.Size = New System.Drawing.Size(251, 18)
-        Me.lblDomicilioExtEstado.TabIndex = 6
-        Me.lblDomicilioExtEstado.Text = "Estado / Provincia / Región / Condado*:"
-        '
-        'lblDomicilioExtLocalidad
-        '
-        Me.lblDomicilioExtLocalidad.AutoSize = True
-        Me.lblDomicilioExtLocalidad.Location = New System.Drawing.Point(84, 145)
-        Me.lblDomicilioExtLocalidad.Name = "lblDomicilioExtLocalidad"
-        Me.lblDomicilioExtLocalidad.Size = New System.Drawing.Size(132, 18)
-        Me.lblDomicilioExtLocalidad.TabIndex = 4
-        Me.lblDomicilioExtLocalidad.Text = "Ciudad / Localidad*:"
-        '
-        'txtDomicilioExtLocalidad
-        '
-        Me.txtDomicilioExtLocalidad.Location = New System.Drawing.Point(84, 170)
-        Me.txtDomicilioExtLocalidad.Name = "txtDomicilioExtLocalidad"
-        Me.txtDomicilioExtLocalidad.Size = New System.Drawing.Size(560, 25)
-        Me.txtDomicilioExtLocalidad.TabIndex = 5
-        '
-        'txtDomicilioExtDireccion1
-        '
-        Me.txtDomicilioExtDireccion1.Location = New System.Drawing.Point(84, 42)
-        Me.txtDomicilioExtDireccion1.Name = "txtDomicilioExtDireccion1"
-        Me.txtDomicilioExtDireccion1.Size = New System.Drawing.Size(560, 25)
-        Me.txtDomicilioExtDireccion1.TabIndex = 1
-        '
-        'txtDomicilioExtEstado
-        '
-        Me.txtDomicilioExtEstado.Location = New System.Drawing.Point(84, 234)
-        Me.txtDomicilioExtEstado.Name = "txtDomicilioExtEstado"
-        Me.txtDomicilioExtEstado.Size = New System.Drawing.Size(560, 25)
-        Me.txtDomicilioExtEstado.TabIndex = 7
-        '
         'panDomicilioNac
         '
         Me.panDomicilioNac.Controls.Add(Me.lblDomicilioCalle)
@@ -2662,6 +2564,104 @@ Partial Class FrmContacto
         Me.lblDomicilioCP.TabIndex = 6
         Me.lblDomicilioCP.Text = "Código Postal:"
         '
+        'panDomicilioExt
+        '
+        Me.panDomicilioExt.Controls.Add(Me.txtDomicilioExtCP)
+        Me.panDomicilioExt.Controls.Add(Me.lblDomicilioExtCP)
+        Me.panDomicilioExt.Controls.Add(Me.lblDomicilioExtDireccion2)
+        Me.panDomicilioExt.Controls.Add(Me.txtDomicilioExtDireccion2)
+        Me.panDomicilioExt.Controls.Add(Me.lblDomicilioExtDireccion1)
+        Me.panDomicilioExt.Controls.Add(Me.lblDomicilioExtEstado)
+        Me.panDomicilioExt.Controls.Add(Me.lblDomicilioExtLocalidad)
+        Me.panDomicilioExt.Controls.Add(Me.txtDomicilioExtLocalidad)
+        Me.panDomicilioExt.Controls.Add(Me.txtDomicilioExtDireccion1)
+        Me.panDomicilioExt.Controls.Add(Me.txtDomicilioExtEstado)
+        Me.panDomicilioExt.Location = New System.Drawing.Point(80, 83)
+        Me.panDomicilioExt.Name = "panDomicilioExt"
+        Me.panDomicilioExt.Size = New System.Drawing.Size(738, 340)
+        Me.panDomicilioExt.TabIndex = 15
+        Me.panDomicilioExt.Visible = False
+        '
+        'txtDomicilioExtCP
+        '
+        Me.txtDomicilioExtCP.Location = New System.Drawing.Point(84, 298)
+        Me.txtDomicilioExtCP.Name = "txtDomicilioExtCP"
+        Me.txtDomicilioExtCP.Size = New System.Drawing.Size(309, 25)
+        Me.txtDomicilioExtCP.TabIndex = 9
+        '
+        'lblDomicilioExtCP
+        '
+        Me.lblDomicilioExtCP.AutoSize = True
+        Me.lblDomicilioExtCP.Location = New System.Drawing.Point(84, 273)
+        Me.lblDomicilioExtCP.Name = "lblDomicilioExtCP"
+        Me.lblDomicilioExtCP.Size = New System.Drawing.Size(286, 18)
+        Me.lblDomicilioExtCP.TabIndex = 8
+        Me.lblDomicilioExtCP.Text = "Código Postal / Código ZIP / Código de Área*:"
+        '
+        'lblDomicilioExtDireccion2
+        '
+        Me.lblDomicilioExtDireccion2.AutoSize = True
+        Me.lblDomicilioExtDireccion2.Location = New System.Drawing.Point(84, 81)
+        Me.lblDomicilioExtDireccion2.Name = "lblDomicilioExtDireccion2"
+        Me.lblDomicilioExtDireccion2.Size = New System.Drawing.Size(284, 18)
+        Me.lblDomicilioExtDireccion2.TabIndex = 2
+        Me.lblDomicilioExtDireccion2.Text = "Línea de Dirección 2 (Información Adicional):"
+        '
+        'txtDomicilioExtDireccion2
+        '
+        Me.txtDomicilioExtDireccion2.Location = New System.Drawing.Point(84, 106)
+        Me.txtDomicilioExtDireccion2.Name = "txtDomicilioExtDireccion2"
+        Me.txtDomicilioExtDireccion2.Size = New System.Drawing.Size(560, 25)
+        Me.txtDomicilioExtDireccion2.TabIndex = 3
+        '
+        'lblDomicilioExtDireccion1
+        '
+        Me.lblDomicilioExtDireccion1.AutoSize = True
+        Me.lblDomicilioExtDireccion1.Location = New System.Drawing.Point(84, 17)
+        Me.lblDomicilioExtDireccion1.Name = "lblDomicilioExtDireccion1"
+        Me.lblDomicilioExtDireccion1.Size = New System.Drawing.Size(323, 18)
+        Me.lblDomicilioExtDireccion1.TabIndex = 0
+        Me.lblDomicilioExtDireccion1.Text = "Línea de Dirección 1 (Número y Nombre de Calle)*:"
+        '
+        'lblDomicilioExtEstado
+        '
+        Me.lblDomicilioExtEstado.AutoSize = True
+        Me.lblDomicilioExtEstado.Location = New System.Drawing.Point(84, 209)
+        Me.lblDomicilioExtEstado.Name = "lblDomicilioExtEstado"
+        Me.lblDomicilioExtEstado.Size = New System.Drawing.Size(251, 18)
+        Me.lblDomicilioExtEstado.TabIndex = 6
+        Me.lblDomicilioExtEstado.Text = "Estado / Provincia / Región / Condado*:"
+        '
+        'lblDomicilioExtLocalidad
+        '
+        Me.lblDomicilioExtLocalidad.AutoSize = True
+        Me.lblDomicilioExtLocalidad.Location = New System.Drawing.Point(84, 145)
+        Me.lblDomicilioExtLocalidad.Name = "lblDomicilioExtLocalidad"
+        Me.lblDomicilioExtLocalidad.Size = New System.Drawing.Size(132, 18)
+        Me.lblDomicilioExtLocalidad.TabIndex = 4
+        Me.lblDomicilioExtLocalidad.Text = "Ciudad / Localidad*:"
+        '
+        'txtDomicilioExtLocalidad
+        '
+        Me.txtDomicilioExtLocalidad.Location = New System.Drawing.Point(84, 170)
+        Me.txtDomicilioExtLocalidad.Name = "txtDomicilioExtLocalidad"
+        Me.txtDomicilioExtLocalidad.Size = New System.Drawing.Size(560, 25)
+        Me.txtDomicilioExtLocalidad.TabIndex = 5
+        '
+        'txtDomicilioExtDireccion1
+        '
+        Me.txtDomicilioExtDireccion1.Location = New System.Drawing.Point(84, 42)
+        Me.txtDomicilioExtDireccion1.Name = "txtDomicilioExtDireccion1"
+        Me.txtDomicilioExtDireccion1.Size = New System.Drawing.Size(560, 25)
+        Me.txtDomicilioExtDireccion1.TabIndex = 1
+        '
+        'txtDomicilioExtEstado
+        '
+        Me.txtDomicilioExtEstado.Location = New System.Drawing.Point(84, 234)
+        Me.txtDomicilioExtEstado.Name = "txtDomicilioExtEstado"
+        Me.txtDomicilioExtEstado.Size = New System.Drawing.Size(560, 25)
+        Me.txtDomicilioExtEstado.TabIndex = 7
+        '
         'cboDomicilioPais
         '
         Me.cboDomicilioPais.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
@@ -2745,10 +2745,10 @@ Partial Class FrmContacto
         Me.panDireccion.PerformLayout()
         Me.gpBoxDatosDomicilio.ResumeLayout(False)
         Me.gpBoxDatosDomicilio.PerformLayout()
-        Me.panDomicilioExt.ResumeLayout(False)
-        Me.panDomicilioExt.PerformLayout()
         Me.panDomicilioNac.ResumeLayout(False)
         Me.panDomicilioNac.PerformLayout()
+        Me.panDomicilioExt.ResumeLayout(False)
+        Me.panDomicilioExt.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
