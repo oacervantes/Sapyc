@@ -80,6 +80,9 @@ Public Class FrmPropuestasNvo
             ConsultaCveCliente()
 
 
+            ConsultaFuncionariosGrupo(sCveGpo)
+            ConsultaFuncionariosGrupo(sCveGpo)
+
             If CveCte <> "" Then
                 ConsultaFuncionariosClientes()
                 ConsultaAccionistasClientes()
@@ -87,6 +90,8 @@ Public Class FrmPropuestasNvo
                 ConsultaFuncionarios()
                 ConsultaAccionistas()
             End If
+
+
             ConsultaRelacionadas()
 
             'If TpoProp = "R" Or TpoProp = "S" Then
@@ -118,10 +123,10 @@ Public Class FrmPropuestasNvo
 
                     Ccvegpo.Text = sCveGpo
                     Cdescgpo.Text = sGpoDesc
-                    If dtAccionistas.Rows.Count < 0 Then
+                    If dtAccionistas.Rows.Count = 0 Then
                         ConsultaAccionistasGrupo(sCveGpo)
                     End If
-                    If dtFuncionarios.Rows.Count < 0 Then
+                    If dtFuncionarios.Rows.Count = 0 Then
                         ConsultaFuncionariosGrupo(sCveGpo)
                     End If
                     ConsultaGrupos(sCveGpo)
