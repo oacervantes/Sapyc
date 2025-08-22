@@ -327,8 +327,8 @@ Module mdlExcelv2
         Dim exc As New SLDocument
 
         '==================== OFICINAS ====================
-        nombreEmpresa(exc, "A1", "M2")
-        nombreReporte(exc, "A3", "M3", "REVISIÓN DE PROSPECTOS")
+        nombreEmpresa(exc, "A1", "N2")
+        nombreReporte(exc, "A3", "N3", "REVISIÓN DE PROSPECTOS")
         nombreColumnas(exc, grid, 1)
 
         nombreHoja(exc, "Prospectos")

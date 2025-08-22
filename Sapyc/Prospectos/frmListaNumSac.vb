@@ -47,6 +47,7 @@
 
         DtDatos.Columns.Add("ESTATUS", GetType(String))
         DtDatos.Columns.Add("SOLICITO", GetType(String))
+        DtDatos.Columns.Add("FECHAINDEPENDENCIA", GetType(String))
         DtDatos.Columns.Add("HONORARIOS", GetType(String))
         DtDatos.Columns.Add("ELIMINADO", GetType(String))
         DtDatos.Columns.Add("CVETRA", GetType(String))
@@ -69,6 +70,7 @@
 
         ConfigurarColumnasGrid(gridDatos, "ESTATUS", "ESTATUS PROPUESTA", 120, 3, False)
         ConfigurarColumnasGrid(gridDatos, "SOLICITO", "SOLICITO REVISIÓN", 90, 3, False)
+        ConfigurarColumnasGrid(gridDatos, "FECHAINDEPENDENCIA", "FECHA INDEPENDENCIA", 100, 3, False)
         ConfigurarColumnasGrid(gridDatos, "HONORARIOS", "HONORARIOS PROPUESTA", 100, 3, False)
         ConfigurarColumnasGrid(gridDatos, "ELIMINADO", "PROPUESTA ELIMINADA", 90, 3, False)
         ConfigurarColumnasGrid(gridDatos, "CVETRA", "CLAVE TRABAJO", 110, 3, False)
@@ -110,6 +112,7 @@
 
                         drDat("ESTATUS") = dr("ESTATUS").ToString()
                         drDat("SOLICITO") = dr("SOLICITO").ToString()
+                        drDat("FECHAINDEPENDENCIA") = dr("FECHAINDEPENDENCIA").ToString()
                         drDat("HONORARIOS") = dr("HONORARIOS").ToString()
                         drDat("ELIMINADO") = dr("ELIMINADO").ToString()
                         drDat("CVETRA") = dr("CVETRA").ToString()
