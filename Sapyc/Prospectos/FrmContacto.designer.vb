@@ -2551,6 +2551,7 @@ Partial Class FrmContacto
         'txtDomicilioCP
         '
         Me.txtDomicilioCP.Location = New System.Drawing.Point(197, 99)
+        Me.txtDomicilioCP.MaxLength = 5
         Me.txtDomicilioCP.Name = "txtDomicilioCP"
         Me.txtDomicilioCP.Size = New System.Drawing.Size(135, 25)
         Me.txtDomicilioCP.TabIndex = 7
@@ -2683,10 +2684,10 @@ Partial Class FrmContacto
         Me.Controls.Add(Me.btnCancelaGeneral)
         Me.Controls.Add(Me.btnCerrar)
         Me.Controls.Add(Me.panMenu)
-        Me.Controls.Add(Me.panDatosGenerales)
-        Me.Controls.Add(Me.panAcercamiento)
         Me.Controls.Add(Me.panDireccion)
         Me.Controls.Add(Me.panContactoInicial)
+        Me.Controls.Add(Me.panDatosGenerales)
+        Me.Controls.Add(Me.panAcercamiento)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False

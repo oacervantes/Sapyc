@@ -1,4 +1,6 @@
-﻿Public Class FrmContacto
+﻿Imports System.Text.RegularExpressions
+
+Public Class FrmContacto
 
 #Region "VARIABLES"
 
@@ -819,8 +821,25 @@
     End Sub
 
     Private Sub TxtDomicilioCP_Leave(sender As Object, e As EventArgs) Handles txtDomicilioCP.Leave
+
         If idPaisDom = 151 Then
-            listarColoniasDomicilio(1, txtDomicilioCP.Text)
+
+            If txtDomicilioCP.TextLength <> 5 And txtDomicilioCP.TextLength <> 0 Then
+                MsgBox("El código postal debe contener 5 dígitos.", MsgBoxStyle.Exclamation, "SIAT")
+                txtDomicilioCP.Focus()
+                Exit Sub
+            End If
+
+            Dim esNumerico As Boolean = Regex.IsMatch(txtDomicilioCP.Text, "^\d+$")
+            If esNumerico Then
+                listarColoniasDomicilio(1, txtDomicilioCP.Text)
+            Else
+                MsgBox("El código postal debe ser numerico.", MsgBoxStyle.Exclamation, "SIAT")
+                txtDomicilioCP.Focus()
+                Exit Sub
+            End If
+
+
         End If
     End Sub
 
