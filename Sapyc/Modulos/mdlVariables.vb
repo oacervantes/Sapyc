@@ -30,7 +30,7 @@
     Friend sNombreUsuario As String = "DIRECCIÓN GENERAL"
     Friend sFmtDbl As String = "#,##0.00"
 
-    Friend iPeriodoFirma = 10, iAñoActAn As Integer = 2023 'BuscaCampoTextoCon("SELECT TOP (1) iAñoAnteriorAc FROM PARAMETROS_REPORTES")
+    Friend iPeriodoFirma = 11, iAñoActAn As Integer = 2023 'BuscaCampoTextoCon("SELECT TOP (1) iAñoAnteriorAc FROM PARAMETROS_REPORTES")
 
     '==================== Variables para el formato de grids ====================
     Friend FuenteCelda As New Font("Calibri", 11, FontStyle.Regular)

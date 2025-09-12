@@ -129,80 +129,93 @@ Public Class FrmContacto
         cboDomicilioPais.Focus()
     End Sub
     Private Sub BtnGuardaGeneral_Click(sender As Object, e As EventArgs) Handles btnGuardaGeneral.Click
-        sMsgDatosGenerales = ""
-        sMsgContacto = ""
-        sMsgAcercamiento = ""
-        sMsgDomicilio = ""
+        Try
 
-        '================================ DATOS GENERALES ==============================
-        If ValidarDatosGenerales() Then
             sMsgDatosGenerales = ""
-        End If
-
-        '================================ CONTACTO INICIAL ================================
-        If ValidarContactoInicial() Then
             sMsgContacto = ""
-        End If
-
-        '================================ ACERCAMIENTO ====================================
-        If ValidarAcercamiento() Then
             sMsgAcercamiento = ""
-        End If
-
-        '================================ DOMICILIO ====================================
-        If ValidarDomicilio() Then
             sMsgDomicilio = ""
-        End If
 
-        If sMsgDatosGenerales <> "" Or sMsgContacto <> "" Or sMsgAcercamiento <> "" Or sMsgDomicilio <> "" Then
-            panMensajesError.Visible = True
-            txtMensaje.Text = sMsgDatosGenerales & vbCrLf & sMsgContacto & vbCrLf & sMsgAcercamiento & vbCrLf & sMsgDomicilio
-            Exit Sub
-        Else
-            panMensajesError.Visible = False
-            txtMensaje.Text = ""
-        End If
-
-        If MsgBox("¿Desea guardar los Datos del prospecto?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Agregar Accionista") = MsgBoxResult.Yes Then
-
-            If cboDivision.SelectedValue = "CE" Then
-                InsertaGeneral()
-                InsertarAcercamiento()
-                InsertarContactoInicial()
-                InsertarDomicilio()
-
-                'INSERTA TABLAS PROSPECTOS NUEVOS
-                InsertaGeneralProspectos()
-                InsertarContactoInicialProspectos()
-                InsertarAcercamientoProspectos()
-                InsertarDomicilioProspectos()
-
-                'INSERTA PROPUESTA SIAT ACTUALIZA SOCIO AREA Y OFICINA EN PROSPECTOS
-                InsertarPropuesta()
-            Else
-                'INSERTA TABLAS PROSPECTOS NUEVOS
-                InsertaGeneralProspectos()
-                InsertarContactoInicialProspectos()
-                InsertarAcercamientoProspectos()
-                InsertarDomicilioProspectos()
-                'INSERTA PROPUESTA SIAT ACTUALIZA SOCIO AREA Y OFICINA EN PROSPECTOS
-                InsertarPropuestaNuevos()
+            '================================ DATOS GENERALES ==============================
+            If ValidarDatosGenerales() Then
+                sMsgDatosGenerales = ""
             End If
 
-            EnvioCorreoSocio()
+            '================================ CONTACTO INICIAL ================================
+            If ValidarContactoInicial() Then
+                sMsgContacto = ""
+            End If
 
-            MsgBox("Se registraron los datos del prospecto correctamente.", MsgBoxStyle.Information, "SIAT")
+            '================================ ACERCAMIENTO ====================================
+            If ValidarAcercamiento() Then
+                sMsgAcercamiento = ""
+            End If
 
-            gpBoxDatosDG.Enabled = False
-            btnGuardaGeneral.Enabled = False
-            btnCancelaGeneral.Enabled = False
-            btnRegistroDatosGenerales.Enabled = True
+            '================================ DOMICILIO ====================================
+            If ValidarDomicilio() Then
+                sMsgDomicilio = ""
+            End If
 
-            OcultarMensajesError()
-            ListarProspectos()
+            If sMsgDatosGenerales <> "" Or sMsgContacto <> "" Or sMsgAcercamiento <> "" Or sMsgDomicilio <> "" Then
+                panMensajesError.Visible = True
+                txtMensaje.Text = sMsgDatosGenerales & vbCrLf & sMsgContacto & vbCrLf & sMsgAcercamiento & vbCrLf & sMsgDomicilio
+                Exit Sub
+            Else
+                panMensajesError.Visible = False
+                txtMensaje.Text = ""
+            End If
 
-            'DialogResult = DialogResult.OK
-        End If
+            If MsgBox("¿Desea guardar los Datos del prospecto?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Agregar Accionista") = MsgBoxResult.Yes Then
+
+                If cboDivision.SelectedValue = "CE" Then
+                    InsertaGeneral()
+                    InsertarAcercamiento()
+                    InsertarContactoInicial()
+                    InsertarDomicilio()
+
+                    'INSERTA TABLAS PROSPECTOS NUEVOS
+                    InsertaGeneralProspectos()
+                    InsertarContactoInicialProspectos()
+                    InsertarAcercamientoProspectos()
+                    InsertarDomicilioProspectos()
+
+                    'INSERTA PROPUESTA SIAT ACTUALIZA SOCIO AREA Y OFICINA EN PROSPECTOS
+                    InsertarPropuesta()
+
+                    EnvioCorreoSocio()
+                    MsgBox("Se registraron los datos del prospecto correctamente.", MsgBoxStyle.Information, "SIAT")
+
+                Else
+                    'INSERTA PROPUESTA SIAT ACTUALIZA SOCIO AREA Y OFICINA EN PROSPECTOS
+                    InsertarPropuestaNuevos()
+                    'INSERTA TABLAS PROSPECTOS NUEVOS
+                    InsertaGeneralProspectos()
+                    InsertarContactoInicialProspectos()
+                    InsertarAcercamientoProspectos()
+                    InsertarDomicilioProspectos()
+
+                    EnvioCorreoSocio()
+                    MsgBox("Se registraron los datos del prospecto correctamente.", MsgBoxStyle.Information, "SIAT")
+
+                End If
+
+                gpBoxDatosDG.Enabled = False
+                btnGuardaGeneral.Enabled = False
+                btnCancelaGeneral.Enabled = False
+                btnRegistroDatosGenerales.Enabled = True
+
+                OcultarMensajesError()
+                ListarProspectos()
+
+                'DialogResult = DialogResult.OK
+            End If
+
+        Catch ex As Exception
+            InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "InsertaPropuesta()")
+            MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
+            dtProspectos = Nothing
+        End Try
+
     End Sub
     Private Sub BtnCancelaGeneral_Click(sender As Object, e As EventArgs) Handles btnCancelaGeneral.Click
         bCargaInfo = False
@@ -863,7 +876,6 @@ Public Class FrmContacto
             cbo.Enabled = False
         End If
     End Sub
-
     Private Sub ListarProspectos()
         Try
             Dim sTabla As String = "tbProspectos"
@@ -916,7 +928,6 @@ Public Class FrmContacto
             MsgBox("Hubo un problema al registrar la información de accionistas, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
         End Try
     End Sub
-
     Private Sub InsertarPropuestaProspecto()
         Try
             With clsDatosProp
@@ -969,16 +980,24 @@ Public Class FrmContacto
     End Sub
     Private Sub txtIdSAC_Leave(sender As Object, e As EventArgs) Handles txtIdSAC.Leave
         If txtIdSAC.Text = "" Then
+            txtRazonSocial.Enabled = False
+            txtNombreComercial.Enabled = False
             MsgBox("Debes indicar un ID SAC .", MsgBoxStyle.Exclamation, "Dato Incorrecto")
             Exit Sub
+        Else
+            txtRazonSocial.Enabled = True
+            txtNombreComercial.Enabled = True
         End If
 
         If ExisteIDSAC(Me.txtIdSAC.Text) Then
-
             MsgBox("No se puede dar de alta este ID SAC, ya se dio de alta", MsgBoxStyle.Exclamation, "Nombre Incorrecto")
             txtIdSAC.Text = ""
+            txtRazonSocial.Enabled = False
+            txtNombreComercial.Enabled = False
         Else
             txtIdSAC.CharacterCasing = CharacterCasing.Upper
+            txtRazonSocial.Enabled = True
+            txtNombreComercial.Enabled = True
         End If
 
     End Sub
@@ -1110,7 +1129,7 @@ Public Class FrmContacto
                 .funExecuteSP("paPropuestasCtesProspectos")
             End With
 
-            MsgBox("Se registró la propuesta correctamente.", MsgBoxStyle.Information, "SIAT")
+            'MsgBox("Se registró la propuesta correctamente.", MsgBoxStyle.Information, "SIAT")
         Catch ex As Exception
             InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "InsertarPropuesta()")
             MsgBox("Hubo un problema al registrar la información del domicilio, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
