@@ -160,6 +160,7 @@ Public Class FrmReportesGRD
                 With clsDatos
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 2, SqlDbType.Int, ParameterDirection.Input)
+                    .subAddParameter("@iPeriodo", iPeriodoFirma, SqlDbType.Int, ParameterDirection.Input)
                 End With
 
                 .Add(clsDatos.funExecuteSPDataTable(sStoredProc, sTabla))
