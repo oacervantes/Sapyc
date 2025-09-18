@@ -112,18 +112,15 @@
             End
         End If
     End Sub
-
     Private Sub Principal_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         If MsgBox("¿Estas seguro de salir?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Salir del Sistema") = MsgBoxResult.No Then
             e.Cancel = True
             Exit Sub
         End If
     End Sub
-
     Private Sub TablasDelSistemaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TablasDelSistemaToolStripMenuItem.Click
 
     End Sub
-
     Private Sub BotonAltaPropuesta_Click(sender As Object, e As EventArgs) Handles BotonAltaPropuesta.Click
         If MsgBox("¿Estas seguro de dar de alta una nueva propuesta?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Alta de Propuesta") = MsgBoxResult.No Then
             Exit Sub
@@ -132,90 +129,72 @@
         MttoPropuesta.ShowDialog()
 
     End Sub
-
     Private Sub GirosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GirosToolStripMenuItem.Click
         'Giros.LimpiaPan()
         Giros.ShowDialog()
 
     End Sub
-
     Private Sub ComoSeEnteroToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ComoSeEnteroToolStripMenuItem.Click
         ComoSeEntero.ShowDialog()
 
     End Sub
-
     Private Sub MedioDeContactoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MedioDeContactoToolStripMenuItem.Click
         MedioContacto.ShowDialog()
 
     End Sub
-
     Private Sub ActividadToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ActividadToolStripMenuItem.Click
         Actividades.ShowDialog()
     End Sub
-
     Private Sub DivisionesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DivisionesToolStripMenuItem.Click
         Divisiones.ShowDialog()
 
     End Sub
-
     Private Sub TiposDeServicioToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TiposDeServicioToolStripMenuItem.Click
         TipoServicio.ShowDialog()
 
     End Sub
-
     Private Sub CargarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CargarToolStripMenuItem.Click
         ClientesRestringidos.ShowDialog()
     End Sub
-
     Private Sub SolicitudesToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles SolicitudesToolStripMenuItem1.Click
         Solicitudes.ShowDialog()
     End Sub
-
     Private Sub PToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PToolStripMenuItem.Click
         frmPropuestas.ShowDialog()
 
     End Sub
-
     Private Sub mnuAltaDePropuesta_Click(sender As Object, e As EventArgs) Handles mnuAltaDePropuesta.Click
         MttoPropuesta.LimpiaPan()
         MttoPropuesta.ShowDialog()
     End Sub
-
     Private Sub CargarListasNegrasSSGTToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CargarListasNegrasSSGTToolStripMenuItem.Click
         ClientesRestringidosSSGT.ShowDialog()
 
     End Sub
-
     Private Sub PartesRelacionadasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PartesRelacionadasToolStripMenuItem.Click
         frmSolRelacionadas.ShowDialog()
     End Sub
-
     Private Sub EnvioCorreosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EnvioCorreosToolStripMenuItem.Click
         frmenviocorreos.ShowDialog()
     End Sub
-
     Private Sub ClientesFacturaciónToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClientesFacturaciónToolStripMenuItem.Click
         frmSAPYCClientesFiscales.ShowDialog()
     End Sub
-
     Private Sub ConsultaPropuestasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConsultaPropuestasToolStripMenuItem.Click
         Dim frm As New frmPropuestas
 
         AbrirPantalla(frm, "frmPropuestas")
     End Sub
-
     Private Sub ConsultaFoliosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConsultaFoliosToolStripMenuItem.Click
         Dim frm As New frmConsultaFolios
 
         AbrirPantalla(frm, "frmConsultaFolios")
     End Sub
-
     Private Sub ClientesConflickToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClientesConflickToolStripMenuItem.Click
         Dim frm As New frmClientesConflick
 
         AbrirPantalla(frm, "frmClientesConflick")
     End Sub
-
     Private Sub ClientesRelacionadosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClientesRelacionadosToolStripMenuItem.Click
         Dim frm As New frmRelacionCtes
 
@@ -226,7 +205,6 @@
             frm.Show()
         End If
     End Sub
-
     Private Sub TodasLasSolicitudesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TodasLasSolicitudesToolStripMenuItem.Click
         Dim frm As New frmTodasSolicitudes
 
@@ -237,13 +215,11 @@
             frm.Show()
         End If
     End Sub
-
     Private Sub ClientesPorClaveDeTrabajoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClientesPorClaveDeTrabajoToolStripMenuItem.Click
         Dim frm As New frmReportePorClaves
 
         AbrirPantalla(frm, "frmReportePorClaves")
     End Sub
-
     Private Sub AbrirPantalla(frm As Form, sNombre As String)
         If Not Application.OpenForms(sNombre) Is Nothing Then
             Application.OpenForms(sNombre).Activate()
@@ -252,7 +228,6 @@
             frm.Show()
         End If
     End Sub
-
     Private Sub itmReporteDireccion_Click(sender As Object, e As EventArgs) Handles itmReporteDireccion.Click
         Dim frm As New FrmSAPYCReporteDireccion
 
@@ -263,43 +238,36 @@
 
         AbrirPantalla(frm, "frmClientesReferenciados")
     End Sub
-
     Private Sub RegistrarProspectoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RegistrarProspectoToolStripMenuItem.Click
         Dim frm As New FrmProspectos
 
         AbrirPantalla(frm, "FrmProspectos")
     End Sub
-
     Private Sub ClientesDelPeriodoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClientesDelPeriodoToolStripMenuItem.Click
         Dim frm As New frmCtesDelPeriodo
 
         AbrirPantalla(frm, "frmCtesDelPeriodo")
     End Sub
-
     Private Sub ClientesRechazadosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClientesRechazadosToolStripMenuItem.Click
         Dim frm As New frmClientesRechazados
 
         AbrirPantalla(frm, "frmClientesRechazados")
     End Sub
-
     Private Sub AutorizaFoliosDeInformeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AutorizaFoliosDeInformeToolStripMenuItem.Click
         Dim frm As New frmAutorizaSolicitudFolios
 
         AbrirPantalla(frm, "frmAutorizaSolicitudFolios")
     End Sub
-
     Private Sub ConsultaDeFoliosDeInformeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConsultaDeFoliosDeInformeToolStripMenuItem.Click
         Dim frm As New frmConsultaFolios
 
         AbrirPantalla(frm, "frmConsultaFolios")
     End Sub
-
     Private Sub ClientesSacToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClientesSacToolStripMenuItem.Click
         Dim frm As New frmListaNumSac
 
         AbrirPantalla(frm, "frmListaNumSac")
     End Sub
-
     Private Sub GestiónServiciosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles itmTipoServicios.Click
         Dim frm As New FrmTipoServicios
 
@@ -310,10 +278,11 @@
             frm.Show()
         End If
     End Sub
-
     Private Sub itmReportesGRD_Click(sender As Object, e As EventArgs) Handles itmReportesGRD.Click
         Dim frm As New FrmReportesGRD
 
         AbrirPantalla(frm, "FrmReportesGRD")
     End Sub
+
+
 End Class

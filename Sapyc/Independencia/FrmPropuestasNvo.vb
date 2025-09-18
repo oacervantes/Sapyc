@@ -9,7 +9,7 @@ Public Class FrmPropuestasNvo
 #Region "VARIABLES"
 
     Private ds As New DataSet
-    Private dtSolicitudes, DtDatos, dtFuncionarios, dtAccionistas, dtSocios, dtGerentes, dtRfc, dtRelacionadas, dtGpos, dtGrupos As DataTable
+    Private dtSolicitudes, DtDatos, dtFuncionarios, dtAccionistas, dtSocios, dtGerentes, dtRfc, dtRelacionadas, dtGpos, dtGrupos, dtCiclo As DataTable
     Private drGrupos As DataRow
 
     Private bsSol As New BindingSource
@@ -41,7 +41,7 @@ Public Class FrmPropuestasNvo
     Private Cveofiref, Cvearearef, Cvesocref, Socio, CveSocio, CveGerente, CveCte, NomEmpresa, CveEmpRef, NombEmpRef, Indus, SubSec, SubNiv, sCveProspecto As String
     Private bHabilitar As Boolean = False
     Private iIngSoc, iLiqSoc, iRenSoc, iIma, iRep, iRie, iEsp, iFila, iCargable, iLiquidez, iIngresos, iRentabilidad As Integer
-    Private sColSoc, sNombreCliente, sClasificacionCte, sTipoSolicitud As String
+    Private sColSoc, sNombreCliente, sClasificacionCte, sTipoSolicitud, sCicloOperativo As String
     Private dtColoniasDomicilio, dtMunicipiosDomicilio, dtEstadosDomicilio As DataTable
     Private sFmtInt As String = "#,##0"
     Dim Msnj As String = ""
@@ -2258,6 +2258,7 @@ Public Class FrmPropuestasNvo
             'sMensaje &= "De las respuestas recibidas  " & Msnj.ToString() & " se identificó situación que afecta nuestra independencia. " & vbNewLine & vbNewLine
             'sMensaje &= "Para cualquier aclaración sobre el tema contactar a cecilia.coronel@mx.gt.com y heidi.martinez@mx.gt.com " & vbNewLine & vbNewLine
             'envioCorreos(sCorreo, sMensaje, "Propuestas Clientes - Sapyc")
+            ConsultaCicloOperativo()
             EnviarCorreoAviso()
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
@@ -2274,7 +2275,7 @@ Public Class FrmPropuestasNvo
             "<img src='cid:imagen1' alt='Salles, Sainz - Grant Thornton' style='width:300px;height:auto;'>" &
             "<h1 style=""height: 50px; background: #4f2d7f; font-family: Calibri, Arial; color: #FFF; padding-right: 30px; text-align: center;"">REVISIÓN DE PROPUESTAS</h1>" & vbNewLine & vbNewLine & vbNewLine &
             "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 20px; color: #4f2d7f; margin-left: 25px; margin-top: 20px; padding: 15px;"">Estimado Equipo: " & NombSoc.TrimEnd(";") & ", </p> " & vbNewLine & vbNewLine &
-            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 16px; margin-left: 25px; margin-top: 20px; padding: 15px;"">Se ha realizado la investigación de antecedentes y de la verificación de conflictos de interés y/o amenazas de independencia en el ciclo 25-26 de la entidad </p> " & vbNewLine & vbNewLine &
+            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 16px; margin-left: 25px; margin-top: 20px; padding: 15px;"">Se ha realizado la investigación de antecedentes y de la verificación de conflictos de interés y/o amenazas de independencia en el " & sCicloOperativo & " de la entidad </p> " & vbNewLine & vbNewLine &
             "<table style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">" & vbNewLine &
             "<tr><td>Cliente:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & NomEmpresa.ToString() & "</b></td></tr>" & vbNewLine &
             "<tr><td>De las respuestas recibidas :</td> <td></td> <td></td> <td style=""text-align: left;""><b> con la cual " & Msnj.ToString.ToUpper() & "  " & "se identificó situación alguna que afecte nuestra independencia,Se deberá continuar con los demás procesos establecidos por la Firma para concluir la aceptación/reaceptación del prospecto/cliente. ""</b></td></tr>" & vbNewLine &
@@ -3527,6 +3528,37 @@ Public Class FrmPropuestasNvo
 
         dtGrupos.Columns.Add("CVECTE", GetType(System.String))
         dtGrupos.Columns.Add("NOMBRECTE", GetType(System.String))
+    End Sub
+    Private Sub ConsultaCicloOperativo()
+        Try
+            Dim sTabla As String = "tbCiclo"
+
+            With ds.Tables
+                LimpiarConsultaTabla(ds.Tables, sTabla)
+
+                With clsDatosConINV
+                    .subClearParameters()
+                    .subAddParameter("@iOpcion", 5, SqlDbType.Int, ParameterDirection.Input)
+
+                End With
+
+                .Add(clsDatosConINV.funExecuteSPDataTable("paModulosSapyc", sTabla))
+
+
+                dtCiclo = .Item(sTabla)
+            End With
+
+            If dtCiclo.Rows.Count > 0 Then
+                sCicloOperativo = dtCiclo(0)("sPeriodo").ToString()
+            End If
+
+
+
+        Catch ex As Exception
+            'insertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarBolsaValores()")
+            MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "SIAT")
+            dtOtrosDatos = Nothing
+        End Try
     End Sub
 
     ''' ACTUALIZA DATOS DE PROSPECTOS SAPYC
