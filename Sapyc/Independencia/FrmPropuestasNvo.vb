@@ -2234,7 +2234,7 @@ Public Class FrmPropuestasNvo
                 End If
             End With
 
-            CorreosSoc = CorreosSoc + "independencia@mx.gt.com"
+            CorreosSoc = CorreosSoc.TrimStart(";") + "independencia@mx.gt.com"
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
         End Try
