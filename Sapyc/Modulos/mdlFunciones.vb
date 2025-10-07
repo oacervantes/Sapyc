@@ -633,9 +633,7 @@ Module mdlFunciones
     End Function
 
     Public Function ReemplazarCaracter(cadena As String) As String
-        If cadena.Contains("&") Then
-            cadena = cadena.Replace("&", "&&")
-        ElseIf cadena.Contains(",") Then
+        If cadena.Contains(",") Then
             cadena = cadena.Replace(",", "")
         End If
 
