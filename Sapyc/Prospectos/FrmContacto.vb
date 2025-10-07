@@ -1124,6 +1124,7 @@ Public Class FrmContacto
                 .subAddParameter("@sCveGerente", "", SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@sCveOfi", cboOficina.SelectedValue, SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@sCveArea", cboDivision.SelectedValue, SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@iServicio", cboDatosGeneralesServicio.SelectedValue, SqlDbType.Int, ParameterDirection.Input)
                 .subAddParameter("@iIdsac", txtIdSAC.Text, SqlDbType.VarChar, ParameterDirection.Input)
 
                 .funExecuteSP("paPropuestasCtesProspectos")
@@ -1155,6 +1156,7 @@ Public Class FrmContacto
                 .subAddParameter("@sExtensionN", txtContactoInicialExtension.Text.ToUpper(), SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@sRfc", txtRFC.Text.ToUpper(), SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@idPaisN", cboDomicilioPais.SelectedValue, SqlDbType.Int, ParameterDirection.Input)
+                .subAddParameter("@iServicio", cboDatosGeneralesServicio.SelectedValue, SqlDbType.Int, ParameterDirection.Input)
 
                 If cboDomicilioPais.SelectedValue = 151 Then
                     .subAddParameter("@sCalleN", txtDomicilioCalle.Text, SqlDbType.VarChar, ParameterDirection.Input)
