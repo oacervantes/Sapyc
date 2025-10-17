@@ -334,7 +334,16 @@ Public Class FrmReportesGRD
                             If cell.Value Is Nothing OrElse String.IsNullOrEmpty(cell.Value.ToString()) Then
                                 cellValues.Add("""""")
                             Else
-                                cellValues.Add(cell.Value.ToString())
+                                Dim valor As String = cell.Value.ToString()
+
+                                ' Verificar si es fecha
+                                If IsDate(valor) Then
+                                    ' Insertar carácter invisible entre los guiones
+                                    valor = valor.Replace("-", ChrW(&H200C) & "-")
+                                End If
+
+                                ' Envolver en comillas dobles
+                                cellValues.Add("""" & valor & """")
                             End If
                         End If
                     Next
