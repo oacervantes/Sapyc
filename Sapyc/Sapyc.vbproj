@@ -172,7 +172,8 @@
     <Compile Include="Catalogos\TipoServicio.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="clsAccesoDatos.vb" />
+    <Compile Include="Clases\clsAccesoDatos.vb" />
+    <Compile Include="Clases\clsDatosInventarios.vb" />
     <Compile Include="Folios\frmAutorizaSolicitudFolios.designer.vb">
       <DependentUpon>frmAutorizaSolicitudFolios.vb</DependentUpon>
     </Compile>
@@ -345,6 +346,36 @@
       <DependentUpon>Solicitudes.vb</DependentUpon>
     </Compile>
     <Compile Include="Independencia\Solicitudes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Kardex\DlgColaboradorKardex.Designer.vb">
+      <DependentUpon>DlgColaboradorKardex.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Kardex\DlgColaboradorKardex.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Kardex\DlgKardex.Designer.vb">
+      <DependentUpon>DlgKardex.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Kardex\DlgKardex.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Kardex\DlgListaGerentes.Designer.vb">
+      <DependentUpon>DlgListaGerentes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Kardex\DlgListaGerentes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Kardex\dlgListaSocios.designer.vb">
+      <DependentUpon>dlgListaSocios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Kardex\dlgListaSocios.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Kardex\FrmKardex.Designer.vb">
+      <DependentUpon>FrmKardex.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Kardex\FrmKardex.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LeeCve.designer.vb">
@@ -641,6 +672,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Independencia\Solicitudes.resx">
       <DependentUpon>Solicitudes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Kardex\DlgColaboradorKardex.resx">
+      <DependentUpon>DlgColaboradorKardex.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Kardex\DlgKardex.resx">
+      <DependentUpon>DlgKardex.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Kardex\DlgListaGerentes.resx">
+      <DependentUpon>DlgListaGerentes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Kardex\dlgListaSocios.resx">
+      <DependentUpon>dlgListaSocios.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Kardex\FrmKardex.resx">
+      <DependentUpon>FrmKardex.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LeeCve.resx">
       <DependentUpon>LeeCve.vb</DependentUpon>

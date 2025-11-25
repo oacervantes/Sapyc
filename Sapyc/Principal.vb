@@ -11,6 +11,7 @@
             clsDatosInv = New clsAccesoDatos("gtmexvts27\sql2016", "BDINV2526", "Contabilidad", "Control2025%Porfis")
             clsDatosConINV = New clsAccesoDatos("gtmexvts27\sql2016", "CONTROLINV", "Contabilidad", "Control2025%Porfis")
             clsDatosProp = New clsAccesoDatos("gtmexvts27\sql2016", "BDCTRL_PROPS", "Contabilidad", "Control2025%Porfis")
+            clsDatosSac = New clsAccesoDatos("gtmexvts27\sql2016", "BDCTRL_SAC", "Contabilidad", "Control2025%Porfis")
 
             Hide()
 
@@ -89,6 +90,8 @@
                 MnuInde.Visible = True
                 mnuReportes.Visible = False
                 MnTablas.Visible = True
+                mnuSAC.Visible = True
+
             Case "4"
                 mnuReportes.Visible = True
                 mnuProspectos.Visible = True
@@ -284,5 +287,9 @@
         AbrirPantalla(frm, "FrmReportesGRD")
     End Sub
 
+    Private Sub ItmKardex_Click(sender As Object, e As EventArgs) Handles itmKardex.Click
+        Dim frm As New FrmKardex
 
+        AbrirPantalla(frm, "FrmKardex")
+    End Sub
 End Class
