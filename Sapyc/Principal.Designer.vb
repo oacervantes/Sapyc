@@ -26,6 +26,8 @@ Partial Class Principal
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.ArchivoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuSalir = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuSAC = New System.Windows.Forms.ToolStripMenuItem()
+        Me.itmKardex = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnTablas = New System.Windows.Forms.ToolStripMenuItem()
         Me.TablasDelSistemaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GirosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -74,8 +76,6 @@ Partial Class Principal
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.BotonAltaPropuesta = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
-        Me.mnuSAC = New System.Windows.Forms.ToolStripMenuItem()
-        Me.itmKardex = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.Barra.SuspendLayout()
         Me.SuspendLayout()
@@ -99,8 +99,22 @@ Partial Class Principal
         'mnuSalir
         '
         Me.mnuSalir.Name = "mnuSalir"
-        Me.mnuSalir.Size = New System.Drawing.Size(180, 22)
+        Me.mnuSalir.Size = New System.Drawing.Size(98, 22)
         Me.mnuSalir.Text = "&Salir"
+        '
+        'mnuSAC
+        '
+        Me.mnuSAC.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.itmKardex})
+        Me.mnuSAC.Name = "mnuSAC"
+        Me.mnuSAC.Size = New System.Drawing.Size(41, 20)
+        Me.mnuSAC.Text = "SAC"
+        Me.mnuSAC.Visible = False
+        '
+        'itmKardex
+        '
+        Me.itmKardex.Name = "itmKardex"
+        Me.itmKardex.Size = New System.Drawing.Size(180, 22)
+        Me.itmKardex.Text = "Kardex"
         '
         'MnTablas
         '
@@ -114,7 +128,7 @@ Partial Class Principal
         '
         Me.TablasDelSistemaToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GirosToolStripMenuItem, Me.ActividadToolStripMenuItem, Me.DivisionesToolStripMenuItem, Me.TiposDeServicioToolStripMenuItem, Me.ComoSeEnteroToolStripMenuItem, Me.MedioDeContactoToolStripMenuItem})
         Me.TablasDelSistemaToolStripMenuItem.Name = "TablasDelSistemaToolStripMenuItem"
-        Me.TablasDelSistemaToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.TablasDelSistemaToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
         Me.TablasDelSistemaToolStripMenuItem.Text = "Tablas del Sistema"
         Me.TablasDelSistemaToolStripMenuItem.Visible = False
         '
@@ -157,13 +171,13 @@ Partial Class Principal
         'itmTipoServicios
         '
         Me.itmTipoServicios.Name = "itmTipoServicios"
-        Me.itmTipoServicios.Size = New System.Drawing.Size(180, 22)
+        Me.itmTipoServicios.Size = New System.Drawing.Size(179, 22)
         Me.itmTipoServicios.Text = "Tipo de Servicios"
         '
         'itmReportesGRD
         '
         Me.itmReportesGRD.Name = "itmReportesGRD"
-        Me.itmReportesGRD.Size = New System.Drawing.Size(180, 22)
+        Me.itmReportesGRD.Size = New System.Drawing.Size(179, 22)
         Me.itmReportesGRD.Text = "Reportes GRD-GTI"
         '
         'mnuProspectos
@@ -426,19 +440,6 @@ Partial Class Principal
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
         Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 40)
-        '
-        'mnuSAC
-        '
-        Me.mnuSAC.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.itmKardex})
-        Me.mnuSAC.Name = "mnuSAC"
-        Me.mnuSAC.Size = New System.Drawing.Size(41, 20)
-        Me.mnuSAC.Text = "SAC"
-        '
-        'itmKardex
-        '
-        Me.itmKardex.Name = "itmKardex"
-        Me.itmKardex.Size = New System.Drawing.Size(180, 22)
-        Me.itmKardex.Text = "Kardex"
         '
         'Principal
         '

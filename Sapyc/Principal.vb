@@ -90,7 +90,7 @@
                 MnuInde.Visible = True
                 mnuReportes.Visible = False
                 MnTablas.Visible = True
-                mnuSAC.Visible = True
+                'mnuSAC.Visible = True
 
             Case "4"
                 mnuReportes.Visible = True
