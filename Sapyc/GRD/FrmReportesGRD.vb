@@ -9,8 +9,12 @@ Public Class FrmReportesGRD
     Private sNameRpt As String = "Reportes GRD"
     Private sStoredProc As String = "paGRDReportes"
 
-    Private dtReportes, dtEnt, dtEntidades, dtServ, dtServicios, dtProv, dtProveedores, dtRolEnt, dtRolesEntidad As New DataTable
-    Private drEnt, drServ, drProv, drRol As DataRow
+    Private dtBases, dtCiclos, dtReportes, dtEnt, dtEntidades, dtServ, dtServicios, dtProv, dtProveedores, dtRolEnt, dtRolesEntidad As New DataTable
+    Private drEnt, drServ, drProv, drRol, drCiclos As DataRow
+
+
+
+    Private idCiclo As Integer
 
     Private Sub FrmReportesGRD_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         gridClientes.DataSource = bsEnt
@@ -24,6 +28,11 @@ Public Class FrmReportesGRD
 
         gridRolesEntidad.DataSource = bsRol
         DesplazamientoGrid(gridRolesEntidad)
+
+        CrearTablas()
+        ListarCiclos()
+
+        idCiclo = iPeriodoFirma
 
         ListarReportes()
         ListarCampos()
@@ -66,6 +75,14 @@ Public Class FrmReportesGRD
         Close()
     End Sub
 
+    Private Sub CboCiclo_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles cboCiclo.SelectionChangeCommitted
+        idCiclo = CInt(cboCiclo.SelectedValue)
+    End Sub
+
+    Private Sub CrearTablas()
+        dtCiclos.Columns.Add("idCiclo", GetType(String))
+        dtCiclos.Columns.Add("sCiclo", GetType(String))
+    End Sub
     Private Sub FormatoGrid(id As Integer, grid As DataGridView)
         Dim dr() As DataRow
 
@@ -77,6 +94,39 @@ Public Class FrmReportesGRD
             ConfigurarColumnasGrid(grid, d("REP_COL").ToString(), d("REP_COL").ToString(), 150, 1, False)
         Next
 
+    End Sub
+
+    Private Sub ListarCiclos()
+        Try
+            Dim sTabla As String = "tbCiclos"
+
+            With ds.Tables
+                LimpiarConsultaTabla(ds.Tables, sTabla)
+
+                With clsDatosConINV
+                    .subClearParameters()
+                End With
+
+                .Add(clsDatosConINV.funExecuteSPDataTable("paBasesDatos", sTabla))
+                dtBases = .Item(sTabla)
+            End With
+
+            For Each dr As DataRow In dtBases.Rows
+                If dr.Item("idBaseDatos") >= 8 Then
+                    drCiclos = dtCiclos.NewRow
+                    drCiclos("idCiclo") = dr.Item("idBaseDatos")
+                    drCiclos("sCiclo") = dr.Item("sPeriodo")
+                    dtCiclos.Rows.InsertAt(drCiclos, dtCiclos.Rows.Count)
+                End If
+            Next
+
+            cboCiclo.DataSource = dtCiclos
+            cboCiclo.ValueMember = "idCiclo"
+            cboCiclo.DisplayMember = "sCiclo"
+        Catch ex As Exception
+            MsgBox("Por el momento no es posible acceder a la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "SIAT")
+            dtBases = Nothing
+        End Try
     End Sub
 
     Private Sub ListarReportes()
@@ -160,7 +210,7 @@ Public Class FrmReportesGRD
                 With clsDatos
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 2, SqlDbType.Int, ParameterDirection.Input)
-                    .subAddParameter("@iPeriodo", iPeriodoFirma, SqlDbType.Int, ParameterDirection.Input)
+                    .subAddParameter("@iPeriodo", idCiclo, SqlDbType.Int, ParameterDirection.Input)
                 End With
 
                 .Add(clsDatos.funExecuteSPDataTable(sStoredProc, sTabla))
@@ -202,7 +252,7 @@ Public Class FrmReportesGRD
                 With clsDatos
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 3, SqlDbType.Int, ParameterDirection.Input)
-                    .subAddParameter("@iPeriodo", 11, SqlDbType.Int, ParameterDirection.Input)
+                    .subAddParameter("@iPeriodo", idCiclo, SqlDbType.Int, ParameterDirection.Input)
                 End With
 
                 .Add(clsDatos.funExecuteSPDataTable(sStoredProc, sTabla))

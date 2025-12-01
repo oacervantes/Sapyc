@@ -46,6 +46,8 @@ Partial Class FrmReportesGRD
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.btnSalir = New System.Windows.Forms.Button()
         Me.btnExportar = New System.Windows.Forms.Button()
+        Me.cboCiclo = New System.Windows.Forms.ComboBox()
+        Me.lblCiclo = New System.Windows.Forms.Label()
         Me.panPrincipal.SuspendLayout()
         Me.tabReportes.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -65,6 +67,8 @@ Partial Class FrmReportesGRD
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.panPrincipal.BackColor = System.Drawing.Color.White
         Me.panPrincipal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.panPrincipal.Controls.Add(Me.lblCiclo)
+        Me.panPrincipal.Controls.Add(Me.cboCiclo)
         Me.panPrincipal.Controls.Add(Me.btnGenerar)
         Me.panPrincipal.Controls.Add(Me.tabReportes)
         Me.panPrincipal.Controls.Add(Me.panLinea)
@@ -72,13 +76,13 @@ Partial Class FrmReportesGRD
         Me.panPrincipal.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.panPrincipal.Location = New System.Drawing.Point(0, 0)
         Me.panPrincipal.Name = "panPrincipal"
-        Me.panPrincipal.Size = New System.Drawing.Size(1234, 634)
+        Me.panPrincipal.Size = New System.Drawing.Size(1234, 651)
         Me.panPrincipal.TabIndex = 0
         '
         'btnGenerar
         '
         Me.btnGenerar.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnGenerar.Location = New System.Drawing.Point(11, 43)
+        Me.btnGenerar.Location = New System.Drawing.Point(249, 47)
         Me.btnGenerar.Name = "btnGenerar"
         Me.btnGenerar.Size = New System.Drawing.Size(130, 25)
         Me.btnGenerar.TabIndex = 5
@@ -95,10 +99,10 @@ Partial Class FrmReportesGRD
         Me.tabReportes.Controls.Add(Me.TabPage3)
         Me.tabReportes.Controls.Add(Me.TabPage4)
         Me.tabReportes.ItemSize = New System.Drawing.Size(220, 25)
-        Me.tabReportes.Location = New System.Drawing.Point(1, 74)
+        Me.tabReportes.Location = New System.Drawing.Point(1, 82)
         Me.tabReportes.Name = "tabReportes"
         Me.tabReportes.SelectedIndex = 0
-        Me.tabReportes.Size = New System.Drawing.Size(1232, 557)
+        Me.tabReportes.Size = New System.Drawing.Size(1232, 566)
         Me.tabReportes.SizeMode = System.Windows.Forms.TabSizeMode.Fixed
         Me.tabReportes.TabIndex = 4
         '
@@ -107,7 +111,7 @@ Partial Class FrmReportesGRD
         Me.TabPage1.Controls.Add(Me.gridClientes)
         Me.TabPage1.Location = New System.Drawing.Point(4, 29)
         Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Size = New System.Drawing.Size(1224, 524)
+        Me.TabPage1.Size = New System.Drawing.Size(1224, 533)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "CLIENTES"
         Me.TabPage1.UseVisualStyleBackColor = True
@@ -140,7 +144,7 @@ Partial Class FrmReportesGRD
         Me.gridClientes.RowsDefaultCellStyle = DataGridViewCellStyle2
         Me.gridClientes.RowTemplate.Height = 24
         Me.gridClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
-        Me.gridClientes.Size = New System.Drawing.Size(1224, 524)
+        Me.gridClientes.Size = New System.Drawing.Size(1224, 533)
         Me.gridClientes.TabIndex = 3
         '
         'TabPage2
@@ -148,7 +152,7 @@ Partial Class FrmReportesGRD
         Me.TabPage2.Controls.Add(Me.gridServicios)
         Me.TabPage2.Location = New System.Drawing.Point(4, 29)
         Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Size = New System.Drawing.Size(1121, 524)
+        Me.TabPage2.Size = New System.Drawing.Size(1224, 524)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "SERVICIOS"
         Me.TabPage2.UseVisualStyleBackColor = True
@@ -181,7 +185,7 @@ Partial Class FrmReportesGRD
         Me.gridServicios.RowsDefaultCellStyle = DataGridViewCellStyle4
         Me.gridServicios.RowTemplate.Height = 24
         Me.gridServicios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
-        Me.gridServicios.Size = New System.Drawing.Size(1121, 524)
+        Me.gridServicios.Size = New System.Drawing.Size(1224, 524)
         Me.gridServicios.TabIndex = 3
         '
         'TabPage3
@@ -189,7 +193,7 @@ Partial Class FrmReportesGRD
         Me.TabPage3.Controls.Add(Me.gridProveedores)
         Me.TabPage3.Location = New System.Drawing.Point(4, 29)
         Me.TabPage3.Name = "TabPage3"
-        Me.TabPage3.Size = New System.Drawing.Size(1121, 524)
+        Me.TabPage3.Size = New System.Drawing.Size(1224, 524)
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "PROVEEDORES"
         Me.TabPage3.UseVisualStyleBackColor = True
@@ -223,7 +227,7 @@ Partial Class FrmReportesGRD
         Me.gridProveedores.RowsDefaultCellStyle = DataGridViewCellStyle6
         Me.gridProveedores.RowTemplate.Height = 24
         Me.gridProveedores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.gridProveedores.Size = New System.Drawing.Size(1121, 524)
+        Me.gridProveedores.Size = New System.Drawing.Size(1224, 524)
         Me.gridProveedores.TabIndex = 3
         '
         'TabPage4
@@ -231,7 +235,7 @@ Partial Class FrmReportesGRD
         Me.TabPage4.Controls.Add(Me.gridRolesEntidad)
         Me.TabPage4.Location = New System.Drawing.Point(4, 29)
         Me.TabPage4.Name = "TabPage4"
-        Me.TabPage4.Size = New System.Drawing.Size(1121, 524)
+        Me.TabPage4.Size = New System.Drawing.Size(1224, 524)
         Me.TabPage4.TabIndex = 3
         Me.TabPage4.Text = "ROLES EN LA ENTIDAD"
         Me.TabPage4.UseVisualStyleBackColor = True
@@ -265,7 +269,7 @@ Partial Class FrmReportesGRD
         Me.gridRolesEntidad.RowsDefaultCellStyle = DataGridViewCellStyle8
         Me.gridRolesEntidad.RowTemplate.Height = 24
         Me.gridRolesEntidad.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.gridRolesEntidad.Size = New System.Drawing.Size(1121, 524)
+        Me.gridRolesEntidad.Size = New System.Drawing.Size(1224, 524)
         Me.gridRolesEntidad.TabIndex = 3
         '
         'panLinea
@@ -293,7 +297,7 @@ Partial Class FrmReportesGRD
         '
         Me.btnSalir.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnSalir.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSalir.Location = New System.Drawing.Point(1092, 640)
+        Me.btnSalir.Location = New System.Drawing.Point(1092, 657)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(130, 25)
         Me.btnSalir.TabIndex = 0
@@ -304,18 +308,36 @@ Partial Class FrmReportesGRD
         '
         Me.btnExportar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.btnExportar.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnExportar.Location = New System.Drawing.Point(12, 640)
+        Me.btnExportar.Location = New System.Drawing.Point(12, 657)
         Me.btnExportar.Name = "btnExportar"
         Me.btnExportar.Size = New System.Drawing.Size(130, 25)
         Me.btnExportar.TabIndex = 1
         Me.btnExportar.Text = "Exportar"
         Me.btnExportar.UseVisualStyleBackColor = True
         '
+        'cboCiclo
+        '
+        Me.cboCiclo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboCiclo.FormattingEnabled = True
+        Me.cboCiclo.Location = New System.Drawing.Point(71, 47)
+        Me.cboCiclo.Name = "cboCiclo"
+        Me.cboCiclo.Size = New System.Drawing.Size(157, 26)
+        Me.cboCiclo.TabIndex = 6
+        '
+        'lblCiclo
+        '
+        Me.lblCiclo.AutoSize = True
+        Me.lblCiclo.Location = New System.Drawing.Point(23, 51)
+        Me.lblCiclo.Name = "lblCiclo"
+        Me.lblCiclo.Size = New System.Drawing.Size(42, 18)
+        Me.lblCiclo.TabIndex = 7
+        Me.lblCiclo.Text = "Ciclo:"
+        '
         'FrmReportesGRD
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        Me.ClientSize = New System.Drawing.Size(1234, 672)
+        Me.ClientSize = New System.Drawing.Size(1234, 689)
         Me.Controls.Add(Me.btnExportar)
         Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.panPrincipal)
@@ -353,4 +375,6 @@ Partial Class FrmReportesGRD
     Friend WithEvents gridProveedores As DataGridView
     Friend WithEvents gridRolesEntidad As DataGridView
     Friend WithEvents btnGenerar As Button
+    Friend WithEvents lblCiclo As Label
+    Friend WithEvents cboCiclo As ComboBox
 End Class

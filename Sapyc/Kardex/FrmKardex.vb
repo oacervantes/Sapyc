@@ -20,7 +20,17 @@
         dlg.ShowDialog()
     End Sub
     Private Sub BtnEditar_Click(sender As Object, e As EventArgs) Handles btnEditar.Click
+        Dim dlg As New DlgKardex
 
+        If gridDatos.CurrentRow IsNot Nothing Then
+            dlg.idKardex = gridDatos.CurrentRow.Cells("idKardex").Value
+            dlg.sCveEmp = gridDatos.CurrentRow.Cells("sCveEmp").Value
+            dlg.sNombre = gridDatos.CurrentRow.Cells("sNombre").Value
+
+            dlg.ShowDialog()
+        Else
+            MsgBox("Seleccione al colaborador para editar su kardex.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
+        End If
     End Sub
     Private Sub BtnBaja_Click(sender As Object, e As EventArgs) Handles btnBaja.Click
         If gridDatos.CurrentRow IsNot Nothing Then
@@ -134,6 +144,32 @@
             InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "EliminarProspecto()")
             MsgBox("Por el momento no es posible dar de baja el kardex, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "SIAT")
         End Try
+    End Sub
+
+    Private Sub RdTodos_CheckedChanged(sender As Object, e As EventArgs) Handles rdTodos.CheckedChanged
+        If rdTodos.Checked Then
+            bs.Filter = ""
+        End If
+    End Sub
+    Private Sub RdGerente_CheckedChanged(sender As Object, e As EventArgs) Handles rdGerente.CheckedChanged
+        If rdGerente.Checked Then
+            bs.Filter = "sTipoEmp IN ('GER')"
+        End If
+    End Sub
+    Private Sub RdSocio_CheckedChanged(sender As Object, e As EventArgs) Handles rdSocio.CheckedChanged
+        If rdSocio.Checked Then
+            bs.Filter = "sTipoEmp IN ('SOC', 'ASO')"
+        End If
+    End Sub
+
+    Private Sub TxtNombre_TextChanged(sender As Object, e As EventArgs) Handles txtNombre.TextChanged
+        If rdSocio.Checked Then
+            bs.Filter = "sNombre LIKE '%" & txtNombre.Text & "%' AND sTipoEmp IN ('SOC', 'ASO')"
+        ElseIf rdGerente.Checked Then
+            bs.Filter = "sNombre LIKE '%" & txtNombre.Text & "%' AND sTipoEmp IN ('GER')"
+        ElseIf rdTodos.Checked Then
+            bs.Filter = "sNombre LIKE '%" & txtNombre.Text & "%'"
+        End If
     End Sub
 
 End Class

@@ -25,6 +25,10 @@ Partial Class FrmKardex
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.panPrincipal = New System.Windows.Forms.Panel()
+        Me.txtNombre = New System.Windows.Forms.TextBox()
+        Me.rdTodos = New System.Windows.Forms.RadioButton()
+        Me.rdGerente = New System.Windows.Forms.RadioButton()
+        Me.rdSocio = New System.Windows.Forms.RadioButton()
         Me.panLinea = New System.Windows.Forms.Panel()
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.gridDatos = New System.Windows.Forms.DataGridView()
@@ -32,6 +36,7 @@ Partial Class FrmKardex
         Me.btnAlta = New System.Windows.Forms.Button()
         Me.btnEditar = New System.Windows.Forms.Button()
         Me.btnBaja = New System.Windows.Forms.Button()
+        Me.lblNombre = New System.Windows.Forms.Label()
         Me.panPrincipal.SuspendLayout()
         CType(Me.gridDatos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -43,6 +48,11 @@ Partial Class FrmKardex
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.panPrincipal.BackColor = System.Drawing.Color.White
         Me.panPrincipal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.panPrincipal.Controls.Add(Me.lblNombre)
+        Me.panPrincipal.Controls.Add(Me.txtNombre)
+        Me.panPrincipal.Controls.Add(Me.rdTodos)
+        Me.panPrincipal.Controls.Add(Me.rdGerente)
+        Me.panPrincipal.Controls.Add(Me.rdSocio)
         Me.panPrincipal.Controls.Add(Me.panLinea)
         Me.panPrincipal.Controls.Add(Me.lblTitulo)
         Me.panPrincipal.Controls.Add(Me.gridDatos)
@@ -51,6 +61,46 @@ Partial Class FrmKardex
         Me.panPrincipal.Name = "panPrincipal"
         Me.panPrincipal.Size = New System.Drawing.Size(1094, 620)
         Me.panPrincipal.TabIndex = 59
+        '
+        'txtNombre
+        '
+        Me.txtNombre.Location = New System.Drawing.Point(81, 80)
+        Me.txtNombre.Name = "txtNombre"
+        Me.txtNombre.Size = New System.Drawing.Size(1000, 25)
+        Me.txtNombre.TabIndex = 6
+        '
+        'rdTodos
+        '
+        Me.rdTodos.AutoSize = True
+        Me.rdTodos.Location = New System.Drawing.Point(338, 48)
+        Me.rdTodos.Name = "rdTodos"
+        Me.rdTodos.Size = New System.Drawing.Size(62, 22)
+        Me.rdTodos.TabIndex = 5
+        Me.rdTodos.TabStop = True
+        Me.rdTodos.Text = "Todos"
+        Me.rdTodos.UseVisualStyleBackColor = True
+        '
+        'rdGerente
+        '
+        Me.rdGerente.AutoSize = True
+        Me.rdGerente.Location = New System.Drawing.Point(244, 48)
+        Me.rdGerente.Name = "rdGerente"
+        Me.rdGerente.Size = New System.Drawing.Size(78, 22)
+        Me.rdGerente.TabIndex = 4
+        Me.rdGerente.TabStop = True
+        Me.rdGerente.Text = "Gerente"
+        Me.rdGerente.UseVisualStyleBackColor = True
+        '
+        'rdSocio
+        '
+        Me.rdSocio.AutoSize = True
+        Me.rdSocio.Location = New System.Drawing.Point(66, 48)
+        Me.rdSocio.Name = "rdSocio"
+        Me.rdSocio.Size = New System.Drawing.Size(168, 22)
+        Me.rdSocio.TabIndex = 3
+        Me.rdSocio.TabStop = True
+        Me.rdSocio.Text = "Socio | Gerente Coord."
+        Me.rdSocio.UseVisualStyleBackColor = True
         '
         'panLinea
         '
@@ -96,7 +146,7 @@ Partial Class FrmKardex
         Me.gridDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.gridDatos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.gridDatos.GridColor = System.Drawing.Color.Gainsboro
-        Me.gridDatos.Location = New System.Drawing.Point(11, 56)
+        Me.gridDatos.Location = New System.Drawing.Point(11, 115)
         Me.gridDatos.MultiSelect = False
         Me.gridDatos.Name = "gridDatos"
         Me.gridDatos.RowHeadersWidth = 25
@@ -105,7 +155,7 @@ Partial Class FrmKardex
         Me.gridDatos.RowsDefaultCellStyle = DataGridViewCellStyle2
         Me.gridDatos.RowTemplate.Height = 24
         Me.gridDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
-        Me.gridDatos.Size = New System.Drawing.Size(1070, 545)
+        Me.gridDatos.Size = New System.Drawing.Size(1070, 485)
         Me.gridDatos.TabIndex = 2
         '
         'btnSalir
@@ -152,6 +202,15 @@ Partial Class FrmKardex
         Me.btnBaja.Text = "Baja"
         Me.btnBaja.UseVisualStyleBackColor = True
         '
+        'lblNombre
+        '
+        Me.lblNombre.AutoSize = True
+        Me.lblNombre.Location = New System.Drawing.Point(12, 83)
+        Me.lblNombre.Name = "lblNombre"
+        Me.lblNombre.Size = New System.Drawing.Size(63, 18)
+        Me.lblNombre.TabIndex = 7
+        Me.lblNombre.Text = "Nombre:"
+        '
         'FrmKardex
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -181,4 +240,9 @@ Partial Class FrmKardex
     Friend WithEvents btnAlta As Button
     Friend WithEvents btnEditar As Button
     Friend WithEvents btnBaja As Button
+    Friend WithEvents txtNombre As TextBox
+    Friend WithEvents rdTodos As RadioButton
+    Friend WithEvents rdGerente As RadioButton
+    Friend WithEvents rdSocio As RadioButton
+    Friend WithEvents lblNombre As Label
 End Class
