@@ -386,7 +386,7 @@ Public Class FrmReportesGRD
                                 ' Verificar si es fecha
                                 If IsDate(valor) Then
                                     ' Insertar carácter invisible entre los guiones
-                                    valor = valor.Replace("-", ChrW(&H200C) & "-")
+                                    valor = valor.Replace(ChrW(&H200C) & "-", "-")
                                 End If
 
                                 ' Envolver en comillas dobles
