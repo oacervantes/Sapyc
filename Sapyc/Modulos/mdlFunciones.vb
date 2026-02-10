@@ -639,5 +639,17 @@ Module mdlFunciones
 
         Return cadena
     End Function
+    Public Function DiferenciaEnAños(fechaInicio As Date, fechaFin As Date) As Integer
+        ' Calcula la diferencia en años considerando meses y días
+        Dim años As Integer = fechaFin.Year - fechaInicio.Year
+
+        ' Ajusta si la fechaFin aún no ha alcanzado el mes/día de fechaInicio
+        If (fechaFin.Month < fechaInicio.Month) OrElse
+       (fechaFin.Month = fechaInicio.Month AndAlso fechaFin.Day < fechaInicio.Day) Then
+            años -= 1
+        End If
+
+        Return años
+    End Function
 
 End Module

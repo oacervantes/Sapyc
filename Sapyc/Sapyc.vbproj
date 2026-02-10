@@ -803,6 +803,8 @@
     <None Include="Resources\advertencia.png" />
     <None Include="Resources\ingenieria.png" />
     <None Include="Resources\direccion-de-casa.png" />
+    <None Include="Resources\usuario %281%29.png" />
+    <None Include="Resources\usuario %282%29.png" />
     <Content Include="siat.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

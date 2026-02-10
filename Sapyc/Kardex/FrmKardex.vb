@@ -14,11 +14,6 @@
 
         ListarKardex()
     End Sub
-    Private Sub BtnAlta_Click(sender As Object, e As EventArgs) Handles btnAlta.Click
-        Dim dlg As New DlgColaboradorKardex
-
-        dlg.ShowDialog()
-    End Sub
     Private Sub BtnEditar_Click(sender As Object, e As EventArgs) Handles btnEditar.Click
         Dim dlg As New DlgKardex
 
@@ -27,27 +22,11 @@
             dlg.sCveEmp = gridDatos.CurrentRow.Cells("sCveEmp").Value
             dlg.sNombre = gridDatos.CurrentRow.Cells("sNombre").Value
 
-            dlg.ShowDialog()
-        Else
-            MsgBox("Seleccione al colaborador para editar su kardex.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
-        End If
-    End Sub
-    Private Sub BtnBaja_Click(sender As Object, e As EventArgs) Handles btnBaja.Click
-        If gridDatos.CurrentRow IsNot Nothing Then
-            Dim idKardex As Integer = CInt(gridDatos.CurrentRow.Cells("idKardex").Value)
-            Dim sNombre As String = CStr(gridDatos.CurrentRow.Cells("sNombre").Value)
-
-            If gridDatos.CurrentRow.Cells("bStatus").Value Then
-                If MsgBox("Se dará de baja el kardex de " & sNombre & ", ¿Desea continuar?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "SIAT") = MsgBoxResult.Yes Then
-                    BajaKardex(3, idKardex)
-                    ListarKardex()
-                End If
-            Else
-                If MsgBox("Se reactivará el kardex de " & sNombre & ", ¿Desea continuar?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "SIAT") = MsgBoxResult.Yes Then
-                    BajaKardex(4, idKardex)
-                    ListarKardex()
-                End If
+            If dlg.ShowDialog() = DialogResult.OK Then
+                ListarKardex()
             End If
+        Else
+            MsgBox("Seleccione al colaborador para revisar su kardex.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
         End If
     End Sub
     Private Sub BtnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
@@ -63,10 +42,13 @@
             gridDatos.Rows(e.RowIndex).Cells("sStatus").Style.BackColor = Color.FromArgb(250, 224, 60)
             gridDatos.Rows(e.RowIndex).Cells("sStatus").Style.ForeColor = negro
         ElseIf gridDatos.Rows(e.RowIndex).Cells("iStatusKardex").Value = 2 Then
-            gridDatos.Rows(e.RowIndex).Cells("sStatus").Style.BackColor = Color.FromArgb(47, 158, 68)
+            gridDatos.Rows(e.RowIndex).Cells("sStatus").Style.BackColor = naranja_Salles
             gridDatos.Rows(e.RowIndex).Cells("sStatus").Style.ForeColor = blanco
         ElseIf gridDatos.Rows(e.RowIndex).Cells("iStatusKardex").Value = 3 Then
             gridDatos.Rows(e.RowIndex).Cells("sStatus").Style.BackColor = rojo_Salles
+            gridDatos.Rows(e.RowIndex).Cells("sStatus").Style.ForeColor = blanco
+        ElseIf gridDatos.Rows(e.RowIndex).Cells("iStatusKardex").Value = 4 Then
+            gridDatos.Rows(e.RowIndex).Cells("sStatus").Style.BackColor = Color.FromArgb(47, 158, 68)
             gridDatos.Rows(e.RowIndex).Cells("sStatus").Style.ForeColor = blanco
         Else
             gridDatos.Rows(e.RowIndex).Cells("sStatus").Style.BackColor = Color.WhiteSmoke
@@ -75,15 +57,47 @@
 
         gridDatos.Rows(e.RowIndex).Cells("sStatus").Style.Font = FuenteFila
     End Sub
-    Private Sub GridDatos_SelectionChanged(sender As Object, e As EventArgs) Handles gridDatos.SelectionChanged
+    Private Sub GridDatos_DoubleClick(sender As Object, e As EventArgs) Handles gridDatos.DoubleClick
         If gridDatos.CurrentRow IsNot Nothing Then
-            If gridDatos.CurrentRow.Cells("bStatus").Value = 0 Then
-                btnEditar.Enabled = False
-                btnBaja.Text = "Reactivar"
+            Dim dlg As New DlgKardex
+
+            If gridDatos.CurrentRow IsNot Nothing Then
+                dlg.idKardex = gridDatos.CurrentRow.Cells("idKardex").Value
+                dlg.sCveEmp = gridDatos.CurrentRow.Cells("sCveEmp").Value
+                dlg.sNombre = gridDatos.CurrentRow.Cells("sNombre").Value
+
+                If dlg.ShowDialog() = DialogResult.OK Then
+                    ListarKardex()
+                End If
             Else
-                btnEditar.Enabled = True
-                btnBaja.Text = "Baja"
+                MsgBox("Seleccione al colaborador para revisar su kardex.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
             End If
+        End If
+    End Sub
+
+    Private Sub RdTodos_CheckedChanged(sender As Object, e As EventArgs) Handles rdTodos.CheckedChanged
+        If rdTodos.Checked Then
+            bs.Filter = ""
+        End If
+    End Sub
+    Private Sub RdGerente_CheckedChanged(sender As Object, e As EventArgs) Handles rdGerente.CheckedChanged
+        If rdGerente.Checked Then
+            bs.Filter = "sTipoEmp IN ('GER')"
+        End If
+    End Sub
+    Private Sub RdSocio_CheckedChanged(sender As Object, e As EventArgs) Handles rdSocio.CheckedChanged
+        If rdSocio.Checked Then
+            bs.Filter = "sTipoEmp IN ('SOC', 'ASO')"
+        End If
+    End Sub
+
+    Private Sub TxtNombre_TextChanged(sender As Object, e As EventArgs) Handles txtNombre.TextChanged
+        If rdSocio.Checked Then
+            bs.Filter = "sNombre LIKE '%" & txtNombre.Text & "%' AND sTipoEmp IN ('SOC', 'ASO')"
+        ElseIf rdGerente.Checked Then
+            bs.Filter = "sNombre LIKE '%" & txtNombre.Text & "%' AND sTipoEmp IN ('GER')"
+        ElseIf rdTodos.Checked Then
+            bs.Filter = "sNombre LIKE '%" & txtNombre.Text & "%'"
         End If
     End Sub
 
@@ -114,12 +128,15 @@
                 gridDatos.Columns("sUsuario").Visible = False
                 gridDatos.Columns("sUSuarioMod").Visible = False
                 gridDatos.Columns("dFechaMod").Visible = False
+                gridDatos.Columns("dEdad").Visible = False
+                gridDatos.Columns("dAntiguo").Visible = False
+                gridDatos.Columns("sPuesto").Visible = False
+                gridDatos.Columns("dFechaCap").Visible = False
 
                 ConfigurarColumnasGrid(gridDatos, "idKardex", "ID. KARDEX", 100, 3, False)
                 ConfigurarColumnasGrid(gridDatos, "sNombre", "NOMBRE", 0, 1, False)
                 ConfigurarColumnasGrid(gridDatos, "sTipo", "TIPO", 150, 1, False)
                 ConfigurarColumnasGrid(gridDatos, "sStatus", "STATUS", 130, 3, False)
-                ConfigurarColumnasGrid(gridDatos, "dFechaCap", "ALTA", 150, 3, False)
             Else
                 bs.DataSource = Nothing
             End If
@@ -128,48 +145,6 @@
             MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "SIAT")
             dtKardex = Nothing
         End Try
-    End Sub
-    Private Sub BajaKardex(iOpcion As Integer, idKardex As Integer)
-        Try
-            With clsDatosSac
-                .subClearParameters()
-                .subAddParameter("@iOpcion", iOpcion, SqlDbType.Int, ParameterDirection.Input)
-                .subAddParameter("@idKardex", idKardex, SqlDbType.Int, ParameterDirection.Input)
-
-                .funExecuteSP(sStoredProc)
-            End With
-
-            MsgBox("Se ha dado de baja el kardex correctamente.", MsgBoxStyle.Information, "SIAT")
-        Catch ex As Exception
-            InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "EliminarProspecto()")
-            MsgBox("Por el momento no es posible dar de baja el kardex, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "SIAT")
-        End Try
-    End Sub
-
-    Private Sub RdTodos_CheckedChanged(sender As Object, e As EventArgs) Handles rdTodos.CheckedChanged
-        If rdTodos.Checked Then
-            bs.Filter = ""
-        End If
-    End Sub
-    Private Sub RdGerente_CheckedChanged(sender As Object, e As EventArgs) Handles rdGerente.CheckedChanged
-        If rdGerente.Checked Then
-            bs.Filter = "sTipoEmp IN ('GER')"
-        End If
-    End Sub
-    Private Sub RdSocio_CheckedChanged(sender As Object, e As EventArgs) Handles rdSocio.CheckedChanged
-        If rdSocio.Checked Then
-            bs.Filter = "sTipoEmp IN ('SOC', 'ASO')"
-        End If
-    End Sub
-
-    Private Sub TxtNombre_TextChanged(sender As Object, e As EventArgs) Handles txtNombre.TextChanged
-        If rdSocio.Checked Then
-            bs.Filter = "sNombre LIKE '%" & txtNombre.Text & "%' AND sTipoEmp IN ('SOC', 'ASO')"
-        ElseIf rdGerente.Checked Then
-            bs.Filter = "sNombre LIKE '%" & txtNombre.Text & "%' AND sTipoEmp IN ('GER')"
-        ElseIf rdTodos.Checked Then
-            bs.Filter = "sNombre LIKE '%" & txtNombre.Text & "%'"
-        End If
     End Sub
 
 End Class

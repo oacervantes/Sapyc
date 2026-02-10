@@ -11,9 +11,6 @@ Public Class FrmReportesGRD
 
     Private dtBases, dtCiclos, dtReportes, dtEnt, dtEntidades, dtServ, dtServicios, dtProv, dtProveedores, dtRolEnt, dtRolesEntidad As New DataTable
     Private drEnt, drServ, drProv, drRol, drCiclos As DataRow
-
-
-
     Private idCiclo As Integer
 
     Private Sub FrmReportesGRD_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -53,16 +50,16 @@ Public Class FrmReportesGRD
                 If dlg.ShowDialog = Windows.Forms.DialogResult.OK Then
 
                     'Clientes.
-                    CrearCsv(gridClientes, dlg.txtDirectorio.Text, "Entity sample " & Now.Day & "-" & Now.Month & "-" & Now.Year & " GT Mexico.csv")
+                    CrearCsv(gridClientes, dlg.txtDirectorio.Text, "Entity information " & Now.Day & "-" & Now.Month & "-" & Now.Year & " GT Mexico.csv")
 
                     'Servicios.
-                    CrearCsv(gridServicios, dlg.txtDirectorio.Text, "Client relationship sample " & Now.Day & "-" & Now.Month & "-" & Now.Year & " GT Mexico.csv")
+                    CrearCsv(gridServicios, dlg.txtDirectorio.Text, "Client relationship " & Now.Day & "-" & Now.Month & "-" & Now.Year & " GT Mexico.csv")
 
                     'Proveedores.
-                    CrearCsv(gridProveedores, dlg.txtDirectorio.Text, "Business relationship sample " & Now.Day & "-" & Now.Month & "-" & Now.Year & " GT Mexico.csv")
+                    CrearCsv(gridProveedores, dlg.txtDirectorio.Text, "Business relationship " & Now.Day & "-" & Now.Month & "-" & Now.Year & " GT Mexico.csv")
 
                     'Roles en la Entidad.
-                    CrearCsv(gridRolesEntidad, dlg.txtDirectorio.Text, "Personnel relationship sample " & Now.Day & "-" & Now.Month & "-" & Now.Year & " GT Mexico.csv")
+                    CrearCsv(gridRolesEntidad, dlg.txtDirectorio.Text, "Personnel relationship " & Now.Day & "-" & Now.Month & "-" & Now.Year & " GT Mexico.csv")
                 Else
                     Exit Sub
                 End If
