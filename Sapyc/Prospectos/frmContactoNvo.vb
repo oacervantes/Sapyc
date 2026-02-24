@@ -1,7 +1,4 @@
-﻿Imports System.Text.RegularExpressions
-
-Public Class FrmContacto
-
+﻿Public Class frmContactoNvo
 #Region "VARIABLES"
 
     Private ds As New DataSet
@@ -39,16 +36,9 @@ Public Class FrmContacto
 
 #Region "EVENTOS"
 
-    Private Sub FrmContacto_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub frmContactoNvo_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         panDatosGenerales.Visible = True
 
-        'If iOrigen = 1 Then
-        '    ListarProspectos()
-        '    InsertarNuevoProspecto()
-        '    InsertarPropuestaProspecto()
-        'ElseIf iOrigen = 2 Then
-        '    txtClaveProspecto.Text = sCveProspecto
-        'End If
 
         '============================== ACERCAMIENTO ==============================
         ListarComoSeEnteroAcerca()
@@ -99,10 +89,7 @@ Public Class FrmContacto
         listarSubNivel()
         '============================== CONSULTA DATOS ==============================
         ListarContactoInicial()
-
-
     End Sub
-
     Private Sub BtnRegistroDatosGenerales_Click(sender As Object, e As EventArgs) Handles btnRegistroDatosGenerales.Click
         bCargaInfo = True
         txtMensaje.Text = ""
@@ -175,9 +162,7 @@ Public Class FrmContacto
 
                     'INSERTA TABLAS PROSPECTOS NUEVOS
                     InsertaGeneralProspectos()
-                    InsertarContactoInicialProspectos()
                     InsertarAcercamientoProspectos()
-                    InsertarDomicilioProspectos()
 
                     'INSERTA PROPUESTA SIAT ACTUALIZA SOCIO AREA Y OFICINA EN PROSPECTOS
                     InsertarPropuesta()
@@ -190,9 +175,7 @@ Public Class FrmContacto
                     InsertarPropuestaNuevos()
                     'INSERTA TABLAS PROSPECTOS NUEVOS
                     InsertaGeneralProspectos()
-                    InsertarContactoInicialProspectos()
                     InsertarAcercamientoProspectos()
-                    InsertarDomicilioProspectos()
 
                     EnvioCorreoSocio()
                     MsgBox("Se registraron los datos del prospecto correctamente.", MsgBoxStyle.Information, "SIAT")
@@ -205,7 +188,7 @@ Public Class FrmContacto
                 btnRegistroDatosGenerales.Enabled = True
 
                 OcultarMensajesError()
-                ListarProspectos()
+
 
                 'DialogResult = DialogResult.OK
             End If
@@ -340,7 +323,7 @@ Public Class FrmContacto
 
 #Region "DATOS GENERALES"
 
-    Private Sub btnIndustria_Click(sender As Object, e As EventArgs) Handles btnIndustria.Click
+    Private Sub btnIndustria_Click(sender As Object, e As EventArgs)
         Dim dlg As New dlgIndustria
 
         If dlg.ShowDialog = DialogResult.OK Then
@@ -357,7 +340,7 @@ Public Class FrmContacto
             txtIndustria.Text = ""
         End If
     End Sub
-    Private Sub btnSubsector_Click(sender As Object, e As EventArgs) Handles btnSubsector.Click
+    Private Sub btnSubsector_Click(sender As Object, e As EventArgs)
         Dim dlg As New dlgSubSector
 
         If sCveInd = "" Then
@@ -377,7 +360,7 @@ Public Class FrmContacto
             txtSubsector.Text = ""
         End If
     End Sub
-    Private Sub btnSubnivel_Click(sender As Object, e As EventArgs) Handles btnSubnivel.Click
+    Private Sub btnSubnivel_Click(sender As Object, e As EventArgs)
         Dim dlg As New dlgSubNivel
 
         If sCveSS = "" Then
@@ -398,20 +381,20 @@ Public Class FrmContacto
         End If
     End Sub
 
-    Private Sub RdIdiomaSi_CheckedChanged(sender As Object, e As EventArgs) Handles rdIdiomaSi.CheckedChanged
+    Private Sub RdIdiomaSi_CheckedChanged(sender As Object, e As EventArgs)
         If rdIdiomaSi.Checked Then
             txtIdioma.ReadOnly = True
             btnIdiomas.Enabled = True
         End If
     End Sub
-    Private Sub RdIdiomaNo_CheckedChanged(sender As Object, e As EventArgs) Handles rdIdiomaNo.CheckedChanged
+    Private Sub RdIdiomaNo_CheckedChanged(sender As Object, e As EventArgs)
         If rdIdiomaNo.Checked Then
             idIdioma = 0
             txtIdioma.Text = ""
             btnIdiomas.Enabled = False
         End If
     End Sub
-    Private Sub BtnIdiomas_Click(sender As Object, e As EventArgs) Handles btnIdiomas.Click
+    Private Sub BtnIdiomas_Click(sender As Object, e As EventArgs)
         Dim dlg As New DlgIdiomas
 
         If dlg.ShowDialog = DialogResult.OK Then
@@ -419,7 +402,7 @@ Public Class FrmContacto
             txtIdioma.Text = dlg.sIdioma
         End If
     End Sub
-    Private Sub BtnPaisProspecto_Click(sender As Object, e As EventArgs) Handles btnPaisProspecto.Click
+    Private Sub BtnPaisProspecto_Click(sender As Object, e As EventArgs)
         Dim dlg As New DlgPaises
 
         If dlg.ShowDialog = DialogResult.OK Then
@@ -427,7 +410,7 @@ Public Class FrmContacto
             txtPaisProspecto.Text = dlg.sPais
         End If
     End Sub
-    Private Sub BtnPaisGTI_Click(sender As Object, e As EventArgs) Handles btnPaisGTI.Click
+    Private Sub BtnPaisGTI_Click(sender As Object, e As EventArgs)
         Dim dlg As New DlgPaises
 
         If dlg.ShowDialog = DialogResult.OK Then
@@ -439,7 +422,7 @@ Public Class FrmContacto
             End If
         End If
     End Sub
-    Private Sub BtnPaisResidencia_Click(sender As Object, e As EventArgs) Handles btnPaisResidencia.Click
+    Private Sub BtnPaisResidencia_Click(sender As Object, e As EventArgs)
         Dim dlg As New DlgPaises
 
         If dlg.ShowDialog = DialogResult.OK Then
@@ -448,7 +431,7 @@ Public Class FrmContacto
         End If
     End Sub
 
-    Private Sub CboOficinas_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboOficina.SelectedIndexChanged
+    Private Sub CboOficinas_SelectedIndexChanged(sender As Object, e As EventArgs)
         If cboOficina.SelectedIndex = -1 Then
             Exit Sub
         End If
@@ -465,7 +448,7 @@ Public Class FrmContacto
         End If
 
     End Sub
-    Private Sub CboDivisiones_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboDivision.SelectedIndexChanged
+    Private Sub CboDivisiones_SelectedIndexChanged(sender As Object, e As EventArgs)
         If cboDivision.SelectedIndex = -1 Then
             Exit Sub
         End If
@@ -480,16 +463,16 @@ Public Class FrmContacto
             cboSocio.Enabled = False
         End If
     End Sub
-    Private Sub CboSocio_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles cboSocio.SelectionChangeCommitted
+    Private Sub CboSocio_SelectionChangeCommitted(sender As Object, e As EventArgs)
         sCveSoc = cboSocio.SelectedValue
         sNomSoc = cboSocio.SelectedItem("sNombre").ToString
         sCorreoSoc = cboSocio.SelectedItem("EMAIL").ToString
     End Sub
 
-    Private Sub rdEmpresaPublicaSi_CheckedChanged(sender As Object, e As EventArgs) Handles rdEmpresaPublicaSi.CheckedChanged
+    Private Sub rdEmpresaPublicaSi_CheckedChanged(sender As Object, e As EventArgs)
         HabilitarCombo(cboBolsaValores, True)
     End Sub
-    Private Sub rdEmpresaPublicaNo_CheckedChanged(sender As Object, e As EventArgs) Handles rdEmpresaPublicaNo.CheckedChanged
+    Private Sub rdEmpresaPublicaNo_CheckedChanged(sender As Object, e As EventArgs)
         HabilitarCombo(cboBolsaValores, False)
         cboBolsaValores.SelectedIndex = 0
 
@@ -497,7 +480,7 @@ Public Class FrmContacto
         txtBolsaValoresOtro.Text = ""
     End Sub
 
-    Private Sub cboBolsaValores_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboBolsaValores.SelectedIndexChanged
+    Private Sub cboBolsaValores_SelectedIndexChanged(sender As Object, e As EventArgs)
         If cboBolsaValores.SelectedIndex = 5 Then
             txtBolsaValoresOtro.Enabled = True
         Else
@@ -506,10 +489,10 @@ Public Class FrmContacto
         End If
     End Sub
 
-    Private Sub rdEntidadReguladaSi_CheckedChanged(sender As Object, e As EventArgs) Handles rdEntidadReguladaSi.CheckedChanged
+    Private Sub rdEntidadReguladaSi_CheckedChanged(sender As Object, e As EventArgs)
         HabilitarCombo(cboEntidadReguladora, True)
     End Sub
-    Private Sub rdEntidadReguladaNo_CheckedChanged(sender As Object, e As EventArgs) Handles rdEntidadReguladaNo.CheckedChanged
+    Private Sub rdEntidadReguladaNo_CheckedChanged(sender As Object, e As EventArgs)
         HabilitarCombo(cboEntidadReguladora, False)
         cboEntidadReguladora.SelectedIndex = 0
 
@@ -517,7 +500,7 @@ Public Class FrmContacto
         txtEntidadReguladoraOtro.Text = ""
     End Sub
 
-    Private Sub cboEntidadReguladora_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboEntidadReguladora.SelectedIndexChanged
+    Private Sub cboEntidadReguladora_SelectedIndexChanged(sender As Object, e As EventArgs)
         If cboEntidadReguladora.SelectedIndex = 8 Then
             txtEntidadReguladoraOtro.Enabled = True
         Else
@@ -526,14 +509,14 @@ Public Class FrmContacto
         End If
     End Sub
 
-    Private Sub rdEntidadSupervisadaSi_CheckedChanged(sender As Object, e As EventArgs) Handles rdEntidadSupervisadaSi.CheckedChanged
+    Private Sub rdEntidadSupervisadaSi_CheckedChanged(sender As Object, e As EventArgs)
         HabilitarCombo(cboEntidadSupervisada, True)
     End Sub
-    Private Sub rdEntidadSupervisadaNo_CheckedChanged(sender As Object, e As EventArgs) Handles rdEntidadSupervisadaNo.CheckedChanged
+    Private Sub rdEntidadSupervisadaNo_CheckedChanged(sender As Object, e As EventArgs)
         HabilitarCombo(cboEntidadSupervisada, False)
     End Sub
 
-    Private Sub cboEntidadSupervisada_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboEntidadSupervisada.SelectedIndexChanged
+    Private Sub cboEntidadSupervisada_SelectedIndexChanged(sender As Object, e As EventArgs)
         If cboEntidadSupervisada.SelectedIndex = 6 Then
             txtEntidadSupervisadaOtro.Enabled = True
         Else
@@ -542,27 +525,27 @@ Public Class FrmContacto
         End If
     End Sub
 
-    Private Sub RdReferenciaGTISi_CheckedChanged(sender As Object, e As EventArgs) Handles rdReferenciaGTISi.CheckedChanged
+    Private Sub RdReferenciaGTISi_CheckedChanged(sender As Object, e As EventArgs)
         txtReferenciaGTISocio.Enabled = True
         'cboReferenciaGTIPais.Enabled = True
         btnPaisGTI.Enabled = True
         cboReferenciaGTIOficina.Enabled = True
     End Sub
-    Private Sub RdReferenciaGTINo_CheckedChanged(sender As Object, e As EventArgs) Handles rdReferenciaGTINo.CheckedChanged
+    Private Sub RdReferenciaGTINo_CheckedChanged(sender As Object, e As EventArgs)
         txtReferenciaGTISocio.Enabled = False
         'cboReferenciaGTIPais.Enabled = False
         btnPaisGTI.Enabled = False
         cboReferenciaGTIOficina.Enabled = False
     End Sub
 
-    Private Sub txtRazonSocial_TextChanged(sender As Object, e As EventArgs) Handles txtRazonSocial.TextChanged
+    Private Sub txtRazonSocial_TextChanged(sender As Object, e As EventArgs)
         txtRazonSocial.CharacterCasing = CharacterCasing.Upper
 
         If txtRazonSocial.Text.Length > 0 Then
             Aplicar_FiltroNombre()
         End If
     End Sub
-    Private Sub txtRazonSocial_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtRazonSocial.KeyPress
+    Private Sub txtRazonSocial_KeyPress(sender As Object, e As KeyPressEventArgs)
         If e.KeyChar = ChrW(Keys.Enter) Then
             e.Handled = True
             SendKeys.Send("{TAB}")
@@ -633,68 +616,13 @@ Public Class FrmContacto
 
 #Region "CONTACTO INICIAL"
 
-    'Private Sub btnRegistroContactoInicial_Click(sender As Object, e As EventArgs) Handles btnRegistroContactoInicial.Click
-    '    gpBoxDatosContactoInicial.Enabled = True
-    '    btnGuardarContactoInicial.Enabled = True
-    '    btnCancelarContactoInicial.Enabled = True
-    '    btnRegistroContactoInicial.Enabled = False
-
-    '    lblMensajeCargaContactoInicial.Visible = False
-
-    '    txtContactoInicialNombre.Focus()
-    'End Sub
-    'Private Sub btnGuardarContactoInicial_Click(sender As Object, e As EventArgs)
-    '    If txtContactoInicialNombre.Text = "" Then
-    '        lblMensajeErrorContactoInicial.Visible = True
-    '        lblMensajeErrorContactoInicial.Text = "Especifíque el nombre del contacto inicial del prospecto."
-
-    '        Exit Sub
-    '    End If
-
-    '    If txtContactoInicialCargo.Text = "" Then
-    '        lblMensajeErrorContactoInicial.Visible = True
-    '        lblMensajeErrorContactoInicial.Text = "Especifíque el cargo del contacto inicial del prospecto."
-
-    '        Exit Sub
-    '    End If
-
-    '    If txtContactoInicialCorreo.Text = "" Then
-    '        lblMensajeErrorContactoInicial.Visible = True
-    '        lblMensajeErrorContactoInicial.Text = "Especifíque el correo electrónico del contacto inicial del prospecto."
-
-    '        Exit Sub
-    '    End If
-
-    '    lblMensajeErrorContactoInicial.Visible = False
-    '    lblMensajeErrorContactoInicial.Text = ""
-
-    '    If MsgBox("¿Desea registrar la información de Contacto Inicial?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Agregar Contacto Inicial") = MsgBoxResult.Yes Then
-    '        InsertarContactoInicial()
-
-    '        gpBoxDatosContactoInicial.Enabled = False
-    '        btnGuardarContactoInicial.Enabled = False
-    '        btnCancelarContactoInicial.Enabled = False
-    '        btnRegistroContactoInicial.Enabled = True
-
-    '        ListarContactoInicial()
-    '    End If
-    'End Sub
-    'Private Sub btnCancelarContactoInicial_Click(sender As Object, e As EventArgs) Handles btnCancelarContactoInicial.Click
-    '    gpBoxDatosContactoInicial.Enabled = False
-    '    btnGuardarContactoInicial.Enabled = False
-    '    btnCancelarContactoInicial.Enabled = False
-    '    btnRegistroContactoInicial.Enabled = True
-
-    '    OcultarMensajesError()
-    '    ListarContactoInicial()
-    'End Sub
-    Private Sub rdEmpresaExtranjeroRepNo_CheckedChanged(sender As Object, e As EventArgs) Handles rdEmpresaExtranjeroRepNo.CheckedChanged
+    Private Sub rdEmpresaExtranjeroRepNo_CheckedChanged(sender As Object, e As EventArgs)
         If rdEmpresaExtranjeroRepNo.Checked Then
             txtEmpresaTenedora.Enabled = False
             cboPaisResidencia.Enabled = False
         End If
     End Sub
-    Private Sub rdEmpresaExtranjeroRepSi_CheckedChanged(sender As Object, e As EventArgs) Handles rdEmpresaExtranjeroRepSi.CheckedChanged
+    Private Sub rdEmpresaExtranjeroRepSi_CheckedChanged(sender As Object, e As EventArgs)
         txtEmpresaTenedora.Enabled = True
         cboPaisResidencia.Enabled = True
     End Sub
@@ -703,164 +631,39 @@ Public Class FrmContacto
 
 #Region "ACERCAMIENTO"
 
-    'Private Sub btnRegistroAcercamiento_Click(sender As Object, e As EventArgs) 'Handles btnRegistroAcercamiento.Click
-
-    'End Sub
-    'Private Sub btnGuardarAcercamiento_Click(sender As Object, e As EventArgs)
-    '    If cboAcercamientoComoEntero.SelectedValue = 13 And txtAcercamientoEnteroOtro.Text = "" Then
-    '        lblMensajeErrorAcercamiento.Visible = True
-    '        lblMensajeErrorAcercamiento.Text = "Especifíque la forma en cómo se enteró el prospecto."
-
-    '        Exit Sub
-    '    End If
-
-    '    If cboAcercamientoMedioContacto.SelectedValue = 10 And txtAcercamientoContactoOtro.Text = "" Then
-    '        lblMensajeErrorAcercamiento.Visible = True
-    '        lblMensajeErrorAcercamiento.Text = "Especifíque el medio de contacto utilizado por el prospecto."
-
-    '        Exit Sub
-    '    End If
-
-    '    lblMensajeErrorAcercamiento.Visible = False
-    '    lblMensajeErrorAcercamiento.Text = ""
-
-    '    If MsgBox("¿Desea registrar la información de Acercamiento?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Agregar Acercamiento") = MsgBoxResult.Yes Then
-    '        InsertarAcercamiento()
-
-    '        gpBoxDatosAcercamiento.Enabled = False
-    '        'btnGuardarAcercamiento.Enabled = False
-    '        'btnCancelarAcercamiento.Enabled = False
-    '        'btnRegistroAcercamiento.Enabled = True
-
-    '        ListarAcercamiento()
-    '    End If
-    'End Sub
-    'Private Sub btnCancelarAcercamiento_Click(sender As Object, e As EventArgs) Handles btnCancelarAcercamiento.Click
-    '    gpBoxDatosAcercamiento.Enabled = False
-    '    btnGuardarAcercamiento.Enabled = False
-    '    btnCancelarAcercamiento.Enabled = False
-    '    btnRegistroAcercamiento.Enabled = True
-
-    '    OcultarMensajesError()
-    '    ListarAcercamiento()
-    'End Sub
-
-    Private Sub CboAcercamientoComoEntero_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles cboAcercamientoComoEntero.SelectionChangeCommitted
-        txtAcercamientoEnteroOtro.Text = ""
-
-        Select Case cboAcercamientoComoEntero.SelectedValue
-            Case 7
-                txtAcercamientoEnteroOtro.Enabled = True
-                lblAcercamientoOtro.Text = "Socio"
-
-            Case 8
-                txtAcercamientoEnteroOtro.Enabled = True
-                lblAcercamientoOtro.Text = "Gerente"
-
-            Case 12
-                txtAcercamientoEnteroOtro.Enabled = True
-                lblAcercamientoOtro.Text = "Colaborador"
-
-            Case 13
-                txtAcercamientoEnteroOtro.Enabled = True
-                lblAcercamientoOtro.Text = "Otro"
-
-            Case Else
-                txtAcercamientoEnteroOtro.Enabled = False
-                lblAcercamientoOtro.Text = "Otro"
-
-        End Select
+    Private Sub CboAcercamientoComoEntero_SelectionChangeCommitted(sender As Object, e As EventArgs)
 
     End Sub
-    Private Sub cboAcercamientoMedioContacto_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles cboAcercamientoMedioContacto.SelectionChangeCommitted
-        If cboAcercamientoMedioContacto.SelectedValue = 10 Then
-            txtAcercamientoContactoOtro.Enabled = True
-        Else
-            txtAcercamientoContactoOtro.Enabled = False
-            txtAcercamientoContactoOtro.Text = ""
-        End If
+    Private Sub cboAcercamientoMedioContacto_SelectionChangeCommitted(sender As Object, e As EventArgs)
+
     End Sub
 
 #End Region
 
 #Region "DOMICILIO"
 
-    'Private Sub BtnGuardarDomicilio_Click(sender As Object, e As EventArgs)
-    '    'If MsgBox("¿Desea registrar la información del Domicilio?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Agregar Domicilio") = MsgBoxResult.Yes Then
-    '    '    InsertarDomicilio()
+    Private Sub CboDomicilioPais_SelectedIndexChanged(sender As Object, e As EventArgs)
 
-    '    '    gpBoxDatosDomicilio.Enabled = False
-    '    '    btnGuardarDomicilio.Enabled = False
-    '    '    btnCancelarDomicilio.Enabled = False
-    '    '    btnRegistroDomicilio.Enabled = True
-
-    '    '    ListarDomicilio()
-    '    'End If
-    'End Sub
-
-    Private Sub CboDomicilioPais_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboDomicilioPais.SelectedIndexChanged
-        If cboDomicilioPais.SelectedIndex = 151 Then
-            panDomicilioNac.Visible = True
-            panDomicilioExt.Visible = False
-            'cboDomicilioColonia.Visible = True
-            'cboDomicilioEstado.Visible = True
-            'cboDomicilioMunicipio.Visible = True
-
-            'txtDomicilioExtDireccion1.Visible = False
-            'txtDomicilioExtEstado.Visible = False
-            'txtDomicilioExtLocalidad.Visible = False
-        Else
-            panDomicilioNac.Visible = False
-            panDomicilioExt.Visible = True
-            'txtDomicilioExtDireccion1.Visible = True
-            'txtDomicilioExtEstado.Visible = True
-            'txtDomicilioExtLocalidad.Visible = True
-
-            'cboDomicilioColonia.Visible = False
-            'cboDomicilioEstado.Visible = False
-            'cboDomicilioMunicipio.Visible = False
-        End If
     End Sub
-    Private Sub CboDomicilioColonia_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles cboDomicilioColonia.SelectionChangeCommitted
-        txtDomicilioCP.Text = cboDomicilioColonia.SelectedItem("sCP")
+    Private Sub CboDomicilioColonia_SelectionChangeCommitted(sender As Object, e As EventArgs)
+
     End Sub
-    Private Sub CboDomicilioMunicipio_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles cboDomicilioMunicipio.SelectionChangeCommitted
-        txtDomicilioCP.Text = ""
-        listarColoniasDomicilio(2, cboDomicilioMunicipio.SelectedValue, cboDomicilioEstado.SelectedValue)
+    Private Sub CboDomicilioMunicipio_SelectionChangeCommitted(sender As Object, e As EventArgs)
+
     End Sub
-    Private Sub CboDomicilioEstado_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles cboDomicilioEstado.SelectionChangeCommitted
-        ListarMunicipiosDomicilio(cboDomicilioEstado.SelectedValue)
-        cboDomicilioMunicipio.SelectedIndex = 0
+    Private Sub CboDomicilioEstado_SelectionChangeCommitted(sender As Object, e As EventArgs)
+
     End Sub
 
-    Private Sub TxtDomicilioCP_Leave(sender As Object, e As EventArgs) Handles txtDomicilioCP.Leave
+    Private Sub TxtDomicilioCP_Leave(sender As Object, e As EventArgs)
 
-        If idPaisDom = 151 Then
-
-            If txtDomicilioCP.TextLength <> 5 And txtDomicilioCP.TextLength <> 0 Then
-                MsgBox("El código postal debe contener 5 dígitos.", MsgBoxStyle.Exclamation, "SIAT")
-                txtDomicilioCP.Focus()
-                Exit Sub
-            End If
-
-            Dim esNumerico As Boolean = Regex.IsMatch(txtDomicilioCP.Text, "^\d+$")
-            If esNumerico Then
-                listarColoniasDomicilio(1, txtDomicilioCP.Text)
-            Else
-                MsgBox("El código postal debe ser numerico.", MsgBoxStyle.Exclamation, "SIAT")
-                txtDomicilioCP.Focus()
-                Exit Sub
-            End If
-
-
-        End If
     End Sub
 
-    Private Sub TxtDomicilioColonia_TextChanged(sender As Object, e As EventArgs) Handles txtDomicilioExtDireccion1.TextChanged
-        txtDomicilioExtDireccion1.CharacterCasing = CharacterCasing.Upper
+    Private Sub TxtDomicilioColonia_TextChanged(sender As Object, e As EventArgs)
+
     End Sub
-    Private Sub TxtDomicilioMunicipio_TextChanged(sender As Object, e As EventArgs) Handles txtDomicilioExtLocalidad.TextChanged
-        txtDomicilioExtLocalidad.CharacterCasing = CharacterCasing.Upper
+    Private Sub TxtDomicilioMunicipio_TextChanged(sender As Object, e As EventArgs)
+
     End Sub
 
 #End Region
@@ -876,84 +679,7 @@ Public Class FrmContacto
             cbo.Enabled = False
         End If
     End Sub
-    Private Sub ListarProspectos()
-        Try
-            Dim sTabla As String = "tbProspectos"
-
-            With ds.Tables
-                LimpiarConsultaTabla(ds.Tables, sTabla)
-
-                With clsDatosProp
-                    .subClearParameters()
-                    .subAddParameter("@iOpcion", 2, SqlDbType.Int, ParameterDirection.Input)
-                End With
-
-                .Add(clsDatosProp.funExecuteSPDataTable("paSSGTProspectos", sTabla))
-
-                dtProspectos = .Item(sTabla)
-            End With
-
-            If dtProspectos.Rows.Count > 0 Then
-                idProspectos = CInt(dtProspectos.Rows(0).Item("idProspecto"))
-            Else
-                idProspectos = 0
-            End If
-        Catch ex As Exception
-            InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarProspectos()")
-            MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
-            dtProspectos = Nothing
-        End Try
-    End Sub
-    Private Sub InsertarNuevoProspecto()
-        Try
-            sCveProspecto = GenerarNuevoProspecto(idProspectos)
-
-            With clsDatosProp
-                .subClearParameters()
-                .subAddParameter("@iOpcion", 1, SqlDbType.Int, ParameterDirection.Input)
-                .subAddParameter("@sCveProspecto", sCveProspecto, SqlDbType.VarChar, ParameterDirection.Input)
-                .subAddParameter("@sCliente", "Prospecto " & sCveProspecto, SqlDbType.VarChar, ParameterDirection.Input)
-                .subAddParameter("@sCveOfi", "", SqlDbType.VarChar, ParameterDirection.Input)
-                .subAddParameter("@sCveArea", "", SqlDbType.VarChar, ParameterDirection.Input)
-                .subAddParameter("@sUsuario", sCveUsuario, SqlDbType.VarChar, ParameterDirection.Input)
-                .subAddParameter("@bRecurrente", 0, SqlDbType.Bit, ParameterDirection.Input)
-                .subAddParameter("@iStatus", 1, SqlDbType.Int, ParameterDirection.Input)
-
-                .funExecuteSP("paSSGTProspectos")
-            End With
-
-            txtClaveProspecto.Text = sCveProspecto
-        Catch ex As Exception
-            InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "InsertarNuevoProspecto()")
-            MsgBox("Hubo un problema al registrar la información de accionistas, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
-        End Try
-    End Sub
-    Private Sub InsertarPropuestaProspecto()
-        Try
-            With clsDatosProp
-                .subClearParameters()
-                .subAddParameter("@iOpcion", 1, SqlDbType.Int, ParameterDirection.Input)
-                .subAddParameter("@sCveProspecto", sCveProspecto, SqlDbType.VarChar, ParameterDirection.Input)
-                .subAddParameter("@iPeriodo", iPeriodoFirma, SqlDbType.Int, ParameterDirection.Input)
-                .subAddParameter("@idPropuesta", 0, SqlDbType.Int, ParameterDirection.Input)
-                .subAddParameter("@sUsuario", sCveUsuario, SqlDbType.VarChar, ParameterDirection.Input)
-                .subAddParameter("@idServicio", 0, SqlDbType.Int, ParameterDirection.Input)
-                .subAddParameter("@iConflictCheck", 0, SqlDbType.Int, ParameterDirection.Input)
-                .subAddParameter("@iBackgroundCheck", 0, SqlDbType.Int, ParameterDirection.Input)
-                .subAddParameter("@iNivRiesgo", 0, SqlDbType.Int, ParameterDirection.Input)
-                .subAddParameter("@bIndependencia", 0, SqlDbType.Int, ParameterDirection.Input)
-                .subAddParameter("@sMotInd", "", SqlDbType.VarChar, ParameterDirection.Input)
-                .subAddParameter("@dHonorarios", 0, SqlDbType.Decimal, ParameterDirection.Input)
-
-                .funExecuteSP("paSSGTPropuestasProspectos")
-            End With
-        Catch ex As Exception
-            InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "InsertarPropuestaProspecto()")
-            MsgBox("Hubo un problema al registrar la información de accionistas, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
-        End Try
-    End Sub
-
-    Private Sub txtRFC_Leave(sender As Object, e As EventArgs) Handles txtRFC.Leave
+    Private Sub txtRFC_Leave(sender As Object, e As EventArgs)
         If txtRFC.TextLength <> 12 And txtRFC.TextLength <> 13 Then
             MsgBox("El RFC es incorrecto, vuelva a escribirlo por favor.", MsgBoxStyle.Exclamation, "Dato Incorrecto")
             Exit Sub
@@ -971,44 +697,12 @@ Public Class FrmContacto
             txtRFC.CharacterCasing = CharacterCasing.Upper
         End If
     End Sub
-
     Private Sub OcultarMensajesError()
         'lblMensajeErrorDatosGenerales.Visible = False
         'lblMensajeErrorContactoInicial.Visible = False
         'lblMensajeErrorAcercamiento.Visible = False
         'lblMensajeErrorDomicilio.Visible = False
     End Sub
-    Private Sub txtIdSAC_Leave(sender As Object, e As EventArgs) Handles txtIdSAC.Leave
-        If txtIdSAC.Text = "" Then
-            txtRazonSocial.Enabled = False
-            txtNombreComercial.Enabled = False
-            MsgBox("Debes indicar un ID SAC .", MsgBoxStyle.Exclamation, "Dato Incorrecto")
-            Exit Sub
-        Else
-            txtRazonSocial.Enabled = True
-            txtNombreComercial.Enabled = True
-        End If
-
-        If ExisteIDSAC(Me.txtIdSAC.Text) Then
-            MsgBox("No se puede dar de alta este ID SAC, ya se dio de alta", MsgBoxStyle.Exclamation, "Nombre Incorrecto")
-            txtIdSAC.Text = ""
-            txtRazonSocial.Enabled = False
-            txtNombreComercial.Enabled = False
-        Else
-            txtIdSAC.CharacterCasing = CharacterCasing.Upper
-            txtRazonSocial.Enabled = True
-            txtNombreComercial.Enabled = True
-        End If
-
-    End Sub
-    Private Sub txtIdSAC_TextChanged(sender As Object, e As EventArgs) Handles txtIdSAC.TextChanged
-        txtIdSAC.CharacterCasing = CharacterCasing.Upper
-    End Sub
-
-    Private Sub txtAcercamientoWebProspecto_TextChanged(sender As Object, e As EventArgs) Handles txtAcercamientoWebProspecto.TextChanged
-
-    End Sub
-
     Private Sub listarIndustrias()
         Try
             Dim sTabla As String = "tbProspectos"
@@ -1039,23 +733,8 @@ Public Class FrmContacto
             dtProspectos = Nothing
         End Try
     End Sub
-    Private Sub BtnPaisDomicilio_Click(sender As Object, e As EventArgs) Handles btnPaisDomicilio.Click
-        Dim dlg As New DlgPaises
+    Private Sub BtnPaisDomicilio_Click(sender As Object, e As EventArgs)
 
-        If dlg.ShowDialog = DialogResult.OK Then
-            idPaisDom = dlg.idPais
-            sPaisDom = dlg.sPais
-            txtPaisDomicilio.Text = sPaisDom
-            lblMensajeBloqueoDomicilio.Visible = False
-
-            If idPaisDom = 151 Then
-                panDomicilioNac.Visible = True
-                panDomicilioExt.Visible = False
-            Else
-                panDomicilioNac.Visible = False
-                panDomicilioExt.Visible = True
-            End If
-        End If
     End Sub
     Private Sub ListarSubSector()
         Try
@@ -1130,7 +809,7 @@ Public Class FrmContacto
                 .subAddParameter("@sCveOfi", cboOficina.SelectedValue, SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@sCveArea", cboDivision.SelectedValue, SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@iServicio", cboDatosGeneralesServicio.SelectedValue, SqlDbType.Int, ParameterDirection.Input)
-                .subAddParameter("@iIdsac", txtIdSAC.Text, SqlDbType.VarChar, ParameterDirection.Input)
+                ' .subAddParameter("@iIdsac", txtIdSAC.Text, SqlDbType.VarChar, ParameterDirection.Input)
 
                 .funExecuteSP("paPropuestasCtesProspectos")
             End With
@@ -1180,7 +859,7 @@ Public Class FrmContacto
                     .subAddParameter("@sEstadoN", txtDomicilioExtEstado.Text, SqlDbType.VarChar, ParameterDirection.Input)
                     .subAddParameter("@sCPN", txtDomicilioExtCP.Text, SqlDbType.VarChar, ParameterDirection.Input)
                 End If
-                .subAddParameter("@sPaginaWebN", txtAcercamientoWebProspecto.Text.ToUpper(), SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@sPaginaWebN", txtContactoInicialTelefono.Text.ToUpper(), SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@iComoSeEnteroN", cboAcercamientoComoEntero.SelectedValue, SqlDbType.Int, ParameterDirection.Input)
                 .subAddParameter("@iMedioContactoN", cboAcercamientoMedioContacto.SelectedValue, SqlDbType.Int, ParameterDirection.Input)
                 .subAddParameter("@sComoSeEnteroOtroN", txtAcercamientoEnteroOtro.Text.ToUpper(), SqlDbType.VarChar, ParameterDirection.Input)
@@ -1201,7 +880,7 @@ Public Class FrmContacto
                 .subAddParameter("@sCveIndN", sCveInd, SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@sCveSSN", sCveSS, SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@sCveSNN", sCveGTI, SqlDbType.VarChar, ParameterDirection.Input)
-                .subAddParameter("@iIdsac", txtIdSAC.Text, SqlDbType.VarChar, ParameterDirection.Input)
+                ' .subAddParameter("@iIdsac", txtIdSAC.Text, SqlDbType.VarChar, ParameterDirection.Input)
 
                 .funExecuteSP("paPropuestasCtesProspectos")
 
@@ -1858,7 +1537,7 @@ Public Class FrmContacto
 
                 cboTipoEntidad.SelectedValue = CInt(dtDatosGenerales.Rows(0).Item("idTipoEntidad").ToString)
 
-                txtIdSAC.Text = dtDatosGenerales.Rows(0).Item("idSac").ToString
+                ' txtIdSAC.Text = dtDatosGenerales.Rows(0).Item("idSac").ToString
                 cboOficina.SelectedValue = dtDatosGenerales.Rows(0).Item("sCveOfi").ToString
                 cboDivision.SelectedValue = dtDatosGenerales.Rows(0).Item("sCveArea").ToString
                 cboSocio.SelectedValue = dtDatosGenerales.Rows(0).Item("sCveSocio").ToString
@@ -2102,7 +1781,7 @@ Public Class FrmContacto
                 End If
                 .subAddParameter("@sUsuario", sCveUsuario, SqlDbType.VarChar, ParameterDirection.Input)
 
-                .subAddParameter("@idSac", txtIdSAC.Text, SqlDbType.VarChar, ParameterDirection.Input)
+                '.subAddParameter("@idSac", txtIdSAC.Text, SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@sCveOfi", cboOficina.SelectedValue, SqlDbType.VarChar, ParameterDirection.Input)
                 '.subAddParameter("@sCveArea", cboDivision.SelectedValue, SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@sCveSocio", cboSocio.SelectedValue, SqlDbType.VarChar, ParameterDirection.Input)
@@ -2147,13 +1826,13 @@ Public Class FrmContacto
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsLocal
+                With clsDatosSac
                     .subClearParameters()
-                    .subAddParameter("@iOpcion", 7, SqlDbType.Int, ParameterDirection.Input)
-                    .subAddParameter("@sCveProspecto", sCveProspecto, SqlDbType.VarChar, ParameterDirection.Input)
+                    .subAddParameter("@iOpcion", 1, SqlDbType.Int, ParameterDirection.Input)
+                    .subAddParameter("@idPropuesta", 0, SqlDbType.VarChar, ParameterDirection.Input)
                 End With
 
-                .Add(clsLocal.funExecuteSPDataTable("paControlSac", sTabla))
+                .Add(clsDatosSac.funExecuteSPDataTable("paDatosAsignacionSACContactoInicial", sTabla))
 
                 dtContactoInicial = .Item(sTabla)
             End With
@@ -2161,78 +1840,52 @@ Public Class FrmContacto
             If dtContactoInicial.Rows.Count > 0 Then
                 lblMensajeCargaContactoInicial.Visible = False
 
-                txtContactoInicialNombre.Text = dtContactoInicial.Rows(0).Item("sNombContacto").ToString
-                txtContactoInicialCargo.Text = dtContactoInicial.Rows(0).Item("sCargoCompañia").ToString
+                txtContactoInicialFecha.Value = dtContactoInicial.Rows(0).Item("dFechaContacto").ToString
+                txtContactoInicialPrimerContacto.Text = dtContactoInicial.Rows(0).Item("sNombPrimerContacto").ToString
+                txtContactoInicialNombre.Text = dtContactoInicial.Rows(0).Item("sNombreContacto").ToString
                 txtContactoInicialCorreo.Text = dtContactoInicial.Rows(0).Item("sMail").ToString
+                txtContactoInicialCargo.Text = dtContactoInicial.Rows(0).Item("sCargo").ToString
                 txtContactoInicialTelefono.Text = dtContactoInicial.Rows(0).Item("sTelefono").ToString
                 txtContactoInicialExtension.Text = dtContactoInicial.Rows(0).Item("sExtension").ToString
-                txtContactoInicialPrimerContacto.Text = dtContactoInicial.Rows(0).Item("sNombPrimerContacto").ToString
                 txtContactoInicialCelular.Text = dtContactoInicial.Rows(0).Item("sTelefonoCelular").ToString
                 txtAcercamientoWebProspecto.Text = dtContactoInicial.Rows(0).Item("sPaginaWeb").ToString
-                txtContactoInicialFecha.Value = dtContactoInicial.Rows(0).Item("dFechaCaptura").ToString
             Else
                 lblMensajeCargaContactoInicial.Visible = True
             End If
         Catch ex As Exception
             InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarContactoInicial()")
-            MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
+            MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
             dtContactoInicial = Nothing
         End Try
     End Sub
-
     Private Sub InsertarContactoInicial()
         Try
-            With clsDatosProp
+            With clsDatosSac
                 .subClearParameters()
                 .subAddParameter("@iOpcion", 2, SqlDbType.Int, ParameterDirection.Input)
-                .subAddParameter("@sCveProspecto", sCveProspecto, SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@sNombrePrimerContacto", txtContactoInicialPrimerContacto.Text, SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@dFechaContacto", txtContactoInicialFecha.Value, SqlDbType.Date, ParameterDirection.Input)
                 .subAddParameter("@sNombreContacto", txtContactoInicialNombre.Text, SqlDbType.VarChar, ParameterDirection.Input)
-                .subAddParameter("@sCargo", txtContactoInicialCargo.Text, SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@sCorreo", txtContactoInicialCorreo.Text, SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@sCargo", txtContactoInicialCargo.Text, SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@sTelefono", txtContactoInicialTelefono.Text, SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@sExtension", txtContactoInicialExtension.Text, SqlDbType.VarChar, ParameterDirection.Input)
-                .subAddParameter("@sUsuario", sCveUsuario, SqlDbType.VarChar, ParameterDirection.Input)
-
-                .funExecuteSP("paSSGTContactoInicial")
-            End With
-
-            'MsgBox("Se registraron los datos del contacto inicial correctamente.", MsgBoxStyle.Information, "SIAT")
-        Catch ex As Exception
-            InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "InsertarContactoInicial()")
-            MsgBox("Hubo un problema al registrar la información de accionistas, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
-        End Try
-    End Sub
-    Private Sub InsertarContactoInicialProspectos()
-        Try
-            With clsLocal
-                .subClearParameters()
-                .subAddParameter("@iOpcion", 3, SqlDbType.Int, ParameterDirection.Input)
-                .subAddParameter("@sCveProspecto", sCveProspecto, SqlDbType.VarChar, ParameterDirection.Input)
-                .subAddParameter("@sNombreContacto", txtContactoInicialNombre.Text, SqlDbType.VarChar, ParameterDirection.Input)
-                .subAddParameter("@sCargo", txtContactoInicialCargo.Text, SqlDbType.VarChar, ParameterDirection.Input)
-                .subAddParameter("@sCorreo", txtContactoInicialCorreo.Text, SqlDbType.VarChar, ParameterDirection.Input)
-                .subAddParameter("@sTelefono", txtContactoInicialTelefono.Text, SqlDbType.VarChar, ParameterDirection.Input)
-                .subAddParameter("@sExtension", txtContactoInicialExtension.Text, SqlDbType.VarChar, ParameterDirection.Input)
-                .subAddParameter("@sNombPrimerContacto", txtContactoInicialPrimerContacto.Text, SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@sTelefonoCelular", txtContactoInicialCelular.Text, SqlDbType.VarChar, ParameterDirection.Input)
-                .subAddParameter("@sPaginaWeb", txtAcercamientoWebProspecto.Text, SqlDbType.VarChar, ParameterDirection.Input)
-                .subAddParameter("@dFechaCaptura", txtContactoInicialFecha.Value, SqlDbType.DateTime, ParameterDirection.Input)
+                .subAddParameter("@sWeb", txtAcercamientoWebProspecto.Text, SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@sUsuario", sCveUsuario, SqlDbType.VarChar, ParameterDirection.Input)
 
-                .funExecuteSP("paControlSac")
+                .funExecuteSP("paDatosAsignacionSACContactoInicial")
             End With
-
-            'MsgBox("Se registraron los datos del contacto inicial correctamente.", MsgBoxStyle.Information, "SIAT")
         Catch ex As Exception
             InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "InsertarContactoInicial()")
-            MsgBox("Hubo un problema al registrar la información de accionistas, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
+            MsgBox("Hubo un problema al registrar la información de accionistas, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
         End Try
     End Sub
+
 
 #End Region
 
 #Region "ACERCAMIENTO"
-
     Private Sub ListarComoSeEnteroAcerca()
         Try
             Dim sTabla As String = "tbComoSeEnteroAcerca"
@@ -2240,12 +1893,12 @@ Public Class FrmContacto
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsDatosProp
+                With clsDatosSac
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 0, SqlDbType.Int, ParameterDirection.Input)
                 End With
 
-                .Add(clsDatosProp.funExecuteSPDataTable("paSSGTAcercamiento", sTabla))
+                .Add(clsDatosSac.funExecuteSPDataTable("paDatosAsignacionSACAcercamiento", sTabla))
 
                 dtComoSeEntero = .Item(sTabla)
             End With
@@ -2269,12 +1922,12 @@ Public Class FrmContacto
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsDatosProp
+                With clsDatosSac
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 1, SqlDbType.Int, ParameterDirection.Input)
                 End With
 
-                .Add(clsDatosProp.funExecuteSPDataTable("paSSGTAcercamiento", sTabla))
+                .Add(clsDatosSac.funExecuteSPDataTable("paDatosAsignacionSACAcercamiento", sTabla))
 
                 dtMedioContacto = .Item(sTabla)
             End With
@@ -2298,13 +1951,13 @@ Public Class FrmContacto
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsLocal
+                With clsDatosSac
                     .subClearParameters()
-                    .subAddParameter("@iOpcion", 8, SqlDbType.Int, ParameterDirection.Input)
-                    .subAddParameter("@sCveProspecto", sCveProspecto, SqlDbType.VarChar, ParameterDirection.Input)
+                    .subAddParameter("@iOpcion", 2, SqlDbType.Int, ParameterDirection.Input)
+                    .subAddParameter("@idPropuesta", 0, SqlDbType.VarChar, ParameterDirection.Input)
                 End With
 
-                .Add(clsLocal.funExecuteSPDataTable("paControlSac", sTabla))
+                .Add(clsDatosSac.funExecuteSPDataTable("paDatosAsignacionSACAcercamiento", sTabla))
 
                 dtAcercamiento = .Item(sTabla)
             End With
@@ -2335,21 +1988,17 @@ Public Class FrmContacto
     End Sub
     Private Sub InsertarAcercamiento()
         Try
-            With clsDatosProp
+            With clsDatosSac
                 .subClearParameters()
                 .subAddParameter("@iOpcion", 3, SqlDbType.Int, ParameterDirection.Input)
-                .subAddParameter("@sCveProspecto", sCveProspecto, SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@idAcercamiento", cboAcercamientoComoEntero.SelectedValue, SqlDbType.Int, ParameterDirection.Input)
                 .subAddParameter("@sOtroAcercamiento", txtAcercamientoEnteroOtro.Text, SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@idMedio", cboAcercamientoMedioContacto.SelectedValue, SqlDbType.Int, ParameterDirection.Input)
                 .subAddParameter("@sotroMedio", txtAcercamientoContactoOtro.Text, SqlDbType.VarChar, ParameterDirection.Input)
-                .subAddParameter("@sWeb", txtAcercamientoWebProspecto.Text, SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@sUsuario", sCveUsuario, SqlDbType.VarChar, ParameterDirection.Input)
 
-                .funExecuteSP("paSSGTAcercamiento")
+                .funExecuteSP("paDatosAsignacionSACAcercamiento")
             End With
-
-            'MsgBox("Se registraron los datos del acercamiento correctamente.", MsgBoxStyle.Information, "SIAT")
         Catch ex As Exception
             InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "InsertarAcercamiento()")
             MsgBox("Hubo un problema al registrar la información de accionistas, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
@@ -2404,12 +2053,12 @@ Public Class FrmContacto
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsDatosProp
+                With clsDatosSac
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 2, SqlDbType.Int, ParameterDirection.Input)
                 End With
 
-                .Add(clsDatosProp.funExecuteSPDataTable("paSSGTDomicilio", sTabla))
+                .Add(clsDatosSac.funExecuteSPDataTable("paDatosAsignacionSACDomicilio", sTabla))
 
                 dtPaisDomicilio = .Item(sTabla)
             End With
@@ -2422,12 +2071,11 @@ Public Class FrmContacto
             End If
         Catch ex As Exception
             InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarPaisDomicilio()")
-            MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
+            MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
             dtPaisDomicilio = Nothing
         End Try
     End Sub
-
-    Private Sub listarColoniasDomicilio(id As Integer, sValor As String, Optional sValor2 As String = "")
+    Private Sub ListarColoniasDomicilio(id As Integer, sValor As String, Optional sValor2 As String = "")
         Try
             Dim sTabla As String = "tbColDom"
 
@@ -2436,7 +2084,7 @@ Public Class FrmContacto
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsDatosProp
+                With clsDatosSac
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 5, SqlDbType.Int, ParameterDirection.Input)
                     If id = 1 Then
@@ -2447,7 +2095,7 @@ Public Class FrmContacto
                     End If
                 End With
 
-                .Add(clsDatosProp.funExecuteSPDataTable("paSSGTDomicilio", sTabla))
+                .Add(clsDatosSac.funExecuteSPDataTable("paDatosAsignacionSACDomicilio", sTabla))
                 dtColoniasDomicilio = .Item(sTabla)
 
                 If dtColoniasDomicilio.Rows.Count > 0 Then
@@ -2463,13 +2111,12 @@ Public Class FrmContacto
 
                     cboDomicilioEstado.SelectedValue = CInt(dtColoniasDomicilio(0)("idEstado").ToString())
                 Else
-                    'MsgBox("Debes indicar un codigo postal valido", MsgBoxStyle.Information, "Codigo Postal")
                     Exit Sub
                 End If
             End With
         Catch ex As Exception
             InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "listarColoniasDomicilio()")
-            MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
+            MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
             dtColoniasDomicilio = Nothing
         End Try
 
@@ -2483,13 +2130,13 @@ Public Class FrmContacto
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsDatosProp
+                With clsDatosSac
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 4, SqlDbType.Int, ParameterDirection.Input)
                     .subAddParameter("@idEstado", idEstado, SqlDbType.Int, ParameterDirection.Input)
                 End With
 
-                .Add(clsDatosProp.funExecuteSPDataTable("paSSGTDomicilio", sTabla))
+                .Add(clsDatosSac.funExecuteSPDataTable("paDatosAsignacionSACDomicilio", sTabla))
 
                 dtMunicipiosDomicilio = .Item(sTabla)
             End With
@@ -2502,7 +2149,7 @@ Public Class FrmContacto
             End If
         Catch ex As Exception
             InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarMunicipiosDomicilio()")
-            MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
+            MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
             dtMunicipiosDomicilio = Nothing
         End Try
     End Sub
@@ -2513,12 +2160,12 @@ Public Class FrmContacto
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsDatosProp
+                With clsDatosSac
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 3, SqlDbType.Int, ParameterDirection.Input)
                 End With
 
-                .Add(clsDatosProp.funExecuteSPDataTable("paSSGTDomicilio", sTabla))
+                .Add(clsDatosSac.funExecuteSPDataTable("paDatosAsignacionSACDomicilio", sTabla))
 
                 dtEstadosDomicilio = .Item(sTabla)
             End With
@@ -2531,7 +2178,7 @@ Public Class FrmContacto
             End If
         Catch ex As Exception
             InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarEstadosDomicilio()")
-            MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
+            MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
             dtEstadosDomicilio = Nothing
         End Try
     End Sub
@@ -2543,13 +2190,13 @@ Public Class FrmContacto
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsLocal
+                With clsDatosSac
                     .subClearParameters()
-                    .subAddParameter("@iOpcion", 9, SqlDbType.Int, ParameterDirection.Input)
-                    .subAddParameter("@sCveProspecto", sCveProspecto, SqlDbType.VarChar, ParameterDirection.Input)
+                    .subAddParameter("@iOpcion", 1, SqlDbType.Int, ParameterDirection.Input)
+                    .subAddParameter("@idPropuesta", 0, SqlDbType.VarChar, ParameterDirection.Input)
                 End With
 
-                .Add(clsLocal.funExecuteSPDataTable("paControlSac", sTabla))
+                .Add(clsDatosSac.funExecuteSPDataTable("paDatosAsignacionSACDomicilio", sTabla))
 
                 dtDomicilio = .Item(sTabla)
             End With
@@ -2578,7 +2225,7 @@ Public Class FrmContacto
                     txtDomicilioNoInt.Text = dtDomicilio.Rows(0).Item("sNumInt").ToString
                     txtDomicilioCP.Text = dtDomicilio.Rows(0).Item("sCP").ToString
 
-                    listarColoniasDomicilio(1, txtDomicilioCP.Text)
+                    ListarColoniasDomicilio(1, txtDomicilioCP.Text)
 
                     cboDomicilioEstado.SelectedValue = CInt(dtDomicilio.Rows(0).Item("idEstado").ToString)
                     cboDomicilioMunicipio.SelectedValue = CInt(dtDomicilio.Rows(0).Item("idMunicipio").ToString)
@@ -2607,16 +2254,16 @@ Public Class FrmContacto
             End If
         Catch ex As Exception
             InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarDomicilio()")
-            MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
+            MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
             dtDomicilio = Nothing
         End Try
     End Sub
     Private Sub InsertarDomicilio()
         Try
-            With clsDatosProp
+            With clsDatosSac
                 .subClearParameters()
                 .subAddParameter("@iOpcion", 6, SqlDbType.Int, ParameterDirection.Input)
-                .subAddParameter("@sCveProspecto", sCveProspecto, SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@idPropuesta", 0, SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@idPais", idPaisDom, SqlDbType.Int, ParameterDirection.Input)
                 If idPaisDom = 151 Then
                     .subAddParameter("@sCalle", txtDomicilioCalle.Text, SqlDbType.VarChar, ParameterDirection.Input)
@@ -2646,57 +2293,11 @@ Public Class FrmContacto
                 End If
                 .subAddParameter("@sUsuario", sCveUsuario, SqlDbType.VarChar, ParameterDirection.Input)
 
-                .funExecuteSP("paSSGTDomicilio")
+                .funExecuteSP("paDatosAsignacionSACDomicilio")
             End With
-
-            ' MsgBox("Se registraron los datos del domicilio correctamente.", MsgBoxStyle.Information, "SIAT")
         Catch ex As Exception
             InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "InsertarDomicilio()")
-            MsgBox("Hubo un problema al registrar la información del domicilio, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
-        End Try
-    End Sub
-    Private Sub InsertarDomicilioProspectos()
-        Try
-            With clsLocal
-                .subClearParameters()
-                .subAddParameter("@iOpcion", 5, SqlDbType.Int, ParameterDirection.Input)
-                .subAddParameter("@sCveProspecto", sCveProspecto, SqlDbType.VarChar, ParameterDirection.Input)
-                .subAddParameter("@idPais", idPaisDom, SqlDbType.Int, ParameterDirection.Input)
-                If idPaisDom = 151 Then
-                    .subAddParameter("@sCalle", txtDomicilioCalle.Text, SqlDbType.VarChar, ParameterDirection.Input)
-                    .subAddParameter("@sNumExt", txtDomicilioNoExt.Text, SqlDbType.VarChar, ParameterDirection.Input)
-                    .subAddParameter("@sNumInt", txtDomicilioNoInt.Text, SqlDbType.VarChar, ParameterDirection.Input)
-                    .subAddParameter("@sCP", txtDomicilioCP.Text, SqlDbType.VarChar, ParameterDirection.Input)
-
-                    .subAddParameter("@idColonia", cboDomicilioColonia.SelectedValue, SqlDbType.Int, ParameterDirection.Input)
-                    .subAddParameter("@idEstado", cboDomicilioEstado.SelectedValue, SqlDbType.Int, ParameterDirection.Input)
-                    .subAddParameter("@idMunicipio", cboDomicilioMunicipio.SelectedValue, SqlDbType.Int, ParameterDirection.Input)
-
-                    .subAddParameter("@sColonia", cboDomicilioColonia.Text, SqlDbType.VarChar, ParameterDirection.Input)
-                    .subAddParameter("@sEstado", cboDomicilioEstado.Text, SqlDbType.VarChar, ParameterDirection.Input)
-                    .subAddParameter("@sMunicipio", cboDomicilioMunicipio.Text, SqlDbType.VarChar, ParameterDirection.Input)
-                Else
-                    .subAddParameter("@idColonia", 0, SqlDbType.Int, ParameterDirection.Input)
-                    .subAddParameter("@idEstado", 0, SqlDbType.Int, ParameterDirection.Input)
-                    .subAddParameter("@idMunicipio", 0, SqlDbType.Int, ParameterDirection.Input)
-                    .subAddParameter("@sNumExt", "", SqlDbType.VarChar, ParameterDirection.Input)
-                    .subAddParameter("@sNumInt", "", SqlDbType.VarChar, ParameterDirection.Input)
-
-                    .subAddParameter("@sCalle", txtDomicilioExtDireccion1.Text, SqlDbType.VarChar, ParameterDirection.Input)
-                    .subAddParameter("@sColonia", txtDomicilioExtDireccion2.Text, SqlDbType.VarChar, ParameterDirection.Input)
-                    .subAddParameter("@sMunicipio", txtDomicilioExtLocalidad.Text, SqlDbType.VarChar, ParameterDirection.Input)
-                    .subAddParameter("@sEstado", txtDomicilioExtEstado.Text, SqlDbType.VarChar, ParameterDirection.Input)
-                    .subAddParameter("@sCP", txtDomicilioExtCP.Text, SqlDbType.VarChar, ParameterDirection.Input)
-                End If
-                .subAddParameter("@sUsuario", sCveUsuario, SqlDbType.VarChar, ParameterDirection.Input)
-
-                .funExecuteSP("paControlSac")
-            End With
-
-            ' MsgBox("Se registraron los datos del domicilio correctamente.", MsgBoxStyle.Information, "SIAT")
-        Catch ex As Exception
-            InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "InsertarDomicilio()")
-            MsgBox("Hubo un problema al registrar la información del domicilio, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
+            MsgBox("Hubo un problema al registrar la información del domicilio, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
         End Try
     End Sub
 
@@ -2894,11 +2495,6 @@ Public Class FrmContacto
 
         sMsgDatosGenerales = DATOS_GENERALES & vbNewLine
         sMsgDatosGenerales &= "===============================" & vbNewLine
-
-        If Trim(txtIdSAC.Text) = "" Then
-            sMsgDatosGenerales &= "- Especifíque el ID de asignación SAC del prospecto." & vbNewLine & vbNewLine
-            bValidacion = False
-        End If
 
         If Trim(txtRazonSocial.Text) = "" Then
             sMsgDatosGenerales &= "- Especifíque la razón social del prospecto." & vbNewLine & vbNewLine
@@ -3151,5 +2747,8 @@ Public Class FrmContacto
     End Function
 
 #End Region
+
+
+
 
 End Class

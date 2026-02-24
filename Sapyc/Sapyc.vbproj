@@ -53,10 +53,10 @@
     <Reference Include="DocumentFormat.OpenXml, Version=2.5.5631.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\DocumentFormat.OpenXml.2.5\lib\DocumentFormat.OpenXml.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Office.Interop.Excel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>True</EmbedInteropTypes>
-      <HintPath>..\..\..\Consulta2014\Consulta\bin\Release\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <HintPath>..\..\SIAT\Consulta\bin\Debug\Microsoft.Office.Interop.Excel.dll</HintPath>
     </Reference>
     <Reference Include="office, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -477,6 +477,12 @@
     <Compile Include="Prospectos\DlgRevisionAsignaProspecto.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Prospectos\DlgServiciosCte.Designer.vb">
+      <DependentUpon>DlgServiciosCte.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Prospectos\DlgServiciosCte.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Prospectos\dlgSubNivel.designer.vb">
       <DependentUpon>dlgSubNivel.vb</DependentUpon>
     </Compile>
@@ -499,6 +505,12 @@
       <DependentUpon>FrmContactoBasico.vb</DependentUpon>
     </Compile>
     <Compile Include="Prospectos\FrmContactoBasico.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Prospectos\frmContactoNvo.Designer.vb">
+      <DependentUpon>frmContactoNvo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Prospectos\frmContactoNvo.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Prospectos\frmListaNumSac.Designer.vb">
@@ -738,6 +750,9 @@
     <EmbeddedResource Include="Prospectos\DlgRevisionAsignaProspecto.resx">
       <DependentUpon>DlgRevisionAsignaProspecto.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Prospectos\DlgServiciosCte.resx">
+      <DependentUpon>DlgServiciosCte.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Prospectos\dlgSubNivel.resx">
       <DependentUpon>dlgSubNivel.vb</DependentUpon>
     </EmbeddedResource>
@@ -749,6 +764,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Prospectos\FrmContactoBasico.resx">
       <DependentUpon>FrmContactoBasico.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Prospectos\frmContactoNvo.resx">
+      <DependentUpon>frmContactoNvo.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Prospectos\frmListaNumSac.resx">
       <DependentUpon>frmListaNumSac.vb</DependentUpon>

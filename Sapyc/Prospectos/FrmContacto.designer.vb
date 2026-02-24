@@ -40,9 +40,9 @@ Partial Class FrmContacto
         Me.btnCerrar = New System.Windows.Forms.Button()
         Me.panDatosGenerales = New System.Windows.Forms.Panel()
         Me.gpBoxDatosDG = New System.Windows.Forms.GroupBox()
+        Me.Lista = New System.Windows.Forms.DataGridView()
         Me.txtPaisProspecto = New System.Windows.Forms.TextBox()
         Me.btnPaisProspecto = New System.Windows.Forms.Button()
-        Me.Lista = New System.Windows.Forms.DataGridView()
         Me.txtRazonSocial = New System.Windows.Forms.TextBox()
         Me.lblIdSAC = New System.Windows.Forms.Label()
         Me.txtIdSAC = New System.Windows.Forms.TextBox()
@@ -535,25 +535,6 @@ Partial Class FrmContacto
         Me.gpBoxDatosDG.TabIndex = 3
         Me.gpBoxDatosDG.TabStop = False
         '
-        'txtPaisProspecto
-        '
-        Me.txtPaisProspecto.Enabled = False
-        Me.txtPaisProspecto.Location = New System.Drawing.Point(60, 848)
-        Me.txtPaisProspecto.Name = "txtPaisProspecto"
-        Me.txtPaisProspecto.ReadOnly = True
-        Me.txtPaisProspecto.Size = New System.Drawing.Size(304, 25)
-        Me.txtPaisProspecto.TabIndex = 21
-        '
-        'btnPaisProspecto
-        '
-        Me.btnPaisProspecto.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnPaisProspecto.Location = New System.Drawing.Point(375, 848)
-        Me.btnPaisProspecto.Name = "btnPaisProspecto"
-        Me.btnPaisProspecto.Size = New System.Drawing.Size(50, 25)
-        Me.btnPaisProspecto.TabIndex = 22
-        Me.btnPaisProspecto.Text = "..."
-        Me.btnPaisProspecto.UseVisualStyleBackColor = True
-        '
         'Lista
         '
         Me.Lista.AllowUserToAddRows = False
@@ -575,6 +556,25 @@ Partial Class FrmContacto
         Me.Lista.Size = New System.Drawing.Size(771, 270)
         Me.Lista.TabIndex = 4
         Me.Lista.Visible = False
+        '
+        'txtPaisProspecto
+        '
+        Me.txtPaisProspecto.Enabled = False
+        Me.txtPaisProspecto.Location = New System.Drawing.Point(60, 848)
+        Me.txtPaisProspecto.Name = "txtPaisProspecto"
+        Me.txtPaisProspecto.ReadOnly = True
+        Me.txtPaisProspecto.Size = New System.Drawing.Size(304, 25)
+        Me.txtPaisProspecto.TabIndex = 21
+        '
+        'btnPaisProspecto
+        '
+        Me.btnPaisProspecto.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnPaisProspecto.Location = New System.Drawing.Point(375, 848)
+        Me.btnPaisProspecto.Name = "btnPaisProspecto"
+        Me.btnPaisProspecto.Size = New System.Drawing.Size(50, 25)
+        Me.btnPaisProspecto.TabIndex = 22
+        Me.btnPaisProspecto.Text = "..."
+        Me.btnPaisProspecto.UseVisualStyleBackColor = True
         '
         'txtRazonSocial
         '
@@ -2684,10 +2684,10 @@ Partial Class FrmContacto
         Me.Controls.Add(Me.btnCancelaGeneral)
         Me.Controls.Add(Me.btnCerrar)
         Me.Controls.Add(Me.panMenu)
+        Me.Controls.Add(Me.panContactoInicial)
         Me.Controls.Add(Me.panDatosGenerales)
         Me.Controls.Add(Me.panAcercamiento)
         Me.Controls.Add(Me.panDireccion)
-        Me.Controls.Add(Me.panContactoInicial)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
