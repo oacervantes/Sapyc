@@ -641,6 +641,14 @@ Module mdlFunciones
             cadena = cadena.Replace("""", "")
         End If
 
+        If cadena.Contains("Ñ") Then
+            cadena = cadena.Replace("Ñ", "N")
+        End If
+
+        If cadena.Contains("ñ") Then
+            cadena = cadena.Replace("ñ", "n")
+        End If
+
         Return cadena
     End Function
     Public Function DiferenciaEnAños(fechaInicio As Date, fechaFin As Date) As Integer
