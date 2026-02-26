@@ -100,11 +100,12 @@ Public Class FrmReportesGRD
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsDatosConINV
+                With clsDatos
                     .subClearParameters()
+                    .subAddParameter("@iOpcion", 0, SqlDbType.Int, ParameterDirection.Input)
                 End With
 
-                .Add(clsDatosConINV.funExecuteSPDataTable("paBasesDatos", sTabla))
+                .Add(clsDatos.funExecuteSPDataTable(sStoredProc, sTabla))
                 dtBases = .Item(sTabla)
             End With
 
@@ -390,7 +391,7 @@ Public Class FrmReportesGRD
                                 End If
 
                                 ' Envolver en comillas dobles
-                                cellValues.Add("""" & valor & """")
+                                cellValues.Add("""" & ReemplazarCaracter(fncQuitarAcentos(valor)) & """")
                             End If
                         End If
                     Next
