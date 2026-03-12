@@ -90,7 +90,7 @@
                 MnuInde.Visible = True
                 mnuReportes.Visible = False
                 MnTablas.Visible = True
-                'mnuSAC.Visible = True
+                mnuSAC.Visible = True
 
             Case "4"
                 mnuReportes.Visible = True
@@ -291,5 +291,11 @@
         Dim frm As New FrmKardex
 
         AbrirPantalla(frm, "FrmKardex")
+    End Sub
+
+    Private Sub AsignarProspectoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AsignarProspectoToolStripMenuItem.Click
+        Dim frm As New FrmSolicitudesAsignacion
+
+        AbrirPantalla(frm, "FrmSolicitudesAsignacion")
     End Sub
 End Class

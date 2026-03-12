@@ -348,34 +348,34 @@
     <Compile Include="Independencia\Solicitudes.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Kardex\DlgColaboradorKardex.Designer.vb">
+    <Compile Include="SAC\Kardex\DlgColaboradorKardex.Designer.vb">
       <DependentUpon>DlgColaboradorKardex.vb</DependentUpon>
     </Compile>
-    <Compile Include="Kardex\DlgColaboradorKardex.vb">
+    <Compile Include="SAC\Kardex\DlgColaboradorKardex.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Kardex\DlgKardex.Designer.vb">
+    <Compile Include="SAC\Kardex\DlgKardex.Designer.vb">
       <DependentUpon>DlgKardex.vb</DependentUpon>
     </Compile>
-    <Compile Include="Kardex\DlgKardex.vb">
+    <Compile Include="SAC\Kardex\DlgKardex.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Kardex\DlgListaGerentes.Designer.vb">
+    <Compile Include="SAC\Kardex\DlgListaGerentes.Designer.vb">
       <DependentUpon>DlgListaGerentes.vb</DependentUpon>
     </Compile>
-    <Compile Include="Kardex\DlgListaGerentes.vb">
+    <Compile Include="SAC\Kardex\DlgListaGerentes.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Kardex\dlgListaSocios.designer.vb">
+    <Compile Include="SAC\Kardex\dlgListaSocios.designer.vb">
       <DependentUpon>dlgListaSocios.vb</DependentUpon>
     </Compile>
-    <Compile Include="Kardex\dlgListaSocios.vb">
+    <Compile Include="SAC\Kardex\dlgListaSocios.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Kardex\FrmKardex.Designer.vb">
+    <Compile Include="SAC\Kardex\FrmKardex.Designer.vb">
       <DependentUpon>FrmKardex.vb</DependentUpon>
     </Compile>
-    <Compile Include="Kardex\FrmKardex.vb">
+    <Compile Include="SAC\Kardex\FrmKardex.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LeeCve.designer.vb">
@@ -543,6 +543,30 @@
     <Compile Include="ReporteDireccion\FrmSAPYCReporteDireccion.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SAC\DlgSolicitudAsignacion.Designer.vb">
+      <DependentUpon>DlgSolicitudAsignacion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SAC\DlgSolicitudAsignacion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SAC\FrmSolicitudesAsignacion.Designer.vb">
+      <DependentUpon>FrmSolicitudesAsignacion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SAC\FrmSolicitudesAsignacion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SAC\TarjetaSocio.Designer.vb">
+      <DependentUpon>TarjetaSocio.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SAC\TarjetaSocio.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SAC\TarjetaSocio2.Designer.vb">
+      <DependentUpon>TarjetaSocio2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SAC\TarjetaSocio2.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="SelOpcion.designer.vb">
       <DependentUpon>SelOpcion.vb</DependentUpon>
     </Compile>
@@ -685,19 +709,19 @@
     <EmbeddedResource Include="Independencia\Solicitudes.resx">
       <DependentUpon>Solicitudes.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Kardex\DlgColaboradorKardex.resx">
+    <EmbeddedResource Include="SAC\Kardex\DlgColaboradorKardex.resx">
       <DependentUpon>DlgColaboradorKardex.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Kardex\DlgKardex.resx">
+    <EmbeddedResource Include="SAC\Kardex\DlgKardex.resx">
       <DependentUpon>DlgKardex.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Kardex\DlgListaGerentes.resx">
+    <EmbeddedResource Include="SAC\Kardex\DlgListaGerentes.resx">
       <DependentUpon>DlgListaGerentes.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Kardex\dlgListaSocios.resx">
+    <EmbeddedResource Include="SAC\Kardex\dlgListaSocios.resx">
       <DependentUpon>dlgListaSocios.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Kardex\FrmKardex.resx">
+    <EmbeddedResource Include="SAC\Kardex\FrmKardex.resx">
       <DependentUpon>FrmKardex.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LeeCve.resx">
@@ -782,6 +806,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ReporteDireccion\FrmSAPYCReporteDireccion.resx">
       <DependentUpon>FrmSAPYCReporteDireccion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SAC\DlgSolicitudAsignacion.resx">
+      <DependentUpon>DlgSolicitudAsignacion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SAC\FrmSolicitudesAsignacion.resx">
+      <DependentUpon>FrmSolicitudesAsignacion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SAC\TarjetaSocio.resx">
+      <DependentUpon>TarjetaSocio.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SAC\TarjetaSocio2.resx">
+      <DependentUpon>TarjetaSocio2.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SelOpcion.resx">
       <DependentUpon>SelOpcion.vb</DependentUpon>

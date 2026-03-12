@@ -76,6 +76,7 @@ Partial Class Principal
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.BotonAltaPropuesta = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.AsignarProspectoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.Barra.SuspendLayout()
         Me.SuspendLayout()
@@ -104,7 +105,7 @@ Partial Class Principal
         '
         'mnuSAC
         '
-        Me.mnuSAC.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.itmKardex})
+        Me.mnuSAC.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.itmKardex, Me.AsignarProspectoToolStripMenuItem})
         Me.mnuSAC.Name = "mnuSAC"
         Me.mnuSAC.Size = New System.Drawing.Size(41, 20)
         Me.mnuSAC.Text = "SAC"
@@ -441,6 +442,12 @@ Partial Class Principal
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
         Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 40)
         '
+        'AsignarProspectoToolStripMenuItem
+        '
+        Me.AsignarProspectoToolStripMenuItem.Name = "AsignarProspectoToolStripMenuItem"
+        Me.AsignarProspectoToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.AsignarProspectoToolStripMenuItem.Text = "Asignar Prospecto"
+        '
         'Principal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -517,4 +524,5 @@ Partial Class Principal
     Friend WithEvents itmReportesGRD As ToolStripMenuItem
     Friend WithEvents mnuSAC As ToolStripMenuItem
     Friend WithEvents itmKardex As ToolStripMenuItem
+    Friend WithEvents AsignarProspectoToolStripMenuItem As ToolStripMenuItem
 End Class
