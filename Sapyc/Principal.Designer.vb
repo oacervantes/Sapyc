@@ -28,6 +28,7 @@ Partial Class Principal
         Me.mnuSalir = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuSAC = New System.Windows.Forms.ToolStripMenuItem()
         Me.itmKardex = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AsignarProspectoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnTablas = New System.Windows.Forms.ToolStripMenuItem()
         Me.TablasDelSistemaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GirosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -76,7 +77,7 @@ Partial Class Principal
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.BotonAltaPropuesta = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
-        Me.AsignarProspectoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ProspectosNuevosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.Barra.SuspendLayout()
         Me.SuspendLayout()
@@ -100,22 +101,27 @@ Partial Class Principal
         'mnuSalir
         '
         Me.mnuSalir.Name = "mnuSalir"
-        Me.mnuSalir.Size = New System.Drawing.Size(98, 22)
+        Me.mnuSalir.Size = New System.Drawing.Size(180, 22)
         Me.mnuSalir.Text = "&Salir"
         '
         'mnuSAC
         '
-        Me.mnuSAC.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.itmKardex, Me.AsignarProspectoToolStripMenuItem})
+        Me.mnuSAC.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.itmKardex, Me.AsignarProspectoToolStripMenuItem, Me.ProspectosNuevosToolStripMenuItem})
         Me.mnuSAC.Name = "mnuSAC"
         Me.mnuSAC.Size = New System.Drawing.Size(41, 20)
         Me.mnuSAC.Text = "SAC"
-        Me.mnuSAC.Visible = False
         '
         'itmKardex
         '
         Me.itmKardex.Name = "itmKardex"
         Me.itmKardex.Size = New System.Drawing.Size(180, 22)
         Me.itmKardex.Text = "Kardex"
+        '
+        'AsignarProspectoToolStripMenuItem
+        '
+        Me.AsignarProspectoToolStripMenuItem.Name = "AsignarProspectoToolStripMenuItem"
+        Me.AsignarProspectoToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.AsignarProspectoToolStripMenuItem.Text = "Asignar Prospecto"
         '
         'MnTablas
         '
@@ -442,11 +448,11 @@ Partial Class Principal
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
         Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 40)
         '
-        'AsignarProspectoToolStripMenuItem
+        'ProspectosNuevosToolStripMenuItem
         '
-        Me.AsignarProspectoToolStripMenuItem.Name = "AsignarProspectoToolStripMenuItem"
-        Me.AsignarProspectoToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-        Me.AsignarProspectoToolStripMenuItem.Text = "Asignar Prospecto"
+        Me.ProspectosNuevosToolStripMenuItem.Name = "ProspectosNuevosToolStripMenuItem"
+        Me.ProspectosNuevosToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ProspectosNuevosToolStripMenuItem.Text = "Prospectos Nuevos"
         '
         'Principal
         '
@@ -525,4 +531,5 @@ Partial Class Principal
     Friend WithEvents mnuSAC As ToolStripMenuItem
     Friend WithEvents itmKardex As ToolStripMenuItem
     Friend WithEvents AsignarProspectoToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ProspectosNuevosToolStripMenuItem As ToolStripMenuItem
 End Class

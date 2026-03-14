@@ -298,4 +298,12 @@
 
         AbrirPantalla(frm, "FrmSolicitudesAsignacion")
     End Sub
+
+    Private Sub ProspectosNuevosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProspectosNuevosToolStripMenuItem.Click
+        Dim frm As New FrmProspectosNvo
+        AbrirPantalla(frm, "FrmProspectosNvo")
+    End Sub
+
+
+
 End Class
