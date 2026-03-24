@@ -95,14 +95,14 @@
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsDatosSac
+                With clsLocal
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 8, SqlDbType.Int, ParameterDirection.Input)
                     .subAddParameter("@sCveOfi", sCveOfi, SqlDbType.VarChar, ParameterDirection.Input)
                     .subAddParameter("@sCveArea", sCveArea, SqlDbType.VarChar, ParameterDirection.Input)
                 End With
 
-                .Add(clsDatosSac.funExecuteSPDataTable(sStoredProc, sTabla))
+                .Add(clsLocal.funExecuteSPDataTable(sStoredProc, sTabla))
 
                 dtSocios = .Item(sTabla)
             End With

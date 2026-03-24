@@ -180,7 +180,7 @@
                     .subAddParameter("@sCveEmp", sCveEmp, SqlDbType.VarChar, ParameterDirection.Input)
                 End With
 
-                .Add(clsDatosSac.funExecuteSPDataTable(sStoredProc, sTabla))
+                .Add(clsLocal.funExecuteSPDataTable(sStoredProc, sTabla))
 
                 dtDivisiones = .Item(sTabla)
             End With
@@ -211,13 +211,13 @@
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsDatosSac
+                With clsLocal
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 10, SqlDbType.Int, ParameterDirection.Input)
                     .subAddParameter("@idKardex", idKardex, SqlDbType.Int, ParameterDirection.Input)
                 End With
 
-                .Add(clsDatosSac.funExecuteSPDataTable(sStoredProc, sTabla))
+                .Add(clsLocal.funExecuteSPDataTable(sStoredProc, sTabla))
 
                 dtKardex = .Item(sTabla)
             End With
@@ -244,14 +244,14 @@
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsDatosSac
+                With clsLocal
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 11, SqlDbType.Int, ParameterDirection.Input)
                     .subAddParameter("@idKardex", idKardex, SqlDbType.Int, ParameterDirection.Input)
                     .subAddParameter("@sCveArea", sCvearea, SqlDbType.VarChar, ParameterDirection.Input)
                 End With
 
-                .Add(clsDatosSac.funExecuteSPDataTable(sStoredProc, sTabla))
+                .Add(clsLocal.funExecuteSPDataTable(sStoredProc, sTabla))
 
                 dtServ = .Item(sTabla)
             End With
@@ -288,14 +288,14 @@
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsDatosSac
+                With clsLocal
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 9, SqlDbType.Int, ParameterDirection.Input)
                     .subAddParameter("@idKardex", idKardex, SqlDbType.Int, ParameterDirection.Input)
                     .subAddParameter("@sCveArea", sCvearea, SqlDbType.VarChar, ParameterDirection.Input)
                 End With
 
-                .Add(clsDatosSac.funExecuteSPDataTable(sStoredProc, sTabla))
+                .Add(clsLocal.funExecuteSPDataTable(sStoredProc, sTabla))
 
                 dtServCol = .Item(sTabla)
             End With
@@ -342,12 +342,12 @@
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsDatosSac
+                With clsLocal
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 14, SqlDbType.Int, ParameterDirection.Input)
                 End With
 
-                .Add(clsDatosSac.funExecuteSPDataTable(sStoredProc, sTabla))
+                .Add(clsLocal.funExecuteSPDataTable(sStoredProc, sTabla))
 
                 dtMar = .Item(sTabla)
             End With
@@ -384,13 +384,13 @@
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsDatosSac
+                With clsLocal
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 15, SqlDbType.Int, ParameterDirection.Input)
                     .subAddParameter("@idKardex", idKardex, SqlDbType.Int, ParameterDirection.Input)
                 End With
 
-                .Add(clsDatosSac.funExecuteSPDataTable(sStoredProc, sTabla))
+                .Add(clsLocal.funExecuteSPDataTable(sStoredProc, sTabla))
 
                 dtMarcosCol = .Item(sTabla)
             End With
@@ -436,12 +436,12 @@
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsDatosSac
+                With clsLocal
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 18, SqlDbType.Int, ParameterDirection.Input)
                 End With
 
-                .Add(clsDatosSac.funExecuteSPDataTable(sStoredProc, sTabla))
+                .Add(clsLocal.funExecuteSPDataTable(sStoredProc, sTabla))
 
                 dtInd = .Item(sTabla)
             End With
@@ -476,13 +476,13 @@
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsDatosSac
+                With clsLocal
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 19, SqlDbType.Int, ParameterDirection.Input)
                     .subAddParameter("@idKardex", idKardex, SqlDbType.Int, ParameterDirection.Input)
                 End With
 
-                .Add(clsDatosSac.funExecuteSPDataTable(sStoredProc, sTabla))
+                .Add(clsLocal.funExecuteSPDataTable(sStoredProc, sTabla))
 
                 dtIndustriasCol = .Item(sTabla)
             End With
@@ -526,13 +526,13 @@
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsDatosSac
+                With clsLocal
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 1, SqlDbType.Int, ParameterDirection.Input)
                     .subAddParameter("@idKardex", idKardex, SqlDbType.Int, ParameterDirection.Input)
                 End With
 
-                .Add(clsDatosSac.funExecuteSPDataTable("paDatosGeneralesKardex", sTabla))
+                .Add(clsLocal.funExecuteSPDataTable("paDatosGeneralesKardex", sTabla))
 
                 dtDatosGenerales = .Item(sTabla)
             End With
@@ -565,13 +565,13 @@
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsDatosSac
+                With clsLocal
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 1, SqlDbType.Int, ParameterDirection.Input)
                     .subAddParameter("@idKardex", idKardex, SqlDbType.Int, ParameterDirection.Input)
                 End With
 
-                .Add(clsDatosSac.funExecuteSPDataTable("paCertificacionesKardex", sTabla))
+                .Add(clsLocal.funExecuteSPDataTable("paCertificacionesKardex", sTabla))
 
                 dtCertificaciones = .Item(sTabla)
             End With
@@ -595,13 +595,13 @@
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsDatosSac
+                With clsLocal
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 1, SqlDbType.Int, ParameterDirection.Input)
                     .subAddParameter("@idKardex", idKardex, SqlDbType.Int, ParameterDirection.Input)
                 End With
 
-                .Add(clsDatosSac.funExecuteSPDataTable("paComitesKardex", sTabla))
+                .Add(clsLocal.funExecuteSPDataTable("paComitesKardex", sTabla))
 
                 dtComites = .Item(sTabla)
             End With
@@ -634,13 +634,13 @@
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsDatosSac
+                With clsLocal
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 1, SqlDbType.Int, ParameterDirection.Input)
                     .subAddParameter("@idKardex", idKardex, SqlDbType.Int, ParameterDirection.Input)
                 End With
 
-                .Add(clsDatosSac.funExecuteSPDataTable("paOtrosDatosKardex", sTabla))
+                .Add(clsLocal.funExecuteSPDataTable("paOtrosDatosKardex", sTabla))
 
                 dtOtrosDatos = .Item(sTabla)
             End With
@@ -665,7 +665,7 @@
 
     Private Sub VoBoKardex(iOpcion As Integer, idKardex As Integer, iStatusKardex As Integer)
         Try
-            With clsDatosSac
+            With clsLocal
                 .subClearParameters()
                 .subAddParameter("@iOpcion", iOpcion, SqlDbType.Int, ParameterDirection.Input)
                 .subAddParameter("@idKardex", idKardex, SqlDbType.Int, ParameterDirection.Input)

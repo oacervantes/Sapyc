@@ -108,12 +108,12 @@
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsDatosSac
+                With clsLocal
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 1, SqlDbType.Int, ParameterDirection.Input)
                 End With
 
-                .Add(clsDatosSac.funExecuteSPDataTable(sStoredProc, sTabla))
+                .Add(clsLocal.funExecuteSPDataTable(sStoredProc, sTabla))
 
                 dtKardex = .Item(sTabla)
             End With

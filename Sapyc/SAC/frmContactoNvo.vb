@@ -1826,13 +1826,13 @@
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsDatosSac
+                With clsLocal
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 1, SqlDbType.Int, ParameterDirection.Input)
                     .subAddParameter("@idPropuesta", 0, SqlDbType.VarChar, ParameterDirection.Input)
                 End With
 
-                .Add(clsDatosSac.funExecuteSPDataTable("paDatosAsignacionSACContactoInicial", sTabla))
+                .Add(clsLocal.funExecuteSPDataTable("paDatosAsignacionSACContactoInicial", sTabla))
 
                 dtContactoInicial = .Item(sTabla)
             End With
@@ -1860,7 +1860,7 @@
     End Sub
     Private Sub InsertarContactoInicial()
         Try
-            With clsDatosSac
+            With clsLocal
                 .subClearParameters()
                 .subAddParameter("@iOpcion", 2, SqlDbType.Int, ParameterDirection.Input)
                 .subAddParameter("@sNombrePrimerContacto", txtContactoInicialPrimerContacto.Text, SqlDbType.VarChar, ParameterDirection.Input)
@@ -1893,12 +1893,12 @@
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsDatosSac
+                With clsLocal
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 0, SqlDbType.Int, ParameterDirection.Input)
                 End With
 
-                .Add(clsDatosSac.funExecuteSPDataTable("paDatosAsignacionSACAcercamiento", sTabla))
+                .Add(clsLocal.funExecuteSPDataTable("paDatosAsignacionSACAcercamiento", sTabla))
 
                 dtComoSeEntero = .Item(sTabla)
             End With
@@ -1922,12 +1922,12 @@
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsDatosSac
+                With clsLocal
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 1, SqlDbType.Int, ParameterDirection.Input)
                 End With
 
-                .Add(clsDatosSac.funExecuteSPDataTable("paDatosAsignacionSACAcercamiento", sTabla))
+                .Add(clsLocal.funExecuteSPDataTable("paDatosAsignacionSACAcercamiento", sTabla))
 
                 dtMedioContacto = .Item(sTabla)
             End With
@@ -1951,13 +1951,13 @@
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsDatosSac
+                With clsLocal
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 2, SqlDbType.Int, ParameterDirection.Input)
                     .subAddParameter("@idPropuesta", 0, SqlDbType.VarChar, ParameterDirection.Input)
                 End With
 
-                .Add(clsDatosSac.funExecuteSPDataTable("paDatosAsignacionSACAcercamiento", sTabla))
+                .Add(clsLocal.funExecuteSPDataTable("paDatosAsignacionSACAcercamiento", sTabla))
 
                 dtAcercamiento = .Item(sTabla)
             End With
@@ -1988,7 +1988,7 @@
     End Sub
     Private Sub InsertarAcercamiento()
         Try
-            With clsDatosSac
+            With clsLocal
                 .subClearParameters()
                 .subAddParameter("@iOpcion", 3, SqlDbType.Int, ParameterDirection.Input)
                 .subAddParameter("@idAcercamiento", cboAcercamientoComoEntero.SelectedValue, SqlDbType.Int, ParameterDirection.Input)
@@ -2053,12 +2053,12 @@
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsDatosSac
+                With clsLocal
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 2, SqlDbType.Int, ParameterDirection.Input)
                 End With
 
-                .Add(clsDatosSac.funExecuteSPDataTable("paDatosAsignacionSACDomicilio", sTabla))
+                .Add(clsLocal.funExecuteSPDataTable("paDatosAsignacionSACDomicilio", sTabla))
 
                 dtPaisDomicilio = .Item(sTabla)
             End With
@@ -2084,7 +2084,7 @@
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsDatosSac
+                With clsLocal
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 5, SqlDbType.Int, ParameterDirection.Input)
                     If id = 1 Then
@@ -2095,7 +2095,7 @@
                     End If
                 End With
 
-                .Add(clsDatosSac.funExecuteSPDataTable("paDatosAsignacionSACDomicilio", sTabla))
+                .Add(clsLocal.funExecuteSPDataTable("paDatosAsignacionSACDomicilio", sTabla))
                 dtColoniasDomicilio = .Item(sTabla)
 
                 If dtColoniasDomicilio.Rows.Count > 0 Then
@@ -2130,13 +2130,13 @@
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsDatosSac
+                With clsLocal
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 4, SqlDbType.Int, ParameterDirection.Input)
                     .subAddParameter("@idEstado", idEstado, SqlDbType.Int, ParameterDirection.Input)
                 End With
 
-                .Add(clsDatosSac.funExecuteSPDataTable("paDatosAsignacionSACDomicilio", sTabla))
+                .Add(clsLocal.funExecuteSPDataTable("paDatosAsignacionSACDomicilio", sTabla))
 
                 dtMunicipiosDomicilio = .Item(sTabla)
             End With
@@ -2160,12 +2160,12 @@
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsDatosSac
+                With clsLocal
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 3, SqlDbType.Int, ParameterDirection.Input)
                 End With
 
-                .Add(clsDatosSac.funExecuteSPDataTable("paDatosAsignacionSACDomicilio", sTabla))
+                .Add(clsLocal.funExecuteSPDataTable("paDatosAsignacionSACDomicilio", sTabla))
 
                 dtEstadosDomicilio = .Item(sTabla)
             End With
@@ -2190,13 +2190,13 @@
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsDatosSac
+                With clsLocal
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 1, SqlDbType.Int, ParameterDirection.Input)
                     .subAddParameter("@idPropuesta", 0, SqlDbType.VarChar, ParameterDirection.Input)
                 End With
 
-                .Add(clsDatosSac.funExecuteSPDataTable("paDatosAsignacionSACDomicilio", sTabla))
+                .Add(clsLocal.funExecuteSPDataTable("paDatosAsignacionSACDomicilio", sTabla))
 
                 dtDomicilio = .Item(sTabla)
             End With
@@ -2260,7 +2260,7 @@
     End Sub
     Private Sub InsertarDomicilio()
         Try
-            With clsDatosSac
+            With clsLocal
                 .subClearParameters()
                 .subAddParameter("@iOpcion", 6, SqlDbType.Int, ParameterDirection.Input)
                 .subAddParameter("@idPropuesta", 0, SqlDbType.VarChar, ParameterDirection.Input)
