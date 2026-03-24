@@ -49,17 +49,4 @@
         MsgBox("Ejemplo de botón en la tarjeta del socio: " & Nombre)
     End Sub
 
-    'Public Sub New()
-
-    '    ' Esta llamada es exigida por el diseñador.
-    '    'InitializeComponent()
-    '    lblNombre.Text = "(Nombre)"
-
-    '    ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
-    '    AddHandler Click, AddressOf OnAnyClick
-
-    '    AddHandler MouseEnter, Sub() BackColor = Color.FromArgb(248, 250, 252)
-    '    AddHandler MouseLeave, Sub() BackColor = Color.White
-    'End Sub
-
 End Class

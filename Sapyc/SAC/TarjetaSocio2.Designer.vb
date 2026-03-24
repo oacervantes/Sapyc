@@ -78,7 +78,7 @@ Partial Class TarjetaSocio2
         Me.panLinea.BackColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(127, Byte), Integer))
         Me.panLinea.Location = New System.Drawing.Point(0, 36)
         Me.panLinea.Name = "panLinea"
-        Me.panLinea.Size = New System.Drawing.Size(500, 2)
+        Me.panLinea.Size = New System.Drawing.Size(750, 2)
         Me.panLinea.TabIndex = 14
         '
         'Label1
@@ -108,7 +108,7 @@ Partial Class TarjetaSocio2
         'Button1
         '
         Me.Button1.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(370, 6)
+        Me.Button1.Location = New System.Drawing.Point(620, 6)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(130, 25)
         Me.Button1.TabIndex = 17
