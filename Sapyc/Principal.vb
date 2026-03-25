@@ -304,6 +304,11 @@
         AbrirPantalla(frm, "FrmProspectosNvo")
     End Sub
 
+    Private Sub ListaProspectosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ListaProspectosToolStripMenuItem.Click
+        Dim frm As New frmMisPropuestas
+        AbrirPantalla(frm, "frmMisPropuestas")
+    End Sub
+
 
 
 End Class

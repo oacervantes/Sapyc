@@ -348,6 +348,18 @@
     <Compile Include="Independencia\Solicitudes.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SAC\frmAutorizaOtroServicio.Designer.vb">
+      <DependentUpon>frmAutorizaOtroServicio.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SAC\frmAutorizaOtroServicio.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SAC\frmMisPropuestas.Designer.vb">
+      <DependentUpon>frmMisPropuestas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SAC\frmMisPropuestas.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SAC\FrmProspectosNvo.Designer.vb">
       <DependentUpon>FrmProspectosNvo.vb</DependentUpon>
     </Compile>
@@ -714,6 +726,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Independencia\Solicitudes.resx">
       <DependentUpon>Solicitudes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SAC\frmAutorizaOtroServicio.resx">
+      <DependentUpon>frmAutorizaOtroServicio.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SAC\frmMisPropuestas.resx">
+      <DependentUpon>frmMisPropuestas.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SAC\FrmProspectosNvo.resx">
       <DependentUpon>FrmProspectosNvo.vb</DependentUpon>
