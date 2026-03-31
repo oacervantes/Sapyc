@@ -63,7 +63,6 @@
             dtProspectos = Nothing
         End Try
     End Sub
-
     Private Sub btnNuevo_Click(sender As Object, e As EventArgs) Handles btnNuevo.Click
         Dim frm As New frmContactoNvo With {
       .iOrigen = 1
@@ -73,7 +72,6 @@
             ListarProspectos()
         End If
     End Sub
-
     Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
         Close()
     End Sub
