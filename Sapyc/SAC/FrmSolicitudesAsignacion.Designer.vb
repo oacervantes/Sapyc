@@ -22,7 +22,8 @@ Partial Class FrmSolicitudesAsignacion
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmSolicitudesAsignacion))
         Me.btnAsignar = New System.Windows.Forms.Button()
         Me.panPrincipal = New System.Windows.Forms.Panel()
         Me.panLinea = New System.Windows.Forms.Panel()
@@ -95,13 +96,14 @@ Partial Class FrmSolicitudesAsignacion
         Me.gridProspectos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.gridProspectos.GridColor = System.Drawing.Color.WhiteSmoke
         Me.gridProspectos.Location = New System.Drawing.Point(11, 54)
+        Me.gridProspectos.MultiSelect = False
         Me.gridProspectos.Name = "gridProspectos"
         Me.gridProspectos.RowHeadersWidth = 25
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(127, Byte), Integer))
-        Me.gridProspectos.RowsDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(127, Byte), Integer))
+        Me.gridProspectos.RowsDefaultCellStyle = DataGridViewCellStyle1
         Me.gridProspectos.RowTemplate.Height = 25
-        Me.gridProspectos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
+        Me.gridProspectos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.gridProspectos.Size = New System.Drawing.Size(1091, 519)
         Me.gridProspectos.TabIndex = 2
         '
@@ -124,6 +126,7 @@ Partial Class FrmSolicitudesAsignacion
         Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.panPrincipal)
         Me.Controls.Add(Me.btnAsignar)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "FrmSolicitudesAsignacion"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Asignar Solicitudes de Prospectos"

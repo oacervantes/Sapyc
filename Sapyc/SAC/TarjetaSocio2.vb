@@ -1,7 +1,21 @@
 ﻿Public Class TarjetaSocio2
 
-    Public Property SocioId As String
+    Private ds As New DataSet
 
+    Private sNameRpt As String = "Selección de socios para asignar propuesta"
+
+    Private dtDatosSocio As New DataTable
+
+    Private sCveSocio As String
+
+    Public Property SocioId As String
+        Get
+            Return sCveSocio
+        End Get
+        Set(value As String)
+            sCveSocio = value
+        End Set
+    End Property
     Public Property Nombre As String
         Get
             Return lblNombre.Text
@@ -10,43 +24,100 @@
             lblNombre.Text = value
         End Set
     End Property
-    Public Property Oficina As String
+    Public Property Correo As String
         Get
-            Return txtOficina.Text
+            Return lblCorreo.Text
         End Get
         Set(value As String)
-            txtOficina.Text = value
+            lblCorreo.Text = value
         End Set
     End Property
-    Public Property Division As String
+    Public Property Servicio As String
         Get
-            Return txtDivision.Text
+            Return txtServiciosColor.Text
         End Get
         Set(value As String)
-            txtDivision.Text = value
+            MostrarTextoConErrores(txtServiciosColor, value)
         End Set
     End Property
-    Public Property Grupo As String
+    Public Property Idiomas As String
         Get
-            Return txtGrupo.Text
+            Return txtIdiomasColor.Text
         End Get
         Set(value As String)
-            If value = "" Then
-                txtGrupo.Text = "N/A"
-            Else
-                txtGrupo.Text = value
+            MostrarTextoConErrores(txtIdiomasColor, value)
+        End Set
+    End Property
+    Public Property Industrias As String
+        Get
+            Return txtIndustriasColor.Text
+        End Get
+        Set(value As String)
+            MostrarTextoConErrores(txtIndustriasColor, value)
+        End Set
+    End Property
+
+    Public Event CardClick(sender As TarjetaSocio2)
+
+    'Private Sub OnAnyClick(sender As Object, e As EventArgs) Handles Me.Click, lblNombre.Click
+    '    RaiseEvent CardClick(Me)
+    'End Sub
+
+    Private Sub BtnAsignacion_Click(sender As Object, e As EventArgs) Handles btnAsignacion.Click
+        RaiseEvent CardClick(Me)
+    End Sub
+    Public Sub MostrarTextoConErrores(rtb As RichTextBox, texto As String)
+
+        rtb.Clear()
+        rtb.SelectionColor = Color.Black
+
+        Dim inicioTag As String = "[ERROR]"
+        Dim finTag As String = "[/ERROR]"
+
+        Dim i As Integer = 0
+
+        While i < texto.Length
+
+            Dim posInicio As Integer = texto.IndexOf(inicioTag, i)
+
+            ' No hay más errores
+            If posInicio = -1 Then
+                rtb.SelectionColor = Color.Black
+                rtb.AppendText(texto.Substring(i))
+                Exit While
             End If
-        End Set
-    End Property
 
-    Public Event CardClick(socioId As String)
+            ' Texto normal antes del error
+            If posInicio > i Then
+                rtb.SelectionColor = Color.Black
+                rtb.AppendText(texto.Substring(i, posInicio - i))
+            End If
 
-    Private Sub OnAnyClick(sender As Object, e As EventArgs)
-        RaiseEvent CardClick(SocioId)
+            ' Texto de error
+            Dim posFin As Integer = texto.IndexOf(finTag, posInicio)
+            If posFin = -1 Then Exit While ' Seguridad
+
+            Dim textoError As String =
+            texto.Substring(posInicio + inicioTag.Length,
+                            posFin - (posInicio + inicioTag.Length))
+
+            rtb.SelectionColor = Color.FromArgb(255, 125, 30)
+            rtb.AppendText(textoError)
+
+            ' Avanzar índice
+            i = posFin + finTag.Length
+        End While
+
+        ' Reset final
+        rtb.SelectionColor = Color.Black
+
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        MsgBox("Ejemplo de botón en la tarjeta del socio: " & Nombre)
+    Public Sub MostrarSeleccion()
+        lblSeleccion.Visible = True
+    End Sub
+    Public Sub OcultarSeleccion()
+        lblSeleccion.Visible = False
     End Sub
 
 End Class

@@ -348,6 +348,18 @@
     <Compile Include="Independencia\Solicitudes.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SAC\DlgDetalleSolicitud.Designer.vb">
+      <DependentUpon>DlgDetalleSolicitud.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SAC\DlgDetalleSolicitud.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SAC\DlgRechazoPropuesta.Designer.vb">
+      <DependentUpon>DlgRechazoPropuesta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SAC\DlgRechazoPropuesta.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SAC\FrmProspectosNvo.Designer.vb">
       <DependentUpon>FrmProspectosNvo.vb</DependentUpon>
     </Compile>
@@ -714,6 +726,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Independencia\Solicitudes.resx">
       <DependentUpon>Solicitudes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SAC\DlgDetalleSolicitud.resx">
+      <DependentUpon>DlgDetalleSolicitud.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SAC\DlgRechazoPropuesta.resx">
+      <DependentUpon>DlgRechazoPropuesta.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SAC\FrmProspectosNvo.resx">
       <DependentUpon>FrmProspectosNvo.vb</DependentUpon>
