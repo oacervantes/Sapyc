@@ -84,13 +84,13 @@
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsDatosSAPYC
+                With clsLocal
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 12, SqlDbType.Int, ParameterDirection.Input)
                     .subAddParameter("@sCveDiv", sCveArea, SqlDbType.VarChar, ParameterDirection.Input)
                 End With
 
-                .Add(clsDatosSAPYC.funExecuteSPDataTable("paTipoServicios", sTabla))
+                .Add(clsLocal.funExecuteSPDataTable("paTipoServicios", sTabla))
 
                 dtServ = .Item(sTabla)
             End With

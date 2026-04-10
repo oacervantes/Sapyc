@@ -582,7 +582,9 @@
     <Compile Include="SAC\DlgSolicitudAsignacion.Designer.vb">
       <DependentUpon>DlgSolicitudAsignacion.vb</DependentUpon>
     </Compile>
-    <Compile Include="SAC\DlgSolicitudAsignacion.vb" />
+    <Compile Include="SAC\DlgSolicitudAsignacion.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SAC\FrmSolicitudesAsignacion.Designer.vb">
       <DependentUpon>FrmSolicitudesAsignacion.vb</DependentUpon>
     </Compile>

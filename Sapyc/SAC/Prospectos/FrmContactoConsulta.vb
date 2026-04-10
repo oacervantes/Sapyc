@@ -62,8 +62,8 @@
         ListarPaisResidencia()
         ListarTipoEntidad()
         ListarModalidades()
-        ListarOficinasUsuario()
-        ListarDivisionesUsuario()
+        'ListarOficinasUsuario()
+        'ListarDivisionesUsuario()
         ListarServiciosDatosGenerales()
 
         ListarDatosGenerales()
@@ -226,7 +226,7 @@
 
     Private Sub AutorizarSolicitudSAC(idSAC As Integer, idPropuesta As Integer, sCveSocio As String)
         Try
-            With clsDatosSAPYC
+            With clsLocal
                 .subClearParameters()
                 .subAddParameter("@iOpcion", 12, SqlDbType.Int, ParameterDirection.Input)
                 .subAddParameter("@idSAC", idSAC, SqlDbType.Int, ParameterDirection.Input)
@@ -245,7 +245,7 @@
         Try
             Dim sMensajeRechazo As String = "SOCIO PREVIO: " & sNombreSocio & vbNewLine & vbNewLine & sMotivoRechazo
 
-            With clsDatosSAPYC
+            With clsLocal
                 .subClearParameters()
                 .subAddParameter("@iOpcion", 11, SqlDbType.Int, ParameterDirection.Input)
                 .subAddParameter("@idSAC", idSAC, SqlDbType.Int, ParameterDirection.Input)
@@ -583,62 +583,62 @@
         End Try
     End Sub
 
-    Private Sub ListarOficinasUsuario()
-        Try
-            Dim sTabla As String = "tbOficinasUsr"
+    'Private Sub ListarOficinasUsuario()
+    '    Try
+    '        Dim sTabla As String = "tbOficinasUsr"
 
-            With ds.Tables
-                LimpiarConsultaTabla(ds.Tables, sTabla)
+    '        With ds.Tables
+    '            LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsDatos
-                    .subClearParameters()
-                    .subAddParameter("@iTipo", 17, SqlDbType.Int, ParameterDirection.Input)
-                    .subAddParameter("@sTipoUsuario", sTipoUsuario, SqlDbType.VarChar, ParameterDirection.Input)
-                    .subAddParameter("@sUsuario", sCveUsuario, SqlDbType.VarChar, ParameterDirection.Input)
-                End With
+    '            With clsDatos
+    '                .subClearParameters()
+    '                .subAddParameter("@iTipo", 17, SqlDbType.Int, ParameterDirection.Input)
+    '                .subAddParameter("@sTipoUsuario", sTipoUsuario, SqlDbType.VarChar, ParameterDirection.Input)
+    '                .subAddParameter("@sUsuario", sCveUsuario, SqlDbType.VarChar, ParameterDirection.Input)
+    '            End With
 
-                .Add(clsDatos.funExecuteSPDataTable("paConsultaTrabajoRecurrente", sTabla))
+    '            .Add(clsDatos.funExecuteSPDataTable("paConsultaTrabajoRecurrente", sTabla))
 
-                dtOficinas = .Item(sTabla)
-            End With
+    '            dtOficinas = .Item(sTabla)
+    '        End With
 
-            cboOficina.DataSource = dtOficinas
-            cboOficina.DisplayMember = "DESCOFI"
-            cboOficina.ValueMember = "sCveOfi"
-        Catch ex As Exception
-            InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarOficinasUsuario()")
-            MsgBox(My.Settings.MSG_REPS, MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
-            dtOficinas = Nothing
-        End Try
-    End Sub
-    Private Sub ListarDivisionesUsuario()
-        Try
-            Dim sTabla As String = "tbDivisionesUsr"
+    '        cboOficina.DataSource = dtOficinas
+    '        cboOficina.DisplayMember = "DESCOFI"
+    '        cboOficina.ValueMember = "sCveOfi"
+    '    Catch ex As Exception
+    '        InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarOficinasUsuario()")
+    '        MsgBox(My.Settings.MSG_REPS, MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
+    '        dtOficinas = Nothing
+    '    End Try
+    'End Sub
+    'Private Sub ListarDivisionesUsuario()
+    '    Try
+    '        Dim sTabla As String = "tbDivisionesUsr"
 
-            With ds.Tables
-                LimpiarConsultaTabla(ds.Tables, sTabla)
+    '        With ds.Tables
+    '            LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsDatos
-                    .subClearParameters()
-                    .subAddParameter("@iTipo", 18, SqlDbType.Int, ParameterDirection.Input)
-                    .subAddParameter("@sTipoUsuario", sTipoUsuario, SqlDbType.VarChar, ParameterDirection.Input)
-                    .subAddParameter("@sUsuario", sCveUsuario, SqlDbType.VarChar, ParameterDirection.Input)
-                End With
+    '            With clsDatos
+    '                .subClearParameters()
+    '                .subAddParameter("@iTipo", 18, SqlDbType.Int, ParameterDirection.Input)
+    '                .subAddParameter("@sTipoUsuario", sTipoUsuario, SqlDbType.VarChar, ParameterDirection.Input)
+    '                .subAddParameter("@sUsuario", sCveUsuario, SqlDbType.VarChar, ParameterDirection.Input)
+    '            End With
 
-                .Add(clsDatos.funExecuteSPDataTable("paConsultaTrabajoRecurrente", sTabla))
+    '            .Add(clsDatos.funExecuteSPDataTable("paConsultaTrabajoRecurrente", sTabla))
 
-                dtDivisiones = .Item(sTabla)
-            End With
+    '            dtDivisiones = .Item(sTabla)
+    '        End With
 
-            cboDivision.DataSource = dtDivisiones
-            cboDivision.ValueMember = "sCveArea"
-            cboDivision.DisplayMember = "DESCAREA"
-        Catch ex As Exception
-            InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarDivisionesUsuario()")
-            MsgBox(My.Settings.MSG_REPS, MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
-            dtDivisiones = Nothing
-        End Try
-    End Sub
+    '        cboDivision.DataSource = dtDivisiones
+    '        cboDivision.ValueMember = "sCveArea"
+    '        cboDivision.DisplayMember = "DESCAREA"
+    '    Catch ex As Exception
+    '        InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarDivisionesUsuario()")
+    '        MsgBox(My.Settings.MSG_REPS, MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
+    '        dtDivisiones = Nothing
+    '    End Try
+    'End Sub
 
     Private Sub ListarDatosGenerales()
         Try
@@ -815,13 +815,13 @@
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsDatosSAPYC
+                With clsLocal
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 1, SqlDbType.Int, ParameterDirection.Input)
                     .subAddParameter("@idSAC", idSAC, SqlDbType.VarChar, ParameterDirection.Input)
                 End With
 
-                .Add(clsDatosSAPYC.funExecuteSPDataTable("paDatosAsignacionSACContactoInicial", sTabla))
+                .Add(clsLocal.funExecuteSPDataTable("paDatosAsignacionSACContactoInicial", sTabla))
 
                 dtContactoInicial = .Item(sTabla)
             End With
@@ -896,12 +896,12 @@
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsDatosSAPYC
+                With clsLocal
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 0, SqlDbType.Int, ParameterDirection.Input)
                 End With
 
-                .Add(clsDatosSAPYC.funExecuteSPDataTable("paDatosAsignacionSACAcercamiento", sTabla))
+                .Add(clsLocal.funExecuteSPDataTable("paDatosAsignacionSACAcercamiento", sTabla))
 
                 dtComoSeEntero = .Item(sTabla)
             End With
@@ -925,12 +925,12 @@
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsDatosSAPYC
+                With clsLocal
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 1, SqlDbType.Int, ParameterDirection.Input)
                 End With
 
-                .Add(clsDatosSAPYC.funExecuteSPDataTable("paDatosAsignacionSACAcercamiento", sTabla))
+                .Add(clsLocal.funExecuteSPDataTable("paDatosAsignacionSACAcercamiento", sTabla))
 
                 dtMedioContacto = .Item(sTabla)
             End With
@@ -954,13 +954,13 @@
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsDatosSAPYC
+                With clsLocal
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 2, SqlDbType.Int, ParameterDirection.Input)
                     .subAddParameter("@idSAC", idSAC, SqlDbType.VarChar, ParameterDirection.Input)
                 End With
 
-                .Add(clsDatosSAPYC.funExecuteSPDataTable("paDatosAsignacionSACAcercamiento", sTabla))
+                .Add(clsLocal.funExecuteSPDataTable("paDatosAsignacionSACAcercamiento", sTabla))
 
                 dtAcercamiento = .Item(sTabla)
             End With
@@ -1010,12 +1010,12 @@
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsDatosSAPYC
+                With clsLocal
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 3, SqlDbType.Int, ParameterDirection.Input)
                 End With
 
-                .Add(clsDatosSAPYC.funExecuteSPDataTable("paDatosAsignacionSACDomicilio", sTabla))
+                .Add(clsLocal.funExecuteSPDataTable("paDatosAsignacionSACDomicilio", sTabla))
 
                 dtEstadosDomicilio = .Item(sTabla)
             End With
@@ -1041,13 +1041,13 @@
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsDatosSAPYC
+                With clsLocal
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 4, SqlDbType.Int, ParameterDirection.Input)
                     .subAddParameter("@idEstado", idEstado, SqlDbType.Int, ParameterDirection.Input)
                 End With
 
-                .Add(clsDatosSAPYC.funExecuteSPDataTable("paDatosAsignacionSACDomicilio", sTabla))
+                .Add(clsLocal.funExecuteSPDataTable("paDatosAsignacionSACDomicilio", sTabla))
 
                 dtMunicipiosDomicilio = .Item(sTabla)
             End With
@@ -1073,7 +1073,7 @@
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsDatosSAPYC
+                With clsLocal
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 5, SqlDbType.Int, ParameterDirection.Input)
                     If id = 1 Then
@@ -1084,7 +1084,7 @@
                     End If
                 End With
 
-                .Add(clsDatosSAPYC.funExecuteSPDataTable("paDatosAsignacionSACDomicilio", sTabla))
+                .Add(clsLocal.funExecuteSPDataTable("paDatosAsignacionSACDomicilio", sTabla))
                 dtColoniasDomicilio = .Item(sTabla)
 
                 If dtColoniasDomicilio.Rows.Count > 0 Then
@@ -1118,13 +1118,13 @@
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsDatosSAPYC
+                With clsLocal
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 1, SqlDbType.Int, ParameterDirection.Input)
                     .subAddParameter("@idSAC", idSAC, SqlDbType.VarChar, ParameterDirection.Input)
                 End With
 
-                .Add(clsDatosSAPYC.funExecuteSPDataTable("paDatosAsignacionSACDomicilio", sTabla))
+                .Add(clsLocal.funExecuteSPDataTable("paDatosAsignacionSACDomicilio", sTabla))
 
                 dtDomicilio = .Item(sTabla)
             End With

@@ -169,6 +169,9 @@
     Private Sub mnuAltaDePropuesta_Click(sender As Object, e As EventArgs) Handles mnuAltaDePropuesta.Click
         MttoPropuesta.LimpiaPan()
         MttoPropuesta.ShowDialog()
+
+
+
     End Sub
     Private Sub CargarListasNegrasSSGTToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CargarListasNegrasSSGTToolStripMenuItem.Click
         ClientesRestringidosSSGT.ShowDialog()
@@ -309,6 +312,8 @@
         AbrirPantalla(frm, "frmMisPropuestas")
     End Sub
 
+    Private Sub AltaNuevosProspectosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AltaNuevosProspectosToolStripMenuItem.Click
 
+    End Sub
 
 End Class
