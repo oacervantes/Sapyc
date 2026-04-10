@@ -259,8 +259,6 @@ Module mdlMetodos
                 grid.Columns(columnName).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
         End Select
     End Sub
-
-
     Public Sub ListarColumnasExcel()
         Dim sCols As String() = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"}
         Dim iColA, iColumna As Integer
@@ -291,5 +289,25 @@ Module mdlMetodos
             End If
         Next
     End Sub
+    Public Sub BindGrid(grid As DataGridView, bs As BindingSource)
+
+        If grid Is Nothing OrElse bs Is Nothing Then Exit Sub
+
+        grid.SuspendLayout()
+
+        Try
+
+            grid.DataSource = bs
+
+            DesplazamientoGrid(grid)
+
+        Finally
+
+            grid.ResumeLayout()
+
+        End Try
+
+    End Sub
+
 
 End Module

@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Principal
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class Principal
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Principal))
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
@@ -30,6 +30,7 @@ Partial Class Principal
         Me.itmKardex = New System.Windows.Forms.ToolStripMenuItem()
         Me.AsignarProspectoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProspectosNuevosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ListaProspectosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnTablas = New System.Windows.Forms.ToolStripMenuItem()
         Me.TablasDelSistemaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GirosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -78,7 +79,7 @@ Partial Class Principal
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.BotonAltaPropuesta = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ListaProspectosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AltaNuevosProspectosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.Barra.SuspendLayout()
         Me.SuspendLayout()
@@ -102,7 +103,7 @@ Partial Class Principal
         'mnuSalir
         '
         Me.mnuSalir.Name = "mnuSalir"
-        Me.mnuSalir.Size = New System.Drawing.Size(98, 22)
+        Me.mnuSalir.Size = New System.Drawing.Size(180, 22)
         Me.mnuSalir.Text = "&Salir"
         '
         'mnuSAC
@@ -129,6 +130,12 @@ Partial Class Principal
         Me.ProspectosNuevosToolStripMenuItem.Name = "ProspectosNuevosToolStripMenuItem"
         Me.ProspectosNuevosToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ProspectosNuevosToolStripMenuItem.Text = "Prospectos Nuevos"
+        '
+        'ListaProspectosToolStripMenuItem
+        '
+        Me.ListaProspectosToolStripMenuItem.Name = "ListaProspectosToolStripMenuItem"
+        Me.ListaProspectosToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ListaProspectosToolStripMenuItem.Text = "Lista Prospectos"
         '
         'MnTablas
         '
@@ -196,7 +203,7 @@ Partial Class Principal
         '
         'mnuProspectos
         '
-        Me.mnuProspectos.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RegistrarProspectoToolStripMenuItem, Me.ClientesSacToolStripMenuItem})
+        Me.mnuProspectos.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RegistrarProspectoToolStripMenuItem, Me.ClientesSacToolStripMenuItem, Me.AltaNuevosProspectosToolStripMenuItem})
         Me.mnuProspectos.Name = "mnuProspectos"
         Me.mnuProspectos.Size = New System.Drawing.Size(80, 20)
         Me.mnuProspectos.Text = "Prospectos"
@@ -225,13 +232,13 @@ Partial Class Principal
         'mnuAltaDePropuesta
         '
         Me.mnuAltaDePropuesta.Name = "mnuAltaDePropuesta"
-        Me.mnuAltaDePropuesta.Size = New System.Drawing.Size(172, 22)
-        Me.mnuAltaDePropuesta.Text = "Alta de Propuesta"
+        Me.mnuAltaDePropuesta.Size = New System.Drawing.Size(205, 22)
+        Me.mnuAltaDePropuesta.Text = "Alta Nuevos prospectos"
         '
         'PToolStripMenuItem
         '
         Me.PToolStripMenuItem.Name = "PToolStripMenuItem"
-        Me.PToolStripMenuItem.Size = New System.Drawing.Size(172, 22)
+        Me.PToolStripMenuItem.Size = New System.Drawing.Size(195, 22)
         Me.PToolStripMenuItem.Text = "Propuestas"
         '
         'ClientesToolStripMenuItem
@@ -455,11 +462,11 @@ Partial Class Principal
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
         Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 40)
         '
-        'ListaProspectosToolStripMenuItem
+        'AltaNuevosProspectosToolStripMenuItem
         '
-        Me.ListaProspectosToolStripMenuItem.Name = "ListaProspectosToolStripMenuItem"
-        Me.ListaProspectosToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-        Me.ListaProspectosToolStripMenuItem.Text = "Lista Prospectos"
+        Me.AltaNuevosProspectosToolStripMenuItem.Name = "AltaNuevosProspectosToolStripMenuItem"
+        Me.AltaNuevosProspectosToolStripMenuItem.Size = New System.Drawing.Size(205, 22)
+        Me.AltaNuevosProspectosToolStripMenuItem.Text = "Alta Nuevos Prospectos"
         '
         'Principal
         '
@@ -540,4 +547,5 @@ Partial Class Principal
     Friend WithEvents AsignarProspectoToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ProspectosNuevosToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ListaProspectosToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents AltaNuevosProspectosToolStripMenuItem As ToolStripMenuItem
 End Class
