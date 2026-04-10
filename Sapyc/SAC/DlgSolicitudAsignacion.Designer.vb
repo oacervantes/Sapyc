@@ -42,6 +42,7 @@ Partial Class DlgSolicitudAsignacion
         Me.lblServicio = New System.Windows.Forms.Label()
         Me.lblProspecto = New System.Windows.Forms.Label()
         Me.btnCerrar = New System.Windows.Forms.Button()
+        Me.btnSocioSinLista = New System.Windows.Forms.Button()
         Me.panPrincipal.SuspendLayout()
         Me.panSolicitud.SuspendLayout()
         Me.SuspendLayout()
@@ -53,6 +54,7 @@ Partial Class DlgSolicitudAsignacion
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.panPrincipal.BackColor = System.Drawing.Color.White
         Me.panPrincipal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.panPrincipal.Controls.Add(Me.btnSocioSinLista)
         Me.panPrincipal.Controls.Add(Me.btnRechazarAsignacion)
         Me.panPrincipal.Controls.Add(Me.btnEnviarAsignacion)
         Me.panPrincipal.Controls.Add(Me.lblMensajeAut)
@@ -106,12 +108,13 @@ Partial Class DlgSolicitudAsignacion
         Me.lblMensajeAut.AutoSize = True
         Me.lblMensajeAut.Font = New System.Drawing.Font("Calibri", 11.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblMensajeAut.ForeColor = System.Drawing.Color.DarkRed
-        Me.lblMensajeAut.Location = New System.Drawing.Point(18, 637)
+        Me.lblMensajeAut.Location = New System.Drawing.Point(18, 632)
         Me.lblMensajeAut.Name = "lblMensajeAut"
-        Me.lblMensajeAut.Size = New System.Drawing.Size(911, 18)
+        Me.lblMensajeAut.Size = New System.Drawing.Size(980, 18)
         Me.lblMensajeAut.TabIndex = 17
-        Me.lblMensajeAut.Text = "A nombre del Socio Director otorgo el Vo. Bo. de la asignación del socio responsa" &
-    "ble para la preparación y presentación de la propuesta de servicio."
+        Me.lblMensajeAut.Text = "En representación del Socio Director, se otorga el Vo. Bo. de la asignación del s" &
+    "ocio responsable para la preparación y presentación de la propuesta de servicio." &
+    ""
         '
         'lblTituloProspecto
         '
@@ -205,7 +208,7 @@ Partial Class DlgSolicitudAsignacion
         Me.txtIdSac.BackColor = System.Drawing.Color.WhiteSmoke
         Me.txtIdSac.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtIdSac.Font = New System.Drawing.Font("Calibri", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtIdSac.ForeColor = System.Drawing.Color.CornflowerBlue
+        Me.txtIdSac.ForeColor = System.Drawing.Color.SlateGray
         Me.txtIdSac.Location = New System.Drawing.Point(978, 32)
         Me.txtIdSac.Name = "txtIdSac"
         Me.txtIdSac.Size = New System.Drawing.Size(88, 25)
@@ -306,12 +309,29 @@ Partial Class DlgSolicitudAsignacion
         '
         Me.btnCerrar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnCerrar.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCerrar.Location = New System.Drawing.Point(985, 704)
+        Me.btnCerrar.Location = New System.Drawing.Point(978, 705)
         Me.btnCerrar.Name = "btnCerrar"
         Me.btnCerrar.Size = New System.Drawing.Size(130, 25)
         Me.btnCerrar.TabIndex = 1
         Me.btnCerrar.Text = "Cerrar"
         Me.btnCerrar.UseVisualStyleBackColor = True
+        '
+        'btnSocioSinLista
+        '
+        Me.btnSocioSinLista.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnSocioSinLista.BackColor = System.Drawing.Color.SandyBrown
+        Me.btnSocioSinLista.FlatAppearance.BorderColor = System.Drawing.Color.Black
+        Me.btnSocioSinLista.FlatAppearance.MouseDownBackColor = System.Drawing.Color.PeachPuff
+        Me.btnSocioSinLista.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SaddleBrown
+        Me.btnSocioSinLista.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnSocioSinLista.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSocioSinLista.ForeColor = System.Drawing.Color.White
+        Me.btnSocioSinLista.Location = New System.Drawing.Point(890, 658)
+        Me.btnSocioSinLista.Name = "btnSocioSinLista"
+        Me.btnSocioSinLista.Size = New System.Drawing.Size(217, 27)
+        Me.btnSocioSinLista.TabIndex = 27
+        Me.btnSocioSinLista.Text = "Registrar socio fuera de lista"
+        Me.btnSocioSinLista.UseVisualStyleBackColor = False
         '
         'DlgSolicitudAsignacion
         '
@@ -355,4 +375,5 @@ Partial Class DlgSolicitudAsignacion
     Friend WithEvents lblMensajeAut As Label
     Friend WithEvents btnEnviarAsignacion As Button
     Friend WithEvents btnRechazarAsignacion As Button
+    Friend WithEvents btnSocioSinLista As Button
 End Class

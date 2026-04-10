@@ -4,6 +4,8 @@
     Private sNameRpt As String = "Detalle de Solicitud de Asignación"
 
     Private dtSolicitud As New DataTable
+
+    Private cStatus As String
     Public idSac, idPropuesta As Integer
 
     Private Sub DlgDetalleSolicitud_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -43,6 +45,13 @@
                 txtSocioEncargado.Text = dtSolicitud.Rows(0).Item("SOCENC").ToString()
                 txtIdioma.Text = dtSolicitud.Rows(0).Item("sIdioma").ToString()
                 txtIndustria.Text = dtSolicitud.Rows(0).Item("INDUSTRIA").ToString()
+                cStatus = dtSolicitud.Rows(0).Item("cStatus").ToString()
+
+                If cStatus = "D" Then
+                    txtMotivoRechazo.Text = dtSolicitud.Rows(0).Item("sMotivoRechazo").ToString()
+                Else
+                    txtMotivoRechazo.Text = "N/A"
+                End If
             End If
         Catch ex As Exception
             InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarProspectos()")

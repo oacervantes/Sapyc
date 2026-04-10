@@ -103,9 +103,6 @@
         gridProspectos.Columns("bStatus").Visible = False
         gridProspectos.Columns("IdServicio").Visible = False
         gridProspectos.Columns("idIdioma").Visible = False
-        gridProspectos.Columns("SERVICIO").Visible = False
-        gridProspectos.Columns("DESCOFI").Visible = False
-        gridProspectos.Columns("DESCAREA").Visible = False
         gridProspectos.Columns("SOCENC").Visible = False
         gridProspectos.Columns("CORENC").Visible = False
         gridProspectos.Columns("sCveInd").Visible = False
@@ -114,7 +111,10 @@
         gridProspectos.Columns("EMAIL").Visible = False
 
         ConfigurarColumnasGrid(gridProspectos, "idSac", "ID. SAC", 65, 3, False)
-        ConfigurarColumnasGrid(gridProspectos, "sNombreCte", "PROSPECTO", 0, 1, False)
+        ConfigurarColumnasGrid(gridProspectos, "sNombreCte", "PROSPECTO", 300, 1, False)
+        ConfigurarColumnasGrid(gridProspectos, "DESCOFI", "OFICINA", 90, 3, False)
+        ConfigurarColumnasGrid(gridProspectos, "DESCAREA", "DIVISIÓN", 90, 3, False)
+        ConfigurarColumnasGrid(gridProspectos, "SERVICIO", "SERVICIO", 300, 1, False)
         ConfigurarColumnasGrid(gridProspectos, "dFechaAlta", "FECHA DE ALTA", 150, 3, False)
         ConfigurarColumnasGrid(gridProspectos, "sStatus", "STATUS SOLICITUD", 250, 1, False)
     End Sub
