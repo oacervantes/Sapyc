@@ -366,6 +366,18 @@
     <Compile Include="SAC\frmAutorizaOtroServicio.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SAC\Prospectos\DlgServiciosCte.Designer.vb">
+      <DependentUpon>DlgServiciosCte.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SAC\Prospectos\DlgServiciosCte.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SAC\Prospectos\FrmContacto.designer.vb">
+      <DependentUpon>FrmContacto.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SAC\Prospectos\FrmContacto.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SAC\frmMisPropuestas.Designer.vb">
       <DependentUpon>frmMisPropuestas.vb</DependentUpon>
     </Compile>
@@ -507,12 +519,6 @@
     <Compile Include="Prospectos\DlgRevisionAsignaProspecto.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Prospectos\DlgServiciosCte.Designer.vb">
-      <DependentUpon>DlgServiciosCte.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Prospectos\DlgServiciosCte.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Prospectos\dlgSubNivel.designer.vb">
       <DependentUpon>dlgSubNivel.vb</DependentUpon>
     </Compile>
@@ -525,10 +531,10 @@
     <Compile Include="Prospectos\dlgSubSector.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Prospectos\FrmContacto.designer.vb">
-      <DependentUpon>FrmContacto.vb</DependentUpon>
+    <Compile Include="Prospectos\FrmContactoOld.designer.vb">
+      <DependentUpon>FrmContactoOld.vb</DependentUpon>
     </Compile>
-    <Compile Include="Prospectos\FrmContacto.vb">
+    <Compile Include="Prospectos\FrmContactoOld.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Prospectos\FrmContactoBasico.Designer.vb">
@@ -583,6 +589,12 @@
       <DependentUpon>FrmSolicitudesAsignacion.vb</DependentUpon>
     </Compile>
     <Compile Include="SAC\FrmSolicitudesAsignacion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SAC\Prospectos\FrmContactoConsulta.Designer.vb">
+      <DependentUpon>FrmContactoConsulta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SAC\Prospectos\FrmContactoConsulta.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SAC\TarjetaSocio.Designer.vb">
@@ -748,6 +760,12 @@
     <EmbeddedResource Include="SAC\frmAutorizaOtroServicio.resx">
       <DependentUpon>frmAutorizaOtroServicio.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SAC\Prospectos\DlgServiciosCte.resx">
+      <DependentUpon>DlgServiciosCte.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SAC\Prospectos\FrmContacto.resx">
+      <DependentUpon>FrmContacto.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SAC\frmMisPropuestas.resx">
       <DependentUpon>frmMisPropuestas.vb</DependentUpon>
     </EmbeddedResource>
@@ -819,17 +837,14 @@
     <EmbeddedResource Include="Prospectos\DlgRevisionAsignaProspecto.resx">
       <DependentUpon>DlgRevisionAsignaProspecto.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Prospectos\DlgServiciosCte.resx">
-      <DependentUpon>DlgServiciosCte.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Prospectos\dlgSubNivel.resx">
       <DependentUpon>dlgSubNivel.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Prospectos\dlgSubSector.resx">
       <DependentUpon>dlgSubSector.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Prospectos\FrmContacto.resx">
-      <DependentUpon>FrmContacto.vb</DependentUpon>
+    <EmbeddedResource Include="Prospectos\FrmContactoOld.resx">
+      <DependentUpon>FrmContactoOld.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Prospectos\FrmContactoBasico.resx">
       <DependentUpon>FrmContactoBasico.vb</DependentUpon>
@@ -857,6 +872,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SAC\FrmSolicitudesAsignacion.resx">
       <DependentUpon>FrmSolicitudesAsignacion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SAC\Prospectos\FrmContactoConsulta.resx">
+      <DependentUpon>FrmContactoConsulta.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SAC\TarjetaSocio.resx">
       <DependentUpon>TarjetaSocio.vb</DependentUpon>

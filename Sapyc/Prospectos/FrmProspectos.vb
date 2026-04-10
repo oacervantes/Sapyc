@@ -27,7 +27,7 @@
         End If
     End Sub
     Private Sub BtnNuevo_Click(sender As Object, e As EventArgs) Handles btnNuevo.Click
-        Dim frm As New FrmContacto With {
+        Dim frm As New FrmContactoOld With {
             .iOrigen = 1
         }
 
@@ -36,7 +36,7 @@
         End If
     End Sub
     Private Sub BtnEditar_Click(sender As Object, e As EventArgs) Handles btnEditar.Click
-        Dim frm As New FrmContacto
+        Dim frm As New FrmContactoOld
 
         If gridProspectos.CurrentRow IsNot Nothing Then
             If (gridProspectos.CurrentRow.Cells("iStatus").Value = 1 Or gridProspectos.CurrentRow.Cells("iStatus").Value = 3 Or gridProspectos.CurrentRow.Cells("iStatus").Value = 2) Then
