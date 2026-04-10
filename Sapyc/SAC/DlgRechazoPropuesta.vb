@@ -12,4 +12,17 @@ Public Class DlgRechazoPropuesta
         Me.Close()
     End Sub
 
+    Private Sub DlgRechazoPropuesta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
+
+    Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
+
+    End Sub
+
+    Private Sub btnGuadar_Click(sender As Object, e As EventArgs) Handles btnGuadar.Click
+
+    End Sub
+
+
 End Class
