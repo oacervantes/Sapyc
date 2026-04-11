@@ -555,12 +555,6 @@
     <Compile Include="Prospectos\frmListaNumSac.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Prospectos\FrmProspectos.designer.vb">
-      <DependentUpon>FrmProspectos.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Prospectos\FrmProspectos.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="ReporteDireccion\DlgSocioRD.designer.vb">
       <DependentUpon>DlgSocioRD.vb</DependentUpon>
     </Compile>
@@ -595,6 +589,12 @@
       <DependentUpon>FrmContactoConsulta.vb</DependentUpon>
     </Compile>
     <Compile Include="SAC\Prospectos\FrmContactoConsulta.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SAC\Prospectos\FrmProspectos.Designer.vb">
+      <DependentUpon>FrmProspectos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SAC\Prospectos\FrmProspectos.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SAC\TarjetaSocio.Designer.vb">
@@ -855,9 +855,6 @@
     <EmbeddedResource Include="Prospectos\frmListaNumSac.resx">
       <DependentUpon>frmListaNumSac.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Prospectos\FrmProspectos.resx">
-      <DependentUpon>FrmProspectos.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ReporteDireccion\DlgSocioRD.resx">
       <DependentUpon>DlgSocioRD.vb</DependentUpon>
     </EmbeddedResource>
@@ -875,6 +872,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SAC\Prospectos\FrmContactoConsulta.resx">
       <DependentUpon>FrmContactoConsulta.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SAC\Prospectos\FrmProspectos.resx">
+      <DependentUpon>FrmProspectos.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SAC\TarjetaSocio.resx">
       <DependentUpon>TarjetaSocio.vb</DependentUpon>

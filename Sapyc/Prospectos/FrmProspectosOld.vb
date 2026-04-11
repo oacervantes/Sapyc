@@ -1,4 +1,4 @@
-﻿Public Class FrmProspectos
+﻿Public Class FrmProspectosOld
 
     '1- Solicitud pendiente.
     '2- Solicitud asignada a socio encargado.

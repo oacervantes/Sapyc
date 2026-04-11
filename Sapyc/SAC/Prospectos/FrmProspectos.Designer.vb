@@ -31,10 +31,7 @@ Partial Class FrmProspectos
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.btnEditar = New System.Windows.Forms.Button()
         Me.btnSalir = New System.Windows.Forms.Button()
-        Me.btnEliminar = New System.Windows.Forms.Button()
-        Me.btnAsignarProspecto = New System.Windows.Forms.Button()
-        Me.btnAsignarSocio = New System.Windows.Forms.Button()
-        Me.btnGenerarPropuesta = New System.Windows.Forms.Button()
+        Me.btnCancelar = New System.Windows.Forms.Button()
         CType(Me.gridProspectos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panPrincipal.SuspendLayout()
         Me.SuspendLayout()
@@ -64,13 +61,14 @@ Partial Class FrmProspectos
         Me.gridProspectos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.gridProspectos.GridColor = System.Drawing.Color.WhiteSmoke
         Me.gridProspectos.Location = New System.Drawing.Point(11, 54)
+        Me.gridProspectos.MultiSelect = False
         Me.gridProspectos.Name = "gridProspectos"
         Me.gridProspectos.RowHeadersWidth = 25
         DataGridViewCellStyle1.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(127, Byte), Integer))
         Me.gridProspectos.RowsDefaultCellStyle = DataGridViewCellStyle1
         Me.gridProspectos.RowTemplate.Height = 25
-        Me.gridProspectos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
+        Me.gridProspectos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.gridProspectos.Size = New System.Drawing.Size(1130, 522)
         Me.gridProspectos.TabIndex = 2
         '
@@ -107,9 +105,9 @@ Partial Class FrmProspectos
         Me.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(127, Byte), Integer))
         Me.lblTitulo.Location = New System.Drawing.Point(2, 2)
         Me.lblTitulo.Name = "lblTitulo"
-        Me.lblTitulo.Size = New System.Drawing.Size(262, 32)
+        Me.lblTitulo.Size = New System.Drawing.Size(625, 32)
         Me.lblTitulo.TabIndex = 0
-        Me.lblTitulo.Text = "CLIENTES PROSPECTOS"
+        Me.lblTitulo.Text = "SOLICITUDES DE ASIGNACIÓN DE CLIENTES PROSPECTOS"
         '
         'btnEditar
         '
@@ -133,66 +131,27 @@ Partial Class FrmProspectos
         Me.btnSalir.Text = "Salir"
         Me.btnSalir.UseVisualStyleBackColor = True
         '
-        'btnEliminar
+        'btnCancelar
         '
-        Me.btnEliminar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.btnEliminar.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnEliminar.Location = New System.Drawing.Point(284, 602)
-        Me.btnEliminar.Name = "btnEliminar"
-        Me.btnEliminar.Size = New System.Drawing.Size(130, 25)
-        Me.btnEliminar.TabIndex = 3
-        Me.btnEliminar.Text = "Eliminar"
-        Me.btnEliminar.UseVisualStyleBackColor = True
-        '
-        'btnAsignarProspecto
-        '
-        Me.btnAsignarProspecto.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.btnAsignarProspecto.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAsignarProspecto.Location = New System.Drawing.Point(450, 602)
-        Me.btnAsignarProspecto.Name = "btnAsignarProspecto"
-        Me.btnAsignarProspecto.Size = New System.Drawing.Size(238, 25)
-        Me.btnAsignarProspecto.TabIndex = 4
-        Me.btnAsignarProspecto.Text = "Asignar cliente prospecto a socio"
-        Me.btnAsignarProspecto.UseVisualStyleBackColor = True
-        Me.btnAsignarProspecto.Visible = False
-        '
-        'btnAsignarSocio
-        '
-        Me.btnAsignarSocio.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.btnAsignarSocio.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAsignarSocio.Location = New System.Drawing.Point(450, 602)
-        Me.btnAsignarSocio.Name = "btnAsignarSocio"
-        Me.btnAsignarSocio.Size = New System.Drawing.Size(238, 25)
-        Me.btnAsignarSocio.TabIndex = 6
-        Me.btnAsignarSocio.Text = "Enviar a socio encargado"
-        Me.btnAsignarSocio.UseVisualStyleBackColor = True
-        Me.btnAsignarSocio.Visible = False
-        '
-        'btnGenerarPropuesta
-        '
-        Me.btnGenerarPropuesta.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.btnGenerarPropuesta.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnGenerarPropuesta.Location = New System.Drawing.Point(782, 602)
-        Me.btnGenerarPropuesta.Name = "btnGenerarPropuesta"
-        Me.btnGenerarPropuesta.Size = New System.Drawing.Size(181, 25)
-        Me.btnGenerarPropuesta.TabIndex = 7
-        Me.btnGenerarPropuesta.Text = "Generar solicitud"
-        Me.btnGenerarPropuesta.UseVisualStyleBackColor = True
-        Me.btnGenerarPropuesta.Visible = False
+        Me.btnCancelar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.btnCancelar.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCancelar.Location = New System.Drawing.Point(284, 602)
+        Me.btnCancelar.Name = "btnCancelar"
+        Me.btnCancelar.Size = New System.Drawing.Size(130, 25)
+        Me.btnCancelar.TabIndex = 3
+        Me.btnCancelar.Text = "Cancelar"
+        Me.btnCancelar.UseVisualStyleBackColor = True
         '
         'FrmProspectos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.ClientSize = New System.Drawing.Size(1154, 635)
-        Me.Controls.Add(Me.btnEliminar)
+        Me.Controls.Add(Me.btnCancelar)
         Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.btnEditar)
         Me.Controls.Add(Me.panPrincipal)
         Me.Controls.Add(Me.btnNuevo)
-        Me.Controls.Add(Me.btnGenerarPropuesta)
-        Me.Controls.Add(Me.btnAsignarProspecto)
-        Me.Controls.Add(Me.btnAsignarSocio)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "FrmProspectos"
@@ -212,8 +171,5 @@ Partial Class FrmProspectos
     Friend WithEvents lblTitulo As Label
     Friend WithEvents btnEditar As Button
     Friend WithEvents btnSalir As Button
-    Friend WithEvents btnEliminar As Button
-    Friend WithEvents btnAsignarProspecto As Button
-    Friend WithEvents btnAsignarSocio As Button
-    Friend WithEvents btnGenerarPropuesta As Button
+    Friend WithEvents btnCancelar As Button
 End Class
