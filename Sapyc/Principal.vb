@@ -313,7 +313,12 @@
     End Sub
 
     Private Sub AltaNuevosProspectosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AltaNuevosProspectosToolStripMenuItem.Click
-
+        Dim frm As New FrmProspectos
+        AbrirPantalla(frm, "frmMisPropuestas")
+    End Sub
+    Private Sub AsignarProspectoToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles AsignarProspectoToolStripMenuItem1.Click
+        Dim frm As New FrmSolicitudesAsignacion
+        AbrirPantalla(frm, "FrmSolicitudesAsignacion")
     End Sub
 
 End Class

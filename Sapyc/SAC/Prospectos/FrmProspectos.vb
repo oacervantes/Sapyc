@@ -195,13 +195,13 @@
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsDatosSAPYC
+                With clsLocal
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 1, SqlDbType.Int, ParameterDirection.Input)
                     .subAddParameter("@sUsuario", sCveUsuario, SqlDbType.VarChar, ParameterDirection.Input)
                 End With
 
-                .Add(clsDatosSAPYC.funExecuteSPDataTable("paSolicitudesSAC", sTabla))
+                .Add(clsLocal.funExecuteSPDataTable("paSolicitudesSAC", sTabla))
 
                 dtSolicitudes = .Item(sTabla)
             End With
@@ -229,7 +229,7 @@
     End Sub
     Private Sub InsertarSolicitudSAC()
         Try
-            With clsDatosSAPYC
+            With clsLocal
                 .subClearParameters()
                 .subAddParameter("@iOpcion", 2, SqlDbType.Int, ParameterDirection.Input)
                 .subAddParameter("@sUsuario", sCveUsuario, SqlDbType.VarChar, ParameterDirection.Input)
@@ -246,7 +246,7 @@
     End Sub
     Private Sub EliminarSolicitudSAC(idSAC As Integer)
         Try
-            With clsDatosSAPYC
+            With clsLocal
                 .subClearParameters()
                 .subAddParameter("@iOpcion", 4, SqlDbType.Int, ParameterDirection.Input)
                 .subAddParameter("@idSAC", idSAC, SqlDbType.Int, ParameterDirection.Input)
@@ -259,7 +259,6 @@
             MsgBox("Hubo un problema al registrar la información del prospecto, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
         End Try
     End Sub
-
     'Private Sub ConsultaDatosCompletos(sCveProspecto As String)
     '    Try
     '        Dim sTabla As String = "tbProspectos"
@@ -307,7 +306,6 @@
     '        dtDatosProspecto = Nothing
     '    End Try
     'End Sub
-
     Private Sub EnviarCorreoAviso() 'Este correo es para avisar al socio encargado de oficina, que se ha solicitado generar un folio con cobranza incompleta.
         Dim sMensaje As String
 

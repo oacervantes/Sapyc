@@ -498,7 +498,6 @@ Partial Class FrmContactoOld
         '
         'gpBoxDatosDG
         '
-        Me.gpBoxDatosDG.Controls.Add(Me.Lista)
         Me.gpBoxDatosDG.Controls.Add(Me.txtPaisProspecto)
         Me.gpBoxDatosDG.Controls.Add(Me.btnPaisProspecto)
         Me.gpBoxDatosDG.Controls.Add(Me.txtRazonSocial)
@@ -528,6 +527,7 @@ Partial Class FrmContactoOld
         Me.gpBoxDatosDG.Controls.Add(Me.gpBoxReferenciaGTI)
         Me.gpBoxDatosDG.Controls.Add(Me.lblPais)
         Me.gpBoxDatosDG.Controls.Add(Me.gpBoxEmpresaExtranjero)
+        Me.gpBoxDatosDG.Controls.Add(Me.Lista)
         Me.gpBoxDatosDG.Enabled = False
         Me.gpBoxDatosDG.Location = New System.Drawing.Point(14, 80)
         Me.gpBoxDatosDG.Name = "gpBoxDatosDG"
@@ -2674,7 +2674,7 @@ Partial Class FrmContactoOld
         Me.cboDomicilioPais.TabIndex = 1
         Me.cboDomicilioPais.Visible = False
         '
-        'FrmContacto
+        'FrmContactoOld
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
@@ -2684,14 +2684,14 @@ Partial Class FrmContactoOld
         Me.Controls.Add(Me.btnCancelaGeneral)
         Me.Controls.Add(Me.btnCerrar)
         Me.Controls.Add(Me.panMenu)
-        Me.Controls.Add(Me.panContactoInicial)
         Me.Controls.Add(Me.panDatosGenerales)
         Me.Controls.Add(Me.panAcercamiento)
         Me.Controls.Add(Me.panDireccion)
+        Me.Controls.Add(Me.panContactoInicial)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
-        Me.Name = "FrmContacto"
+        Me.Name = "FrmContactoOld"
         Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Alta de cliente prospecto"

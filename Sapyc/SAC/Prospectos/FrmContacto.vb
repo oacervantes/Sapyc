@@ -81,8 +81,8 @@ Public Class FrmContacto
         ListarPaisResidencia()
         ListarTipoEntidad()
         ListarModalidades()
-        'ListarOficinasUsuario()
-        'ListarDivisionesUsuario()
+        ListarOficinas()
+        ListarDivisiones()
 
         ListarDatosGenerales()
 
@@ -293,7 +293,6 @@ Public Class FrmContacto
             'End If
         End If
     End Sub
-
     Private Sub BtnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
         If bCargaInfo Then
             If MsgBox("¿Está seguro de que desea salir sin guardar los cambios?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "SIAT") = MsgBoxResult.No Then
@@ -309,7 +308,6 @@ Public Class FrmContacto
             'InsertarPropuesta
         End If
     End Sub
-
     Private Sub LnkSecciones(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lnkDatosGenerales.LinkClicked, lnkContactoInicial.LinkClicked, lnkAcercamiento.LinkClicked, lnkDireccion.LinkClicked
         For Each obj As Object In Controls
             If obj.GetType.Name = "Panel" Then
@@ -468,15 +466,13 @@ Public Class FrmContacto
             txtPaisResidencia.Text = dlg.sPais
         End If
     End Sub
-
     Private Sub CboOficinas_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboOficina.SelectedIndexChanged
         If cboOficina.SelectedIndex = -1 Then
             Exit Sub
         End If
 
         If cboOficina.SelectedIndex <> 0 Then
-            'ListarDivisionesUsuario()
-            cboDivision.SelectedIndex = 0
+            ' cboDivision.SelectedIndex = 0
             cboDivision.Enabled = True
 
             sCveOfi = cboOficina.SelectedValue.ToString()
@@ -492,7 +488,6 @@ Public Class FrmContacto
 
         If cboDivision.SelectedIndex > 0 Then
             btnAgregar.Enabled = True
-
             sCveArea = cboDivision.SelectedValue.ToString
 
             If sCveArea = "SS" Or sCveArea = "CO" Or sCveArea = "ATI" Then
@@ -503,7 +498,6 @@ Public Class FrmContacto
             LimpiarTabla(dtServicios)
         End If
     End Sub
-
     Private Sub rdEmpresaPublicaSi_CheckedChanged(sender As Object, e As EventArgs) Handles rdEmpresaPublicaSi.CheckedChanged
         HabilitarCombo(cboBolsaValores, True)
     End Sub
@@ -514,7 +508,6 @@ Public Class FrmContacto
         txtBolsaValoresOtro.Enabled = False
         txtBolsaValoresOtro.Text = ""
     End Sub
-
     Private Sub CboBolsaValores_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboBolsaValores.SelectedIndexChanged
         If cboBolsaValores.SelectedIndex = 5 Then
             txtBolsaValoresOtro.Enabled = True
@@ -523,7 +516,6 @@ Public Class FrmContacto
             txtBolsaValoresOtro.Text = ""
         End If
     End Sub
-
     Private Sub rdEntidadReguladaSi_CheckedChanged(sender As Object, e As EventArgs) Handles rdEntidadReguladaSi.CheckedChanged
         HabilitarCombo(cboEntidadReguladora, True)
     End Sub
@@ -534,7 +526,6 @@ Public Class FrmContacto
         txtEntidadReguladoraOtro.Enabled = False
         txtEntidadReguladoraOtro.Text = ""
     End Sub
-
     Private Sub CboEntidadReguladora_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboEntidadReguladora.SelectedIndexChanged
         If cboEntidadReguladora.SelectedIndex = 8 Then
             txtEntidadReguladoraOtro.Enabled = True
@@ -543,14 +534,12 @@ Public Class FrmContacto
             txtEntidadReguladoraOtro.Text = ""
         End If
     End Sub
-
     Private Sub rdEntidadSupervisadaSi_CheckedChanged(sender As Object, e As EventArgs) Handles rdEntidadSupervisadaSi.CheckedChanged
         HabilitarCombo(cboEntidadSupervisada, True)
     End Sub
     Private Sub rdEntidadSupervisadaNo_CheckedChanged(sender As Object, e As EventArgs) Handles rdEntidadSupervisadaNo.CheckedChanged
         HabilitarCombo(cboEntidadSupervisada, False)
     End Sub
-
     Private Sub cboEntidadSupervisada_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboEntidadSupervisada.SelectedIndexChanged
         If cboEntidadSupervisada.SelectedIndex = 6 Then
             txtEntidadSupervisadaOtro.Enabled = True
@@ -559,7 +548,6 @@ Public Class FrmContacto
             txtEntidadSupervisadaOtro.Text = ""
         End If
     End Sub
-
     Private Sub RdReferenciaGTISi_CheckedChanged(sender As Object, e As EventArgs) Handles rdReferenciaGTISi.CheckedChanged
         txtReferenciaGTISocio.Enabled = True
         'cboReferenciaGTIPais.Enabled = True
@@ -572,7 +560,6 @@ Public Class FrmContacto
         btnPaisGTI.Enabled = False
         cboReferenciaGTIOficina.Enabled = False
     End Sub
-
     Private Sub txtRazonSocial_TextChanged(sender As Object, e As EventArgs) Handles txtRazonSocial.TextChanged
         txtRazonSocial.CharacterCasing = CharacterCasing.Upper
 
@@ -620,7 +607,6 @@ Public Class FrmContacto
         Return 0
 
     End Function
-
     Private Sub TxtRFC_Leave(sender As Object, e As EventArgs) Handles txtRFC.Leave
         If txtRFC.TextLength <> 12 And txtRFC.TextLength <> 13 Then
             MsgBox("El RFC es incorrecto, vuelva a escribirlo por favor.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
@@ -639,7 +625,6 @@ Public Class FrmContacto
             txtRFC.CharacterCasing = CharacterCasing.Upper
         End If
     End Sub
-
     Private Sub GridServicios_DoubleClick(sender As Object, e As EventArgs) Handles gridServicios.DoubleClick
         If gridServicios.SelectedRows.Count > 0 Then
             If MsgBox("Se quitará el servicio seleccionado, ¿Desea continuar?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, My.Settings.NOM_SYS) = MsgBoxResult.Yes Then
@@ -774,7 +759,6 @@ Public Class FrmContacto
             cbo.Enabled = False
         End If
     End Sub
-
     Private Sub CrearTablas()
         dtServicios.Columns.Add("CVE", GetType(Integer))
         dtServicios.Columns.Add("CVEOTROS", GetType(Boolean))
@@ -783,7 +767,6 @@ Public Class FrmContacto
         dtServicios.Columns.Add("REVIND", GetType(String))
         dtServicios.Columns.Add("DESCRIPCION", GetType(String))
     End Sub
-
     Private Sub ListarIndustrias()
         Try
             Dim sTabla As String = "tbProspectos"
@@ -874,7 +857,6 @@ Public Class FrmContacto
             dtProspectos = Nothing
         End Try
     End Sub
-
     Private Sub InsertarPropuesta(idServicio As Integer, bOtros As Boolean)
         Try
             With clsLocal
@@ -903,7 +885,6 @@ Public Class FrmContacto
             MsgBox("Por el momento no es posible registrar las propuestas, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
         End Try
     End Sub
-
     Private Sub EnvioCorreoSocio()
         Try
             With ds.Tables
@@ -1014,7 +995,6 @@ Public Class FrmContacto
             MsgBox("No ha sido posible enviar el correo debido a fallas con el servidor de correo.", MsgBoxStyle.Exclamation, "SIAT")
         End Try
     End Sub
-
     Private Sub ActualizarSolicitudSAC(idSAC As Integer)
         Try
             With clsLocal
@@ -1033,6 +1013,65 @@ Public Class FrmContacto
         Catch ex As Exception
             InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "EliminarAsignacionSAC()")
             MsgBox("Hubo un problema al registrar la información del prospecto, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
+        End Try
+    End Sub
+    Private Sub ListarOficinas()
+        Try
+            Dim sTabla As String = "tbOficinas"
+
+            With ds.Tables
+                LimpiarConsultaTabla(ds.Tables, sTabla)
+
+                With clsDatosProp
+                    .subClearParameters()
+                    .subAddParameter("@iOpcion", 22, SqlDbType.Int, ParameterDirection.Input)
+                End With
+
+                .Add(clsDatosProp.funExecuteSPDataTable("paSSGTDatosGenerales", sTabla))
+
+                dtOficinas = .Item(sTabla)
+            End With
+
+            If dtOficinas.Rows.Count > 0 Then
+                cboOficina.DataSource = dtOficinas
+
+                cboOficina.ValueMember = "sCveOficina"
+                cboOficina.DisplayMember = "sOficina"
+            End If
+        Catch ex As Exception
+            'insertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarServicios()")
+            MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "SIAT")
+            dtOficinas = Nothing
+        End Try
+    End Sub
+    Private Sub ListarDivisiones()
+        Try
+            Dim sTabla As String = "tbDivision"
+
+            With ds.Tables
+                LimpiarConsultaTabla(ds.Tables, sTabla)
+
+                With clsDatosProp
+                    .subClearParameters()
+                    .subAddParameter("@iOpcion", 23, SqlDbType.Int, ParameterDirection.Input)
+                    .subAddParameter("@sCveOfi", cboOficina.SelectedValue, SqlDbType.VarChar, ParameterDirection.Input)
+                End With
+
+                .Add(clsDatosProp.funExecuteSPDataTable("paSSGTDatosGenerales", sTabla))
+
+                dtDivisiones = .Item(sTabla)
+            End With
+
+            If dtDivisiones.Rows.Count > 0 Then
+                cboDivision.DataSource = dtDivisiones
+
+                cboDivision.ValueMember = "sCveDivision"
+                cboDivision.DisplayMember = "sDivision"
+            End If
+        Catch ex As Exception
+            'insertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarServicios()")
+            MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
+            dtDivisiones = Nothing
         End Try
     End Sub
 
@@ -1373,64 +1412,6 @@ Public Class FrmContacto
             dtIdiomas = Nothing
         End Try
     End Sub
-
-    'Private Sub ListarOficinasUsuario()
-    '    Try
-    '        Dim sTabla As String = "tbOficinasUsr"
-
-    '        With ds.Tables
-    '            LimpiarConsultaTabla(ds.Tables, sTabla)
-
-    '            With clsDatos
-    '                .subClearParameters()
-    '                .subAddParameter("@iTipo", 17, SqlDbType.Int, ParameterDirection.Input)
-    '                .subAddParameter("@sTipoUsuario", sTipoUsuario, SqlDbType.VarChar, ParameterDirection.Input)
-    '                .subAddParameter("@sUsuario", sCveUsuario, SqlDbType.VarChar, ParameterDirection.Input)
-    '            End With
-
-    '            .Add(clsDatos.funExecuteSPDataTable("paConsultaTrabajoRecurrente", sTabla))
-
-    '            dtOficinas = .Item(sTabla)
-    '        End With
-
-    '        cboOficina.DataSource = dtOficinas
-    '        cboOficina.DisplayMember = "DESCOFI"
-    '        cboOficina.ValueMember = "sCveOfi"
-    '    Catch ex As Exception
-    '        InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarOficinasUsuario()")
-    '        MsgBox(My.Settings.MSG_REPS, MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
-    '        dtOficinas = Nothing
-    '    End Try
-    'End Sub
-    'Private Sub ListarDivisionesUsuario()
-    '    Try
-    '        Dim sTabla As String = "tbDivisionesUsr"
-
-    '        With ds.Tables
-    '            LimpiarConsultaTabla(ds.Tables, sTabla)
-
-    '            With clsDatos
-    '                .subClearParameters()
-    '                .subAddParameter("@iTipo", 18, SqlDbType.Int, ParameterDirection.Input)
-    '                .subAddParameter("@sTipoUsuario", sTipoUsuario, SqlDbType.VarChar, ParameterDirection.Input)
-    '                .subAddParameter("@sUsuario", sCveUsuario, SqlDbType.VarChar, ParameterDirection.Input)
-    '            End With
-
-    '            .Add(clsDatos.funExecuteSPDataTable("paConsultaTrabajoRecurrente", sTabla))
-
-    '            dtDivisiones = .Item(sTabla)
-    '        End With
-
-    '        cboDivision.DataSource = dtDivisiones
-    '        cboDivision.ValueMember = "sCveArea"
-    '        cboDivision.DisplayMember = "DESCAREA"
-    '    Catch ex As Exception
-    '        InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarDivisionesUsuario()")
-    '        MsgBox(My.Settings.MSG_REPS, MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
-    '        dtDivisiones = Nothing
-    '    End Try
-    'End Sub
-
     Private Sub ListarDatosGenerales()
         Try
             Dim sTabla As String = "tbDatosGenerales"
@@ -2174,7 +2155,6 @@ Public Class FrmContacto
         End Try
 
     End Sub
-
     Private Sub ListarDomicilio()
         Try
             Dim sTabla As String = "tbDomicilio"
