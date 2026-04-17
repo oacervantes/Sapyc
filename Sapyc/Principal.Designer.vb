@@ -86,6 +86,7 @@ Partial Class Principal
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.BotonAltaPropuesta = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.SeguimientoAPropuestasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.Barra.SuspendLayout()
         Me.SuspendLayout()
@@ -114,7 +115,7 @@ Partial Class Principal
         '
         'mnuSAC
         '
-        Me.mnuSAC.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.itmKardex, Me.AsignarProspectoToolStripMenuItem, Me.ProspectosNuevosToolStripMenuItem, Me.ListaProspectosToolStripMenuItem})
+        Me.mnuSAC.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.itmKardex, Me.AsignarProspectoToolStripMenuItem, Me.ProspectosNuevosToolStripMenuItem, Me.ListaProspectosToolStripMenuItem, Me.SeguimientoAPropuestasToolStripMenuItem})
         Me.mnuSAC.Name = "mnuSAC"
         Me.mnuSAC.Size = New System.Drawing.Size(41, 20)
         Me.mnuSAC.Text = "SAC"
@@ -508,6 +509,12 @@ Partial Class Principal
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
         Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 40)
         '
+        'SeguimientoAPropuestasToolStripMenuItem
+        '
+        Me.SeguimientoAPropuestasToolStripMenuItem.Name = "SeguimientoAPropuestasToolStripMenuItem"
+        Me.SeguimientoAPropuestasToolStripMenuItem.Size = New System.Drawing.Size(218, 22)
+        Me.SeguimientoAPropuestasToolStripMenuItem.Text = "Seguimiento a Propuestas"
+        '
         'Principal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -594,4 +601,5 @@ Partial Class Principal
     Friend WithEvents RevisionServiciosOtrosToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents NivelDeRiesgoToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents VoBoKardexSociosGerentesToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SeguimientoAPropuestasToolStripMenuItem As ToolStripMenuItem
 End Class

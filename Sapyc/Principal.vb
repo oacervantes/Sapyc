@@ -329,7 +329,9 @@
         Dim frm As New frmListaNivelRiesgo
         AbrirPantalla(frm, "frmListaNivelRiesgo")
     End Sub
-
-
+    Private Sub SeguimientoAPropuestasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SeguimientoAPropuestasToolStripMenuItem.Click
+        Dim frm As New frmListaSeguimiento
+        AbrirPantalla(frm, "frmListaNivelRiesgo")
+    End Sub
 
 End Class

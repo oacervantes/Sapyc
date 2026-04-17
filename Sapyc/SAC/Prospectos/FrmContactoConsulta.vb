@@ -14,7 +14,7 @@
     Private dtDatosGenerales, dtServiciosDG As New DataTable
     Private dtContactoInicial As New DataTable
     Private dtComoSeEntero, dtMedioContacto, dtAcercamiento As New DataTable
-    Private dtDomicilio, dtPaisDomicilio, dtColoniasDomicilio, dtMunicipiosDomicilio, dtEstadosDomicilio As New DataTable
+    Private dtDomicilio, dtPaisDomicilio, dtColoniasDomicilio, dtMunicipiosDomicilio, dtEstadosDomicilio, dtEstatusProp As New DataTable
     Private dtDatGrals, dtBolsaValores, dtEntidadReg, dtNormatividad, dtPais, dtPaisGT, dtPaisResidencia, dtTipoEntidad, dtModalidades, dtIdiomas, dtOficinas, dtDivisiones, dtSocios, dtOfGt As DataTable
     Private dtIndustria, dtSubSector, dtSubNivel As DataTable
 
@@ -22,7 +22,8 @@
 
     Private sInd, sSS, sGTI As String
     Private iOpcionFun, iOpcionAcc, idIdioma, idPais, idPaisTenedora, idPaisGT, idPaisDom As Integer
-    Private sCveInd, sCveSS, sCveGTI, sPaisDom, sNombreCliente As String
+    Private sCveInd, sCveSS, sCveGTI, sPaisDom, sNombreCliente, sMsgContacto As String
+
     Private bOtros = False, bRefGTI = False, bCargaInfo As Boolean = False
     Private sCorreos(), sCuentaCorreo As String
 
@@ -63,8 +64,6 @@
         ListarPaisResidencia()
         ListarTipoEntidad()
         ListarModalidades()
-        'ListarOficinasUsuario()
-        'ListarDivisionesUsuario()
         ListarServiciosDatosGenerales()
 
         ListarDatosGenerales()
@@ -75,6 +74,9 @@
 
         '============================== CONSULTA DATOS ==============================
         ListarContactoInicial()
+
+        ListarEstatusPropuestas()
+
     End Sub
     Private Sub BtnAutorizar_Click(sender As Object, e As EventArgs)
 
@@ -311,6 +313,107 @@
         End Select
     End Sub
 
+    Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
+        Try
+
+            If ValidarSeguimiento() Then
+                InsertarSeguimiento()
+                MsgBox("Se actualizo el seguimiento a la propuesta de manera correcta", MsgBoxStyle.Information, "SAPYC")
+                DialogResult = DialogResult.OK
+            End If
+
+
+        Catch ex As Exception
+            InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarSeguimiento()")
+            MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
+        End Try
+    End Sub
+    Private Function ValidarSeguimiento() As Boolean
+        Dim bValidacion As Boolean = True
+
+        sMsgContacto = vbNewLine & CONTACTO_INICIAL & vbNewLine
+        sMsgContacto &= "===============================" & vbNewLine
+
+        If rdSiPresentacion.Checked = True And rdNoPresentacion.Checked = True Then
+            sMsgContacto &= "- Debes elegir si presento una propuesta de servicio." & vbNewLine & vbNewLine
+
+            bValidacion = False
+        End If
+
+        If Trim(txtHonorariosPropuesta.Text) = "" Then
+            sMsgContacto &= "- Debes indicar un importe de honorarios." & vbNewLine & vbNewLine
+
+            bValidacion = False
+        End If
+
+        If cboStatusPropuesta.SelectedValue = 0 Or cboStatusPropuesta.SelectedValue < 0 Then
+            sMsgContacto &= "- Debes indicar un estatus de propuesta." & vbNewLine & vbNewLine
+
+            bValidacion = False
+        End If
+
+        sMsgContacto = sMsgContacto.Remove(sMsgContacto.Length - vbNewLine.Length * 2)
+        sMsgContacto &= vbNewLine & "===============================" & vbNewLine
+
+        Return bValidacion
+    End Function
+    Private Sub InsertarSeguimiento()
+        Try
+            With clsLocal
+                .subClearParameters()
+                .subAddParameter("@iOpcion", 6, SqlDbType.Int, ParameterDirection.Input)
+                .subAddParameter("@idSAC", idSAC, SqlDbType.Int, ParameterDirection.Input)
+                .subAddParameter("@idPropuesta", idPropuesta, SqlDbType.Int, ParameterDirection.Input)
+                .subAddParameter("@sUsuario", sCveUsuario, SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@dHonorarios", txtHonorariosPropuesta.Text, SqlDbType.VarChar, ParameterDirection.Input)
+
+                If rdSiPresentacion.Checked = True Then
+                    .subAddParameter("@bPresento", 1, SqlDbType.Bit, ParameterDirection.Input)
+                ElseIf rdNoPresentacion.Checked = True Then
+                    .subAddParameter("@bPresento", 0, SqlDbType.Bit, ParameterDirection.Input)
+                End If
+                .subAddParameter("@iEstatus", cboStatusPropuesta.SelectedValue, SqlDbType.Int, ParameterDirection.Input)
+                .subAddParameter("@dFechaPorpuesta", txtRegistroFechaPropuesta.Value, SqlDbType.DateTime, ParameterDirection.Input)
+
+
+                .funExecuteSP("paDatosAsignacionSACPropuestas")
+            End With
+        Catch ex As Exception
+            InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "InsertarDomicilio()")
+            MsgBox("Hubo un problema al registrar la información del domicilio, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
+        End Try
+    End Sub
+
+    Private Sub ListarEstatusPropuestas()
+        Try
+            Dim sTabla As String = "tbProspectos"
+
+            With ds.Tables
+                LimpiarConsultaTabla(ds.Tables, sTabla)
+
+                With clsLocal
+                    .subClearParameters()
+                    .subAddParameter("@iOpcion", 7, SqlDbType.Int, ParameterDirection.Input)
+                End With
+
+                .Add(clsLocal.funExecuteSPDataTable("paDatosAsignacionSACPropuestas", sTabla))
+
+                dtEstatusProp = .Item(sTabla)
+            End With
+
+            If dtEstatusProp.Rows.Count > 0 Then
+                cboStatusPropuesta.DataSource = dtEstatusProp
+
+                cboStatusPropuesta.ValueMember = "CVE"
+                cboStatusPropuesta.DisplayMember = "DESCRIPCION"
+            End If
+
+        Catch ex As Exception
+            InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarProspectos()")
+            MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
+            dtProspectos = Nothing
+        End Try
+    End Sub
 #Region "DATOS GENERALES"
 
     Private Sub ListarBolsaValores()

@@ -2471,7 +2471,6 @@ Partial Class FrmContactoConsulta
         Me.lblHonorariosPropuesta.Size = New System.Drawing.Size(259, 18)
         Me.lblHonorariosPropuesta.TabIndex = 25
         Me.lblHonorariosPropuesta.Text = "Honorarios presentados en la propuesta:"
-        Me.lblHonorariosPropuesta.Visible = False
         '
         'txtHonorariosPropuesta
         '
@@ -2480,7 +2479,6 @@ Partial Class FrmContactoConsulta
         Me.txtHonorariosPropuesta.Size = New System.Drawing.Size(114, 25)
         Me.txtHonorariosPropuesta.TabIndex = 26
         Me.txtHonorariosPropuesta.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.txtHonorariosPropuesta.Visible = False
         '
         'lblRegistroPropuesta
         '

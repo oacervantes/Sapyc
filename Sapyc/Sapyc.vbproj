@@ -621,6 +621,12 @@
     <Compile Include="SAC\AsigancionSocios\TarjetaSocio2.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SAC\Seguimiento\frmListaSeguimiento.Designer.vb">
+      <DependentUpon>frmListaSeguimiento.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SAC\Seguimiento\frmListaSeguimiento.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SelOpcion.designer.vb">
       <DependentUpon>SelOpcion.vb</DependentUpon>
     </Compile>
@@ -900,6 +906,9 @@
     <EmbeddedResource Include="SAC\AsigancionSocios\TarjetaSocio2.resx">
       <DependentUpon>TarjetaSocio2.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SAC\Seguimiento\frmListaSeguimiento.resx">
+      <DependentUpon>frmListaSeguimiento.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SelOpcion.resx">
       <DependentUpon>SelOpcion.vb</DependentUpon>
       <SubType>Designer</SubType>
@@ -942,6 +951,7 @@
     <None Include="Resources\usuario %282%29.png" />
     <Content Include="siat.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

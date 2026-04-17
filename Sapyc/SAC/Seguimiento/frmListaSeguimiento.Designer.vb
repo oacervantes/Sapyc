@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class frmListaNivelRiesgo
+Partial Class frmListaSeguimiento
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
@@ -44,10 +44,10 @@ Partial Class frmListaNivelRiesgo
         Me.panPrincipal.Controls.Add(Me.lblTitulo)
         Me.panPrincipal.Controls.Add(Me.gridProspectos)
         Me.panPrincipal.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.panPrincipal.Location = New System.Drawing.Point(0, 1)
+        Me.panPrincipal.Location = New System.Drawing.Point(0, 2)
         Me.panPrincipal.Name = "panPrincipal"
         Me.panPrincipal.Size = New System.Drawing.Size(1154, 594)
-        Me.panPrincipal.TabIndex = 2
+        Me.panPrincipal.TabIndex = 3
         '
         'panLinea
         '
@@ -66,9 +66,9 @@ Partial Class frmListaNivelRiesgo
         Me.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(127, Byte), Integer))
         Me.lblTitulo.Location = New System.Drawing.Point(2, 2)
         Me.lblTitulo.Name = "lblTitulo"
-        Me.lblTitulo.Size = New System.Drawing.Size(519, 32)
+        Me.lblTitulo.Size = New System.Drawing.Size(381, 32)
         Me.lblTitulo.TabIndex = 0
-        Me.lblTitulo.Text = "LISTA SOLICITUDES REVISIÓN NIVEL DE RIESGO"
+        Me.lblTitulo.Text = "LISTA SEGUIMIENTO PROSPECTOS"
         '
         'gridProspectos
         '
@@ -83,7 +83,7 @@ Partial Class frmListaNivelRiesgo
         Me.gridProspectos.ColumnHeadersHeight = 40
         Me.gridProspectos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.gridProspectos.GridColor = System.Drawing.Color.WhiteSmoke
-        Me.gridProspectos.Location = New System.Drawing.Point(13, 56)
+        Me.gridProspectos.Location = New System.Drawing.Point(8, 44)
         Me.gridProspectos.Name = "gridProspectos"
         Me.gridProspectos.RowHeadersWidth = 25
         DataGridViewCellStyle1.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -98,10 +98,10 @@ Partial Class frmListaNivelRiesgo
         '
         Me.btnRevisar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.btnRevisar.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnRevisar.Location = New System.Drawing.Point(4, 601)
+        Me.btnRevisar.Location = New System.Drawing.Point(9, 602)
         Me.btnRevisar.Name = "btnRevisar"
         Me.btnRevisar.Size = New System.Drawing.Size(130, 25)
-        Me.btnRevisar.TabIndex = 9
+        Me.btnRevisar.TabIndex = 11
         Me.btnRevisar.Text = "Revisar"
         Me.btnRevisar.UseVisualStyleBackColor = True
         '
@@ -109,14 +109,14 @@ Partial Class frmListaNivelRiesgo
         '
         Me.btnSalir.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnSalir.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSalir.Location = New System.Drawing.Point(1004, 601)
+        Me.btnSalir.Location = New System.Drawing.Point(1009, 602)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(130, 25)
-        Me.btnSalir.TabIndex = 8
+        Me.btnSalir.TabIndex = 10
         Me.btnSalir.Text = "Salir"
         Me.btnSalir.UseVisualStyleBackColor = True
         '
-        'frmListaNivelRiesgo
+        'frmListaSeguimiento
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -124,9 +124,9 @@ Partial Class frmListaNivelRiesgo
         Me.Controls.Add(Me.btnRevisar)
         Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.panPrincipal)
-        Me.Name = "frmListaNivelRiesgo"
+        Me.Name = "frmListaSeguimiento"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "NIVEL RIESGO"
+        Me.Text = "SEGUIMIENTO PROSPECTOS"
         Me.panPrincipal.ResumeLayout(False)
         Me.panPrincipal.PerformLayout()
         CType(Me.gridProspectos, System.ComponentModel.ISupportInitialize).EndInit()
