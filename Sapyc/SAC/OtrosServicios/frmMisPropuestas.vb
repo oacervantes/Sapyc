@@ -28,8 +28,8 @@
                 frm.sOficina = gridProspectos.CurrentRow.Cells("sOficina").Value
                 frm.sDivision = gridProspectos.CurrentRow.Cells("sDivision").Value
                 frm.sCliente = gridProspectos.CurrentRow.Cells("sNombreCte").Value
-                frm.sServicio = gridProspectos.CurrentRow.Cells("DescServ").Value
-                frm.sDescTrabajo = gridProspectos.CurrentRow.Cells("OtraDesc").Value
+                frm.sServicio = gridProspectos.CurrentRow.Cells("IdServicio").Value
+                frm.sDescTrabajo = gridProspectos.CurrentRow.Cells("SOLICITADO").Value
                 frm.idPropuesta = gridProspectos.CurrentRow.Cells("idProp").Value
 
                 If frm.ShowDialog = DialogResult.OK Then
@@ -58,10 +58,10 @@
 
                 With clsLocal
                     .subClearParameters()
-                    .subAddParameter("@iOpcion", 6, SqlDbType.Int, ParameterDirection.Input)
+                    .subAddParameter("@iOpcion", 2, SqlDbType.Int, ParameterDirection.Input)
                 End With
 
-                .Add(clsLocal.funExecuteSPDataTable("paSolicitudesSAC", sTabla))
+                .Add(clsLocal.funExecuteSPDataTable("paDatosAsignacionSACPropuestas", sTabla))
 
                 dtSolicitudes = .Item(sTabla)
             End With
@@ -69,14 +69,17 @@
             If dtSolicitudes.Rows.Count > 0 Then
                 bs.DataSource = dtSolicitudes
 
-                gridProspectos.Columns("DescServ").Visible = False
-                gridProspectos.Columns("OtraDesc").Visible = False
                 gridProspectos.Columns("idProp").Visible = False
+                gridProspectos.Columns("sCveOficina").Visible = False
+                gridProspectos.Columns("sCveDivision").Visible = False
+                gridProspectos.Columns("IdServicio").Visible = False
 
-                ConfigurarColumnasGrid(gridProspectos, "idSAC", "CVE. SAC", 65, 3, False)
+
+                ConfigurarColumnasGrid(gridProspectos, "IdSac", "CVE. SAC", 65, 3, False)
                 ConfigurarColumnasGrid(gridProspectos, "sOficina", "OFICINA", 80, 1, False)
                 ConfigurarColumnasGrid(gridProspectos, "sDivision", "DIVISIÓN", 80, 1, False)
                 ConfigurarColumnasGrid(gridProspectos, "sNombreCte", "CLIENTE", 0, 1, False)
+                ConfigurarColumnasGrid(gridProspectos, "SOLICITADO", "SERVICIO SOLICITADO", 0, 1, False)
                 ConfigurarColumnasGrid(gridProspectos, "dFechaAlta", "FECHA DE CREACIÓN", 160, 3, False)
 
             Else

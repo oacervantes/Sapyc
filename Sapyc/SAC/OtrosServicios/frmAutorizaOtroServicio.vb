@@ -11,7 +11,7 @@
         txtOficina.Text = sOficina
         txtDivision.Text = sDivision
         txtCliente.Text = sCliente
-        txtServicio.Text = sServicio
+        txtServicio.Text = "OTROS"
         txtDescripcionTrabajo.Text = sDescTrabajo
 
     End Sub
@@ -31,7 +31,6 @@
             MsgBox("Indique una descripción del rechazo", MsgBoxStyle.Exclamation, "SAPYC")
         End If
     End Sub
-
     Private Sub btnAutoriza_Click(sender As Object, e As EventArgs) Handles btnAutoriza.Click
         sEstatus = "S"
         ActualizaEstatusServiciosOtros()
