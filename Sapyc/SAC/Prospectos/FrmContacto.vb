@@ -14,7 +14,7 @@ Public Class FrmContacto
     Private Const ACERCAMIENTO As String = "ACERCAMIENTO"
     Private Const DOMICILIO As String = "DOMICILIO"
 
-    Private dtCvesProspectos, dtProspectos, dtRfc, dtIdSac, dtServicios As New DataTable
+    Private dtCvesProspectos, dtProspectos, dtRfc, dtIdSac, dtServicios, dtServiciosCarga As New DataTable
     Private dtDatosGenerales, dtServiciosDG As New DataTable
     Private dtContactoInicial As New DataTable
     Private dtComoSeEntero, dtMedioContacto, dtAcercamiento As New DataTable
@@ -33,7 +33,7 @@ Public Class FrmContacto
 
     Private bOtros = False, bRefGTI = False, bCargaInfo As Boolean = False
     Private CorreosSoc, sNombSocio, sMailSocio As String
-    Public sCveOfi, sCveArea As String
+    Public sCveOfi, sCveArea, sOficina, sArea As String
     Public iOrigen, iModifica, idSAC As Integer
 
 #End Region
@@ -83,6 +83,7 @@ Public Class FrmContacto
         ListarModalidades()
         ListarOficinas()
         ListarDivisiones()
+        ListarServiciosDatosGenerales()
 
         ListarDatosGenerales()
 
@@ -97,31 +98,44 @@ Public Class FrmContacto
     Private Sub BtnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
         Dim dlg As New DlgServiciosCte With {
             .sCveArea = sCveArea,
-            .dtServCte = dtServicios
+            .dtServCte = dtServiciosCarga
         }
 
         bOtros = False
 
         If dlg.ShowDialog() = Windows.Forms.DialogResult.OK Then
-            LimpiarTabla(dtServicios)
+            'LimpiarTabla(dtServicios)
 
             If dlg.dtServiciosCte.Rows.Count > 0 Then
                 For Each dr As DataRow In dlg.dtServiciosCte.Rows
-                    If dtServicios.Select("CVE = " & dr("CVE")).Count = 0 Then
+                    If dtServicios.Select($"CVE = '{dr("CVE")}' AND CVEOFI = '{sCveOfi}' AND CVEAREA = '{sCveArea}'").Count = 0 Then
                         drServicios = dtServicios.NewRow()
                         drServicios("CVE") = dr.Field(Of Integer)("CVE")
                         drServicios("CVEOTROS") = dr.Field(Of Boolean)("CVEOTROS")
                         drServicios("CVEOFI") = sCveOfi
                         drServicios("CVEAREA") = sCveArea
+                        drServicios("DESCOFI") = sOficina
+                        drServicios("DESCAREA") = sArea
                         drServicios("REVIND") = "S"
                         drServicios("DESCRIPCION") = dr.Field(Of String)("DESCRIPCION")
-                        dtServicios.Rows.InsertAt(drServicios, dtServicios.Rows.Count)
+                        dtServicios.Rows.Add(drServicios)
+
+                        drServicios = dtServiciosCarga.NewRow()
+                        drServicios("CVE") = dr.Field(Of Integer)("CVE")
+                        drServicios("CVEOTROS") = dr.Field(Of Boolean)("CVEOTROS")
+                        drServicios("CVEOFI") = sCveOfi
+                        drServicios("CVEAREA") = sCveArea
+                        drServicios("DESCOFI") = sOficina
+                        drServicios("DESCAREA") = sArea
+                        drServicios("REVIND") = "S"
+                        drServicios("DESCRIPCION") = dr.Field(Of String)("DESCRIPCION")
+                        dtServiciosCarga.Rows.Add(drServicios)
 
                         If bOtros = False Then
                             bOtros = dr.Field(Of Boolean)("CVEOTROS")
                         End If
 
-                        InsertarServiciosDatosGenerales(dr.Field(Of Integer)("CVE"), dr.Field(Of Boolean)("CVEOTROS"))
+                        InsertarServiciosDatosGenerales(dr.Field(Of Integer)("CVE"), dr.Field(Of Boolean)("CVEOTROS"), sCveOfi, sCveArea)
                     End If
                 Next
             End If
@@ -140,6 +154,8 @@ Public Class FrmContacto
             gridServicios.Columns("CVEAREA").Visible = False
             gridServicios.Columns("REVIND").Visible = False
 
+            ConfigurarColumnasGrid(gridServicios, "DESCOFI", "OFICINA", 80, 3, False)
+            ConfigurarColumnasGrid(gridServicios, "DESCAREA", "DIVISIÓN", 80, 3, False)
             ConfigurarColumnasGrid(gridServicios, "DESCRIPCION", "SERVICIO", 0, 1, False)
         End If
     End Sub
@@ -472,10 +488,13 @@ Public Class FrmContacto
         End If
 
         If cboOficina.SelectedIndex <> 0 Then
-            ' cboDivision.SelectedIndex = 0
             cboDivision.Enabled = True
 
+            Dim cbo As DataRowView = cboOficina.SelectedItem
+
             sCveOfi = cboOficina.SelectedValue.ToString()
+            sOficina = cbo.Item("sAbreviatura").ToString()
+            ListarDivisiones()
         Else
             cboDivision.DataSource = Nothing
             cboDivision.Enabled = False
@@ -488,14 +507,16 @@ Public Class FrmContacto
 
         If cboDivision.SelectedIndex > 0 Then
             btnAgregar.Enabled = True
+
+            Dim cbo As DataRowView = cboDivision.SelectedItem
             sCveArea = cboDivision.SelectedValue.ToString
+            sArea = cbo.Item("sAbreviatura").ToString()
 
             If sCveArea = "SS" Or sCveArea = "CO" Or sCveArea = "ATI" Then
                 sCveArea = "AUD"
             End If
         Else
             btnAgregar.Enabled = False
-            LimpiarTabla(dtServicios)
         End If
     End Sub
     Private Sub rdEmpresaPublicaSi_CheckedChanged(sender As Object, e As EventArgs) Handles rdEmpresaPublicaSi.CheckedChanged
@@ -764,8 +785,12 @@ Public Class FrmContacto
         dtServicios.Columns.Add("CVEOTROS", GetType(Boolean))
         dtServicios.Columns.Add("CVEOFI", GetType(String))
         dtServicios.Columns.Add("CVEAREA", GetType(String))
+        dtServicios.Columns.Add("DESCOFI", GetType(String))
+        dtServicios.Columns.Add("DESCAREA", GetType(String))
         dtServicios.Columns.Add("REVIND", GetType(String))
         dtServicios.Columns.Add("DESCRIPCION", GetType(String))
+
+        dtServiciosCarga = dtServicios.Clone()
     End Sub
     Private Sub ListarIndustrias()
         Try
@@ -1534,9 +1559,6 @@ Public Class FrmContacto
                 txtIdSAC.Text = dtDatosGenerales.Rows(0).Item("idSac").ToString
                 cboOficina.SelectedValue = dtDatosGenerales.Rows(0).Item("sCveOfi").ToString
                 cboDivision.SelectedValue = dtDatosGenerales.Rows(0).Item("sCveArea").ToString
-                'cboSocio.SelectedValue = dtDatosGenerales.Rows(0).Item("sCveSocio").ToString
-                'cboDatosGeneralesServicio.SelectedValue = dtDatosGenerales.Rows(0).Item("idServicio").ToString
-                ListarServiciosDatosGenerales(dtDatosGenerales.Rows(0).Item("sCveOfi").ToString, dtDatosGenerales.Rows(0).Item("sCveArea").ToString)
 
                 If dtDatosGenerales.Rows(0).Item("bIdioma").ToString Then
                     rdIdiomaSi.Checked = True
@@ -1696,16 +1718,23 @@ Public Class FrmContacto
             MsgBox("Por el momento no es posible registrar la información del prospecto, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
         End Try
     End Sub
-    Private Sub InsertarServiciosDatosGenerales(idServicio As Integer, bOtros As Boolean)
+    Private Sub InsertarServiciosDatosGenerales(idServicio As Integer, bOtros As Boolean, sCveOfi As String, sCveArea As String)
         Try
+            If txtOtroServicio.Text.Trim = "" Then
+                MsgBox("Es necesario especificar el detalle del otro servicio para poder guardarlo.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
+                Exit Sub
+            End If
+
             With clsLocal
                 .subClearParameters()
                 .subAddParameter("@iOpcion", 5, SqlDbType.Int, ParameterDirection.Input)
                 .subAddParameter("@idSAC", idSAC, SqlDbType.Int, ParameterDirection.Input)
                 .subAddParameter("@idServicio", idServicio, SqlDbType.Int, ParameterDirection.Input)
                 .subAddParameter("@sUsuario", sCveUsuario, SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@sCveOfi", sCveOfi, SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@sCveArea", sCveArea, SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@bOtros", bOtros, SqlDbType.Bit, ParameterDirection.Input)
-                .subAddParameter("@sOtrosServicios", sCveUsuario, SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@sOtrosServicios", txtOtroServicio.Text, SqlDbType.VarChar, ParameterDirection.Input)
 
                 .funExecuteSP("paDatosAsignacionSACDatosGenerales")
             End With
@@ -1729,7 +1758,7 @@ Public Class FrmContacto
             MsgBox("Por el momento no es posible registrar la información del prospecto, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
         End Try
     End Sub
-    Private Sub ListarServiciosDatosGenerales(sCveOfi As String, sCveArea As String)
+    Private Sub ListarServiciosDatosGenerales()
         Try
             Dim sTabla As String = "tbServDatosGenerales"
             Dim sOtroServicios As String = ""
@@ -1755,8 +1784,10 @@ Public Class FrmContacto
                     drServicios = dtServicios.NewRow()
                     drServicios("CVE") = row.Item("idServicio")
                     drServicios("CVEOTROS") = row.Item("bOtros")
-                    drServicios("CVEOFI") = sCveOfi
-                    drServicios("CVEAREA") = sCveArea
+                    drServicios("CVEOFI") = row.Item("sCveOfi")
+                    drServicios("CVEAREA") = row.Item("sCveArea")
+                    drServicios("DESCOFI") = row.Item("DESCOFI")
+                    drServicios("DESCAREA") = row.Item("DESCAREA")
                     drServicios("REVIND") = "S"
                     drServicios("DESCRIPCION") = row.Item("DESCRIPCION")
                     dtServicios.Rows.InsertAt(drServicios, dtServicios.Rows.Count)
@@ -1785,6 +1816,8 @@ Public Class FrmContacto
                 gridServicios.Columns("CVEAREA").Visible = False
                 gridServicios.Columns("REVIND").Visible = False
 
+                ConfigurarColumnasGrid(gridServicios, "DESCOFI", "OFICINA", 80, 3, False)
+                ConfigurarColumnasGrid(gridServicios, "DESCAREA", "DIVISIÓN", 80, 3, False)
                 ConfigurarColumnasGrid(gridServicios, "DESCRIPCION", "SERVICIO", 0, 1, False)
             End If
         Catch ex As Exception

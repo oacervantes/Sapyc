@@ -32,9 +32,10 @@
     Private Sub FrmContactoConsulta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         panDatosGenerales.Visible = True
         txtClaveProspecto.Text &= idSAC
-        txtSocioAsignado.Text = sNombreSocio
 
         BindGrid(gridServicios, bsSer)
+
+        TipoConsultaPantalla(iOrigen)
 
         CrearTablas()
         '============================== ACERCAMIENTO ==============================
@@ -75,26 +76,11 @@
         '============================== CONSULTA DATOS ==============================
         ListarContactoInicial()
     End Sub
-    Private Sub btnAutorizar_Click(sender As Object, e As EventArgs) Handles btnAutorizar.Click
-        If MsgBox("Se autorizará la solicitud de asignación de socio para el cliente prospecto, ¿Desea continuar?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, My.Settings.NOM_SYS) = MsgBoxResult.Yes Then
-            AutorizarSolicitudSAC(idSAC, idPropuesta, sCveSocio)
-            'EnviarCorreoAviso()
-            MsgBox("La solicitud de asignación de socio para el cliente prospecto ha sido autorizada exitosamente.", MsgBoxStyle.Information, My.Settings.NOM_SYS)
-            DialogResult = DialogResult.OK
-        End If
+    Private Sub BtnAutorizar_Click(sender As Object, e As EventArgs)
+
     End Sub
-    Private Sub BtnRechazar_Click(sender As Object, e As EventArgs) Handles btnRechazar.Click
-        Dim sMotivoRechazo As String = txtMotivoRechazo.Text.Trim
+    Private Sub BtnRechazar_Click(sender As Object, e As EventArgs)
 
-        If sMotivoRechazo = "" Then
-            MsgBox("Al rechazar la solicitud de asignación de socio, debe proporcionar un motivo de rechazo.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
-            Exit Sub
-        End If
-
-        If MsgBox("Se rechazará la solicitud de asignación del socio para el cliente prospecto, ¿Desea continuar?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, My.Settings.NOM_SYS) = MsgBoxResult.Yes Then
-            RechazarSolicitudSAC(idSAC, idPropuesta, sMotivoRechazo)
-            MsgBox("La solicitud de asignación de socio se ha rechazado y enviado para su reasignación.", MsgBoxStyle.Information, My.Settings.NOM_SYS)
-        End If
     End Sub
     Private Sub BtnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
         DialogResult = DialogResult.OK
@@ -315,6 +301,14 @@
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
         End Try
+    End Sub
+
+    Private Sub TipoConsultaPantalla(iOrigen As Integer)
+        Select Case iOrigen
+            Case 2 'Consulta para especificar fecha de presentación de Propuesta, Status de la Propuesta y honorarios de la Propuesta.
+                lblTituloSocios.Text = "Seguimiento de propuesta"
+                gpBoxSeguimiento.Visible = True
+        End Select
     End Sub
 
 #Region "DATOS GENERALES"

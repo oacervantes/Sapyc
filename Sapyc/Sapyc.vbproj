@@ -573,16 +573,16 @@
     <Compile Include="ReporteDireccion\FrmSAPYCReporteDireccion.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SAC\DlgSolicitudAsignacion.Designer.vb">
+    <Compile Include="SAC\AsigancionSocios\DlgSolicitudAsignacion.Designer.vb">
       <DependentUpon>DlgSolicitudAsignacion.vb</DependentUpon>
     </Compile>
-    <Compile Include="SAC\DlgSolicitudAsignacion.vb">
+    <Compile Include="SAC\AsigancionSocios\DlgSolicitudAsignacion.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SAC\FrmSolicitudesAsignacion.Designer.vb">
+    <Compile Include="SAC\AsigancionSocios\FrmSolicitudesAsignacion.Designer.vb">
       <DependentUpon>FrmSolicitudesAsignacion.vb</DependentUpon>
     </Compile>
-    <Compile Include="SAC\FrmSolicitudesAsignacion.vb">
+    <Compile Include="SAC\AsigancionSocios\FrmSolicitudesAsignacion.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SAC\Prospectos\FrmContactoConsulta.Designer.vb">
@@ -597,16 +597,16 @@
     <Compile Include="SAC\Prospectos\FrmProspectos.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SAC\TarjetaSocio.Designer.vb">
+    <Compile Include="SAC\AsigancionSocios\TarjetaSocio.Designer.vb">
       <DependentUpon>TarjetaSocio.vb</DependentUpon>
     </Compile>
-    <Compile Include="SAC\TarjetaSocio.vb">
+    <Compile Include="SAC\AsigancionSocios\TarjetaSocio.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SAC\TarjetaSocio2.Designer.vb">
+    <Compile Include="SAC\AsigancionSocios\TarjetaSocio2.Designer.vb">
       <DependentUpon>TarjetaSocio2.vb</DependentUpon>
     </Compile>
-    <Compile Include="SAC\TarjetaSocio2.vb">
+    <Compile Include="SAC\AsigancionSocios\TarjetaSocio2.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="SelOpcion.designer.vb">
@@ -864,10 +864,10 @@
     <EmbeddedResource Include="ReporteDireccion\FrmSAPYCReporteDireccion.resx">
       <DependentUpon>FrmSAPYCReporteDireccion.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SAC\DlgSolicitudAsignacion.resx">
+    <EmbeddedResource Include="SAC\AsigancionSocios\DlgSolicitudAsignacion.resx">
       <DependentUpon>DlgSolicitudAsignacion.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SAC\FrmSolicitudesAsignacion.resx">
+    <EmbeddedResource Include="SAC\AsigancionSocios\FrmSolicitudesAsignacion.resx">
       <DependentUpon>FrmSolicitudesAsignacion.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SAC\Prospectos\FrmContactoConsulta.resx">
@@ -876,10 +876,10 @@
     <EmbeddedResource Include="SAC\Prospectos\FrmProspectos.resx">
       <DependentUpon>FrmProspectos.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SAC\TarjetaSocio.resx">
+    <EmbeddedResource Include="SAC\AsigancionSocios\TarjetaSocio.resx">
       <DependentUpon>TarjetaSocio.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SAC\TarjetaSocio2.resx">
+    <EmbeddedResource Include="SAC\AsigancionSocios\TarjetaSocio2.resx">
       <DependentUpon>TarjetaSocio2.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SelOpcion.resx">

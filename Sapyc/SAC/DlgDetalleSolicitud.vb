@@ -45,6 +45,7 @@
                 txtSocioEncargado.Text = dtSolicitud.Rows(0).Item("SOCENC").ToString()
                 txtIdioma.Text = dtSolicitud.Rows(0).Item("sIdioma").ToString()
                 txtIndustria.Text = dtSolicitud.Rows(0).Item("INDUSTRIA").ToString()
+                txtNivelRiesgo.Text = dtSolicitud.Rows(0).Item("iNivelRiesgo").ToString()
                 cStatus = dtSolicitud.Rows(0).Item("cStatus").ToString()
 
                 If cStatus = "D" Then
