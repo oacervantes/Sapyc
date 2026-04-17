@@ -321,4 +321,15 @@
         AbrirPantalla(frm, "FrmSolicitudesAsignacion")
     End Sub
 
+    Private Sub RevisionServiciosOtrosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RevisionServiciosOtrosToolStripMenuItem.Click
+        Dim frm As New frmMisPropuestas
+        AbrirPantalla(frm, "frmMisPropuestas")
+    End Sub
+    Private Sub NivelDeRiesgoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NivelDeRiesgoToolStripMenuItem.Click
+        Dim frm As New frmListaNivelRiesgo
+        AbrirPantalla(frm, "frmListaNivelRiesgo")
+    End Sub
+
+
+
 End Class

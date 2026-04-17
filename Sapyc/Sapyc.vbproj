@@ -360,10 +360,22 @@
     <Compile Include="SAC\DlgRechazoPropuesta.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SAC\frmAutorizaOtroServicio.Designer.vb">
+    <Compile Include="SAC\NivelRiesgo\frmAutorizaNivelRiesgo.Designer.vb">
+      <DependentUpon>frmAutorizaNivelRiesgo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SAC\NivelRiesgo\frmAutorizaNivelRiesgo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SAC\NivelRiesgo\frmListaNivelRiesgo.Designer.vb">
+      <DependentUpon>frmListaNivelRiesgo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SAC\NivelRiesgo\frmListaNivelRiesgo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SAC\OtrosServicios\frmAutorizaOtroServicio.Designer.vb">
       <DependentUpon>frmAutorizaOtroServicio.vb</DependentUpon>
     </Compile>
-    <Compile Include="SAC\frmAutorizaOtroServicio.vb">
+    <Compile Include="SAC\OtrosServicios\frmAutorizaOtroServicio.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SAC\Prospectos\DlgServiciosCte.Designer.vb">
@@ -378,10 +390,10 @@
     <Compile Include="SAC\Prospectos\FrmContacto.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SAC\frmMisPropuestas.Designer.vb">
+    <Compile Include="SAC\OtrosServicios\frmMisPropuestas.Designer.vb">
       <DependentUpon>frmMisPropuestas.vb</DependentUpon>
     </Compile>
-    <Compile Include="SAC\frmMisPropuestas.vb">
+    <Compile Include="SAC\OtrosServicios\frmMisPropuestas.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SAC\FrmProspectosNvo.Designer.vb">
@@ -757,7 +769,13 @@
     <EmbeddedResource Include="SAC\DlgRechazoPropuesta.resx">
       <DependentUpon>DlgRechazoPropuesta.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SAC\frmAutorizaOtroServicio.resx">
+    <EmbeddedResource Include="SAC\NivelRiesgo\frmAutorizaNivelRiesgo.resx">
+      <DependentUpon>frmAutorizaNivelRiesgo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SAC\NivelRiesgo\frmListaNivelRiesgo.resx">
+      <DependentUpon>frmListaNivelRiesgo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SAC\OtrosServicios\frmAutorizaOtroServicio.resx">
       <DependentUpon>frmAutorizaOtroServicio.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SAC\Prospectos\DlgServiciosCte.resx">
@@ -766,7 +784,7 @@
     <EmbeddedResource Include="SAC\Prospectos\FrmContacto.resx">
       <DependentUpon>FrmContacto.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SAC\frmMisPropuestas.resx">
+    <EmbeddedResource Include="SAC\OtrosServicios\frmMisPropuestas.resx">
       <DependentUpon>frmMisPropuestas.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SAC\FrmProspectosNvo.resx">
