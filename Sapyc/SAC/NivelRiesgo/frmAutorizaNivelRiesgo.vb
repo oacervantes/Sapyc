@@ -39,6 +39,7 @@
                 ElseIf rbAlto.Checked Then
                     .subAddParameter("@iNivelRiesgo", 3, SqlDbType.Int, ParameterDirection.Input)
                 End If
+                .subAddParameter("@sMotivoNivel", txtComentarios.Text, SqlDbType.Int, ParameterDirection.Input)
 
                 .funExecuteSP("paDatosAsignacionSACPropuestas")
             End With
