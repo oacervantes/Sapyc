@@ -348,16 +348,16 @@
     <Compile Include="Independencia\Solicitudes.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SAC\DlgDetalleSolicitud.Designer.vb">
+    <Compile Include="SAC\AsigancionSocios\DlgDetalleSolicitud.Designer.vb">
       <DependentUpon>DlgDetalleSolicitud.vb</DependentUpon>
     </Compile>
-    <Compile Include="SAC\DlgDetalleSolicitud.vb">
+    <Compile Include="SAC\AsigancionSocios\DlgDetalleSolicitud.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SAC\DlgRechazoPropuesta.Designer.vb">
+    <Compile Include="SAC\AsigancionSocios\DlgRechazoPropuesta.Designer.vb">
       <DependentUpon>DlgRechazoPropuesta.vb</DependentUpon>
     </Compile>
-    <Compile Include="SAC\DlgRechazoPropuesta.vb">
+    <Compile Include="SAC\AsigancionSocios\DlgRechazoPropuesta.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SAC\NivelRiesgo\frmAutorizaNivelRiesgo.Designer.vb">
@@ -769,10 +769,10 @@
     <EmbeddedResource Include="Independencia\Solicitudes.resx">
       <DependentUpon>Solicitudes.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SAC\DlgDetalleSolicitud.resx">
+    <EmbeddedResource Include="SAC\AsigancionSocios\DlgDetalleSolicitud.resx">
       <DependentUpon>DlgDetalleSolicitud.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SAC\DlgRechazoPropuesta.resx">
+    <EmbeddedResource Include="SAC\AsigancionSocios\DlgRechazoPropuesta.resx">
       <DependentUpon>DlgRechazoPropuesta.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SAC\NivelRiesgo\frmAutorizaNivelRiesgo.resx">

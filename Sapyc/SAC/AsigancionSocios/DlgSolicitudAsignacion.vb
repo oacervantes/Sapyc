@@ -3,7 +3,7 @@
     Private ds As New DataSet()
     Private sNameRpt As String = "Selección de socios para asignar propuesta"
 
-    Private dtSocios As New DataTable
+    Private dtSocios, dtCISocios As New DataTable
     Private tarjetaSeleccionada As TarjetaSocio2 = Nothing
     Private iPosY = 10, iValorY As Integer = 280
 
@@ -25,6 +25,7 @@
         Else
             ListarSociosOficinas()
         End If
+        ListarCISocios()
 
         LlenarTarjetas()
     End Sub
@@ -37,7 +38,10 @@
         dlg.ShowDialog()
     End Sub
     Private Sub BtnRechazarAsignacion_Click(sender As Object, e As EventArgs) Handles btnRechazarAsignacion.Click
-        Dim dlg As New DlgRechazoPropuesta
+        Dim dlg As New DlgRechazoPropuesta With {
+            .idSac = idSac,
+            .idPropuesta = idPropuesta
+        }
 
         dlg.ShowDialog()
     End Sub
@@ -56,7 +60,8 @@
                 .Nombre = row("NOMBRE").ToString(),
                 .Idiomas = row("sIdioma").ToString(),
                 .Servicio = row("sServicio").ToString(),
-                .Industrias = row("sIndustria").ToString()
+                .Industrias = row("sIndustria").ToString(),
+                .CapacidadInstalada = CapacidadInstalada(row("CVEEMP").ToString()) & "%"
             }
 
             AddHandler card.CardClick, AddressOf OnSocioCardClick
@@ -124,6 +129,32 @@
             dtSocios = Nothing
         End Try
     End Sub
+    Private Sub ListarCISocios()
+        ' Aquí iría la lógica para listar los socios, por ejemplo, desde una base de datos
+        ' Por ahora, se simula con datos estáticos en el método LlenarTarjetas()
+        Try
+            Dim sTabla As String = "tbCISocios"
+
+            With ds.Tables
+                LimpiarConsultaTabla(ds.Tables, sTabla)
+
+                With clsDatosInv
+                    .subClearParameters()
+                    .subAddParameter("@iOpcion", 3, SqlDbType.Int, ParameterDirection.Input)
+                    .subAddParameter("@sCveOfi", sCveOfi, SqlDbType.VarChar, ParameterDirection.Input)
+                    .subAddParameter("@sCveArea", sCvearea, SqlDbType.VarChar, ParameterDirection.Input)
+                End With
+
+                .Add(clsDatosInv.funExecuteSPDataTable("paSACAsignaciones", sTabla))
+
+                dtCISocios = .Item(sTabla)
+            End With
+        Catch ex As Exception
+            InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarCISocios()")
+            MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
+            dtCISocios = Nothing
+        End Try
+    End Sub
 
     Private Sub OnSocioCardClick(tarjetaActual As TarjetaSocio2)
 
@@ -143,5 +174,17 @@
         sCorreoSocio = tarjetaActual.Correo
 
     End Sub
+
+    Private Function CapacidadInstalada(sCveSocio As String) As Decimal
+        Dim filas() As DataRow = dtCISocios.Select($"CVEEMP = '{sCveSocio}'")
+
+        If filas.Length > 0 Then
+            Dim horas As Decimal = Convert.ToDecimal(filas(0)("TIEMPO"))
+            Return Math.Round((700D - horas) / 700D, 2) * 100
+        Else
+            Return 0D
+        End If
+
+    End Function
 
 End Class

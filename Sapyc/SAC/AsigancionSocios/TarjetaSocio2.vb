@@ -56,6 +56,14 @@
             MostrarTextoConErrores(txtIndustriasColor, value)
         End Set
     End Property
+    Public Property CapacidadInstalada As String
+        Get
+            Return txtCapacidadInstalada.Text
+        End Get
+        Set(value As String)
+            MostrarTextoConErrores(txtCapacidadInstalada, value)
+        End Set
+    End Property
 
     Public Event CardClick(sender As TarjetaSocio2)
 

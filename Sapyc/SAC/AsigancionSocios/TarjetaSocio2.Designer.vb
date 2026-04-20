@@ -36,7 +36,7 @@ Partial Class TarjetaSocio2
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtPresupuesto = New System.Windows.Forms.RichTextBox()
-        Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
+        Me.txtCapacidadInstalada = New System.Windows.Forms.RichTextBox()
         Me.SuspendLayout()
         '
         'lblNombre
@@ -205,17 +205,17 @@ Partial Class TarjetaSocio2
         Me.txtPresupuesto.TabIndex = 12
         Me.txtPresupuesto.Text = "100%"
         '
-        'RichTextBox1
+        'txtCapacidadInstalada
         '
-        Me.RichTextBox1.BackColor = System.Drawing.Color.White
-        Me.RichTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.RichTextBox1.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RichTextBox1.Location = New System.Drawing.Point(175, 244)
-        Me.RichTextBox1.Name = "RichTextBox1"
-        Me.RichTextBox1.ReadOnly = True
-        Me.RichTextBox1.Size = New System.Drawing.Size(731, 18)
-        Me.RichTextBox1.TabIndex = 14
-        Me.RichTextBox1.Text = "85%"
+        Me.txtCapacidadInstalada.BackColor = System.Drawing.Color.White
+        Me.txtCapacidadInstalada.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtCapacidadInstalada.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCapacidadInstalada.Location = New System.Drawing.Point(175, 244)
+        Me.txtCapacidadInstalada.Name = "txtCapacidadInstalada"
+        Me.txtCapacidadInstalada.ReadOnly = True
+        Me.txtCapacidadInstalada.Size = New System.Drawing.Size(731, 18)
+        Me.txtCapacidadInstalada.TabIndex = 14
+        Me.txtCapacidadInstalada.Text = "[% CAPACIDAD INSTALADA]"
         '
         'TarjetaSocio2
         '
@@ -223,7 +223,7 @@ Partial Class TarjetaSocio2
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.BackColor = System.Drawing.Color.White
         Me.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Controls.Add(Me.RichTextBox1)
+        Me.Controls.Add(Me.txtCapacidadInstalada)
         Me.Controls.Add(Me.txtPresupuesto)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
@@ -259,5 +259,5 @@ Partial Class TarjetaSocio2
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents txtPresupuesto As RichTextBox
-    Friend WithEvents RichTextBox1 As RichTextBox
+    Friend WithEvents txtCapacidadInstalada As RichTextBox
 End Class
