@@ -24,6 +24,10 @@ Partial Class frmAutorizaNivelRiesgo
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAutorizaNivelRiesgo))
         Me.panPrincipal = New System.Windows.Forms.Panel()
+        Me.lblComentarios = New System.Windows.Forms.Label()
+        Me.txtComentarios = New System.Windows.Forms.TextBox()
+        Me.lblIdSac = New System.Windows.Forms.Label()
+        Me.txtIdSac = New System.Windows.Forms.Label()
         Me.gpBoxNivel = New System.Windows.Forms.GroupBox()
         Me.rbBajo = New System.Windows.Forms.RadioButton()
         Me.rbAlto = New System.Windows.Forms.RadioButton()
@@ -40,10 +44,6 @@ Partial Class frmAutorizaNivelRiesgo
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.btnAutoriza = New System.Windows.Forms.Button()
         Me.btnSalir = New System.Windows.Forms.Button()
-        Me.lblIdSac = New System.Windows.Forms.Label()
-        Me.txtIdSac = New System.Windows.Forms.Label()
-        Me.txtComentarios = New System.Windows.Forms.TextBox()
-        Me.lblComentarios = New System.Windows.Forms.Label()
         Me.panPrincipal.SuspendLayout()
         Me.gpBoxNivel.SuspendLayout()
         Me.SuspendLayout()
@@ -75,6 +75,46 @@ Partial Class frmAutorizaNivelRiesgo
         Me.panPrincipal.Name = "panPrincipal"
         Me.panPrincipal.Size = New System.Drawing.Size(845, 418)
         Me.panPrincipal.TabIndex = 0
+        '
+        'lblComentarios
+        '
+        Me.lblComentarios.AutoSize = True
+        Me.lblComentarios.Location = New System.Drawing.Point(111, 292)
+        Me.lblComentarios.Name = "lblComentarios"
+        Me.lblComentarios.Size = New System.Drawing.Size(91, 18)
+        Me.lblComentarios.TabIndex = 13
+        Me.lblComentarios.Text = "Comentarios:"
+        '
+        'txtComentarios
+        '
+        Me.txtComentarios.Location = New System.Drawing.Point(111, 318)
+        Me.txtComentarios.Multiline = True
+        Me.txtComentarios.Name = "txtComentarios"
+        Me.txtComentarios.Size = New System.Drawing.Size(689, 77)
+        Me.txtComentarios.TabIndex = 14
+        '
+        'lblIdSac
+        '
+        Me.lblIdSac.AutoSize = True
+        Me.lblIdSac.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblIdSac.Location = New System.Drawing.Point(39, 56)
+        Me.lblIdSac.Name = "lblIdSac"
+        Me.lblIdSac.Size = New System.Drawing.Size(56, 18)
+        Me.lblIdSac.TabIndex = 2
+        Me.lblIdSac.Text = "ID. SAC:"
+        '
+        'txtIdSac
+        '
+        Me.txtIdSac.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.txtIdSac.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtIdSac.Font = New System.Drawing.Font("Calibri", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtIdSac.ForeColor = System.Drawing.Color.SlateGray
+        Me.txtIdSac.Location = New System.Drawing.Point(111, 53)
+        Me.txtIdSac.Name = "txtIdSac"
+        Me.txtIdSac.Size = New System.Drawing.Size(88, 25)
+        Me.txtIdSac.TabIndex = 3
+        Me.txtIdSac.Text = "000000"
+        Me.txtIdSac.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'gpBoxNivel
         '
@@ -232,46 +272,6 @@ Partial Class frmAutorizaNivelRiesgo
         Me.btnSalir.Text = "Salir"
         Me.btnSalir.UseVisualStyleBackColor = True
         '
-        'lblIdSac
-        '
-        Me.lblIdSac.AutoSize = True
-        Me.lblIdSac.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblIdSac.Location = New System.Drawing.Point(39, 55)
-        Me.lblIdSac.Name = "lblIdSac"
-        Me.lblIdSac.Size = New System.Drawing.Size(56, 18)
-        Me.lblIdSac.TabIndex = 2
-        Me.lblIdSac.Text = "ID. SAC:"
-        '
-        'txtIdSac
-        '
-        Me.txtIdSac.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.txtIdSac.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtIdSac.Font = New System.Drawing.Font("Calibri", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtIdSac.ForeColor = System.Drawing.Color.SlateGray
-        Me.txtIdSac.Location = New System.Drawing.Point(111, 53)
-        Me.txtIdSac.Name = "txtIdSac"
-        Me.txtIdSac.Size = New System.Drawing.Size(88, 25)
-        Me.txtIdSac.TabIndex = 3
-        Me.txtIdSac.Text = "000000"
-        Me.txtIdSac.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'txtComentarios
-        '
-        Me.txtComentarios.Location = New System.Drawing.Point(111, 318)
-        Me.txtComentarios.Multiline = True
-        Me.txtComentarios.Name = "txtComentarios"
-        Me.txtComentarios.Size = New System.Drawing.Size(689, 77)
-        Me.txtComentarios.TabIndex = 14
-        '
-        'lblComentarios
-        '
-        Me.lblComentarios.AutoSize = True
-        Me.lblComentarios.Location = New System.Drawing.Point(111, 292)
-        Me.lblComentarios.Name = "lblComentarios"
-        Me.lblComentarios.Size = New System.Drawing.Size(91, 18)
-        Me.lblComentarios.TabIndex = 13
-        Me.lblComentarios.Text = "Comentarios:"
-        '
         'frmAutorizaNivelRiesgo
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -299,7 +299,6 @@ Partial Class frmAutorizaNivelRiesgo
     Friend WithEvents rbMedio As RadioButton
     Friend WithEvents rbBajo As RadioButton
     Friend WithEvents lblDivision As Label
-    Friend WithEvents txtDivision As TextBox
     Friend WithEvents lblOficina As Label
     Friend WithEvents txtOficina As TextBox
     Friend WithEvents lblCliente As Label
@@ -315,4 +314,5 @@ Partial Class frmAutorizaNivelRiesgo
     Friend WithEvents txtIdSac As Label
     Friend WithEvents lblComentarios As Label
     Friend WithEvents txtComentarios As TextBox
+    Friend WithEvents txtDivision As TextBox
 End Class

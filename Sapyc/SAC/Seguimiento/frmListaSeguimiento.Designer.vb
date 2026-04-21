@@ -23,6 +23,7 @@ Partial Class frmListaSeguimiento
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmListaSeguimiento))
         Me.panPrincipal = New System.Windows.Forms.Panel()
         Me.panLinea = New System.Windows.Forms.Panel()
         Me.lblTitulo = New System.Windows.Forms.Label()
@@ -44,7 +45,7 @@ Partial Class frmListaSeguimiento
         Me.panPrincipal.Controls.Add(Me.lblTitulo)
         Me.panPrincipal.Controls.Add(Me.gridProspectos)
         Me.panPrincipal.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.panPrincipal.Location = New System.Drawing.Point(0, 2)
+        Me.panPrincipal.Location = New System.Drawing.Point(0, 0)
         Me.panPrincipal.Name = "panPrincipal"
         Me.panPrincipal.Size = New System.Drawing.Size(1154, 594)
         Me.panPrincipal.TabIndex = 3
@@ -66,9 +67,9 @@ Partial Class frmListaSeguimiento
         Me.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(127, Byte), Integer))
         Me.lblTitulo.Location = New System.Drawing.Point(2, 2)
         Me.lblTitulo.Name = "lblTitulo"
-        Me.lblTitulo.Size = New System.Drawing.Size(381, 32)
+        Me.lblTitulo.Size = New System.Drawing.Size(353, 32)
         Me.lblTitulo.TabIndex = 0
-        Me.lblTitulo.Text = "LISTA SEGUIMIENTO PROSPECTOS"
+        Me.lblTitulo.Text = "SEGUIMIENTO DE PROPUESTAS"
         '
         'gridProspectos
         '
@@ -83,7 +84,7 @@ Partial Class frmListaSeguimiento
         Me.gridProspectos.ColumnHeadersHeight = 40
         Me.gridProspectos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.gridProspectos.GridColor = System.Drawing.Color.WhiteSmoke
-        Me.gridProspectos.Location = New System.Drawing.Point(8, 44)
+        Me.gridProspectos.Location = New System.Drawing.Point(11, 53)
         Me.gridProspectos.Name = "gridProspectos"
         Me.gridProspectos.RowHeadersWidth = 25
         DataGridViewCellStyle1.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -98,7 +99,7 @@ Partial Class frmListaSeguimiento
         '
         Me.btnRevisar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.btnRevisar.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnRevisar.Location = New System.Drawing.Point(9, 602)
+        Me.btnRevisar.Location = New System.Drawing.Point(12, 602)
         Me.btnRevisar.Name = "btnRevisar"
         Me.btnRevisar.Size = New System.Drawing.Size(130, 25)
         Me.btnRevisar.TabIndex = 11
@@ -109,7 +110,7 @@ Partial Class frmListaSeguimiento
         '
         Me.btnSalir.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnSalir.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSalir.Location = New System.Drawing.Point(1009, 602)
+        Me.btnSalir.Location = New System.Drawing.Point(1012, 602)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(130, 25)
         Me.btnSalir.TabIndex = 10
@@ -118,15 +119,17 @@ Partial Class frmListaSeguimiento
         '
         'frmListaSeguimiento
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.ClientSize = New System.Drawing.Size(1154, 635)
         Me.Controls.Add(Me.btnRevisar)
         Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.panPrincipal)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmListaSeguimiento"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "SEGUIMIENTO PROSPECTOS"
+        Me.Text = "Seguimiento de Propuestas"
         Me.panPrincipal.ResumeLayout(False)
         Me.panPrincipal.PerformLayout()
         CType(Me.gridProspectos, System.ComponentModel.ISupportInitialize).EndInit()

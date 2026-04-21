@@ -37,13 +37,18 @@
 
         dlg.ShowDialog()
     End Sub
+    Private Sub BtnEnviarAsignacion_Click(sender As Object, e As EventArgs) Handles btnEnviarAsignacion.Click
+
+    End Sub
     Private Sub BtnRechazarAsignacion_Click(sender As Object, e As EventArgs) Handles btnRechazarAsignacion.Click
         Dim dlg As New DlgRechazoPropuesta With {
             .idSac = idSac,
             .idPropuesta = idPropuesta
         }
 
-        dlg.ShowDialog()
+        If dlg.ShowDialog() = DialogResult.OK Then
+            DialogResult = DialogResult.OK
+        End If
     End Sub
     Private Sub BtnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
         DialogResult = DialogResult.Cancel

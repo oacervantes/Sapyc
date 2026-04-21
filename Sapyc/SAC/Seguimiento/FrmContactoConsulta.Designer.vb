@@ -235,7 +235,7 @@ Partial Class FrmContactoConsulta
         Me.txtRegistroFechaSAPYC = New System.Windows.Forms.DateTimePicker()
         Me.btnGuardar = New System.Windows.Forms.Button()
         Me.Panel5 = New System.Windows.Forms.Panel()
-        Me.Label11 = New System.Windows.Forms.Label()
+        Me.lblConcepto = New System.Windows.Forms.Label()
         Me.panMenu.SuspendLayout()
         Me.panAcercamiento.SuspendLayout()
         Me.gpBoxDatosAcercamiento.SuspendLayout()
@@ -2435,7 +2435,7 @@ Partial Class FrmContactoConsulta
         Me.gpBoxSeguimiento.Controls.Add(Me.txtRegistroFechaSAPYC)
         Me.gpBoxSeguimiento.Controls.Add(Me.btnGuardar)
         Me.gpBoxSeguimiento.Controls.Add(Me.Panel5)
-        Me.gpBoxSeguimiento.Controls.Add(Me.Label11)
+        Me.gpBoxSeguimiento.Controls.Add(Me.lblConcepto)
         Me.gpBoxSeguimiento.Location = New System.Drawing.Point(14, 8)
         Me.gpBoxSeguimiento.Name = "gpBoxSeguimiento"
         Me.gpBoxSeguimiento.Size = New System.Drawing.Size(1050, 246)
@@ -2575,16 +2575,16 @@ Partial Class FrmContactoConsulta
         Me.Panel5.Size = New System.Drawing.Size(600, 2)
         Me.Panel5.TabIndex = 12
         '
-        'Label11
+        'lblConcepto
         '
-        Me.Label11.AutoSize = True
-        Me.Label11.Font = New System.Drawing.Font("Calibri", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.ForeColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(127, Byte), Integer))
-        Me.Label11.Location = New System.Drawing.Point(15, 31)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(117, 24)
-        Me.Label11.TabIndex = 9
-        Me.Label11.Text = "[CONCEPTO]"
+        Me.lblConcepto.AutoSize = True
+        Me.lblConcepto.Font = New System.Drawing.Font("Calibri", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblConcepto.ForeColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(127, Byte), Integer))
+        Me.lblConcepto.Location = New System.Drawing.Point(15, 31)
+        Me.lblConcepto.Name = "lblConcepto"
+        Me.lblConcepto.Size = New System.Drawing.Size(117, 24)
+        Me.lblConcepto.TabIndex = 9
+        Me.lblConcepto.Text = "[CONCEPTO]"
         '
         'FrmContactoConsulta
         '
@@ -2859,7 +2859,7 @@ Partial Class FrmContactoConsulta
     Friend WithEvents lblTituloSocios As Label
     Friend WithEvents gpBoxSeguimiento As GroupBox
     Friend WithEvents Panel5 As Panel
-    Friend WithEvents Label11 As Label
+    Friend WithEvents lblConcepto As Label
     Friend WithEvents lblPresentacionPropuesta As Label
     Friend WithEvents gpBoxPresentacionServicio As GroupBox
     Friend WithEvents rdSiPresentacion As RadioButton

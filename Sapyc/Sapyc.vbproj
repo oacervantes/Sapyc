@@ -597,10 +597,10 @@
     <Compile Include="SAC\AsigancionSocios\FrmSolicitudesAsignacion.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SAC\Prospectos\FrmContactoConsulta.Designer.vb">
+    <Compile Include="SAC\Seguimiento\FrmContactoConsulta.Designer.vb">
       <DependentUpon>FrmContactoConsulta.vb</DependentUpon>
     </Compile>
-    <Compile Include="SAC\Prospectos\FrmContactoConsulta.vb">
+    <Compile Include="SAC\Seguimiento\FrmContactoConsulta.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SAC\Prospectos\FrmProspectos.Designer.vb">
@@ -894,7 +894,7 @@
     <EmbeddedResource Include="SAC\AsigancionSocios\FrmSolicitudesAsignacion.resx">
       <DependentUpon>FrmSolicitudesAsignacion.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SAC\Prospectos\FrmContactoConsulta.resx">
+    <EmbeddedResource Include="SAC\Seguimiento\FrmContactoConsulta.resx">
       <DependentUpon>FrmContactoConsulta.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SAC\Prospectos\FrmProspectos.resx">

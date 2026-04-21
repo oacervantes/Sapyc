@@ -64,6 +64,8 @@
         ListarPaisResidencia()
         ListarTipoEntidad()
         ListarModalidades()
+        ListarOficinas()
+        ListarDivisiones()
         ListarServiciosDatosGenerales()
 
         ListarDatosGenerales()
@@ -309,7 +311,11 @@
         Select Case iOrigen
             Case 2 'Consulta para especificar fecha de presentación de Propuesta, Status de la Propuesta y honorarios de la Propuesta.
                 lblTituloSocios.Text = "Seguimiento de propuesta"
+                lblConcepto.Text = sNombreCliente.ToUpper
                 gpBoxSeguimiento.Visible = True
+
+                cboOficina.SelectedValue = sCveOfi
+                cboDivision.SelectedValue = sCveArea
         End Select
     End Sub
 
@@ -414,6 +420,7 @@
             dtProspectos = Nothing
         End Try
     End Sub
+
 #Region "DATOS GENERALES"
 
     Private Sub ListarBolsaValores()
@@ -679,63 +686,65 @@
             dtIdiomas = Nothing
         End Try
     End Sub
+    Private Sub ListarOficinas()
+        Try
+            Dim sTabla As String = "tbOficinas"
 
-    'Private Sub ListarOficinasUsuario()
-    '    Try
-    '        Dim sTabla As String = "tbOficinasUsr"
+            With ds.Tables
+                LimpiarConsultaTabla(ds.Tables, sTabla)
 
-    '        With ds.Tables
-    '            LimpiarConsultaTabla(ds.Tables, sTabla)
+                With clsDatosProp
+                    .subClearParameters()
+                    .subAddParameter("@iOpcion", 22, SqlDbType.Int, ParameterDirection.Input)
+                End With
 
-    '            With clsDatos
-    '                .subClearParameters()
-    '                .subAddParameter("@iTipo", 17, SqlDbType.Int, ParameterDirection.Input)
-    '                .subAddParameter("@sTipoUsuario", sTipoUsuario, SqlDbType.VarChar, ParameterDirection.Input)
-    '                .subAddParameter("@sUsuario", sCveUsuario, SqlDbType.VarChar, ParameterDirection.Input)
-    '            End With
+                .Add(clsDatosProp.funExecuteSPDataTable("paSSGTDatosGenerales", sTabla))
 
-    '            .Add(clsDatos.funExecuteSPDataTable("paConsultaTrabajoRecurrente", sTabla))
+                dtOficinas = .Item(sTabla)
+            End With
 
-    '            dtOficinas = .Item(sTabla)
-    '        End With
+            If dtOficinas.Rows.Count > 0 Then
+                cboOficina.DataSource = dtOficinas
 
-    '        cboOficina.DataSource = dtOficinas
-    '        cboOficina.DisplayMember = "DESCOFI"
-    '        cboOficina.ValueMember = "sCveOfi"
-    '    Catch ex As Exception
-    '        InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarOficinasUsuario()")
-    '        MsgBox(My.Settings.MSG_REPS, MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
-    '        dtOficinas = Nothing
-    '    End Try
-    'End Sub
-    'Private Sub ListarDivisionesUsuario()
-    '    Try
-    '        Dim sTabla As String = "tbDivisionesUsr"
+                cboOficina.ValueMember = "sCveOficina"
+                cboOficina.DisplayMember = "sOficina"
+            End If
+        Catch ex As Exception
+            'insertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarServicios()")
+            MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "SIAT")
+            dtOficinas = Nothing
+        End Try
+    End Sub
+    Private Sub ListarDivisiones()
+        Try
+            Dim sTabla As String = "tbDivision"
 
-    '        With ds.Tables
-    '            LimpiarConsultaTabla(ds.Tables, sTabla)
+            With ds.Tables
+                LimpiarConsultaTabla(ds.Tables, sTabla)
 
-    '            With clsDatos
-    '                .subClearParameters()
-    '                .subAddParameter("@iTipo", 18, SqlDbType.Int, ParameterDirection.Input)
-    '                .subAddParameter("@sTipoUsuario", sTipoUsuario, SqlDbType.VarChar, ParameterDirection.Input)
-    '                .subAddParameter("@sUsuario", sCveUsuario, SqlDbType.VarChar, ParameterDirection.Input)
-    '            End With
+                With clsDatosProp
+                    .subClearParameters()
+                    .subAddParameter("@iOpcion", 23, SqlDbType.Int, ParameterDirection.Input)
+                    .subAddParameter("@sCveOfi", cboOficina.SelectedValue, SqlDbType.VarChar, ParameterDirection.Input)
+                End With
 
-    '            .Add(clsDatos.funExecuteSPDataTable("paConsultaTrabajoRecurrente", sTabla))
+                .Add(clsDatosProp.funExecuteSPDataTable("paSSGTDatosGenerales", sTabla))
 
-    '            dtDivisiones = .Item(sTabla)
-    '        End With
+                dtDivisiones = .Item(sTabla)
+            End With
 
-    '        cboDivision.DataSource = dtDivisiones
-    '        cboDivision.ValueMember = "sCveArea"
-    '        cboDivision.DisplayMember = "DESCAREA"
-    '    Catch ex As Exception
-    '        InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarDivisionesUsuario()")
-    '        MsgBox(My.Settings.MSG_REPS, MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
-    '        dtDivisiones = Nothing
-    '    End Try
-    'End Sub
+            If dtDivisiones.Rows.Count > 0 Then
+                cboDivision.DataSource = dtDivisiones
+
+                cboDivision.ValueMember = "sCveDivision"
+                cboDivision.DisplayMember = "sDivision"
+            End If
+        Catch ex As Exception
+            'insertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarServicios()")
+            MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
+            dtDivisiones = Nothing
+        End Try
+    End Sub
 
     Private Sub ListarDatosGenerales()
         Try

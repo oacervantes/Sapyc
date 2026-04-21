@@ -23,6 +23,7 @@ Partial Class DlgSolicitudAsignacion
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.panPrincipal = New System.Windows.Forms.Panel()
+        Me.btnSocioSinLista = New System.Windows.Forms.Button()
         Me.btnRechazarAsignacion = New System.Windows.Forms.Button()
         Me.btnEnviarAsignacion = New System.Windows.Forms.Button()
         Me.lblMensajeAut = New System.Windows.Forms.Label()
@@ -42,7 +43,6 @@ Partial Class DlgSolicitudAsignacion
         Me.lblServicio = New System.Windows.Forms.Label()
         Me.lblProspecto = New System.Windows.Forms.Label()
         Me.btnCerrar = New System.Windows.Forms.Button()
-        Me.btnSocioSinLista = New System.Windows.Forms.Button()
         Me.panPrincipal.SuspendLayout()
         Me.panSolicitud.SuspendLayout()
         Me.SuspendLayout()
@@ -67,6 +67,23 @@ Partial Class DlgSolicitudAsignacion
         Me.panPrincipal.Name = "panPrincipal"
         Me.panPrincipal.Size = New System.Drawing.Size(1127, 699)
         Me.panPrincipal.TabIndex = 0
+        '
+        'btnSocioSinLista
+        '
+        Me.btnSocioSinLista.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnSocioSinLista.BackColor = System.Drawing.Color.SandyBrown
+        Me.btnSocioSinLista.FlatAppearance.BorderColor = System.Drawing.Color.Black
+        Me.btnSocioSinLista.FlatAppearance.MouseDownBackColor = System.Drawing.Color.PeachPuff
+        Me.btnSocioSinLista.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SaddleBrown
+        Me.btnSocioSinLista.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnSocioSinLista.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSocioSinLista.ForeColor = System.Drawing.Color.White
+        Me.btnSocioSinLista.Location = New System.Drawing.Point(890, 658)
+        Me.btnSocioSinLista.Name = "btnSocioSinLista"
+        Me.btnSocioSinLista.Size = New System.Drawing.Size(217, 27)
+        Me.btnSocioSinLista.TabIndex = 27
+        Me.btnSocioSinLista.Text = "Registrar socio fuera de lista"
+        Me.btnSocioSinLista.UseVisualStyleBackColor = False
         '
         'btnRechazarAsignacion
         '
@@ -315,23 +332,6 @@ Partial Class DlgSolicitudAsignacion
         Me.btnCerrar.TabIndex = 1
         Me.btnCerrar.Text = "Cerrar"
         Me.btnCerrar.UseVisualStyleBackColor = True
-        '
-        'btnSocioSinLista
-        '
-        Me.btnSocioSinLista.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnSocioSinLista.BackColor = System.Drawing.Color.SandyBrown
-        Me.btnSocioSinLista.FlatAppearance.BorderColor = System.Drawing.Color.Black
-        Me.btnSocioSinLista.FlatAppearance.MouseDownBackColor = System.Drawing.Color.PeachPuff
-        Me.btnSocioSinLista.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SaddleBrown
-        Me.btnSocioSinLista.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnSocioSinLista.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSocioSinLista.ForeColor = System.Drawing.Color.White
-        Me.btnSocioSinLista.Location = New System.Drawing.Point(890, 658)
-        Me.btnSocioSinLista.Name = "btnSocioSinLista"
-        Me.btnSocioSinLista.Size = New System.Drawing.Size(217, 27)
-        Me.btnSocioSinLista.TabIndex = 27
-        Me.btnSocioSinLista.Text = "Registrar socio fuera de lista"
-        Me.btnSocioSinLista.UseVisualStyleBackColor = False
         '
         'DlgSolicitudAsignacion
         '

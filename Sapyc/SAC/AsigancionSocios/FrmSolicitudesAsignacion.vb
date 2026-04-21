@@ -61,11 +61,67 @@
             dlg.sNombre = sNombre
             dlg.sCorreo = sCorreo
 
-            dlg.ShowDialog()
+            If dlg.ShowDialog() = DialogResult.OK Then
+                ListarSolicitudes()
+            End If
         End If
     End Sub
     Private Sub BtnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
         Close()
+    End Sub
+
+    Private Sub GridProspectos_DoubleClick(sender As Object, e As EventArgs) Handles gridProspectos.DoubleClick
+        Dim dlg As New DlgSolicitudAsignacion()
+
+        If gridProspectos.CurrentRow IsNot Nothing Then
+            Dim bActivo As Boolean = gridProspectos.CurrentRow.Cells("bStatus").Value
+            Dim sStatus As String = gridProspectos.CurrentRow.Cells("cStatus").Value.ToString()
+            Dim idSac As Integer = gridProspectos.CurrentRow.Cells("idSac").Value
+            Dim idPropuesta As Integer = gridProspectos.CurrentRow.Cells("idPropuesta").Value
+            Dim sCveOfi As String = gridProspectos.CurrentRow.Cells("sCveOfi").Value.ToString()
+            Dim sCveArea As String = gridProspectos.CurrentRow.Cells("sCveArea").Value.ToString()
+            Dim sServicio As String = gridProspectos.CurrentRow.Cells("SERVICIO").Value.ToString()
+            Dim idServicio As Integer = gridProspectos.CurrentRow.Cells("IdServicio").Value
+            Dim idIdioma As Integer = gridProspectos.CurrentRow.Cells("idIdioma").Value
+            Dim sNombreCte As String = gridProspectos.CurrentRow.Cells("sNombreCte").Value.ToString()
+            Dim sDescOfi As String = gridProspectos.CurrentRow.Cells("DESCOFI").Value.ToString()
+            Dim sDescArea As String = gridProspectos.CurrentRow.Cells("DESCAREA").Value.ToString()
+            Dim sSocEncargado As String = gridProspectos.CurrentRow.Cells("SOCENC").Value.ToString()
+            Dim sCorreoEncargado As String = gridProspectos.CurrentRow.Cells("CORENC").Value.ToString()
+            Dim sCveInd As String = gridProspectos.CurrentRow.Cells("sCveInd").Value.ToString()
+            Dim sUsuario As String = gridProspectos.CurrentRow.Cells("sUsuario").Value.ToString()
+            Dim sNombre As String = gridProspectos.CurrentRow.Cells("NOMBRE").Value.ToString()
+            Dim sCorreo As String = gridProspectos.CurrentRow.Cells("EMAIL").Value.ToString()
+
+            If gridProspectos.CurrentRow.Cells("bStatus").Value IsNot Nothing AndAlso bActivo = False AndAlso sStatus = "R" Then
+                MsgBox("La solicitud se encuentra en revisión por servicio y no es posible asignarla en este momento.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
+                Exit Sub
+            ElseIf gridProspectos.CurrentRow.Cells("bStatus").Value IsNot Nothing AndAlso bActivo = False AndAlso sStatus = "C" Then
+                MsgBox("La solicitud ha sido cancelada y ya no es posible asignarla.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
+                Exit Sub
+            End If
+
+            dlg.idSac = idSac
+            dlg.idPropuesta = idPropuesta
+            dlg.sCveOfi = sCveOfi
+            dlg.sCvearea = sCveArea
+            dlg.sNombreCte = sNombreCte
+            dlg.idServicio = idServicio
+            dlg.idIdioma = idIdioma
+            dlg.sServicio = sServicio
+            dlg.sSocioEncargado = sSocEncargado
+            dlg.sCorreoEncargado = sCorreoEncargado
+            dlg.sOficina = sDescOfi
+            dlg.sArea = sDescArea
+            dlg.sCveInd = sCveInd
+            dlg.sUsuario = sUsuario
+            dlg.sNombre = sNombre
+            dlg.sCorreo = sCorreo
+
+            If dlg.ShowDialog() = DialogResult.OK Then
+                ListarSolicitudes()
+            End If
+        End If
     End Sub
 
     Private Sub ListarSolicitudes()
