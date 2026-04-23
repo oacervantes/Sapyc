@@ -147,6 +147,8 @@ Public Class FrmContacto
                 txtOtroServicio.Text = ""
             End If
 
+            ValidaNormatividad()
+
             bsSer.DataSource = dtServicios
             gridServicios.Columns("CVE").Visible = False
             gridServicios.Columns("CVEOTROS").Visible = False
@@ -372,6 +374,30 @@ Public Class FrmContacto
 
         End Select
     End Sub
+    Private Sub ValidaNormatividad()
+
+        For Each dr As DataRow In dtServicios.Rows
+
+            If dr("CVEAREA") = "AUD" Then
+                rdEntidadSupervisadaSi.Checked = True
+                rdEntidadSupervisadaNo.Checked = False
+                cboEntidadSupervisada.SelectedIndex = 0
+
+                rdEntidadSupervisadaSi.AutoCheck = False
+                rdEntidadSupervisadaNo.AutoCheck = False
+                Exit For
+            End If
+
+            rdEntidadSupervisadaSi.Checked = False
+            rdEntidadSupervisadaNo.Checked = False
+            cboEntidadSupervisada.SelectedIndex = 0
+
+            rdEntidadSupervisadaSi.AutoCheck = True
+            rdEntidadSupervisadaNo.AutoCheck = True
+
+        Next
+
+    End Sub
 
 #Region "DATOS GENERALES"
 
@@ -515,6 +541,7 @@ Public Class FrmContacto
             If sCveArea = "SS" Or sCveArea = "CO" Or sCveArea = "ATI" Then
                 sCveArea = "AUD"
             End If
+
         Else
             btnAgregar.Enabled = False
         End If
@@ -652,9 +679,20 @@ Public Class FrmContacto
                 Dim dt As DataTable = CType(bsSer.DataSource, DataTable)
 
                 If gridServicios.CurrentRow IsNot Nothing Then
+                    Dim idServicio As Integer = gridServicios.CurrentRow.Cells("CVE").Value
+                    Dim sCveOfi As String = gridServicios.CurrentRow.Cells("CVEOFI").Value
+                    Dim sCveArea As String = gridServicios.CurrentRow.Cells("CVEAREA").Value
+
                     EliminarServiciosDatosGenerales(gridServicios.CurrentRow.Cells("CVE").Value)
                     dt.Rows.RemoveAt(gridServicios.CurrentRow.Index)
+
+                    Dim dr() As DataRow = dtServiciosCarga.Select($"CVE = '{idServicio}' AND CVEOFI = '{sCveOfi}' AND CVEAREA = '{sCveArea}'")
+                    If dr.Length > 0 Then
+                        dtServiciosCarga.Rows.Remove(dr(0))
+                    End If
                 End If
+
+                ValidaNormatividad()
 
             End If
         End If
@@ -1720,7 +1758,7 @@ Public Class FrmContacto
     End Sub
     Private Sub InsertarServiciosDatosGenerales(idServicio As Integer, bOtros As Boolean, sCveOfi As String, sCveArea As String)
         Try
-            If txtOtroServicio.Text.Trim = "" Then
+            If txtOtroServicio.Text.Trim = "" And bOtros Then
                 MsgBox("Es necesario especificar el detalle del otro servicio para poder guardarlo.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
                 Exit Sub
             End If
@@ -1808,6 +1846,8 @@ Public Class FrmContacto
                     txtOtroServicio.Enabled = False
                     txtOtroServicio.Text = ""
                 End If
+
+                ValidaNormatividad()
 
                 bsSer.DataSource = dtServicios
                 gridServicios.Columns("CVE").Visible = False
