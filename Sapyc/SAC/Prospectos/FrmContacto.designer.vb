@@ -43,7 +43,10 @@ Partial Class FrmContacto
         Me.panDatosGenerales = New System.Windows.Forms.Panel()
         Me.gpBoxDatosDG = New System.Windows.Forms.GroupBox()
         Me.gridClientesSAT = New System.Windows.Forms.DataGridView()
+        Me.lblPais = New System.Windows.Forms.Label()
+        Me.cboTipoEntidad = New System.Windows.Forms.ComboBox()
         Me.txtPaisProspecto = New System.Windows.Forms.TextBox()
+        Me.lblTipoEntidad = New System.Windows.Forms.Label()
         Me.btnPaisProspecto = New System.Windows.Forms.Button()
         Me.txtRazonSocial = New System.Windows.Forms.TextBox()
         Me.lblIdSAC = New System.Windows.Forms.Label()
@@ -144,7 +147,6 @@ Partial Class FrmContacto
         Me.lbRefGTISocio = New System.Windows.Forms.Label()
         Me.rdReferenciaGTINo = New System.Windows.Forms.RadioButton()
         Me.rdReferenciaGTISi = New System.Windows.Forms.RadioButton()
-        Me.lblPais = New System.Windows.Forms.Label()
         Me.gpBoxEmpresaExtranjero = New System.Windows.Forms.GroupBox()
         Me.btnPaisResidencia = New System.Windows.Forms.Button()
         Me.txtPaisResidencia = New System.Windows.Forms.TextBox()
@@ -246,8 +248,6 @@ Partial Class FrmContacto
         Me.txtDomicilioExtDireccion1 = New System.Windows.Forms.TextBox()
         Me.txtDomicilioExtEstado = New System.Windows.Forms.TextBox()
         Me.cboDomicilioPais = New System.Windows.Forms.ComboBox()
-        Me.cboTipoEntidad = New System.Windows.Forms.ComboBox()
-        Me.lblTipoEntidad = New System.Windows.Forms.Label()
         Me.panMenu.SuspendLayout()
         Me.panMensajesError.SuspendLayout()
         Me.panDatosGenerales.SuspendLayout()
@@ -565,6 +565,24 @@ Partial Class FrmContacto
         Me.gridClientesSAT.TabIndex = 4
         Me.gridClientesSAT.Visible = False
         '
+        'lblPais
+        '
+        Me.lblPais.AutoSize = True
+        Me.lblPais.Location = New System.Drawing.Point(17, 1045)
+        Me.lblPais.Name = "lblPais"
+        Me.lblPais.Size = New System.Drawing.Size(37, 18)
+        Me.lblPais.TabIndex = 20
+        Me.lblPais.Text = "País:"
+        '
+        'cboTipoEntidad
+        '
+        Me.cboTipoEntidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboTipoEntidad.FormattingEnabled = True
+        Me.cboTipoEntidad.Location = New System.Drawing.Point(152, 174)
+        Me.cboTipoEntidad.Name = "cboTipoEntidad"
+        Me.cboTipoEntidad.Size = New System.Drawing.Size(212, 26)
+        Me.cboTipoEntidad.TabIndex = 30
+        '
         'txtPaisProspecto
         '
         Me.txtPaisProspecto.Enabled = False
@@ -573,6 +591,16 @@ Partial Class FrmContacto
         Me.txtPaisProspecto.ReadOnly = True
         Me.txtPaisProspecto.Size = New System.Drawing.Size(304, 25)
         Me.txtPaisProspecto.TabIndex = 21
+        '
+        'lblTipoEntidad
+        '
+        Me.lblTipoEntidad.AutoSize = True
+        Me.lblTipoEntidad.Font = New System.Drawing.Font("Calibri", 11.0!)
+        Me.lblTipoEntidad.Location = New System.Drawing.Point(19, 178)
+        Me.lblTipoEntidad.Name = "lblTipoEntidad"
+        Me.lblTipoEntidad.Size = New System.Drawing.Size(108, 18)
+        Me.lblTipoEntidad.TabIndex = 29
+        Me.lblTipoEntidad.Text = "Tipo de entidad:"
         '
         'btnPaisProspecto
         '
@@ -1378,7 +1406,7 @@ Partial Class FrmContacto
         '
         Me.lblEntidadSupervisadaOtra.AutoSize = True
         Me.lblEntidadSupervisadaOtra.Font = New System.Drawing.Font("Calibri", 11.0!)
-        Me.lblEntidadSupervisadaOtra.Location = New System.Drawing.Point(321, 24)
+        Me.lblEntidadSupervisadaOtra.Location = New System.Drawing.Point(327, 24)
         Me.lblEntidadSupervisadaOtra.Name = "lblEntidadSupervisadaOtra"
         Me.lblEntidadSupervisadaOtra.Size = New System.Drawing.Size(35, 18)
         Me.lblEntidadSupervisadaOtra.TabIndex = 4
@@ -1388,7 +1416,7 @@ Partial Class FrmContacto
         '
         Me.lblEntidadSupervisada.AutoSize = True
         Me.lblEntidadSupervisada.Font = New System.Drawing.Font("Calibri", 11.0!)
-        Me.lblEntidadSupervisada.Location = New System.Drawing.Point(136, 24)
+        Me.lblEntidadSupervisada.Location = New System.Drawing.Point(116, 24)
         Me.lblEntidadSupervisada.Name = "lblEntidadSupervisada"
         Me.lblEntidadSupervisada.Size = New System.Drawing.Size(92, 18)
         Me.lblEntidadSupervisada.TabIndex = 2
@@ -1397,7 +1425,7 @@ Partial Class FrmContacto
         'txtEntidadSupervisadaOtro
         '
         Me.txtEntidadSupervisadaOtro.Enabled = False
-        Me.txtEntidadSupervisadaOtro.Location = New System.Drawing.Point(321, 48)
+        Me.txtEntidadSupervisadaOtro.Location = New System.Drawing.Point(327, 48)
         Me.txtEntidadSupervisadaOtro.Name = "txtEntidadSupervisadaOtro"
         Me.txtEntidadSupervisadaOtro.Size = New System.Drawing.Size(163, 25)
         Me.txtEntidadSupervisadaOtro.TabIndex = 5
@@ -1405,18 +1433,19 @@ Partial Class FrmContacto
         'cboEntidadSupervisada
         '
         Me.cboEntidadSupervisada.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboEntidadSupervisada.DropDownWidth = 265
         Me.cboEntidadSupervisada.Enabled = False
         Me.cboEntidadSupervisada.FormattingEnabled = True
-        Me.cboEntidadSupervisada.Location = New System.Drawing.Point(136, 47)
+        Me.cboEntidadSupervisada.Location = New System.Drawing.Point(116, 47)
         Me.cboEntidadSupervisada.Name = "cboEntidadSupervisada"
-        Me.cboEntidadSupervisada.Size = New System.Drawing.Size(168, 26)
+        Me.cboEntidadSupervisada.Size = New System.Drawing.Size(205, 26)
         Me.cboEntidadSupervisada.TabIndex = 3
         '
         'rdEntidadSupervisadaNo
         '
         Me.rdEntidadSupervisadaNo.AutoSize = True
         Me.rdEntidadSupervisadaNo.Font = New System.Drawing.Font("Calibri", 11.0!)
-        Me.rdEntidadSupervisadaNo.Location = New System.Drawing.Point(63, 38)
+        Me.rdEntidadSupervisadaNo.Location = New System.Drawing.Point(56, 38)
         Me.rdEntidadSupervisadaNo.Name = "rdEntidadSupervisadaNo"
         Me.rdEntidadSupervisadaNo.Size = New System.Drawing.Size(44, 22)
         Me.rdEntidadSupervisadaNo.TabIndex = 1
@@ -1427,7 +1456,7 @@ Partial Class FrmContacto
         '
         Me.rdEntidadSupervisadaSi.AutoSize = True
         Me.rdEntidadSupervisadaSi.Font = New System.Drawing.Font("Calibri", 11.0!)
-        Me.rdEntidadSupervisadaSi.Location = New System.Drawing.Point(18, 38)
+        Me.rdEntidadSupervisadaSi.Location = New System.Drawing.Point(14, 38)
         Me.rdEntidadSupervisadaSi.Name = "rdEntidadSupervisadaSi"
         Me.rdEntidadSupervisadaSi.Size = New System.Drawing.Size(36, 22)
         Me.rdEntidadSupervisadaSi.TabIndex = 0
@@ -1637,15 +1666,6 @@ Partial Class FrmContacto
         Me.rdReferenciaGTISi.TabIndex = 0
         Me.rdReferenciaGTISi.Text = "Sí"
         Me.rdReferenciaGTISi.UseVisualStyleBackColor = True
-        '
-        'lblPais
-        '
-        Me.lblPais.AutoSize = True
-        Me.lblPais.Location = New System.Drawing.Point(17, 1045)
-        Me.lblPais.Name = "lblPais"
-        Me.lblPais.Size = New System.Drawing.Size(37, 18)
-        Me.lblPais.TabIndex = 20
-        Me.lblPais.Text = "País:"
         '
         'gpBoxEmpresaExtranjero
         '
@@ -2696,30 +2716,12 @@ Partial Class FrmContacto
         Me.cboDomicilioPais.TabIndex = 1
         Me.cboDomicilioPais.Visible = False
         '
-        'cboTipoEntidad
-        '
-        Me.cboTipoEntidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboTipoEntidad.FormattingEnabled = True
-        Me.cboTipoEntidad.Location = New System.Drawing.Point(152, 174)
-        Me.cboTipoEntidad.Name = "cboTipoEntidad"
-        Me.cboTipoEntidad.Size = New System.Drawing.Size(212, 26)
-        Me.cboTipoEntidad.TabIndex = 30
-        '
-        'lblTipoEntidad
-        '
-        Me.lblTipoEntidad.AutoSize = True
-        Me.lblTipoEntidad.Font = New System.Drawing.Font("Calibri", 11.0!)
-        Me.lblTipoEntidad.Location = New System.Drawing.Point(19, 178)
-        Me.lblTipoEntidad.Name = "lblTipoEntidad"
-        Me.lblTipoEntidad.Size = New System.Drawing.Size(108, 18)
-        Me.lblTipoEntidad.TabIndex = 29
-        Me.lblTipoEntidad.Text = "Tipo de entidad:"
-        '
         'FrmContacto
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.ClientSize = New System.Drawing.Size(1307, 700)
+        Me.ControlBox = False
         Me.Controls.Add(Me.btnHabilitar)
         Me.Controls.Add(Me.btnGuardaGeneral)
         Me.Controls.Add(Me.btnCancelaGeneral)
@@ -2731,6 +2733,8 @@ Partial Class FrmContacto
         Me.Controls.Add(Me.panContactoInicial)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "FrmContacto"
         Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

@@ -227,7 +227,7 @@ Public Class FrmContacto
             End If
 
             If bOtros Then
-                sMsgAviso = "Se generará una solicitud para la revisión del servicio solicitado mediante la opción 'OTROS'. ¿Desea continuar?"
+                sMsgAviso = "Se generará una solicitud para la revisión del servicio solicitado mediante la opción 'OTROS', así como la(s) solicitud(es) de asignación para su revisión. ¿Desea continuar?"
             Else
                 sMsgAviso = "Se enviará la(s) solicitud(es) de asignación para su revisión. ¿Desea continuar?"
             End If
@@ -1250,12 +1250,12 @@ Public Class FrmContacto
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsDatosProp
+                With clsDatosSac
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 3, SqlDbType.Int, ParameterDirection.Input)
                 End With
 
-                .Add(clsDatosProp.funExecuteSPDataTable("paSSGTDatosGenerales", sTabla))
+                .Add(clsDatosSac.funExecuteSPDataTable("paDatosGeneralesKardex", sTabla))
 
                 dtNormatividad = .Item(sTabla)
             End With
@@ -1268,7 +1268,7 @@ Public Class FrmContacto
             End If
         Catch ex As Exception
             InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarNormatividad()")
-            MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
+            MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
             dtNormatividad = Nothing
         End Try
     End Sub
@@ -1772,10 +1772,10 @@ Public Class FrmContacto
     End Sub
     Private Sub InsertarServiciosDatosGenerales(idServicio As Integer, bOtros As Boolean, sCveOfi As String, sCveArea As String)
         Try
-            If txtOtroServicio.Text.Trim = "" And bOtros Then
-                MsgBox("Es necesario especificar el detalle del otro servicio para poder guardarlo.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
-                Exit Sub
-            End If
+            'If txtOtroServicio.Text.Trim = "" And bOtros Then
+            '    MsgBox("Es necesario especificar el detalle del otro servicio para poder guardarlo.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
+            '    Exit Sub
+            'End If
 
             With clsLocal
                 .subClearParameters()
