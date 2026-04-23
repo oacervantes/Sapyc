@@ -334,4 +334,10 @@
         AbrirPantalla(frm, "frmListaNivelRiesgo")
     End Sub
 
+    Private Sub AltaClienteProspectoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AltaClienteProspectoToolStripMenuItem.Click
+        Dim frm As New FrmProspectos
+        AbrirPantalla(frm, "frmMisPropuestas")
+
+    End Sub
+
 End Class
