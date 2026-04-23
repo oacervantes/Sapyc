@@ -35,6 +35,7 @@
             Dim sUsuario As String = gridProspectos.CurrentRow.Cells("sUsuario").Value.ToString()
             Dim sNombre As String = gridProspectos.CurrentRow.Cells("NOMBRE").Value.ToString()
             Dim sCorreo As String = gridProspectos.CurrentRow.Cells("EMAIL").Value.ToString()
+            Dim idMarco As Integer = gridProspectos.CurrentRow.Cells("idNormatividad").Value
 
             If gridProspectos.CurrentRow.Cells("bStatus").Value IsNot Nothing AndAlso bActivo = False AndAlso sStatus = "R" Then
                 MsgBox("La solicitud se encuentra en revisión por servicio y no es posible asignarla en este momento.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
@@ -60,6 +61,7 @@
             dlg.sUsuario = sUsuario
             dlg.sNombre = sNombre
             dlg.sCorreo = sCorreo
+            dlg.idMarco = idMarco
 
             If dlg.ShowDialog() = DialogResult.OK Then
                 ListarSolicitudes()
@@ -92,6 +94,7 @@
             Dim sUsuario As String = gridProspectos.CurrentRow.Cells("sUsuario").Value.ToString()
             Dim sNombre As String = gridProspectos.CurrentRow.Cells("NOMBRE").Value.ToString()
             Dim sCorreo As String = gridProspectos.CurrentRow.Cells("EMAIL").Value.ToString()
+            Dim idMarco As Integer = gridProspectos.CurrentRow.Cells("idNormatividad").Value
 
             If gridProspectos.CurrentRow.Cells("bStatus").Value IsNot Nothing AndAlso bActivo = False AndAlso sStatus = "R" Then
                 MsgBox("La solicitud se encuentra en revisión por servicio y no es posible asignarla en este momento.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
@@ -117,6 +120,7 @@
             dlg.sUsuario = sUsuario
             dlg.sNombre = sNombre
             dlg.sCorreo = sCorreo
+            dlg.idMarco = idMarco
 
             If dlg.ShowDialog() = DialogResult.OK Then
                 ListarSolicitudes()

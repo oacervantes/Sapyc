@@ -9,7 +9,7 @@
 
     Private sCveSocio, sNombreSocio, sCorreoSocio As String
 
-    Public idSac, idPropuesta, idServicio, idIdioma As Integer
+    Public idSac, idPropuesta, idServicio, idIdioma, idMarco As Integer
     Public sCveOfi, sCvearea, sOficina, sArea, sNombreCte, sCveInd, sServicio, sSocioEncargado, sCorreoEncargado, sUsuario, sNombre, sCorreo As String
 
     Private Sub DlgSolicitudAsignacion_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -38,7 +38,9 @@
         dlg.ShowDialog()
     End Sub
     Private Sub BtnEnviarAsignacion_Click(sender As Object, e As EventArgs) Handles btnEnviarAsignacion.Click
+        If MsgBox($"Se enviará una notificación a {sSocioEncargado} para autorizar la asignación del socio seleccionado en la propuesta {sNombreCte}. ¿Desea continuar?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, My.Settings.NOM_SYS) = MsgBoxResult.Yes Then
 
+        End If
     End Sub
     Private Sub BtnRechazarAsignacion_Click(sender As Object, e As EventArgs) Handles btnRechazarAsignacion.Click
         Dim dlg As New DlgRechazoPropuesta With {
@@ -94,6 +96,7 @@
                     .subAddParameter("@idIdioma", idIdioma, SqlDbType.Int, ParameterDirection.Input)
                     .subAddParameter("@idServicio", idServicio, SqlDbType.Int, ParameterDirection.Input)
                     .subAddParameter("@idIndustria", sCveInd, SqlDbType.VarChar, ParameterDirection.Input)
+                    .subAddParameter("@idMarcoNormativo", idMarco, SqlDbType.Int, ParameterDirection.Input)
                 End With
 
                 .Add(clsDatosInv.funExecuteSPDataTable("paSACAsignaciones", sTabla))
