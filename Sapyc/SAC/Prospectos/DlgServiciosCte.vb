@@ -9,7 +9,7 @@
     Private drServicios As DataRow
 
     Public dtServCte, dtServiciosCte As New DataTable
-    Public sCveArea, sFacInt As String
+    Public sCveArea, sFacInt, sCveOfi As String
 
     Private Sub DlgServiciosCte_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         gridDatos.DataSource = bs
@@ -113,7 +113,7 @@
 
             For Each row As DataRow In dtServCte.Rows
                 For Each rowServ As DataRow In dtServicios.Rows
-                    If row("CVE") = rowServ("CVE") Then
+                    If row("CVE") = rowServ("CVE") And sCveOfi = row("CVEOFI") Then
                         rowServ("ELEGIR") = True
                         Exit For
                     End If

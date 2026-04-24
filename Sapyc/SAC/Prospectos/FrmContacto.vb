@@ -100,6 +100,7 @@ Public Class FrmContacto
     Private Sub BtnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
         Dim dlg As New DlgServiciosCte With {
             .sCveArea = sCveArea,
+            .sCveOfi = sCveOfi,
             .dtServCte = dtServiciosCarga
         }
 
@@ -1845,6 +1846,18 @@ Public Class FrmContacto
                     drServicios("REVIND") = "S"
                     drServicios("DESCRIPCION") = row.Item("DESCRIPCION")
                     dtServicios.Rows.InsertAt(drServicios, dtServicios.Rows.Count)
+
+
+                    drServicios = dtServiciosCarga.NewRow()
+                    drServicios("CVE") = row.Item("idServicio")
+                    drServicios("CVEOTROS") = row.Item("bOtros")
+                    drServicios("CVEOFI") = row.Item("sCveOfi")
+                    drServicios("CVEAREA") = row.Item("sCveArea")
+                    drServicios("DESCOFI") = row.Item("DESCOFI")
+                    drServicios("DESCAREA") = row.Item("DESCAREA")
+                    drServicios("REVIND") = "S"
+                    drServicios("DESCRIPCION") = row.Item("DESCRIPCION")
+                    dtServiciosCarga.Rows.InsertAt(drServicios, dtServiciosCarga.Rows.Count)
 
                     If bOtros = False Then
                         bOtros = row.Item("bOtros")
