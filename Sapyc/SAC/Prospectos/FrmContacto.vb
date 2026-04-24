@@ -82,7 +82,7 @@ Public Class FrmContacto
         ListarTipoEntidad()
         ListarModalidades()
         ListarEntidadesMercantilesRS()
-        ListarEntidadesMercantilesNC
+        ListarEntidadesMercantilesNC()
         ListarOficinas()
         ListarDivisiones()
         ListarServiciosDatosGenerales()
@@ -1501,7 +1501,12 @@ Public Class FrmContacto
                 lblMensajeCargaDatosGenerales.Visible = False
 
                 txtRazonSocial.Text = dtDatosGenerales.Rows(0).Item("sRazonSocial").ToString
+
                 txtNombreComercial.Text = dtDatosGenerales.Rows(0).Item("sNombreComercial").ToString
+
+                cboEntidadMercantilRS.Text = dtDatosGenerales.Rows(0).Item("sMercantil").ToString
+                cboEntidadMercantilNC.Text = dtDatosGenerales.Rows(0).Item("sMercantil").ToString
+
 
                 txtDescripcionSolicitud.Text = dtDatosGenerales.Rows(0).Item("sDescripcionServicio").ToString
 
@@ -1574,71 +1579,71 @@ Public Class FrmContacto
                 txtEntidadSupervisadaOtro.Text = dtDatosGenerales.Rows(0).Item("sOtraNormatividad").ToString
 
                 If CBool(dtDatosGenerales.Rows(0).Item("bReferenciaGTI").ToString) = True Then
-                        rdReferenciaGTISi.Checked = True
-                    Else
-                        rdReferenciaGTINo.Checked = True
-                    End If
-
-                    txtReferenciaGTISocio.Text = dtDatosGenerales.Rows(0).Item("sSocioRefGTI").ToString
-                    idPaisGT = CInt(dtDatosGenerales.Rows(0).Item("idPaisRefGTI").ToString)
-                    txtPaisGTI.Text = dtDatosGenerales.Rows(0).Item("sPaisGTI").ToString
-                    ListarOficinasGT(idPaisGT)
-                    cboReferenciaGTIOficina.Text = dtDatosGenerales.Rows(0).Item("sOficinaRefGTI").ToString
-
-                    If CBool(dtDatosGenerales.Rows(0).Item("bReportaExtranjero").ToString) = True Then
-                        rdEmpresaExtranjeroRepSi.Checked = True
-                    Else
-                        rdEmpresaExtranjeroRepNo.Checked = True
-                    End If
-
-                    txtEmpresaTenedora.Text = dtDatosGenerales.Rows(0).Item("sNombreTenedora").ToString
-                    idPaisTenedora = CInt(dtDatosGenerales.Rows(0).Item("idPaisTenedora").ToString)
-                    txtPaisResidencia.Text = dtDatosGenerales.Rows(0).Item("sPaisTenedora").ToString
-
-                    If CBool(dtDatosGenerales.Rows(0).Item("bDomiciliadasExt").ToString) = True Then
-                        rdEmpresaExtranjeroDomSi.Checked = True
-                    Else
-                        rdEmpresaExtranjeroDomNo.Checked = True
-                    End If
-
-                    If CBool(dtDatosGenerales.Rows(0).Item("bSubsidiariasExt").ToString) = True Then
-                        rdEmpresaExtranjeroSubSi.Checked = True
-                    Else
-                        rdEmpresaExtranjeroSubNo.Checked = True
-                    End If
-
-                    cboTipoEntidad.SelectedValue = CInt(dtDatosGenerales.Rows(0).Item("idTipoEntidad").ToString)
-
-                    txtIdSAC.Text = dtDatosGenerales.Rows(0).Item("idSac").ToString
-                    cboOficina.SelectedValue = dtDatosGenerales.Rows(0).Item("sCveOfi").ToString
-                    cboDivision.SelectedValue = dtDatosGenerales.Rows(0).Item("sCveArea").ToString
-
-                    If dtDatosGenerales.Rows(0).Item("bIdioma").ToString Then
-                        rdIdiomaSi.Checked = True
-
-                        idIdioma = dtDatosGenerales.Rows(0).Item("idIdioma").ToString
-                        'cboIdioma.SelectedValue = dtDatosGenerales.Rows(0).Item("idIdioma").ToString
-                        txtIdioma.Text = dtDatosGenerales.Rows(0).Item("sIdioma").ToString
-                    Else
-                        rdIdiomaNo.Checked = True
-                        idIdioma = 0
-                        txtIdioma.Text = ""
-                    End If
-
-                    'txtContactoInicialFecha.Value = dtDatosGenerales.Rows(0).Item("dFechaIni").ToString
-                    txtPeriodoInicio.Value = dtDatosGenerales.Rows(0).Item("dFechaIni").ToString
-                    txtPeriodoFinal.Value = dtDatosGenerales.Rows(0).Item("dFechaFin").ToString
-                    txtFechaEntregaReporte.Value = dtDatosGenerales.Rows(0).Item("dFechaEntrega").ToString
-                    txtFechaSolicitud.Value = dtDatosGenerales.Rows(0).Item("dFechaPropuesta").ToString
-                    cboModalidades.SelectedValue = dtDatosGenerales.Rows(0).Item("idModalidad").ToString
-
-                    txtCorreoSocioGTI.Text = dtDatosGenerales.Rows(0).Item("sCorreoSocRefGTI").ToString
-                    txtGerenteGTI.Text = dtDatosGenerales.Rows(0).Item("sGerenteRefGTI").ToString
-                    txtCorreoGerenteGTI.Text = dtDatosGenerales.Rows(0).Item("sCorreoGerenteRefGTI").ToString
-                    txtEstadoGTI.Text = dtDatosGenerales.Rows(0).Item("sEstadoRefGTI").ToString
-
+                    rdReferenciaGTISi.Checked = True
                 Else
-                    lblMensajeCargaDatosGenerales.Visible = True
+                    rdReferenciaGTINo.Checked = True
+                End If
+
+                txtReferenciaGTISocio.Text = dtDatosGenerales.Rows(0).Item("sSocioRefGTI").ToString
+                idPaisGT = CInt(dtDatosGenerales.Rows(0).Item("idPaisRefGTI").ToString)
+                txtPaisGTI.Text = dtDatosGenerales.Rows(0).Item("sPaisGTI").ToString
+                ListarOficinasGT(idPaisGT)
+                cboReferenciaGTIOficina.Text = dtDatosGenerales.Rows(0).Item("sOficinaRefGTI").ToString
+
+                If CBool(dtDatosGenerales.Rows(0).Item("bReportaExtranjero").ToString) = True Then
+                    rdEmpresaExtranjeroRepSi.Checked = True
+                Else
+                    rdEmpresaExtranjeroRepNo.Checked = True
+                End If
+
+                txtEmpresaTenedora.Text = dtDatosGenerales.Rows(0).Item("sNombreTenedora").ToString
+                idPaisTenedora = CInt(dtDatosGenerales.Rows(0).Item("idPaisTenedora").ToString)
+                txtPaisResidencia.Text = dtDatosGenerales.Rows(0).Item("sPaisTenedora").ToString
+
+                If CBool(dtDatosGenerales.Rows(0).Item("bDomiciliadasExt").ToString) = True Then
+                    rdEmpresaExtranjeroDomSi.Checked = True
+                Else
+                    rdEmpresaExtranjeroDomNo.Checked = True
+                End If
+
+                If CBool(dtDatosGenerales.Rows(0).Item("bSubsidiariasExt").ToString) = True Then
+                    rdEmpresaExtranjeroSubSi.Checked = True
+                Else
+                    rdEmpresaExtranjeroSubNo.Checked = True
+                End If
+
+                cboTipoEntidad.SelectedValue = CInt(dtDatosGenerales.Rows(0).Item("idTipoEntidad").ToString)
+
+                txtIdSAC.Text = dtDatosGenerales.Rows(0).Item("idSac").ToString
+                cboOficina.SelectedValue = dtDatosGenerales.Rows(0).Item("sCveOfi").ToString
+                cboDivision.SelectedValue = dtDatosGenerales.Rows(0).Item("sCveArea").ToString
+
+                If dtDatosGenerales.Rows(0).Item("bIdioma").ToString Then
+                    rdIdiomaSi.Checked = True
+
+                    idIdioma = dtDatosGenerales.Rows(0).Item("idIdioma").ToString
+                    'cboIdioma.SelectedValue = dtDatosGenerales.Rows(0).Item("idIdioma").ToString
+                    txtIdioma.Text = dtDatosGenerales.Rows(0).Item("sIdioma").ToString
+                Else
+                    rdIdiomaNo.Checked = True
+                    idIdioma = 0
+                    txtIdioma.Text = ""
+                End If
+
+                'txtContactoInicialFecha.Value = dtDatosGenerales.Rows(0).Item("dFechaIni").ToString
+                txtPeriodoInicio.Value = dtDatosGenerales.Rows(0).Item("dFechaIni").ToString
+                txtPeriodoFinal.Value = dtDatosGenerales.Rows(0).Item("dFechaFin").ToString
+                txtFechaEntregaReporte.Value = dtDatosGenerales.Rows(0).Item("dFechaEntrega").ToString
+                txtFechaSolicitud.Value = dtDatosGenerales.Rows(0).Item("dFechaPropuesta").ToString
+                cboModalidades.SelectedValue = dtDatosGenerales.Rows(0).Item("idModalidad").ToString
+
+                txtCorreoSocioGTI.Text = dtDatosGenerales.Rows(0).Item("sCorreoSocRefGTI").ToString
+                txtGerenteGTI.Text = dtDatosGenerales.Rows(0).Item("sGerenteRefGTI").ToString
+                txtCorreoGerenteGTI.Text = dtDatosGenerales.Rows(0).Item("sCorreoGerenteRefGTI").ToString
+                txtEstadoGTI.Text = dtDatosGenerales.Rows(0).Item("sEstadoRefGTI").ToString
+
+            Else
+                lblMensajeCargaDatosGenerales.Visible = True
             End If
         Catch ex As Exception
             InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarDatosGenerales()")
@@ -1655,6 +1660,7 @@ Public Class FrmContacto
                 .subAddParameter("@idProspecto", 0, SqlDbType.Int, ParameterDirection.Input)
                 .subAddParameter("@sCveProspecto", "", SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@sRazonSocial", txtRazonSocial.Text.ToUpper(), SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@sMercantiles", cboEntidadMercantilRS.Text, SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@sNombreComercial", txtNombreComercial.Text.ToUpper(), SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@sDescripcionServicio", txtDescripcionSolicitud.Text.ToUpper(), SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@sRFC", txtRFC.Text.ToUpper(), SqlDbType.VarChar, ParameterDirection.Input)
@@ -2784,10 +2790,17 @@ Public Class FrmContacto
             bValidacion = False
         End If
 
+        If cboEntidadMercantilRS.SelectedIndex <> cboEntidadMercantilNC.SelectedIndex Then
+            sMsgDatosGenerales &= "- Especifíque la misma entidad mercantil de la razon social y el nombre comercial." & vbNewLine & vbNewLine
+            bValidacion = False
+        End If
+
         If cboTipoEntidad.SelectedIndex = 0 Then
             sMsgDatosGenerales &= "- Especifíque el tipo de entidad del prospecto." & vbNewLine & vbNewLine
             bValidacion = False
         End If
+
+
 
         sMsgDatosGenerales = sMsgDatosGenerales.Remove(sMsgDatosGenerales.Length - vbNewLine.Length * 2)
         sMsgDatosGenerales &= vbNewLine & "===============================" & vbNewLine

@@ -43,6 +43,8 @@ Partial Class FrmContacto
         Me.panDatosGenerales = New System.Windows.Forms.Panel()
         Me.gpBoxDatosDG = New System.Windows.Forms.GroupBox()
         Me.gridClientesSAT = New System.Windows.Forms.DataGridView()
+        Me.cboEntidadMercantilNC = New System.Windows.Forms.ComboBox()
+        Me.cboEntidadMercantilRS = New System.Windows.Forms.ComboBox()
         Me.lblPais = New System.Windows.Forms.Label()
         Me.cboTipoEntidad = New System.Windows.Forms.ComboBox()
         Me.txtPaisProspecto = New System.Windows.Forms.TextBox()
@@ -248,8 +250,6 @@ Partial Class FrmContacto
         Me.txtDomicilioExtDireccion1 = New System.Windows.Forms.TextBox()
         Me.txtDomicilioExtEstado = New System.Windows.Forms.TextBox()
         Me.cboDomicilioPais = New System.Windows.Forms.ComboBox()
-        Me.cboEntidadMercantilRS = New System.Windows.Forms.ComboBox()
-        Me.cboEntidadMercantilNC = New System.Windows.Forms.ComboBox()
         Me.panMenu.SuspendLayout()
         Me.panMensajesError.SuspendLayout()
         Me.panDatosGenerales.SuspendLayout()
@@ -296,7 +296,7 @@ Partial Class FrmContacto
         Me.panMenu.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold)
         Me.panMenu.Location = New System.Drawing.Point(0, 0)
         Me.panMenu.Name = "panMenu"
-        Me.panMenu.Size = New System.Drawing.Size(212, 700)
+        Me.panMenu.Size = New System.Drawing.Size(212, 696)
         Me.panMenu.TabIndex = 0
         '
         'panMensajesError
@@ -305,7 +305,7 @@ Partial Class FrmContacto
         Me.panMensajesError.Controls.Add(Me.txtMensaje)
         Me.panMensajesError.Controls.Add(Me.lblTituloError)
         Me.panMensajesError.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.panMensajesError.Location = New System.Drawing.Point(0, 290)
+        Me.panMensajesError.Location = New System.Drawing.Point(0, 286)
         Me.panMensajesError.Name = "panMensajesError"
         Me.panMensajesError.Size = New System.Drawing.Size(210, 408)
         Me.panMensajesError.TabIndex = 28
@@ -568,6 +568,26 @@ Partial Class FrmContacto
         Me.gridClientesSAT.Size = New System.Drawing.Size(771, 270)
         Me.gridClientesSAT.TabIndex = 4
         Me.gridClientesSAT.Visible = False
+        '
+        'cboEntidadMercantilNC
+        '
+        Me.cboEntidadMercantilNC.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboEntidadMercantilNC.DropDownWidth = 270
+        Me.cboEntidadMercantilNC.FormattingEnabled = True
+        Me.cboEntidadMercantilNC.Location = New System.Drawing.Point(705, 95)
+        Me.cboEntidadMercantilNC.Name = "cboEntidadMercantilNC"
+        Me.cboEntidadMercantilNC.Size = New System.Drawing.Size(219, 26)
+        Me.cboEntidadMercantilNC.TabIndex = 7
+        '
+        'cboEntidadMercantilRS
+        '
+        Me.cboEntidadMercantilRS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboEntidadMercantilRS.DropDownWidth = 270
+        Me.cboEntidadMercantilRS.FormattingEnabled = True
+        Me.cboEntidadMercantilRS.Location = New System.Drawing.Point(705, 59)
+        Me.cboEntidadMercantilRS.Name = "cboEntidadMercantilRS"
+        Me.cboEntidadMercantilRS.Size = New System.Drawing.Size(219, 26)
+        Me.cboEntidadMercantilRS.TabIndex = 4
         '
         'lblPais
         '
@@ -2720,31 +2740,11 @@ Partial Class FrmContacto
         Me.cboDomicilioPais.TabIndex = 1
         Me.cboDomicilioPais.Visible = False
         '
-        'cboEntidadMercantilRS
-        '
-        Me.cboEntidadMercantilRS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboEntidadMercantilRS.DropDownWidth = 270
-        Me.cboEntidadMercantilRS.FormattingEnabled = True
-        Me.cboEntidadMercantilRS.Location = New System.Drawing.Point(705, 59)
-        Me.cboEntidadMercantilRS.Name = "cboEntidadMercantilRS"
-        Me.cboEntidadMercantilRS.Size = New System.Drawing.Size(219, 26)
-        Me.cboEntidadMercantilRS.TabIndex = 4
-        '
-        'cboEntidadMercantilNC
-        '
-        Me.cboEntidadMercantilNC.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboEntidadMercantilNC.DropDownWidth = 270
-        Me.cboEntidadMercantilNC.FormattingEnabled = True
-        Me.cboEntidadMercantilNC.Location = New System.Drawing.Point(705, 95)
-        Me.cboEntidadMercantilNC.Name = "cboEntidadMercantilNC"
-        Me.cboEntidadMercantilNC.Size = New System.Drawing.Size(219, 26)
-        Me.cboEntidadMercantilNC.TabIndex = 7
-        '
         'FrmContacto
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        Me.ClientSize = New System.Drawing.Size(1307, 700)
+        Me.ClientSize = New System.Drawing.Size(1303, 696)
         Me.ControlBox = False
         Me.Controls.Add(Me.btnHabilitar)
         Me.Controls.Add(Me.btnGuardaGeneral)
