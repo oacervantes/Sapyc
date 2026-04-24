@@ -248,6 +248,8 @@ Partial Class FrmContacto
         Me.txtDomicilioExtDireccion1 = New System.Windows.Forms.TextBox()
         Me.txtDomicilioExtEstado = New System.Windows.Forms.TextBox()
         Me.cboDomicilioPais = New System.Windows.Forms.ComboBox()
+        Me.cboEntidadMercantilRS = New System.Windows.Forms.ComboBox()
+        Me.cboEntidadMercantilNC = New System.Windows.Forms.ComboBox()
         Me.panMenu.SuspendLayout()
         Me.panMensajesError.SuspendLayout()
         Me.panDatosGenerales.SuspendLayout()
@@ -505,6 +507,8 @@ Partial Class FrmContacto
         'gpBoxDatosDG
         '
         Me.gpBoxDatosDG.Controls.Add(Me.gridClientesSAT)
+        Me.gpBoxDatosDG.Controls.Add(Me.cboEntidadMercantilNC)
+        Me.gpBoxDatosDG.Controls.Add(Me.cboEntidadMercantilRS)
         Me.gpBoxDatosDG.Controls.Add(Me.lblPais)
         Me.gpBoxDatosDG.Controls.Add(Me.cboTipoEntidad)
         Me.gpBoxDatosDG.Controls.Add(Me.txtPaisProspecto)
@@ -616,7 +620,7 @@ Partial Class FrmContacto
         '
         Me.txtRazonSocial.Location = New System.Drawing.Point(153, 60)
         Me.txtRazonSocial.Name = "txtRazonSocial"
-        Me.txtRazonSocial.Size = New System.Drawing.Size(771, 25)
+        Me.txtRazonSocial.Size = New System.Drawing.Size(536, 25)
         Me.txtRazonSocial.TabIndex = 3
         '
         'lblIdSAC
@@ -1223,7 +1227,7 @@ Partial Class FrmContacto
         '
         Me.txtNombreComercial.Location = New System.Drawing.Point(153, 96)
         Me.txtNombreComercial.Name = "txtNombreComercial"
-        Me.txtNombreComercial.Size = New System.Drawing.Size(771, 25)
+        Me.txtNombreComercial.Size = New System.Drawing.Size(536, 25)
         Me.txtNombreComercial.TabIndex = 6
         '
         'txtIndustria
@@ -2716,6 +2720,26 @@ Partial Class FrmContacto
         Me.cboDomicilioPais.TabIndex = 1
         Me.cboDomicilioPais.Visible = False
         '
+        'cboEntidadMercantilRS
+        '
+        Me.cboEntidadMercantilRS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboEntidadMercantilRS.DropDownWidth = 270
+        Me.cboEntidadMercantilRS.FormattingEnabled = True
+        Me.cboEntidadMercantilRS.Location = New System.Drawing.Point(705, 59)
+        Me.cboEntidadMercantilRS.Name = "cboEntidadMercantilRS"
+        Me.cboEntidadMercantilRS.Size = New System.Drawing.Size(219, 26)
+        Me.cboEntidadMercantilRS.TabIndex = 4
+        '
+        'cboEntidadMercantilNC
+        '
+        Me.cboEntidadMercantilNC.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboEntidadMercantilNC.DropDownWidth = 270
+        Me.cboEntidadMercantilNC.FormattingEnabled = True
+        Me.cboEntidadMercantilNC.Location = New System.Drawing.Point(705, 95)
+        Me.cboEntidadMercantilNC.Name = "cboEntidadMercantilNC"
+        Me.cboEntidadMercantilNC.Size = New System.Drawing.Size(219, 26)
+        Me.cboEntidadMercantilNC.TabIndex = 7
+        '
         'FrmContacto
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -3021,4 +3045,6 @@ Partial Class FrmContacto
     Friend WithEvents txtOtroServicio As TextBox
     Friend WithEvents cboTipoEntidad As ComboBox
     Friend WithEvents lblTipoEntidad As Label
+    Friend WithEvents cboEntidadMercantilNC As ComboBox
+    Friend WithEvents cboEntidadMercantilRS As ComboBox
 End Class

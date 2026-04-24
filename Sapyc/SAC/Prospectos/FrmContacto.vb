@@ -15,7 +15,7 @@ Public Class FrmContacto
     Private Const DOMICILIO As String = "DOMICILIO"
 
     Private dtCvesProspectos, dtProspectos, dtRfc, dtIdSac, dtServicios, dtServiciosCarga As New DataTable
-    Private dtDatosGenerales, dtServiciosDG As New DataTable
+    Private dtDatosGenerales, dtServiciosDG, dtMercantilesRS, dtMercantilesNC As New DataTable
     Private dtContactoInicial As New DataTable
     Private dtComoSeEntero, dtMedioContacto, dtAcercamiento As New DataTable
     Private dtDomicilio, dtPaisDomicilio, dtColoniasDomicilio, dtMunicipiosDomicilio, dtEstadosDomicilio As New DataTable
@@ -81,6 +81,8 @@ Public Class FrmContacto
         ListarPaisResidencia()
         ListarTipoEntidad()
         ListarModalidades()
+        ListarEntidadesMercantilesRS()
+        ListarEntidadesMercantilesNC
         ListarOficinas()
         ListarDivisiones()
         ListarServiciosDatosGenerales()
@@ -1875,6 +1877,65 @@ Public Class FrmContacto
         End Try
     End Sub
 
+    Private Sub ListarEntidadesMercantilesRS()
+        Try
+            Dim sTabla As String = "tbEntidadMercantilRS"
+
+            With ds.Tables
+                LimpiarConsultaTabla(ds.Tables, sTabla)
+
+                With clsLocal
+                    .subClearParameters()
+                    .subAddParameter("@iOpcion", 8, SqlDbType.Int, ParameterDirection.Input)
+                End With
+
+                .Add(clsLocal.funExecuteSPDataTable("paDatosAsignacionSACDatosGenerales", sTabla))
+
+                dtMercantilesRS = .Item(sTabla)
+            End With
+
+            If dtMercantilesRS.Rows.Count > 0 Then
+                cboEntidadMercantilRS.DataSource = dtMercantilesRS
+
+                cboEntidadMercantilRS.ValueMember = "idSociedad"
+                cboEntidadMercantilRS.DisplayMember = "sCveSociedad"
+            End If
+        Catch ex As Exception
+            'insertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarModalidades()")
+            MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
+            dtMercantilesRS = Nothing
+        End Try
+    End Sub
+    Private Sub ListarEntidadesMercantilesNC()
+        Try
+            Dim sTabla As String = "tbEntidadMercantilNC"
+
+            With ds.Tables
+                LimpiarConsultaTabla(ds.Tables, sTabla)
+
+                With clsLocal
+                    .subClearParameters()
+                    .subAddParameter("@iOpcion", 8, SqlDbType.Int, ParameterDirection.Input)
+                End With
+
+                .Add(clsLocal.funExecuteSPDataTable("paDatosAsignacionSACDatosGenerales", sTabla))
+
+                dtMercantilesNC = .Item(sTabla)
+            End With
+
+            If dtMercantilesNC.Rows.Count > 0 Then
+                cboEntidadMercantilNC.DataSource = dtMercantilesNC
+
+                cboEntidadMercantilNC.ValueMember = "idSociedad"
+                cboEntidadMercantilNC.DisplayMember = "sCveSociedad"
+            End If
+        Catch ex As Exception
+            'insertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarModalidades()")
+            MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
+            dtMercantilesNC = Nothing
+        End Try
+    End Sub
+
 #End Region
 
 #Region "CONTACTO INICIAL"
@@ -2543,8 +2604,18 @@ Public Class FrmContacto
             bValidacion = False
         End If
 
+        If cboEntidadMercantilRS.SelectedValue = 0 Then
+            sMsgDatosGenerales &= "- Especifíque la entidad mercantil de la razón social." & vbNewLine & vbNewLine
+            bValidacion = False
+        End If
+
         If Trim(txtNombreComercial.Text) = "" Then
             sMsgDatosGenerales &= "- Especifíque el nombre comercial del prospecto." & vbNewLine & vbNewLine
+            bValidacion = False
+        End If
+
+        If cboEntidadMercantilNC.SelectedValue = 0 Then
+            sMsgDatosGenerales &= "- Especifíque la entidad mercantil del nombre comercial." & vbNewLine & vbNewLine
             bValidacion = False
         End If
 
