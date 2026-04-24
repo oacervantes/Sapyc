@@ -234,7 +234,7 @@ Public Class FrmContacto
 
             If MsgBox(sMsgAviso, MsgBoxStyle.Question + MsgBoxStyle.YesNo, My.Settings.NOM_SYS) = MsgBoxResult.Yes Then
                 For Each ser As DataRow In dtServicios.Rows
-                    InsertarPropuesta(ser.Item("CVE"), ser.Item("CVEOTROS"))
+                    InsertarPropuesta(ser.Item("CVE"), ser.Item("CVEOTROS"), ser.Item("CVEOFI"), ser.Item("CVEAREA"))
                 Next
 
                 'EnvioCorreoSocio()
@@ -373,33 +373,6 @@ Public Class FrmContacto
                 '        ListarDomicilio()
 
         End Select
-    End Sub
-    Private Sub ValidaNormatividad()
-        bMarco = False
-
-        For Each dr As DataRow In dtServicios.Rows
-
-            If dr("CVEAREA") = "AUD" Then
-                rdEntidadSupervisadaSi.Checked = True
-                rdEntidadSupervisadaNo.Checked = False
-                cboEntidadSupervisada.SelectedIndex = 0
-
-                rdEntidadSupervisadaSi.AutoCheck = False
-                rdEntidadSupervisadaNo.AutoCheck = False
-
-                bMarco = True
-                Exit For
-            End If
-
-            rdEntidadSupervisadaSi.Checked = False
-            rdEntidadSupervisadaNo.Checked = False
-            cboEntidadSupervisada.SelectedIndex = 0
-
-            rdEntidadSupervisadaSi.AutoCheck = True
-            rdEntidadSupervisadaNo.AutoCheck = True
-
-        Next
-
     End Sub
 
 #Region "DATOS GENERALES"
@@ -923,14 +896,14 @@ Public Class FrmContacto
             dtProspectos = Nothing
         End Try
     End Sub
-    Private Sub InsertarPropuesta(idServicio As Integer, bOtros As Boolean)
+    Private Sub InsertarPropuesta(idServicio As Integer, bOtros As Boolean, sCveOfi As String, sCveArea As String)
         Try
             With clsLocal
                 .subClearParameters()
                 .subAddParameter("@iOpcion", 1, SqlDbType.Int, ParameterDirection.Input)
                 .subAddParameter("@iPeriodo", iPeriodoFirma, SqlDbType.Int, ParameterDirection.Input)
-                .subAddParameter("@sCveOfi", cboOficina.SelectedValue, SqlDbType.VarChar, ParameterDirection.Input)
-                .subAddParameter("@sCveArea", cboDivision.SelectedValue, SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@sCveOfi", sCveOfi, SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@sCveArea", sCveArea, SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@idServicio", idServicio, SqlDbType.Int, ParameterDirection.Input)
                 .subAddParameter("@idSAC", idSAC, SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@sUsuario", sCveUsuario, SqlDbType.VarChar, ParameterDirection.Input)
@@ -1139,6 +1112,32 @@ Public Class FrmContacto
             MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
             dtDivisiones = Nothing
         End Try
+    End Sub
+    Private Sub ValidaNormatividad()
+        bMarco = False
+
+        For Each dr As DataRow In dtServicios.Rows
+
+            If dr("CVEAREA") = "AUD" Then
+                rdEntidadSupervisadaSi.Checked = True
+                rdEntidadSupervisadaNo.Checked = False
+                cboEntidadSupervisada.SelectedIndex = 0
+
+                rdEntidadSupervisadaSi.AutoCheck = False
+                rdEntidadSupervisadaNo.AutoCheck = False
+
+                bMarco = True
+                Exit For
+            End If
+
+            rdEntidadSupervisadaSi.Checked = False
+            rdEntidadSupervisadaNo.Checked = False
+            cboEntidadSupervisada.SelectedIndex = 0
+
+            rdEntidadSupervisadaSi.AutoCheck = True
+            rdEntidadSupervisadaNo.AutoCheck = True
+
+        Next
     End Sub
 
 #Region "DATOS GENERALES"
@@ -1772,11 +1771,6 @@ Public Class FrmContacto
     End Sub
     Private Sub InsertarServiciosDatosGenerales(idServicio As Integer, bOtros As Boolean, sCveOfi As String, sCveArea As String)
         Try
-            'If txtOtroServicio.Text.Trim = "" And bOtros Then
-            '    MsgBox("Es necesario especificar el detalle del otro servicio para poder guardarlo.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
-            '    Exit Sub
-            'End If
-
             With clsLocal
                 .subClearParameters()
                 .subAddParameter("@iOpcion", 5, SqlDbType.Int, ParameterDirection.Input)
