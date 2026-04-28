@@ -1,4 +1,9 @@
 ﻿Imports System.Text.RegularExpressions
+Imports System.IO
+Imports PdfSharp.Drawing
+Imports PdfSharp.Drawing.Layout
+Imports PdfSharp.Pdf
+Imports PdfSharp.Fonts
 
 Public Class FrmContacto
 
@@ -15,7 +20,7 @@ Public Class FrmContacto
     Private Const DOMICILIO As String = "DOMICILIO"
 
     Private dtCvesProspectos, dtProspectos, dtRfc, dtIdSac, dtServicios, dtServiciosCarga As New DataTable
-    Private dtDatosGenerales, dtServiciosDG, dtMercantilesRS, dtMercantilesNC As New DataTable
+    Private dtDatosGenerales, dtServiciosDG, dtMercantilesRS, dtMercantilesNC, dtCorreosSolicitud As New DataTable
     Private dtContactoInicial As New DataTable
     Private dtComoSeEntero, dtMedioContacto, dtAcercamiento As New DataTable
     Private dtDomicilio, dtPaisDomicilio, dtColoniasDomicilio, dtMunicipiosDomicilio, dtEstadosDomicilio As New DataTable
@@ -31,8 +36,8 @@ Public Class FrmContacto
     Private sCveSoc, sNomSoc, sCorreoSoc As String
     Private sMsgDatosGenerales, sMsgContacto, sMsgAcercamiento, sMsgDomicilio, sMsgAviso, sServicios As String
 
-    Private bMarco = False, bOtros = False, bRefGTI = False, bCargaInfo As Boolean = False
-    Private CorreosSoc, sNombSocio, sMailSocio As String
+    Private bMarco = False, bOtros = False, bOtrosCarga = False, bRefGTI = False, bCargaInfo As Boolean = False
+    Private CorreosSoc, sNombSocio, sMailSocio, sNombreEncargado, sCorreoEncargado As String
     Public sCveOfi, sCveArea, sOficina, sArea As String
     Public iOrigen, iModifica, idSAC As Integer
 
@@ -42,6 +47,10 @@ Public Class FrmContacto
 
     Private Sub FrmContacto_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         panDatosGenerales.Visible = True
+
+        If GlobalFontSettings.FontResolver Is Nothing Then
+            GlobalFontSettings.FontResolver = New ArialFontResolver()
+        End If
 
         gridServicios.DataSource = bsSer
         DesplazamientoGrid(gridServicios)
@@ -240,7 +249,11 @@ Public Class FrmContacto
                     InsertarPropuesta(ser.Item("CVE"), ser.Item("CVEOTROS"), ser.Item("CVEOFI"), ser.Item("CVEAREA"))
                 Next
 
-                'EnvioCorreoSocio()
+                Dim Dr() As DataRow
+                Dr = dtCorreosSolicitud.Select("sCvepersona = 'SD'")
+
+                sNombreEncargado = Dr(0).Item("sTipoPersona").ToString()
+                sCorreoEncargado = Dr(0).Item("sCorreoPersona").ToString()
 
                 '============= Enviar correo a Independencia si se seleccionó el servicio 'OTROS' ==============
                 If bOtros Then
@@ -298,21 +311,10 @@ Public Class FrmContacto
         ListarDomicilio()
     End Sub
     Private Sub BtnGuardarAvance_Click(sender As Object, e As EventArgs) Handles btnGuardarAvance.Click
-        If MsgBox("¿Quieres guardar la información que has capturado hasta ahora? Ten en cuenta que, para poder asignar al prospecto al socio, es necesario que completes todos los datos.", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "SIAT") = MsgBoxResult.Yes Then
-            'InsertaGeneral()
-            'InsertarAcercamiento()
-            'InsertarContactoInicial()
-            'InsertarDomicilio()
-            'bCargaInfo = False
-            'txtMensaje.Text = ""
-            'panMensajesError.Visible = False
-            'MsgBox("Se guardaron los cambios correctamente.", MsgBoxStyle.Information, "SIAT")
-            'If iOrigen = 1 Then
-            '    DialogResult = DialogResult.OK
-            'ElseIf iOrigen = 2 Then
-            '    DialogResult = DialogResult.OK
-            'End If
-        End If
+        GenerarPDFProvisional(txtRazonSocial.Text, "SERVICIOS VARIOS")
+        'If MsgBox("¿Quieres guardar la información que has capturado hasta ahora? Ten en cuenta que, para poder asignar al prospecto al socio, es necesario que completes todos los datos.", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "SIAT") = MsgBoxResult.Yes Then
+
+        'End If
     End Sub
     Private Sub BtnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
         If bCargaInfo Then
@@ -1143,6 +1145,81 @@ Public Class FrmContacto
         Next
     End Sub
 
+    Private Sub ListarCorreosSolicitud()
+        Try
+            Dim sTabla As String = "tbCorreosEncargados"
+
+            With ds.Tables
+                LimpiarConsultaTabla(ds.Tables, sTabla)
+
+                With clsDatosSac
+                    .subClearParameters()
+                    .subAddParameter("@iOpcion", 1, SqlDbType.Int, ParameterDirection.Input)
+                End With
+
+                .Add(clsDatosSac.funExecuteSPDataTable("paCorreosSAC", sTabla))
+                dtCorreosSolicitud = .Item(sTabla)
+            End With
+        Catch ex As Exception
+            InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarCorreosSolicitud()")
+            MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
+            dtCorreosSolicitud = Nothing
+        End Try
+    End Sub
+
+    Private Sub EnvioCorreoProespectoNuevo() 'Este correo es para avisar al socio encargado de oficina, que se ha solicitado generar un folio con cobranza incompleta.
+        Dim sMensaje As String
+
+        Try
+            Dim sCorreos = "Octavio.A.Cervantes@mx.gt.com; Mario.Rodriguez@mx.gt.com"
+            Dim sCorreo As String() = sCorreos.Split(";")
+
+            sMensaje = "<html><head></head><body>" &
+            "<img src='cid:imagen1' alt='Salles, Sainz - Grant Thornton' style='width:300px;height:auto;'>" &
+            "<h1 style=""height: 50px; background: #4f2d7f; font-family: Calibri, Arial; color: #FFF; padding-right: 30px; text-align: center;"">Notificación de primer contacto con cliente prospecto</h1>" & vbNewLine & vbNewLine & vbNewLine &
+            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 20px; color: #4f2d7f; margin-left: 25px; margin-top: 20px; padding: 15px;"">Estimado : " & sNombreEncargado.TrimEnd(";") & ", </p> " & vbNewLine & vbNewLine &
+            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 16px; margin-left: 25px; margin-top: 20px; padding: 15px;"">Por medio del presente, le informo que hemos realizado el primer contacto con el cliente prospecto " & txtNombreComercial.Text.ToUpper.Trim() & ", quien a mostrado interés en nuestros servicios y ha solicitado recibir una propuesta formal. </p> " & vbNewLine & vbNewLine &
+            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 16px; margin-left: 25px; margin-top: 20px; padding: 15px;"">Para continuar con este proceso, solicitamos su apoyo para asignar al socio más idonéo para la elaboración y  prsentación de la propuesta de servicio, considerando la naturaleza del servicio, solicitado,la experiencia técnica requerida y la disponibilidad del socio.  </p> " & vbNewLine & vbNewLine &
+            "<table style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">" & vbNewLine &
+            "<p style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">Para cualquier aclaración sobre el tema contactar a Tatianal@mx.gt.com y yeritza@mx.gt.com" & vbNewLine &
+            "<hr>" &
+            "<p style=""margin-left: 20px; font-style: italic; font-family: Arial; font-size: 12px;"">Este es un correo automático, favor de no responder a esta cuenta.</p>" & vbNewLine &
+            "</body></html>"
+
+            EnviarCorreosHTML(sCorreo, sMensaje, "Notificación de primer contacto con cliente prospecto")
+        Catch ex As Exception
+            MsgBox("No ha sido posible enviar el correo debido a fallas con el servidor de correo.", MsgBoxStyle.Exclamation, "SIAT")
+        End Try
+    End Sub
+    Private Sub EnvioCorreoGestionRiesgo() 'Este correo es para avisar al socio encargado de oficina, que se ha solicitado generar un folio con cobranza incompleta.
+        Dim sMensaje As String
+
+        Try
+            Dim sCorreos = "Octavio.A.Cervantes@mx.gt.com; Mario.Rodriguez@mx.gt.com"
+            Dim sCorreo As String() = sCorreos.Split(";")
+
+            sMensaje = "<html><head></head><body>" &
+            "<img src='cid:imagen1' alt='Salles, Sainz - Grant Thornton' style='width:300px;height:auto;'>" &
+            "<h1 style=""height: 50px; background: #4f2d7f; font-family: Calibri, Arial; color: #FFF; padding-right: 30px; text-align: center;"">Notificación de primer contacto con cliente prospecto</h1>" & vbNewLine & vbNewLine & vbNewLine &
+            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 20px; color: #4f2d7f; margin-left: 25px; margin-top: 20px; padding: 15px;"">Estimado equipo de: " & sNombreEncargado.TrimEnd(";") & ", </p> " & vbNewLine & vbNewLine &
+            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 16px; margin-left: 25px; margin-top: 20px; padding: 15px;"">Por medio del presente, le informo que hemos realizado el primer contacto con el cliente prospecto " & txtNombreComercial.Text.ToUpper.Trim() & ", quien a mostrado interés en nuestros servicios y ha solicitado recibir una propuesta formal. </p> " & vbNewLine & vbNewLine &
+            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 16px; margin-left: 25px; margin-top: 20px; padding: 15px;"">Para continuar con este proceso, solicitamos su apoyo para realizar la revisión de la viabilidad para prestar el servicio que solicitaron marcado como otros y el cual se detalla en la soliciutud.   </p> " & vbNewLine & vbNewLine &
+            "<table style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">" & vbNewLine &
+            "<tr><td>Cliente:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & txtNombreComercial.ToString() & "</b></td></tr>" & vbNewLine &
+            "<tr><td>Servicio:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & txtOtroServicio.Text.ToUpper.ToUpper() & "</b></td></tr>" & vbNewLine &
+            "</table>" & vbNewLine &
+            "<p style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">Para cualquier aclaración sobre el tema contactar a Tatianal@mx.gt.com y yeritza@mx.gt.com" & vbNewLine &
+            "<hr>" &
+            "<p style=""margin-left: 20px; font-style: italic; font-family: Arial; font-size: 12px;"">Este es un correo automático, favor de no responder a esta cuenta.</p>" & vbNewLine &
+            "</body></html>"
+
+            EnviarCorreosHTML(sCorreo, sMensaje, "Notificación de primer contacto con cliente prospecto")
+
+        Catch ex As Exception
+            MsgBox("No ha sido posible enviar el correo debido a fallas con el servidor de correo.", MsgBoxStyle.Exclamation, "SIAT")
+        End Try
+    End Sub
+
 #Region "DATOS GENERALES"
 
     Private Sub Aplicar_FiltroNombre()
@@ -1770,6 +1847,7 @@ Public Class FrmContacto
                 .subAddParameter("@sGerenteRefGTI", txtGerenteGTI.Text, SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@sCorreoGerRefGTI", txtCorreoGerenteGTI.Text, SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@sEstadoRefGTI", txtEstadoGTI.Text, SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@sOtrosServicios", txtOtroServicio.Text, SqlDbType.VarChar, ParameterDirection.Input)
 
                 .funExecuteSP("paDatosAsignacionSACDatosGenerales")
             End With
@@ -1847,7 +1925,6 @@ Public Class FrmContacto
                     drServicios("DESCRIPCION") = row.Item("DESCRIPCION")
                     dtServicios.Rows.InsertAt(drServicios, dtServicios.Rows.Count)
 
-
                     drServicios = dtServiciosCarga.NewRow()
                     drServicios("CVE") = row.Item("idServicio")
                     drServicios("CVEOTROS") = row.Item("bOtros")
@@ -1859,12 +1936,14 @@ Public Class FrmContacto
                     drServicios("DESCRIPCION") = row.Item("DESCRIPCION")
                     dtServiciosCarga.Rows.InsertAt(drServicios, dtServiciosCarga.Rows.Count)
 
-                    If bOtros = False Then
-                        bOtros = row.Item("bOtros")
+                    If bOtrosCarga = False Then
+                        bOtrosCarga = row.Item("bOtros")
                     End If
 
-                    If bOtros Then
+                    If bOtrosCarga Then
+                        bOtros = True
                         sOtroServicios = row.Item("sOtrosServicios")
+                        bOtrosCarga = False
                     End If
                 Next
 
@@ -2878,5 +2957,177 @@ Public Class FrmContacto
     End Function
 
 #End Region
+
+    Private Sub GenerarPDFProvisional(sNomCte As String, sServicio As String)
+        Dim pdfDoc As New PdfDocument
+        Dim pdfPage As PdfPage
+        Dim fontAgua As New XFont("Arial", 55, XFontStyleEx.Bold)
+        Dim fontTxt As New XFont("Arial", 11, XFontStyleEx.Bold)
+        Dim fontTxtCam As New XFont("Arial", 9.5, XFontStyleEx.Bold)
+        Dim fontTxtReg As New XFont("Arial", 9.5, XFontStyleEx.Regular)
+        Dim fontTxtNot As New XFont("Arial", 7.7, XFontStyleEx.Italic)
+        Dim fontTxtRef As New XFont("Arial", 12, XFontStyleEx.Bold)
+        Dim fontHdr As New XFont("Arial", 18, XFontStyleEx.Bold)
+        Dim fontHdr2 As New XFont("Arial", 16, XFontStyleEx.Bold)
+        Dim fontCte As New XFont("Arial", 14.5, XFontStyleEx.Bold)
+        Dim fontMsg As New XFont("Arial", 9.5, XFontStyleEx.Bold)
+        Dim image As XImage = XImage.FromFile("\\GTMEXVTS32\APLICA\CON2012\IMG\header_RD.jpg")
+        Dim linHdr As New XPen(XColors.Black, 1)
+        Dim linCte As New XPen(XColor.FromArgb(79, 45, 127), 1)
+        Dim linDet As New XPen(XColor.FromArgb(225, 225, 225), 1)
+        Dim back As New XSolidBrush(XColor.FromArgb(0, 167, 181))
+        Dim backRes As New XSolidBrush(XColor.FromArgb(79, 45, 127))
+        Dim backDet As New XSolidBrush(XColor.FromArgb(240, 240, 240))
+        Dim backNot As New XSolidBrush(XColor.FromArgb(220, 220, 220))
+        Dim backSom As New XSolidBrush(XColor.FromArgb(115, 115, 115))
+        Dim backAgua As New XSolidBrush(XColor.FromArgb(35, 255, 0, 0))
+
+        Dim iValX, iValY As Integer
+        Dim iValXCam As Integer = 30
+
+        Dim iValXDG As Integer = 215
+        Dim iValXCI As Integer = 215
+        Dim iValXAC As Integer = 215
+        Dim iValXDO As Integer = 30
+
+        Dim iValYDG As Integer = 120
+        Dim iValYCI As Integer = 270
+        Dim iValYAC As Integer = 420
+        Dim iValYDO As Integer = 420
+        Dim sNombreEmpresa As String = "SALLES-SAINZ, GRANT THORNTON, S.C."
+
+        'Comenzar con el llenado de información para el PDF
+        pdfDoc.Info.Author = sNombreEmpresa.ToUpper
+        pdfDoc.Info.Subject = "Datos de cliente prospecto"
+        pdfDoc.Info.Keywords = ""
+
+        pdfPage = pdfDoc.AddPage()
+        pdfPage.Size = PdfSharp.PageSize.Letter
+
+        iValX = pdfPage.MediaBox.Width
+        iValY = pdfPage.MediaBox.Height
+
+        Dim gra As XGraphics = XGraphics.FromPdfPage(pdfPage)
+        Dim tf As New XTextFormatter(gra)
+
+        '================ CABECERA ================
+        gra.DrawImage(image, 25, 20, image.PixelWidth * 0.7, image.PixelHeight * 0.7)
+        gra.DrawString("SOLICITUD CLIENTE PROSPECTO", fontHdr, New XSolidBrush(XColor.FromArgb(79, 45, 127)), New XRect(iValX - 250, 23, 220, 25), XStringFormats.CenterRight)
+        gra.DrawString("ID SAC: " & idSAC, fontHdr2, XBrushes.Black, New XRect(iValX - 250, 43, 220, 25), XStringFormats.CenterRight)
+
+        ''================ DATOS DEL CLIENTE ================
+        'gra.DrawString(sNomCte, fontCte, New XSolidBrush(XColor.FromArgb(79, 45, 127)), New XRect(30, 102, iValX - 30, 25), XStringFormats.CenterLeft)
+
+        '================ DATOS GENERALES ================
+        gra.DrawString("DATOS GENERALES", fontTxt, backRes, New XRect(iValXCam, 105, iValX - 60, 14), XStringFormats.CenterLeft)
+        gra.DrawRectangle(backSom, New XRect(iValXCam, iValYDG, iValX - 60, 2))
+        gra.DrawRectangle(backRes, New XRect(iValXCam, iValYDG, iValX - 60, 2))
+
+        AgregarTexto(gra, fontTxtCam, "Razón Social: ", iValXCam, 135, 85, 14)
+        AgregarTexto(gra, fontTxtReg, TextoCampo(sNomCte), iValXDG, 135, 85, 14)
+
+        AgregarTexto(gra, fontTxtCam, "Nombre Comercial: ", iValXCam, 150, 105, 14)
+        AgregarTexto(gra, fontTxtReg, TextoCampo(sNomCte), iValXDG, 150, 105, 14)
+
+        AgregarTexto(gra, fontTxtCam, "RFC: ", iValXCam, 165, 105, 14)
+        AgregarTexto(gra, fontTxtReg, TextoCampo(txtRFC.Text), iValXDG, 165, 105, 14)
+
+        AgregarTexto(gra, fontTxtCam, "Industria: ", iValXCam, 180, 105, 14)
+        AgregarTexto(gra, fontTxtReg, TextoCampo(txtIndustria.Text), iValXDG, 180, 105, 14)
+
+        AgregarTexto(gra, fontTxtCam, "¿Se requiere de personal bilingüe?: ", iValXCam, 195, 105, 14)
+        If rdIdiomaSi.Checked Then
+            AgregarTexto(gra, fontTxtReg, "Sí", iValXDG, 195, 105, 14)
+        Else
+            AgregarTexto(gra, fontTxtReg, "No", iValXDG, 195, 105, 14)
+        End If
+
+        AgregarTexto(gra, fontTxtCam, "Fecha de presentación de propuesta: ", iValXCam, 210, 105, 14)
+        AgregarTexto(gra, fontTxtReg, TextoCampo(txtFechaSolicitud.Value.ToShortDateString), iValXDG, 210, 105, 14)
+
+        AgregarTexto(gra, fontTxtCam, "Modalidad del trabajo: ", iValXCam, 225, 105, 14)
+        AgregarTexto(gra, fontTxtReg, TextoCampo(cboModalidades.SelectedItem("sModalidad")), iValXDG, 225, 105, 14)
+
+        '================ CONTACTO INICIAL ================
+        gra.DrawString("CONTACTO INICIAL", fontTxt, backRes, New XRect(iValXCam, 255, iValX - 60, 14), XStringFormats.CenterLeft)
+        gra.DrawRectangle(backSom, New XRect(iValXCam, iValYCI, iValX - 60, 2))
+        gra.DrawRectangle(backRes, New XRect(iValXCam, iValYCI, iValX - 60, 2))
+
+        AgregarTexto(gra, fontTxtCam, "Fecha del contacto inicial: ", iValXCam, 285, 105, 14)
+        AgregarTexto(gra, fontTxtReg, TextoCampo(txtContactoInicialFecha.Value.ToShortDateString), iValXCI, 285, 105, 14)
+
+        AgregarTexto(gra, fontTxtCam, "Persona que tuvo el primer contacto: ", iValXCam, 300, 105, 14)
+        AgregarTexto(gra, fontTxtReg, TextoCampo(txtContactoInicialPrimerContacto.Text), iValXCI, 300, 105, 14)
+
+        AgregarTexto(gra, fontTxtCam, "Nombre del Contacto: ", iValXCam, 315, 105, 14)
+        AgregarTexto(gra, fontTxtReg, TextoCampo(txtContactoInicialNombre.Text), iValXCI, 315, 105, 14)
+
+        AgregarTexto(gra, fontTxtCam, "Correo electrónico del Contacto: ", iValXCam, 330, 105, 14)
+        AgregarTexto(gra, fontTxtReg, TextoCampo(txtContactoInicialCorreo.Text), iValXCI, 330, 105, 14)
+
+        AgregarTexto(gra, fontTxtCam, "Cargo del Contacto: ", iValXCam, 345, 105, 14)
+        AgregarTexto(gra, fontTxtReg, TextoCampo(txtContactoInicialCargo.Text), iValXCI, 345, 105, 14)
+
+        AgregarTexto(gra, fontTxtCam, "Teléfono del Contacto: ", iValXCam, 360, 105, 14)
+        AgregarTexto(gra, fontTxtReg, TextoCampo(txtContactoInicialTelefono.Text), iValXCI, 360, 105, 14)
+
+        AgregarTexto(gra, fontTxtCam, "Web del Contacto: ", iValXCam, 375, 105, 14)
+        AgregarTexto(gra, fontTxtReg, TextoCampo(txtAcercamientoWebProspecto.Text), iValXCI, 375, 105, 14)
+
+        '================ ACERCAMIENTO ================
+        gra.DrawString("ACERCAMIENTO", fontTxt, backRes, New XRect(iValXCam, 405, iValX - 60, 14), XStringFormats.CenterLeft)
+        gra.DrawRectangle(backSom, New XRect(iValXCam, iValYAC, iValX - 60, 2))
+        gra.DrawRectangle(backRes, New XRect(iValXCam, iValYAC, iValX - 60, 2))
+
+        AgregarTexto(gra, fontTxtCam, "Medio de Contacto: ", iValXCam, 435, 105, 14)
+        AgregarTexto(gra, fontTxtReg, TextoCampo(cboAcercamientoMedioContacto.SelectedItem("sMedio")), iValXAC, 435, 105, 14)
+
+        AgregarTexto(gra, fontTxtCam, "¿Cómo se enteró de nosotros?: ", iValXCam, 450, 105, 14)
+        AgregarTexto(gra, fontTxtReg, TextoCampo(cboAcercamientoComoEntero.SelectedItem("sAcercamiento")), iValXAC, 450, 105, 14)
+
+        ''================ DOMICILIO ================
+        'gra.DrawString("DOMICILIO", fontTxt, backRes, New XRect(iValXCam, 405, iValX - 60, 14), XStringFormats.CenterLeft)
+        'gra.DrawRectangle(backSom, New XRect(iValXCam, iValYDO, iValX - 60, 2))
+        'gra.DrawRectangle(backRes, New XRect(iValXCam, iValYDO, iValX - 60, 2))
+
+
+
+        '================ PIE DE PÁGINA ================
+        'gra.DrawLine(linDet, 30, iValY - 35, iValX - 30, iValY - 35)
+        gra.DrawRectangle(backRes, New XRect(0, iValY - 35, iValX, iValY - 35))
+        gra.DrawEllipse(XBrushes.WhiteSmoke, New XRect(iValX - 40, iValY - 27, 20, 20))
+        gra.DrawString("1", fontTxt, New XSolidBrush(XColor.FromArgb(79, 45, 127)), New XRect(iValX - 38, iValY - 24, 10, 14), XStringFormats.CenterRight)
+
+        '================ GUARDAR ARCHIVO ================
+        Dim filename As String = QuitarCaracteres(sNomCte) & ".pdf"
+
+        If File.Exists(sRutaTemp & filename) Then
+            If ArchivoEnUso(sRutaTemp & filename) Then
+                MsgBox("Un archivo con el mismo nombre se encuentra abierto. Cierre este archivo e intente nuevamente.", MsgBoxStyle.Exclamation, "SIAT")
+            Else
+                pdfDoc.Save(sRutaTemp & filename)
+                pdfDoc.Close()
+            End If
+        Else
+            pdfDoc.Save(sRutaTemp & filename)
+            pdfDoc.Close()
+        End If
+    End Sub
+
+    Private Sub AgregarTexto(gra As XGraphics, font As XFont, sTexto As String, x As Integer, y As Integer, ancho As Integer, alto As Integer)
+        gra.DrawString(sTexto, font, XBrushes.Black, New XRect(x, y, ancho, alto), XStringFormats.CenterLeft)
+    End Sub
+
+    Private Function TextoCampo(sTexto As String) As String
+        Dim sCadena As String = ""
+
+        If sTexto.Trim = "" Then
+            sCadena = "Sin dato"
+        Else
+            sCadena = sTexto
+        End If
+
+        Return sCadena
+    End Function
 
 End Class

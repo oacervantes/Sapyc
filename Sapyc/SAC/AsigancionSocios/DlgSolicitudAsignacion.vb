@@ -38,8 +38,15 @@
         dlg.ShowDialog()
     End Sub
     Private Sub BtnEnviarAsignacion_Click(sender As Object, e As EventArgs) Handles btnEnviarAsignacion.Click
-        If MsgBox($"Se enviará una notificación a {sSocioEncargado} para autorizar la asignación del socio seleccionado en la propuesta {sNombreCte}. ¿Desea continuar?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, My.Settings.NOM_SYS) = MsgBoxResult.Yes Then
+        If sCveSocio = "" Then
+            MsgBox("No se ha seleccionado a uno socio(a) para su asignación.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
+            Exit Sub
+        End If
 
+        If MsgBox($"Se enviará una notificación a {sSocioEncargado} para autorizar la asignación del socio seleccionado en la propuesta {sNombreCte}. ¿Desea continuar?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, My.Settings.NOM_SYS) = MsgBoxResult.Yes Then
+            EnviarAsignacion()
+            EnviarCorreoAviso()
+            DialogResult = DialogResult.OK
         End If
     End Sub
     Private Sub BtnRechazarAsignacion_Click(sender As Object, e As EventArgs) Handles btnRechazarAsignacion.Click
@@ -125,6 +132,7 @@
                     .subAddParameter("@sCveArea", sCvearea, SqlDbType.VarChar, ParameterDirection.Input)
                     .subAddParameter("@idIdioma", idIdioma, SqlDbType.Int, ParameterDirection.Input)
                     .subAddParameter("@idServicio", idServicio, SqlDbType.Int, ParameterDirection.Input)
+                    .subAddParameter("@idIndustria", sCveInd, SqlDbType.VarChar, ParameterDirection.Input)
                 End With
 
                 .Add(clsDatosInv.funExecuteSPDataTable("paSACAsignaciones", sTabla))
@@ -161,6 +169,51 @@
             InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarCISocios()")
             MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
             dtCISocios = Nothing
+        End Try
+    End Sub
+
+    Private Sub EnviarAsignacion()
+        Try
+            With clsLocal
+                .subClearParameters()
+                .subAddParameter("@iOpcion", 9, SqlDbType.Int, ParameterDirection.Input)
+                .subAddParameter("@idSAC", idSac, SqlDbType.Int, ParameterDirection.Input)
+                .subAddParameter("@idPropuesta", idPropuesta, SqlDbType.Int, ParameterDirection.Input)
+                .subAddParameter("@sStatus", "A", SqlDbType.Char, ParameterDirection.Input)
+
+                .funExecuteSP("paDatosAsignacionSACPropuestas")
+            End With
+        Catch ex As Exception
+            InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "EnviarAsignacion()")
+            MsgBox("Por el momento no es posible , intente de nuevo más tarde.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
+        End Try
+    End Sub
+    Private Sub EnviarCorreoAviso() 'Este correo es para avisar al socio encargado de oficina, que se ha solicitado generar un folio con cobranza incompleta.
+        Dim sMensaje As String
+
+        Try
+            'sCorreos = "Octavio.A.Cervantes@mx.gt.com, Mario.Rodriguez@mx.gt.com"
+            Dim sCorreo As String() = {"Octavio.A.Cervantes@mx.gt.com", "Mario.Rodriguez@mx.gt.com"}
+            'Dim sCorreo As String() = {sMail}
+
+            sMensaje = "<html><head></head><body>" &
+            "<img src='cid:imagen1' alt='Salles, Sainz - Grant Thornton' style='width:300px;height:auto;'>" &
+            "<h1 style=""height: 50px; background: #4f2d7f; font-family: Calibri, Arial; color: #FFF; padding-right: 30px; text-align: center;"">AUTORIZACIÓN DE SOCIO ASIGNADO</h1>" & vbNewLine & vbNewLine & vbNewLine &
+            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 20px; color: #4f2d7f; margin-left: 25px; margin-top: 20px; padding: 15px;"">Estimada/o: " & sSocioEncargado & ", </p> " & vbNewLine & vbNewLine &
+            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 16px; margin-left: 25px; margin-top: 20px; padding: 15px;"">Queremos informarle que se ha sido asignado el socio para ofrecer el servicio solicitado por el prospecto para su autorización.</p> " & vbNewLine & vbNewLine &
+            "<table style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">" & vbNewLine &
+            "<tr><td>Socio asignado:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & sNombreSocio & "</b></td></tr>" & vbNewLine &
+            "<tr><td>Nombre del Prospecto:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & sNombreCte & "</b></td></tr>" & vbNewLine &
+            "<tr><td>Servicio solicitado:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & sServicio & "</b></td></tr>" & vbNewLine &
+            "</table>" & vbNewLine &
+            "<p style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">Por favor, revise la información dentro de SIAT > SAPYC > SAC > Autorización de Asignaciones." & vbNewLine &
+            "<hr>" &
+            "<p style=""margin-left: 20px; font-style: italic; font-family: Arial; font-size: 12px;"">Este es un correo automático, favor de no responder a esta cuenta.</p>" & vbNewLine &
+            "</body></html>"
+
+            EnviarCorreosHTML(sCorreo, sMensaje, "Autorización de socio asignado")
+        Catch ex As Exception
+            MsgBox("No ha sido posible enviar el correo debido a fallas con el servidor de correo.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
         End Try
     End Sub
 

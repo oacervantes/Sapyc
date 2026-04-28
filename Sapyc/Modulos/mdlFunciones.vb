@@ -1,5 +1,6 @@
 ﻿Imports System.Net
 Imports System.Net.Mail
+Imports System.Text.RegularExpressions
 
 Module mdlFunciones
 
@@ -662,6 +663,23 @@ Module mdlFunciones
         End If
 
         Return años
+    End Function
+
+    Public Function QuitarCaracteres(sTexto As String) As String
+        Dim sCadena As String
+
+        sCadena = Regex.Replace(sTexto, "[.,;!?/\""]", "")
+
+        Return sCadena
+    End Function
+    Public Function ArchivoEnUso(filePath As String) As Boolean
+        Try
+            Using fs As New IO.FileStream(filePath, IO.FileMode.Open, IO.FileAccess.Read, IO.FileShare.None)
+            End Using
+        Catch ex As IO.IOException
+            Return True ' El archivo está en uso
+        End Try
+        Return False ' El archivo no está en uso
     End Function
 
 End Module
