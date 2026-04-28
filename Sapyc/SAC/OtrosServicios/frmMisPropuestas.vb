@@ -31,6 +31,10 @@
                 frm.sServicio = gridProspectos.CurrentRow.Cells("IdServicio").Value
                 frm.sDescTrabajo = gridProspectos.CurrentRow.Cells("SOLICITADO").Value
                 frm.idPropuesta = gridProspectos.CurrentRow.Cells("idProp").Value
+                frm.sCveUsr = gridProspectos.CurrentRow.Cells("sCveUsr").Value
+                frm.sNombreSolicito = gridProspectos.CurrentRow.Cells("NOMBRE").Value
+                frm.sMailSolicito = gridProspectos.CurrentRow.Cells("EMAIL").Value
+
 
                 If frm.ShowDialog = DialogResult.OK Then
                     ListarSolicitudes()
@@ -73,6 +77,10 @@
                 gridProspectos.Columns("sCveOficina").Visible = False
                 gridProspectos.Columns("sCveDivision").Visible = False
                 gridProspectos.Columns("IdServicio").Visible = False
+
+                gridProspectos.Columns("sCveUsr").Visible = False
+                gridProspectos.Columns("NOMBRE").Visible = False
+                gridProspectos.Columns("EMAIL").Visible = False
 
 
                 ConfigurarColumnasGrid(gridProspectos, "IdSac", "CVE. SAC", 65, 3, False)
