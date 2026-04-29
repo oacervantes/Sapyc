@@ -1,4 +1,5 @@
-﻿Imports System.Net
+﻿Imports System.IO
+Imports System.Net
 Imports System.Net.Mail
 Imports System.Text.RegularExpressions
 
@@ -681,5 +682,29 @@ Module mdlFunciones
         End Try
         Return False ' El archivo no está en uso
     End Function
+    Public Function ConvertirPDFBytes(nombreArchivo As String) As Byte()
+        If Not File.Exists(nombreArchivo) Then
+            Return Nothing
+        End If
+
+        Try
+            Using fs As New FileStream(nombreArchivo, FileMode.Open, FileAccess.Read)
+
+                ' se usa un arreglo de bytes del tamaño del file stream -1, en el arreglo se guardará 
+                ' la secuencia en bytes del archivo
+
+                Dim length As Integer = fs.Length - 1
+                Dim data() As Byte = New Byte(length) {}
+
+                ' Al leer la secuencia, se rellenará la matriz.                
+                fs.Read(data, 0, length)
+                Return data
+            End Using
+        Catch ex As Exception
+            InsertarErrorLog(202, "SIAT Notas y Cobranza - Convertir PDF a Bytes", ex.Message, sCveUsuario, "ConvertirPDFBytes()")
+            Throw
+        End Try
+    End Function
+
 
 End Module

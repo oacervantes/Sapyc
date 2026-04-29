@@ -291,7 +291,7 @@ Module Util
 
         Return lacad
     End Function
-    Public Function EnviarCorreosHTML(sCtasDestino() As String, sMensajeCorreo As String, sTitulo As String, Optional cPrioridad As Char = "N") As Boolean
+    Public Function EnviarCorreosHTML(sCtasDestino() As String, sMensajeCorreo As String, sTitulo As String, Optional cPrioridad As Char = "N", Optional archivos As Attachment = Nothing) As Boolean
         Dim bEnviado As Boolean = False
 
         If sCtasDestino.Count <= 0 Then
@@ -331,6 +331,10 @@ Module Util
 
             'correo.Body = sMensajeCorreo
             correo.AlternateViews.Add(htmlView)
+
+            If archivos IsNot Nothing Then
+                correo.Attachments.Add(archivos)
+            End If
 
             'Configuracion del servidor
             Dim Servidor As New SmtpClient With {
