@@ -233,6 +233,7 @@
                 .subClearParameters()
                 .subAddParameter("@iOpcion", 2, SqlDbType.Int, ParameterDirection.Input)
                 .subAddParameter("@sUsuario", sCveUsuario, SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@sCorreoUsuario", sCorreoUsuario, SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@idAsignacion", 0, SqlDbType.Int, ParameterDirection.Output)
 
                 .funExecuteSP("paSolicitudesSAC")

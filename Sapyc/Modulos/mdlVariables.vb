@@ -27,7 +27,7 @@
 
     Friend sFolderExcel, sFolderUserExcel, sFolderUserPrincipal, sFolderReportes, sRutaReportes, sRutaBDAccess As String
 
-    Friend sCveUsuario As String = "0008"
+    Friend sCveUsuario As String
     Friend sNombreUsuario As String = "DIRECCIÓN GENERAL"
     Friend sFmtDbl As String = "#,##0.00"
     Friend sRutaTemp As String = "C:\SALLES\TEMP\"
