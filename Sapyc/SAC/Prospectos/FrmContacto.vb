@@ -263,6 +263,8 @@ Public Class FrmContacto
 
                     GenerarPDFProvisional(txtRazonSocial.Text & ", " & cboEntidadMercantilRS.SelectedItem("sCveSociedad"), txtNombreComercial.Text & ", " & cboEntidadMercantilNC.SelectedItem("sCveSociedad"))
                     EnvioCorreoProespectoNuevo(txtRazonSocial.Text & ", " & cboEntidadMercantilRS.SelectedItem("sCveSociedad"))
+                Else
+                    MsgBox("Por el momento no es posible enviar el correo de notificación de asignación de socio.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
                 End If
 
                 '============= Enviar correo a Independencia si se seleccionó el servicio 'OTROS' ==============
@@ -941,29 +943,19 @@ Public Class FrmContacto
     End Sub
     Private Sub EnvioCorreoIndependencia()
         Try
-            With ds.Tables
-                With clsLocal
-                    .subClearParameters()
-                    .subAddParameter("@iOpcion", 10, SqlDbType.Int, ParameterDirection.Input)
-                    .subAddParameter("@sCveSocio", "", SqlDbType.VarChar, ParameterDirection.Input)
+            Dim Dr() As DataRow
 
-                End With
+            If dtCorreosSolicitud.Rows.Count = 0 Then
+                Dr = dtCorreosSolicitud.Select("sCvepersona = 'GR'")
+                sNombreEncargado = Dr(0).Item("sTipoPersona").ToString()
+                sCorreoEncargado = Dr(0).Item("sCorreoPersona").ToString()
 
-                If .Contains("paControlSac") Then
-                    .Remove("paControlSac")
-                End If
+                'Dim sCorreo As String() = sMailSocio.Split(";")
+                EnvioCorreoGestionRiesgo(sMailSocio)
+            Else
+                MsgBox("Por el momento no es posible enviar el correo de notificación de revisión de otros servicio.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
+            End If
 
-                .Add(clsLocal.funExecuteSPDataTable("paControlSac"))
-
-                dtCorreos = .Item("paControlSac")
-                If dtCorreos.Rows.Count > 0 Then
-                    sMailSocio = dtCorreos(0)("EMAIL").ToString()
-                    sNombSocio = dtCorreos(0)("NOMBRE").ToString()
-                End If
-            End With
-
-            'Dim sCorreo As String() = sMailSocio.Split(";")
-            EnvioCorreoGestionRiesgo(sMailSocio)
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
         End Try
@@ -1160,7 +1152,7 @@ Public Class FrmContacto
             sMensaje = "<html><head></head><body>" &
             "<img src='cid:imagen1' alt='Salles, Sainz - Grant Thornton' style='width:300px;height:auto;'>" &
             "<h1 style=""height: 50px; background: #4f2d7f; font-family: Calibri, Arial; color: #FFF; padding-right: 30px; text-align: center;"">SOLICITUD DE REVISIÓN DE OTROS SERVICIOS</h1>" & vbNewLine & vbNewLine & vbNewLine &
-            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 20px; color: #4f2d7f; margin-left: 25px; margin-top: 20px; padding: 15px;"">Estimado equipo : Gestión de riesgos , </p> " & vbNewLine & vbNewLine &
+            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 20px; color: #4f2d7f; margin-left: 25px; margin-top: 20px; padding: 15px;"">Estimado equipo : " & sNombreEncargado.ToUpper() & " , </p> " & vbNewLine & vbNewLine &
             "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 16px; margin-left: 25px; margin-top: 20px; padding: 15px;"">Por medio del presente, le informo que hemos realizado el primer contacto con el cliente prospecto " & txtRazonSocial.Text.ToUpper.Trim() & " " & "," & " " & cboEntidadMercantilRS.SelectedItem("sCveSociedad") & " , quien a mostrado interés en nuestros servicios y ha solicitado recibir una propuesta formal. </p> " & vbNewLine & vbNewLine &
             "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 16px; margin-left: 25px; margin-top: 20px; padding: 15px;"">Para continuar con este proceso, solicitamos su apoyo para realizar la revisión de la viabilidad para prestar el servicio que solicitaron marcado como otros y el cual se detalla en la soliciutud.   </p> " & vbNewLine & vbNewLine &
             "<table style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">" & vbNewLine &
