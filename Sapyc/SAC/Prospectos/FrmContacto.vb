@@ -2972,17 +2972,12 @@ Public Class FrmContacto
         Dim fontTxtSerReg As New XFont("Calibri", 9.5, XFontStyleEx.Regular)
 
         Dim image As XImage = XImage.FromFile("\\GTMEXVTS32\APLICA\CON2012\IMG\header_RD.jpg")
-        Dim linHdr As New XPen(XColors.Black, 1)
-        Dim linCte As New XPen(XColor.FromArgb(79, 45, 127), 1)
-        Dim linDet As New XPen(XColor.FromArgb(225, 225, 225), 1)
+
         Dim negro As New XSolidBrush(XColor.FromArgb(0, 0, 0))
         Dim blanco As New XSolidBrush(XColor.FromArgb(255, 255, 255))
         Dim back As New XSolidBrush(XColor.FromArgb(0, 167, 181))
         Dim backRes As New XSolidBrush(XColor.FromArgb(79, 45, 127))
-        Dim backDet As New XSolidBrush(XColor.FromArgb(240, 240, 240))
-        Dim backNot As New XSolidBrush(XColor.FromArgb(220, 220, 220))
         Dim backSom As New XSolidBrush(XColor.FromArgb(115, 115, 115))
-        Dim backAgua As New XSolidBrush(XColor.FromArgb(35, 255, 0, 0))
 
         Dim iValX, iValY As Integer
         Dim iValXCam As Integer = 30
@@ -2998,11 +2993,10 @@ Public Class FrmContacto
         Dim iValYAC As Integer = 420
         Dim iValYDO As Integer = 420
         Dim iValYFS As Integer = (15 * (dtServicios.Rows.Count + 2))
-        Dim sNombreEmpresa As String = "SALLES-SAINZ, GRANT THORNTON, S.C."
 
         'Comenzar con el llenado de información para el PDF
         pdfDoc.Info.Title = "SOLICITUD REGISTRO DE CLIENTE PROSPECTO - " & sNomCte
-        pdfDoc.Info.Author = sNombreEmpresa.ToUpper
+        pdfDoc.Info.Author = "SALLES-SAINZ, GRANT THORNTON, S.C."
         pdfDoc.Info.Subject = "Datos de cliente prospecto"
         pdfDoc.Info.Keywords = "CLIENTE, PROSPECTO, SOLICITUD"
 
@@ -3022,7 +3016,6 @@ Public Class FrmContacto
 
         '================ DATOS GENERALES ================
         gra.DrawString("DATOS GENERALES", fontTxt, backRes, New XRect(iValXCam, 105, iValX - 60, 14), XStringFormats.CenterLeft)
-        gra.DrawRectangle(backSom, New XRect(iValXCam, iValYDG, iValX - 60, 1.5))
         gra.DrawRectangle(backRes, New XRect(iValXCam, iValYDG, iValX - 60, 1.5))
 
         AgregarTexto(gra, fontTxtCam, negro, "Razón Social: ", iValXCam, 135, 85, 14, 1)
@@ -3066,7 +3059,6 @@ Public Class FrmContacto
 
         '================ CONTACTO INICIAL ================
         gra.DrawString("CONTACTO INICIAL", fontTxt, backRes, New XRect(iValXCam, 255 + iValYFS, iValX - 60, 14), XStringFormats.CenterLeft)
-        gra.DrawRectangle(backSom, New XRect(iValXCam, iValYCI + iValYFS, iValX - 60, 1.5))
         gra.DrawRectangle(backRes, New XRect(iValXCam, iValYCI + iValYFS, iValX - 60, 1.5))
 
         AgregarTexto(gra, fontTxtCam, negro, "Fecha del contacto inicial: ", iValXCam, 285 + iValYFS, 105, 14, 1)
@@ -3092,7 +3084,6 @@ Public Class FrmContacto
 
         '================ ACERCAMIENTO ================
         gra.DrawString("ACERCAMIENTO", fontTxt, backRes, New XRect(iValXCam, 405 + iValYFS, iValX - 60, 14), XStringFormats.CenterLeft)
-        gra.DrawRectangle(backSom, New XRect(iValXCam, iValYAC + iValYFS, iValX - 60, 1.5))
         gra.DrawRectangle(backRes, New XRect(iValXCam, iValYAC + iValYFS, iValX - 60, 1.5))
 
         AgregarTexto(gra, fontTxtCam, negro, "Medio de Contacto: ", iValXCam, 435 + iValYFS, 105, 14, 1)
