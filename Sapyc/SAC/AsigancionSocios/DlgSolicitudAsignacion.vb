@@ -180,6 +180,7 @@
                 .subAddParameter("@idSAC", idSac, SqlDbType.Int, ParameterDirection.Input)
                 .subAddParameter("@idPropuesta", idPropuesta, SqlDbType.Int, ParameterDirection.Input)
                 .subAddParameter("@sStatus", "A", SqlDbType.Char, ParameterDirection.Input)
+                .subAddParameter("@sCveSocio", sCveSocio, SqlDbType.VarChar, ParameterDirection.Input)
 
                 .funExecuteSP("paDatosAsignacionSACPropuestas")
             End With
