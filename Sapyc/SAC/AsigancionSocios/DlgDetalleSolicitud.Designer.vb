@@ -24,6 +24,8 @@ Partial Class DlgDetalleSolicitud
     Private Sub InitializeComponent()
         Me.panPrincipal = New System.Windows.Forms.Panel()
         Me.panSolicitud = New System.Windows.Forms.Panel()
+        Me.lblNivelRiesgo = New System.Windows.Forms.Label()
+        Me.txtNivelRiesgo = New System.Windows.Forms.Label()
         Me.lblMotivoRechazo = New System.Windows.Forms.Label()
         Me.txtMotivoRechazo = New System.Windows.Forms.Label()
         Me.panLinea = New System.Windows.Forms.Panel()
@@ -42,8 +44,6 @@ Partial Class DlgDetalleSolicitud
         Me.txtServicio = New System.Windows.Forms.Label()
         Me.txtProspecto = New System.Windows.Forms.Label()
         Me.btnCerrar = New System.Windows.Forms.Button()
-        Me.lblNivelRiesgo = New System.Windows.Forms.Label()
-        Me.txtNivelRiesgo = New System.Windows.Forms.Label()
         Me.panPrincipal.SuspendLayout()
         Me.panSolicitud.SuspendLayout()
         Me.SuspendLayout()
@@ -92,6 +92,28 @@ Partial Class DlgDetalleSolicitud
         Me.panSolicitud.Size = New System.Drawing.Size(650, 541)
         Me.panSolicitud.TabIndex = 0
         '
+        'lblNivelRiesgo
+        '
+        Me.lblNivelRiesgo.AutoSize = True
+        Me.lblNivelRiesgo.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblNivelRiesgo.ForeColor = System.Drawing.Color.Black
+        Me.lblNivelRiesgo.Location = New System.Drawing.Point(11, 260)
+        Me.lblNivelRiesgo.Margin = New System.Windows.Forms.Padding(0)
+        Me.lblNivelRiesgo.Name = "lblNivelRiesgo"
+        Me.lblNivelRiesgo.Size = New System.Drawing.Size(116, 18)
+        Me.lblNivelRiesgo.TabIndex = 15
+        Me.lblNivelRiesgo.Text = "NIVEL DE RIESGO:"
+        '
+        'txtNivelRiesgo
+        '
+        Me.txtNivelRiesgo.AutoSize = True
+        Me.txtNivelRiesgo.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtNivelRiesgo.Location = New System.Drawing.Point(209, 260)
+        Me.txtNivelRiesgo.Name = "txtNivelRiesgo"
+        Me.txtNivelRiesgo.Size = New System.Drawing.Size(102, 18)
+        Me.txtNivelRiesgo.TabIndex = 16
+        Me.txtNivelRiesgo.Text = "[NIVEL RIESGO]"
+        '
         'lblMotivoRechazo
         '
         Me.lblMotivoRechazo.AutoSize = True
@@ -100,9 +122,9 @@ Partial Class DlgDetalleSolicitud
         Me.lblMotivoRechazo.Location = New System.Drawing.Point(11, 294)
         Me.lblMotivoRechazo.Margin = New System.Windows.Forms.Padding(0)
         Me.lblMotivoRechazo.Name = "lblMotivoRechazo"
-        Me.lblMotivoRechazo.Size = New System.Drawing.Size(126, 18)
+        Me.lblMotivoRechazo.Size = New System.Drawing.Size(183, 18)
         Me.lblMotivoRechazo.TabIndex = 17
-        Me.lblMotivoRechazo.Text = "MOTIVO RECHAZO:"
+        Me.lblMotivoRechazo.Text = "MOTIVO DE REASIGNACIÓN:"
         '
         'txtMotivoRechazo
         '
@@ -290,28 +312,6 @@ Partial Class DlgDetalleSolicitud
         Me.btnCerrar.TabIndex = 1
         Me.btnCerrar.Text = "Cerrar"
         Me.btnCerrar.UseVisualStyleBackColor = True
-        '
-        'lblNivelRiesgo
-        '
-        Me.lblNivelRiesgo.AutoSize = True
-        Me.lblNivelRiesgo.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblNivelRiesgo.ForeColor = System.Drawing.Color.Black
-        Me.lblNivelRiesgo.Location = New System.Drawing.Point(11, 260)
-        Me.lblNivelRiesgo.Margin = New System.Windows.Forms.Padding(0)
-        Me.lblNivelRiesgo.Name = "lblNivelRiesgo"
-        Me.lblNivelRiesgo.Size = New System.Drawing.Size(116, 18)
-        Me.lblNivelRiesgo.TabIndex = 15
-        Me.lblNivelRiesgo.Text = "NIVEL DE RIESGO:"
-        '
-        'txtNivelRiesgo
-        '
-        Me.txtNivelRiesgo.AutoSize = True
-        Me.txtNivelRiesgo.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtNivelRiesgo.Location = New System.Drawing.Point(209, 260)
-        Me.txtNivelRiesgo.Name = "txtNivelRiesgo"
-        Me.txtNivelRiesgo.Size = New System.Drawing.Size(102, 18)
-        Me.txtNivelRiesgo.TabIndex = 16
-        Me.txtNivelRiesgo.Text = "[NIVEL RIESGO]"
         '
         'DlgDetalleSolicitud
         '

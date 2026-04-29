@@ -255,13 +255,15 @@ Public Class FrmContacto
                 Next
 
                 Dim Dr() As DataRow
-                Dr = dtCorreosSolicitud.Select("sCvepersona = 'SD'")
 
-                sNombreEncargado = Dr(0).Item("sTipoPersona").ToString()
-                sCorreoEncargado = Dr(0).Item("sCorreoPersona").ToString()
+                If dtCorreosSolicitud.Rows.Count > 0 Then
+                    Dr = dtCorreosSolicitud.Select("sCvepersona = 'SD'")
+                    sNombreEncargado = Dr(0).Item("sTipoPersona").ToString()
+                    sCorreoEncargado = Dr(0).Item("sCorreoPersona").ToString()
 
-                GenerarPDFProvisional(txtRazonSocial.Text & ", " & cboEntidadMercantilRS.SelectedItem("sCveSociedad"), txtNombreComercial.Text & ", " & cboEntidadMercantilNC.SelectedItem("sCveSociedad"))
-                EnvioCorreoProespectoNuevo(txtRazonSocial.Text & ", " & cboEntidadMercantilRS.SelectedItem("sCveSociedad"))
+                    GenerarPDFProvisional(txtRazonSocial.Text & ", " & cboEntidadMercantilRS.SelectedItem("sCveSociedad"), txtNombreComercial.Text & ", " & cboEntidadMercantilNC.SelectedItem("sCveSociedad"))
+                    EnvioCorreoProespectoNuevo(txtRazonSocial.Text & ", " & cboEntidadMercantilRS.SelectedItem("sCveSociedad"))
+                End If
 
                 '============= Enviar correo a Independencia si se seleccionó el servicio 'OTROS' ==============
                 If bOtros Then
