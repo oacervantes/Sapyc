@@ -49,7 +49,7 @@ Public Class FrmContacto
         panDatosGenerales.Visible = True
 
         If GlobalFontSettings.FontResolver Is Nothing Then
-            GlobalFontSettings.FontResolver = New ArialFontResolver()
+            GlobalFontSettings.FontResolver = New FontsResolver()
         End If
 
         gridServicios.DataSource = bsSer
@@ -311,7 +311,7 @@ Public Class FrmContacto
         ListarDomicilio()
     End Sub
     Private Sub BtnGuardarAvance_Click(sender As Object, e As EventArgs) Handles btnGuardarAvance.Click
-        GenerarPDFProvisional(txtRazonSocial.Text, "SERVICIOS VARIOS")
+        GenerarPDFProvisional(txtRazonSocial.Text & ", " & cboEntidadMercantilRS.SelectedItem("sCveSociedad"), txtNombreComercial.Text & ", " & cboEntidadMercantilNC.SelectedItem("sCveSociedad"))
         'If MsgBox("¿Quieres guardar la información que has capturado hasta ahora? Ten en cuenta que, para poder asignar al prospecto al socio, es necesario que completes todos los datos.", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "SIAT") = MsgBoxResult.Yes Then
 
         'End If
@@ -2958,23 +2958,25 @@ Public Class FrmContacto
 
 #End Region
 
-    Private Sub GenerarPDFProvisional(sNomCte As String, sServicio As String)
+    Private Sub GenerarPDFProvisional(sNomCte As String, sNomCom As String)
         Dim pdfDoc As New PdfDocument
         Dim pdfPage As PdfPage
-        Dim fontAgua As New XFont("Arial", 55, XFontStyleEx.Bold)
-        Dim fontTxt As New XFont("Arial", 11, XFontStyleEx.Bold)
-        Dim fontTxtCam As New XFont("Arial", 9.5, XFontStyleEx.Bold)
-        Dim fontTxtReg As New XFont("Arial", 9.5, XFontStyleEx.Regular)
-        Dim fontTxtNot As New XFont("Arial", 7.7, XFontStyleEx.Italic)
-        Dim fontTxtRef As New XFont("Arial", 12, XFontStyleEx.Bold)
-        Dim fontHdr As New XFont("Arial", 18, XFontStyleEx.Bold)
-        Dim fontHdr2 As New XFont("Arial", 16, XFontStyleEx.Bold)
-        Dim fontCte As New XFont("Arial", 14.5, XFontStyleEx.Bold)
-        Dim fontMsg As New XFont("Arial", 9.5, XFontStyleEx.Bold)
+
+        Dim fontHdr As New XFont("Calibri", 17, XFontStyleEx.Bold)
+        Dim fontHdr2 As New XFont("Calibri", 14, XFontStyleEx.Bold)
+
+        Dim fontTxt As New XFont("Calibri", 13.5, XFontStyleEx.Bold)
+        Dim fontTxtCam As New XFont("Calibri", 10.5, XFontStyleEx.Bold)
+        Dim fontTxtReg As New XFont("Calibri", 10.5, XFontStyleEx.Regular)
+        Dim fontTxtSerHdr As New XFont("Calibri", 9.5, XFontStyleEx.Bold)
+        Dim fontTxtSerReg As New XFont("Calibri", 9.5, XFontStyleEx.Regular)
+
         Dim image As XImage = XImage.FromFile("\\GTMEXVTS32\APLICA\CON2012\IMG\header_RD.jpg")
         Dim linHdr As New XPen(XColors.Black, 1)
         Dim linCte As New XPen(XColor.FromArgb(79, 45, 127), 1)
         Dim linDet As New XPen(XColor.FromArgb(225, 225, 225), 1)
+        Dim negro As New XSolidBrush(XColor.FromArgb(0, 0, 0))
+        Dim blanco As New XSolidBrush(XColor.FromArgb(255, 255, 255))
         Dim back As New XSolidBrush(XColor.FromArgb(0, 167, 181))
         Dim backRes As New XSolidBrush(XColor.FromArgb(79, 45, 127))
         Dim backDet As New XSolidBrush(XColor.FromArgb(240, 240, 240))
@@ -2990,16 +2992,19 @@ Public Class FrmContacto
         Dim iValXAC As Integer = 215
         Dim iValXDO As Integer = 30
 
+        Dim iValYDGS As Integer = 260
         Dim iValYDG As Integer = 120
         Dim iValYCI As Integer = 270
         Dim iValYAC As Integer = 420
         Dim iValYDO As Integer = 420
+        Dim iValYFS As Integer = (15 * (dtServicios.Rows.Count + 2))
         Dim sNombreEmpresa As String = "SALLES-SAINZ, GRANT THORNTON, S.C."
 
         'Comenzar con el llenado de información para el PDF
+        pdfDoc.Info.Title = "SOLICITUD REGISTRO DE CLIENTE PROSPECTO - " & sNomCte
         pdfDoc.Info.Author = sNombreEmpresa.ToUpper
         pdfDoc.Info.Subject = "Datos de cliente prospecto"
-        pdfDoc.Info.Keywords = ""
+        pdfDoc.Info.Keywords = "CLIENTE, PROSPECTO, SOLICITUD"
 
         pdfPage = pdfDoc.AddPage()
         pdfPage.Size = PdfSharp.PageSize.Letter
@@ -3012,91 +3017,95 @@ Public Class FrmContacto
 
         '================ CABECERA ================
         gra.DrawImage(image, 25, 20, image.PixelWidth * 0.7, image.PixelHeight * 0.7)
-        gra.DrawString("SOLICITUD CLIENTE PROSPECTO", fontHdr, New XSolidBrush(XColor.FromArgb(79, 45, 127)), New XRect(iValX - 250, 23, 220, 25), XStringFormats.CenterRight)
-        gra.DrawString("ID SAC: " & idSAC, fontHdr2, XBrushes.Black, New XRect(iValX - 250, 43, 220, 25), XStringFormats.CenterRight)
-
-        ''================ DATOS DEL CLIENTE ================
-        'gra.DrawString(sNomCte, fontCte, New XSolidBrush(XColor.FromArgb(79, 45, 127)), New XRect(30, 102, iValX - 30, 25), XStringFormats.CenterLeft)
+        gra.DrawString("SOLICITUD REGISTRO DE CLIENTE PROSPECTO", fontHdr, New XSolidBrush(XColor.FromArgb(79, 45, 127)), New XRect(iValX - 250, 23, 220, 25), XStringFormats.CenterRight)
+        gra.DrawString("NO. SAC: " & idSAC, fontHdr2, XBrushes.Black, New XRect(iValX - 250, 43, 220, 25), XStringFormats.CenterRight)
 
         '================ DATOS GENERALES ================
         gra.DrawString("DATOS GENERALES", fontTxt, backRes, New XRect(iValXCam, 105, iValX - 60, 14), XStringFormats.CenterLeft)
-        gra.DrawRectangle(backSom, New XRect(iValXCam, iValYDG, iValX - 60, 2))
-        gra.DrawRectangle(backRes, New XRect(iValXCam, iValYDG, iValX - 60, 2))
+        gra.DrawRectangle(backSom, New XRect(iValXCam, iValYDG, iValX - 60, 1.5))
+        gra.DrawRectangle(backRes, New XRect(iValXCam, iValYDG, iValX - 60, 1.5))
 
-        AgregarTexto(gra, fontTxtCam, "Razón Social: ", iValXCam, 135, 85, 14)
-        AgregarTexto(gra, fontTxtReg, TextoCampo(sNomCte), iValXDG, 135, 85, 14)
+        AgregarTexto(gra, fontTxtCam, negro, "Razón Social: ", iValXCam, 135, 85, 14, 1)
+        AgregarTexto(gra, fontTxtReg, negro, TextoCampo(sNomCte), iValXDG, 135, 85, 14, 1)
 
-        AgregarTexto(gra, fontTxtCam, "Nombre Comercial: ", iValXCam, 150, 105, 14)
-        AgregarTexto(gra, fontTxtReg, TextoCampo(sNomCte), iValXDG, 150, 105, 14)
+        AgregarTexto(gra, fontTxtCam, negro, "Nombre Comercial: ", iValXCam, 150, 105, 14, 1)
+        AgregarTexto(gra, fontTxtReg, negro, TextoCampo(sNomCom), iValXDG, 150, 105, 14, 1)
 
-        AgregarTexto(gra, fontTxtCam, "RFC: ", iValXCam, 165, 105, 14)
-        AgregarTexto(gra, fontTxtReg, TextoCampo(txtRFC.Text), iValXDG, 165, 105, 14)
+        AgregarTexto(gra, fontTxtCam, negro, "RFC: ", iValXCam, 165, 105, 14, 1)
+        AgregarTexto(gra, fontTxtReg, negro, TextoCampo(txtRFC.Text), iValXDG, 165, 105, 14, 1)
 
-        AgregarTexto(gra, fontTxtCam, "Industria: ", iValXCam, 180, 105, 14)
-        AgregarTexto(gra, fontTxtReg, TextoCampo(txtIndustria.Text), iValXDG, 180, 105, 14)
+        AgregarTexto(gra, fontTxtCam, negro, "Industria: ", iValXCam, 180, 105, 14, 1)
+        AgregarTexto(gra, fontTxtReg, negro, TextoCampo(txtIndustria.Text), iValXDG, 180, 105, 14, 1)
 
-        AgregarTexto(gra, fontTxtCam, "¿Se requiere de personal bilingüe?: ", iValXCam, 195, 105, 14)
+        AgregarTexto(gra, fontTxtCam, negro, "Requiere personal bilingüe: ", iValXCam, 195, 105, 14, 1)
         If rdIdiomaSi.Checked Then
-            AgregarTexto(gra, fontTxtReg, "Sí", iValXDG, 195, 105, 14)
+            AgregarTexto(gra, fontTxtReg, negro, "Sí", iValXDG, 195, 105, 14, 1)
         Else
-            AgregarTexto(gra, fontTxtReg, "No", iValXDG, 195, 105, 14)
+            AgregarTexto(gra, fontTxtReg, negro, "No", iValXDG, 195, 105, 14, 1)
         End If
 
-        AgregarTexto(gra, fontTxtCam, "Fecha de presentación de propuesta: ", iValXCam, 210, 105, 14)
-        AgregarTexto(gra, fontTxtReg, TextoCampo(txtFechaSolicitud.Value.ToShortDateString), iValXDG, 210, 105, 14)
+        AgregarTexto(gra, fontTxtCam, negro, "Fecha de presentación de propuesta: ", iValXCam, 210, 105, 14, 1)
+        AgregarTexto(gra, fontTxtReg, negro, TextoCampo(txtFechaSolicitud.Value.ToShortDateString), iValXDG, 210, 105, 14, 1)
 
-        AgregarTexto(gra, fontTxtCam, "Modalidad del trabajo: ", iValXCam, 225, 105, 14)
-        AgregarTexto(gra, fontTxtReg, TextoCampo(cboModalidades.SelectedItem("sModalidad")), iValXDG, 225, 105, 14)
+        AgregarTexto(gra, fontTxtCam, negro, "Modalidad del trabajo: ", iValXCam, 225, 105, 14, 1)
+        AgregarTexto(gra, fontTxtReg, negro, TextoCampo(cboModalidades.SelectedItem("sModalidad")), iValXDG, 225, 105, 14, 1)
+
+        AgregarTexto(gra, fontTxtCam, negro, "Servicios solicitados: ", iValXCam, 245, 105, 14, 1)
+        gra.DrawRectangle(back, New XRect(iValXDG, 245, 60, 14))
+        gra.DrawRectangle(back, New XRect(iValXDG + 63, 245, 60, 14))
+        gra.DrawRectangle(back, New XRect(iValXDG + 126, 245, 240, 14))
+        AgregarTexto(gra, fontTxtSerHdr, blanco, "OFICINA", iValXDG, 245, 60, 14, 3)
+        AgregarTexto(gra, fontTxtSerHdr, blanco, "DIVISIÓN", iValXDG + 63, 245, 60, 14, 3)
+        AgregarTexto(gra, fontTxtSerHdr, blanco, "SERVICIO", iValXDG + 130, 245, 240, 14, 1)
+
+        For Each ser As DataRow In dtServicios.Rows
+            AgregarTexto(gra, fontTxtSerReg, negro, TextoCampo(ser("DESCOFI")), iValXDG, iValYDGS + (15 * dtServicios.Rows.IndexOf(ser)), 60, 14, 3)
+            AgregarTexto(gra, fontTxtSerReg, negro, TextoCampo(ser("DESCAREA")), iValXDG + 63, iValYDGS + (15 * dtServicios.Rows.IndexOf(ser)), 60, 14, 3)
+            AgregarTexto(gra, fontTxtSerReg, negro, TextoCampo(ser("DESCRIPCION")), iValXDG + 130, iValYDGS + (15 * dtServicios.Rows.IndexOf(ser)), 240, 14, 1)
+        Next
 
         '================ CONTACTO INICIAL ================
-        gra.DrawString("CONTACTO INICIAL", fontTxt, backRes, New XRect(iValXCam, 255, iValX - 60, 14), XStringFormats.CenterLeft)
-        gra.DrawRectangle(backSom, New XRect(iValXCam, iValYCI, iValX - 60, 2))
-        gra.DrawRectangle(backRes, New XRect(iValXCam, iValYCI, iValX - 60, 2))
+        gra.DrawString("CONTACTO INICIAL", fontTxt, backRes, New XRect(iValXCam, 255 + iValYFS, iValX - 60, 14), XStringFormats.CenterLeft)
+        gra.DrawRectangle(backSom, New XRect(iValXCam, iValYCI + iValYFS, iValX - 60, 1.5))
+        gra.DrawRectangle(backRes, New XRect(iValXCam, iValYCI + iValYFS, iValX - 60, 1.5))
 
-        AgregarTexto(gra, fontTxtCam, "Fecha del contacto inicial: ", iValXCam, 285, 105, 14)
-        AgregarTexto(gra, fontTxtReg, TextoCampo(txtContactoInicialFecha.Value.ToShortDateString), iValXCI, 285, 105, 14)
+        AgregarTexto(gra, fontTxtCam, negro, "Fecha del contacto inicial: ", iValXCam, 285 + iValYFS, 105, 14, 1)
+        AgregarTexto(gra, fontTxtReg, negro, TextoCampo(txtContactoInicialFecha.Value.ToShortDateString), iValXCI, 285 + iValYFS, 105, 14, 1)
 
-        AgregarTexto(gra, fontTxtCam, "Persona que tuvo el primer contacto: ", iValXCam, 300, 105, 14)
-        AgregarTexto(gra, fontTxtReg, TextoCampo(txtContactoInicialPrimerContacto.Text), iValXCI, 300, 105, 14)
+        AgregarTexto(gra, fontTxtCam, negro, "Persona que tuvo el primer contacto: ", iValXCam, 300 + iValYFS, 105, 14, 1)
+        AgregarTexto(gra, fontTxtReg, negro, TextoCampo(txtContactoInicialPrimerContacto.Text), iValXCI, 300 + iValYFS, 105, 14, 1)
 
-        AgregarTexto(gra, fontTxtCam, "Nombre del Contacto: ", iValXCam, 315, 105, 14)
-        AgregarTexto(gra, fontTxtReg, TextoCampo(txtContactoInicialNombre.Text), iValXCI, 315, 105, 14)
+        AgregarTexto(gra, fontTxtCam, negro, "Nombre del Contacto: ", iValXCam, 315 + iValYFS, 105, 14, 1)
+        AgregarTexto(gra, fontTxtReg, negro, TextoCampo(txtContactoInicialNombre.Text), iValXCI, 315 + iValYFS, 105, 14, 1)
 
-        AgregarTexto(gra, fontTxtCam, "Correo electrónico del Contacto: ", iValXCam, 330, 105, 14)
-        AgregarTexto(gra, fontTxtReg, TextoCampo(txtContactoInicialCorreo.Text), iValXCI, 330, 105, 14)
+        AgregarTexto(gra, fontTxtCam, negro, "Correo electrónico del Contacto: ", iValXCam, 330 + iValYFS, 105, 14, 1)
+        AgregarTexto(gra, fontTxtReg, negro, TextoCampo(txtContactoInicialCorreo.Text), iValXCI, 330 + iValYFS, 105, 14, 1)
 
-        AgregarTexto(gra, fontTxtCam, "Cargo del Contacto: ", iValXCam, 345, 105, 14)
-        AgregarTexto(gra, fontTxtReg, TextoCampo(txtContactoInicialCargo.Text), iValXCI, 345, 105, 14)
+        AgregarTexto(gra, fontTxtCam, negro, "Cargo del Contacto: ", iValXCam, 345 + iValYFS, 105, 14, 1)
+        AgregarTexto(gra, fontTxtReg, negro, TextoCampo(txtContactoInicialCargo.Text), iValXCI, 345 + iValYFS, 105, 14, 1)
 
-        AgregarTexto(gra, fontTxtCam, "Teléfono del Contacto: ", iValXCam, 360, 105, 14)
-        AgregarTexto(gra, fontTxtReg, TextoCampo(txtContactoInicialTelefono.Text), iValXCI, 360, 105, 14)
+        AgregarTexto(gra, fontTxtCam, negro, "Teléfono del Contacto: ", iValXCam, 360 + iValYFS, 105, 14, 1)
+        AgregarTexto(gra, fontTxtReg, negro, TextoCampo(txtContactoInicialTelefono.Text), iValXCI, 360 + iValYFS, 105, 14, 1)
 
-        AgregarTexto(gra, fontTxtCam, "Web del Contacto: ", iValXCam, 375, 105, 14)
-        AgregarTexto(gra, fontTxtReg, TextoCampo(txtAcercamientoWebProspecto.Text), iValXCI, 375, 105, 14)
+        AgregarTexto(gra, fontTxtCam, negro, "Web del Contacto: ", iValXCam, 375 + iValYFS, 105, 14, 1)
+        AgregarTexto(gra, fontTxtReg, negro, TextoCampo(txtAcercamientoWebProspecto.Text), iValXCI, 375 + iValYFS, 105, 14, 1)
 
         '================ ACERCAMIENTO ================
-        gra.DrawString("ACERCAMIENTO", fontTxt, backRes, New XRect(iValXCam, 405, iValX - 60, 14), XStringFormats.CenterLeft)
-        gra.DrawRectangle(backSom, New XRect(iValXCam, iValYAC, iValX - 60, 2))
-        gra.DrawRectangle(backRes, New XRect(iValXCam, iValYAC, iValX - 60, 2))
+        gra.DrawString("ACERCAMIENTO", fontTxt, backRes, New XRect(iValXCam, 405 + iValYFS, iValX - 60, 14), XStringFormats.CenterLeft)
+        gra.DrawRectangle(backSom, New XRect(iValXCam, iValYAC + iValYFS, iValX - 60, 1.5))
+        gra.DrawRectangle(backRes, New XRect(iValXCam, iValYAC + iValYFS, iValX - 60, 1.5))
 
-        AgregarTexto(gra, fontTxtCam, "Medio de Contacto: ", iValXCam, 435, 105, 14)
-        AgregarTexto(gra, fontTxtReg, TextoCampo(cboAcercamientoMedioContacto.SelectedItem("sMedio")), iValXAC, 435, 105, 14)
+        AgregarTexto(gra, fontTxtCam, negro, "Medio de Contacto: ", iValXCam, 435 + iValYFS, 105, 14, 1)
+        AgregarTexto(gra, fontTxtReg, negro, TextoCampo(cboAcercamientoMedioContacto.SelectedItem("sMedio")), iValXAC, 435 + iValYFS, 105, 14, 1)
 
-        AgregarTexto(gra, fontTxtCam, "¿Cómo se enteró de nosotros?: ", iValXCam, 450, 105, 14)
-        AgregarTexto(gra, fontTxtReg, TextoCampo(cboAcercamientoComoEntero.SelectedItem("sAcercamiento")), iValXAC, 450, 105, 14)
-
-        ''================ DOMICILIO ================
-        'gra.DrawString("DOMICILIO", fontTxt, backRes, New XRect(iValXCam, 405, iValX - 60, 14), XStringFormats.CenterLeft)
-        'gra.DrawRectangle(backSom, New XRect(iValXCam, iValYDO, iValX - 60, 2))
-        'gra.DrawRectangle(backRes, New XRect(iValXCam, iValYDO, iValX - 60, 2))
-
-
+        AgregarTexto(gra, fontTxtCam, negro, "¿Cómo se enteró de nosotros?: ", iValXCam, 450 + iValYFS, 105, 14, 1)
+        AgregarTexto(gra, fontTxtReg, negro, TextoCampo(cboAcercamientoComoEntero.SelectedItem("sAcercamiento")), iValXAC, 450 + iValYFS, 105, 14, 1)
 
         '================ PIE DE PÁGINA ================
         'gra.DrawLine(linDet, 30, iValY - 35, iValX - 30, iValY - 35)
         gra.DrawRectangle(backRes, New XRect(0, iValY - 35, iValX, iValY - 35))
         gra.DrawEllipse(XBrushes.WhiteSmoke, New XRect(iValX - 40, iValY - 27, 20, 20))
-        gra.DrawString("1", fontTxt, New XSolidBrush(XColor.FromArgb(79, 45, 127)), New XRect(iValX - 38, iValY - 24, 10, 14), XStringFormats.CenterRight)
+        gra.DrawString("1", fontTxt, New XSolidBrush(XColor.FromArgb(79, 45, 127)), New XRect(iValX - 37, iValY - 24, 10, 14), XStringFormats.CenterRight)
 
         '================ GUARDAR ARCHIVO ================
         Dim filename As String = QuitarCaracteres(sNomCte) & ".pdf"
@@ -3114,8 +3123,15 @@ Public Class FrmContacto
         End If
     End Sub
 
-    Private Sub AgregarTexto(gra As XGraphics, font As XFont, sTexto As String, x As Integer, y As Integer, ancho As Integer, alto As Integer)
-        gra.DrawString(sTexto, font, XBrushes.Black, New XRect(x, y, ancho, alto), XStringFormats.CenterLeft)
+    Private Sub AgregarTexto(gra As XGraphics, font As XFont, color As XSolidBrush, sTexto As String, x As Integer, y As Integer, ancho As Integer, alto As Integer, iAlinea As Integer)
+        Select Case iAlinea
+            Case 1
+                gra.DrawString(sTexto, font, color, New XRect(x, y, ancho, alto), XStringFormats.CenterLeft)
+            Case 2
+                gra.DrawString(sTexto, font, color, New XRect(x, y, ancho, alto), XStringFormats.CenterRight)
+            Case 3
+                gra.DrawString(sTexto, font, color, New XRect(x, y, ancho, alto), XStringFormats.Center)
+        End Select
     End Sub
 
     Private Function TextoCampo(sTexto As String) As String
