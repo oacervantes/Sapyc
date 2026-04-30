@@ -260,53 +260,7 @@
             MsgBox("Hubo un problema al registrar la información del prospecto, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
         End Try
     End Sub
-    'Private Sub ConsultaDatosCompletos(sCveProspecto As String)
-    '    Try
-    '        Dim sTabla As String = "tbProspectos"
 
-    '        bDatos = True
-
-    '        With ds.Tables
-    '            LimpiarConsultaTabla(ds.Tables, sTabla)
-
-    '            With clsDatosProp
-    '                .subClearParameters()
-    '                .subAddParameter("@iOpcion", 2, SqlDbType.Int, ParameterDirection.Input)
-    '                .subAddParameter("@sCveProspecto", sCveProspecto, SqlDbType.VarChar, ParameterDirection.Input)
-    '            End With
-
-    '            .Add(clsDatosProp.funExecuteSPDataTable("paSSGTPropuestasProspectos", sTabla))
-
-    '            dtDatosProspecto = .Item(sTabla)
-    '        End With
-
-    '        If dtDatosProspecto.Rows.Count > 0 Then
-    '            sMensaje = "Para asignar la solicitud de cliente prospecto a un socio encargado, debe capturar la siguiente información:" & vbNewLine
-
-    '            For Each dr As DataRow In dtDatosProspecto.Rows
-
-    '                Select Case dr.Item("sDato")
-    '                    Case "DG"
-    '                        If CInt(dr.Item("iRegs")) = 0 Then
-    '                            sMensaje &= vbNewLine & "- Datos generales."
-    '                            bDatos = False
-    '                        End If
-
-    '                    Case "CI"
-    '                        If CInt(dr.Item("iRegs")) = 0 Then
-    '                            sMensaje &= vbNewLine & "- Contacto Inicial."
-    '                            bDatos = False
-    '                        End If
-
-    '                End Select
-    '            Next
-    '        End If
-    '    Catch ex As Exception
-    '        InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ConsultaDatosCompletos()")
-    '        MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
-    '        dtDatosProspecto = Nothing
-    '    End Try
-    'End Sub
     Private Sub EnviarCorreoAviso() 'Este correo es para avisar al socio encargado de oficina, que se ha solicitado generar un folio con cobranza incompleta.
         Dim sMensaje As String
 

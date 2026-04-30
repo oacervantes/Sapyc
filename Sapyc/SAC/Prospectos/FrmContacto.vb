@@ -279,8 +279,6 @@ Public Class FrmContacto
                     Else
                         sServicios = "SERVICIOS VARIOS"
                     End If
-
-                    'EnviarCorreoReferenciaGTI(sServicios)
                 End If
 
                 ActualizarSolicitudSAC(idSAC)
@@ -960,31 +958,6 @@ Public Class FrmContacto
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
         End Try
     End Sub
-    Private Sub EnviarCorreoReferenciaGTI(sServicios As String) 'Este correo es para avisar al socio encargado de oficina, que se ha solicitado generar un folio con cobranza incompleta.
-        Dim sMensaje As String
-
-        Try
-            Dim sCorreo As String() = {"Octavio.A.Cervantes@mx.gt.com", "Mario.Rodriguez@mx.gt.com"}
-            'Dim sCorreo As String() = {sCorreoEncargadoGTI}
-
-            sMensaje = "<html><head></head><body>" &
-            "<img src='cid:imagen1' alt='Salles, Sainz - Grant Thornton' style='width:300px;height:auto;'>" &
-            "<h1 style=""height: 50px; background: #4f2d7f; font-family: Calibri, Arial; color: #FFF; padding-right: 30px; text-align: center;"">REGISTRO DE PROSPECTO REFERENCIADO POR GTI</h1>" & vbNewLine & vbNewLine & vbNewLine &
-            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 20px; color: #4f2d7f; margin-left: 25px; margin-top: 20px; padding: 15px;"">Estimada/o: " & sNombreEncargadoGTI & ", </p> " & vbNewLine & vbNewLine &
-            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 16px; margin-left: 25px; margin-top: 20px; padding: 15px;"">Queremos notificarte que se ha registrado un nuevo prospecto referenciado por GTI.</p> " & vbNewLine & vbNewLine &
-            "<table style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">" & vbNewLine &
-            "<tr><td>Nombre del Prospecto:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & txtRazonSocial.Text.ToString() & "</b></td></tr>" & vbNewLine &
-            "<tr><td>Servicio solicitado:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & sServicios & "</b></td></tr>" & vbNewLine &
-            "</table>" & vbNewLine &
-            "<hr>" &
-            "<p style=""margin-left: 20px; font-style: italic; font-family: Arial; font-size: 12px;"">Este es un correo automático, favor de no responder a esta cuenta.</p>" & vbNewLine &
-            "</body></html>"
-
-            EnviarCorreosHTML(sCorreo, sMensaje, "Registro prospecto referenciado GTI")
-        Catch ex As Exception
-            MsgBox("No ha sido posible enviar el correo debido a fallas con el servidor de correo.", MsgBoxStyle.Exclamation, "SIAT")
-        End Try
-    End Sub
     Private Sub ActualizarSolicitudSAC(idSAC As Integer)
         Try
             With clsLocal
@@ -992,11 +965,6 @@ Public Class FrmContacto
                 .subAddParameter("@iOpcion", 4, SqlDbType.Int, ParameterDirection.Input)
                 .subAddParameter("@idSAC", idSAC, SqlDbType.Int, ParameterDirection.Input)
                 .subAddParameter("@cStatus", "S", SqlDbType.Char, ParameterDirection.Input)
-                'If bOtros Then
-                '    .subAddParameter("@cStatus", "R", SqlDbType.Char, ParameterDirection.Input)
-                'Else
-
-                'End If
 
                 .funExecuteSP("paSolicitudesSAC")
             End With
