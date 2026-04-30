@@ -290,24 +290,24 @@
         AbrirPantalla(frm, "FrmReportesGRD")
     End Sub
 
-    Private Sub ItmKardex_Click(sender As Object, e As EventArgs) Handles itmKardex.Click
+    Private Sub ItmKardex_Click(sender As Object, e As EventArgs) Handles Kardex.Click
         Dim frm As New FrmKardex
 
         AbrirPantalla(frm, "FrmKardex")
     End Sub
 
-    Private Sub AsignarProspectoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AsignarProspectoToolStripMenuItem.Click
+    Private Sub AsignarProspectoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AsignarProspecto.Click
         Dim frm As New FrmSolicitudesAsignacion
 
         AbrirPantalla(frm, "FrmSolicitudesAsignacion")
     End Sub
 
-    Private Sub ProspectosNuevosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProspectosNuevosToolStripMenuItem.Click
+    Private Sub ProspectosNuevosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProspectosNuevos.Click
         Dim frm As New FrmProspectosNvo
         AbrirPantalla(frm, "FrmProspectosNvo")
     End Sub
 
-    Private Sub ListaProspectosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ListaProspectosToolStripMenuItem.Click
+    Private Sub ListaProspectosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RevisionOtrosServicios.Click
         Dim frm As New frmMisPropuestas
         AbrirPantalla(frm, "frmMisPropuestas")
     End Sub
@@ -321,23 +321,25 @@
         AbrirPantalla(frm, "FrmSolicitudesAsignacion")
     End Sub
 
-    Private Sub RevisionServiciosOtrosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RevisionServiciosOtrosToolStripMenuItem.Click
-        Dim frm As New frmMisPropuestas
-        AbrirPantalla(frm, "frmMisPropuestas")
-    End Sub
-    Private Sub NivelDeRiesgoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NivelDeRiesgoToolStripMenuItem.Click
-        Dim frm As New frmListaNivelRiesgo
-        AbrirPantalla(frm, "frmListaNivelRiesgo")
-    End Sub
-    Private Sub SeguimientoAPropuestasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SeguimientoAPropuestasToolStripMenuItem.Click
+    Private Sub SeguimientoAPropuestasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SeguimientoAPropuestas.Click
         Dim frm As New frmListaSeguimiento
         AbrirPantalla(frm, "frmListaNivelRiesgo")
     End Sub
 
-    Private Sub AltaClienteProspectoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AltaClienteProspectoToolStripMenuItem.Click
+    Private Sub AltaClienteProspectoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AltaClienteProspecto.Click
         Dim frm As New FrmProspectos
         AbrirPantalla(frm, "frmMisPropuestas")
 
     End Sub
+
+    Private Sub NivelDeRiesgo_Click(sender As Object, e As EventArgs) Handles NivelDeRiesgo.Click
+        Dim frm As New frmListaNivelRiesgo
+        AbrirPantalla(frm, "frmListaNivelRiesgo")
+    End Sub
+
+    Private Sub VoBoKardexSocios_Click(sender As Object, e As EventArgs) Handles VoBoKardexSocios.Click
+
+    End Sub
+
 
 End Class

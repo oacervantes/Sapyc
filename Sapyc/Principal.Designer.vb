@@ -27,11 +27,14 @@ Partial Class Principal
         Me.ArchivoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuSalir = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuSAC = New System.Windows.Forms.ToolStripMenuItem()
-        Me.itmKardex = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AsignarProspectoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ProspectosNuevosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ListaProspectosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SeguimientoAPropuestasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AsignarProspecto = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ProspectosNuevos = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RevisionOtrosServicios = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SeguimientoAPropuestas = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Kardex = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AltaClienteProspecto = New System.Windows.Forms.ToolStripMenuItem()
+        Me.NivelDeRiesgo = New System.Windows.Forms.ToolStripMenuItem()
+        Me.VoBoKardexSocios = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnTablas = New System.Windows.Forms.ToolStripMenuItem()
         Me.TablasDelSistemaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GirosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -87,7 +90,6 @@ Partial Class Principal
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.BotonAltaPropuesta = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
-        Me.AltaClienteProspectoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.Barra.SuspendLayout()
         Me.SuspendLayout()
@@ -106,6 +108,7 @@ Partial Class Principal
         Me.ArchivoToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuSalir})
         Me.ArchivoToolStripMenuItem.Name = "ArchivoToolStripMenuItem"
         Me.ArchivoToolStripMenuItem.Size = New System.Drawing.Size(62, 20)
+        Me.ArchivoToolStripMenuItem.Tag = "7"
         Me.ArchivoToolStripMenuItem.Text = "&Archivo"
         '
         'mnuSalir
@@ -116,46 +119,74 @@ Partial Class Principal
         '
         'mnuSAC
         '
-        Me.mnuSAC.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AsignarProspectoToolStripMenuItem, Me.ProspectosNuevosToolStripMenuItem, Me.ListaProspectosToolStripMenuItem, Me.SeguimientoAPropuestasToolStripMenuItem, Me.itmKardex, Me.AltaClienteProspectoToolStripMenuItem})
+        Me.mnuSAC.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AsignarProspecto, Me.ProspectosNuevos, Me.RevisionOtrosServicios, Me.SeguimientoAPropuestas, Me.Kardex, Me.AltaClienteProspecto, Me.NivelDeRiesgo, Me.VoBoKardexSocios})
         Me.mnuSAC.Name = "mnuSAC"
         Me.mnuSAC.Size = New System.Drawing.Size(41, 20)
+        Me.mnuSAC.Tag = "1"
         Me.mnuSAC.Text = "SAC"
         '
-        'itmKardex
+        'AsignarProspecto
         '
-        Me.itmKardex.Name = "itmKardex"
-        Me.itmKardex.Size = New System.Drawing.Size(218, 22)
-        Me.itmKardex.Text = "Kardex"
+        Me.AsignarProspecto.Name = "AsignarProspecto"
+        Me.AsignarProspecto.Size = New System.Drawing.Size(218, 22)
+        Me.AsignarProspecto.Tag = "1"
+        Me.AsignarProspecto.Text = "Asignar Prospecto"
         '
-        'AsignarProspectoToolStripMenuItem
+        'ProspectosNuevos
         '
-        Me.AsignarProspectoToolStripMenuItem.Name = "AsignarProspectoToolStripMenuItem"
-        Me.AsignarProspectoToolStripMenuItem.Size = New System.Drawing.Size(218, 22)
-        Me.AsignarProspectoToolStripMenuItem.Text = "Asignar Prospecto"
+        Me.ProspectosNuevos.Name = "ProspectosNuevos"
+        Me.ProspectosNuevos.Size = New System.Drawing.Size(218, 22)
+        Me.ProspectosNuevos.Tag = "2"
+        Me.ProspectosNuevos.Text = "Prospectos Nuevos"
         '
-        'ProspectosNuevosToolStripMenuItem
+        'RevisionOtrosServicios
         '
-        Me.ProspectosNuevosToolStripMenuItem.Name = "ProspectosNuevosToolStripMenuItem"
-        Me.ProspectosNuevosToolStripMenuItem.Size = New System.Drawing.Size(218, 22)
-        Me.ProspectosNuevosToolStripMenuItem.Text = "Prospectos Nuevos"
+        Me.RevisionOtrosServicios.Name = "RevisionOtrosServicios"
+        Me.RevisionOtrosServicios.Size = New System.Drawing.Size(218, 22)
+        Me.RevisionOtrosServicios.Tag = "3"
+        Me.RevisionOtrosServicios.Text = "Revision Otros Servicios"
         '
-        'ListaProspectosToolStripMenuItem
+        'SeguimientoAPropuestas
         '
-        Me.ListaProspectosToolStripMenuItem.Name = "ListaProspectosToolStripMenuItem"
-        Me.ListaProspectosToolStripMenuItem.Size = New System.Drawing.Size(218, 22)
-        Me.ListaProspectosToolStripMenuItem.Text = "Revision Otros Servicios"
+        Me.SeguimientoAPropuestas.Name = "SeguimientoAPropuestas"
+        Me.SeguimientoAPropuestas.Size = New System.Drawing.Size(218, 22)
+        Me.SeguimientoAPropuestas.Tag = "4"
+        Me.SeguimientoAPropuestas.Text = "Seguimiento a Propuestas"
         '
-        'SeguimientoAPropuestasToolStripMenuItem
+        'Kardex
         '
-        Me.SeguimientoAPropuestasToolStripMenuItem.Name = "SeguimientoAPropuestasToolStripMenuItem"
-        Me.SeguimientoAPropuestasToolStripMenuItem.Size = New System.Drawing.Size(218, 22)
-        Me.SeguimientoAPropuestasToolStripMenuItem.Text = "Seguimiento a Propuestas"
+        Me.Kardex.Name = "Kardex"
+        Me.Kardex.Size = New System.Drawing.Size(218, 22)
+        Me.Kardex.Tag = "5"
+        Me.Kardex.Text = "Kardex"
+        '
+        'AltaClienteProspecto
+        '
+        Me.AltaClienteProspecto.Name = "AltaClienteProspecto"
+        Me.AltaClienteProspecto.Size = New System.Drawing.Size(218, 22)
+        Me.AltaClienteProspecto.Tag = "6"
+        Me.AltaClienteProspecto.Text = "Alta Cliente Prospecto"
+        '
+        'NivelDeRiesgo
+        '
+        Me.NivelDeRiesgo.Name = "NivelDeRiesgo"
+        Me.NivelDeRiesgo.Size = New System.Drawing.Size(218, 22)
+        Me.NivelDeRiesgo.Tag = "7"
+        Me.NivelDeRiesgo.Text = "Nivel de Riesgo"
+        '
+        'VoBoKardexSocios
+        '
+        Me.VoBoKardexSocios.Name = "VoBoKardexSocios"
+        Me.VoBoKardexSocios.Size = New System.Drawing.Size(218, 22)
+        Me.VoBoKardexSocios.Tag = "8"
+        Me.VoBoKardexSocios.Text = "VoBo Kardex Socios"
         '
         'MnTablas
         '
         Me.MnTablas.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TablasDelSistemaToolStripMenuItem, Me.itmTipoServicios, Me.itmReportesGRD})
         Me.MnTablas.Name = "MnTablas"
         Me.MnTablas.Size = New System.Drawing.Size(72, 20)
+        Me.MnTablas.Tag = "2"
         Me.MnTablas.Text = "Catálogos"
         Me.MnTablas.Visible = False
         '
@@ -163,56 +194,56 @@ Partial Class Principal
         '
         Me.TablasDelSistemaToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GirosToolStripMenuItem, Me.ActividadToolStripMenuItem, Me.DivisionesToolStripMenuItem, Me.TiposDeServicioToolStripMenuItem, Me.ComoSeEnteroToolStripMenuItem, Me.MedioDeContactoToolStripMenuItem})
         Me.TablasDelSistemaToolStripMenuItem.Name = "TablasDelSistemaToolStripMenuItem"
-        Me.TablasDelSistemaToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
+        Me.TablasDelSistemaToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.TablasDelSistemaToolStripMenuItem.Text = "Tablas del Sistema"
         Me.TablasDelSistemaToolStripMenuItem.Visible = False
         '
         'GirosToolStripMenuItem
         '
         Me.GirosToolStripMenuItem.Name = "GirosToolStripMenuItem"
-        Me.GirosToolStripMenuItem.Size = New System.Drawing.Size(178, 22)
+        Me.GirosToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.GirosToolStripMenuItem.Text = "Giros"
         '
         'ActividadToolStripMenuItem
         '
         Me.ActividadToolStripMenuItem.Name = "ActividadToolStripMenuItem"
-        Me.ActividadToolStripMenuItem.Size = New System.Drawing.Size(178, 22)
+        Me.ActividadToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ActividadToolStripMenuItem.Text = "Actividades"
         '
         'DivisionesToolStripMenuItem
         '
         Me.DivisionesToolStripMenuItem.Name = "DivisionesToolStripMenuItem"
-        Me.DivisionesToolStripMenuItem.Size = New System.Drawing.Size(178, 22)
+        Me.DivisionesToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.DivisionesToolStripMenuItem.Text = "Divisiones"
         '
         'TiposDeServicioToolStripMenuItem
         '
         Me.TiposDeServicioToolStripMenuItem.Name = "TiposDeServicioToolStripMenuItem"
-        Me.TiposDeServicioToolStripMenuItem.Size = New System.Drawing.Size(178, 22)
+        Me.TiposDeServicioToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.TiposDeServicioToolStripMenuItem.Text = "Tipos de servicio"
         '
         'ComoSeEnteroToolStripMenuItem
         '
         Me.ComoSeEnteroToolStripMenuItem.Name = "ComoSeEnteroToolStripMenuItem"
-        Me.ComoSeEnteroToolStripMenuItem.Size = New System.Drawing.Size(178, 22)
+        Me.ComoSeEnteroToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ComoSeEnteroToolStripMenuItem.Text = "Como se entero"
         '
         'MedioDeContactoToolStripMenuItem
         '
         Me.MedioDeContactoToolStripMenuItem.Name = "MedioDeContactoToolStripMenuItem"
-        Me.MedioDeContactoToolStripMenuItem.Size = New System.Drawing.Size(178, 22)
+        Me.MedioDeContactoToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.MedioDeContactoToolStripMenuItem.Text = "Medio de contacto"
         '
         'itmTipoServicios
         '
         Me.itmTipoServicios.Name = "itmTipoServicios"
-        Me.itmTipoServicios.Size = New System.Drawing.Size(179, 22)
+        Me.itmTipoServicios.Size = New System.Drawing.Size(180, 22)
         Me.itmTipoServicios.Text = "Tipo de Servicios"
         '
         'itmReportesGRD
         '
         Me.itmReportesGRD.Name = "itmReportesGRD"
-        Me.itmReportesGRD.Size = New System.Drawing.Size(179, 22)
+        Me.itmReportesGRD.Size = New System.Drawing.Size(180, 22)
         Me.itmReportesGRD.Text = "Reportes GRD-GTI"
         '
         'mnuProspectos
@@ -220,6 +251,7 @@ Partial Class Principal
         Me.mnuProspectos.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RegistrarProspectoToolStripMenuItem, Me.ClientesSacToolStripMenuItem, Me.ToolStripSeparator4, Me.AltaNuevosProspectosToolStripMenuItem, Me.AsignarProspectoToolStripMenuItem1})
         Me.mnuProspectos.Name = "mnuProspectos"
         Me.mnuProspectos.Size = New System.Drawing.Size(80, 20)
+        Me.mnuProspectos.Tag = "3"
         Me.mnuProspectos.Text = "Prospectos"
         Me.mnuProspectos.Visible = False
         '
@@ -305,6 +337,7 @@ Partial Class Principal
         Me.MnuInde.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CargarListasNegrasSSGTToolStripMenuItem, Me.CargarToolStripMenuItem, Me.SolicitudesToolStripMenuItem1, Me.PartesRelacionadasToolStripMenuItem, Me.ClientesFacturaciónToolStripMenuItem, Me.ClientesConflickToolStripMenuItem, Me.EnvioCorreosToolStripMenuItem, Me.ConsultaPropuestasToolStripMenuItem, Me.ConsultaFoliosToolStripMenuItem, Me.ClientesRelacionadosToolStripMenuItem, Me.TodasLasSolicitudesToolStripMenuItem, Me.ClientesPorClaveDeTrabajoToolStripMenuItem, Me.ClientesDelPeriodoToolStripMenuItem, Me.ClientesRechazadosToolStripMenuItem, Me.ToolStripSeparator5, Me.RevisionServiciosOtrosToolStripMenuItem, Me.NivelDeRiesgoToolStripMenuItem, Me.VoBoKardexSociosGerentesToolStripMenuItem})
         Me.MnuInde.Name = "MnuInde"
         Me.MnuInde.Size = New System.Drawing.Size(101, 20)
+        Me.MnuInde.Tag = "4"
         Me.MnuInde.Text = "Independencia"
         Me.MnuInde.Visible = False
         '
@@ -422,6 +455,7 @@ Partial Class Principal
         Me.mnuReportes.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.itmReporteDireccion, Me.itmClientesReferenciados})
         Me.mnuReportes.Name = "mnuReportes"
         Me.mnuReportes.Size = New System.Drawing.Size(70, 20)
+        Me.mnuReportes.Tag = "5"
         Me.mnuReportes.Text = "Reportes"
         Me.mnuReportes.Visible = False
         '
@@ -443,6 +477,7 @@ Partial Class Principal
         Me.menuFolios.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AutorizaFoliosDeInformeToolStripMenuItem, Me.ConsultaDeFoliosDeInformeToolStripMenuItem})
         Me.menuFolios.Name = "menuFolios"
         Me.menuFolios.Size = New System.Drawing.Size(50, 20)
+        Me.menuFolios.Tag = "6"
         Me.menuFolios.Text = "Folios"
         Me.menuFolios.Visible = False
         '
@@ -515,12 +550,6 @@ Partial Class Principal
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
         Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 40)
-        '
-        'AltaClienteProspectoToolStripMenuItem
-        '
-        Me.AltaClienteProspectoToolStripMenuItem.Name = "AltaClienteProspectoToolStripMenuItem"
-        Me.AltaClienteProspectoToolStripMenuItem.Size = New System.Drawing.Size(218, 22)
-        Me.AltaClienteProspectoToolStripMenuItem.Text = "Alta Cliente Prospecto"
         '
         'Principal
         '
@@ -597,10 +626,10 @@ Partial Class Principal
     Friend WithEvents itmTipoServicios As ToolStripMenuItem
     Friend WithEvents itmReportesGRD As ToolStripMenuItem
     Friend WithEvents mnuSAC As ToolStripMenuItem
-    Friend WithEvents itmKardex As ToolStripMenuItem
-    Friend WithEvents AsignarProspectoToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ProspectosNuevosToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ListaProspectosToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents Kardex As ToolStripMenuItem
+    Friend WithEvents AsignarProspecto As ToolStripMenuItem
+    Friend WithEvents ProspectosNuevos As ToolStripMenuItem
+    Friend WithEvents RevisionOtrosServicios As ToolStripMenuItem
     Friend WithEvents AltaNuevosProspectosToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AsignarProspectoToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator4 As ToolStripSeparator
@@ -608,6 +637,8 @@ Partial Class Principal
     Friend WithEvents RevisionServiciosOtrosToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents NivelDeRiesgoToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents VoBoKardexSociosGerentesToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents SeguimientoAPropuestasToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents AltaClienteProspectoToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SeguimientoAPropuestas As ToolStripMenuItem
+    Friend WithEvents AltaClienteProspecto As ToolStripMenuItem
+    Friend WithEvents NivelDeRiesgo As ToolStripMenuItem
+    Friend WithEvents VoBoKardexSocios As ToolStripMenuItem
 End Class
