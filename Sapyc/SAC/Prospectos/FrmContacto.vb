@@ -1172,6 +1172,7 @@ Public Class FrmContacto
         End Try
     End Sub
 
+
 #Region "DATOS GENERALES"
 
     Private Sub Aplicar_FiltroNombre()

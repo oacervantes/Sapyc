@@ -21,19 +21,25 @@
             Dim frm As New FrmContactoConsulta
 
             If gridProspectos.CurrentRow IsNot Nothing Then
-                frm.iOrigen = 2
-                frm.idSAC = gridProspectos.CurrentRow.Cells("idSAC").Value
-                frm.idPropuesta = gridProspectos.CurrentRow.Cells("idProp").Value
-                frm.idServicio = gridProspectos.CurrentRow.Cells("IdServicio").Value
-                frm.sCveOfi = gridProspectos.CurrentRow.Cells("sCveOficina").Value
-                frm.sCveArea = gridProspectos.CurrentRow.Cells("sCveDivision").Value
-                frm.sServicio = gridProspectos.CurrentRow.Cells("sServicio").Value
 
-                If frm.ShowDialog = DialogResult.OK Then
-                    ListarSolicitudes()
+                If gridProspectos.CurrentRow.Cells("sStatus").Value <> "T" Then
+                    MsgBox("La propuesta esta en proceso de asignación", MsgBoxStyle.Exclamation, "SAPYC")
+                    Exit Sub
                 End If
-            Else
-                MsgBox("Seleccione a un prospecto para poder generar una propuesta.", MsgBoxStyle.Exclamation, "SAPYC")
+
+                frm.iOrigen = 2
+                    frm.idSAC = gridProspectos.CurrentRow.Cells("idSAC").Value
+                    frm.idPropuesta = gridProspectos.CurrentRow.Cells("idProp").Value
+                    frm.idServicio = gridProspectos.CurrentRow.Cells("IdServicio").Value
+                    frm.sCveOfi = gridProspectos.CurrentRow.Cells("sCveOficina").Value
+                    frm.sCveArea = gridProspectos.CurrentRow.Cells("sCveDivision").Value
+                    frm.sServicio = gridProspectos.CurrentRow.Cells("sServicio").Value
+
+                    If frm.ShowDialog = DialogResult.OK Then
+                        ListarSolicitudes()
+                    End If
+                Else
+                    MsgBox("Seleccione a un prospecto para poder generar una propuesta.", MsgBoxStyle.Exclamation, "SAPYC")
             End If
         Catch ex As Exception
             InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarSolicitudesnivelriesgo()")
@@ -69,6 +75,8 @@
                 gridProspectos.Columns("sCveOficina").Visible = False
                 gridProspectos.Columns("sCveDivision").Visible = False
                 gridProspectos.Columns("IdServicio").Visible = False
+                gridProspectos.Columns("sStatus").Visible = False
+
 
                 ConfigurarColumnasGrid(gridProspectos, "IdSac", "CVE. SAC", 65, 3, False)
                 ConfigurarColumnasGrid(gridProspectos, "sOficina", "OFICINA", 80, 1, False)

@@ -27,7 +27,7 @@
     Private bOtros = False, bRefGTI = False, bCargaInfo As Boolean = False
     Private sCorreos(), sCuentaCorreo As String
 
-    Public sCveOfi, sCveArea, sServicio, sNombreSocio, sCveSocio As String
+    Public sCveOfi, sCveArea, sServicio, sNombreSocio, sCveSocio, sNombreCte As String
     Public iOrigen, iModifica, idSAC, idServicio, idPropuesta As Integer
 
     Private Sub FrmContactoConsulta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -36,7 +36,6 @@
 
         BindGrid(gridServicios, bsSer)
 
-        TipoConsultaPantalla(iOrigen)
 
         CrearTablas()
         '============================== ACERCAMIENTO ==============================
@@ -78,6 +77,9 @@
         ListarContactoInicial()
 
         ListarEstatusPropuestas()
+
+
+        TipoConsultaPantalla(iOrigen)
 
     End Sub
     Private Sub BtnAutorizar_Click(sender As Object, e As EventArgs)
