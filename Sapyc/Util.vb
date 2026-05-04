@@ -237,11 +237,11 @@ Module Util
         End Try
     End Sub
     Public Sub DeshabilitaMenu()
-        Principal.MenuStrip1.Enabled = False
+        Principal.mnuSAPYC.Enabled = False
         Principal.Barra.Enabled = False
     End Sub
     Public Sub HabilitaMenu()
-        Principal.MenuStrip1.Enabled = True
+        Principal.mnuSAPYC.Enabled = True
         Principal.Barra.Enabled = True
     End Sub
     Public Sub BuscaProximo(ByVal Listado As DataGridView, ByVal qcol As Integer, ByVal lobuscado As String)

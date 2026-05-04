@@ -26,7 +26,12 @@
                 sNombre = frm.sNombre
                 sTipo = frm.sTipo
 
-                OcultarMenu(sTipo)
+                '========== Carga inicial de parámetros para los Menús. ==========
+                ListarPermisosMenus(mnuSAPYC)
+                '========== Carga inicial de parámetros para el menú Sapyc. ==========
+                ListarPermisosSAC(mnuSAC)
+
+                'OcultarMenu(sTipo)
 
                 Text = "Clientes Prospectos - Bienvenido(a): " & sNombre
                 WindowState = FormWindowState.Maximized
@@ -41,6 +46,10 @@
 
         ListarCarpetas()
 
+    End Sub
+
+    Private Sub mnuSAC_Click(sender As Object, e As EventArgs) Handles mnuSAC.Click
+        ListarPermisosSAC(mnuSAC)
     End Sub
 
     Private Sub ListarCarpetas()
@@ -71,7 +80,7 @@
         End Try
     End Sub
     Private Sub OcultarMenu(sTipo As String)
-        For Each men As ToolStripMenuItem In MenuStrip1.Items
+        For Each men As ToolStripMenuItem In mnuSAPYC.Items
             men.Visible = False
         Next
         ArchivoToolStripMenuItem.Visible = True
@@ -106,7 +115,7 @@
                 mnuReportes.Visible = False
         End Select
 
-        MenuStrip1.Visible = True
+        mnuSAPYC.Visible = True
 
     End Sub
     Private Sub mnuSalir_Click(sender As Object, e As EventArgs) Handles mnuSalir.Click, BotonSalir.Click

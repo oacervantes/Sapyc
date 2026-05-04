@@ -23,7 +23,7 @@ Partial Class Principal
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Principal))
-        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.mnuSAPYC = New System.Windows.Forms.MenuStrip()
         Me.ArchivoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuSalir = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuSAC = New System.Windows.Forms.ToolStripMenuItem()
@@ -90,18 +90,18 @@ Partial Class Principal
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.BotonAltaPropuesta = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
-        Me.MenuStrip1.SuspendLayout()
+        Me.mnuSAPYC.SuspendLayout()
         Me.Barra.SuspendLayout()
         Me.SuspendLayout()
         '
-        'MenuStrip1
+        'mnuSAPYC
         '
-        Me.MenuStrip1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ArchivoToolStripMenuItem, Me.mnuSAC, Me.MnTablas, Me.mnuProspectos, Me.MnPropuestas, Me.ClientesToolStripMenuItem, Me.UtileriasToolStripMenuItem, Me.MnuInde, Me.mnuReportes, Me.menuFolios})
-        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
-        Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1192, 24)
-        Me.MenuStrip1.TabIndex = 1
+        Me.mnuSAPYC.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.mnuSAPYC.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ArchivoToolStripMenuItem, Me.mnuSAC, Me.MnTablas, Me.mnuProspectos, Me.MnPropuestas, Me.ClientesToolStripMenuItem, Me.UtileriasToolStripMenuItem, Me.MnuInde, Me.mnuReportes, Me.menuFolios})
+        Me.mnuSAPYC.Location = New System.Drawing.Point(0, 0)
+        Me.mnuSAPYC.Name = "mnuSAPYC"
+        Me.mnuSAPYC.Size = New System.Drawing.Size(1192, 24)
+        Me.mnuSAPYC.TabIndex = 1
         '
         'ArchivoToolStripMenuItem
         '
@@ -194,56 +194,56 @@ Partial Class Principal
         '
         Me.TablasDelSistemaToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GirosToolStripMenuItem, Me.ActividadToolStripMenuItem, Me.DivisionesToolStripMenuItem, Me.TiposDeServicioToolStripMenuItem, Me.ComoSeEnteroToolStripMenuItem, Me.MedioDeContactoToolStripMenuItem})
         Me.TablasDelSistemaToolStripMenuItem.Name = "TablasDelSistemaToolStripMenuItem"
-        Me.TablasDelSistemaToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.TablasDelSistemaToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
         Me.TablasDelSistemaToolStripMenuItem.Text = "Tablas del Sistema"
         Me.TablasDelSistemaToolStripMenuItem.Visible = False
         '
         'GirosToolStripMenuItem
         '
         Me.GirosToolStripMenuItem.Name = "GirosToolStripMenuItem"
-        Me.GirosToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.GirosToolStripMenuItem.Size = New System.Drawing.Size(178, 22)
         Me.GirosToolStripMenuItem.Text = "Giros"
         '
         'ActividadToolStripMenuItem
         '
         Me.ActividadToolStripMenuItem.Name = "ActividadToolStripMenuItem"
-        Me.ActividadToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ActividadToolStripMenuItem.Size = New System.Drawing.Size(178, 22)
         Me.ActividadToolStripMenuItem.Text = "Actividades"
         '
         'DivisionesToolStripMenuItem
         '
         Me.DivisionesToolStripMenuItem.Name = "DivisionesToolStripMenuItem"
-        Me.DivisionesToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.DivisionesToolStripMenuItem.Size = New System.Drawing.Size(178, 22)
         Me.DivisionesToolStripMenuItem.Text = "Divisiones"
         '
         'TiposDeServicioToolStripMenuItem
         '
         Me.TiposDeServicioToolStripMenuItem.Name = "TiposDeServicioToolStripMenuItem"
-        Me.TiposDeServicioToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.TiposDeServicioToolStripMenuItem.Size = New System.Drawing.Size(178, 22)
         Me.TiposDeServicioToolStripMenuItem.Text = "Tipos de servicio"
         '
         'ComoSeEnteroToolStripMenuItem
         '
         Me.ComoSeEnteroToolStripMenuItem.Name = "ComoSeEnteroToolStripMenuItem"
-        Me.ComoSeEnteroToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ComoSeEnteroToolStripMenuItem.Size = New System.Drawing.Size(178, 22)
         Me.ComoSeEnteroToolStripMenuItem.Text = "Como se entero"
         '
         'MedioDeContactoToolStripMenuItem
         '
         Me.MedioDeContactoToolStripMenuItem.Name = "MedioDeContactoToolStripMenuItem"
-        Me.MedioDeContactoToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.MedioDeContactoToolStripMenuItem.Size = New System.Drawing.Size(178, 22)
         Me.MedioDeContactoToolStripMenuItem.Text = "Medio de contacto"
         '
         'itmTipoServicios
         '
         Me.itmTipoServicios.Name = "itmTipoServicios"
-        Me.itmTipoServicios.Size = New System.Drawing.Size(180, 22)
+        Me.itmTipoServicios.Size = New System.Drawing.Size(179, 22)
         Me.itmTipoServicios.Text = "Tipo de Servicios"
         '
         'itmReportesGRD
         '
         Me.itmReportesGRD.Name = "itmReportesGRD"
-        Me.itmReportesGRD.Size = New System.Drawing.Size(180, 22)
+        Me.itmReportesGRD.Size = New System.Drawing.Size(179, 22)
         Me.itmReportesGRD.Text = "Reportes GRD-GTI"
         '
         'mnuProspectos
@@ -559,22 +559,22 @@ Partial Class Principal
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.ClientSize = New System.Drawing.Size(1192, 653)
         Me.Controls.Add(Me.Barra)
-        Me.Controls.Add(Me.MenuStrip1)
+        Me.Controls.Add(Me.mnuSAPYC)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.IsMdiContainer = True
-        Me.MainMenuStrip = Me.MenuStrip1
+        Me.MainMenuStrip = Me.mnuSAPYC
         Me.Name = "Principal"
         Me.Text = "Sapyc 2.0"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
-        Me.MenuStrip1.ResumeLayout(False)
-        Me.MenuStrip1.PerformLayout()
+        Me.mnuSAPYC.ResumeLayout(False)
+        Me.mnuSAPYC.PerformLayout()
         Me.Barra.ResumeLayout(False)
         Me.Barra.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents MenuStrip1 As System.Windows.Forms.MenuStrip
+    Friend WithEvents mnuSAPYC As System.Windows.Forms.MenuStrip
     Friend WithEvents ArchivoToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents mnuSalir As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MnTablas As System.Windows.Forms.ToolStripMenuItem

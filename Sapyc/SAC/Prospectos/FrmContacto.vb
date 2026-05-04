@@ -35,7 +35,7 @@ Public Class FrmContacto
     Private sCveInd, sCveSS, sCveGTI, sPaisDom As String
 
     Private sCveSoc, sNomSoc, sCorreoSoc As String
-    Private sMsgDatosGenerales, sMsgContacto, sMsgAcercamiento, sMsgDomicilio, sMsgAviso, sServicios As String
+    Private sMsgDatosGenerales, sMsgContacto, sMsgAcercamiento, sMsgDomicilio, sMsgAviso, sOtroServicios As String
 
     Private bMarco = False, bOtros = False, bOtrosCarga = False, bRefGTI = False, bCargaInfo As Boolean = False
     Private CorreosSoc, sNombSocio, sMailSocio, sNombreEncargado, sCorreoEncargado As String
@@ -121,7 +121,6 @@ Public Class FrmContacto
         bOtros = False
 
         If dlg.ShowDialog() = Windows.Forms.DialogResult.OK Then
-            'LimpiarTabla(dtServicios)
 
             If dlg.dtServiciosCte.Rows.Count > 0 Then
                 For Each dr As DataRow In dlg.dtServiciosCte.Rows
@@ -135,6 +134,7 @@ Public Class FrmContacto
                         drServicios("DESCAREA") = sArea
                         drServicios("REVIND") = "S"
                         drServicios("DESCRIPCION") = dr.Field(Of String)("DESCRIPCION")
+                        drServicios("DESCOTROS") = dr.Field(Of String)("DESCOTROS")
                         dtServicios.Rows.Add(drServicios)
 
                         drServicios = dtServiciosCarga.NewRow()
@@ -146,24 +146,25 @@ Public Class FrmContacto
                         drServicios("DESCAREA") = sArea
                         drServicios("REVIND") = "S"
                         drServicios("DESCRIPCION") = dr.Field(Of String)("DESCRIPCION")
+                        drServicios("DESCOTROS") = dr.Field(Of String)("DESCOTROS")
                         dtServiciosCarga.Rows.Add(drServicios)
 
-                        If bOtros = False Then
-                            bOtros = dr.Field(Of Boolean)("CVEOTROS")
+                        If bOtrosCarga = False Then
+                            bOtrosCarga = dr.Field(Of Boolean)("CVEOTROS")
                         End If
 
-                        InsertarServiciosDatosGenerales(dr.Field(Of Integer)("CVE"), dr.Field(Of Boolean)("CVEOTROS"), sCveOfi, sCveArea)
+                        If bOtrosCarga Then
+                            bOtros = True
+                            sOtroServicios = dr.Field(Of String)("DESCOTROS")
+                            bOtrosCarga = False
+                        End If
+
+                        InsertarServiciosDatosGenerales(dr.Field(Of Integer)("CVE"), dr.Field(Of Boolean)("CVEOTROS"), dr.Field(Of String)("DESCOTROS"), sCveOfi, sCveArea)
                     End If
                 Next
             End If
 
-            If bOtros Then
-                txtOtroServicio.Enabled = True
-            Else
-                txtOtroServicio.Enabled = False
-                txtOtroServicio.Text = ""
-            End If
-
+            bOtros = dtServicios.AsEnumerable().Any(Function(dr) dr.Field(Of Boolean)("CVEOTROS"))
             ValidaNormatividad()
 
             bsSer.DataSource = dtServicios
@@ -176,6 +177,7 @@ Public Class FrmContacto
             ConfigurarColumnasGrid(gridServicios, "DESCOFI", "OFICINA", 80, 3, False)
             ConfigurarColumnasGrid(gridServicios, "DESCAREA", "DIVISIÓN", 80, 3, False)
             ConfigurarColumnasGrid(gridServicios, "DESCRIPCION", "SERVICIO", 0, 1, False)
+            ConfigurarColumnasGrid(gridServicios, "DESCOTROS", "DESCRIPCIÓN 'OTROS'", 0, 1, False)
         End If
     End Sub
     Private Sub BtnRegistroDatosGenerales_Click(sender As Object, e As EventArgs) Handles btnHabilitar.Click
@@ -270,15 +272,6 @@ Public Class FrmContacto
                 '============= Enviar correo a Independencia si se seleccionó el servicio 'OTROS' ==============
                 If bOtros Then
                     EnvioCorreoIndependencia()
-                End If
-
-                '============ Enviar correo a GTI si se seleccionó que tiene referencia GTI ==============
-                If rdReferenciaGTISi.Checked Then
-                    If dtServicios.Rows.Count = 1 Then
-                        sServicios = dtServicios.Rows(0).Item("DESCRIPCION").ToString()
-                    Else
-                        sServicios = "SERVICIOS VARIOS"
-                    End If
                 End If
 
                 ActualizarSolicitudSAC(idSAC)
@@ -505,6 +498,7 @@ Public Class FrmContacto
         End If
 
         If cboOficina.SelectedIndex <> 0 Then
+            cboDivision.SelectedIndex = 0
             cboDivision.Enabled = True
 
             Dim cbo As DataRowView = cboOficina.SelectedItem
@@ -589,15 +583,21 @@ Public Class FrmContacto
     End Sub
     Private Sub RdReferenciaGTISi_CheckedChanged(sender As Object, e As EventArgs) Handles rdReferenciaGTISi.CheckedChanged
         txtReferenciaGTISocio.Enabled = True
-        'cboReferenciaGTIPais.Enabled = True
+        txtCorreoSocioGTI.Enabled = True
+        txtCorreoGerenteGTI.Enabled = True
+        txtGerenteGTI.Enabled = True
         btnPaisGTI.Enabled = True
         cboReferenciaGTIOficina.Enabled = True
+        txtEstadoGTI.Enabled = True
     End Sub
     Private Sub RdReferenciaGTINo_CheckedChanged(sender As Object, e As EventArgs) Handles rdReferenciaGTINo.CheckedChanged
         txtReferenciaGTISocio.Enabled = False
-        'cboReferenciaGTIPais.Enabled = False
+        txtCorreoSocioGTI.Enabled = False
+        txtCorreoGerenteGTI.Enabled = False
+        txtGerenteGTI.Enabled = False
         btnPaisGTI.Enabled = False
         cboReferenciaGTIOficina.Enabled = False
+        txtEstadoGTI.Enabled = False
     End Sub
     Private Sub txtRazonSocial_TextChanged(sender As Object, e As EventArgs) Handles txtRazonSocial.TextChanged
         txtRazonSocial.CharacterCasing = CharacterCasing.Upper
@@ -818,6 +818,7 @@ Public Class FrmContacto
         dtServicios.Columns.Add("DESCAREA", GetType(String))
         dtServicios.Columns.Add("REVIND", GetType(String))
         dtServicios.Columns.Add("DESCRIPCION", GetType(String))
+        dtServicios.Columns.Add("DESCOTROS", GetType(String))
 
         dtServiciosCarga = dtServicios.Clone()
     End Sub
@@ -926,10 +927,8 @@ Public Class FrmContacto
 
                 If bOtros Then
                     .subAddParameter("@sStatus", "R", SqlDbType.Char, ParameterDirection.Input)
-                    .subAddParameter("@sOtroServicio", txtOtroServicio.Text, SqlDbType.VarChar, ParameterDirection.Input)
                 Else
                     .subAddParameter("@sStatus", "S", SqlDbType.Char, ParameterDirection.Input)
-                    .subAddParameter("@sOtroServicio", "", SqlDbType.VarChar, ParameterDirection.Input)
                 End If
 
                 .funExecuteSP("paDatosAsignacionSACPropuestas")
@@ -1033,30 +1032,44 @@ Public Class FrmContacto
         End Try
     End Sub
     Private Sub ValidaNormatividad()
-        bMarco = False
 
-        For Each dr As DataRow In dtServicios.Rows
+        ' Determina si existe el área AUD
+        Dim bMarco As Boolean = dtServicios.AsEnumerable().Any(Function(dr) dr.Field(Of String)("CVEAREA") = "AUD")
 
-            If dr("CVEAREA") = "AUD" Then
-                rdEntidadSupervisadaSi.Checked = True
-                rdEntidadSupervisadaNo.Checked = False
-                cboEntidadSupervisada.SelectedIndex = 0
+        ' Determina si el usuario ya seleccionó una opción
+        Dim bSupervisado As Boolean = rdEntidadSupervisadaSi.Checked OrElse rdEntidadSupervisadaNo.Checked
 
-                rdEntidadSupervisadaSi.AutoCheck = False
-                rdEntidadSupervisadaNo.AutoCheck = False
-
-                bMarco = True
-                Exit For
+        ' Aplica reglas según el marco normativo
+        If bMarco Then
+            SeleccionarEntidadSupervisada(True, bloquear:=True)
+        Else
+            If bSupervisado Then
+                SeleccionarEntidadSupervisada(False, bloquear:=True)
+            Else
+                LimpiarEntidadSupervisada()
             End If
+        End If
 
-            rdEntidadSupervisadaSi.Checked = False
-            rdEntidadSupervisadaNo.Checked = False
-            cboEntidadSupervisada.SelectedIndex = 0
+    End Sub
+    Private Sub SeleccionarEntidadSupervisada(esSupervisada As Boolean, bloquear As Boolean)
 
-            rdEntidadSupervisadaSi.AutoCheck = True
-            rdEntidadSupervisadaNo.AutoCheck = True
+        rdEntidadSupervisadaSi.Checked = esSupervisada
+        rdEntidadSupervisadaNo.Checked = Not esSupervisada
+        cboEntidadSupervisada.SelectedIndex = 0
 
-        Next
+        rdEntidadSupervisadaSi.AutoCheck = Not bloquear
+        rdEntidadSupervisadaNo.AutoCheck = Not bloquear
+
+    End Sub
+    Private Sub LimpiarEntidadSupervisada()
+
+        rdEntidadSupervisadaSi.Checked = False
+        rdEntidadSupervisadaNo.Checked = False
+        cboEntidadSupervisada.SelectedIndex = 0
+
+        rdEntidadSupervisadaSi.AutoCheck = True
+        rdEntidadSupervisadaNo.AutoCheck = True
+
     End Sub
 
     Private Sub ListarCorreosSolicitud()
@@ -1125,7 +1138,7 @@ Public Class FrmContacto
             "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 16px; margin-left: 25px; margin-top: 20px; padding: 15px;"">Para continuar con este proceso, solicitamos su apoyo para realizar la revisión de la viabilidad para prestar el servicio que solicitaron marcado como otros y el cual se detalla en la soliciutud.   </p> " & vbNewLine & vbNewLine &
             "<table style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">" & vbNewLine &
             "<tr><td>Cliente:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & txtRazonSocial.Text.ToUpper.Trim() & " " & "," & " " & cboEntidadMercantilRS.SelectedItem("sCveSociedad") & "</b></td></tr>" & vbNewLine &
-            "<tr><td>Servicio:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & txtOtroServicio.Text.ToUpper.ToUpper() & "</b></td></tr>" & vbNewLine &
+            "<tr><td>Servicio:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & sOtroServicios.ToUpper() & "</b></td></tr>" & vbNewLine &
             "</table>" & vbNewLine &
                 "</table>" & vbNewLine &
             "<p style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">Para cualquier aclaración sobre el tema contactar a Tatianal@mx.gt.com y yeritza@mx.gt.com" & vbNewLine &
@@ -1515,8 +1528,7 @@ Public Class FrmContacto
                 sInd = dtDatosGenerales.Rows(0).Item("idInd").ToString
                 sCveInd = dtDatosGenerales.Rows(0).Item("idInd").ToString
                 sCveSS = dtDatosGenerales.Rows(0).Item("IdSubSec").ToString
-
-                'txtIndustria.Text = dtDatosGenerales.Rows(0).Item("idInd").ToString
+                sCveGTI = dtDatosGenerales.Rows(0).Item("sCveGti").ToString
 
                 If dtDatosGenerales.Rows(0).Item("sTipoNegocio").ToString = "F" Then
                     rdPersonaFisica.Checked = True
@@ -1768,7 +1780,6 @@ Public Class FrmContacto
                 .subAddParameter("@sGerenteRefGTI", txtGerenteGTI.Text, SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@sCorreoGerRefGTI", txtCorreoGerenteGTI.Text, SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@sEstadoRefGTI", txtEstadoGTI.Text, SqlDbType.VarChar, ParameterDirection.Input)
-                .subAddParameter("@sOtrosServicios", txtOtroServicio.Text, SqlDbType.VarChar, ParameterDirection.Input)
 
                 .funExecuteSP("paDatosAsignacionSACDatosGenerales")
             End With
@@ -1777,7 +1788,7 @@ Public Class FrmContacto
             MsgBox("Por el momento no es posible registrar la información del prospecto, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
         End Try
     End Sub
-    Private Sub InsertarServiciosDatosGenerales(idServicio As Integer, bOtros As Boolean, sCveOfi As String, sCveArea As String)
+    Private Sub InsertarServiciosDatosGenerales(idServicio As Integer, bOtros As Boolean, sOtros As String, sCveOfi As String, sCveArea As String)
         Try
             With clsLocal
                 .subClearParameters()
@@ -1788,7 +1799,7 @@ Public Class FrmContacto
                 .subAddParameter("@sCveOfi", sCveOfi, SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@sCveArea", sCveArea, SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@bOtros", bOtros, SqlDbType.Bit, ParameterDirection.Input)
-                .subAddParameter("@sOtrosServicios", txtOtroServicio.Text, SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@sOtrosServicios", sOtros, SqlDbType.VarChar, ParameterDirection.Input)
 
                 .funExecuteSP("paDatosAsignacionSACDatosGenerales")
             End With
@@ -1844,6 +1855,7 @@ Public Class FrmContacto
                     drServicios("DESCAREA") = row.Item("DESCAREA")
                     drServicios("REVIND") = "S"
                     drServicios("DESCRIPCION") = row.Item("DESCRIPCION")
+                    drServicios("DESCOTROS") = row.Item("sOtrosServicios")
                     dtServicios.Rows.InsertAt(drServicios, dtServicios.Rows.Count)
 
                     drServicios = dtServiciosCarga.NewRow()
@@ -1855,6 +1867,7 @@ Public Class FrmContacto
                     drServicios("DESCAREA") = row.Item("DESCAREA")
                     drServicios("REVIND") = "S"
                     drServicios("DESCRIPCION") = row.Item("DESCRIPCION")
+                    drServicios("DESCOTROS") = row.Item("sOtrosServicios")
                     dtServiciosCarga.Rows.InsertAt(drServicios, dtServiciosCarga.Rows.Count)
 
                     If bOtrosCarga = False Then
@@ -1868,14 +1881,7 @@ Public Class FrmContacto
                     End If
                 Next
 
-                If bOtros Then
-                    txtOtroServicio.Enabled = True
-                    txtOtroServicio.Text = sOtroServicios
-                Else
-                    txtOtroServicio.Enabled = False
-                    txtOtroServicio.Text = ""
-                End If
-
+                bOtros = dtServicios.AsEnumerable().Any(Function(dr) dr.Field(Of Boolean)("CVEOTROS"))
                 ValidaNormatividad()
 
                 bsSer.DataSource = dtServicios
@@ -1888,9 +1894,10 @@ Public Class FrmContacto
                 ConfigurarColumnasGrid(gridServicios, "DESCOFI", "OFICINA", 80, 3, False)
                 ConfigurarColumnasGrid(gridServicios, "DESCAREA", "DIVISIÓN", 80, 3, False)
                 ConfigurarColumnasGrid(gridServicios, "DESCRIPCION", "SERVICIO", 0, 1, False)
+                ConfigurarColumnasGrid(gridServicios, "DESCOTROS", "DESCRIPCIÓN 'OTROS'", 0, 1, False)
             End If
         Catch ex As Exception
-            InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarDatosGenerales()")
+            InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarServiciosDatosGenerales()")
             MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
             dtServiciosDG = Nothing
         End Try
@@ -2062,6 +2069,8 @@ Public Class FrmContacto
             Case 9
                 rdReferenciaGTISi.Checked = True
                 rdReferenciaGTINo.Enabled = False
+                txtAcercamientoEnteroOtro.Enabled = False
+                lblAcercamientoOtro.Text = "Otro"
 
             Case Else
                 txtAcercamientoEnteroOtro.Enabled = False
@@ -2409,9 +2418,9 @@ Public Class FrmContacto
                     .subAddParameter("@idEstado", cboDomicilioEstado.SelectedValue, SqlDbType.Int, ParameterDirection.Input)
                     .subAddParameter("@idMunicipio", cboDomicilioMunicipio.SelectedValue, SqlDbType.Int, ParameterDirection.Input)
 
-                    .subAddParameter("@sColonia", cboDomicilioColonia.Text, SqlDbType.VarChar, ParameterDirection.Input)
-                    .subAddParameter("@sEstado", cboDomicilioEstado.Text, SqlDbType.VarChar, ParameterDirection.Input)
-                    .subAddParameter("@sMunicipio", cboDomicilioMunicipio.Text, SqlDbType.VarChar, ParameterDirection.Input)
+                    .subAddParameter("@sColonia", cboDomicilioColonia.SelectedText, SqlDbType.VarChar, ParameterDirection.Input)
+                    .subAddParameter("@sEstado", cboDomicilioEstado.SelectedText, SqlDbType.VarChar, ParameterDirection.Input)
+                    .subAddParameter("@sMunicipio", cboDomicilioMunicipio.SelectedText, SqlDbType.VarChar, ParameterDirection.Input)
                 Else
                     .subAddParameter("@idColonia", 0, SqlDbType.Int, ParameterDirection.Input)
                     .subAddParameter("@idEstado", 0, SqlDbType.Int, ParameterDirection.Input)
@@ -2643,16 +2652,6 @@ Public Class FrmContacto
             bValidacion = False
         End If
 
-        'If sCveSS = "" Then
-        '    sMsgDatosGenerales &= "- Especifíque el subsector del prospecto." & vbNewLine & vbNewLine
-        '    bValidacion = False
-        'End If
-
-        'If sCveGTI = "" Then
-        '    sMsgDatosGenerales &= "- Especifíque el subnivel del prospecto." & vbNewLine & vbNewLine
-        '    bValidacion = False
-        'End If
-
         If cboOficina.SelectedValue = "" Then
             sMsgDatosGenerales &= "- Seleccione la oficina para generar la solicitud." & vbNewLine & vbNewLine
             bValidacion = False
@@ -2663,18 +2662,8 @@ Public Class FrmContacto
             bValidacion = False
         End If
 
-        'If cboSocio.SelectedValue <= 0 Then
-        '    sMsgDatosGenerales &= "- Seleccione al socio(a) que se asignará el prospecto." & vbNewLine & vbNewLine
-        '    bValidacion = False
-        'End If
-
         If dtServicios.Rows.Count <= 0 Then
             sMsgDatosGenerales &= "- Seleccione por lo menos un servicio para generar la solicitud." & vbNewLine & vbNewLine
-            bValidacion = False
-        End If
-
-        If bOtros And Trim(txtOtroServicio.Text) = "" Then
-            sMsgDatosGenerales &= "- Al seleccionar el servicio 'OTROS', debe especificar el detalle del servicio solicitado." & vbNewLine & vbNewLine
             bValidacion = False
         End If
 
@@ -2682,11 +2671,6 @@ Public Class FrmContacto
             sMsgDatosGenerales &= "- Especifíque si se requiere de personal bilingüe." & vbNewLine & vbNewLine
             bValidacion = False
         End If
-
-        'If rdIdiomaSi.Checked = False And idIdioma = 0 Then
-        '    sMsgDatosGenerales &= "- Especifíque el idioma del personal bilingüe." & vbNewLine & vbNewLine
-        '    bValidacion = False
-        'End If
 
         If Trim(txtDescripcionSolicitud.Text) = "" Then
             sMsgDatosGenerales &= "- Especifíque Información adicional del prospecto y/o del servicio." & vbNewLine & vbNewLine

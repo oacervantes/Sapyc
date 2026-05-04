@@ -25,6 +25,11 @@
                 Exit Sub
             End If
 
+            If Not ValidarServicioOtros() Then
+                MsgBox("Debe especificar la descripción para el servicio 'OTROS'.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
+                Exit Sub
+            End If
+
             EnviarServiciosCte()
             DialogResult = DialogResult.OK
             Close()
@@ -75,6 +80,7 @@
         dtServiciosCte.Columns.Add("CVE", GetType(Integer))
         dtServiciosCte.Columns.Add("CVEOTROS", GetType(Boolean))
         dtServiciosCte.Columns.Add("DESCRIPCION", GetType(String))
+        dtServiciosCte.Columns.Add("DESCOTROS", GetType(String))
     End Sub
 
     Private Sub ListarServiciosDivision(sCveArea As String)
@@ -115,6 +121,11 @@
                 For Each rowServ As DataRow In dtServicios.Rows
                     If row("CVE") = rowServ("CVE") And sCveOfi = row("CVEOFI") Then
                         rowServ("ELEGIR") = True
+
+                        If row("CVEOTROS") Then
+                            txtOtroServicio.Text = row("DESCOTROS")
+                        End If
+
                         Exit For
                     End If
                 Next
@@ -139,10 +150,13 @@
                 Select Case cve
                     Case 56, 80, 92, 114, 177
                         dr("CVEOTROS") = True
+                        dr("DESCOTROS") = txtOtroServicio.Text.Trim()
                     Case Else
                         dr("CVEOTROS") = False
+                        dr("DESCOTROS") = ""
                 End Select
                 dr("DESCRIPCION") = row("DESCRIPCION").ToString().Trim()
+
                 dtServiciosCte.Rows.InsertAt(dr, dtServiciosCte.Rows.Count)
             End If
         Next
@@ -155,6 +169,20 @@
                 bSeleccion = True
                 Exit For
             End If
+        Next
+        Return bSeleccion
+    End Function
+    Private Function ValidarServicioOtros() As Boolean
+        Dim bSeleccion As Boolean = False
+
+        For Each row As DataRow In dtServicios.Rows
+            Dim cve As Integer = row.Field(Of Integer)("CVE")
+            Select Case cve
+                Case 56, 80, 92, 114, 177
+                    If txtOtroServicio.Text.Trim() <> "" And row.Field(Of Boolean)("ELEGIR") Then
+                        Return True
+                    End If
+            End Select
         Next
         Return bSeleccion
     End Function

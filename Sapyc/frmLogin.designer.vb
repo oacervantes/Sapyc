@@ -143,8 +143,8 @@ Partial Class frmLogin
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(497, 22)
         Me.Label1.TabIndex = 6
-        Me.Label1.Text = "Salles, Sainz-Grant Thornton, 2022 - 2024"
-        Me.Label1.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.Label1.Text = "Salles, Sainz-Grant Thornton, 2022 - 2026"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.BottomRight
         '
         'lblTitulo
         '

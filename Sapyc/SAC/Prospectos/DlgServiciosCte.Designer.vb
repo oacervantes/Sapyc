@@ -30,6 +30,8 @@ Partial Class DlgServiciosCte
         Me.panLinea = New System.Windows.Forms.Panel()
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.gridDatos = New System.Windows.Forms.DataGridView()
+        Me.lblOtroServicio = New System.Windows.Forms.Label()
+        Me.txtOtroServicio = New System.Windows.Forms.TextBox()
         Me.panPrincipal.SuspendLayout()
         CType(Me.gridDatos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -41,7 +43,7 @@ Partial Class DlgServiciosCte
         Me.btnCancelar.Location = New System.Drawing.Point(495, 537)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(130, 25)
-        Me.btnCancelar.TabIndex = 5
+        Me.btnCancelar.TabIndex = 2
         Me.btnCancelar.Text = "Cancelar"
         Me.btnCancelar.UseVisualStyleBackColor = True
         '
@@ -52,7 +54,7 @@ Partial Class DlgServiciosCte
         Me.btnAceptar.Location = New System.Drawing.Point(359, 537)
         Me.btnAceptar.Name = "btnAceptar"
         Me.btnAceptar.Size = New System.Drawing.Size(130, 25)
-        Me.btnAceptar.TabIndex = 4
+        Me.btnAceptar.TabIndex = 1
         Me.btnAceptar.Text = "Aceptar"
         Me.btnAceptar.UseVisualStyleBackColor = True
         '
@@ -63,6 +65,8 @@ Partial Class DlgServiciosCte
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.panPrincipal.BackColor = System.Drawing.Color.White
         Me.panPrincipal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.panPrincipal.Controls.Add(Me.lblOtroServicio)
+        Me.panPrincipal.Controls.Add(Me.txtOtroServicio)
         Me.panPrincipal.Controls.Add(Me.panLinea)
         Me.panPrincipal.Controls.Add(Me.lblTitulo)
         Me.panPrincipal.Controls.Add(Me.gridDatos)
@@ -70,7 +74,7 @@ Partial Class DlgServiciosCte
         Me.panPrincipal.Location = New System.Drawing.Point(0, 0)
         Me.panPrincipal.Name = "panPrincipal"
         Me.panPrincipal.Size = New System.Drawing.Size(637, 529)
-        Me.panPrincipal.TabIndex = 3
+        Me.panPrincipal.TabIndex = 0
         '
         'panLinea
         '
@@ -122,8 +126,26 @@ Partial Class DlgServiciosCte
         Me.gridDatos.RowsDefaultCellStyle = DataGridViewCellStyle2
         Me.gridDatos.RowTemplate.Height = 26
         Me.gridDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
-        Me.gridDatos.Size = New System.Drawing.Size(610, 462)
-        Me.gridDatos.TabIndex = 4
+        Me.gridDatos.Size = New System.Drawing.Size(610, 417)
+        Me.gridDatos.TabIndex = 2
+        '
+        'lblOtroServicio
+        '
+        Me.lblOtroServicio.AutoSize = True
+        Me.lblOtroServicio.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblOtroServicio.Location = New System.Drawing.Point(12, 472)
+        Me.lblOtroServicio.Name = "lblOtroServicio"
+        Me.lblOtroServicio.Size = New System.Drawing.Size(514, 18)
+        Me.lblOtroServicio.TabIndex = 3
+        Me.lblOtroServicio.Text = "Al elegir el servicio ‘OTROS’, te solicitamos indicar la descripción correspondie" &
+    "nte:"
+        '
+        'txtOtroServicio
+        '
+        Me.txtOtroServicio.Location = New System.Drawing.Point(12, 492)
+        Me.txtOtroServicio.Name = "txtOtroServicio"
+        Me.txtOtroServicio.Size = New System.Drawing.Size(610, 25)
+        Me.txtOtroServicio.TabIndex = 4
         '
         'DlgServiciosCte
         '
@@ -153,4 +175,6 @@ Partial Class DlgServiciosCte
     Friend WithEvents panLinea As Panel
     Friend WithEvents lblTitulo As Label
     Friend WithEvents gridDatos As DataGridView
+    Friend WithEvents lblOtroServicio As Label
+    Friend WithEvents txtOtroServicio As TextBox
 End Class

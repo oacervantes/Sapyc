@@ -407,6 +407,8 @@
     <Compile Include="Modulos\ArialFontResolver.vb" />
     <Compile Include="Modulos\CalibriFontResolver.vb" />
     <Compile Include="Modulos\FontsResolver.vb" />
+    <Compile Include="Modulos\mdlMenus.vb" />
+    <Compile Include="Modulos\mdlSAC.vb" />
     <Compile Include="SAC\AsigancionSocios\DlgDetalleSolicitud.Designer.vb">
       <DependentUpon>DlgDetalleSolicitud.vb</DependentUpon>
     </Compile>
