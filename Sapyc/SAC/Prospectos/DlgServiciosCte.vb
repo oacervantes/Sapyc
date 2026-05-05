@@ -25,7 +25,7 @@
                 Exit Sub
             End If
 
-            If Not ValidarServicioOtros() Then
+            If ValidarServicioOtros() Then
                 MsgBox("Debe especificar la descripción para el servicio 'OTROS'.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
                 Exit Sub
             End If
@@ -179,7 +179,7 @@
             Dim cve As Integer = row.Field(Of Integer)("CVE")
             Select Case cve
                 Case 56, 80, 92, 114, 177
-                    If txtOtroServicio.Text.Trim() <> "" And row.Field(Of Boolean)("ELEGIR") Then
+                    If txtOtroServicio.Text.Trim() = "" And row.Field(Of Boolean)("ELEGIR") Then
                         Return True
                     End If
             End Select

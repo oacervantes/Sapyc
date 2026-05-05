@@ -37,6 +37,9 @@ Partial Class TarjetaSocio2
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtPresupuesto = New System.Windows.Forms.RichTextBox()
         Me.txtCapacidadInstalada = New System.Windows.Forms.RichTextBox()
+        Me.txtValida = New System.Windows.Forms.TextBox()
+        Me.txtNormatividadColor = New System.Windows.Forms.RichTextBox()
+        Me.lblNormatividad = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'lblNombre
@@ -59,7 +62,7 @@ Partial Class TarjetaSocio2
         Me.panLinea.Location = New System.Drawing.Point(0, 62)
         Me.panLinea.Name = "panLinea"
         Me.panLinea.Size = New System.Drawing.Size(954, 2)
-        Me.panLinea.TabIndex = 4
+        Me.panLinea.TabIndex = 5
         '
         'btnAsignacion
         '
@@ -67,7 +70,7 @@ Partial Class TarjetaSocio2
         Me.btnAsignacion.Location = New System.Drawing.Point(829, 7)
         Me.btnAsignacion.Name = "btnAsignacion"
         Me.btnAsignacion.Size = New System.Drawing.Size(109, 25)
-        Me.btnAsignacion.TabIndex = 2
+        Me.btnAsignacion.TabIndex = 3
         Me.btnAsignacion.Text = "ELEGIR"
         Me.btnAsignacion.UseVisualStyleBackColor = True
         '
@@ -76,11 +79,11 @@ Partial Class TarjetaSocio2
         Me.lblIdiomas.AutoSize = True
         Me.lblIdiomas.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblIdiomas.ForeColor = System.Drawing.Color.Black
-        Me.lblIdiomas.Location = New System.Drawing.Point(104, 140)
+        Me.lblIdiomas.Location = New System.Drawing.Point(106, 137)
         Me.lblIdiomas.Margin = New System.Windows.Forms.Padding(0)
         Me.lblIdiomas.Name = "lblIdiomas"
         Me.lblIdiomas.Size = New System.Drawing.Size(68, 18)
-        Me.lblIdiomas.TabIndex = 7
+        Me.lblIdiomas.TabIndex = 8
         Me.lblIdiomas.Text = "IDIOMAS:"
         '
         'Label3
@@ -88,11 +91,11 @@ Partial Class TarjetaSocio2
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.Black
-        Me.Label3.Location = New System.Drawing.Point(96, 74)
+        Me.Label3.Location = New System.Drawing.Point(98, 74)
         Me.Label3.Margin = New System.Windows.Forms.Padding(0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(76, 18)
-        Me.Label3.TabIndex = 5
+        Me.Label3.TabIndex = 6
         Me.Label3.Text = "SERVICIOS:"
         '
         'lblIndustrias
@@ -100,11 +103,11 @@ Partial Class TarjetaSocio2
         Me.lblIndustrias.AutoSize = True
         Me.lblIndustrias.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblIndustrias.ForeColor = System.Drawing.Color.Black
-        Me.lblIndustrias.Location = New System.Drawing.Point(85, 169)
+        Me.lblIndustrias.Location = New System.Drawing.Point(87, 163)
         Me.lblIndustrias.Margin = New System.Windows.Forms.Padding(0)
         Me.lblIndustrias.Name = "lblIndustrias"
         Me.lblIndustrias.Size = New System.Drawing.Size(87, 18)
-        Me.lblIndustrias.TabIndex = 9
+        Me.lblIndustrias.TabIndex = 10
         Me.lblIndustrias.Text = "INDUSTRIAS:"
         '
         'txtServiciosColor
@@ -112,11 +115,11 @@ Partial Class TarjetaSocio2
         Me.txtServiciosColor.BackColor = System.Drawing.Color.White
         Me.txtServiciosColor.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtServiciosColor.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtServiciosColor.Location = New System.Drawing.Point(175, 74)
+        Me.txtServiciosColor.Location = New System.Drawing.Point(181, 74)
         Me.txtServiciosColor.Name = "txtServiciosColor"
         Me.txtServiciosColor.ReadOnly = True
         Me.txtServiciosColor.Size = New System.Drawing.Size(731, 55)
-        Me.txtServiciosColor.TabIndex = 6
+        Me.txtServiciosColor.TabIndex = 7
         Me.txtServiciosColor.Text = "[SERVICIOS]"
         '
         'txtIdiomasColor
@@ -124,11 +127,11 @@ Partial Class TarjetaSocio2
         Me.txtIdiomasColor.BackColor = System.Drawing.Color.White
         Me.txtIdiomasColor.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtIdiomasColor.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtIdiomasColor.Location = New System.Drawing.Point(175, 140)
+        Me.txtIdiomasColor.Location = New System.Drawing.Point(181, 137)
         Me.txtIdiomasColor.Name = "txtIdiomasColor"
         Me.txtIdiomasColor.ReadOnly = True
         Me.txtIdiomasColor.Size = New System.Drawing.Size(731, 18)
-        Me.txtIdiomasColor.TabIndex = 8
+        Me.txtIdiomasColor.TabIndex = 9
         Me.txtIdiomasColor.Text = "[IDIOMAS]"
         '
         'txtIndustriasColor
@@ -136,11 +139,11 @@ Partial Class TarjetaSocio2
         Me.txtIndustriasColor.BackColor = System.Drawing.Color.White
         Me.txtIndustriasColor.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtIndustriasColor.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtIndustriasColor.Location = New System.Drawing.Point(175, 169)
+        Me.txtIndustriasColor.Location = New System.Drawing.Point(181, 163)
         Me.txtIndustriasColor.Name = "txtIndustriasColor"
         Me.txtIndustriasColor.ReadOnly = True
         Me.txtIndustriasColor.Size = New System.Drawing.Size(731, 40)
-        Me.txtIndustriasColor.TabIndex = 10
+        Me.txtIndustriasColor.TabIndex = 11
         Me.txtIndustriasColor.Text = "[INDUSTRIAS]"
         '
         'lblSeleccion
@@ -153,7 +156,7 @@ Partial Class TarjetaSocio2
         Me.lblSeleccion.Location = New System.Drawing.Point(772, 34)
         Me.lblSeleccion.Name = "lblSeleccion"
         Me.lblSeleccion.Size = New System.Drawing.Size(166, 23)
-        Me.lblSeleccion.TabIndex = 3
+        Me.lblSeleccion.TabIndex = 4
         Me.lblSeleccion.Text = "Socio seleccionado"
         Me.lblSeleccion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.lblSeleccion.Visible = False
@@ -174,11 +177,11 @@ Partial Class TarjetaSocio2
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.Black
-        Me.Label1.Location = New System.Drawing.Point(71, 216)
+        Me.Label1.Location = New System.Drawing.Point(73, 259)
         Me.Label1.Margin = New System.Windows.Forms.Padding(0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(101, 18)
-        Me.Label1.TabIndex = 11
+        Me.Label1.TabIndex = 14
         Me.Label1.Text = "PRESUPUESTO:"
         '
         'Label2
@@ -186,11 +189,11 @@ Partial Class TarjetaSocio2
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.Black
-        Me.Label2.Location = New System.Drawing.Point(16, 244)
+        Me.Label2.Location = New System.Drawing.Point(18, 285)
         Me.Label2.Margin = New System.Windows.Forms.Padding(0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(156, 18)
-        Me.Label2.TabIndex = 13
+        Me.Label2.TabIndex = 16
         Me.Label2.Text = "CAPACIDAD INSTALADA:"
         '
         'txtPresupuesto
@@ -198,24 +201,56 @@ Partial Class TarjetaSocio2
         Me.txtPresupuesto.BackColor = System.Drawing.Color.White
         Me.txtPresupuesto.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtPresupuesto.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPresupuesto.Location = New System.Drawing.Point(175, 216)
+        Me.txtPresupuesto.Location = New System.Drawing.Point(181, 259)
         Me.txtPresupuesto.Name = "txtPresupuesto"
         Me.txtPresupuesto.ReadOnly = True
         Me.txtPresupuesto.Size = New System.Drawing.Size(731, 18)
-        Me.txtPresupuesto.TabIndex = 12
-        Me.txtPresupuesto.Text = "100%"
+        Me.txtPresupuesto.TabIndex = 15
+        Me.txtPresupuesto.Text = "[PRESUPUESTO]"
         '
         'txtCapacidadInstalada
         '
         Me.txtCapacidadInstalada.BackColor = System.Drawing.Color.White
         Me.txtCapacidadInstalada.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtCapacidadInstalada.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCapacidadInstalada.Location = New System.Drawing.Point(175, 244)
+        Me.txtCapacidadInstalada.Location = New System.Drawing.Point(181, 285)
         Me.txtCapacidadInstalada.Name = "txtCapacidadInstalada"
         Me.txtCapacidadInstalada.ReadOnly = True
         Me.txtCapacidadInstalada.Size = New System.Drawing.Size(731, 18)
-        Me.txtCapacidadInstalada.TabIndex = 14
+        Me.txtCapacidadInstalada.TabIndex = 17
         Me.txtCapacidadInstalada.Text = "[% CAPACIDAD INSTALADA]"
+        '
+        'txtValida
+        '
+        Me.txtValida.Location = New System.Drawing.Point(394, 13)
+        Me.txtValida.Name = "txtValida"
+        Me.txtValida.Size = New System.Drawing.Size(100, 20)
+        Me.txtValida.TabIndex = 2
+        Me.txtValida.Visible = False
+        '
+        'txtNormatividadColor
+        '
+        Me.txtNormatividadColor.BackColor = System.Drawing.Color.White
+        Me.txtNormatividadColor.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtNormatividadColor.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtNormatividadColor.Location = New System.Drawing.Point(181, 211)
+        Me.txtNormatividadColor.Name = "txtNormatividadColor"
+        Me.txtNormatividadColor.ReadOnly = True
+        Me.txtNormatividadColor.Size = New System.Drawing.Size(731, 40)
+        Me.txtNormatividadColor.TabIndex = 13
+        Me.txtNormatividadColor.Text = "[MARCO NORMATIVO]"
+        '
+        'lblNormatividad
+        '
+        Me.lblNormatividad.AutoSize = True
+        Me.lblNormatividad.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblNormatividad.ForeColor = System.Drawing.Color.Black
+        Me.lblNormatividad.Location = New System.Drawing.Point(32, 211)
+        Me.lblNormatividad.Margin = New System.Windows.Forms.Padding(0)
+        Me.lblNormatividad.Name = "lblNormatividad"
+        Me.lblNormatividad.Size = New System.Drawing.Size(142, 18)
+        Me.lblNormatividad.TabIndex = 12
+        Me.lblNormatividad.Text = "MARCO NORMATIVO:"
         '
         'TarjetaSocio2
         '
@@ -223,6 +258,9 @@ Partial Class TarjetaSocio2
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.BackColor = System.Drawing.Color.White
         Me.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Controls.Add(Me.txtNormatividadColor)
+        Me.Controls.Add(Me.lblNormatividad)
+        Me.Controls.Add(Me.txtValida)
         Me.Controls.Add(Me.txtCapacidadInstalada)
         Me.Controls.Add(Me.txtPresupuesto)
         Me.Controls.Add(Me.Label2)
@@ -240,7 +278,7 @@ Partial Class TarjetaSocio2
         Me.Controls.Add(Me.lblNombre)
         Me.Name = "TarjetaSocio2"
         Me.Padding = New System.Windows.Forms.Padding(4)
-        Me.Size = New System.Drawing.Size(954, 280)
+        Me.Size = New System.Drawing.Size(954, 320)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -260,4 +298,7 @@ Partial Class TarjetaSocio2
     Friend WithEvents Label2 As Label
     Friend WithEvents txtPresupuesto As RichTextBox
     Friend WithEvents txtCapacidadInstalada As RichTextBox
+    Friend WithEvents txtValida As TextBox
+    Friend WithEvents txtNormatividadColor As RichTextBox
+    Friend WithEvents lblNormatividad As Label
 End Class

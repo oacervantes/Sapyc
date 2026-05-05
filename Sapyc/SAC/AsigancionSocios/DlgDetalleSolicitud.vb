@@ -48,6 +48,7 @@
                 txtIndustria.Text = dtSolicitud.Rows(0).Item("INDUSTRIA").ToString()
                 iNivelRiesgo = CInt(dtSolicitud.Rows(0).Item("iNivelRiesgo"))
                 txtNivelRiesgo.Text = dtSolicitud.Rows(0).Item("sNivelRiesgo").ToString()
+                txtMarcoNormativo.Text = dtSolicitud.Rows(0).Item("sMarcoNormativo").ToString()
                 cStatus = dtSolicitud.Rows(0).Item("cStatus").ToString()
 
                 If cStatus = "D" Then

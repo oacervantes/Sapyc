@@ -84,6 +84,7 @@ Partial Class DlgSolicitudAsignacion
         Me.btnSocioSinLista.TabIndex = 27
         Me.btnSocioSinLista.Text = "Registrar socio fuera de lista"
         Me.btnSocioSinLista.UseVisualStyleBackColor = False
+        Me.btnSocioSinLista.Visible = False
         '
         'btnRechazarAsignacion
         '
@@ -170,7 +171,7 @@ Partial Class DlgSolicitudAsignacion
         Me.panSocios.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.panSocios.AutoScroll = True
-        Me.panSocios.AutoScrollMargin = New System.Drawing.Size(0, 20)
+        Me.panSocios.AutoScrollMargin = New System.Drawing.Size(0, 15)
         Me.panSocios.BackColor = System.Drawing.Color.WhiteSmoke
         Me.panSocios.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.panSocios.Location = New System.Drawing.Point(18, 166)

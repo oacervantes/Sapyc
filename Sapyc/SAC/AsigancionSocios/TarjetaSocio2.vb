@@ -8,6 +8,8 @@
 
     Private sCveSocio As String
 
+    Public bSocioReq As Boolean = True
+
     Public Property SocioId As String
         Get
             Return sCveSocio
@@ -37,7 +39,7 @@
             Return txtServiciosColor.Text
         End Get
         Set(value As String)
-            MostrarTextoConErrores(txtServiciosColor, value)
+            MostrarTextoConEtiquetas(txtServiciosColor, value)
         End Set
     End Property
     Public Property Idiomas As String
@@ -45,7 +47,7 @@
             Return txtIdiomasColor.Text
         End Get
         Set(value As String)
-            MostrarTextoConErrores(txtIdiomasColor, value)
+            MostrarTextoConEtiquetas(txtIdiomasColor, value)
         End Set
     End Property
     Public Property Industrias As String
@@ -53,7 +55,23 @@
             Return txtIndustriasColor.Text
         End Get
         Set(value As String)
-            MostrarTextoConErrores(txtIndustriasColor, value)
+            MostrarTextoConEtiquetas(txtIndustriasColor, value)
+        End Set
+    End Property
+    Public Property Marcos As String
+        Get
+            Return txtNormatividadColor.Text
+        End Get
+        Set(value As String)
+            MostrarTextoConEtiquetas(txtNormatividadColor, value)
+        End Set
+    End Property
+    Public Property Presupuesto As String
+        Get
+            Return txtPresupuesto.Text
+        End Get
+        Set(value As String)
+            MostrarTextoEvaluandoValor(txtPresupuesto, value)
         End Set
     End Property
     Public Property CapacidadInstalada As String
@@ -61,7 +79,7 @@
             Return txtCapacidadInstalada.Text
         End Get
         Set(value As String)
-            MostrarTextoConErrores(txtCapacidadInstalada, value)
+            MostrarTextoEvaluandoValor(txtCapacidadInstalada, value)
         End Set
     End Property
 
@@ -74,51 +92,144 @@
     Private Sub BtnAsignacion_Click(sender As Object, e As EventArgs) Handles btnAsignacion.Click
         RaiseEvent CardClick(Me)
     End Sub
-    Public Sub MostrarTextoConErrores(rtb As RichTextBox, texto As String)
+    'Public Sub MostrarTextoConErrores(rtb As RichTextBox, texto As String)
+    '    rtb.Clear()
+    '    rtb.SelectionColor = Color.Black
 
+    '    Dim inicioTag As String = "[ERROR]"
+    '    Dim finTag As String = "[/ERROR]"
+
+    '    Dim i As Integer = 0
+
+    '    While i < texto.Length
+
+    '        Dim posInicio As Integer = texto.IndexOf(inicioTag, i)
+
+    '        ' No hay más errores
+    '        If posInicio = -1 Then
+    '            rtb.SelectionColor = Color.Black
+    '            rtb.AppendText(texto.Substring(i))
+    '            Exit While
+    '        End If
+
+    '        ' Texto normal antes del error
+    '        If posInicio > i Then
+    '            rtb.SelectionColor = Color.Black
+    '            rtb.AppendText(texto.Substring(i, posInicio - i))
+    '        End If
+
+    '        ' Texto de error
+    '        Dim posFin As Integer = texto.IndexOf(finTag, posInicio)
+    '        If posFin = -1 Then Exit While ' Seguridad
+
+    '        Dim textoError As String =
+    '        texto.Substring(posInicio + inicioTag.Length,
+    '                        posFin - (posInicio + inicioTag.Length))
+
+    '        rtb.SelectionColor = Color.FromArgb(255, 125, 30)
+    '        rtb.AppendText(textoError)
+    '        bSocioReq = False
+
+    '        ' Avanzar índice
+    '        i = posFin + finTag.Length
+    '    End While
+
+    '    ' Reset final
+    '    rtb.SelectionColor = Color.Black
+    '    txtValida.Text = bSocioReq.ToString()
+    'End Sub
+
+    Public Sub MostrarTextoConEtiquetas(rtb As RichTextBox, texto As String)
         rtb.Clear()
         rtb.SelectionColor = Color.Black
+        rtb.SelectionFont = New Font(rtb.Font, FontStyle.Regular)
 
-        Dim inicioTag As String = "[ERROR]"
-        Dim finTag As String = "[/ERROR]"
+        ' Etiquetas y colores asociados
+        Dim etiquetas As New Dictionary(Of String, Color) From {
+            {"ERROR", Color.FromArgb(255, 125, 30)},
+            {"VACIO", Color.FromArgb(0, 167, 181)}
+        }
 
         Dim i As Integer = 0
 
         While i < texto.Length
 
-            Dim posInicio As Integer = texto.IndexOf(inicioTag, i)
+            Dim posInicioMin As Integer = -1
+            Dim etiquetaEncontrada As String = Nothing
 
-            ' No hay más errores
-            If posInicio = -1 Then
+            ' Buscar la siguiente etiqueta más cercana
+            For Each eTag In etiquetas.Keys
+                Dim inicioTag As String = "[" & eTag & "]"
+                Dim pos As Integer = texto.IndexOf(inicioTag, i)
+
+                If pos <> -1 AndAlso (posInicioMin = -1 OrElse pos < posInicioMin) Then
+                    posInicioMin = pos
+                    etiquetaEncontrada = eTag
+                End If
+            Next
+
+            ' No hay más etiquetas
+            If posInicioMin = -1 Then
                 rtb.SelectionColor = Color.Black
+                rtb.SelectionFont = New Font(rtb.Font, FontStyle.Regular)
                 rtb.AppendText(texto.Substring(i))
                 Exit While
             End If
 
-            ' Texto normal antes del error
-            If posInicio > i Then
+            ' Texto normal antes de la etiqueta
+            If posInicioMin > i Then
                 rtb.SelectionColor = Color.Black
-                rtb.AppendText(texto.Substring(i, posInicio - i))
+                rtb.SelectionFont = New Font(rtb.Font, FontStyle.Regular)
+                rtb.AppendText(texto.Substring(i, posInicioMin - i))
             End If
 
-            ' Texto de error
-            Dim posFin As Integer = texto.IndexOf(finTag, posInicio)
+            ' Procesar etiqueta encontrada
+            Dim inicioTagCompleto As String = "[" & etiquetaEncontrada & "]"
+            Dim finTagCompleto As String = "[/" & etiquetaEncontrada & "]"
+
+            Dim posFin As Integer = texto.IndexOf(finTagCompleto, posInicioMin)
             If posFin = -1 Then Exit While ' Seguridad
 
-            Dim textoError As String =
-            texto.Substring(posInicio + inicioTag.Length,
-                            posFin - (posInicio + inicioTag.Length))
+            Dim contenido As String =
+            texto.Substring(
+                posInicioMin + inicioTagCompleto.Length,
+                posFin - (posInicioMin + inicioTagCompleto.Length)
+            )
 
-            rtb.SelectionColor = Color.FromArgb(255, 125, 30)
-            rtb.AppendText(textoError)
+            ' Aplicar color y negrita
+            rtb.SelectionColor = etiquetas(etiquetaEncontrada)
+            rtb.SelectionFont = New Font(rtb.Font, FontStyle.Bold)
+            rtb.AppendText(contenido)
+            bSocioReq = False
 
             ' Avanzar índice
-            i = posFin + finTag.Length
+            i = posFin + finTagCompleto.Length
         End While
 
         ' Reset final
         rtb.SelectionColor = Color.Black
+        rtb.SelectionFont = New Font(rtb.Font, FontStyle.Regular)
+        txtValida.Text = bSocioReq.ToString()
+    End Sub
 
+    Public Sub MostrarTextoEvaluandoValor(rtb As RichTextBox, texto As String)
+        rtb.Clear()
+
+        ' Quitar el símbolo %
+        Dim textoSinPorcentaje As String = texto.Replace("%", "").Trim()
+
+        Dim valor As Decimal
+
+        If Decimal.TryParse(textoSinPorcentaje, valor) AndAlso valor >= 100 Then
+            rtb.SelectionColor = Color.FromArgb(233, 40, 65)
+            rtb.SelectionFont = New Font(rtb.Font, FontStyle.Bold)
+        Else
+            rtb.SelectionColor = Color.Black
+            rtb.SelectionFont = New Font(rtb.Font, FontStyle.Regular)
+        End If
+
+        rtb.AppendText(CInt(textoSinPorcentaje) & "%")
+        rtb.SelectionColor = Color.Black
     End Sub
 
     Public Sub MostrarSeleccion()

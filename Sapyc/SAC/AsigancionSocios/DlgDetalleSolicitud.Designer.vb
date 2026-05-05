@@ -44,6 +44,8 @@ Partial Class DlgDetalleSolicitud
         Me.txtServicio = New System.Windows.Forms.Label()
         Me.txtProspecto = New System.Windows.Forms.Label()
         Me.btnCerrar = New System.Windows.Forms.Button()
+        Me.lblMarcoNormativo = New System.Windows.Forms.Label()
+        Me.txtMarcoNormativo = New System.Windows.Forms.Label()
         Me.panPrincipal.SuspendLayout()
         Me.panSolicitud.SuspendLayout()
         Me.SuspendLayout()
@@ -68,6 +70,8 @@ Partial Class DlgDetalleSolicitud
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.panSolicitud.BackColor = System.Drawing.Color.White
         Me.panSolicitud.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.panSolicitud.Controls.Add(Me.lblMarcoNormativo)
+        Me.panSolicitud.Controls.Add(Me.txtMarcoNormativo)
         Me.panSolicitud.Controls.Add(Me.lblNivelRiesgo)
         Me.panSolicitud.Controls.Add(Me.txtNivelRiesgo)
         Me.panSolicitud.Controls.Add(Me.lblMotivoRechazo)
@@ -97,7 +101,7 @@ Partial Class DlgDetalleSolicitud
         Me.lblNivelRiesgo.AutoSize = True
         Me.lblNivelRiesgo.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblNivelRiesgo.ForeColor = System.Drawing.Color.Black
-        Me.lblNivelRiesgo.Location = New System.Drawing.Point(11, 260)
+        Me.lblNivelRiesgo.Location = New System.Drawing.Point(17, 265)
         Me.lblNivelRiesgo.Margin = New System.Windows.Forms.Padding(0)
         Me.lblNivelRiesgo.Name = "lblNivelRiesgo"
         Me.lblNivelRiesgo.Size = New System.Drawing.Size(116, 18)
@@ -108,7 +112,7 @@ Partial Class DlgDetalleSolicitud
         '
         Me.txtNivelRiesgo.AutoSize = True
         Me.txtNivelRiesgo.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtNivelRiesgo.Location = New System.Drawing.Point(209, 260)
+        Me.txtNivelRiesgo.Location = New System.Drawing.Point(220, 265)
         Me.txtNivelRiesgo.Name = "txtNivelRiesgo"
         Me.txtNivelRiesgo.Size = New System.Drawing.Size(102, 18)
         Me.txtNivelRiesgo.TabIndex = 16
@@ -119,7 +123,7 @@ Partial Class DlgDetalleSolicitud
         Me.lblMotivoRechazo.AutoSize = True
         Me.lblMotivoRechazo.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblMotivoRechazo.ForeColor = System.Drawing.Color.Black
-        Me.lblMotivoRechazo.Location = New System.Drawing.Point(11, 294)
+        Me.lblMotivoRechazo.Location = New System.Drawing.Point(17, 335)
         Me.lblMotivoRechazo.Margin = New System.Windows.Forms.Padding(0)
         Me.lblMotivoRechazo.Name = "lblMotivoRechazo"
         Me.lblMotivoRechazo.Size = New System.Drawing.Size(183, 18)
@@ -129,8 +133,8 @@ Partial Class DlgDetalleSolicitud
         'txtMotivoRechazo
         '
         Me.txtMotivoRechazo.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtMotivoRechazo.ForeColor = System.Drawing.Color.DarkRed
-        Me.txtMotivoRechazo.Location = New System.Drawing.Point(209, 294)
+        Me.txtMotivoRechazo.ForeColor = System.Drawing.Color.FromArgb(CType(CType(233, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(65, Byte), Integer))
+        Me.txtMotivoRechazo.Location = New System.Drawing.Point(220, 335)
         Me.txtMotivoRechazo.Name = "txtMotivoRechazo"
         Me.txtMotivoRechazo.Size = New System.Drawing.Size(412, 121)
         Me.txtMotivoRechazo.TabIndex = 18
@@ -175,7 +179,7 @@ Partial Class DlgDetalleSolicitud
         Me.lblIndustria.AutoSize = True
         Me.lblIndustria.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblIndustria.ForeColor = System.Drawing.Color.Black
-        Me.lblIndustria.Location = New System.Drawing.Point(11, 226)
+        Me.lblIndustria.Location = New System.Drawing.Point(17, 230)
         Me.lblIndustria.Margin = New System.Windows.Forms.Padding(0)
         Me.lblIndustria.Name = "lblIndustria"
         Me.lblIndustria.Size = New System.Drawing.Size(80, 18)
@@ -186,7 +190,7 @@ Partial Class DlgDetalleSolicitud
         '
         Me.txtIndustria.AutoSize = True
         Me.txtIndustria.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtIndustria.Location = New System.Drawing.Point(209, 226)
+        Me.txtIndustria.Location = New System.Drawing.Point(220, 230)
         Me.txtIndustria.Name = "txtIndustria"
         Me.txtIndustria.Size = New System.Drawing.Size(85, 18)
         Me.txtIndustria.TabIndex = 14
@@ -197,7 +201,7 @@ Partial Class DlgDetalleSolicitud
         Me.lblIdioma.AutoSize = True
         Me.lblIdioma.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblIdioma.ForeColor = System.Drawing.Color.Black
-        Me.lblIdioma.Location = New System.Drawing.Point(11, 192)
+        Me.lblIdioma.Location = New System.Drawing.Point(17, 195)
         Me.lblIdioma.Margin = New System.Windows.Forms.Padding(0)
         Me.lblIdioma.Name = "lblIdioma"
         Me.lblIdioma.Size = New System.Drawing.Size(137, 18)
@@ -208,7 +212,7 @@ Partial Class DlgDetalleSolicitud
         '
         Me.txtIdioma.AutoSize = True
         Me.txtIdioma.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtIdioma.Location = New System.Drawing.Point(209, 192)
+        Me.txtIdioma.Location = New System.Drawing.Point(220, 195)
         Me.txtIdioma.Name = "txtIdioma"
         Me.txtIdioma.Size = New System.Drawing.Size(66, 18)
         Me.txtIdioma.TabIndex = 12
@@ -219,7 +223,7 @@ Partial Class DlgDetalleSolicitud
         Me.lblSocioEncargado.AutoSize = True
         Me.lblSocioEncargado.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblSocioEncargado.ForeColor = System.Drawing.Color.Black
-        Me.lblSocioEncargado.Location = New System.Drawing.Point(11, 158)
+        Me.lblSocioEncargado.Location = New System.Drawing.Point(17, 160)
         Me.lblSocioEncargado.Margin = New System.Windows.Forms.Padding(0)
         Me.lblSocioEncargado.Name = "lblSocioEncargado"
         Me.lblSocioEncargado.Size = New System.Drawing.Size(194, 18)
@@ -231,7 +235,7 @@ Partial Class DlgDetalleSolicitud
         Me.lblDivision.AutoSize = True
         Me.lblDivision.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblDivision.ForeColor = System.Drawing.Color.Black
-        Me.lblDivision.Location = New System.Drawing.Point(11, 124)
+        Me.lblDivision.Location = New System.Drawing.Point(17, 125)
         Me.lblDivision.Margin = New System.Windows.Forms.Padding(0)
         Me.lblDivision.Name = "lblDivision"
         Me.lblDivision.Size = New System.Drawing.Size(69, 18)
@@ -242,7 +246,7 @@ Partial Class DlgDetalleSolicitud
         '
         Me.txtDivision.AutoSize = True
         Me.txtDivision.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtDivision.Location = New System.Drawing.Point(209, 124)
+        Me.txtDivision.Location = New System.Drawing.Point(220, 125)
         Me.txtDivision.Margin = New System.Windows.Forms.Padding(0)
         Me.txtDivision.Name = "txtDivision"
         Me.txtDivision.Size = New System.Drawing.Size(75, 18)
@@ -254,7 +258,7 @@ Partial Class DlgDetalleSolicitud
         Me.lblOficina.AutoSize = True
         Me.lblOficina.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblOficina.ForeColor = System.Drawing.Color.Black
-        Me.lblOficina.Location = New System.Drawing.Point(11, 90)
+        Me.lblOficina.Location = New System.Drawing.Point(17, 90)
         Me.lblOficina.Margin = New System.Windows.Forms.Padding(0)
         Me.lblOficina.Name = "lblOficina"
         Me.lblOficina.Size = New System.Drawing.Size(64, 18)
@@ -265,7 +269,7 @@ Partial Class DlgDetalleSolicitud
         '
         Me.txtOficina.AutoSize = True
         Me.txtOficina.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtOficina.Location = New System.Drawing.Point(209, 90)
+        Me.txtOficina.Location = New System.Drawing.Point(220, 90)
         Me.txtOficina.Margin = New System.Windows.Forms.Padding(0)
         Me.txtOficina.Name = "txtOficina"
         Me.txtOficina.Size = New System.Drawing.Size(70, 18)
@@ -276,7 +280,7 @@ Partial Class DlgDetalleSolicitud
         '
         Me.txtSocioEncargado.AutoSize = True
         Me.txtSocioEncargado.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSocioEncargado.Location = New System.Drawing.Point(209, 158)
+        Me.txtSocioEncargado.Location = New System.Drawing.Point(220, 160)
         Me.txtSocioEncargado.Name = "txtSocioEncargado"
         Me.txtSocioEncargado.Size = New System.Drawing.Size(139, 18)
         Me.txtSocioEncargado.TabIndex = 10
@@ -312,6 +316,28 @@ Partial Class DlgDetalleSolicitud
         Me.btnCerrar.TabIndex = 1
         Me.btnCerrar.Text = "Cerrar"
         Me.btnCerrar.UseVisualStyleBackColor = True
+        '
+        'lblMarcoNormativo
+        '
+        Me.lblMarcoNormativo.AutoSize = True
+        Me.lblMarcoNormativo.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblMarcoNormativo.ForeColor = System.Drawing.Color.Black
+        Me.lblMarcoNormativo.Location = New System.Drawing.Point(19, 300)
+        Me.lblMarcoNormativo.Margin = New System.Windows.Forms.Padding(0)
+        Me.lblMarcoNormativo.Name = "lblMarcoNormativo"
+        Me.lblMarcoNormativo.Size = New System.Drawing.Size(142, 18)
+        Me.lblMarcoNormativo.TabIndex = 19
+        Me.lblMarcoNormativo.Text = "MARCO NORMATIVO:"
+        '
+        'txtMarcoNormativo
+        '
+        Me.txtMarcoNormativo.AutoSize = True
+        Me.txtMarcoNormativo.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtMarcoNormativo.Location = New System.Drawing.Point(220, 300)
+        Me.txtMarcoNormativo.Name = "txtMarcoNormativo"
+        Me.txtMarcoNormativo.Size = New System.Drawing.Size(146, 18)
+        Me.txtMarcoNormativo.TabIndex = 20
+        Me.txtMarcoNormativo.Text = "[MARCO NORMATIVO]"
         '
         'DlgDetalleSolicitud
         '
@@ -356,4 +382,6 @@ Partial Class DlgDetalleSolicitud
     Friend WithEvents txtMotivoRechazo As Label
     Friend WithEvents lblNivelRiesgo As Label
     Friend WithEvents txtNivelRiesgo As Label
+    Friend WithEvents lblMarcoNormativo As Label
+    Friend WithEvents txtMarcoNormativo As Label
 End Class

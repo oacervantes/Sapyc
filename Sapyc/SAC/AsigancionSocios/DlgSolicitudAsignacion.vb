@@ -3,9 +3,9 @@
     Private ds As New DataSet()
     Private sNameRpt As String = "Selección de socios para asignar propuesta"
 
-    Private dtSocios, dtCISocios As New DataTable
+    Private dtSocios, dtCISocios, dtPptoSocios As New DataTable
     Private tarjetaSeleccionada As TarjetaSocio2 = Nothing
-    Private iPosY = 10, iValorY As Integer = 280
+    Private iPosY = 10, iValorY As Integer = 320
 
     Private sCveSocio, sNombreSocio, sCorreoSocio As String
 
@@ -26,6 +26,7 @@
             ListarSociosOficinas()
         End If
         ListarCISocios()
+        ListarPptoSocios()
 
         LlenarTarjetas()
     End Sub
@@ -75,7 +76,9 @@
                 .Idiomas = row("sIdioma").ToString(),
                 .Servicio = row("sServicio").ToString(),
                 .Industrias = row("sIndustria").ToString(),
-                .CapacidadInstalada = CapacidadInstalada(row("CVEEMP").ToString()) & "%"
+                .Marcos = row("sNormatividad").ToString(),
+                .Presupuesto = Presupuesto(row("CVEEMP").ToString()),
+                .CapacidadInstalada = CapacidadInstalada(row("CVEEMP").ToString())
             }
 
             AddHandler card.CardClick, AddressOf OnSocioCardClick
@@ -112,7 +115,7 @@
             End With
         Catch ex As Exception
             InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarProspectos()")
-            MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
+            MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
             dtSocios = Nothing
         End Try
     End Sub
@@ -133,6 +136,7 @@
                     .subAddParameter("@idIdioma", idIdioma, SqlDbType.Int, ParameterDirection.Input)
                     .subAddParameter("@idServicio", idServicio, SqlDbType.Int, ParameterDirection.Input)
                     .subAddParameter("@idIndustria", sCveInd, SqlDbType.VarChar, ParameterDirection.Input)
+                    .subAddParameter("@idMarcoNormativo", idMarco, SqlDbType.Int, ParameterDirection.Input)
                 End With
 
                 .Add(clsDatosInv.funExecuteSPDataTable("paSACAsignaciones", sTabla))
@@ -141,7 +145,7 @@
             End With
         Catch ex As Exception
             InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarProspectos()")
-            MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
+            MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
             dtSocios = Nothing
         End Try
     End Sub
@@ -157,8 +161,6 @@
                 With clsDatosInv
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 3, SqlDbType.Int, ParameterDirection.Input)
-                    .subAddParameter("@sCveOfi", sCveOfi, SqlDbType.VarChar, ParameterDirection.Input)
-                    .subAddParameter("@sCveArea", sCvearea, SqlDbType.VarChar, ParameterDirection.Input)
                 End With
 
                 .Add(clsDatosInv.funExecuteSPDataTable("paSACAsignaciones", sTabla))
@@ -167,8 +169,32 @@
             End With
         Catch ex As Exception
             InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarCISocios()")
-            MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
+            MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
             dtCISocios = Nothing
+        End Try
+    End Sub
+    Private Sub ListarPptoSocios()
+        ' Aquí iría la lógica para listar los socios, por ejemplo, desde una base de datos
+        ' Por ahora, se simula con datos estáticos en el método LlenarTarjetas()
+        Try
+            Dim sTabla As String = "tbPptoSocios"
+
+            With ds.Tables
+                LimpiarConsultaTabla(ds.Tables, sTabla)
+
+                With clsDatosInv
+                    .subClearParameters()
+                    .subAddParameter("@iOpcion", 4, SqlDbType.Int, ParameterDirection.Input)
+                End With
+
+                .Add(clsDatosInv.funExecuteSPDataTable("paSACAsignaciones", sTabla))
+
+                dtPptoSocios = .Item(sTabla)
+            End With
+        Catch ex As Exception
+            InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarCISocios()")
+            MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
+            dtPptoSocios = Nothing
         End Try
     End Sub
 
@@ -220,6 +246,12 @@
 
     Private Sub OnSocioCardClick(tarjetaActual As TarjetaSocio2)
 
+        If CBool(tarjetaActual.txtValida.Text) = False Then
+            If MsgBox("El socio seleccionado no cumple con todos los requerimientos solicitados por el Cliente Prospecto, ¿Desea elegirlo?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, My.Settings.NOM_SYS) = MsgBoxResult.No Then
+                Exit Sub
+            End If
+        End If
+
         ' Oculta la anterior
         If tarjetaSeleccionada IsNot Nothing AndAlso tarjetaSeleccionada IsNot tarjetaActual Then
             tarjetaSeleccionada.OcultarSeleccion()
@@ -240,13 +272,21 @@
     Private Function CapacidadInstalada(sCveSocio As String) As Decimal
         Dim filas() As DataRow = dtCISocios.Select($"CVEEMP = '{sCveSocio}'")
 
-        If filas.Length > 0 Then
-            Dim horas As Decimal = Convert.ToDecimal(filas(0)("TIEMPO"))
-            Return Math.Round((700D - horas) / 700D, 2) * 100
-        Else
-            Return 0D
-        End If
+        If filas.Length = 0 Then Return 0D
 
+        Dim horas As Decimal = Convert.ToDecimal(filas(0)("TIEMPO"))
+        Dim porcentaje As Decimal = Math.Round(horas / 700D, 2) * 100
+
+        Return porcentaje
+    End Function
+    Private Function Presupuesto(sCveSocio As String) As Decimal
+        Dim filas() As DataRow = dtPptoSocios.Select($"SOCIO = '{sCveSocio}'")
+
+        If filas.Length = 0 Then Return 0D
+
+        Dim porcentaje As Decimal = Convert.ToDecimal(filas(0)("PORCENTAJE_ACTIVOS"))
+
+        Return porcentaje
     End Function
 
 End Class
