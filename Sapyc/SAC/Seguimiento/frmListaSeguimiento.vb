@@ -28,18 +28,20 @@
                 End If
 
                 frm.iOrigen = 2
-                    frm.idSAC = gridProspectos.CurrentRow.Cells("idSAC").Value
-                    frm.idPropuesta = gridProspectos.CurrentRow.Cells("idProp").Value
-                    frm.idServicio = gridProspectos.CurrentRow.Cells("IdServicio").Value
-                    frm.sCveOfi = gridProspectos.CurrentRow.Cells("sCveOficina").Value
-                    frm.sCveArea = gridProspectos.CurrentRow.Cells("sCveDivision").Value
-                    frm.sServicio = gridProspectos.CurrentRow.Cells("sServicio").Value
+                frm.idSAC = gridProspectos.CurrentRow.Cells("idSAC").Value
+                frm.idPropuesta = gridProspectos.CurrentRow.Cells("idProp").Value
+                frm.idServicio = gridProspectos.CurrentRow.Cells("IdServicio").Value
+                frm.sCveOfi = gridProspectos.CurrentRow.Cells("sCveOficina").Value
+                frm.sCveArea = gridProspectos.CurrentRow.Cells("sCveDivision").Value
+                frm.sServicio = gridProspectos.CurrentRow.Cells("sServicio").Value
+                frm.dHonorarios = gridProspectos.CurrentRow.Cells("HONORARIOS").Value
+                frm.idEstatus = gridProspectos.CurrentRow.Cells("ESTATUS").Value
 
-                    If frm.ShowDialog = DialogResult.OK Then
-                        ListarSolicitudes()
-                    End If
-                Else
-                    MsgBox("Seleccione a un prospecto para poder generar una propuesta.", MsgBoxStyle.Exclamation, "SAPYC")
+                If frm.ShowDialog = DialogResult.OK Then
+                    ListarSolicitudes()
+                End If
+            Else
+                MsgBox("Seleccione a un prospecto para poder generar una propuesta.", MsgBoxStyle.Exclamation, "SAPYC")
             End If
         Catch ex As Exception
             InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarSolicitudesnivelriesgo()")
@@ -73,9 +75,11 @@
 
                 gridProspectos.Columns("idProp").Visible = False
                 gridProspectos.Columns("sCveOficina").Visible = False
+
                 gridProspectos.Columns("sCveDivision").Visible = False
                 gridProspectos.Columns("IdServicio").Visible = False
                 gridProspectos.Columns("sStatus").Visible = False
+                gridProspectos.Columns("ESTATUS").Visible = False
 
 
                 ConfigurarColumnasGrid(gridProspectos, "IdSac", "CVE. SAC", 65, 3, False)
@@ -83,10 +87,15 @@
                 ConfigurarColumnasGrid(gridProspectos, "sDivision", "DIVISIÓN", 80, 1, False)
                 ConfigurarColumnasGrid(gridProspectos, "sNombreCte", "CLIENTE", 0, 1, False)
                 ConfigurarColumnasGrid(gridProspectos, "sServicio", "SERVICIO", 0, 1, False)
+
                 ConfigurarColumnasGrid(gridProspectos, "PRESENTO", "PRESENTO PROPUESTA", 0, 1, False)
-                ConfigurarColumnasGrid(gridProspectos, "ESTATUS", "ESTATUS", 0, 1, False)
-                ConfigurarColumnasGrid(gridProspectos, "FECHAALTA", "FECHA ALTA", 160, 3, False)
-                ConfigurarColumnasGrid(gridProspectos, "FECHAPROPUESTA", "FECHA PROPUESTA", 160, 3, False)
+                ConfigurarColumnasGrid(gridProspectos, "FECHAALTASEG", "FECHA ALTA", 50, 3, False)
+                ConfigurarColumnasGrid(gridProspectos, "sEstatusSeguimiento", "ESTATUS SEGUIMIENTO", 50, 3, False)
+
+                ConfigurarColumnasGrid(gridProspectos, "sEstatusPropuesta", "ESTATUS PROPUESTA", 50, 1, False)
+                ConfigurarColumnasGrid(gridProspectos, "FECHAPROPUESTA", "FECHA PROPUESTA", 50, 3, False)
+                ConfigurarColumnasGrid(gridProspectos, "HONORARIOS", "HONORARIOS ALTA", 50, 3, False)
+
             Else
                 bs.DataSource = Nothing
             End If

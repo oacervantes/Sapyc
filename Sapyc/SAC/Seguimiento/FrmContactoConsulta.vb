@@ -28,7 +28,8 @@
     Private sCorreos(), sCuentaCorreo As String
 
     Public sCveOfi, sCveArea, sServicio, sNombreSocio, sCveSocio, sNombreCte As String
-    Public iOrigen, iModifica, idSAC, idServicio, idPropuesta As Integer
+    Public iOrigen, iModifica, idSAC, idServicio, idPropuesta, idEstatus As Integer
+    Public dHonorarios As Decimal
 
     Private Sub FrmContactoConsulta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         panDatosGenerales.Visible = True
@@ -77,9 +78,13 @@
         ListarContactoInicial()
 
         ListarEstatusPropuestas()
-
-
         TipoConsultaPantalla(iOrigen)
+
+        '============================== VALORES DE LA PROPUESTA ==============================
+        txtHonorariosPropuesta.Text = dHonorarios
+        cboStatusPropuesta.SelectedValue = idEstatus
+
+
 
     End Sub
     Private Sub BtnAutorizar_Click(sender As Object, e As EventArgs)
