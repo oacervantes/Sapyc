@@ -81,17 +81,17 @@ Partial Class frmListaSeguimiento
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.gridProspectos.BackgroundColor = System.Drawing.Color.Gainsboro
         Me.gridProspectos.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
-        Me.gridProspectos.ColumnHeadersHeight = 40
+        Me.gridProspectos.ColumnHeadersHeight = 60
         Me.gridProspectos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.gridProspectos.GridColor = System.Drawing.Color.WhiteSmoke
         Me.gridProspectos.Location = New System.Drawing.Point(11, 53)
         Me.gridProspectos.Name = "gridProspectos"
         Me.gridProspectos.RowHeadersWidth = 25
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(127, Byte), Integer))
         Me.gridProspectos.RowsDefaultCellStyle = DataGridViewCellStyle1
-        Me.gridProspectos.RowTemplate.Height = 25
-        Me.gridProspectos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
+        Me.gridProspectos.RowTemplate.Height = 26
+        Me.gridProspectos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.gridProspectos.Size = New System.Drawing.Size(1130, 522)
         Me.gridProspectos.TabIndex = 2
         '

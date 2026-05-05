@@ -228,7 +228,6 @@ Partial Class FrmContactoConsulta
         Me.lblRegistroPropuesta = New System.Windows.Forms.Label()
         Me.txtRegistroFechaPropuesta = New System.Windows.Forms.DateTimePicker()
         Me.lblPresentacionPropuesta = New System.Windows.Forms.Label()
-        Me.gpBoxPresentacionServicio = New System.Windows.Forms.GroupBox()
         Me.rdSiPresentacion = New System.Windows.Forms.RadioButton()
         Me.rdNoPresentacion = New System.Windows.Forms.RadioButton()
         Me.lblRegistroSAPYC = New System.Windows.Forms.Label()
@@ -236,6 +235,9 @@ Partial Class FrmContactoConsulta
         Me.btnGuardar = New System.Windows.Forms.Button()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.lblConcepto = New System.Windows.Forms.Label()
+        Me.lblSocioAsignado = New System.Windows.Forms.Label()
+        Me.lblCorreoSocio = New System.Windows.Forms.Label()
+        Me.panDatosPropuesta = New System.Windows.Forms.Panel()
         Me.panMenu.SuspendLayout()
         Me.panAcercamiento.SuspendLayout()
         Me.gpBoxDatosAcercamiento.SuspendLayout()
@@ -264,7 +266,7 @@ Partial Class FrmContactoConsulta
         Me.panRDSubExt.SuspendLayout()
         Me.panRDRepExt.SuspendLayout()
         Me.gpBoxSeguimiento.SuspendLayout()
-        Me.gpBoxPresentacionServicio.SuspendLayout()
+        Me.panDatosPropuesta.SuspendLayout()
         Me.SuspendLayout()
         '
         'btnCerrar
@@ -1115,7 +1117,7 @@ Partial Class FrmContactoConsulta
         Me.lblTituloSocios.Name = "lblTituloSocios"
         Me.lblTituloSocios.Padding = New System.Windows.Forms.Padding(8, 0, 0, 0)
         Me.lblTituloSocios.Size = New System.Drawing.Size(1050, 23)
-        Me.lblTituloSocios.TabIndex = 13
+        Me.lblTituloSocios.TabIndex = 0
         Me.lblTituloSocios.Text = "[Título solicitud]"
         Me.lblTituloSocios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
@@ -2423,14 +2425,13 @@ Partial Class FrmContactoConsulta
         '
         'gpBoxSeguimiento
         '
+        Me.gpBoxSeguimiento.Controls.Add(Me.panDatosPropuesta)
+        Me.gpBoxSeguimiento.Controls.Add(Me.lblCorreoSocio)
+        Me.gpBoxSeguimiento.Controls.Add(Me.lblSocioAsignado)
         Me.gpBoxSeguimiento.Controls.Add(Me.cboStatusPropuesta)
         Me.gpBoxSeguimiento.Controls.Add(Me.lblStatusPropuesta)
         Me.gpBoxSeguimiento.Controls.Add(Me.lblHonorariosPropuesta)
         Me.gpBoxSeguimiento.Controls.Add(Me.txtHonorariosPropuesta)
-        Me.gpBoxSeguimiento.Controls.Add(Me.lblRegistroPropuesta)
-        Me.gpBoxSeguimiento.Controls.Add(Me.txtRegistroFechaPropuesta)
-        Me.gpBoxSeguimiento.Controls.Add(Me.lblPresentacionPropuesta)
-        Me.gpBoxSeguimiento.Controls.Add(Me.gpBoxPresentacionServicio)
         Me.gpBoxSeguimiento.Controls.Add(Me.lblRegistroSAPYC)
         Me.gpBoxSeguimiento.Controls.Add(Me.txtRegistroFechaSAPYC)
         Me.gpBoxSeguimiento.Controls.Add(Me.btnGuardar)
@@ -2438,8 +2439,8 @@ Partial Class FrmContactoConsulta
         Me.gpBoxSeguimiento.Controls.Add(Me.lblConcepto)
         Me.gpBoxSeguimiento.Location = New System.Drawing.Point(14, 8)
         Me.gpBoxSeguimiento.Name = "gpBoxSeguimiento"
-        Me.gpBoxSeguimiento.Size = New System.Drawing.Size(1050, 246)
-        Me.gpBoxSeguimiento.TabIndex = 14
+        Me.gpBoxSeguimiento.Size = New System.Drawing.Size(1050, 264)
+        Me.gpBoxSeguimiento.TabIndex = 2
         Me.gpBoxSeguimiento.TabStop = False
         Me.gpBoxSeguimiento.Text = "Seguimiento de Propuesta"
         '
@@ -2448,85 +2449,76 @@ Partial Class FrmContactoConsulta
         Me.cboStatusPropuesta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboStatusPropuesta.Enabled = False
         Me.cboStatusPropuesta.FormattingEnabled = True
-        Me.cboStatusPropuesta.Location = New System.Drawing.Point(312, 117)
+        Me.cboStatusPropuesta.Location = New System.Drawing.Point(218, 168)
         Me.cboStatusPropuesta.Name = "cboStatusPropuesta"
-        Me.cboStatusPropuesta.Size = New System.Drawing.Size(189, 26)
-        Me.cboStatusPropuesta.TabIndex = 28
+        Me.cboStatusPropuesta.Size = New System.Drawing.Size(213, 26)
+        Me.cboStatusPropuesta.TabIndex = 6
         '
         'lblStatusPropuesta
         '
         Me.lblStatusPropuesta.AutoSize = True
         Me.lblStatusPropuesta.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblStatusPropuesta.Location = New System.Drawing.Point(54, 121)
+        Me.lblStatusPropuesta.Location = New System.Drawing.Point(60, 172)
         Me.lblStatusPropuesta.Name = "lblStatusPropuesta"
         Me.lblStatusPropuesta.Size = New System.Drawing.Size(149, 18)
-        Me.lblStatusPropuesta.TabIndex = 27
+        Me.lblStatusPropuesta.TabIndex = 5
         Me.lblStatusPropuesta.Text = "Status de la propuesta:"
         '
         'lblHonorariosPropuesta
         '
-        Me.lblHonorariosPropuesta.AutoSize = True
         Me.lblHonorariosPropuesta.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblHonorariosPropuesta.Location = New System.Drawing.Point(534, 121)
+        Me.lblHonorariosPropuesta.Location = New System.Drawing.Point(26, 203)
         Me.lblHonorariosPropuesta.Name = "lblHonorariosPropuesta"
-        Me.lblHonorariosPropuesta.Size = New System.Drawing.Size(259, 18)
-        Me.lblHonorariosPropuesta.TabIndex = 25
+        Me.lblHonorariosPropuesta.Size = New System.Drawing.Size(183, 43)
+        Me.lblHonorariosPropuesta.TabIndex = 7
         Me.lblHonorariosPropuesta.Text = "Honorarios presentados en la propuesta:"
+        Me.lblHonorariosPropuesta.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'txtHonorariosPropuesta
         '
-        Me.txtHonorariosPropuesta.Location = New System.Drawing.Point(799, 118)
+        Me.txtHonorariosPropuesta.Location = New System.Drawing.Point(218, 221)
         Me.txtHonorariosPropuesta.Name = "txtHonorariosPropuesta"
         Me.txtHonorariosPropuesta.ReadOnly = True
-        Me.txtHonorariosPropuesta.Size = New System.Drawing.Size(114, 25)
-        Me.txtHonorariosPropuesta.TabIndex = 26
+        Me.txtHonorariosPropuesta.Size = New System.Drawing.Size(117, 25)
+        Me.txtHonorariosPropuesta.TabIndex = 8
+        Me.txtHonorariosPropuesta.Text = "00,000,000.00"
         Me.txtHonorariosPropuesta.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'lblRegistroPropuesta
         '
         Me.lblRegistroPropuesta.AutoSize = True
         Me.lblRegistroPropuesta.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblRegistroPropuesta.Location = New System.Drawing.Point(54, 205)
+        Me.lblRegistroPropuesta.Location = New System.Drawing.Point(22, 52)
         Me.lblRegistroPropuesta.Name = "lblRegistroPropuesta"
         Me.lblRegistroPropuesta.Size = New System.Drawing.Size(251, 18)
-        Me.lblRegistroPropuesta.TabIndex = 24
+        Me.lblRegistroPropuesta.TabIndex = 3
         Me.lblRegistroPropuesta.Text = "Registro de presentación de propuesta:"
         '
         'txtRegistroFechaPropuesta
         '
         Me.txtRegistroFechaPropuesta.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.txtRegistroFechaPropuesta.Location = New System.Drawing.Point(312, 202)
+        Me.txtRegistroFechaPropuesta.Location = New System.Drawing.Point(283, 47)
         Me.txtRegistroFechaPropuesta.Name = "txtRegistroFechaPropuesta"
         Me.txtRegistroFechaPropuesta.Size = New System.Drawing.Size(116, 25)
-        Me.txtRegistroFechaPropuesta.TabIndex = 23
+        Me.txtRegistroFechaPropuesta.TabIndex = 4
         '
         'lblPresentacionPropuesta
         '
         Me.lblPresentacionPropuesta.AutoSize = True
         Me.lblPresentacionPropuesta.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPresentacionPropuesta.Location = New System.Drawing.Point(54, 167)
+        Me.lblPresentacionPropuesta.Location = New System.Drawing.Point(19, 15)
         Me.lblPresentacionPropuesta.Name = "lblPresentacionPropuesta"
         Me.lblPresentacionPropuesta.Size = New System.Drawing.Size(246, 18)
-        Me.lblPresentacionPropuesta.TabIndex = 22
+        Me.lblPresentacionPropuesta.TabIndex = 0
         Me.lblPresentacionPropuesta.Text = "¿Se presentó la propuesta de servicio?"
-        '
-        'gpBoxPresentacionServicio
-        '
-        Me.gpBoxPresentacionServicio.Controls.Add(Me.rdSiPresentacion)
-        Me.gpBoxPresentacionServicio.Controls.Add(Me.rdNoPresentacion)
-        Me.gpBoxPresentacionServicio.Location = New System.Drawing.Point(312, 150)
-        Me.gpBoxPresentacionServicio.Name = "gpBoxPresentacionServicio"
-        Me.gpBoxPresentacionServicio.Size = New System.Drawing.Size(116, 43)
-        Me.gpBoxPresentacionServicio.TabIndex = 21
-        Me.gpBoxPresentacionServicio.TabStop = False
         '
         'rdSiPresentacion
         '
         Me.rdSiPresentacion.AutoSize = True
-        Me.rdSiPresentacion.Location = New System.Drawing.Point(12, 14)
+        Me.rdSiPresentacion.Location = New System.Drawing.Point(287, 13)
         Me.rdSiPresentacion.Name = "rdSiPresentacion"
         Me.rdSiPresentacion.Size = New System.Drawing.Size(37, 22)
-        Me.rdSiPresentacion.TabIndex = 19
+        Me.rdSiPresentacion.TabIndex = 1
         Me.rdSiPresentacion.TabStop = True
         Me.rdSiPresentacion.Text = "Sí"
         Me.rdSiPresentacion.UseVisualStyleBackColor = True
@@ -2534,10 +2526,10 @@ Partial Class FrmContactoConsulta
         'rdNoPresentacion
         '
         Me.rdNoPresentacion.AutoSize = True
-        Me.rdNoPresentacion.Location = New System.Drawing.Point(60, 14)
+        Me.rdNoPresentacion.Location = New System.Drawing.Point(335, 13)
         Me.rdNoPresentacion.Name = "rdNoPresentacion"
         Me.rdNoPresentacion.Size = New System.Drawing.Size(44, 22)
-        Me.rdNoPresentacion.TabIndex = 20
+        Me.rdNoPresentacion.TabIndex = 2
         Me.rdNoPresentacion.TabStop = True
         Me.rdNoPresentacion.Text = "No"
         Me.rdNoPresentacion.UseVisualStyleBackColor = True
@@ -2546,36 +2538,36 @@ Partial Class FrmContactoConsulta
         '
         Me.lblRegistroSAPYC.AutoSize = True
         Me.lblRegistroSAPYC.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblRegistroSAPYC.Location = New System.Drawing.Point(54, 83)
+        Me.lblRegistroSAPYC.Location = New System.Drawing.Point(55, 139)
         Me.lblRegistroSAPYC.Name = "lblRegistroSAPYC"
         Me.lblRegistroSAPYC.Size = New System.Drawing.Size(154, 18)
-        Me.lblRegistroSAPYC.TabIndex = 18
+        Me.lblRegistroSAPYC.TabIndex = 3
         Me.lblRegistroSAPYC.Text = "Registro en SIAT-SAPYC:"
         '
         'txtRegistroFechaSAPYC
         '
         Me.txtRegistroFechaSAPYC.Enabled = False
         Me.txtRegistroFechaSAPYC.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.txtRegistroFechaSAPYC.Location = New System.Drawing.Point(312, 80)
+        Me.txtRegistroFechaSAPYC.Location = New System.Drawing.Point(219, 135)
         Me.txtRegistroFechaSAPYC.Name = "txtRegistroFechaSAPYC"
         Me.txtRegistroFechaSAPYC.Size = New System.Drawing.Size(116, 25)
-        Me.txtRegistroFechaSAPYC.TabIndex = 17
+        Me.txtRegistroFechaSAPYC.TabIndex = 4
         '
         'btnGuardar
         '
-        Me.btnGuardar.Location = New System.Drawing.Point(903, 35)
+        Me.btnGuardar.Location = New System.Drawing.Point(815, 65)
         Me.btnGuardar.Name = "btnGuardar"
         Me.btnGuardar.Size = New System.Drawing.Size(130, 25)
-        Me.btnGuardar.TabIndex = 14
+        Me.btnGuardar.TabIndex = 10
         Me.btnGuardar.Text = "Guardar"
         Me.btnGuardar.UseVisualStyleBackColor = True
         '
         'Panel5
         '
         Me.Panel5.BackColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(127, Byte), Integer))
-        Me.Panel5.Location = New System.Drawing.Point(15, 59)
+        Me.Panel5.Location = New System.Drawing.Point(29, 57)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(600, 2)
+        Me.Panel5.Size = New System.Drawing.Size(916, 2)
         Me.Panel5.TabIndex = 12
         '
         'lblConcepto
@@ -2583,11 +2575,45 @@ Partial Class FrmContactoConsulta
         Me.lblConcepto.AutoSize = True
         Me.lblConcepto.Font = New System.Drawing.Font("Calibri", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblConcepto.ForeColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(127, Byte), Integer))
-        Me.lblConcepto.Location = New System.Drawing.Point(15, 31)
+        Me.lblConcepto.Location = New System.Drawing.Point(29, 29)
         Me.lblConcepto.Name = "lblConcepto"
         Me.lblConcepto.Size = New System.Drawing.Size(117, 24)
-        Me.lblConcepto.TabIndex = 9
+        Me.lblConcepto.TabIndex = 0
         Me.lblConcepto.Text = "[CONCEPTO]"
+        '
+        'lblSocioAsignado
+        '
+        Me.lblSocioAsignado.AutoSize = True
+        Me.lblSocioAsignado.Font = New System.Drawing.Font("Calibri", 13.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblSocioAsignado.ForeColor = System.Drawing.Color.DimGray
+        Me.lblSocioAsignado.Location = New System.Drawing.Point(29, 63)
+        Me.lblSocioAsignado.Name = "lblSocioAsignado"
+        Me.lblSocioAsignado.Size = New System.Drawing.Size(156, 22)
+        Me.lblSocioAsignado.TabIndex = 1
+        Me.lblSocioAsignado.Text = "[SOCIO ASIGNADO]"
+        '
+        'lblCorreoSocio
+        '
+        Me.lblCorreoSocio.AutoSize = True
+        Me.lblCorreoSocio.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCorreoSocio.Location = New System.Drawing.Point(29, 86)
+        Me.lblCorreoSocio.Name = "lblCorreoSocio"
+        Me.lblCorreoSocio.Size = New System.Drawing.Size(111, 18)
+        Me.lblCorreoSocio.TabIndex = 2
+        Me.lblCorreoSocio.Text = "[CORREO SOCIO]"
+        '
+        'panDatosPropuesta
+        '
+        Me.panDatosPropuesta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.panDatosPropuesta.Controls.Add(Me.rdSiPresentacion)
+        Me.panDatosPropuesta.Controls.Add(Me.lblPresentacionPropuesta)
+        Me.panDatosPropuesta.Controls.Add(Me.txtRegistroFechaPropuesta)
+        Me.panDatosPropuesta.Controls.Add(Me.rdNoPresentacion)
+        Me.panDatosPropuesta.Controls.Add(Me.lblRegistroPropuesta)
+        Me.panDatosPropuesta.Location = New System.Drawing.Point(455, 135)
+        Me.panDatosPropuesta.Name = "panDatosPropuesta"
+        Me.panDatosPropuesta.Size = New System.Drawing.Size(490, 87)
+        Me.panDatosPropuesta.TabIndex = 9
         '
         'FrmContactoConsulta
         '
@@ -2660,8 +2686,8 @@ Partial Class FrmContactoConsulta
         Me.panRDRepExt.PerformLayout()
         Me.gpBoxSeguimiento.ResumeLayout(False)
         Me.gpBoxSeguimiento.PerformLayout()
-        Me.gpBoxPresentacionServicio.ResumeLayout(False)
-        Me.gpBoxPresentacionServicio.PerformLayout()
+        Me.panDatosPropuesta.ResumeLayout(False)
+        Me.panDatosPropuesta.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -2864,7 +2890,6 @@ Partial Class FrmContactoConsulta
     Friend WithEvents Panel5 As Panel
     Friend WithEvents lblConcepto As Label
     Friend WithEvents lblPresentacionPropuesta As Label
-    Friend WithEvents gpBoxPresentacionServicio As GroupBox
     Friend WithEvents rdSiPresentacion As RadioButton
     Friend WithEvents rdNoPresentacion As RadioButton
     Friend WithEvents lblRegistroSAPYC As Label
@@ -2876,4 +2901,7 @@ Partial Class FrmContactoConsulta
     Friend WithEvents cboStatusPropuesta As ComboBox
     Friend WithEvents lblStatusPropuesta As Label
     Friend WithEvents btnGuardar As Button
+    Friend WithEvents lblSocioAsignado As Label
+    Friend WithEvents lblCorreoSocio As Label
+    Friend WithEvents panDatosPropuesta As Panel
 End Class

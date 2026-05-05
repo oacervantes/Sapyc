@@ -21,7 +21,6 @@
             Dim frm As New FrmContactoConsulta
 
             If gridProspectos.CurrentRow IsNot Nothing Then
-
                 If gridProspectos.CurrentRow.Cells("sStatus").Value <> "T" Then
                     MsgBox("La propuesta esta en proceso de asignación", MsgBoxStyle.Exclamation, "SAPYC")
                     Exit Sub
@@ -36,6 +35,8 @@
                 frm.sServicio = gridProspectos.CurrentRow.Cells("sServicio").Value
                 frm.dHonorarios = gridProspectos.CurrentRow.Cells("HONORARIOS").Value
                 frm.idEstatus = gridProspectos.CurrentRow.Cells("ESTATUS").Value
+                frm.sNombreSocio = gridProspectos.CurrentRow.Cells("SOCIO").Value
+                frm.sCorreoSocio = gridProspectos.CurrentRow.Cells("CORREO").Value
 
                 If frm.ShowDialog = DialogResult.OK Then
                     ListarSolicitudes()
@@ -80,21 +81,22 @@
                 gridProspectos.Columns("IdServicio").Visible = False
                 gridProspectos.Columns("sStatus").Visible = False
                 gridProspectos.Columns("ESTATUS").Visible = False
-
+                gridProspectos.Columns("SOCIO").Visible = False
+                gridProspectos.Columns("CORREO").Visible = False
 
                 ConfigurarColumnasGrid(gridProspectos, "IdSac", "CVE. SAC", 65, 3, False)
-                ConfigurarColumnasGrid(gridProspectos, "sOficina", "OFICINA", 80, 1, False)
-                ConfigurarColumnasGrid(gridProspectos, "sDivision", "DIVISIÓN", 80, 1, False)
-                ConfigurarColumnasGrid(gridProspectos, "sNombreCte", "CLIENTE", 0, 1, False)
-                ConfigurarColumnasGrid(gridProspectos, "sServicio", "SERVICIO", 0, 1, False)
+                ConfigurarColumnasGrid(gridProspectos, "sOficina", "OFICINA", 150, 1, False)
+                ConfigurarColumnasGrid(gridProspectos, "sDivision", "DIVISIÓN", 200, 1, False)
+                ConfigurarColumnasGrid(gridProspectos, "sNombreCte", "CLIENTE", 270, 1, False)
+                ConfigurarColumnasGrid(gridProspectos, "sServicio", "SERVICIO", 270, 1, False)
 
-                ConfigurarColumnasGrid(gridProspectos, "PRESENTO", "PRESENTO PROPUESTA", 0, 1, False)
-                ConfigurarColumnasGrid(gridProspectos, "FECHAALTASEG", "FECHA ALTA", 50, 3, False)
-                ConfigurarColumnasGrid(gridProspectos, "sEstatusSeguimiento", "ESTATUS SEGUIMIENTO", 50, 3, False)
+                ConfigurarColumnasGrid(gridProspectos, "PRESENTO", "PROPUESTA" & vbNewLine & "PRESENTADA", 90, 3, False)
+                ConfigurarColumnasGrid(gridProspectos, "FECHAALTASEG", "FECHA DE ALTA", 95, 3, False)
+                ConfigurarColumnasGrid(gridProspectos, "sEstatusSeguimiento", "ESTATUS SEGUIMIENTO", 200, 1, False)
 
-                ConfigurarColumnasGrid(gridProspectos, "sEstatusPropuesta", "ESTATUS PROPUESTA", 50, 1, False)
-                ConfigurarColumnasGrid(gridProspectos, "FECHAPROPUESTA", "FECHA PROPUESTA", 50, 3, False)
-                ConfigurarColumnasGrid(gridProspectos, "HONORARIOS", "HONORARIOS ALTA", 50, 3, False)
+                ConfigurarColumnasGrid(gridProspectos, "sEstatusPropuesta", "ESTATUS DE LA" & vbNewLine & "PROPUESTA", 200, 1, False)
+                ConfigurarColumnasGrid(gridProspectos, "FECHAPROPUESTA", "FECHA DE LA" & vbNewLine & "PROPUESTA", 95, 3, False)
+                ConfigurarColumnasGrid(gridProspectos, "HONORARIOS", "HONORARIOS ESTIMADOS", 110, 2, False)
 
             Else
                 bs.DataSource = Nothing

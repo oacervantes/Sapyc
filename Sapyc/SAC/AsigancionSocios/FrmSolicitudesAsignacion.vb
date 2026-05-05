@@ -176,7 +176,6 @@
         gridProspectos.Columns("NOMBRE").Visible = False
         gridProspectos.Columns("EMAIL").Visible = False
         gridProspectos.Columns("IdNormatividad").Visible = False
-        gridProspectos.Columns("idNormatividad").Visible = False
 
         ConfigurarColumnasGrid(gridProspectos, "idSac", "ID. SAC", 65, 3, False)
         ConfigurarColumnasGrid(gridProspectos, "sNombreCte", "PROSPECTO", 300, 1, False)

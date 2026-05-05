@@ -119,7 +119,7 @@ Partial Class Principal
         '
         'mnuSAC
         '
-        Me.mnuSAC.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AsignarProspecto, Me.ProspectosNuevos, Me.RevisionOtrosServicios, Me.SeguimientoAPropuestas, Me.Kardex, Me.AltaClienteProspecto, Me.NivelDeRiesgo, Me.VoBoKardexSocios})
+        Me.mnuSAC.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AltaClienteProspecto, Me.AsignarProspecto, Me.SeguimientoAPropuestas, Me.RevisionOtrosServicios, Me.NivelDeRiesgo, Me.Kardex, Me.ProspectosNuevos, Me.VoBoKardexSocios})
         Me.mnuSAC.Name = "mnuSAC"
         Me.mnuSAC.Size = New System.Drawing.Size(41, 20)
         Me.mnuSAC.Tag = "1"
@@ -130,7 +130,7 @@ Partial Class Principal
         Me.AsignarProspecto.Name = "AsignarProspecto"
         Me.AsignarProspecto.Size = New System.Drawing.Size(218, 22)
         Me.AsignarProspecto.Tag = "1"
-        Me.AsignarProspecto.Text = "Asignar Prospecto"
+        Me.AsignarProspecto.Text = "Asignar Cliente Prospecto"
         '
         'ProspectosNuevos
         '
@@ -165,7 +165,7 @@ Partial Class Principal
         Me.AltaClienteProspecto.Name = "AltaClienteProspecto"
         Me.AltaClienteProspecto.Size = New System.Drawing.Size(218, 22)
         Me.AltaClienteProspecto.Tag = "6"
-        Me.AltaClienteProspecto.Text = "Alta Cliente Prospecto"
+        Me.AltaClienteProspecto.Text = "Alta de Cliente Prospecto"
         '
         'NivelDeRiesgo
         '
