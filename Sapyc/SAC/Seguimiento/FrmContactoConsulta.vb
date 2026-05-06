@@ -28,7 +28,7 @@
     Private sCorreos(), sCuentaCorreo As String
 
     Public sCveOfi, sCveArea, sServicio, sNombreSocio, sCveSocio, sNombreCte, sCorreoSocio As String
-    Public iOrigen, iModifica, idSAC, idServicio, idPropuesta, idEstatus As Integer
+    Public iOrigen, iModifica, idSAC, idServicio, idPropuesta, idEstatus, iPresento As Integer
     Public dHonorarios As Decimal
 
     Private Sub FrmContactoConsulta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -85,7 +85,11 @@
         '============================== VALORES DE LA PROPUESTA ==============================
         txtHonorariosPropuesta.Text = dHonorarios
         cboStatusPropuesta.SelectedValue = idEstatus
-
+        If iPresento = 0 Then
+            rdNoPresentacion.Checked = True
+        Else
+            rdSiPresentacion.Checked = True
+        End If
 
 
     End Sub

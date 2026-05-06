@@ -37,6 +37,8 @@
                 frm.idEstatus = gridProspectos.CurrentRow.Cells("ESTATUS").Value
                 frm.sNombreSocio = gridProspectos.CurrentRow.Cells("SOCIO").Value
                 frm.sCorreoSocio = gridProspectos.CurrentRow.Cells("CORREO").Value
+                frm.iPresento = CInt(gridProspectos.CurrentRow.Cells("PRESENTA").Value)
+
 
                 If frm.ShowDialog = DialogResult.OK Then
                     ListarSolicitudes()
@@ -83,6 +85,8 @@
                 gridProspectos.Columns("ESTATUS").Visible = False
                 gridProspectos.Columns("SOCIO").Visible = False
                 gridProspectos.Columns("CORREO").Visible = False
+                gridProspectos.Columns("PRESENTA").Visible = False
+
 
                 ConfigurarColumnasGrid(gridProspectos, "IdSac", "CVE. SAC", 65, 3, False)
                 ConfigurarColumnasGrid(gridProspectos, "sOficina", "OFICINA", 150, 1, False)
