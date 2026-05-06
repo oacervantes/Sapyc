@@ -18,6 +18,12 @@
         txtServicio.Text = sDescTrabajo
     End Sub
     Private Sub BtnAutoriza_Click(sender As Object, e As EventArgs) Handles btnAutoriza.Click
+
+        'If txtComentarios.Text = "" Then
+        '    MsgBox("Debes escribir un comentario", MsgBoxStyle.Information, "SAPYC")
+        '    Exit Sub
+        'End If
+
         ActualizaNivelRiesgo()
         MsgBox("Se actualizo el nivel de riesgo de manera correcta", MsgBoxStyle.Information, "SAPYC")
 
@@ -52,7 +58,7 @@
                 ElseIf rbAlto.Checked Then
                     .subAddParameter("@iNivelRiesgo", 3, SqlDbType.Int, ParameterDirection.Input)
                 End If
-                .subAddParameter("@sMotivoNivel", txtComentarios.Text, SqlDbType.Int, ParameterDirection.Input)
+                .subAddParameter("@sMotivoNivel", txtComentarios.Text, SqlDbType.VarChar, ParameterDirection.Input)
 
                 .funExecuteSP("paDatosAsignacionSACPropuestas")
             End With

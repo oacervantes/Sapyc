@@ -942,10 +942,11 @@ Public Class FrmContacto
         Try
             Dim Dr() As DataRow
 
-            If dtCorreosSolicitud.Rows.Count = 0 Then
+            If dtCorreosSolicitud.Rows.Count > 0 Then
                 Dr = dtCorreosSolicitud.Select("sCvepersona = 'GR'")
                 sNombreEncargado = Dr(0).Item("sTipoPersona").ToString()
                 sCorreoEncargado = Dr(0).Item("sCorreoPersona").ToString()
+                sOtroServicios = ObtenerTextoServicioOtros()
 
                 'Dim sCorreo As String() = sMailSocio.Split(";")
                 EnvioCorreoGestionRiesgo(sMailSocio)
@@ -2859,6 +2860,13 @@ Public Class FrmContacto
 
         Return Resp
 
+    End Function
+    Private Function ObtenerTextoServicioOtros() As String
+        Dim sTexto As String = ""
+
+        sTexto = dtServicios.AsEnumerable().Where(Function(dr) dr.Field(Of Boolean)("CVEOTROS") = True).Select(Function(dr) dr.Field(Of String)("DESCOTROS")).FirstOrDefault()
+
+        Return sTexto
     End Function
 
 #End Region
