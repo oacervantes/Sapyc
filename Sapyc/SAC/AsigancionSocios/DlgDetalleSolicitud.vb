@@ -37,22 +37,24 @@
             End With
 
             If dtSolicitud.Rows.Count > 0 Then
+                Dim dr As DataRow = dtSolicitud.Rows(0)
+
                 txtIdSac.Text = idSac
-                txtProspecto.Text = dtSolicitud.Rows(0).Item("sNombreCte").ToString()
-                txtServicio.Text = dtSolicitud.Rows(0).Item("SERVICIO").ToString()
-                txtIdioma.Text = dtSolicitud.Rows(0).Item("sIdioma").ToString()
-                txtOficina.Text = dtSolicitud.Rows(0).Item("DESCOFI").ToString()
-                txtDivision.Text = dtSolicitud.Rows(0).Item("DESCAREA").ToString()
-                txtSocioEncargado.Text = dtSolicitud.Rows(0).Item("SOCENC").ToString()
-                txtIdioma.Text = dtSolicitud.Rows(0).Item("sIdioma").ToString()
-                txtIndustria.Text = dtSolicitud.Rows(0).Item("INDUSTRIA").ToString()
-                iNivelRiesgo = CInt(dtSolicitud.Rows(0).Item("iNivelRiesgo"))
-                txtNivelRiesgo.Text = dtSolicitud.Rows(0).Item("sNivelRiesgo").ToString()
-                txtMarcoNormativo.Text = dtSolicitud.Rows(0).Item("sMarcoNormativo").ToString()
-                cStatus = dtSolicitud.Rows(0).Item("cStatus").ToString()
+                txtProspecto.Text = dr.Item("sNombreCte").ToString()
+                txtServicio.Text = dr.Item("SERVICIO").ToString()
+                txtIdioma.Text = dr.Item("sIdioma").ToString()
+                txtOficina.Text = dr.Item("DESCOFI").ToString()
+                txtDivision.Text = dr.Item("DESCAREA").ToString()
+                txtSocioEncargado.Text = dr.Item("SOCENC").ToString()
+                txtIdioma.Text = dr.Item("sIdioma").ToString()
+                txtIndustria.Text = dr.Item("INDUSTRIA").ToString()
+                iNivelRiesgo = CInt(dr.Item("iNivelRiesgo"))
+                txtNivelRiesgo.Text = dr.Item("sNivelRiesgo").ToString()
+                txtMarcoNormativo.Text = dr.Item("sMarcoNormativo").ToString()
+                cStatus = dr.Item("cStatus").ToString()
 
                 If cStatus = "D" Then
-                    txtMotivoRechazo.Text = dtSolicitud.Rows(0).Item("sMotivoRechazo").ToString()
+                    txtMotivoRechazo.Text = dr.Item("sMotivoRechazo").ToString()
                 Else
                     txtMotivoRechazo.Text = "N/A"
                 End If

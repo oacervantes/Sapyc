@@ -24,6 +24,8 @@ Partial Class DlgDetalleSolicitud
     Private Sub InitializeComponent()
         Me.panPrincipal = New System.Windows.Forms.Panel()
         Me.panSolicitud = New System.Windows.Forms.Panel()
+        Me.lblMarcoNormativo = New System.Windows.Forms.Label()
+        Me.txtMarcoNormativo = New System.Windows.Forms.Label()
         Me.lblNivelRiesgo = New System.Windows.Forms.Label()
         Me.txtNivelRiesgo = New System.Windows.Forms.Label()
         Me.lblMotivoRechazo = New System.Windows.Forms.Label()
@@ -44,8 +46,6 @@ Partial Class DlgDetalleSolicitud
         Me.txtServicio = New System.Windows.Forms.Label()
         Me.txtProspecto = New System.Windows.Forms.Label()
         Me.btnCerrar = New System.Windows.Forms.Button()
-        Me.lblMarcoNormativo = New System.Windows.Forms.Label()
-        Me.txtMarcoNormativo = New System.Windows.Forms.Label()
         Me.panPrincipal.SuspendLayout()
         Me.panSolicitud.SuspendLayout()
         Me.SuspendLayout()
@@ -61,7 +61,7 @@ Partial Class DlgDetalleSolicitud
         Me.panPrincipal.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.panPrincipal.Location = New System.Drawing.Point(0, 0)
         Me.panPrincipal.Name = "panPrincipal"
-        Me.panPrincipal.Size = New System.Drawing.Size(674, 571)
+        Me.panPrincipal.Size = New System.Drawing.Size(748, 571)
         Me.panPrincipal.TabIndex = 0
         '
         'panSolicitud
@@ -93,8 +93,30 @@ Partial Class DlgDetalleSolicitud
         Me.panSolicitud.Controls.Add(Me.txtProspecto)
         Me.panSolicitud.Location = New System.Drawing.Point(11, 14)
         Me.panSolicitud.Name = "panSolicitud"
-        Me.panSolicitud.Size = New System.Drawing.Size(650, 541)
+        Me.panSolicitud.Size = New System.Drawing.Size(724, 541)
         Me.panSolicitud.TabIndex = 0
+        '
+        'lblMarcoNormativo
+        '
+        Me.lblMarcoNormativo.AutoSize = True
+        Me.lblMarcoNormativo.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblMarcoNormativo.ForeColor = System.Drawing.Color.Black
+        Me.lblMarcoNormativo.Location = New System.Drawing.Point(19, 300)
+        Me.lblMarcoNormativo.Margin = New System.Windows.Forms.Padding(0)
+        Me.lblMarcoNormativo.Name = "lblMarcoNormativo"
+        Me.lblMarcoNormativo.Size = New System.Drawing.Size(142, 18)
+        Me.lblMarcoNormativo.TabIndex = 19
+        Me.lblMarcoNormativo.Text = "MARCO NORMATIVO:"
+        '
+        'txtMarcoNormativo
+        '
+        Me.txtMarcoNormativo.AutoSize = True
+        Me.txtMarcoNormativo.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtMarcoNormativo.Location = New System.Drawing.Point(220, 300)
+        Me.txtMarcoNormativo.Name = "txtMarcoNormativo"
+        Me.txtMarcoNormativo.Size = New System.Drawing.Size(146, 18)
+        Me.txtMarcoNormativo.TabIndex = 20
+        Me.txtMarcoNormativo.Text = "[MARCO NORMATIVO]"
         '
         'lblNivelRiesgo
         '
@@ -136,7 +158,7 @@ Partial Class DlgDetalleSolicitud
         Me.txtMotivoRechazo.ForeColor = System.Drawing.Color.FromArgb(CType(CType(233, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(65, Byte), Integer))
         Me.txtMotivoRechazo.Location = New System.Drawing.Point(220, 335)
         Me.txtMotivoRechazo.Name = "txtMotivoRechazo"
-        Me.txtMotivoRechazo.Size = New System.Drawing.Size(412, 121)
+        Me.txtMotivoRechazo.Size = New System.Drawing.Size(484, 121)
         Me.txtMotivoRechazo.TabIndex = 18
         Me.txtMotivoRechazo.Text = "[RECHAZO]"
         '
@@ -147,15 +169,16 @@ Partial Class DlgDetalleSolicitud
         Me.panLinea.BackColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(127, Byte), Integer))
         Me.panLinea.Location = New System.Drawing.Point(0, 43)
         Me.panLinea.Name = "panLinea"
-        Me.panLinea.Size = New System.Drawing.Size(650, 2)
+        Me.panLinea.Size = New System.Drawing.Size(724, 2)
         Me.panLinea.TabIndex = 3
         '
         'lblIdSac
         '
+        Me.lblIdSac.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblIdSac.AutoSize = True
         Me.lblIdSac.Font = New System.Drawing.Font("Calibri", 12.5!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblIdSac.ForeColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(127, Byte), Integer))
-        Me.lblIdSac.Location = New System.Drawing.Point(464, 11)
+        Me.lblIdSac.Location = New System.Drawing.Point(538, 11)
         Me.lblIdSac.Name = "lblIdSac"
         Me.lblIdSac.Size = New System.Drawing.Size(67, 21)
         Me.lblIdSac.TabIndex = 1
@@ -163,11 +186,12 @@ Partial Class DlgDetalleSolicitud
         '
         'txtIdSac
         '
+        Me.txtIdSac.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtIdSac.BackColor = System.Drawing.Color.WhiteSmoke
         Me.txtIdSac.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtIdSac.Font = New System.Drawing.Font("Calibri", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtIdSac.ForeColor = System.Drawing.Color.SlateGray
-        Me.txtIdSac.Location = New System.Drawing.Point(533, 9)
+        Me.txtIdSac.ForeColor = System.Drawing.Color.Black
+        Me.txtIdSac.Location = New System.Drawing.Point(607, 9)
         Me.txtIdSac.Name = "txtIdSac"
         Me.txtIdSac.Size = New System.Drawing.Size(88, 25)
         Me.txtIdSac.TabIndex = 2
@@ -299,51 +323,30 @@ Partial Class DlgDetalleSolicitud
         'txtProspecto
         '
         Me.txtProspecto.AutoSize = True
-        Me.txtProspecto.Font = New System.Drawing.Font("Calibri", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtProspecto.Font = New System.Drawing.Font("Calibri", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtProspecto.ForeColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(127, Byte), Integer))
         Me.txtProspecto.Location = New System.Drawing.Point(11, 8)
         Me.txtProspecto.Name = "txtProspecto"
-        Me.txtProspecto.Size = New System.Drawing.Size(135, 27)
+        Me.txtProspecto.Size = New System.Drawing.Size(124, 24)
         Me.txtProspecto.TabIndex = 0
         Me.txtProspecto.Text = "[PROSPECTO]"
         '
         'btnCerrar
         '
+        Me.btnCerrar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnCerrar.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCerrar.Location = New System.Drawing.Point(527, 577)
+        Me.btnCerrar.Location = New System.Drawing.Point(601, 577)
         Me.btnCerrar.Name = "btnCerrar"
         Me.btnCerrar.Size = New System.Drawing.Size(135, 25)
         Me.btnCerrar.TabIndex = 1
         Me.btnCerrar.Text = "Cerrar"
         Me.btnCerrar.UseVisualStyleBackColor = True
         '
-        'lblMarcoNormativo
-        '
-        Me.lblMarcoNormativo.AutoSize = True
-        Me.lblMarcoNormativo.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblMarcoNormativo.ForeColor = System.Drawing.Color.Black
-        Me.lblMarcoNormativo.Location = New System.Drawing.Point(19, 300)
-        Me.lblMarcoNormativo.Margin = New System.Windows.Forms.Padding(0)
-        Me.lblMarcoNormativo.Name = "lblMarcoNormativo"
-        Me.lblMarcoNormativo.Size = New System.Drawing.Size(142, 18)
-        Me.lblMarcoNormativo.TabIndex = 19
-        Me.lblMarcoNormativo.Text = "MARCO NORMATIVO:"
-        '
-        'txtMarcoNormativo
-        '
-        Me.txtMarcoNormativo.AutoSize = True
-        Me.txtMarcoNormativo.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtMarcoNormativo.Location = New System.Drawing.Point(220, 300)
-        Me.txtMarcoNormativo.Name = "txtMarcoNormativo"
-        Me.txtMarcoNormativo.Size = New System.Drawing.Size(146, 18)
-        Me.txtMarcoNormativo.TabIndex = 20
-        Me.txtMarcoNormativo.Text = "[MARCO NORMATIVO]"
-        '
         'DlgDetalleSolicitud
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(674, 607)
+        Me.ClientSize = New System.Drawing.Size(748, 607)
         Me.Controls.Add(Me.btnCerrar)
         Me.Controls.Add(Me.panPrincipal)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog

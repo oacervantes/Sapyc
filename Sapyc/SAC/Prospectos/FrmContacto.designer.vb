@@ -294,7 +294,7 @@ Partial Class FrmContacto
         Me.panMenu.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold)
         Me.panMenu.Location = New System.Drawing.Point(0, 0)
         Me.panMenu.Name = "panMenu"
-        Me.panMenu.Size = New System.Drawing.Size(212, 684)
+        Me.panMenu.Size = New System.Drawing.Size(212, 680)
         Me.panMenu.TabIndex = 0
         '
         'panMensajesError
@@ -303,7 +303,7 @@ Partial Class FrmContacto
         Me.panMensajesError.Controls.Add(Me.txtMensaje)
         Me.panMensajesError.Controls.Add(Me.lblTituloError)
         Me.panMensajesError.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.panMensajesError.Location = New System.Drawing.Point(0, 274)
+        Me.panMensajesError.Location = New System.Drawing.Point(0, 270)
         Me.panMensajesError.Name = "panMensajesError"
         Me.panMensajesError.Size = New System.Drawing.Size(210, 408)
         Me.panMensajesError.TabIndex = 28
@@ -1881,7 +1881,7 @@ Partial Class FrmContacto
         Me.lblMensajeCargaDatosGenerales.ForeColor = System.Drawing.Color.White
         Me.lblMensajeCargaDatosGenerales.Location = New System.Drawing.Point(0, 44)
         Me.lblMensajeCargaDatosGenerales.Name = "lblMensajeCargaDatosGenerales"
-        Me.lblMensajeCargaDatosGenerales.Size = New System.Drawing.Size(1068, 25)
+        Me.lblMensajeCargaDatosGenerales.Size = New System.Drawing.Size(1064, 25)
         Me.lblMensajeCargaDatosGenerales.TabIndex = 2
         Me.lblMensajeCargaDatosGenerales.Text = "No se ha cargado información de los Datos Generales para el prospecto."
         Me.lblMensajeCargaDatosGenerales.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -2721,7 +2721,7 @@ Partial Class FrmContacto
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        Me.ClientSize = New System.Drawing.Size(1291, 684)
+        Me.ClientSize = New System.Drawing.Size(1287, 680)
         Me.ControlBox = False
         Me.Controls.Add(Me.btnCerrar)
         Me.Controls.Add(Me.btnHabilitar)

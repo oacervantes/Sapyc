@@ -5,7 +5,7 @@
 
     Private dtSocios, dtCISocios, dtPptoSocios As New DataTable
     Private tarjetaSeleccionada As TarjetaSocio2 = Nothing
-    Private iPosY = 10, iValorY As Integer = 320
+    Private iPosY = 10, iValorY As Integer = 340
 
     Private sCveSocio, sNombreSocio, sCorreoSocio As String
 
@@ -266,6 +266,14 @@
         sCveSocio = tarjetaActual.SocioId
         sNombreSocio = tarjetaActual.Nombre
         sCorreoSocio = tarjetaActual.Correo
+
+
+        panSocios.SuspendLayout()
+
+        panSocios.Controls.SetChildIndex(tarjetaSeleccionada, panSocios.Controls.Count - 1)
+
+        panSocios.ResumeLayout()
+
 
     End Sub
 

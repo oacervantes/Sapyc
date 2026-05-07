@@ -234,9 +234,17 @@
 
     Public Sub MostrarSeleccion()
         lblSeleccion.Visible = True
+        lblSeleccion.Text = "Socio propuesto para asignación"
+        lblSeleccion.ForeColor = Color.DarkCyan
+        picSeleccion.Visible = True
+        btnAsignacion.Visible = False
     End Sub
     Public Sub OcultarSeleccion()
-        lblSeleccion.Visible = False
+        lblSeleccion.Visible = True
+        lblSeleccion.Text = "Socio por asignar"
+        lblSeleccion.ForeColor = Color.DimGray
+        picSeleccion.Visible = False
+        btnAsignacion.Visible = True
     End Sub
 
 End Class

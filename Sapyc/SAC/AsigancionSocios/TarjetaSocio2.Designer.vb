@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class TarjetaSocio2
     Inherits System.Windows.Forms.UserControl
 
     'UserControl reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class TarjetaSocio2
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.lblNombre = New System.Windows.Forms.Label()
         Me.panLinea = New System.Windows.Forms.Panel()
@@ -40,17 +40,26 @@ Partial Class TarjetaSocio2
         Me.txtValida = New System.Windows.Forms.TextBox()
         Me.txtNormatividadColor = New System.Windows.Forms.RichTextBox()
         Me.lblNormatividad = New System.Windows.Forms.Label()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.picSeleccion = New System.Windows.Forms.PictureBox()
+        Me.panHeader = New System.Windows.Forms.Panel()
+        CType(Me.picSeleccion, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.panHeader.SuspendLayout()
         Me.SuspendLayout()
         '
         'lblNombre
         '
         Me.lblNombre.AutoSize = True
-        Me.lblNombre.Font = New System.Drawing.Font("Calibri", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblNombre.Font = New System.Drawing.Font("Calibri", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblNombre.ForeColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(127, Byte), Integer))
-        Me.lblNombre.Location = New System.Drawing.Point(14, 9)
+        Me.lblNombre.Location = New System.Drawing.Point(55, 7)
         Me.lblNombre.Margin = New System.Windows.Forms.Padding(0)
         Me.lblNombre.Name = "lblNombre"
-        Me.lblNombre.Size = New System.Drawing.Size(182, 23)
+        Me.lblNombre.Size = New System.Drawing.Size(207, 27)
         Me.lblNombre.TabIndex = 0
         Me.lblNombre.Text = "[NOMBRE_PERSONA]"
         '
@@ -58,28 +67,34 @@ Partial Class TarjetaSocio2
         '
         Me.panLinea.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.panLinea.BackColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(127, Byte), Integer))
-        Me.panLinea.Location = New System.Drawing.Point(0, 62)
+        Me.panLinea.BackColor = System.Drawing.Color.DarkGray
+        Me.panLinea.Location = New System.Drawing.Point(0, 82)
         Me.panLinea.Name = "panLinea"
-        Me.panLinea.Size = New System.Drawing.Size(954, 2)
+        Me.panLinea.Size = New System.Drawing.Size(986, 2)
         Me.panLinea.TabIndex = 5
         '
         'btnAsignacion
         '
+        Me.btnAsignacion.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(167, Byte), Integer), CType(CType(181, Byte), Integer))
+        Me.btnAsignacion.FlatAppearance.BorderColor = System.Drawing.Color.Black
+        Me.btnAsignacion.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkCyan
+        Me.btnAsignacion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.MediumTurquoise
+        Me.btnAsignacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAsignacion.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAsignacion.Location = New System.Drawing.Point(829, 7)
+        Me.btnAsignacion.ForeColor = System.Drawing.Color.White
+        Me.btnAsignacion.Location = New System.Drawing.Point(801, 25)
         Me.btnAsignacion.Name = "btnAsignacion"
-        Me.btnAsignacion.Size = New System.Drawing.Size(109, 25)
+        Me.btnAsignacion.Size = New System.Drawing.Size(166, 29)
         Me.btnAsignacion.TabIndex = 3
         Me.btnAsignacion.Text = "ELEGIR"
-        Me.btnAsignacion.UseVisualStyleBackColor = True
+        Me.btnAsignacion.UseVisualStyleBackColor = False
         '
         'lblIdiomas
         '
         Me.lblIdiomas.AutoSize = True
         Me.lblIdiomas.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblIdiomas.ForeColor = System.Drawing.Color.Black
-        Me.lblIdiomas.Location = New System.Drawing.Point(106, 137)
+        Me.lblIdiomas.Location = New System.Drawing.Point(18, 157)
         Me.lblIdiomas.Margin = New System.Windows.Forms.Padding(0)
         Me.lblIdiomas.Name = "lblIdiomas"
         Me.lblIdiomas.Size = New System.Drawing.Size(68, 18)
@@ -91,7 +106,7 @@ Partial Class TarjetaSocio2
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.Black
-        Me.Label3.Location = New System.Drawing.Point(98, 74)
+        Me.Label3.Location = New System.Drawing.Point(18, 94)
         Me.Label3.Margin = New System.Windows.Forms.Padding(0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(76, 18)
@@ -103,7 +118,7 @@ Partial Class TarjetaSocio2
         Me.lblIndustrias.AutoSize = True
         Me.lblIndustrias.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblIndustrias.ForeColor = System.Drawing.Color.Black
-        Me.lblIndustrias.Location = New System.Drawing.Point(87, 163)
+        Me.lblIndustrias.Location = New System.Drawing.Point(18, 183)
         Me.lblIndustrias.Margin = New System.Windows.Forms.Padding(0)
         Me.lblIndustrias.Name = "lblIndustrias"
         Me.lblIndustrias.Size = New System.Drawing.Size(87, 18)
@@ -115,10 +130,10 @@ Partial Class TarjetaSocio2
         Me.txtServiciosColor.BackColor = System.Drawing.Color.White
         Me.txtServiciosColor.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtServiciosColor.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtServiciosColor.Location = New System.Drawing.Point(181, 74)
+        Me.txtServiciosColor.Location = New System.Drawing.Point(181, 94)
         Me.txtServiciosColor.Name = "txtServiciosColor"
         Me.txtServiciosColor.ReadOnly = True
-        Me.txtServiciosColor.Size = New System.Drawing.Size(731, 55)
+        Me.txtServiciosColor.Size = New System.Drawing.Size(755, 55)
         Me.txtServiciosColor.TabIndex = 7
         Me.txtServiciosColor.Text = "[SERVICIOS]"
         '
@@ -127,10 +142,10 @@ Partial Class TarjetaSocio2
         Me.txtIdiomasColor.BackColor = System.Drawing.Color.White
         Me.txtIdiomasColor.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtIdiomasColor.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtIdiomasColor.Location = New System.Drawing.Point(181, 137)
+        Me.txtIdiomasColor.Location = New System.Drawing.Point(181, 157)
         Me.txtIdiomasColor.Name = "txtIdiomasColor"
         Me.txtIdiomasColor.ReadOnly = True
-        Me.txtIdiomasColor.Size = New System.Drawing.Size(731, 18)
+        Me.txtIdiomasColor.Size = New System.Drawing.Size(755, 18)
         Me.txtIdiomasColor.TabIndex = 9
         Me.txtIdiomasColor.Text = "[IDIOMAS]"
         '
@@ -139,36 +154,32 @@ Partial Class TarjetaSocio2
         Me.txtIndustriasColor.BackColor = System.Drawing.Color.White
         Me.txtIndustriasColor.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtIndustriasColor.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtIndustriasColor.Location = New System.Drawing.Point(181, 163)
+        Me.txtIndustriasColor.Location = New System.Drawing.Point(181, 183)
         Me.txtIndustriasColor.Name = "txtIndustriasColor"
         Me.txtIndustriasColor.ReadOnly = True
-        Me.txtIndustriasColor.Size = New System.Drawing.Size(731, 40)
+        Me.txtIndustriasColor.Size = New System.Drawing.Size(755, 40)
         Me.txtIndustriasColor.TabIndex = 11
         Me.txtIndustriasColor.Text = "[INDUSTRIAS]"
         '
         'lblSeleccion
         '
-        Me.lblSeleccion.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lblSeleccion.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(125, Byte), Integer), CType(CType(30, Byte), Integer))
-        Me.lblSeleccion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.lblSeleccion.Font = New System.Drawing.Font("Calibri", 11.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblSeleccion.ForeColor = System.Drawing.Color.White
-        Me.lblSeleccion.Location = New System.Drawing.Point(772, 34)
+        Me.lblSeleccion.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblSeleccion.ForeColor = System.Drawing.Color.Silver
+        Me.lblSeleccion.Location = New System.Drawing.Point(55, 57)
         Me.lblSeleccion.Name = "lblSeleccion"
-        Me.lblSeleccion.Size = New System.Drawing.Size(166, 23)
+        Me.lblSeleccion.Size = New System.Drawing.Size(241, 19)
         Me.lblSeleccion.TabIndex = 4
-        Me.lblSeleccion.Text = "Socio seleccionado"
-        Me.lblSeleccion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.lblSeleccion.Visible = False
+        Me.lblSeleccion.Text = "Socio por asignar"
+        Me.lblSeleccion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'lblCorreo
         '
         Me.lblCorreo.AutoSize = True
-        Me.lblCorreo.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCorreo.Location = New System.Drawing.Point(14, 34)
+        Me.lblCorreo.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCorreo.Location = New System.Drawing.Point(55, 34)
         Me.lblCorreo.Margin = New System.Windows.Forms.Padding(0)
         Me.lblCorreo.Name = "lblCorreo"
-        Me.lblCorreo.Size = New System.Drawing.Size(135, 18)
+        Me.lblCorreo.Size = New System.Drawing.Size(142, 19)
         Me.lblCorreo.TabIndex = 1
         Me.lblCorreo.Text = "[CORREO_PERSONA]"
         '
@@ -177,7 +188,7 @@ Partial Class TarjetaSocio2
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.Black
-        Me.Label1.Location = New System.Drawing.Point(73, 259)
+        Me.Label1.Location = New System.Drawing.Point(18, 279)
         Me.Label1.Margin = New System.Windows.Forms.Padding(0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(101, 18)
@@ -189,7 +200,7 @@ Partial Class TarjetaSocio2
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.Black
-        Me.Label2.Location = New System.Drawing.Point(18, 285)
+        Me.Label2.Location = New System.Drawing.Point(18, 305)
         Me.Label2.Margin = New System.Windows.Forms.Padding(0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(156, 18)
@@ -201,10 +212,10 @@ Partial Class TarjetaSocio2
         Me.txtPresupuesto.BackColor = System.Drawing.Color.White
         Me.txtPresupuesto.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtPresupuesto.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPresupuesto.Location = New System.Drawing.Point(181, 259)
+        Me.txtPresupuesto.Location = New System.Drawing.Point(181, 279)
         Me.txtPresupuesto.Name = "txtPresupuesto"
         Me.txtPresupuesto.ReadOnly = True
-        Me.txtPresupuesto.Size = New System.Drawing.Size(731, 18)
+        Me.txtPresupuesto.Size = New System.Drawing.Size(755, 18)
         Me.txtPresupuesto.TabIndex = 15
         Me.txtPresupuesto.Text = "[PRESUPUESTO]"
         '
@@ -213,16 +224,16 @@ Partial Class TarjetaSocio2
         Me.txtCapacidadInstalada.BackColor = System.Drawing.Color.White
         Me.txtCapacidadInstalada.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtCapacidadInstalada.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCapacidadInstalada.Location = New System.Drawing.Point(181, 285)
+        Me.txtCapacidadInstalada.Location = New System.Drawing.Point(181, 305)
         Me.txtCapacidadInstalada.Name = "txtCapacidadInstalada"
         Me.txtCapacidadInstalada.ReadOnly = True
-        Me.txtCapacidadInstalada.Size = New System.Drawing.Size(731, 18)
+        Me.txtCapacidadInstalada.Size = New System.Drawing.Size(755, 18)
         Me.txtCapacidadInstalada.TabIndex = 17
         Me.txtCapacidadInstalada.Text = "[% CAPACIDAD INSTALADA]"
         '
         'txtValida
         '
-        Me.txtValida.Location = New System.Drawing.Point(394, 13)
+        Me.txtValida.Location = New System.Drawing.Point(18, 129)
         Me.txtValida.Name = "txtValida"
         Me.txtValida.Size = New System.Drawing.Size(100, 20)
         Me.txtValida.TabIndex = 2
@@ -233,10 +244,10 @@ Partial Class TarjetaSocio2
         Me.txtNormatividadColor.BackColor = System.Drawing.Color.White
         Me.txtNormatividadColor.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtNormatividadColor.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtNormatividadColor.Location = New System.Drawing.Point(181, 211)
+        Me.txtNormatividadColor.Location = New System.Drawing.Point(181, 231)
         Me.txtNormatividadColor.Name = "txtNormatividadColor"
         Me.txtNormatividadColor.ReadOnly = True
-        Me.txtNormatividadColor.Size = New System.Drawing.Size(731, 40)
+        Me.txtNormatividadColor.Size = New System.Drawing.Size(755, 40)
         Me.txtNormatividadColor.TabIndex = 13
         Me.txtNormatividadColor.Text = "[MARCO NORMATIVO]"
         '
@@ -245,12 +256,88 @@ Partial Class TarjetaSocio2
         Me.lblNormatividad.AutoSize = True
         Me.lblNormatividad.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblNormatividad.ForeColor = System.Drawing.Color.Black
-        Me.lblNormatividad.Location = New System.Drawing.Point(32, 211)
+        Me.lblNormatividad.Location = New System.Drawing.Point(18, 231)
         Me.lblNormatividad.Margin = New System.Windows.Forms.Padding(0)
         Me.lblNormatividad.Name = "lblNormatividad"
         Me.lblNormatividad.Size = New System.Drawing.Size(142, 18)
         Me.lblNormatividad.TabIndex = 12
         Me.lblNormatividad.Text = "MARCO NORMATIVO:"
+        '
+        'Panel1
+        '
+        Me.Panel1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Panel1.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.Panel1.Location = New System.Drawing.Point(181, 300)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(787, 2)
+        Me.Panel1.TabIndex = 6
+        '
+        'Panel2
+        '
+        Me.Panel2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Panel2.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.Panel2.Location = New System.Drawing.Point(181, 274)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(787, 2)
+        Me.Panel2.TabIndex = 7
+        '
+        'Panel3
+        '
+        Me.Panel3.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Panel3.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.Panel3.Location = New System.Drawing.Point(181, 226)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(787, 2)
+        Me.Panel3.TabIndex = 7
+        '
+        'Panel4
+        '
+        Me.Panel4.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Panel4.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.Panel4.Location = New System.Drawing.Point(181, 178)
+        Me.Panel4.Name = "Panel4"
+        Me.Panel4.Size = New System.Drawing.Size(787, 2)
+        Me.Panel4.TabIndex = 18
+        '
+        'Panel5
+        '
+        Me.Panel5.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Panel5.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.Panel5.Location = New System.Drawing.Point(181, 152)
+        Me.Panel5.Name = "Panel5"
+        Me.Panel5.Size = New System.Drawing.Size(787, 2)
+        Me.Panel5.TabIndex = 19
+        '
+        'picSeleccion
+        '
+        Me.picSeleccion.Image = Global.Sapyc.My.Resources.Resources.check
+        Me.picSeleccion.Location = New System.Drawing.Point(16, 25)
+        Me.picSeleccion.Name = "picSeleccion"
+        Me.picSeleccion.Size = New System.Drawing.Size(32, 29)
+        Me.picSeleccion.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
+        Me.picSeleccion.TabIndex = 20
+        Me.picSeleccion.TabStop = False
+        Me.picSeleccion.Visible = False
+        '
+        'panHeader
+        '
+        Me.panHeader.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.panHeader.BackColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(252, Byte), Integer), CType(CType(252, Byte), Integer))
+        Me.panHeader.Controls.Add(Me.lblNombre)
+        Me.panHeader.Controls.Add(Me.btnAsignacion)
+        Me.panHeader.Controls.Add(Me.picSeleccion)
+        Me.panHeader.Controls.Add(Me.lblSeleccion)
+        Me.panHeader.Controls.Add(Me.lblCorreo)
+        Me.panHeader.Location = New System.Drawing.Point(0, 0)
+        Me.panHeader.Name = "panHeader"
+        Me.panHeader.Size = New System.Drawing.Size(986, 82)
+        Me.panHeader.TabIndex = 21
         '
         'TarjetaSocio2
         '
@@ -258,6 +345,12 @@ Partial Class TarjetaSocio2
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.BackColor = System.Drawing.Color.White
         Me.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Controls.Add(Me.panHeader)
+        Me.Controls.Add(Me.Panel5)
+        Me.Controls.Add(Me.Panel4)
+        Me.Controls.Add(Me.Panel3)
+        Me.Controls.Add(Me.Panel2)
+        Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.txtNormatividadColor)
         Me.Controls.Add(Me.lblNormatividad)
         Me.Controls.Add(Me.txtValida)
@@ -265,20 +358,19 @@ Partial Class TarjetaSocio2
         Me.Controls.Add(Me.txtPresupuesto)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.lblCorreo)
-        Me.Controls.Add(Me.lblSeleccion)
         Me.Controls.Add(Me.txtIndustriasColor)
         Me.Controls.Add(Me.txtIdiomasColor)
         Me.Controls.Add(Me.txtServiciosColor)
         Me.Controls.Add(Me.lblIndustrias)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.lblIdiomas)
-        Me.Controls.Add(Me.btnAsignacion)
         Me.Controls.Add(Me.panLinea)
-        Me.Controls.Add(Me.lblNombre)
         Me.Name = "TarjetaSocio2"
         Me.Padding = New System.Windows.Forms.Padding(4)
-        Me.Size = New System.Drawing.Size(954, 320)
+        Me.Size = New System.Drawing.Size(986, 340)
+        CType(Me.picSeleccion, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.panHeader.ResumeLayout(False)
+        Me.panHeader.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -301,4 +393,11 @@ Partial Class TarjetaSocio2
     Friend WithEvents txtValida As TextBox
     Friend WithEvents txtNormatividadColor As RichTextBox
     Friend WithEvents lblNormatividad As Label
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents Panel2 As Panel
+    Friend WithEvents Panel3 As Panel
+    Friend WithEvents Panel4 As Panel
+    Friend WithEvents Panel5 As Panel
+    Friend WithEvents picSeleccion As PictureBox
+    Friend WithEvents panHeader As Panel
 End Class

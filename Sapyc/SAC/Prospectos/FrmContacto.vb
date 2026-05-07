@@ -264,7 +264,7 @@ Public Class FrmContacto
                     sCorreoEncargado = Dr(0).Item("sCorreoPersona").ToString()
 
                     GenerarPDFProvisional(txtRazonSocial.Text & ", " & cboEntidadMercantilRS.SelectedItem("sCveSociedad"), txtNombreComercial.Text & ", " & cboEntidadMercantilNC.SelectedItem("sCveSociedad"))
-                    EnvioCorreoProespectoNuevo(txtRazonSocial.Text & ", " & cboEntidadMercantilRS.SelectedItem("sCveSociedad"))
+                    EnvioCorreoProspectoNuevo(txtRazonSocial.Text & ", " & cboEntidadMercantilRS.SelectedItem("sCveSociedad"))
                 Else
                     MsgBox("Por el momento no es posible enviar el correo de notificación de asignación de socio.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
                 End If
@@ -1095,7 +1095,7 @@ Public Class FrmContacto
         End Try
     End Sub
 
-    Private Sub EnvioCorreoProespectoNuevo(sNombreCliente As String) 'Este correo es para avisar al socio encargado de oficina, que se ha solicitado generar un folio con cobranza incompleta.
+    Private Sub EnvioCorreoProspectoNuevo(sNombreCliente As String) 'Este correo es para avisar al socio encargado de oficina, que se ha solicitado generar un folio con cobranza incompleta.
         Dim sMensaje As String
         Dim archivos As Attachment
         Dim sArchivo As String = QuitarCaracteres(sNombreCliente) & ".pdf"
@@ -1107,15 +1107,21 @@ Public Class FrmContacto
             sMensaje = "<html><head></head><body>" &
             "<img src='cid:imagen1' alt='Salles, Sainz - Grant Thornton' style='width:300px;height:auto;'>" &
             "<h1 style=""height: 50px; background: #4f2d7f; font-family: Calibri, Arial; color: #FFF; padding-right: 30px; text-align: center;"">NOTIFICACIÓN DE PRIMER CONTACTO CON CLIENTE PROSPECTO</h1>" & vbNewLine & vbNewLine & vbNewLine &
-            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 20px; color: #4f2d7f; margin-left: 25px; margin-top: 20px; padding: 15px;"">Estimado : " & sNombreEncargado.TrimEnd(";") & ", </p> " & vbNewLine & vbNewLine &
-            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 16px; margin-left: 25px; margin-top: 20px; padding: 15px;"">Por medio del presente, le informo que hemos realizado el primer contacto con el cliente prospecto " & txtRazonSocial.Text.ToUpper.Trim() & ", quien a mostrado interés en nuestros servicios y ha solicitado recibir una propuesta formal. </p> " & vbNewLine & vbNewLine &
-            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 16px; margin-left: 25px; margin-top: 20px; padding: 15px;"">Para continuar con este proceso, solicitamos su apoyo para asignar al socio más idonéo para la elaboración y  prsentación de la propuesta de servicio, considerando la naturaleza del servicio, solicitado,la experiencia técnica requerida y la disponibilidad del socio.  </p> " & vbNewLine & vbNewLine &
+            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 20px; color: #4f2d7f; margin-left: 25px; margin-top: 20px; padding: 15px;"">Estimado " & sNombreEncargado.TrimEnd(";") & ": </p> " & vbNewLine & vbNewLine &
+            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 16px; margin-left: 25px; margin-top: 20px; padding: 15px;"">Por medio del presente, le informo que hemos realizado el primer contacto con el cliente prospecto " & txtRazonSocial.Text.ToUpper.Trim() & ", quien ha mostrado interés en nuestros servicios y ha solicitado recibir una propuesta formal. </p> " & vbNewLine & vbNewLine &
+            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 16px; margin-left: 25px; margin-top: 20px; padding: 15px;"">Para continuar con este proceso, solicitamos atentamente su apoyo para asignar al socio más idóneo para la elaboración y presentación de la propuesta de servicio, considerando la naturaleza del servicio solicitado, la experiencia técnica requerida y la disponibilidad del socio.</p> " & vbNewLine & vbNewLine &
             "<table style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">" & vbNewLine &
                 "</table>" & vbNewLine &
-            "<p style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">Para cualquier aclaración sobre el tema contactar a Tatianal@mx.gt.com y yeritza@mx.gt.com" & vbNewLine &
+            "<p style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">Para cualquier aclaración sobre el tema, contactar a Tatiana.L.Lopez@mx.gt.com" & vbNewLine &
             "<hr>" &
             "<p style=""margin-left: 20px; font-style: italic; font-family: Arial; font-size: 12px;"">Este es un correo automático, favor de no responder a esta cuenta.</p>" & vbNewLine &
             "</body></html>"
+
+            sRutaTemp = "D:\TEMP\"
+
+            If Not Directory.Exists(sRutaTemp) Then
+                Directory.CreateDirectory(sRutaTemp)
+            End If
 
             archivos = New Attachment(sRutaTemp & sArchivo)
             EnviarCorreosHTML(sCorreo, sMensaje, "Notificación de primer contacto con cliente prospecto", "N", archivos)
@@ -1134,15 +1140,15 @@ Public Class FrmContacto
             sMensaje = "<html><head></head><body>" &
             "<img src='cid:imagen1' alt='Salles, Sainz - Grant Thornton' style='width:300px;height:auto;'>" &
             "<h1 style=""height: 50px; background: #4f2d7f; font-family: Calibri, Arial; color: #FFF; padding-right: 30px; text-align: center;"">SOLICITUD DE REVISIÓN DE OTROS SERVICIOS</h1>" & vbNewLine & vbNewLine & vbNewLine &
-            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 20px; color: #4f2d7f; margin-left: 25px; margin-top: 20px; padding: 15px;"">Estimado equipo : " & sNombreEncargado.ToUpper() & " , </p> " & vbNewLine & vbNewLine &
-            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 16px; margin-left: 25px; margin-top: 20px; padding: 15px;"">Por medio del presente, le informo que hemos realizado el primer contacto con el cliente prospecto " & txtRazonSocial.Text.ToUpper.Trim() & " " & "," & " " & cboEntidadMercantilRS.SelectedItem("sCveSociedad") & " , quien a mostrado interés en nuestros servicios y ha solicitado recibir una propuesta formal. </p> " & vbNewLine & vbNewLine &
-            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 16px; margin-left: 25px; margin-top: 20px; padding: 15px;"">Para continuar con este proceso, solicitamos su apoyo para realizar la revisión de la viabilidad para prestar el servicio que solicitaron marcado como otros y el cual se detalla en la soliciutud.   </p> " & vbNewLine & vbNewLine &
+            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 20px; color: #4f2d7f; margin-left: 25px; margin-top: 20px; padding: 15px;"">Estimado equipo de " & sNombreEncargado.ToUpper() & ": </p> " & vbNewLine & vbNewLine &
+            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 16px; margin-left: 25px; margin-top: 20px; padding: 15px;"">Por medio del presente, les informo que hemos realizado el primer contacto con el cliente prospecto " & txtRazonSocial.Text.ToUpper.Trim() & " " & "," & " " & cboEntidadMercantilRS.SelectedItem("sCveSociedad") & ", quien ha mostrado interés en nuestros servicios y ha solicitado recibir una propuesta formal. </p> " & vbNewLine & vbNewLine &
+            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 16px; margin-left: 25px; margin-top: 20px; padding: 15px;"">Para continuar con este proceso, solicitamos de su apoyo para llevar a cabo la revisión de la viabilidad para prestar el servicio solicitado, el cual se encuentra clasificado como ""Otros"" y se detalla en la presente solicitud.</p> " & vbNewLine & vbNewLine &
             "<table style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">" & vbNewLine &
             "<tr><td>Cliente:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & txtRazonSocial.Text.ToUpper.Trim() & " " & "," & " " & cboEntidadMercantilRS.SelectedItem("sCveSociedad") & "</b></td></tr>" & vbNewLine &
             "<tr><td>Servicio:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & sOtroServicios.ToUpper() & "</b></td></tr>" & vbNewLine &
             "</table>" & vbNewLine &
                 "</table>" & vbNewLine &
-            "<p style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">Para cualquier aclaración sobre el tema contactar a Tatianal@mx.gt.com y yeritza@mx.gt.com" & vbNewLine &
+            "<p style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">Para cualquier aclaración sobre el tema contactar a Tatiana.L.Lopez@mx.gt.com" & vbNewLine &
             "<hr>" &
             "<p style=""margin-left: 20px; font-style: italic; font-family: Arial; font-size: 12px;"">Este es un correo automático, favor de no responder a esta cuenta.</p>" & vbNewLine &
             "</body></html>"
@@ -2900,7 +2906,7 @@ Public Class FrmContacto
         Dim iValXAC As Integer = 215
         Dim iValXDO As Integer = 30
 
-        Dim iValYDGS As Integer = 260
+        Dim iValYDGS As Integer = 275
         Dim iValYDG As Integer = 120
         Dim iValYCI As Integer = 270
         Dim iValYAC As Integer = 420
@@ -2956,13 +2962,16 @@ Public Class FrmContacto
         AgregarTexto(gra, fontTxtCam, negro, "Modalidad del trabajo: ", iValXCam, 225, 105, 14, 1)
         AgregarTexto(gra, fontTxtReg, negro, TextoCampo(cboModalidades.SelectedItem("sModalidad")), iValXDG, 225, 105, 14, 1)
 
-        AgregarTexto(gra, fontTxtCam, negro, "Servicios solicitados: ", iValXCam, 245, 105, 14, 1)
-        gra.DrawRectangle(back, New XRect(iValXDG, 245, 60, 14))
-        gra.DrawRectangle(back, New XRect(iValXDG + 63, 245, 60, 14))
-        gra.DrawRectangle(back, New XRect(iValXDG + 126, 245, 240, 14))
-        AgregarTexto(gra, fontTxtSerHdr, blanco, "OFICINA", iValXDG, 245, 60, 14, 3)
-        AgregarTexto(gra, fontTxtSerHdr, blanco, "DIVISIÓN", iValXDG + 63, 245, 60, 14, 3)
-        AgregarTexto(gra, fontTxtSerHdr, blanco, "SERVICIO", iValXDG + 130, 245, 240, 14, 1)
+        AgregarTexto(gra, fontTxtCam, negro, "Normatividad: ", iValXCam, 240, 105, 14, 1)
+        AgregarTexto(gra, fontTxtReg, negro, TextoCampo(cboEntidadSupervisada.SelectedItem("sNormatividad")), iValXDG, 240, 105, 14, 1)
+
+        AgregarTexto(gra, fontTxtCam, negro, "Servicios solicitados: ", iValXCam, 260, 105, 14, 1)
+        gra.DrawRectangle(back, New XRect(iValXDG, 260, 60, 14))
+        gra.DrawRectangle(back, New XRect(iValXDG + 63, 260, 60, 14))
+        gra.DrawRectangle(back, New XRect(iValXDG + 126, 260, 240, 14))
+        AgregarTexto(gra, fontTxtSerHdr, blanco, "OFICINA", iValXDG, 260, 60, 14, 3)
+        AgregarTexto(gra, fontTxtSerHdr, blanco, "DIVISIÓN", iValXDG + 63, 260, 60, 14, 3)
+        AgregarTexto(gra, fontTxtSerHdr, blanco, "SERVICIO", iValXDG + 130, 260, 240, 14, 1)
 
         For Each ser As DataRow In dtServicios.Rows
             AgregarTexto(gra, fontTxtSerReg, negro, TextoCampo(ser("DESCOFI")), iValXDG, iValYDGS + (15 * dtServicios.Rows.IndexOf(ser)), 60, 14, 3)

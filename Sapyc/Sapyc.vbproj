@@ -1010,6 +1010,7 @@
     <None Include="Resources\direccion-de-casa.png" />
     <None Include="Resources\usuario %281%29.png" />
     <None Include="Resources\usuario %282%29.png" />
+    <None Include="Resources\check.png" />
     <Content Include="siat.ico" />
   </ItemGroup>
   <ItemGroup />
