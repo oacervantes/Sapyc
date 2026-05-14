@@ -71,15 +71,10 @@
                 gridProspectos.Columns("IdServicio").Visible = False
                 gridProspectos.Columns("servicio").Visible = False
 
-                'gridProspectos.Columns("sCveUsr").Visible = False
-                'gridProspectos.Columns("NOMBRE").Visible = False
-                'gridProspectos.Columns("EMAIL").Visible = False
-
                 ConfigurarColumnasGrid(gridProspectos, "IdSac", "CVE. SAC", 65, 3, False)
                 ConfigurarColumnasGrid(gridProspectos, "sOficina", "OFICINA", 80, 1, False)
                 ConfigurarColumnasGrid(gridProspectos, "sDivision", "DIVISIÓN", 80, 1, False)
                 ConfigurarColumnasGrid(gridProspectos, "sNombreCte", "CLIENTE", 0, 1, False)
-                'ConfigurarColumnasGrid(gridProspectos, "servicio", "SERVICIO", 0, 1, False)
                 ConfigurarColumnasGrid(gridProspectos, "dFechaAlta", "FECHA DE CREACIÓN", 160, 3, False)
 
             Else

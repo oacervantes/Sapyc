@@ -689,6 +689,17 @@ Public Class FrmContacto
         End If
     End Sub
 
+    Private Sub TxtRazonSocial_KeyDown(sender As Object, e As KeyEventArgs) Handles txtRazonSocial.KeyDown
+        If e.Control AndAlso e.KeyCode = Keys.V Then
+            e.SuppressKeyPress = True
+        End If
+    End Sub
+    Private Sub TxtNombreComercial_KeyDown(sender As Object, e As KeyEventArgs) Handles txtNombreComercial.KeyDown
+        If e.Control AndAlso e.KeyCode = Keys.V Then
+            e.SuppressKeyPress = True
+        End If
+    End Sub
+
 #End Region
 
 #Region "CONTACTO INICIAL"

@@ -191,9 +191,9 @@ Partial Class TarjetaSocio2
         Me.Label1.Location = New System.Drawing.Point(18, 279)
         Me.Label1.Margin = New System.Windows.Forms.Padding(0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(101, 18)
+        Me.Label1.Size = New System.Drawing.Size(132, 18)
         Me.Label1.TabIndex = 14
-        Me.Label1.Text = "PRESUPUESTO:"
+        Me.Label1.Text = "META DE INGRESOS:"
         '
         'Label2
         '
@@ -217,7 +217,7 @@ Partial Class TarjetaSocio2
         Me.txtPresupuesto.ReadOnly = True
         Me.txtPresupuesto.Size = New System.Drawing.Size(755, 18)
         Me.txtPresupuesto.TabIndex = 15
-        Me.txtPresupuesto.Text = "[PRESUPUESTO]"
+        Me.txtPresupuesto.Text = "[META INGRESOS]"
         '
         'txtCapacidadInstalada
         '
