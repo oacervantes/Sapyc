@@ -939,7 +939,7 @@ Public Class FrmContacto
                 If bOtros Then
                     .subAddParameter("@sStatus", "R", SqlDbType.Char, ParameterDirection.Input)
                 Else
-                    .subAddParameter("@sStatus", "S", SqlDbType.Char, ParameterDirection.Input)
+                    .subAddParameter("@sStatus", "J", SqlDbType.Char, ParameterDirection.Input)
                 End If
 
                 .funExecuteSP("paDatosAsignacionSACPropuestas")

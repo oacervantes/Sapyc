@@ -44,6 +44,7 @@ Partial Class frmAutorizaNivelRiesgo
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.btnAutoriza = New System.Windows.Forms.Button()
         Me.btnSalir = New System.Windows.Forms.Button()
+        Me.btnRechaza = New System.Windows.Forms.Button()
         Me.panPrincipal.SuspendLayout()
         Me.gpBoxNivel.SuspendLayout()
         Me.SuspendLayout()
@@ -258,7 +259,7 @@ Partial Class frmAutorizaNivelRiesgo
         Me.btnAutoriza.Name = "btnAutoriza"
         Me.btnAutoriza.Size = New System.Drawing.Size(130, 25)
         Me.btnAutoriza.TabIndex = 1
-        Me.btnAutoriza.Text = "Guardar"
+        Me.btnAutoriza.Text = "Autorizar"
         Me.btnAutoriza.UseVisualStyleBackColor = True
         '
         'btnSalir
@@ -272,11 +273,24 @@ Partial Class frmAutorizaNivelRiesgo
         Me.btnSalir.Text = "Salir"
         Me.btnSalir.UseVisualStyleBackColor = True
         '
+        'btnRechaza
+        '
+        Me.btnRechaza.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnRechaza.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnRechaza.Location = New System.Drawing.Point(167, 426)
+        Me.btnRechaza.Name = "btnRechaza"
+        Me.btnRechaza.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.btnRechaza.Size = New System.Drawing.Size(130, 25)
+        Me.btnRechaza.TabIndex = 3
+        Me.btnRechaza.Text = "Rechazar"
+        Me.btnRechaza.UseVisualStyleBackColor = True
+        '
         'frmAutorizaNivelRiesgo
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.ClientSize = New System.Drawing.Size(845, 460)
+        Me.Controls.Add(Me.btnRechaza)
         Me.Controls.Add(Me.btnAutoriza)
         Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.panPrincipal)
@@ -315,4 +329,5 @@ Partial Class frmAutorizaNivelRiesgo
     Friend WithEvents lblComentarios As Label
     Friend WithEvents txtComentarios As TextBox
     Friend WithEvents txtDivision As TextBox
+    Friend WithEvents btnRechaza As Button
 End Class

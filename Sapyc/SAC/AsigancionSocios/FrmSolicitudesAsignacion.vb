@@ -43,6 +43,9 @@
             ElseIf gridProspectos.CurrentRow.Cells("bStatus").Value IsNot Nothing AndAlso bActivo = False AndAlso sStatus = "R" Then
                 MsgBox("La solicitud se encuentra en revisión por servicio y no es posible asignarla en este momento.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
                 Exit Sub
+            ElseIf gridProspectos.CurrentRow.Cells("bStatus").Value IsNot Nothing AndAlso bActivo = False AndAlso sStatus = "J" Then
+                MsgBox("La solicitud se encuentra en revisión por Back Ground y no es posible asignarla en este momento.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
+                Exit Sub
             ElseIf gridProspectos.CurrentRow.Cells("bStatus").Value IsNot Nothing AndAlso bActivo = False AndAlso sStatus = "C" Then
                 MsgBox("La solicitud ha sido cancelada y ya no es posible asignarla.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
                 Exit Sub
@@ -104,6 +107,9 @@
                 Exit Sub
             ElseIf gridProspectos.CurrentRow.Cells("bStatus").Value IsNot Nothing AndAlso bActivo = False AndAlso sStatus = "R" Then
                 MsgBox("La solicitud se encuentra en revisión por servicio y no es posible asignarla en este momento.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
+                Exit Sub
+            ElseIf gridProspectos.CurrentRow.Cells("bStatus").Value IsNot Nothing AndAlso bActivo = False AndAlso sStatus = "J" Then
+                MsgBox("La solicitud se encuentra en revisión por Back Ground y no es posible asignarla en este momento.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
                 Exit Sub
             ElseIf gridProspectos.CurrentRow.Cells("bStatus").Value IsNot Nothing AndAlso bActivo = False AndAlso sStatus = "C" Then
                 MsgBox("La solicitud ha sido cancelada y ya no es posible asignarla.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
