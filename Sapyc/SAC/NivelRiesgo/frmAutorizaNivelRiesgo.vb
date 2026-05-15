@@ -104,7 +104,7 @@
         Try
             With clsLocal
                 .subClearParameters()
-                .subAddParameter("@iOpcion", 4, SqlDbType.Int, ParameterDirection.Input)
+                .subAddParameter("@iOpcion", 13, SqlDbType.Int, ParameterDirection.Input)
                 .subAddParameter("@idSAC", idSac, SqlDbType.Int, ParameterDirection.Input)
                 .subAddParameter("@idPropuesta", idPropuesta, SqlDbType.Int, ParameterDirection.Input)
                 .subAddParameter("@iNivelRiesgo", 0, SqlDbType.Int, ParameterDirection.Input)
