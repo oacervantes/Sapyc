@@ -259,7 +259,7 @@ Public Class FrmContacto
                 Dim Dr() As DataRow
 
                 If dtCorreosSolicitud.Rows.Count > 0 Then
-                    Dr = dtCorreosSolicitud.Select("sCvepersona = 'SD'")
+                    Dr = dtCorreosSolicitud.Select("sCvepersona = 'BC'")
                     sNombreEncargado = Dr(0).Item("sTipoPersona").ToString()
                     sCorreoEncargado = Dr(0).Item("sCorreoPersona").ToString()
 
@@ -975,7 +975,7 @@ Public Class FrmContacto
                 .subClearParameters()
                 .subAddParameter("@iOpcion", 4, SqlDbType.Int, ParameterDirection.Input)
                 .subAddParameter("@idSAC", idSAC, SqlDbType.Int, ParameterDirection.Input)
-                .subAddParameter("@cStatus", "S", SqlDbType.Char, ParameterDirection.Input)
+                .subAddParameter("@cStatus", "J", SqlDbType.Char, ParameterDirection.Input)
 
                 .funExecuteSP("paSolicitudesSAC")
             End With
