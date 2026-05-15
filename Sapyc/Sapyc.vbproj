@@ -415,6 +415,12 @@
     <Compile Include="SAC\AsigancionSocios\DlgDetalleSolicitud.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SAC\AsigancionSocios\DlgEnvioPropuesta.Designer.vb">
+      <DependentUpon>DlgEnvioPropuesta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SAC\AsigancionSocios\DlgEnvioPropuesta.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SAC\AsigancionSocios\DlgRechazoPropuesta.Designer.vb">
       <DependentUpon>DlgRechazoPropuesta.vb</DependentUpon>
     </Compile>
@@ -832,6 +838,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SAC\AsigancionSocios\DlgDetalleSolicitud.resx">
       <DependentUpon>DlgDetalleSolicitud.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SAC\AsigancionSocios\DlgEnvioPropuesta.resx">
+      <DependentUpon>DlgEnvioPropuesta.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SAC\AsigancionSocios\DlgRechazoPropuesta.resx">
       <DependentUpon>DlgRechazoPropuesta.vb</DependentUpon>

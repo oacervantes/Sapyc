@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class DlgRechazoPropuesta
+Partial Class DlgEnvioPropuesta
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
@@ -22,6 +22,7 @@ Partial Class DlgRechazoPropuesta
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.panFondo = New System.Windows.Forms.Panel()
         Me.panPrincipal = New System.Windows.Forms.Panel()
         Me.txtServicio = New System.Windows.Forms.Label()
         Me.panLinea = New System.Windows.Forms.Panel()
@@ -29,13 +30,22 @@ Partial Class DlgRechazoPropuesta
         Me.txtIdSac = New System.Windows.Forms.Label()
         Me.txtProspecto = New System.Windows.Forms.Label()
         Me.lblMensaje = New System.Windows.Forms.Label()
-        Me.txtMotivoRechazo = New System.Windows.Forms.TextBox()
-        Me.btnGuadar = New System.Windows.Forms.Button()
+        Me.txtMotivo = New System.Windows.Forms.TextBox()
         Me.btnSalir = New System.Windows.Forms.Button()
-        Me.panFondo = New System.Windows.Forms.Panel()
-        Me.panPrincipal.SuspendLayout()
+        Me.btnEnviar = New System.Windows.Forms.Button()
         Me.panFondo.SuspendLayout()
+        Me.panPrincipal.SuspendLayout()
         Me.SuspendLayout()
+        '
+        'panFondo
+        '
+        Me.panFondo.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.panFondo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.panFondo.Controls.Add(Me.panPrincipal)
+        Me.panFondo.Location = New System.Drawing.Point(-1, 1)
+        Me.panFondo.Name = "panFondo"
+        Me.panFondo.Size = New System.Drawing.Size(597, 281)
+        Me.panFondo.TabIndex = 4
         '
         'panPrincipal
         '
@@ -50,7 +60,7 @@ Partial Class DlgRechazoPropuesta
         Me.panPrincipal.Controls.Add(Me.txtIdSac)
         Me.panPrincipal.Controls.Add(Me.txtProspecto)
         Me.panPrincipal.Controls.Add(Me.lblMensaje)
-        Me.panPrincipal.Controls.Add(Me.txtMotivoRechazo)
+        Me.panPrincipal.Controls.Add(Me.txtMotivo)
         Me.panPrincipal.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.panPrincipal.Location = New System.Drawing.Point(9, 10)
         Me.panPrincipal.Name = "panPrincipal"
@@ -120,81 +130,70 @@ Partial Class DlgRechazoPropuesta
         Me.lblMensaje.Location = New System.Drawing.Point(11, 115)
         Me.lblMensaje.Margin = New System.Windows.Forms.Padding(0)
         Me.lblMensaje.Name = "lblMensaje"
-        Me.lblMensaje.Size = New System.Drawing.Size(335, 18)
+        Me.lblMensaje.Size = New System.Drawing.Size(330, 18)
         Me.lblMensaje.TabIndex = 5
-        Me.lblMensaje.Text = "Especifique el motivo del rechazo de esta asiganción:"
+        Me.lblMensaje.Text = "Especifique el motivo de la asignación de este socio:"
         '
-        'txtMotivoRechazo
+        'txtMotivo
         '
-        Me.txtMotivoRechazo.Location = New System.Drawing.Point(11, 142)
-        Me.txtMotivoRechazo.Multiline = True
-        Me.txtMotivoRechazo.Name = "txtMotivoRechazo"
-        Me.txtMotivoRechazo.Size = New System.Drawing.Size(550, 91)
-        Me.txtMotivoRechazo.TabIndex = 6
-        '
-        'btnGuadar
-        '
-        Me.btnGuadar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.btnGuadar.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnGuadar.Location = New System.Drawing.Point(13, 287)
-        Me.btnGuadar.Name = "btnGuadar"
-        Me.btnGuadar.Size = New System.Drawing.Size(135, 25)
-        Me.btnGuadar.TabIndex = 1
-        Me.btnGuadar.Text = "Guardar"
-        Me.btnGuadar.UseVisualStyleBackColor = True
+        Me.txtMotivo.Location = New System.Drawing.Point(11, 142)
+        Me.txtMotivo.Multiline = True
+        Me.txtMotivo.Name = "txtMotivo"
+        Me.txtMotivo.Size = New System.Drawing.Size(550, 91)
+        Me.txtMotivo.TabIndex = 6
         '
         'btnSalir
         '
         Me.btnSalir.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnSalir.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSalir.Location = New System.Drawing.Point(451, 287)
+        Me.btnSalir.Location = New System.Drawing.Point(447, 287)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(135, 25)
-        Me.btnSalir.TabIndex = 2
-        Me.btnSalir.Text = "Cerrar"
+        Me.btnSalir.TabIndex = 4
+        Me.btnSalir.Text = "Cancelar"
         Me.btnSalir.UseVisualStyleBackColor = True
         '
-        'panFondo
+        'btnEnviar
         '
-        Me.panFondo.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.panFondo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.panFondo.Controls.Add(Me.panPrincipal)
-        Me.panFondo.Location = New System.Drawing.Point(0, 0)
-        Me.panFondo.Name = "panFondo"
-        Me.panFondo.Size = New System.Drawing.Size(597, 281)
-        Me.panFondo.TabIndex = 3
+        Me.btnEnviar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.btnEnviar.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnEnviar.Location = New System.Drawing.Point(9, 287)
+        Me.btnEnviar.Name = "btnEnviar"
+        Me.btnEnviar.Size = New System.Drawing.Size(135, 25)
+        Me.btnEnviar.TabIndex = 3
+        Me.btnEnviar.Text = "Enviar"
+        Me.btnEnviar.UseVisualStyleBackColor = True
         '
-        'DlgRechazoPropuesta
+        'DlgEnvioPropuesta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(596, 320)
-        Me.Controls.Add(Me.panFondo)
         Me.Controls.Add(Me.btnSalir)
-        Me.Controls.Add(Me.btnGuadar)
+        Me.Controls.Add(Me.panFondo)
+        Me.Controls.Add(Me.btnEnviar)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.MaximizeBox = False
         Me.MinimizeBox = False
-        Me.Name = "DlgRechazoPropuesta"
-        Me.ShowInTaskbar = False
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "Rechazar asignación"
+        Me.Name = "DlgEnvioPropuesta"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Text = "Envio Propuestas"
+        Me.panFondo.ResumeLayout(False)
         Me.panPrincipal.ResumeLayout(False)
         Me.panPrincipal.PerformLayout()
-        Me.panFondo.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
 
+    Friend WithEvents panFondo As Panel
     Friend WithEvents panPrincipal As Panel
-    Friend WithEvents txtMotivoRechazo As TextBox
-    Friend WithEvents btnGuadar As Button
-    Friend WithEvents btnSalir As Button
-    Friend WithEvents lblMensaje As Label
+    Friend WithEvents txtServicio As Label
     Friend WithEvents panLinea As Panel
     Friend WithEvents lblIdSac As Label
     Friend WithEvents txtIdSac As Label
     Friend WithEvents txtProspecto As Label
-    Friend WithEvents txtServicio As Label
-    Friend WithEvents panFondo As Panel
+    Friend WithEvents lblMensaje As Label
+    Friend WithEvents txtMotivo As TextBox
+    Friend WithEvents btnSalir As Button
+    Friend WithEvents btnEnviar As Button
 End Class

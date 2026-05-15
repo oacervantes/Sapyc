@@ -44,11 +44,19 @@
             Exit Sub
         End If
 
-        If MsgBox($"Se enviará una notificación a {sSocioEncargado} para autorizar la asignación del socio seleccionado en la propuesta {sNombreCte}. ¿Desea continuar?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, My.Settings.NOM_SYS) = MsgBoxResult.Yes Then
+        Dim dlg As New DlgEnvioPropuesta With {
+            .idSac = idSac,
+            .sSocioEncargado = sSocioEncargado,
+            .idPropuesta = idPropuesta
+        }
+
+
+        If dlg.ShowDialog() = DialogResult.OK Then
             EnviarAsignacion()
             EnviarCorreoAviso()
             DialogResult = DialogResult.OK
         End If
+
     End Sub
     Private Sub BtnRechazarAsignacion_Click(sender As Object, e As EventArgs) Handles btnRechazarAsignacion.Click
         Dim dlg As New DlgRechazoPropuesta With {
