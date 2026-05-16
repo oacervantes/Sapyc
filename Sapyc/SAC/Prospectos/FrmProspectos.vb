@@ -94,48 +94,15 @@
     End Sub
 
     Private Sub GridProspectos_SelectionChanged(sender As Object, e As EventArgs) Handles gridProspectos.SelectionChanged
+
         If gridProspectos.CurrentRow IsNot Nothing Then
-            btnEditar.Text = "Editar"
-            'Select Case gridProspectos.CurrentRow.Cells("iStatus").Value
-            '    Case 1 'Solicitud pendiente
-            '        btnEditar.Enabled = True
-            '        btnEliminar.Enabled = True
-
-            '        btnAsignarProspecto.Visible = False
-            '        btnEnviarSolicitud.Visible = True
-            '        btnGenerarPropuesta.Visible = False
-
-            '    Case 2 'Solicitud asignada a socio encargado
-            '        btnEditar.Enabled = True
-            '        btnEditar.Text = "Revisar"
-            '        btnEliminar.Enabled = False
-
-            '        If CInt(gridProspectos.CurrentRow.Cells("iSocEnc").Value) = 1 Then
-            '            btnAsignarProspecto.Visible = True
-            '        Else
-            '            btnAsignarProspecto.Visible = True
-            '        End If
-            '        btnEnviarSolicitud.Visible = False
-            '        btnGenerarPropuesta.Visible = False
-
-            '    Case 3 'Solicitud asignada a socio para trabajar
-            '        btnEditar.Enabled = True
-            '        btnEditar.Text = "Revisar"
-            '        btnEliminar.Enabled = False
-
-            '        btnAsignarProspecto.Visible = False
-            '        btnEnviarSolicitud.Visible = False
-            '        btnGenerarPropuesta.Visible = True
-
-            '    Case Else 'Solicitud terminada, cancelada o sin status
-            '        btnEditar.Enabled = False
-            '        btnEliminar.Enabled = False
-
-            '        btnAsignarProspecto.Visible = False
-            '        btnEnviarSolicitud.Visible = False
-            '        btnGenerarPropuesta.Visible = False
-
-            'End Select
+            If gridProspectos.CurrentRow.Cells("cStatus").Value = "V" Then
+                btnEnviaAsigna.Visible = True
+            Else
+                btnEnviaAsigna.Visible = False
+            End If
+        Else
+            MsgBox("Seleccione una solicitud.", MsgBoxStyle.Exclamation, "SIAT")
         End If
     End Sub
     Private Sub GridProspectos_DoubleClick(sender As Object, e As EventArgs) Handles gridProspectos.DoubleClick

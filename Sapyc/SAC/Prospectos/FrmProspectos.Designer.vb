@@ -32,6 +32,7 @@ Partial Class FrmProspectos
         Me.btnEditar = New System.Windows.Forms.Button()
         Me.btnSalir = New System.Windows.Forms.Button()
         Me.btnCancelar = New System.Windows.Forms.Button()
+        Me.btnEnviaAsigna = New System.Windows.Forms.Button()
         CType(Me.gridProspectos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panPrincipal.SuspendLayout()
         Me.SuspendLayout()
@@ -142,11 +143,24 @@ Partial Class FrmProspectos
         Me.btnCancelar.Text = "Cancelar"
         Me.btnCancelar.UseVisualStyleBackColor = True
         '
+        'btnEnviaAsigna
+        '
+        Me.btnEnviaAsigna.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.btnEnviaAsigna.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnEnviaAsigna.Location = New System.Drawing.Point(420, 602)
+        Me.btnEnviaAsigna.Name = "btnEnviaAsigna"
+        Me.btnEnviaAsigna.Size = New System.Drawing.Size(130, 25)
+        Me.btnEnviaAsigna.TabIndex = 6
+        Me.btnEnviaAsigna.Text = "Enviar a Asignación"
+        Me.btnEnviaAsigna.UseVisualStyleBackColor = True
+        Me.btnEnviaAsigna.Visible = False
+        '
         'FrmProspectos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.ClientSize = New System.Drawing.Size(1154, 635)
+        Me.Controls.Add(Me.btnEnviaAsigna)
         Me.Controls.Add(Me.btnCancelar)
         Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.btnEditar)
@@ -172,4 +186,5 @@ Partial Class FrmProspectos
     Friend WithEvents btnEditar As Button
     Friend WithEvents btnSalir As Button
     Friend WithEvents btnCancelar As Button
+    Friend WithEvents btnEnviaAsigna As Button
 End Class
