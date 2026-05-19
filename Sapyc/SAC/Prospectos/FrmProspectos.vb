@@ -1,4 +1,10 @@
-﻿Public Class FrmProspectos
+﻿Imports System.IO
+Imports System.Net.Mail
+Imports PdfSharp.Drawing
+Imports PdfSharp.Drawing.Layout
+Imports PdfSharp.Pdf
+
+Public Class FrmProspectos
 
     '1- Solicitud pendiente.
     '2- Solicitud asignada a socio encargado.
@@ -41,9 +47,10 @@
     End Sub
     Private Sub BtnEditar_Click(sender As Object, e As EventArgs) Handles btnEditar.Click
         Dim frm As New FrmContacto
+        frm.sEstatusSolicitud = gridProspectos.CurrentRow.Cells("cStatus").Value
 
         If gridProspectos.CurrentRow IsNot Nothing Then
-            If gridProspectos.CurrentRow.Cells("cStatus").Value = "P" Then
+            If gridProspectos.CurrentRow.Cells("cStatus").Value = "P" Or gridProspectos.CurrentRow.Cells("cStatus").Value = "V" Then
                 frm.iModifica = 1
 
                 frm.iOrigen = 2
@@ -91,19 +98,6 @@
     End Sub
     Private Sub BtnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
         Close()
-    End Sub
-
-    Private Sub GridProspectos_SelectionChanged(sender As Object, e As EventArgs) Handles gridProspectos.SelectionChanged
-
-        If gridProspectos.CurrentRow IsNot Nothing Then
-            If gridProspectos.CurrentRow.Cells("cStatus").Value = "V" Then
-                btnEnviaAsigna.Visible = True
-            Else
-                btnEnviaAsigna.Visible = False
-            End If
-        Else
-            MsgBox("Seleccione una solicitud.", MsgBoxStyle.Exclamation, "SIAT")
-        End If
     End Sub
     Private Sub GridProspectos_DoubleClick(sender As Object, e As EventArgs) Handles gridProspectos.DoubleClick
         'Dim frm As New FrmContactoBasico
@@ -154,7 +148,6 @@
         '        gridProspectos.Rows(e.RowIndex).Cells("sStatus").Style.ForeColor = negro
         'End Select
     End Sub
-
     Private Sub ListarSolicitudesSAC()
         Try
             Dim sTabla As String = "tbSolicitudes"
@@ -228,7 +221,6 @@
             MsgBox("Hubo un problema al registrar la información del prospecto, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
         End Try
     End Sub
-
     Private Sub EnviarCorreoAviso() 'Este correo es para avisar al socio encargado de oficina, que se ha solicitado generar un folio con cobranza incompleta.
         Dim sMensaje As String
 
@@ -284,5 +276,6 @@
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
         End Try
     End Sub
+
 
 End Class

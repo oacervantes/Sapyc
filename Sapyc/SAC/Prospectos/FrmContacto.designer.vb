@@ -248,6 +248,7 @@ Partial Class FrmContacto
         Me.txtDomicilioExtDireccion1 = New System.Windows.Forms.TextBox()
         Me.txtDomicilioExtEstado = New System.Windows.Forms.TextBox()
         Me.cboDomicilioPais = New System.Windows.Forms.ComboBox()
+        Me.btnEnviarAsiganacion = New System.Windows.Forms.Button()
         Me.panMenu.SuspendLayout()
         Me.panMensajesError.SuspendLayout()
         Me.panDatosGenerales.SuspendLayout()
@@ -294,7 +295,7 @@ Partial Class FrmContacto
         Me.panMenu.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold)
         Me.panMenu.Location = New System.Drawing.Point(0, 0)
         Me.panMenu.Name = "panMenu"
-        Me.panMenu.Size = New System.Drawing.Size(212, 745)
+        Me.panMenu.Size = New System.Drawing.Size(212, 737)
         Me.panMenu.TabIndex = 0
         '
         'panMensajesError
@@ -303,7 +304,7 @@ Partial Class FrmContacto
         Me.panMensajesError.Controls.Add(Me.txtMensaje)
         Me.panMensajesError.Controls.Add(Me.lblTituloError)
         Me.panMensajesError.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.panMensajesError.Location = New System.Drawing.Point(0, 335)
+        Me.panMensajesError.Location = New System.Drawing.Point(0, 327)
         Me.panMensajesError.Name = "panMensajesError"
         Me.panMensajesError.Size = New System.Drawing.Size(210, 408)
         Me.panMensajesError.TabIndex = 28
@@ -497,7 +498,7 @@ Partial Class FrmContacto
         Me.panDatosGenerales.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold)
         Me.panDatosGenerales.Location = New System.Drawing.Point(212, 0)
         Me.panDatosGenerales.Name = "panDatosGenerales"
-        Me.panDatosGenerales.Size = New System.Drawing.Size(1078, 704)
+        Me.panDatosGenerales.Size = New System.Drawing.Size(1078, 692)
         Me.panDatosGenerales.TabIndex = 0
         Me.panDatosGenerales.Tag = "1"
         Me.panDatosGenerales.Visible = False
@@ -1881,7 +1882,7 @@ Partial Class FrmContacto
         Me.lblMensajeCargaDatosGenerales.ForeColor = System.Drawing.Color.White
         Me.lblMensajeCargaDatosGenerales.Location = New System.Drawing.Point(0, 44)
         Me.lblMensajeCargaDatosGenerales.Name = "lblMensajeCargaDatosGenerales"
-        Me.lblMensajeCargaDatosGenerales.Size = New System.Drawing.Size(1056, 25)
+        Me.lblMensajeCargaDatosGenerales.Size = New System.Drawing.Size(1050, 25)
         Me.lblMensajeCargaDatosGenerales.TabIndex = 2
         Me.lblMensajeCargaDatosGenerales.Text = "No se ha cargado información de los Datos Generales para el prospecto."
         Me.lblMensajeCargaDatosGenerales.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -1931,7 +1932,7 @@ Partial Class FrmContacto
         Me.panContactoInicial.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold)
         Me.panContactoInicial.Location = New System.Drawing.Point(212, 0)
         Me.panContactoInicial.Name = "panContactoInicial"
-        Me.panContactoInicial.Size = New System.Drawing.Size(1090, 704)
+        Me.panContactoInicial.Size = New System.Drawing.Size(1090, 692)
         Me.panContactoInicial.TabIndex = 0
         Me.panContactoInicial.Tag = "2"
         Me.panContactoInicial.Visible = False
@@ -2194,7 +2195,7 @@ Partial Class FrmContacto
         Me.panAcercamiento.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.panAcercamiento.Location = New System.Drawing.Point(212, 0)
         Me.panAcercamiento.Name = "panAcercamiento"
-        Me.panAcercamiento.Size = New System.Drawing.Size(1090, 704)
+        Me.panAcercamiento.Size = New System.Drawing.Size(1090, 692)
         Me.panAcercamiento.TabIndex = 6
         Me.panAcercamiento.Tag = "3"
         Me.panAcercamiento.Visible = False
@@ -2230,7 +2231,7 @@ Partial Class FrmContacto
         Me.lblMensajeErrorAcercamiento.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.lblMensajeErrorAcercamiento.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblMensajeErrorAcercamiento.ForeColor = System.Drawing.Color.White
-        Me.lblMensajeErrorAcercamiento.Location = New System.Drawing.Point(0, 677)
+        Me.lblMensajeErrorAcercamiento.Location = New System.Drawing.Point(0, 665)
         Me.lblMensajeErrorAcercamiento.Name = "lblMensajeErrorAcercamiento"
         Me.lblMensajeErrorAcercamiento.Size = New System.Drawing.Size(1088, 25)
         Me.lblMensajeErrorAcercamiento.TabIndex = 4
@@ -2363,7 +2364,7 @@ Partial Class FrmContacto
         Me.panDireccion.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.panDireccion.Location = New System.Drawing.Point(212, 0)
         Me.panDireccion.Name = "panDireccion"
-        Me.panDireccion.Size = New System.Drawing.Size(1090, 704)
+        Me.panDireccion.Size = New System.Drawing.Size(1090, 692)
         Me.panDireccion.TabIndex = 0
         Me.panDireccion.Tag = "4"
         Me.panDireccion.Visible = False
@@ -2717,12 +2718,25 @@ Partial Class FrmContacto
         Me.cboDomicilioPais.TabIndex = 1
         Me.cboDomicilioPais.Visible = False
         '
+        'btnEnviarAsiganacion
+        '
+        Me.btnEnviarAsiganacion.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.btnEnviarAsiganacion.Enabled = False
+        Me.btnEnviarAsiganacion.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnEnviarAsiganacion.Location = New System.Drawing.Point(630, 711)
+        Me.btnEnviarAsiganacion.Name = "btnEnviarAsiganacion"
+        Me.btnEnviarAsiganacion.Size = New System.Drawing.Size(177, 25)
+        Me.btnEnviarAsiganacion.TabIndex = 7
+        Me.btnEnviarAsiganacion.Text = "Enviar a Asignación"
+        Me.btnEnviarAsiganacion.UseVisualStyleBackColor = True
+        '
         'FrmContacto
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        Me.ClientSize = New System.Drawing.Size(1290, 745)
+        Me.ClientSize = New System.Drawing.Size(1282, 737)
         Me.ControlBox = False
+        Me.Controls.Add(Me.btnEnviarAsiganacion)
         Me.Controls.Add(Me.btnCerrar)
         Me.Controls.Add(Me.btnHabilitar)
         Me.Controls.Add(Me.btnGuardaGeneral)
@@ -3022,4 +3036,5 @@ Partial Class FrmContacto
     Friend WithEvents lblTipoEntidad As Label
     Friend WithEvents cboEntidadMercantilNC As ComboBox
     Friend WithEvents cboEntidadMercantilRS As ComboBox
+    Friend WithEvents btnEnviarAsiganacion As Button
 End Class

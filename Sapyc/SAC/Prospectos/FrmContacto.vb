@@ -39,7 +39,7 @@ Public Class FrmContacto
 
     Private bMarco = False, bOtros = False, bOtrosCarga = False, bRefGTI = False, bCargaInfo As Boolean = False
     Private CorreosSoc, sNombSocio, sMailSocio, sNombreEncargado, sCorreoEncargado As String
-    Public sCveOfi, sCveArea, sOficina, sArea As String
+    Public sCveOfi, sCveArea, sOficina, sArea, sEstatusSolicitud As String
     Public iOrigen, iModifica, idSAC As Integer
     Private arPDF As Byte()
 
@@ -190,6 +190,7 @@ Public Class FrmContacto
         gpBoxServicio.Enabled = True
         btnGuardaGeneral.Enabled = True
         btnCancelaGeneral.Enabled = True
+        btnEnviarAsiganacion.Enabled = True
         btnHabilitar.Enabled = False
         txtRazonSocial.Focus()
 
@@ -262,9 +263,8 @@ Public Class FrmContacto
                     Dr = dtCorreosSolicitud.Select("sCvepersona = 'BC'")
                     sNombreEncargado = Dr(0).Item("sTipoPersona").ToString()
                     sCorreoEncargado = Dr(0).Item("sCorreoPersona").ToString()
+                    EnvioCorreoBackGround()
 
-                    GenerarPDFProvisional(txtRazonSocial.Text & ", " & cboEntidadMercantilRS.SelectedItem("sCveSociedad"), txtNombreComercial.Text & ", " & cboEntidadMercantilNC.SelectedItem("sCveSociedad"))
-                    EnvioCorreoProspectoNuevo(txtRazonSocial.Text & ", " & cboEntidadMercantilRS.SelectedItem("sCveSociedad"))
                 Else
                     MsgBox("Por el momento no es posible enviar el correo de notificación de asignación de socio.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
                 End If
@@ -984,6 +984,21 @@ Public Class FrmContacto
             MsgBox("Hubo un problema al registrar la información del prospecto, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
         End Try
     End Sub
+    Private Sub ActualizarSolicitudBG(idSAC As Integer)
+        Try
+            With clsLocal
+                .subClearParameters()
+                .subAddParameter("@iOpcion", 4, SqlDbType.Int, ParameterDirection.Input)
+                .subAddParameter("@idSAC", idSAC, SqlDbType.Int, ParameterDirection.Input)
+                .subAddParameter("@cStatus", "S", SqlDbType.Char, ParameterDirection.Input)
+
+                .funExecuteSP("paSolicitudesSAC")
+            End With
+        Catch ex As Exception
+            InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "EliminarAsignacionSAC()")
+            MsgBox("Hubo un problema al registrar la información del prospecto, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
+        End Try
+    End Sub
     Private Sub ListarOficinas()
         Try
             Dim sTabla As String = "tbOficinas"
@@ -1083,7 +1098,6 @@ Public Class FrmContacto
         rdEntidadSupervisadaNo.AutoCheck = True
 
     End Sub
-
     Private Sub ListarCorreosSolicitud()
         Try
             Dim sTabla As String = "tbCorreosEncargados"
@@ -1103,42 +1117,6 @@ Public Class FrmContacto
             InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarCorreosSolicitud()")
             MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
             dtCorreosSolicitud = Nothing
-        End Try
-    End Sub
-
-    Private Sub EnvioCorreoProspectoNuevo(sNombreCliente As String) 'Este correo es para avisar al socio encargado de oficina, que se ha solicitado generar un folio con cobranza incompleta.
-        Dim sMensaje As String
-        Dim archivos As Attachment
-        Dim sArchivo As String = QuitarCaracteres(sNombreCliente) & ".pdf"
-
-        Try
-            Dim sCorreos = "Octavio.A.Cervantes@mx.gt.com; Mario.Rodriguez@mx.gt.com"
-            Dim sCorreo As String() = sCorreos.Split(";")
-
-            sMensaje = "<html><head></head><body>" &
-            "<img src='cid:imagen1' alt='Salles, Sainz - Grant Thornton' style='width:300px;height:auto;'>" &
-            "<h1 style=""height: 50px; background: #4f2d7f; font-family: Calibri, Arial; color: #FFF; padding-right: 30px; text-align: center;"">NOTIFICACIÓN DE PRIMER CONTACTO CON CLIENTE PROSPECTO</h1>" & vbNewLine & vbNewLine & vbNewLine &
-            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 20px; color: #4f2d7f; margin-left: 25px; margin-top: 20px; padding: 15px;"">Estimado " & sNombreEncargado.TrimEnd(";") & ": </p> " & vbNewLine & vbNewLine &
-            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 16px; margin-left: 25px; margin-top: 20px; padding: 15px;"">Por medio del presente, le informo que hemos realizado el primer contacto con el cliente prospecto " & txtRazonSocial.Text.ToUpper.Trim() & ", quien ha mostrado interés en nuestros servicios y ha solicitado recibir una propuesta formal. </p> " & vbNewLine & vbNewLine &
-            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 16px; margin-left: 25px; margin-top: 20px; padding: 15px;"">Para continuar con este proceso, solicitamos atentamente su apoyo para asignar al socio más idóneo para la elaboración y presentación de la propuesta de servicio, considerando la naturaleza del servicio solicitado, la experiencia técnica requerida y la disponibilidad del socio.</p> " & vbNewLine & vbNewLine &
-            "<table style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">" & vbNewLine &
-                "</table>" & vbNewLine &
-            "<p style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">Para cualquier aclaración sobre el tema, contactar a Tatiana.L.Lopez@mx.gt.com" & vbNewLine &
-            "<hr>" &
-            "<p style=""margin-left: 20px; font-style: italic; font-family: Arial; font-size: 12px;"">Este es un correo automático, favor de no responder a esta cuenta.</p>" & vbNewLine &
-            "</body></html>"
-
-            sRutaTemp = "D:\TEMP\"
-
-            If Not Directory.Exists(sRutaTemp) Then
-                Directory.CreateDirectory(sRutaTemp)
-            End If
-
-            archivos = New Attachment(sRutaTemp & sArchivo)
-            EnviarCorreosHTML(sCorreo, sMensaje, "Notificación de primer contacto con cliente prospecto", "N", archivos)
-
-        Catch ex As Exception
-            MsgBox("No ha sido posible enviar el correo debido a fallas con el servidor de correo.", MsgBoxStyle.Exclamation, "SIAT")
         End Try
     End Sub
     Private Sub EnvioCorreoGestionRiesgo(sMail As String)
@@ -1165,6 +1143,35 @@ Public Class FrmContacto
             "</body></html>"
 
             EnviarCorreosHTML(sCorreo, sMensaje, "Solicitud de revisión de otros servicios")
+
+        Catch ex As Exception
+            MsgBox("No ha sido posible enviar el correo debido a fallas con el servidor de correo.", MsgBoxStyle.Exclamation, "SIAT")
+        End Try
+    End Sub
+    Private Sub EnvioCorreoBackGround()
+        Dim sMensaje As String
+
+        Try
+            Dim sCorreos = "Octavio.A.Cervantes@mx.gt.com; Mario.Rodriguez@mx.gt.com"
+            Dim sCorreo As String() = sCorreos.Split(";")
+
+            sMensaje = "<html><head></head><body>" &
+            "<img src='cid:imagen1' alt='Salles, Sainz - Grant Thornton' style='width:300px;height:auto;'>" &
+            "<h1 style=""height: 50px; background: #4f2d7f; font-family: Calibri, Arial; color: #FFF; padding-right: 30px; text-align: center;"">NOTIFICACIÓN DE PRIMER CONTACTO CON CLIENTE PROSPECTO</h1>" & vbNewLine & vbNewLine & vbNewLine &
+            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 20px; color: #4f2d7f; margin-left: 25px; margin-top: 20px; padding: 15px;"">Estimado equipo de " & sNombreEncargado.ToUpper() & ": </p> " & vbNewLine & vbNewLine &
+            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 16px; margin-left: 25px; margin-top: 20px; padding: 15px;"">Por medio del presente, les informo que hemos realizado el primer contacto con el cliente prospecto " & txtRazonSocial.Text.ToUpper.Trim() & " " & "," & " " & cboEntidadMercantilRS.SelectedItem("sCveSociedad") & ", quien ha mostrado interés en nuestros servicios y ha solicitado recibir una propuesta formal. </p> " & vbNewLine & vbNewLine &
+            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 16px; margin-left: 25px; margin-top: 20px; padding: 15px;"">Para continuar con este proceso, solicitamos de su apoyo para llevar a cabo la revisión del nivel de riesgo </p> " & vbNewLine & vbNewLine &
+            "<table style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">" & vbNewLine &
+            "<tr><td>Cliente:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & txtRazonSocial.Text.ToUpper.Trim() & " " & "," & " " & cboEntidadMercantilRS.SelectedItem("sCveSociedad") & "</b></td></tr>" & vbNewLine &
+            "<tr><td>Servicio:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & sOtroServicios.ToUpper() & "</b></td></tr>" & vbNewLine &
+            "</table>" & vbNewLine &
+                "</table>" & vbNewLine &
+            "<p style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">Para cualquier aclaración sobre el tema contactar a Tatiana.L.Lopez@mx.gt.com" & vbNewLine &
+            "<hr>" &
+            "<p style=""margin-left: 20px; font-style: italic; font-family: Arial; font-size: 12px;"">Este es un correo automático, favor de no responder a esta cuenta.</p>" & vbNewLine &
+            "</body></html>"
+
+            EnviarCorreosHTML(sCorreo, sMensaje, "Notificación de primer contacto con cliente prospecto")
 
         Catch ex As Exception
             MsgBox("No ha sido posible enviar el correo debido a fallas con el servidor de correo.", MsgBoxStyle.Exclamation, "SIAT")
@@ -2888,6 +2895,27 @@ Public Class FrmContacto
 
 #End Region
 
+    Private Sub AgregarTexto(gra As XGraphics, font As XFont, color As XSolidBrush, sTexto As String, x As Integer, y As Integer, ancho As Integer, alto As Integer, iAlinea As Integer)
+        Select Case iAlinea
+            Case 1
+                gra.DrawString(sTexto, font, color, New XRect(x, y, ancho, alto), XStringFormats.CenterLeft)
+            Case 2
+                gra.DrawString(sTexto, font, color, New XRect(x, y, ancho, alto), XStringFormats.CenterRight)
+            Case 3
+                gra.DrawString(sTexto, font, color, New XRect(x, y, ancho, alto), XStringFormats.Center)
+        End Select
+    End Sub
+    Private Function TextoCampo(sTexto As String) As String
+        Dim sCadena As String = ""
+
+        If sTexto.Trim = "" Then
+            sCadena = "Sin dato"
+        Else
+            sCadena = sTexto
+        End If
+
+        Return sCadena
+    End Function
     Private Sub GenerarPDFProvisional(sNomCte As String, sNomCom As String)
         Dim pdfDoc As New PdfDocument
         Dim pdfPage As PdfPage
@@ -3051,28 +3079,64 @@ Public Class FrmContacto
 
         End If
     End Sub
+    Private Sub EnvioCorreoProspectoNuevo(sNombreCliente As String) 'Este correo es para avisar al socio encargado de oficina, que se ha solicitado generar un folio con cobranza incompleta.
+        Dim sMensaje As String
+        Dim archivos As Attachment
+        Dim sArchivo As String = QuitarCaracteres(sNombreCliente) & ".pdf"
 
-    Private Sub AgregarTexto(gra As XGraphics, font As XFont, color As XSolidBrush, sTexto As String, x As Integer, y As Integer, ancho As Integer, alto As Integer, iAlinea As Integer)
-        Select Case iAlinea
-            Case 1
-                gra.DrawString(sTexto, font, color, New XRect(x, y, ancho, alto), XStringFormats.CenterLeft)
-            Case 2
-                gra.DrawString(sTexto, font, color, New XRect(x, y, ancho, alto), XStringFormats.CenterRight)
-            Case 3
-                gra.DrawString(sTexto, font, color, New XRect(x, y, ancho, alto), XStringFormats.Center)
-        End Select
+        Try
+            Dim sCorreos = "Octavio.A.Cervantes@mx.gt.com; Mario.Rodriguez@mx.gt.com"
+            Dim sCorreo As String() = sCorreos.Split(";")
+
+            sMensaje = "<html><head></head><body>" &
+            "<img src='cid:imagen1' alt='Salles, Sainz - Grant Thornton' style='width:300px;height:auto;'>" &
+            "<h1 style=""height: 50px; background: #4f2d7f; font-family: Calibri, Arial; color: #FFF; padding-right: 30px; text-align: center;"">NOTIFICACIÓN DE PRIMER CONTACTO CON CLIENTE PROSPECTO</h1>" & vbNewLine & vbNewLine & vbNewLine &
+            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 20px; color: #4f2d7f; margin-left: 25px; margin-top: 20px; padding: 15px;"">Estimado " & sNombreEncargado.TrimEnd(";") & ": </p> " & vbNewLine & vbNewLine &
+            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 16px; margin-left: 25px; margin-top: 20px; padding: 15px;"">Por medio del presente, le informo que hemos realizado el primer contacto con el cliente prospecto " & txtRazonSocial.Text.ToUpper.Trim() & ", quien ha mostrado interés en nuestros servicios y ha solicitado recibir una propuesta formal. </p> " & vbNewLine & vbNewLine &
+            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 16px; margin-left: 25px; margin-top: 20px; padding: 15px;"">Para continuar con este proceso, solicitamos atentamente su apoyo para asignar al socio más idóneo para la elaboración y presentación de la propuesta de servicio, considerando la naturaleza del servicio solicitado, la experiencia técnica requerida y la disponibilidad del socio.</p> " & vbNewLine & vbNewLine &
+            "<table style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">" & vbNewLine &
+                "</table>" & vbNewLine &
+            "<p style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">Para cualquier aclaración sobre el tema, contactar a Tatiana.L.Lopez@mx.gt.com" & vbNewLine &
+            "<hr>" &
+            "<p style=""margin-left: 20px; font-style: italic; font-family: Arial; font-size: 12px;"">Este es un correo automático, favor de no responder a esta cuenta.</p>" & vbNewLine &
+            "</body></html>"
+
+            sRutaTemp = "C:\TEMP\"
+
+            If Not Directory.Exists(sRutaTemp) Then
+                Directory.CreateDirectory(sRutaTemp)
+            End If
+
+            archivos = New Attachment(sRutaTemp & sArchivo)
+            EnviarCorreosHTML(sCorreo, sMensaje, "Notificación de primer contacto con cliente prospecto", "N", archivos)
+
+        Catch ex As Exception
+            MsgBox("No ha sido posible enviar el correo debido a fallas con el servidor de correo.", MsgBoxStyle.Exclamation, "SIAT")
+        End Try
     End Sub
 
-    Private Function TextoCampo(sTexto As String) As String
-        Dim sCadena As String = ""
+    Private Sub btnEnviarAsiganacion_Click(sender As Object, e As EventArgs) Handles btnEnviarAsiganacion.Click
 
-        If sTexto.Trim = "" Then
-            sCadena = "Sin dato"
+        If sEstatusSolicitud = "V" Then
+
+            ActualizarSolicitudBG(idSAC)
+
+            Dim Dr() As DataRow
+            If dtCorreosSolicitud.Rows.Count > 0 Then
+                Dr = dtCorreosSolicitud.Select("sCvepersona = 'GD'")
+                sNombreEncargado = Dr(0).Item("sTipoPersona").ToString()
+                sCorreoEncargado = Dr(0).Item("sCorreoPersona").ToString()
+                GenerarPDFProvisional(txtRazonSocial.Text & ", " & cboEntidadMercantilRS.SelectedItem("sCveSociedad"), txtNombreComercial.Text & ", " & cboEntidadMercantilNC.SelectedItem("sCveSociedad"))
+                EnvioCorreoProspectoNuevo(txtRazonSocial.Text & ", " & cboEntidadMercantilRS.SelectedItem("sCveSociedad"))
+            End If
+
         Else
-            sCadena = sTexto
+            MsgBox("Ya no es posible asignar esta solicitud, hasta que la revise Back Ground", MsgBoxStyle.Exclamation, "SIAT")
         End If
 
-        Return sCadena
-    End Function
+        DialogResult = DialogResult.OK
+
+    End Sub
+
 
 End Class
