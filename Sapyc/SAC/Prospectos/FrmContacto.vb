@@ -263,7 +263,7 @@ Public Class FrmContacto
                     Dr = dtCorreosSolicitud.Select("sCvepersona = 'BC'")
                     sNombreEncargado = Dr(0).Item("sTipoPersona").ToString()
                     sCorreoEncargado = Dr(0).Item("sCorreoPersona").ToString()
-                    EnvioCorreoBackGround()
+                    EnvioCorreoBackGround(sCorreoEncargado)
 
                 Else
                     MsgBox("Por el momento no es posible enviar el correo de notificación de asignación de socio.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
@@ -960,7 +960,7 @@ Public Class FrmContacto
                 sOtroServicios = ObtenerTextoServicioOtros()
 
                 'Dim sCorreo As String() = sMailSocio.Split(";")
-                EnvioCorreoGestionRiesgo(sMailSocio)
+                EnvioCorreoGestionRiesgo(sCorreoEncargado)
             Else
                 MsgBox("Por el momento no es posible enviar el correo de notificación de revisión de otros servicio.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
             End If
@@ -1123,8 +1123,10 @@ Public Class FrmContacto
         Dim sMensaje As String
 
         Try
-            Dim sCorreos = "Octavio.A.Cervantes@mx.gt.com; Mario.Rodriguez@mx.gt.com"
+            'Dim sCorreos = "Octavio.A.Cervantes@mx.gt.com; Mario.Rodriguez@mx.gt.com"
+            Dim sCorreos = sMail
             Dim sCorreo As String() = sCorreos.Split(";")
+
 
             sMensaje = "<html><head></head><body>" &
             "<img src='cid:imagen1' alt='Salles, Sainz - Grant Thornton' style='width:300px;height:auto;'>" &
@@ -1148,7 +1150,7 @@ Public Class FrmContacto
             MsgBox("No ha sido posible enviar el correo debido a fallas con el servidor de correo.", MsgBoxStyle.Exclamation, "SIAT")
         End Try
     End Sub
-    Private Sub EnvioCorreoBackGround()
+    Private Sub EnvioCorreoBackGround(sMail As String)
         Dim sMensaje As String
 
         Try
@@ -3085,7 +3087,8 @@ Public Class FrmContacto
         Dim sArchivo As String = QuitarCaracteres(sNombreCliente) & ".pdf"
 
         Try
-            Dim sCorreos = "Octavio.A.Cervantes@mx.gt.com; Mario.Rodriguez@mx.gt.com"
+            ' Dim sCorreos = "Octavio.A.Cervantes@mx.gt.com; Mario.Rodriguez@mx.gt.com"
+            Dim sCorreos = sCorreoEncargado
             Dim sCorreo As String() = sCorreos.Split(";")
 
             sMensaje = "<html><head></head><body>" &
