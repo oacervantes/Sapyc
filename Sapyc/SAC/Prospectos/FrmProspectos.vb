@@ -192,9 +192,9 @@ Public Class FrmProspectos
             With clsLocal
                 .subClearParameters()
                 .subAddParameter("@iOpcion", 2, SqlDbType.Int, ParameterDirection.Input)
-                .subAddParameter("@sUsuario", sCveUsuario, SqlDbType.VarChar, ParameterDirection.Input)
-                .subAddParameter("@sCorreoUsuario", sCorreoUsuario, SqlDbType.VarChar, ParameterDirection.Input)
-                .subAddParameter("@sNombreUsuario", sNombre, SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@sUsuario", "1019", SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@sCorreoUsuario", "Tatiana.L.Lopez@mx.gt.com", SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@sNombreUsuario", "LOPEZ LOZANO TATIANA LIZBETH", SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@idAsignacion", 0, SqlDbType.Int, ParameterDirection.Output)
 
                 .funExecuteSP("paSolicitudesSAC")
@@ -241,7 +241,7 @@ Public Class FrmProspectos
             "<p style=""margin-left: 20px; font-style: italic; font-family: Arial; font-size: 12px;"">Este es un correo automático, favor de no responder a esta cuenta.</p>" & vbNewLine &
             "</body></html>"
 
-            EnviarCorreosHTML(sCorreo, sMensaje, "Solicitud de Asignación Cliente Prospecto")
+                EnviarCorreosHTML(sCorreo, sMensaje, "Solicitud de Asignación Cliente Prospecto")
         Catch ex As Exception
             MsgBox("No ha sido posible enviar el correo debido a fallas con el servidor de correo.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
         End Try
