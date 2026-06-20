@@ -27,13 +27,13 @@ Partial Class Principal
         Me.ArchivoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuSalir = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuSAC = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AsignarProspecto = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ProspectosNuevos = New System.Windows.Forms.ToolStripMenuItem()
-        Me.RevisionOtrosServicios = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SeguimientoAPropuestas = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Kardex = New System.Windows.Forms.ToolStripMenuItem()
         Me.AltaClienteProspecto = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AsignarProspecto = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SeguimientoAPropuestas = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RevisionOtrosServicios = New System.Windows.Forms.ToolStripMenuItem()
         Me.NivelDeRiesgo = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Kardex = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ProspectosNuevos = New System.Windows.Forms.ToolStripMenuItem()
         Me.VoBoKardexSocios = New System.Windows.Forms.ToolStripMenuItem()
         Me.MnTablas = New System.Windows.Forms.ToolStripMenuItem()
         Me.TablasDelSistemaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -125,26 +125,19 @@ Partial Class Principal
         Me.mnuSAC.Tag = "1"
         Me.mnuSAC.Text = "SAC"
         '
+        'AltaClienteProspecto
+        '
+        Me.AltaClienteProspecto.Name = "AltaClienteProspecto"
+        Me.AltaClienteProspecto.Size = New System.Drawing.Size(218, 22)
+        Me.AltaClienteProspecto.Tag = "6"
+        Me.AltaClienteProspecto.Text = "Alta de Cliente Prospecto"
+        '
         'AsignarProspecto
         '
         Me.AsignarProspecto.Name = "AsignarProspecto"
         Me.AsignarProspecto.Size = New System.Drawing.Size(218, 22)
         Me.AsignarProspecto.Tag = "1"
         Me.AsignarProspecto.Text = "Asignar Cliente Prospecto"
-        '
-        'ProspectosNuevos
-        '
-        Me.ProspectosNuevos.Name = "ProspectosNuevos"
-        Me.ProspectosNuevos.Size = New System.Drawing.Size(218, 22)
-        Me.ProspectosNuevos.Tag = "2"
-        Me.ProspectosNuevos.Text = "Prospectos Nuevos"
-        '
-        'RevisionOtrosServicios
-        '
-        Me.RevisionOtrosServicios.Name = "RevisionOtrosServicios"
-        Me.RevisionOtrosServicios.Size = New System.Drawing.Size(218, 22)
-        Me.RevisionOtrosServicios.Tag = "3"
-        Me.RevisionOtrosServicios.Text = "Revision Otros Servicios"
         '
         'SeguimientoAPropuestas
         '
@@ -153,19 +146,12 @@ Partial Class Principal
         Me.SeguimientoAPropuestas.Tag = "4"
         Me.SeguimientoAPropuestas.Text = "Seguimiento a Propuestas"
         '
-        'Kardex
+        'RevisionOtrosServicios
         '
-        Me.Kardex.Name = "Kardex"
-        Me.Kardex.Size = New System.Drawing.Size(218, 22)
-        Me.Kardex.Tag = "5"
-        Me.Kardex.Text = "Kardex"
-        '
-        'AltaClienteProspecto
-        '
-        Me.AltaClienteProspecto.Name = "AltaClienteProspecto"
-        Me.AltaClienteProspecto.Size = New System.Drawing.Size(218, 22)
-        Me.AltaClienteProspecto.Tag = "6"
-        Me.AltaClienteProspecto.Text = "Alta de Cliente Prospecto"
+        Me.RevisionOtrosServicios.Name = "RevisionOtrosServicios"
+        Me.RevisionOtrosServicios.Size = New System.Drawing.Size(218, 22)
+        Me.RevisionOtrosServicios.Tag = "3"
+        Me.RevisionOtrosServicios.Text = "Revision Otros Servicios"
         '
         'NivelDeRiesgo
         '
@@ -173,6 +159,20 @@ Partial Class Principal
         Me.NivelDeRiesgo.Size = New System.Drawing.Size(218, 22)
         Me.NivelDeRiesgo.Tag = "7"
         Me.NivelDeRiesgo.Text = "Nivel de Riesgo"
+        '
+        'Kardex
+        '
+        Me.Kardex.Name = "Kardex"
+        Me.Kardex.Size = New System.Drawing.Size(218, 22)
+        Me.Kardex.Tag = "5"
+        Me.Kardex.Text = "Kardex"
+        '
+        'ProspectosNuevos
+        '
+        Me.ProspectosNuevos.Name = "ProspectosNuevos"
+        Me.ProspectosNuevos.Size = New System.Drawing.Size(218, 22)
+        Me.ProspectosNuevos.Tag = "2"
+        Me.ProspectosNuevos.Text = "Prospectos Nuevos"
         '
         'VoBoKardexSocios
         '

@@ -7,8 +7,8 @@
         Try
             iPeriodoFirma = 11
             clsLocal = New clsAccesoDatos("gtmexvts27\sql2016", "SAPYC2", "Contabilidad", "Control2025%Porfis")
-            clsDatos = New clsAccesoDatos("gtmexvts27\sql2016", "BDINV2526", "Contabilidad", "Control2025%Porfis")
-            clsDatosInv = New clsAccesoDatos("gtmexvts27\sql2016", "BDINV2526", "Contabilidad", "Control2025%Porfis")
+            clsDatos = New clsAccesoDatos("gtmexvts27\sql2016", "BDINV2627", "Contabilidad", "Control2025%Porfis")
+            clsDatosInv = New clsAccesoDatos("gtmexvts27\sql2016", "BDINV2627", "Contabilidad", "Control2025%Porfis")
             clsDatosConINV = New clsAccesoDatos("gtmexvts27\sql2016", "CONTROLINV", "Contabilidad", "Control2025%Porfis")
             clsDatosProp = New clsAccesoDatos("gtmexvts27\sql2016", "BDCTRL_PROPS", "Contabilidad", "Control2025%Porfis")
             clsDatosSac = New clsAccesoDatos("gtmexvts27\sql2016", "BDCTRL_SAC", "Contabilidad", "Control2025%Porfis")
@@ -18,20 +18,23 @@
             listarBasesDatos()
 
             If frm.ShowDialog = DialogResult.OK Then
-                ''sTipo = "Mercadotecnia"
-                ''sTipo = "Independencia 1"
-                ''sTipo = "Independencia 2"
+                sTipo = "Mercadotecnia"
+                sTipo = "Independencia 1"
+                sTipo = "Independencia 2"
                 ListarColumnasExcel()
 
                 sNombre = frm.sNombre
                 sTipo = frm.sTipo
 
-                '========== Carga inicial de parámetros para los Menús. ==========
+                ''''========== Carga inicial de parámetros para los Menús. ==========
                 ListarPermisosMenus(mnuSAPYC)
-                '========== Carga inicial de parámetros para el menú Sapyc. ==========
+                ''''========== Carga inicial de parámetros para el menú Sapyc. ==========
                 ListarPermisosSAC(mnuSAC)
 
-                'OcultarMenu(sTipo)
+                If sTipo = 3 Or sTipo = 2 Or sTipo = 6 Then
+                    OcultarMenu(sTipo)
+                End If
+
 
                 Text = "Clientes Prospectos - Bienvenido(a): " & sNombre
                 WindowState = FormWindowState.Maximized
@@ -95,6 +98,7 @@
                 MnuInde.Visible = True
                 mnuReportes.Visible = False
                 MnTablas.Visible = True
+                mnuSAC.Visible = True
             Case "3"
                 MnuInde.Visible = True
                 mnuReportes.Visible = False
@@ -350,5 +354,13 @@
 
     End Sub
 
+    Private Sub RevisionServiciosOtrosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RevisionServiciosOtrosToolStripMenuItem.Click
+        Dim frm As New frmMisPropuestas
+        AbrirPantalla(frm, "frmMisPropuestas")
+    End Sub
 
+    Private Sub NivelDeRiesgoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NivelDeRiesgoToolStripMenuItem.Click
+        Dim frm As New frmListaNivelRiesgo
+        AbrirPantalla(frm, "frmListaNivelRiesgo")
+    End Sub
 End Class

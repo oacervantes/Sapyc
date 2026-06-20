@@ -1,4 +1,10 @@
-﻿Public Class FrmProspectos
+﻿Imports System.IO
+Imports System.Net.Mail
+Imports PdfSharp.Drawing
+Imports PdfSharp.Drawing.Layout
+Imports PdfSharp.Pdf
+
+Public Class FrmProspectos
 
     '1- Solicitud pendiente.
     '2- Solicitud asignada a socio encargado.
@@ -41,9 +47,10 @@
     End Sub
     Private Sub BtnEditar_Click(sender As Object, e As EventArgs) Handles btnEditar.Click
         Dim frm As New FrmContacto
+        frm.sEstatusSolicitud = gridProspectos.CurrentRow.Cells("cStatus").Value
 
         If gridProspectos.CurrentRow IsNot Nothing Then
-            If gridProspectos.CurrentRow.Cells("cStatus").Value = "P" Then
+            If gridProspectos.CurrentRow.Cells("cStatus").Value = "P" Or gridProspectos.CurrentRow.Cells("cStatus").Value = "V" Then
                 frm.iModifica = 1
 
                 frm.iOrigen = 2
@@ -91,52 +98,6 @@
     End Sub
     Private Sub BtnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
         Close()
-    End Sub
-
-    Private Sub GridProspectos_SelectionChanged(sender As Object, e As EventArgs) Handles gridProspectos.SelectionChanged
-        If gridProspectos.CurrentRow IsNot Nothing Then
-            btnEditar.Text = "Editar"
-            'Select Case gridProspectos.CurrentRow.Cells("iStatus").Value
-            '    Case 1 'Solicitud pendiente
-            '        btnEditar.Enabled = True
-            '        btnEliminar.Enabled = True
-
-            '        btnAsignarProspecto.Visible = False
-            '        btnEnviarSolicitud.Visible = True
-            '        btnGenerarPropuesta.Visible = False
-
-            '    Case 2 'Solicitud asignada a socio encargado
-            '        btnEditar.Enabled = True
-            '        btnEditar.Text = "Revisar"
-            '        btnEliminar.Enabled = False
-
-            '        If CInt(gridProspectos.CurrentRow.Cells("iSocEnc").Value) = 1 Then
-            '            btnAsignarProspecto.Visible = True
-            '        Else
-            '            btnAsignarProspecto.Visible = True
-            '        End If
-            '        btnEnviarSolicitud.Visible = False
-            '        btnGenerarPropuesta.Visible = False
-
-            '    Case 3 'Solicitud asignada a socio para trabajar
-            '        btnEditar.Enabled = True
-            '        btnEditar.Text = "Revisar"
-            '        btnEliminar.Enabled = False
-
-            '        btnAsignarProspecto.Visible = False
-            '        btnEnviarSolicitud.Visible = False
-            '        btnGenerarPropuesta.Visible = True
-
-            '    Case Else 'Solicitud terminada, cancelada o sin status
-            '        btnEditar.Enabled = False
-            '        btnEliminar.Enabled = False
-
-            '        btnAsignarProspecto.Visible = False
-            '        btnEnviarSolicitud.Visible = False
-            '        btnGenerarPropuesta.Visible = False
-
-            'End Select
-        End If
     End Sub
     Private Sub GridProspectos_DoubleClick(sender As Object, e As EventArgs) Handles gridProspectos.DoubleClick
         'Dim frm As New FrmContactoBasico
@@ -187,7 +148,6 @@
         '        gridProspectos.Rows(e.RowIndex).Cells("sStatus").Style.ForeColor = negro
         'End Select
     End Sub
-
     Private Sub ListarSolicitudesSAC()
         Try
             Dim sTabla As String = "tbSolicitudes"
@@ -232,9 +192,9 @@
             With clsLocal
                 .subClearParameters()
                 .subAddParameter("@iOpcion", 2, SqlDbType.Int, ParameterDirection.Input)
-                .subAddParameter("@sUsuario", sCveUsuario, SqlDbType.VarChar, ParameterDirection.Input)
-                .subAddParameter("@sCorreoUsuario", sCorreoUsuario, SqlDbType.VarChar, ParameterDirection.Input)
-                .subAddParameter("@sNombreUsuario", sNombre, SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@sUsuario", "1019", SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@sCorreoUsuario", "Tatiana.L.Lopez@mx.gt.com", SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@sNombreUsuario", "LOPEZ LOZANO TATIANA LIZBETH", SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@idAsignacion", 0, SqlDbType.Int, ParameterDirection.Output)
 
                 .funExecuteSP("paSolicitudesSAC")
@@ -261,7 +221,6 @@
             MsgBox("Hubo un problema al registrar la información del prospecto, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
         End Try
     End Sub
-
     Private Sub EnviarCorreoAviso() 'Este correo es para avisar al socio encargado de oficina, que se ha solicitado generar un folio con cobranza incompleta.
         Dim sMensaje As String
 
@@ -282,7 +241,7 @@
             "<p style=""margin-left: 20px; font-style: italic; font-family: Arial; font-size: 12px;"">Este es un correo automático, favor de no responder a esta cuenta.</p>" & vbNewLine &
             "</body></html>"
 
-            EnviarCorreosHTML(sCorreo, sMensaje, "Solicitud de Asignación Cliente Prospecto")
+                EnviarCorreosHTML(sCorreo, sMensaje, "Solicitud de Asignación Cliente Prospecto")
         Catch ex As Exception
             MsgBox("No ha sido posible enviar el correo debido a fallas con el servidor de correo.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
         End Try
@@ -317,5 +276,6 @@
             MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
         End Try
     End Sub
+
 
 End Class

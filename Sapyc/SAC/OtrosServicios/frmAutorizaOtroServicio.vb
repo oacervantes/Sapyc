@@ -82,8 +82,8 @@
         Dim sMensaje As String
 
         Try
-            Dim sCorreos = "Octavio.A.Cervantes@mx.gt.com; Mario.Rodriguez@mx.gt.com"
-            'Dim sCorreos = sMailSolicito
+            'Dim sCorreos = "Octavio.A.Cervantes@mx.gt.com; Mario.Rodriguez@mx.gt.com"
+            Dim sCorreos = sMailSolicito
             Dim sCorreo As String() = sCorreos.Split(";")
 
             sMensaje = "<html><head></head><body>" &
@@ -110,8 +110,8 @@
         Dim sMensaje As String
 
         Try
-            Dim sCorreos = "Octavio.A.Cervantes@mx.gt.com; Mario.Rodriguez@mx.gt.com"
-            'Dim sCorreos = sMailSolicito
+            ' Dim sCorreos = "Octavio.A.Cervantes@mx.gt.com; Mario.Rodriguez@mx.gt.com"
+            Dim sCorreos = sMailSolicito
             Dim sCorreo As String() = sCorreos.Split(";")
 
             sMensaje = "<html><head></head><body>" &

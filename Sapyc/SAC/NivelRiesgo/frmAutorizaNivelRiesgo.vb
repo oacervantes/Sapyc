@@ -42,7 +42,7 @@
             sNivelRiesgo = "BAJO"
         End If
 
-        ' EnvioCorreoNivelRiesgo()
+        EnvioCorreoNivelRiesgoAutorizacion()
 
         DialogResult = DialogResult.OK
     End Sub
@@ -68,7 +68,7 @@
             sNivelRiesgo = "BAJO"
         End If
 
-        ' EnvioCorreoNivelRiesgo()
+        EnvioCorreoNivelRiesgoRechazo()
 
         DialogResult = DialogResult.OK
     End Sub
@@ -139,18 +139,18 @@
             dtCorreosSolicitud = Nothing
         End Try
     End Sub
-    Private Sub EnvioCorreoNivelRiesgo() 'Este correo es para avisar al socio encargado de oficina, que se ha solicitado generar un folio con cobranza incompleta.
+    Private Sub EnvioCorreoNivelRiesgoAutorizacion() 'Este correo es para avisar al socio encargado de oficina, que se ha solicitado generar un folio con cobranza incompleta.
         Dim sMensaje As String
 
         Try
-            Dim sCorreos = "Octavio.A.Cervantes@mx.gt.com; Mario.Rodriguez@mx.gt.com"
+            Dim sCorreos = sMailSolicito
             Dim sCorreo As String() = sCorreos.Split(";")
 
             sMensaje = "<html><head></head><body>" &
             "<img src='cid:imagen1' alt='Salles, Sainz - Grant Thornton' style='width:300px;height:auto;'>" &
             "<h1 style=""height: 50px; background: #4f2d7f; font-family: Calibri, Arial; color: #FFF; padding-right: 30px; text-align: center;"">NOTIFICACIÓN EVALUACIÓN DE SERVICIO</h1>" & vbNewLine & vbNewLine & vbNewLine &
-            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 20px; color: #4f2d7f; margin-left: 25px; margin-top: 20px; padding: 15px;"">Estimado : " & sNombreEncargado.TrimEnd(";") & ", </p> " & vbNewLine & vbNewLine &
-            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 16px; margin-left: 25px; margin-top: 20px; padding: 15px;"">Por medio del presente, le informo que el cliente prospecto " & txtCliente.Text.ToUpper.Trim() & ", ya fue revisado y se deberá continuar con los demás procesos establecidos por la Firma para concluir la aceptación del prospecto.</p> " & vbNewLine & vbNewLine &
+            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 20px; color: #4f2d7f; margin-left: 25px; margin-top: 20px; padding: 15px;"">Estimado : " & sNombreSolicito.TrimEnd(";") & ", </p> " & vbNewLine & vbNewLine &
+            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 16px; margin-left: 25px; margin-top: 20px; padding: 15px;"">Por medio del presente, le informo que el cliente prospecto " & txtCliente.Text.ToUpper.Trim() & ", ya fue AUTORIZADO y se deberá continuar con los demás procesos establecidos por la Firma para concluir la aceptación del prospecto.</p> " & vbNewLine & vbNewLine &
             "<table style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">" & vbNewLine &
             "<tr><td>Nombre del Prospecto:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & txtCliente.Text.ToString() & "</b></td></tr>" & vbNewLine &
             "<tr><td>Nivel de riesgo:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & sNivelRiesgo.ToUpper.ToString() & "</b></td></tr>" & vbNewLine &
@@ -166,8 +166,34 @@
         End Try
 
     End Sub
+    Private Sub EnvioCorreoNivelRiesgoRechazo() 'Este correo es para avisar al socio encargado de oficina, que se ha solicitado generar un folio con cobranza incompleta.
+        Dim sMensaje As String
 
+        Try
+            Dim sCorreos = sMailSolicito
+            Dim sCorreo As String() = sCorreos.Split(";")
 
+            sMensaje = "<html><head></head><body>" &
+            "<img src='cid:imagen1' alt='Salles, Sainz - Grant Thornton' style='width:300px;height:auto;'>" &
+            "<h1 style=""height: 50px; background: #4f2d7f; font-family: Calibri, Arial; color: #FFF; padding-right: 30px; text-align: center;"">NOTIFICACIÓN EVALUACIÓN DE SERVICIO</h1>" & vbNewLine & vbNewLine & vbNewLine &
+            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 20px; color: #4f2d7f; margin-left: 25px; margin-top: 20px; padding: 15px;"">Estimado : " & sNombreSolicito.TrimEnd(";") & ", </p> " & vbNewLine & vbNewLine &
+            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 16px; margin-left: 25px; margin-top: 20px; padding: 15px;"">Por medio del presente, le informo que el cliente prospecto " & txtCliente.Text.ToUpper.Trim() & ",fue RECHAZADO por el motivo indicado y no podra continuar con el proceso.</p> " & vbNewLine & vbNewLine &
+            "<table style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">" & vbNewLine &
+            "<tr><td>Nombre del Prospecto:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & txtCliente.Text.ToString() & "</b></td></tr>" & vbNewLine &
+            "<tr><td>Nivel de riesgo:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & sNivelRiesgo.ToUpper.ToString() & "</b></td></tr>" & vbNewLine &
+            "<tr><td>Descrpción rechazo:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & txtComentarios.Text.ToUpper.ToString() & "</b></td></tr>" & vbNewLine &
+            "</table>" & vbNewLine &
+            "<p style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">Para cualquier aclaración sobre el tema contactar a Tatianal@mx.gt.com y yeritza@mx.gt.com" & vbNewLine &
+            "<hr>" &
+            "<p style=""margin-left: 20px; font-style: italic; font-family: Arial; font-size: 12px;"">Este es un correo automático, favor de no responder a esta cuenta.</p>" & vbNewLine &
+            "</body></html>"
+
+            EnviarCorreosHTML(sCorreo, sMensaje, "Notificación de primer contacto con cliente prospecto")
+        Catch ex As Exception
+            MsgBox("No ha sido posible enviar el correo debido a fallas con el servidor de correo.", MsgBoxStyle.Exclamation, "SIAT")
+        End Try
+
+    End Sub
 
 
 End Class
