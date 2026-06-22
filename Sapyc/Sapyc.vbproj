@@ -242,6 +242,12 @@
     </Compile>
     <Compile Include="Clases\clsAccesoDatos.vb" />
     <Compile Include="Clases\clsDatosInventarios.vb" />
+    <Compile Include="Folios\DlgFolioInforme.Designer.vb">
+      <DependentUpon>DlgFolioInforme.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Folios\DlgFolioInforme.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Folios\frmAutorizaSolicitudFolios.designer.vb">
       <DependentUpon>frmAutorizaSolicitudFolios.vb</DependentUpon>
     </Compile>
@@ -766,6 +772,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Catalogos\TipoServicio.resx">
       <DependentUpon>TipoServicio.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Folios\DlgFolioInforme.resx">
+      <DependentUpon>DlgFolioInforme.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Folios\frmAutorizaSolicitudFolios.resx">
       <DependentUpon>frmAutorizaSolicitudFolios.vb</DependentUpon>

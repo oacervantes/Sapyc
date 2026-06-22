@@ -190,6 +190,7 @@
         ConfigurarColumnasGrid(gridProspectos, "SERVICIO", "SERVICIO", 300, 1, False)
         ConfigurarColumnasGrid(gridProspectos, "dFechaAlta", "FECHA DE ALTA", 150, 3, False)
         ConfigurarColumnasGrid(gridProspectos, "sStatus", "STATUS SOLICITUD", 250, 1, False)
+        ConfigurarColumnasGrid(gridProspectos, "sNombreUsuario", "USUARIO SOLICITUD", 250, 1, False)
     End Sub
 
 End Class

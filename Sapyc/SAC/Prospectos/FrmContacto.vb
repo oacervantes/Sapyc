@@ -50,9 +50,9 @@ Public Class FrmContacto
     Private Sub FrmContacto_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         panDatosGenerales.Visible = True
 
-        If GlobalFontSettings.FontResolver Is Nothing Then
-            GlobalFontSettings.FontResolver = New FontsResolver()
-        End If
+        'If GlobalFontSettings.FontResolver Is Nothing Then
+        '    GlobalFontSettings.FontResolver = New FontsResolver()
+        'End If
 
         gridServicios.DataSource = bsSer
         DesplazamientoGrid(gridServicios)
