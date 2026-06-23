@@ -363,4 +363,11 @@
         Dim frm As New frmListaNivelRiesgo
         AbrirPantalla(frm, "frmListaNivelRiesgo")
     End Sub
+
+    Private Sub SeguimientoProspectosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SeguimientoProspectosToolStripMenuItem.Click
+        Dim frm As New frmListaNumSac
+
+        AbrirPantalla(frm, "frmListaNumSac")
+    End Sub
+
 End Class

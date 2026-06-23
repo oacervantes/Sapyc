@@ -155,7 +155,7 @@
             "<tr><td>Nombre del Prospecto:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & txtCliente.Text.ToString() & "</b></td></tr>" & vbNewLine &
             "<tr><td>Nivel de riesgo:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & sNivelRiesgo.ToUpper.ToString() & "</b></td></tr>" & vbNewLine &
             "</table>" & vbNewLine &
-            "<p style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">Para cualquier aclaración sobre el tema contactar a Tatianal@mx.gt.com y yeritza@mx.gt.com" & vbNewLine &
+            "<p style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">Para cualquier aclaración sobre el tema contactar a Tatiana.L.Lopez@mx.gt.com y Yeritza.Bautista@mx.gt.com" & vbNewLine &
             "<hr>" &
             "<p style=""margin-left: 20px; font-style: italic; font-family: Arial; font-size: 12px;"">Este es un correo automático, favor de no responder a esta cuenta.</p>" & vbNewLine &
             "</body></html>"
@@ -183,7 +183,7 @@
             "<tr><td>Nivel de riesgo:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & sNivelRiesgo.ToUpper.ToString() & "</b></td></tr>" & vbNewLine &
             "<tr><td>Descrpción rechazo:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & txtComentarios.Text.ToUpper.ToString() & "</b></td></tr>" & vbNewLine &
             "</table>" & vbNewLine &
-            "<p style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">Para cualquier aclaración sobre el tema contactar a Tatianal@mx.gt.com y yeritza@mx.gt.com" & vbNewLine &
+            "<p style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">Para cualquier aclaración sobre el tema contactar a Tatiana.L.Lopez@mx.gt.comy Yeritza.Bautista@mx.gt.com" & vbNewLine &
             "<hr>" &
             "<p style=""margin-left: 20px; font-style: italic; font-family: Arial; font-size: 12px;"">Este es un correo automático, favor de no responder a esta cuenta.</p>" & vbNewLine &
             "</body></html>"
