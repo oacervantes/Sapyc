@@ -7,10 +7,10 @@
     Public sSocioEncargado As String
 
     Private Sub btnEnviar_Click(sender As Object, e As EventArgs) Handles btnEnviar.Click
-        If txtMotivo.Text.Trim() = "" Then
-            MsgBox("Es necesario especificar el motivo de la asignación.", MsgBoxStyle.Exclamation, "SAPYC")
-            Exit Sub
-        End If
+        'If txtMotivo.Text.Trim() = "" Then
+        '    MsgBox("Es necesario especificar el motivo de la asignación.", MsgBoxStyle.Exclamation, "SAPYC")
+        '    Exit Sub
+        'End If
 
         If MsgBox($"Se enviará una notificación a {sSocioEncargado} para autorizar la asignación del socio seleccionado en la propuesta {txtProspecto.Text}. ¿Desea continuar?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, My.Settings.NOM_SYS) = MsgBoxResult.Yes Then
             InsertaMotivoAsignacion()
@@ -25,6 +25,8 @@
     Private Sub DlgEnvioPropuesta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ListarDatosSolicitud()
     End Sub
+
+
     Private Sub ListarDatosSolicitud()
 
         Try

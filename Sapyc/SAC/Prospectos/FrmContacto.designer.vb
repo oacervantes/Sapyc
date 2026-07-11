@@ -295,7 +295,7 @@ Partial Class FrmContacto
         Me.panMenu.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold)
         Me.panMenu.Location = New System.Drawing.Point(0, 0)
         Me.panMenu.Name = "panMenu"
-        Me.panMenu.Size = New System.Drawing.Size(212, 771)
+        Me.panMenu.Size = New System.Drawing.Size(212, 763)
         Me.panMenu.TabIndex = 0
         '
         'panMensajesError
@@ -304,7 +304,7 @@ Partial Class FrmContacto
         Me.panMensajesError.Controls.Add(Me.txtMensaje)
         Me.panMensajesError.Controls.Add(Me.lblTituloError)
         Me.panMensajesError.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.panMensajesError.Location = New System.Drawing.Point(0, 361)
+        Me.panMensajesError.Location = New System.Drawing.Point(0, 353)
         Me.panMensajesError.Name = "panMensajesError"
         Me.panMensajesError.Size = New System.Drawing.Size(210, 408)
         Me.panMensajesError.TabIndex = 28
@@ -475,7 +475,7 @@ Partial Class FrmContacto
         '
         Me.btnCerrar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnCerrar.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCerrar.Location = New System.Drawing.Point(1169, 740)
+        Me.btnCerrar.Location = New System.Drawing.Point(1216, 740)
         Me.btnCerrar.Name = "btnCerrar"
         Me.btnCerrar.Size = New System.Drawing.Size(130, 25)
         Me.btnCerrar.TabIndex = 5
@@ -498,7 +498,7 @@ Partial Class FrmContacto
         Me.panDatosGenerales.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold)
         Me.panDatosGenerales.Location = New System.Drawing.Point(212, 0)
         Me.panDatosGenerales.Name = "panDatosGenerales"
-        Me.panDatosGenerales.Size = New System.Drawing.Size(1107, 730)
+        Me.panDatosGenerales.Size = New System.Drawing.Size(1134, 730)
         Me.panDatosGenerales.TabIndex = 0
         Me.panDatosGenerales.Tag = "1"
         Me.panDatosGenerales.Visible = False
@@ -1882,7 +1882,7 @@ Partial Class FrmContacto
         Me.lblMensajeCargaDatosGenerales.ForeColor = System.Drawing.Color.White
         Me.lblMensajeCargaDatosGenerales.Location = New System.Drawing.Point(0, 44)
         Me.lblMensajeCargaDatosGenerales.Name = "lblMensajeCargaDatosGenerales"
-        Me.lblMensajeCargaDatosGenerales.Size = New System.Drawing.Size(1062, 25)
+        Me.lblMensajeCargaDatosGenerales.Size = New System.Drawing.Size(1089, 25)
         Me.lblMensajeCargaDatosGenerales.TabIndex = 2
         Me.lblMensajeCargaDatosGenerales.Text = "No se ha cargado información de los Datos Generales para el prospecto."
         Me.lblMensajeCargaDatosGenerales.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -1932,7 +1932,7 @@ Partial Class FrmContacto
         Me.panContactoInicial.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold)
         Me.panContactoInicial.Location = New System.Drawing.Point(212, 0)
         Me.panContactoInicial.Name = "panContactoInicial"
-        Me.panContactoInicial.Size = New System.Drawing.Size(1119, 730)
+        Me.panContactoInicial.Size = New System.Drawing.Size(1146, 730)
         Me.panContactoInicial.TabIndex = 0
         Me.panContactoInicial.Tag = "2"
         Me.panContactoInicial.Visible = False
@@ -1946,7 +1946,7 @@ Partial Class FrmContacto
         Me.lblMensajeCargaContactoInicial.ForeColor = System.Drawing.Color.White
         Me.lblMensajeCargaContactoInicial.Location = New System.Drawing.Point(0, 44)
         Me.lblMensajeCargaContactoInicial.Name = "lblMensajeCargaContactoInicial"
-        Me.lblMensajeCargaContactoInicial.Size = New System.Drawing.Size(1117, 25)
+        Me.lblMensajeCargaContactoInicial.Size = New System.Drawing.Size(1144, 25)
         Me.lblMensajeCargaContactoInicial.TabIndex = 2
         Me.lblMensajeCargaContactoInicial.Text = "No se ha cargado información de Contacto Inicial para el prospecto."
         Me.lblMensajeCargaContactoInicial.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -2195,7 +2195,7 @@ Partial Class FrmContacto
         Me.panAcercamiento.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.panAcercamiento.Location = New System.Drawing.Point(212, 0)
         Me.panAcercamiento.Name = "panAcercamiento"
-        Me.panAcercamiento.Size = New System.Drawing.Size(1119, 730)
+        Me.panAcercamiento.Size = New System.Drawing.Size(1146, 730)
         Me.panAcercamiento.TabIndex = 6
         Me.panAcercamiento.Tag = "3"
         Me.panAcercamiento.Visible = False
@@ -2219,7 +2219,7 @@ Partial Class FrmContacto
         Me.lblMensajeCargaAcercamiento.ForeColor = System.Drawing.Color.White
         Me.lblMensajeCargaAcercamiento.Location = New System.Drawing.Point(0, 44)
         Me.lblMensajeCargaAcercamiento.Name = "lblMensajeCargaAcercamiento"
-        Me.lblMensajeCargaAcercamiento.Size = New System.Drawing.Size(1117, 25)
+        Me.lblMensajeCargaAcercamiento.Size = New System.Drawing.Size(1144, 25)
         Me.lblMensajeCargaAcercamiento.TabIndex = 11
         Me.lblMensajeCargaAcercamiento.Text = "No se ha cargado información de Acercamiento para el prospecto."
         Me.lblMensajeCargaAcercamiento.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -2233,7 +2233,7 @@ Partial Class FrmContacto
         Me.lblMensajeErrorAcercamiento.ForeColor = System.Drawing.Color.White
         Me.lblMensajeErrorAcercamiento.Location = New System.Drawing.Point(0, 703)
         Me.lblMensajeErrorAcercamiento.Name = "lblMensajeErrorAcercamiento"
-        Me.lblMensajeErrorAcercamiento.Size = New System.Drawing.Size(1117, 25)
+        Me.lblMensajeErrorAcercamiento.Size = New System.Drawing.Size(1144, 25)
         Me.lblMensajeErrorAcercamiento.TabIndex = 4
         Me.lblMensajeErrorAcercamiento.Text = "Mensaje de error"
         Me.lblMensajeErrorAcercamiento.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -2364,7 +2364,7 @@ Partial Class FrmContacto
         Me.panDireccion.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.panDireccion.Location = New System.Drawing.Point(212, 0)
         Me.panDireccion.Name = "panDireccion"
-        Me.panDireccion.Size = New System.Drawing.Size(1119, 730)
+        Me.panDireccion.Size = New System.Drawing.Size(1146, 730)
         Me.panDireccion.TabIndex = 0
         Me.panDireccion.Tag = "4"
         Me.panDireccion.Visible = False
@@ -2378,7 +2378,7 @@ Partial Class FrmContacto
         Me.lblMensajeCargaDomicilio.ForeColor = System.Drawing.Color.White
         Me.lblMensajeCargaDomicilio.Location = New System.Drawing.Point(0, 44)
         Me.lblMensajeCargaDomicilio.Name = "lblMensajeCargaDomicilio"
-        Me.lblMensajeCargaDomicilio.Size = New System.Drawing.Size(1117, 25)
+        Me.lblMensajeCargaDomicilio.Size = New System.Drawing.Size(1144, 25)
         Me.lblMensajeCargaDomicilio.TabIndex = 11
         Me.lblMensajeCargaDomicilio.Text = "No se ha cargado información de Domicilio para el prospecto."
         Me.lblMensajeCargaDomicilio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -2729,12 +2729,13 @@ Partial Class FrmContacto
         Me.btnEnviarAsiganacion.TabIndex = 7
         Me.btnEnviarAsiganacion.Text = "Enviar a Asignación"
         Me.btnEnviarAsiganacion.UseVisualStyleBackColor = True
+        Me.btnEnviarAsiganacion.Visible = False
         '
         'FrmContacto
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        Me.ClientSize = New System.Drawing.Size(1307, 771)
+        Me.ClientSize = New System.Drawing.Size(1346, 763)
         Me.ControlBox = False
         Me.Controls.Add(Me.btnEnviarAsiganacion)
         Me.Controls.Add(Me.btnCerrar)

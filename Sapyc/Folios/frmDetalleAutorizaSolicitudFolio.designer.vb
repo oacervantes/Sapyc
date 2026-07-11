@@ -196,6 +196,7 @@ Partial Class frmDetalleAutorizaSolicitudFolio
         Me.txtMotivo.Name = "txtMotivo"
         Me.txtMotivo.Size = New System.Drawing.Size(650, 79)
         Me.txtMotivo.TabIndex = 12
+        Me.txtMotivo.Text = "AUTORIZADO"
         '
         'panPrincipal
         '

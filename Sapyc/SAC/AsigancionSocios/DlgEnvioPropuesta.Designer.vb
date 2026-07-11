@@ -130,9 +130,9 @@ Partial Class DlgEnvioPropuesta
         Me.lblMensaje.Location = New System.Drawing.Point(11, 115)
         Me.lblMensaje.Margin = New System.Windows.Forms.Padding(0)
         Me.lblMensaje.Name = "lblMensaje"
-        Me.lblMensaje.Size = New System.Drawing.Size(330, 18)
+        Me.lblMensaje.Size = New System.Drawing.Size(399, 18)
         Me.lblMensaje.TabIndex = 5
-        Me.lblMensaje.Text = "Especifique el motivo de la asignación de este socio:"
+        Me.lblMensaje.Text = "Especifique el motivo de la asignación en caso de ser necesario:"
         '
         'txtMotivo
         '

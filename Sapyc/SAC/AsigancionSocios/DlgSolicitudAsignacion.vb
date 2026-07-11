@@ -31,12 +31,22 @@
         LlenarTarjetas()
     End Sub
     Private Sub BtnDetalle_Click(sender As Object, e As EventArgs) Handles btnDetalle.Click
-        Dim dlg As New DlgDetalleSolicitud With {
-            .idSac = idSac,
-            .idPropuesta = idPropuesta
-        }
+        'Dim dlg As New DlgDetalleSolicitud With {
+        '    .idSac = idSac,
+        '    .idPropuesta = idPropuesta
+        '}
 
-        dlg.ShowDialog()
+        'dlg.ShowDialog()
+        Dim frm As New FrmContacto
+
+        frm.iOrigen = 2
+        frm.idSAC = idSac
+
+        If frm.ShowDialog = DialogResult.OK Then
+            'ListarSolicitudesSAC()
+        End If
+
+
     End Sub
     Private Sub BtnEnviarAsignacion_Click(sender As Object, e As EventArgs) Handles btnEnviarAsignacion.Click
         If sCveSocio = "" Then
