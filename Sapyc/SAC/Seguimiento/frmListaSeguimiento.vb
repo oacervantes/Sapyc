@@ -17,40 +17,40 @@
         If dtSolicitudes Is Nothing Then Exit Sub
     End Sub
     Private Sub BtnRevisar_Click(sender As Object, e As EventArgs) Handles btnRevisar.Click
-        Try
-            Dim frm As New FrmContactoConsulta
+        'Try
+        '    Dim frm As New FrmContactoConsulta
 
-            If gridProspectos.CurrentRow IsNot Nothing Then
-                If gridProspectos.CurrentRow.Cells("sStatus").Value <> "T" Then
-                    MsgBox("La propuesta esta en proceso de asignación", MsgBoxStyle.Exclamation, "SAPYC")
-                    Exit Sub
-                End If
+        '    If gridProspectos.CurrentRow IsNot Nothing Then
+        '        If gridProspectos.CurrentRow.Cells("sStatus").Value <> "T" Then
+        '            MsgBox("La propuesta esta en proceso de asignación", MsgBoxStyle.Exclamation, "SAPYC")
+        '            Exit Sub
+        '        End If
 
-                frm.iOrigen = 2
-                frm.idSAC = gridProspectos.CurrentRow.Cells("idSAC").Value
-                frm.idPropuesta = gridProspectos.CurrentRow.Cells("idProp").Value
-                frm.idServicio = gridProspectos.CurrentRow.Cells("IdServicio").Value
-                frm.sCveOfi = gridProspectos.CurrentRow.Cells("sCveOficina").Value
-                frm.sCveArea = gridProspectos.CurrentRow.Cells("sCveDivision").Value
-                frm.sServicio = gridProspectos.CurrentRow.Cells("sServicio").Value
-                frm.dHonorarios = gridProspectos.CurrentRow.Cells("HONORARIOS").Value
-                frm.idEstatus = gridProspectos.CurrentRow.Cells("ESTATUS").Value
-                frm.sNombreSocio = gridProspectos.CurrentRow.Cells("SOCIO").Value
-                frm.sCorreoSocio = gridProspectos.CurrentRow.Cells("CORREO").Value
-                frm.iPresento = CInt(gridProspectos.CurrentRow.Cells("PRESENTA").Value)
+        '        frm.iOrigen = 2
+        '        frm.idSAC = gridProspectos.CurrentRow.Cells("idSAC").Value
+        '        frm.idPropuesta = gridProspectos.CurrentRow.Cells("idProp").Value
+        '        frm.idServicio = gridProspectos.CurrentRow.Cells("IdServicio").Value
+        '        frm.sCveOfi = gridProspectos.CurrentRow.Cells("sCveOficina").Value
+        '        frm.sCveArea = gridProspectos.CurrentRow.Cells("sCveDivision").Value
+        '        frm.sServicio = gridProspectos.CurrentRow.Cells("sServicio").Value
+        '        frm.dHonorarios = gridProspectos.CurrentRow.Cells("HONORARIOS").Value
+        '        frm.idEstatus = gridProspectos.CurrentRow.Cells("ESTATUS").Value
+        '        frm.sNombreSocio = gridProspectos.CurrentRow.Cells("SOCIO").Value
+        '        frm.sCorreoSocio = gridProspectos.CurrentRow.Cells("CORREO").Value
+        '        frm.iPresento = CInt(gridProspectos.CurrentRow.Cells("PRESENTA").Value)
 
 
-                If frm.ShowDialog = DialogResult.OK Then
-                    ListarSolicitudes()
-                End If
-            Else
-                MsgBox("Seleccione a un prospecto para poder generar una propuesta.", MsgBoxStyle.Exclamation, "SAPYC")
-            End If
-        Catch ex As Exception
-            InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarSolicitudesnivelriesgo()")
-            MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
-            dtSolicitudes = Nothing
-        End Try
+        '        If frm.ShowDialog = DialogResult.OK Then
+        '            ListarSolicitudes()
+        '        End If
+        '    Else
+        '        MsgBox("Seleccione a un prospecto para poder generar una propuesta.", MsgBoxStyle.Exclamation, "SAPYC")
+        '    End If
+        'Catch ex As Exception
+        '    InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarSolicitudesnivelriesgo()")
+        '    MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
+        '    dtSolicitudes = Nothing
+        'End Try
     End Sub
     Private Sub BtnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
         Close()

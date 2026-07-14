@@ -445,6 +445,18 @@
     <Compile Include="SAC\AsigancionSocios\DlgRechazoPropuesta.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SAC\AsigancionSocios\FrmContactoConsulta.Designer.vb">
+      <DependentUpon>FrmContactoConsulta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SAC\AsigancionSocios\FrmContactoConsulta.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SAC\AsigancionSocios\SeparadorSocio.Designer.vb">
+      <DependentUpon>SeparadorSocio.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SAC\AsigancionSocios\SeparadorSocio.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="SAC\NivelRiesgo\frmAutorizaNivelRiesgo.Designer.vb">
       <DependentUpon>frmAutorizaNivelRiesgo.vb</DependentUpon>
     </Compile>
@@ -682,12 +694,6 @@
     <Compile Include="SAC\AsigancionSocios\FrmSolicitudesAsignacion.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SAC\Seguimiento\FrmContactoConsulta.Designer.vb">
-      <DependentUpon>FrmContactoConsulta.vb</DependentUpon>
-    </Compile>
-    <Compile Include="SAC\Seguimiento\FrmContactoConsulta.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="SAC\Prospectos\FrmProspectos.Designer.vb">
       <DependentUpon>FrmProspectos.vb</DependentUpon>
     </Compile>
@@ -866,6 +872,12 @@
     <EmbeddedResource Include="SAC\AsigancionSocios\DlgRechazoPropuesta.resx">
       <DependentUpon>DlgRechazoPropuesta.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SAC\AsigancionSocios\FrmContactoConsulta.resx">
+      <DependentUpon>FrmContactoConsulta.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SAC\AsigancionSocios\SeparadorSocio.resx">
+      <DependentUpon>SeparadorSocio.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SAC\NivelRiesgo\frmAutorizaNivelRiesgo.resx">
       <DependentUpon>frmAutorizaNivelRiesgo.vb</DependentUpon>
     </EmbeddedResource>
@@ -984,9 +996,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SAC\AsigancionSocios\FrmSolicitudesAsignacion.resx">
       <DependentUpon>FrmSolicitudesAsignacion.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SAC\Seguimiento\FrmContactoConsulta.resx">
-      <DependentUpon>FrmContactoConsulta.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SAC\Prospectos\FrmProspectos.resx">
       <DependentUpon>FrmProspectos.vb</DependentUpon>

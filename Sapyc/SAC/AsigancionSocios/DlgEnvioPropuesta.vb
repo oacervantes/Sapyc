@@ -12,7 +12,7 @@
         '    Exit Sub
         'End If
 
-        If MsgBox($"Se enviará una notificación a {sSocioEncargado} para autorizar la asignación del socio seleccionado en la propuesta {txtProspecto.Text}. ¿Desea continuar?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, My.Settings.NOM_SYS) = MsgBoxResult.Yes Then
+        If MsgBox($"Se enviará una notificación a {sSocioEncargado} para validar al socio seleccionado en la propuesta {txtProspecto.Text}. ¿Desea continuar?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, My.Settings.NOM_SYS) = MsgBoxResult.Yes Then
             InsertaMotivoAsignacion()
             DialogResult = DialogResult.OK
         End If

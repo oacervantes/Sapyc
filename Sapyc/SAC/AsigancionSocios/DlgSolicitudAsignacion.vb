@@ -3,24 +3,26 @@
     Private ds As New DataSet()
     Private sNameRpt As String = "Selección de socios para asignar propuesta"
 
-    Private dtSocios, dtCISocios, dtPptoSocios As New DataTable
+    Private dtSocios, dtCISocios, dtPptoSocios, dtSocioEnc As New DataTable
     Private tarjetaSeleccionada As TarjetaSocio2 = Nothing
-    Private iPosY = 10, iValorY As Integer = 340
+    Private iPuntuacion = 0, iPosY = 10, iValorY As Integer = 340
 
     Private sCveSocio, sNombreSocio, sCorreoSocio As String
+    Private sNombreSocioEnc, sCorreoSocioEnc, sCveOfiEnc, sCveAreaEnc As String
+    Private dIngreso, dMeta As Decimal
 
     Public idSac, idPropuesta, idServicio, idIdioma, idMarco As Integer
-    Public sCveOfi, sCvearea, sOficina, sArea, sNombreCte, sCveInd, sServicio, sSocioEncargado, sCorreoEncargado, sUsuario, sNombre, sCorreo As String
+    Public sCveOfi, sCveArea, sOficinaEnc, sDivisionEnc, sNombreCte, sCveInd, sServicio, sCveSocioEnc, sSocioEncargado, sCorreoEncargado, sUsuario, sNombre, sCorreo As String
 
     Private Sub DlgSolicitudAsignacion_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         lblProspecto.Text = $"{sNombreCte}"
         lblServicio.Text = $"{sServicio}"
         txtSocioEncargado.Text = $"{sSocioEncargado}"
-        txtOficina.Text = $"{sOficina}"
-        txtDivision.Text = $"{sArea}"
+        txtOficina.Text = $"{sOficinaEnc}"
+        txtDivision.Text = $"{sDivisionEnc}"
         txtIdSac.Text = $"{idSac}"
 
-        If sCvearea = "AUD" Then
+        If sCveArea = "AUD" Then
             ListarSociosAuditoria()
         Else
             ListarSociosOficinas()
@@ -30,23 +32,20 @@
 
         LlenarTarjetas()
     End Sub
+
     Private Sub BtnDetalle_Click(sender As Object, e As EventArgs) Handles btnDetalle.Click
-        'Dim dlg As New DlgDetalleSolicitud With {
-        '    .idSac = idSac,
-        '    .idPropuesta = idPropuesta
-        '}
+        Dim dlg As New FrmContactoConsulta With {
+            .idSAC = idSac,
+            .idPropuesta = idPropuesta,
+            .iConsulta = True,
+            .sOficina = sOficinaEnc,
+            .sDivision = sDivisionEnc,
+            .idServicio = idServicio,
+            .sServicio = sServicio,
+            .sCveSocioEnc = sCveSocioEnc
+        }
 
-        'dlg.ShowDialog()
-        Dim frm As New FrmContacto
-
-        frm.iOrigen = 2
-        frm.idSAC = idSac
-
-        If frm.ShowDialog = DialogResult.OK Then
-            'ListarSolicitudesSAC()
-        End If
-
-
+        dlg.ShowDialog()
     End Sub
     Private Sub BtnEnviarAsignacion_Click(sender As Object, e As EventArgs) Handles btnEnviarAsignacion.Click
         If sCveSocio = "" Then
@@ -60,8 +59,13 @@
             .idPropuesta = idPropuesta
         }
 
-
-        If dlg.ShowDialog() = DialogResult.OK Then
+        If iPuntuacion <> 4 Then
+            If dlg.ShowDialog() = DialogResult.OK Then
+                EnviarAsignacion()
+                EnviarCorreoAviso()
+                DialogResult = DialogResult.OK
+            End If
+        Else
             EnviarAsignacion()
             EnviarCorreoAviso()
             DialogResult = DialogResult.OK
@@ -87,22 +91,69 @@
         panSocios.Controls.Clear()
 
         For Each row As DataRow In dtSocios.Rows
-            Dim card As New TarjetaSocio2() With {
-                .SocioId = row("CVEEMP").ToString(),
-                .Correo = row("CORREO").ToString(),
-                .Nombre = row("NOMBRE").ToString(),
-                .Idiomas = row("sIdioma").ToString(),
-                .Servicio = row("sServicio").ToString(),
-                .Industrias = row("sIndustria").ToString(),
-                .Marcos = row("sNormatividad").ToString(),
-                .Presupuesto = Presupuesto(row("CVEEMP").ToString()),
-                .CapacidadInstalada = CapacidadInstalada(row("CVEEMP").ToString())
-            }
 
-            AddHandler card.CardClick, AddressOf OnSocioCardClick
-            card.Location = New Point(10, iPosY)
-            panSocios.Controls.Add(card)
-            iPosY += iValorY + 10
+            If row("iPuntuacion") = 4 Then
+                Dim card As New TarjetaSocio2() With {
+                    .SocioId = row("CVEEMP").ToString(),
+                    .Correo = row("CORREO").ToString(),
+                    .Nombre = row("NOMBRE").ToString(),
+                    .CveOficina = row("sCveOfi").ToString(),
+                    .CveDivision = row("sCveArea").ToString(),
+                    .Puntuacion = row("iPuntuacion").ToString(),
+                    .Oficina = row("OFICINA").ToString(),
+                    .Division = row("DIVISION").ToString(),
+                    .Idiomas = row("sIdioma").ToString(),
+                    .Servicio = row("sServicio").ToString(),
+                    .Industrias = row("sIndustria").ToString(),
+                    .Marcos = row("sNormatividad").ToString(),
+                    .Presupuesto = Presupuesto(row("CVEEMP").ToString()),
+                    .Ingreso = dIngreso,
+                    .Meta = dMeta,
+                    .CapacidadInstalada = CapacidadInstalada(row("CVEEMP").ToString())
+                }
+
+                AddHandler card.CardClick, AddressOf OnSocioCardClick
+                card.Location = New Point(10, iPosY)
+                panSocios.Controls.Add(card)
+                iPosY += iValorY + 10
+            End If
+
+        Next
+
+        Dim separador As New SeparadorSocio With {
+            .Location = New Point(10, iPosY + 15)
+        }
+        panSocios.Controls.Add(separador)
+        iPosY += 33 + 35
+
+        For Each row As DataRow In dtSocios.Rows
+
+            If row("iPuntuacion") <> 4 Then
+                Dim card As New TarjetaSocio2() With {
+                    .SocioId = row("CVEEMP").ToString(),
+                    .Correo = row("CORREO").ToString(),
+                    .Nombre = row("NOMBRE").ToString(),
+                    .CveOficina = row("sCveOfi").ToString(),
+                    .CveDivision = row("sCveArea").ToString(),
+                    .Puntuacion = row("iPuntuacion").ToString(),
+                    .Oficina = row("OFICINA").ToString(),
+                    .Division = row("DIVISION").ToString(),
+                    .Idiomas = row("sIdioma").ToString(),
+                    .Servicio = row("sServicio").ToString(),
+                    .Industrias = row("sIndustria").ToString(),
+                    .Marcos = row("sNormatividad").ToString(),
+                    .Presupuesto = Presupuesto(row("CVEEMP").ToString()),
+                    .Ingreso = dIngreso,
+                    .Meta = dMeta,
+                    .CapacidadInstalada = CapacidadInstalada(row("CVEEMP").ToString())
+                }
+
+                AddHandler card.CardClick, AddressOf OnSocioCardClick
+                card.Location = New Point(10, iPosY)
+                panSocios.Controls.Add(card)
+                iPosY += iValorY + 10
+            End If
+
         Next
 
         panSocios.ResumeLayout()
@@ -116,18 +167,18 @@
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsDatosInv
+                With clsDatos
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 1, SqlDbType.Int, ParameterDirection.Input)
                     .subAddParameter("@sCveOfi", sCveOfi, SqlDbType.VarChar, ParameterDirection.Input)
-                    .subAddParameter("@sCveArea", sCvearea, SqlDbType.VarChar, ParameterDirection.Input)
+                    .subAddParameter("@sCveArea", sCveArea, SqlDbType.VarChar, ParameterDirection.Input)
                     .subAddParameter("@idIdioma", idIdioma, SqlDbType.Int, ParameterDirection.Input)
                     .subAddParameter("@idServicio", idServicio, SqlDbType.Int, ParameterDirection.Input)
                     .subAddParameter("@idIndustria", sCveInd, SqlDbType.VarChar, ParameterDirection.Input)
                     .subAddParameter("@idMarcoNormativo", idMarco, SqlDbType.Int, ParameterDirection.Input)
                 End With
 
-                .Add(clsDatosInv.funExecuteSPDataTable("paSACAsignaciones", sTabla))
+                .Add(clsDatos.funExecuteSPDataTable("paSACAsignaciones", sTabla))
 
                 dtSocios = .Item(sTabla)
             End With
@@ -146,18 +197,18 @@
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsDatosInv
+                With clsDatos
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 2, SqlDbType.Int, ParameterDirection.Input)
                     .subAddParameter("@sCveOfi", sCveOfi, SqlDbType.VarChar, ParameterDirection.Input)
-                    .subAddParameter("@sCveArea", sCvearea, SqlDbType.VarChar, ParameterDirection.Input)
+                    .subAddParameter("@sCveArea", sCveArea, SqlDbType.VarChar, ParameterDirection.Input)
                     .subAddParameter("@idIdioma", idIdioma, SqlDbType.Int, ParameterDirection.Input)
                     .subAddParameter("@idServicio", idServicio, SqlDbType.Int, ParameterDirection.Input)
                     .subAddParameter("@idIndustria", sCveInd, SqlDbType.VarChar, ParameterDirection.Input)
                     .subAddParameter("@idMarcoNormativo", idMarco, SqlDbType.Int, ParameterDirection.Input)
                 End With
 
-                .Add(clsDatosInv.funExecuteSPDataTable("paSACAsignaciones", sTabla))
+                .Add(clsDatos.funExecuteSPDataTable("paSACAsignaciones", sTabla))
 
                 dtSocios = .Item(sTabla)
             End With
@@ -176,12 +227,12 @@
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsDatosInv
+                With clsDatos
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 3, SqlDbType.Int, ParameterDirection.Input)
                 End With
 
-                .Add(clsDatosInv.funExecuteSPDataTable("paSACAsignaciones", sTabla))
+                .Add(clsDatos.funExecuteSPDataTable("paSACAsignaciones", sTabla))
 
                 dtCISocios = .Item(sTabla)
             End With
@@ -200,12 +251,12 @@
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsDatosInv
+                With clsDatos
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 4, SqlDbType.Int, ParameterDirection.Input)
                 End With
 
-                .Add(clsDatosInv.funExecuteSPDataTable("paSACAsignaciones", sTabla))
+                .Add(clsDatos.funExecuteSPDataTable("paSACAsignaciones", sTabla))
 
                 dtPptoSocios = .Item(sTabla)
             End With
@@ -213,6 +264,39 @@
             InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarCISocios()")
             MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
             dtPptoSocios = Nothing
+        End Try
+    End Sub
+    Private Sub ListarSocioEncargado(sCveOfi As String, sCveArea As String)
+        ' Aquí iría la lógica para listar los socios, por ejemplo, desde una base de datos
+        ' Por ahora, se simula con datos estáticos en el método LlenarTarjetas()
+        Try
+            Dim sTabla As String = "tbSocioEnc"
+
+            With ds.Tables
+                LimpiarConsultaTabla(ds.Tables, sTabla)
+
+                With clsLocal
+                    .subClearParameters()
+                    .subAddParameter("@iOpcion", 15, SqlDbType.Int, ParameterDirection.Input)
+                    .subAddParameter("@sCveOfi", sCveOfi, SqlDbType.VarChar, ParameterDirection.Input)
+                    .subAddParameter("@sCveArea", sCveArea, SqlDbType.VarChar, ParameterDirection.Input)
+                End With
+
+                .Add(clsLocal.funExecuteSPDataTable("paSolicitudesSAC", sTabla))
+
+                dtSocioEnc = .Item(sTabla)
+            End With
+
+            If dtSocioEnc.Rows.Count > 0 Then
+                sCveSocioEnc = dtSocioEnc.Rows(0)("CVEEMP").ToString()
+                sNombreSocioEnc = dtSocioEnc.Rows(0)("NOMBRE").ToString()
+                sCorreoSocioEnc = dtSocioEnc.Rows(0)("CORREOENC").ToString()
+                txtSocioEncargado.Text = $"{sNombreSocioEnc}"
+            End If
+        Catch ex As Exception
+            InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarSocioEncargado()")
+            MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
+            dtSocioEnc = Nothing
         End Try
     End Sub
 
@@ -225,6 +309,8 @@
                 .subAddParameter("@idPropuesta", idPropuesta, SqlDbType.Int, ParameterDirection.Input)
                 .subAddParameter("@sStatus", "A", SqlDbType.Char, ParameterDirection.Input)
                 .subAddParameter("@sCveSocio", sCveSocio, SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@sCveSocioEnc", sCveSocioEnc, SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@sCveOfi", sCveOfiEnc, SqlDbType.VarChar, ParameterDirection.Input)
 
                 .funExecuteSP("paDatosAsignacionSACPropuestas")
             End With
@@ -238,25 +324,25 @@
 
         Try
             'sCorreos = "Octavio.A.Cervantes@mx.gt.com, Mario.Rodriguez@mx.gt.com"
-            Dim sCorreo As String() = {"Octavio.A.Cervantes@mx.gt.com", "Mario.Rodriguez@mx.gt.com"}
-            'Dim sCorreo As String() = {sMail}
+            'Dim sCorreo As String() = {"Octavio.A.Cervantes@mx.gt.com", "Mario.Rodriguez@mx.gt.com"}
+            Dim sCorreo As String() = {sCorreoSocioEnc}
 
             sMensaje = "<html><head></head><body>" &
             "<img src='cid:imagen1' alt='Salles, Sainz - Grant Thornton' style='width:300px;height:auto;'>" &
-            "<h1 style=""height: 50px; background: #4f2d7f; font-family: Calibri, Arial; color: #FFF; padding-right: 30px; text-align: center;"">AUTORIZACIÓN DE SOCIO ASIGNADO</h1>" & vbNewLine & vbNewLine & vbNewLine &
-            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 20px; color: #4f2d7f; margin-left: 25px; margin-top: 20px; padding: 15px;"">Estimada/o: " & sSocioEncargado & ", </p> " & vbNewLine & vbNewLine &
-            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 16px; margin-left: 25px; margin-top: 20px; padding: 15px;"">Queremos informarle que se ha sido asignado el socio para ofrecer el servicio solicitado por el prospecto para su autorización.</p> " & vbNewLine & vbNewLine &
+            "<h1 style=""height: 50px; background: #4f2d7f; font-family: Calibri, Arial; color: #FFF; padding-right: 30px; text-align: center;"">VALIDACIÓN DE SOCIO ASIGNADO</h1>" & vbNewLine & vbNewLine & vbNewLine &
+            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 20px; color: #4f2d7f; margin-left: 25px; margin-top: 20px; padding: 15px;"">Estimada/o: " & sNombreSocioEnc & ", </p> " & vbNewLine & vbNewLine &
+            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 16px; margin-left: 25px; margin-top: 20px; padding: 15px;"">Queremos informarle que se ha sido asignado el socio para ofrecer el servicio solicitado por el prospecto para su validación.</p> " & vbNewLine & vbNewLine &
             "<table style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">" & vbNewLine &
             "<tr><td>Socio asignado:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & sNombreSocio & "</b></td></tr>" & vbNewLine &
             "<tr><td>Nombre del Prospecto:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & sNombreCte & "</b></td></tr>" & vbNewLine &
             "<tr><td>Servicio solicitado:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & sServicio & "</b></td></tr>" & vbNewLine &
             "</table>" & vbNewLine &
-            "<p style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">Por favor, revise la información dentro de SIAT > SAPYC > SAC > Autorización de Asignaciones." & vbNewLine &
+            "<p style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">Por favor, revise la información dentro de SIAT > SAPYC > SAC > Validación de Asignaciones de Socio." & vbNewLine &
             "<hr>" &
             "<p style=""margin-left: 20px; font-style: italic; font-family: Arial; font-size: 12px;"">Este es un correo automático, favor de no responder a esta cuenta.</p>" & vbNewLine &
             "</body></html>"
 
-            EnviarCorreosHTML(sCorreo, sMensaje, "Autorización de socio asignado")
+            EnviarCorreosHTML(sCorreo, sMensaje, "Validación de socio asignado")
         Catch ex As Exception
             MsgBox("No ha sido posible enviar el correo debido a fallas con el servidor de correo.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
         End Try
@@ -281,17 +367,24 @@
         ' Guarda referencia
         tarjetaSeleccionada = tarjetaActual
 
+        ' Obtener los datos del socio seleccionado
         sCveSocio = tarjetaActual.SocioId
         sNombreSocio = tarjetaActual.Nombre
         sCorreoSocio = tarjetaActual.Correo
+        iPuntuacion = tarjetaActual.Puntuacion
+        sCveOfiEnc = tarjetaActual.CveOficina
+        sCveAreaEnc = tarjetaActual.CveDivision
+        sOficinaEnc = tarjetaActual.Oficina
+        sDivisionEnc = tarjetaActual.Division
 
+        ' Obtener los datos del socio encargado de la oficina y área del socio seleccionado.
+        ListarSocioEncargado(tarjetaActual.CveOficina, tarjetaActual.CveDivision)
 
         panSocios.SuspendLayout()
 
         panSocios.Controls.SetChildIndex(tarjetaSeleccionada, panSocios.Controls.Count - 1)
 
         panSocios.ResumeLayout()
-
 
     End Sub
 
@@ -311,8 +404,11 @@
         If filas.Length = 0 Then Return 0D
 
         Dim porcentaje As Decimal = Convert.ToDecimal(filas(0)("PORCENTAJE_ACTIVOS"))
+        dIngreso = Convert.ToDecimal(filas(0)("ARREGLADO"))
+        dMeta = Convert.ToDecimal(filas(0)("META"))
 
         Return porcentaje
     End Function
+
 
 End Class

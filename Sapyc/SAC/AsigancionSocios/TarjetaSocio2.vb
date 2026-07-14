@@ -1,5 +1,4 @@
 ﻿Public Class TarjetaSocio2
-
     Private ds As New DataSet
 
     Private sNameRpt As String = "Selección de socios para asignar propuesta"
@@ -24,6 +23,65 @@
         End Get
         Set(value As String)
             lblNombre.Text = value
+        End Set
+    End Property
+
+    Public Property Puntuacion As Integer
+        Get
+            Return txtPuntuacion.Text
+        End Get
+        Set(value As Integer)
+            txtPuntuacion.Text = value
+        End Set
+    End Property
+    Public Property CveOficina As String
+        Get
+            Return txtCveOfi.Text
+        End Get
+        Set(value As String)
+            txtCveOfi.Text = value
+        End Set
+    End Property
+    Public Property CveDivision As String
+        Get
+            Return txtCveArea.Text
+        End Get
+        Set(value As String)
+            txtCveArea.Text = value
+        End Set
+    End Property
+
+    Public Property Ingreso As Double
+        Get
+            Return txtIngreso.Text
+        End Get
+        Set(value As Double)
+            txtIngreso.Text = Format(value, sFmtDbl)
+        End Set
+    End Property
+    Public Property Meta As Double
+        Get
+            Return txtMeta.Text
+        End Get
+        Set(value As Double)
+            txtMeta.Text = Format(value, sFmtDbl)
+        End Set
+    End Property
+
+    Public Property Oficina As String
+        Get
+            Return lblOficina.Text
+        End Get
+        Set(value As String)
+            lblOficina.Text = value
+        End Set
+    End Property
+    Public Property Division As String
+        Get
+            Return lblDivision.Text
+        End Get
+        Set(value As String)
+            lblDivision.Text = value
         End Set
     End Property
     Public Property Correo As String
@@ -84,10 +142,6 @@
     End Property
 
     Public Event CardClick(sender As TarjetaSocio2)
-
-    'Private Sub OnAnyClick(sender As Object, e As EventArgs) Handles Me.Click, lblNombre.Click
-    '    RaiseEvent CardClick(Me)
-    'End Sub
 
     Private Sub BtnAsignacion_Click(sender As Object, e As EventArgs) Handles btnAsignacion.Click
         RaiseEvent CardClick(Me)

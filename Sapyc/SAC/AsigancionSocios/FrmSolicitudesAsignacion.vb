@@ -29,6 +29,7 @@
             Dim sNombreCte As String = gridProspectos.CurrentRow.Cells("sNombreCte").Value.ToString()
             Dim sDescOfi As String = gridProspectos.CurrentRow.Cells("DESCOFI").Value.ToString()
             Dim sDescArea As String = gridProspectos.CurrentRow.Cells("DESCAREA").Value.ToString()
+            Dim sCveSocEncargado As String = gridProspectos.CurrentRow.Cells("CVEENC").Value.ToString()
             Dim sSocEncargado As String = gridProspectos.CurrentRow.Cells("SOCENC").Value.ToString()
             Dim sCorreoEncargado As String = gridProspectos.CurrentRow.Cells("CORENC").Value.ToString()
             Dim sCveInd As String = gridProspectos.CurrentRow.Cells("sCveInd").Value.ToString()
@@ -59,10 +60,11 @@
             dlg.idServicio = idServicio
             dlg.idIdioma = idIdioma
             dlg.sServicio = sServicio
+            dlg.sCveSocioEnc = sCveSocEncargado
             dlg.sSocioEncargado = sSocEncargado
             dlg.sCorreoEncargado = sCorreoEncargado
-            dlg.sOficina = sDescOfi
-            dlg.sArea = sDescArea
+            dlg.sOficinaEnc = sDescOfi
+            dlg.sDivisionEnc = sDescArea
             dlg.sCveInd = sCveInd
             dlg.sUsuario = sUsuario
             dlg.sNombre = sNombre
@@ -94,6 +96,7 @@
             Dim sNombreCte As String = gridProspectos.CurrentRow.Cells("sNombreCte").Value.ToString()
             Dim sDescOfi As String = gridProspectos.CurrentRow.Cells("DESCOFI").Value.ToString()
             Dim sDescArea As String = gridProspectos.CurrentRow.Cells("DESCAREA").Value.ToString()
+            Dim sCveSocEncargado As String = gridProspectos.CurrentRow.Cells("CVEENC").Value.ToString()
             Dim sSocEncargado As String = gridProspectos.CurrentRow.Cells("SOCENC").Value.ToString()
             Dim sCorreoEncargado As String = gridProspectos.CurrentRow.Cells("CORENC").Value.ToString()
             Dim sCveInd As String = gridProspectos.CurrentRow.Cells("sCveInd").Value.ToString()
@@ -124,10 +127,11 @@
             dlg.idServicio = idServicio
             dlg.idIdioma = idIdioma
             dlg.sServicio = sServicio
+            dlg.sCveSocioEnc = sCveSocEncargado
             dlg.sSocioEncargado = sSocEncargado
             dlg.sCorreoEncargado = sCorreoEncargado
-            dlg.sOficina = sDescOfi
-            dlg.sArea = sDescArea
+            dlg.sOficinaEnc = sDescOfi
+            dlg.sDivisionEnc = sDescArea
             dlg.sCveInd = sCveInd
             dlg.sUsuario = sUsuario
             dlg.sNombre = sNombre
@@ -175,6 +179,7 @@
         gridProspectos.Columns("bStatus").Visible = False
         gridProspectos.Columns("IdServicio").Visible = False
         gridProspectos.Columns("idIdioma").Visible = False
+        gridProspectos.Columns("CVEENC").Visible = False
         gridProspectos.Columns("SOCENC").Visible = False
         gridProspectos.Columns("CORENC").Visible = False
         gridProspectos.Columns("sCveInd").Visible = False

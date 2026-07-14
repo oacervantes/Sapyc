@@ -31,13 +31,9 @@ Partial Class TarjetaSocio2
         Me.txtServiciosColor = New System.Windows.Forms.RichTextBox()
         Me.txtIdiomasColor = New System.Windows.Forms.RichTextBox()
         Me.txtIndustriasColor = New System.Windows.Forms.RichTextBox()
-        Me.lblSeleccion = New System.Windows.Forms.Label()
-        Me.lblCorreo = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.txtPresupuesto = New System.Windows.Forms.RichTextBox()
         Me.txtCapacidadInstalada = New System.Windows.Forms.RichTextBox()
-        Me.txtValida = New System.Windows.Forms.TextBox()
         Me.txtNormatividadColor = New System.Windows.Forms.RichTextBox()
         Me.lblNormatividad = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
@@ -47,8 +43,22 @@ Partial Class TarjetaSocio2
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.picSeleccion = New System.Windows.Forms.PictureBox()
         Me.panHeader = New System.Windows.Forms.Panel()
+        Me.tabDatos = New System.Windows.Forms.TableLayoutPanel()
+        Me.lblDivision = New System.Windows.Forms.Label()
+        Me.lblOficina = New System.Windows.Forms.Label()
+        Me.lblCorreo = New System.Windows.Forms.Label()
+        Me.lblSeleccion = New System.Windows.Forms.Label()
+        Me.txtMeta = New System.Windows.Forms.Label()
+        Me.txtIngreso = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.txtPresupuesto = New System.Windows.Forms.RichTextBox()
+        Me.txtCveArea = New System.Windows.Forms.TextBox()
+        Me.txtCveOfi = New System.Windows.Forms.TextBox()
+        Me.txtPuntuacion = New System.Windows.Forms.TextBox()
+        Me.txtValida = New System.Windows.Forms.TextBox()
         CType(Me.picSeleccion, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panHeader.SuspendLayout()
+        Me.tabDatos.SuspendLayout()
         Me.SuspendLayout()
         '
         'lblNombre
@@ -56,7 +66,7 @@ Partial Class TarjetaSocio2
         Me.lblNombre.AutoSize = True
         Me.lblNombre.Font = New System.Drawing.Font("Calibri", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblNombre.ForeColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(127, Byte), Integer))
-        Me.lblNombre.Location = New System.Drawing.Point(55, 7)
+        Me.lblNombre.Location = New System.Drawing.Point(63, 1)
         Me.lblNombre.Margin = New System.Windows.Forms.Padding(0)
         Me.lblNombre.Name = "lblNombre"
         Me.lblNombre.Size = New System.Drawing.Size(207, 27)
@@ -161,28 +171,6 @@ Partial Class TarjetaSocio2
         Me.txtIndustriasColor.TabIndex = 11
         Me.txtIndustriasColor.Text = "[INDUSTRIAS]"
         '
-        'lblSeleccion
-        '
-        Me.lblSeleccion.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblSeleccion.ForeColor = System.Drawing.Color.Silver
-        Me.lblSeleccion.Location = New System.Drawing.Point(55, 57)
-        Me.lblSeleccion.Name = "lblSeleccion"
-        Me.lblSeleccion.Size = New System.Drawing.Size(241, 19)
-        Me.lblSeleccion.TabIndex = 4
-        Me.lblSeleccion.Text = "Socio por asignar"
-        Me.lblSeleccion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'lblCorreo
-        '
-        Me.lblCorreo.AutoSize = True
-        Me.lblCorreo.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCorreo.Location = New System.Drawing.Point(55, 34)
-        Me.lblCorreo.Margin = New System.Windows.Forms.Padding(0)
-        Me.lblCorreo.Name = "lblCorreo"
-        Me.lblCorreo.Size = New System.Drawing.Size(142, 19)
-        Me.lblCorreo.TabIndex = 1
-        Me.lblCorreo.Text = "[CORREO_PERSONA]"
-        '
         'Label1
         '
         Me.Label1.AutoSize = True
@@ -207,18 +195,6 @@ Partial Class TarjetaSocio2
         Me.Label2.TabIndex = 16
         Me.Label2.Text = "CAPACIDAD INSTALADA:"
         '
-        'txtPresupuesto
-        '
-        Me.txtPresupuesto.BackColor = System.Drawing.Color.White
-        Me.txtPresupuesto.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txtPresupuesto.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPresupuesto.Location = New System.Drawing.Point(181, 279)
-        Me.txtPresupuesto.Name = "txtPresupuesto"
-        Me.txtPresupuesto.ReadOnly = True
-        Me.txtPresupuesto.Size = New System.Drawing.Size(755, 18)
-        Me.txtPresupuesto.TabIndex = 15
-        Me.txtPresupuesto.Text = "[META INGRESOS]"
-        '
         'txtCapacidadInstalada
         '
         Me.txtCapacidadInstalada.BackColor = System.Drawing.Color.White
@@ -230,14 +206,6 @@ Partial Class TarjetaSocio2
         Me.txtCapacidadInstalada.Size = New System.Drawing.Size(755, 18)
         Me.txtCapacidadInstalada.TabIndex = 17
         Me.txtCapacidadInstalada.Text = "[% CAPACIDAD INSTALADA]"
-        '
-        'txtValida
-        '
-        Me.txtValida.Location = New System.Drawing.Point(18, 129)
-        Me.txtValida.Name = "txtValida"
-        Me.txtValida.Size = New System.Drawing.Size(100, 20)
-        Me.txtValida.TabIndex = 2
-        Me.txtValida.Visible = False
         '
         'txtNormatividadColor
         '
@@ -329,15 +297,153 @@ Partial Class TarjetaSocio2
         Me.panHeader.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.panHeader.BackColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(252, Byte), Integer), CType(CType(252, Byte), Integer))
+        Me.panHeader.Controls.Add(Me.tabDatos)
+        Me.panHeader.Controls.Add(Me.lblSeleccion)
         Me.panHeader.Controls.Add(Me.lblNombre)
         Me.panHeader.Controls.Add(Me.btnAsignacion)
         Me.panHeader.Controls.Add(Me.picSeleccion)
-        Me.panHeader.Controls.Add(Me.lblSeleccion)
-        Me.panHeader.Controls.Add(Me.lblCorreo)
         Me.panHeader.Location = New System.Drawing.Point(0, 0)
         Me.panHeader.Name = "panHeader"
         Me.panHeader.Size = New System.Drawing.Size(986, 82)
         Me.panHeader.TabIndex = 21
+        '
+        'tabDatos
+        '
+        Me.tabDatos.ColumnCount = 3
+        Me.tabDatos.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40.0!))
+        Me.tabDatos.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.0!))
+        Me.tabDatos.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.0!))
+        Me.tabDatos.Controls.Add(Me.lblDivision, 2, 0)
+        Me.tabDatos.Controls.Add(Me.lblOficina, 1, 0)
+        Me.tabDatos.Controls.Add(Me.lblCorreo, 0, 0)
+        Me.tabDatos.Location = New System.Drawing.Point(65, 33)
+        Me.tabDatos.Margin = New System.Windows.Forms.Padding(0)
+        Me.tabDatos.Name = "tabDatos"
+        Me.tabDatos.RowCount = 1
+        Me.tabDatos.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.tabDatos.Size = New System.Drawing.Size(636, 23)
+        Me.tabDatos.TabIndex = 25
+        '
+        'lblDivision
+        '
+        Me.lblDivision.AutoSize = True
+        Me.lblDivision.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDivision.Location = New System.Drawing.Point(444, 0)
+        Me.lblDivision.Margin = New System.Windows.Forms.Padding(0)
+        Me.lblDivision.Name = "lblDivision"
+        Me.lblDivision.Size = New System.Drawing.Size(123, 19)
+        Me.lblDivision.TabIndex = 25
+        Me.lblDivision.Text = "[AREA_PERSONA]"
+        '
+        'lblOficina
+        '
+        Me.lblOficina.AutoSize = True
+        Me.lblOficina.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblOficina.Location = New System.Drawing.Point(254, 0)
+        Me.lblOficina.Margin = New System.Windows.Forms.Padding(0)
+        Me.lblOficina.Name = "lblOficina"
+        Me.lblOficina.Size = New System.Drawing.Size(140, 19)
+        Me.lblOficina.TabIndex = 24
+        Me.lblOficina.Text = "[OFICINA_PERSONA]"
+        '
+        'lblCorreo
+        '
+        Me.lblCorreo.AutoSize = True
+        Me.lblCorreo.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCorreo.Location = New System.Drawing.Point(0, 0)
+        Me.lblCorreo.Margin = New System.Windows.Forms.Padding(0)
+        Me.lblCorreo.Name = "lblCorreo"
+        Me.lblCorreo.Size = New System.Drawing.Size(142, 19)
+        Me.lblCorreo.TabIndex = 1
+        Me.lblCorreo.Text = "[CORREO_PERSONA]"
+        '
+        'lblSeleccion
+        '
+        Me.lblSeleccion.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblSeleccion.ForeColor = System.Drawing.Color.Silver
+        Me.lblSeleccion.Location = New System.Drawing.Point(65, 54)
+        Me.lblSeleccion.Name = "lblSeleccion"
+        Me.lblSeleccion.Size = New System.Drawing.Size(241, 19)
+        Me.lblSeleccion.TabIndex = 24
+        Me.lblSeleccion.Text = "Socio por asignar"
+        Me.lblSeleccion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'txtMeta
+        '
+        Me.txtMeta.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtMeta.Location = New System.Drawing.Point(362, 277)
+        Me.txtMeta.Margin = New System.Windows.Forms.Padding(0)
+        Me.txtMeta.Name = "txtMeta"
+        Me.txtMeta.Size = New System.Drawing.Size(94, 18)
+        Me.txtMeta.TabIndex = 30
+        Me.txtMeta.Text = "99,000,000.99"
+        Me.txtMeta.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'txtIngreso
+        '
+        Me.txtIngreso.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtIngreso.Location = New System.Drawing.Point(240, 277)
+        Me.txtIngreso.Margin = New System.Windows.Forms.Padding(0)
+        Me.txtIngreso.Name = "txtIngreso"
+        Me.txtIngreso.Size = New System.Drawing.Size(94, 18)
+        Me.txtIngreso.TabIndex = 29
+        Me.txtIngreso.Text = "99,000,000.99"
+        Me.txtIngreso.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(337, 277)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(0)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(24, 18)
+        Me.Label4.TabIndex = 28
+        Me.Label4.Text = "de"
+        '
+        'txtPresupuesto
+        '
+        Me.txtPresupuesto.BackColor = System.Drawing.Color.White
+        Me.txtPresupuesto.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtPresupuesto.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtPresupuesto.Location = New System.Drawing.Point(181, 277)
+        Me.txtPresupuesto.Name = "txtPresupuesto"
+        Me.txtPresupuesto.ReadOnly = True
+        Me.txtPresupuesto.Size = New System.Drawing.Size(52, 18)
+        Me.txtPresupuesto.TabIndex = 27
+        Me.txtPresupuesto.Text = "[META]"
+        '
+        'txtCveArea
+        '
+        Me.txtCveArea.Location = New System.Drawing.Point(348, 126)
+        Me.txtCveArea.Name = "txtCveArea"
+        Me.txtCveArea.Size = New System.Drawing.Size(100, 20)
+        Me.txtCveArea.TabIndex = 34
+        Me.txtCveArea.Visible = False
+        '
+        'txtCveOfi
+        '
+        Me.txtCveOfi.Location = New System.Drawing.Point(242, 126)
+        Me.txtCveOfi.Name = "txtCveOfi"
+        Me.txtCveOfi.Size = New System.Drawing.Size(100, 20)
+        Me.txtCveOfi.TabIndex = 33
+        Me.txtCveOfi.Visible = False
+        '
+        'txtPuntuacion
+        '
+        Me.txtPuntuacion.Location = New System.Drawing.Point(136, 126)
+        Me.txtPuntuacion.Name = "txtPuntuacion"
+        Me.txtPuntuacion.Size = New System.Drawing.Size(100, 20)
+        Me.txtPuntuacion.TabIndex = 32
+        Me.txtPuntuacion.Visible = False
+        '
+        'txtValida
+        '
+        Me.txtValida.Location = New System.Drawing.Point(21, 129)
+        Me.txtValida.Name = "txtValida"
+        Me.txtValida.Size = New System.Drawing.Size(100, 20)
+        Me.txtValida.TabIndex = 31
+        Me.txtValida.Visible = False
         '
         'TarjetaSocio2
         '
@@ -345,6 +451,14 @@ Partial Class TarjetaSocio2
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.BackColor = System.Drawing.Color.White
         Me.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Controls.Add(Me.txtCveArea)
+        Me.Controls.Add(Me.txtCveOfi)
+        Me.Controls.Add(Me.txtPuntuacion)
+        Me.Controls.Add(Me.txtValida)
+        Me.Controls.Add(Me.txtMeta)
+        Me.Controls.Add(Me.txtIngreso)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.txtPresupuesto)
         Me.Controls.Add(Me.panHeader)
         Me.Controls.Add(Me.Panel5)
         Me.Controls.Add(Me.Panel4)
@@ -353,9 +467,7 @@ Partial Class TarjetaSocio2
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.txtNormatividadColor)
         Me.Controls.Add(Me.lblNormatividad)
-        Me.Controls.Add(Me.txtValida)
         Me.Controls.Add(Me.txtCapacidadInstalada)
-        Me.Controls.Add(Me.txtPresupuesto)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.txtIndustriasColor)
@@ -371,6 +483,8 @@ Partial Class TarjetaSocio2
         CType(Me.picSeleccion, System.ComponentModel.ISupportInitialize).EndInit()
         Me.panHeader.ResumeLayout(False)
         Me.panHeader.PerformLayout()
+        Me.tabDatos.ResumeLayout(False)
+        Me.tabDatos.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -384,13 +498,9 @@ Partial Class TarjetaSocio2
     Friend WithEvents txtServiciosColor As RichTextBox
     Friend WithEvents txtIdiomasColor As RichTextBox
     Friend WithEvents txtIndustriasColor As RichTextBox
-    Friend WithEvents lblSeleccion As Label
-    Friend WithEvents lblCorreo As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
-    Friend WithEvents txtPresupuesto As RichTextBox
     Friend WithEvents txtCapacidadInstalada As RichTextBox
-    Friend WithEvents txtValida As TextBox
     Friend WithEvents txtNormatividadColor As RichTextBox
     Friend WithEvents lblNormatividad As Label
     Friend WithEvents Panel1 As Panel
@@ -400,4 +510,17 @@ Partial Class TarjetaSocio2
     Friend WithEvents Panel5 As Panel
     Friend WithEvents picSeleccion As PictureBox
     Friend WithEvents panHeader As Panel
+    Friend WithEvents txtMeta As Label
+    Friend WithEvents txtIngreso As Label
+    Friend WithEvents Label4 As Label
+    Friend WithEvents txtPresupuesto As RichTextBox
+    Friend WithEvents txtCveArea As TextBox
+    Friend WithEvents txtCveOfi As TextBox
+    Friend WithEvents txtPuntuacion As TextBox
+    Friend WithEvents txtValida As TextBox
+    Friend WithEvents tabDatos As TableLayoutPanel
+    Friend WithEvents lblDivision As Label
+    Friend WithEvents lblOficina As Label
+    Friend WithEvents lblCorreo As Label
+    Friend WithEvents lblSeleccion As Label
 End Class
