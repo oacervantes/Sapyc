@@ -50,6 +50,9 @@
             ElseIf gridProspectos.CurrentRow.Cells("bStatus").Value IsNot Nothing AndAlso bActivo = False AndAlso sStatus = "C" Then
                 MsgBox("La solicitud ha sido cancelada y ya no es posible asignarla.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
                 Exit Sub
+            ElseIf gridProspectos.CurrentRow.Cells("bStatus").Value IsNot Nothing AndAlso bActivo = False AndAlso sStatus = "T" Then
+                MsgBox("La solicitud ha sido completada y ya no es posible asignarla.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
+                Exit Sub
             End If
 
             dlg.idSac = idSac
@@ -116,6 +119,9 @@
                 Exit Sub
             ElseIf gridProspectos.CurrentRow.Cells("bStatus").Value IsNot Nothing AndAlso bActivo = False AndAlso sStatus = "C" Then
                 MsgBox("La solicitud ha sido cancelada y ya no es posible asignarla.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
+                Exit Sub
+            ElseIf gridProspectos.CurrentRow.Cells("bStatus").Value IsNot Nothing AndAlso bActivo = False AndAlso sStatus = "T" Then
+                MsgBox("La solicitud ha sido completada y ya no es posible asignarla.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
                 Exit Sub
             End If
 
