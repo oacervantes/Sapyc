@@ -193,6 +193,8 @@
         gridProspectos.Columns("NOMBRE").Visible = False
         gridProspectos.Columns("EMAIL").Visible = False
         gridProspectos.Columns("IdNormatividad").Visible = False
+        gridProspectos.Columns("sCveSoc").Visible = False
+        gridProspectos.Columns("sUsuarioValidaAsigna").Visible = False
 
         ConfigurarColumnasGrid(gridProspectos, "idSac", "ID. SAC", 65, 3, False)
         ConfigurarColumnasGrid(gridProspectos, "sNombreCte", "PROSPECTO", 300, 1, False)
@@ -200,8 +202,12 @@
         ConfigurarColumnasGrid(gridProspectos, "DESCAREA", "DIVISIÓN", 90, 3, False)
         ConfigurarColumnasGrid(gridProspectos, "SERVICIO", "SERVICIO", 300, 1, False)
         ConfigurarColumnasGrid(gridProspectos, "dFechaAlta", "FECHA DE ALTA", 150, 3, False)
-        ConfigurarColumnasGrid(gridProspectos, "sStatus", "STATUS SOLICITUD", 250, 1, False)
-        ConfigurarColumnasGrid(gridProspectos, "sNombreUsuario", "USUARIO SOLICITUD", 250, 1, False)
+        ConfigurarColumnasGrid(gridProspectos, "sStatus", "STATUS DE LA SOLICITUD", 250, 1, False)
+        ConfigurarColumnasGrid(gridProspectos, "sNombreUsuario", "GENERÓ SOLICITUD", 250, 1, False)
+        ConfigurarColumnasGrid(gridProspectos, "sSocioAsignado", "SOCIO ASIGNADO", 250, 1, False)
+        ConfigurarColumnasGrid(gridProspectos, "sEncargado", "ENCARGDAO QUE VALIDÓ", 250, 1, False)
+        ConfigurarColumnasGrid(gridProspectos, "TIPOPROPUESTA", "TIPO DE SOLICITUD", 95, 1, False)
+
     End Sub
 
 End Class

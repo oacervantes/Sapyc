@@ -17,10 +17,11 @@
     Private Sub DlgSolicitudAsignacion_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         lblProspecto.Text = $"{sNombreCte}"
         lblServicio.Text = $"{sServicio}"
-        txtSocioEncargado.Text = $"{sSocioEncargado}"
+        ' txtSocioEncargado.Text = $"{sSocioEncargado}"
         txtOficina.Text = $"{sOficinaEnc}"
         txtDivision.Text = $"{sDivisionEnc}"
         txtIdSac.Text = $"{idSac}"
+        txtColaborador.Text = $"{sNombre}"
 
         If sCveArea = "AUD" Then
             ListarSociosAuditoria()
