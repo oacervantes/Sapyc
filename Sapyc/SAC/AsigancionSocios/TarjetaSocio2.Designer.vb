@@ -48,14 +48,17 @@ Partial Class TarjetaSocio2
         Me.lblOficina = New System.Windows.Forms.Label()
         Me.lblCorreo = New System.Windows.Forms.Label()
         Me.lblSeleccion = New System.Windows.Forms.Label()
-        Me.txtMeta = New System.Windows.Forms.Label()
-        Me.txtIngreso = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
         Me.txtPresupuesto = New System.Windows.Forms.RichTextBox()
         Me.txtCveArea = New System.Windows.Forms.TextBox()
         Me.txtCveOfi = New System.Windows.Forms.TextBox()
         Me.txtPuntuacion = New System.Windows.Forms.TextBox()
         Me.txtValida = New System.Windows.Forms.TextBox()
+        Me.txtRecurrentesPorArreglar = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.lblMeta = New System.Windows.Forms.Label()
+        Me.txtMeta = New System.Windows.Forms.Label()
+        Me.txtIngreso = New System.Windows.Forms.Label()
         CType(Me.picSeleccion, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panHeader.SuspendLayout()
         Me.tabDatos.SuspendLayout()
@@ -66,7 +69,7 @@ Partial Class TarjetaSocio2
         Me.lblNombre.AutoSize = True
         Me.lblNombre.Font = New System.Drawing.Font("Calibri", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblNombre.ForeColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(127, Byte), Integer))
-        Me.lblNombre.Location = New System.Drawing.Point(63, 1)
+        Me.lblNombre.Location = New System.Drawing.Point(55, 7)
         Me.lblNombre.Margin = New System.Windows.Forms.Padding(0)
         Me.lblNombre.Name = "lblNombre"
         Me.lblNombre.Size = New System.Drawing.Size(207, 27)
@@ -316,7 +319,7 @@ Partial Class TarjetaSocio2
         Me.tabDatos.Controls.Add(Me.lblDivision, 2, 0)
         Me.tabDatos.Controls.Add(Me.lblOficina, 1, 0)
         Me.tabDatos.Controls.Add(Me.lblCorreo, 0, 0)
-        Me.tabDatos.Location = New System.Drawing.Point(65, 33)
+        Me.tabDatos.Location = New System.Drawing.Point(55, 36)
         Me.tabDatos.Margin = New System.Windows.Forms.Padding(0)
         Me.tabDatos.Name = "tabDatos"
         Me.tabDatos.RowCount = 1
@@ -361,52 +364,19 @@ Partial Class TarjetaSocio2
         '
         Me.lblSeleccion.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblSeleccion.ForeColor = System.Drawing.Color.Silver
-        Me.lblSeleccion.Location = New System.Drawing.Point(65, 54)
+        Me.lblSeleccion.Location = New System.Drawing.Point(55, 57)
         Me.lblSeleccion.Name = "lblSeleccion"
         Me.lblSeleccion.Size = New System.Drawing.Size(241, 19)
         Me.lblSeleccion.TabIndex = 24
         Me.lblSeleccion.Text = "Socio por asignar"
         Me.lblSeleccion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
-        'txtMeta
-        '
-        Me.txtMeta.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtMeta.Location = New System.Drawing.Point(362, 277)
-        Me.txtMeta.Margin = New System.Windows.Forms.Padding(0)
-        Me.txtMeta.Name = "txtMeta"
-        Me.txtMeta.Size = New System.Drawing.Size(94, 18)
-        Me.txtMeta.TabIndex = 30
-        Me.txtMeta.Text = "99,000,000.99"
-        Me.txtMeta.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'txtIngreso
-        '
-        Me.txtIngreso.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtIngreso.Location = New System.Drawing.Point(240, 277)
-        Me.txtIngreso.Margin = New System.Windows.Forms.Padding(0)
-        Me.txtIngreso.Name = "txtIngreso"
-        Me.txtIngreso.Size = New System.Drawing.Size(94, 18)
-        Me.txtIngreso.TabIndex = 29
-        Me.txtIngreso.Text = "99,000,000.99"
-        Me.txtIngreso.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(337, 277)
-        Me.Label4.Margin = New System.Windows.Forms.Padding(0)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(24, 18)
-        Me.Label4.TabIndex = 28
-        Me.Label4.Text = "de"
-        '
         'txtPresupuesto
         '
         Me.txtPresupuesto.BackColor = System.Drawing.Color.White
         Me.txtPresupuesto.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtPresupuesto.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPresupuesto.Location = New System.Drawing.Point(181, 277)
+        Me.txtPresupuesto.Location = New System.Drawing.Point(181, 279)
         Me.txtPresupuesto.Name = "txtPresupuesto"
         Me.txtPresupuesto.ReadOnly = True
         Me.txtPresupuesto.Size = New System.Drawing.Size(52, 18)
@@ -445,19 +415,91 @@ Partial Class TarjetaSocio2
         Me.txtValida.TabIndex = 31
         Me.txtValida.Visible = False
         '
+        'txtRecurrentesPorArreglar
+        '
+        Me.txtRecurrentesPorArreglar.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtRecurrentesPorArreglar.Location = New System.Drawing.Point(605, 279)
+        Me.txtRecurrentesPorArreglar.Margin = New System.Windows.Forms.Padding(0)
+        Me.txtRecurrentesPorArreglar.Name = "txtRecurrentesPorArreglar"
+        Me.txtRecurrentesPorArreglar.Size = New System.Drawing.Size(97, 18)
+        Me.txtRecurrentesPorArreglar.TabIndex = 40
+        Me.txtRecurrentesPorArreglar.Text = "99,000,000.99"
+        Me.txtRecurrentesPorArreglar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Calibri", 11.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(737, 279)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(0)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(126, 18)
+        Me.Label5.TabIndex = 39
+        Me.Label5.Text = "ING. ARREGLADOS:"
+        Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Calibri", 11.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(436, 279)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(0)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(167, 18)
+        Me.Label4.TabIndex = 38
+        Me.Label4.Text = "ING. REC. POR ARREGLAR:"
+        Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'lblMeta
+        '
+        Me.lblMeta.AutoSize = True
+        Me.lblMeta.Font = New System.Drawing.Font("Calibri", 11.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblMeta.Location = New System.Drawing.Point(258, 279)
+        Me.lblMeta.Margin = New System.Windows.Forms.Padding(0)
+        Me.lblMeta.Name = "lblMeta"
+        Me.lblMeta.Size = New System.Drawing.Size(47, 18)
+        Me.lblMeta.TabIndex = 37
+        Me.lblMeta.Text = "META:"
+        Me.lblMeta.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'txtMeta
+        '
+        Me.txtMeta.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtMeta.Location = New System.Drawing.Point(307, 279)
+        Me.txtMeta.Margin = New System.Windows.Forms.Padding(0)
+        Me.txtMeta.Name = "txtMeta"
+        Me.txtMeta.Size = New System.Drawing.Size(97, 18)
+        Me.txtMeta.TabIndex = 36
+        Me.txtMeta.Text = "99,000,000.99"
+        Me.txtMeta.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'txtIngreso
+        '
+        Me.txtIngreso.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtIngreso.Location = New System.Drawing.Point(866, 279)
+        Me.txtIngreso.Margin = New System.Windows.Forms.Padding(0)
+        Me.txtIngreso.Name = "txtIngreso"
+        Me.txtIngreso.Size = New System.Drawing.Size(97, 18)
+        Me.txtIngreso.TabIndex = 35
+        Me.txtIngreso.Text = "99,000,000.99"
+        Me.txtIngreso.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
         'TarjetaSocio2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.BackColor = System.Drawing.Color.White
         Me.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Controls.Add(Me.txtRecurrentesPorArreglar)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.lblMeta)
+        Me.Controls.Add(Me.txtMeta)
+        Me.Controls.Add(Me.txtIngreso)
         Me.Controls.Add(Me.txtCveArea)
         Me.Controls.Add(Me.txtCveOfi)
         Me.Controls.Add(Me.txtPuntuacion)
         Me.Controls.Add(Me.txtValida)
-        Me.Controls.Add(Me.txtMeta)
-        Me.Controls.Add(Me.txtIngreso)
-        Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.txtPresupuesto)
         Me.Controls.Add(Me.panHeader)
         Me.Controls.Add(Me.Panel5)
@@ -510,9 +552,6 @@ Partial Class TarjetaSocio2
     Friend WithEvents Panel5 As Panel
     Friend WithEvents picSeleccion As PictureBox
     Friend WithEvents panHeader As Panel
-    Friend WithEvents txtMeta As Label
-    Friend WithEvents txtIngreso As Label
-    Friend WithEvents Label4 As Label
     Friend WithEvents txtPresupuesto As RichTextBox
     Friend WithEvents txtCveArea As TextBox
     Friend WithEvents txtCveOfi As TextBox
@@ -523,4 +562,10 @@ Partial Class TarjetaSocio2
     Friend WithEvents lblOficina As Label
     Friend WithEvents lblCorreo As Label
     Friend WithEvents lblSeleccion As Label
+    Friend WithEvents txtRecurrentesPorArreglar As Label
+    Friend WithEvents Label5 As Label
+    Friend WithEvents Label4 As Label
+    Friend WithEvents lblMeta As Label
+    Friend WithEvents txtMeta As Label
+    Friend WithEvents txtIngreso As Label
 End Class

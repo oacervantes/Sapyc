@@ -9,7 +9,7 @@
 
     Private sCveSocio, sNombreSocio, sCorreoSocio As String
     Private sNombreSocioEnc, sCorreoSocioEnc, sCveOfiEnc, sCveAreaEnc As String
-    Private dIngreso, dMeta As Decimal
+    Private dIngreso, dMeta, dRecurrente As Decimal
 
     Public idSac, idPropuesta, idServicio, idIdioma, idMarco As Integer
     Public sCveOfi, sCveArea, sOficinaEnc, sDivisionEnc, sNombreCte, sCveInd, sServicio, sCveSocioEnc, sSocioEncargado, sCorreoEncargado, sUsuario, sNombre, sCorreo As String
@@ -109,6 +109,7 @@
                     .Presupuesto = Presupuesto(row("CVEEMP").ToString()),
                     .Ingreso = dIngreso,
                     .Meta = dMeta,
+                    .Recurrente = dRecurrente,
                     .CapacidadInstalada = CapacidadInstalada(row("CVEEMP").ToString())
                 }
 
@@ -145,6 +146,7 @@
                     .Presupuesto = Presupuesto(row("CVEEMP").ToString()),
                     .Ingreso = dIngreso,
                     .Meta = dMeta,
+                    .Recurrente = dRecurrente,
                     .CapacidadInstalada = CapacidadInstalada(row("CVEEMP").ToString())
                 }
 
@@ -406,6 +408,7 @@
         Dim porcentaje As Decimal = Convert.ToDecimal(filas(0)("PORCENTAJE_ACTIVOS"))
         dIngreso = Convert.ToDecimal(filas(0)("ARREGLADO"))
         dMeta = Convert.ToDecimal(filas(0)("META"))
+        dRecurrente = Convert.ToDecimal(filas(0)("RECURRENTE"))
 
         Return porcentaje
     End Function

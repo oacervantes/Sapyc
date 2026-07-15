@@ -1,4 +1,5 @@
 ﻿Public Class TarjetaSocio2
+
     Private ds As New DataSet
 
     Private sNameRpt As String = "Selección de socios para asignar propuesta"
@@ -65,6 +66,14 @@
         End Get
         Set(value As Double)
             txtMeta.Text = Format(value, sFmtDbl)
+        End Set
+    End Property
+    Public Property Recurrente As Double
+        Get
+            Return txtRecurrentesPorArreglar.Text
+        End Get
+        Set(value As Double)
+            txtRecurrentesPorArreglar.Text = Format(value, sFmtDbl)
         End Set
     End Property
 
