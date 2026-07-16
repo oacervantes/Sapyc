@@ -37,6 +37,9 @@ Public Class FrmContacto
     Private sCveSoc, sNomSoc, sCorreoSoc As String
     Private sMsgDatosGenerales, sMsgContacto, sMsgAcercamiento, sMsgDomicilio, sMsgAviso, sOtroServicios As String
 
+    Private ArchivoAnexo As Byte()
+    Private sRutaAnexo, ExtAnexo, NombAnexo As String
+
     Private bMarco = False, bOtros = False, bOtrosCarga = False, bRefGTI = False, bCargaInfo As Boolean = False
     Private CorreosSoc, sNombSocio, sMailSocio, sNombreEncargado, sCorreoEncargado As String
     Public sCveOfi, sCveArea, sOficina, sArea, sEstatusSolicitud As String
@@ -334,7 +337,7 @@ Public Class FrmContacto
             'InsertarPropuesta
         End If
     End Sub
-    Private Sub LnkSecciones(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lnkDatosGenerales.LinkClicked, lnkContactoInicial.LinkClicked, lnkAcercamiento.LinkClicked, lnkDireccion.LinkClicked
+    Private Sub LnkSecciones(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lnkDatosGenerales.LinkClicked, lnkContactoInicial.LinkClicked, lnkAcercamiento.LinkClicked, lnkDireccion.LinkClicked, lnkAnexos.LinkClicked
         For Each obj As Object In Controls
             If obj.GetType.Name = "Panel" Then
                 If DirectCast(obj, Panel).Name = "panMenu" Then
@@ -378,6 +381,8 @@ Public Class FrmContacto
             Case 4
                 panDireccion.Visible = True
                 '        ListarEstadosDomicilio()
+            Case 5
+                panAnexos.Visible = True
                 '        ListarDomicilio()
 
         End Select
@@ -780,7 +785,6 @@ Public Class FrmContacto
         ListarMunicipiosDomicilio(cboDomicilioEstado.SelectedValue)
         cboDomicilioMunicipio.SelectedIndex = 0
     End Sub
-
     Private Sub TxtDomicilioCP_Leave(sender As Object, e As EventArgs) Handles txtDomicilioCP.Leave
         If idPaisDom = 151 Then
             If txtDomicilioCP.TextLength <> 5 And txtDomicilioCP.TextLength <> 0 Then
@@ -808,6 +812,118 @@ Public Class FrmContacto
     End Sub
 
 #End Region
+
+#Region "ANEXOS"
+    Private Sub btnCargaAnexo_Click(sender As Object, e As EventArgs) Handles btnCargaAnexo.Click
+        Dim sFile As String = ""
+        Dim limiteBytes As Integer = 10 * 1024 * 1024
+
+        Dim Opd As New OpenFileDialog
+        Opd.InitialDirectory = My.Computer.FileSystem.SpecialDirectories.ToString
+        ' Opd.Filter = "Archivos PDF (*.pdf)|*.pdf|All files (*.*)|*.*"
+        Opd.Multiselect = True
+        If (Opd.ShowDialog(Me) = System.Windows.Forms.DialogResult.OK) Then
+            Try
+
+                ArchivoAnexo = convierte_archivo_a_bytes(Opd.FileName)
+                sRutaAnexo = Opd.FileName
+                sFile = Path.GetFileNameWithoutExtension(Opd.FileName)
+                ExtAnexo = Path.GetExtension(Opd.FileName)
+                NombAnexo = idSAC & "-" & sFile
+
+                txtNombreAnexo.Text = sFile
+                txtExtension.Text = ExtAnexo
+                Dim Limite As New System.IO.FileInfo(Opd.FileName)
+
+
+                If Limite.Length < limiteBytes Then
+
+
+                    If Not File.Exists("\\GTMEXVTS32\APLICA\SAPYC\ANEXOS\" & NombAnexo & ExtAnexo & "") Then
+                        File.Copy(Opd.FileName, "\\GTMEXVTS32\APLICA\SAPYC\ANEXOS\" & NombAnexo & ExtAnexo & "")
+                    Else
+
+                        If MessageBox.Show("Este archivo ya existe, desea reemplazarlo", "Titulo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = DialogResult.OK Then
+                            File.Delete("\\GTMEXVTS32\APLICA\SAPYC\ANEXOS\" & NombAnexo & ExtAnexo & "")
+                            File.Copy(Opd.FileName, "\\GTMEXVTS32\APLICA\SAPYC\ANEXOS\" & NombAnexo & ExtAnexo & "")
+                        End If
+
+                    End If
+                    ''''INSERTA EL CONTROL DE LOS ANEXOS
+                    InsertaControlAnexos(sFile, ExtAnexo)
+
+                    MsgBox("El archivo se cargo con éxito", MsgBoxStyle.Exclamation, "archivo anexo")
+
+                Else
+
+                    txtNombreAnexo.Text = ""
+                    txtExtension.Text = ""
+                    MsgBox("El archivo es muy pesado, el limite es de 10 MB", MsgBoxStyle.Exclamation, "archivo anexo")
+                End If
+
+
+            Catch ex As Exception
+                MsgBox("No se adjunto el archivo Anexo", MsgBoxStyle.Exclamation, "archivo anexo")
+            End Try
+        End If
+
+    End Sub
+
+    Private Sub btnVerAnexo_Click_1(sender As Object, e As EventArgs) Handles btnVerAnexo.Click
+        Try
+
+            If File.Exists("\\GTMEXVTS32\APLICA\SAPYC\ANEXOS\" & idSAC & "-" & txtNombreAnexo.Text & txtExtension.Text) Then
+                Process.Start("\\GTMEXVTS32\APLICA\SAPYC\ANEXOS\" & idSAC & "-" & txtNombreAnexo.Text & txtExtension.Text & " ")
+            Else
+                Process.Start(idSAC & "-" & txtNombreAnexo.Text & txtExtension.Text)
+            End If
+
+
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
+        End Try
+    End Sub
+    Public Function convierte_archivo_a_bytes(ByVal nombreArchivo As String) As Byte()
+        If (Not (File.Exists(nombreArchivo))) Then Return Nothing
+
+        Try
+            Using fs As New FileStream(nombreArchivo, FileMode.Open, FileAccess.Read)
+                ' se usa un arreglo de bytes del tamaño del file stream -1, en el arreglo se guardará 
+                ' la secuencia en bytes del archivo
+                Dim length As Int32 = Convert.ToInt32(fs.Length - 1)
+                Dim data() As Byte = New Byte(length) {}
+                ' Al leer la secuencia, se rellenará la matriz.                
+                fs.Read(data, 0, length)
+                Return data
+            End Using
+        Catch ex As Exception
+            MsgBox("Error al convertir el archivo", MsgBoxStyle.Exclamation, "Error")
+            Throw
+        End Try
+
+    End Function
+    Private Sub InsertaControlAnexos(sNombAnexo As String, sExtAnexo As String)
+        Try
+            With clsLocal
+                .subClearParameters()
+                .subAddParameter("@iOpcion", 19, SqlDbType.Int, ParameterDirection.Input)
+                .subAddParameter("@idSAC", idSAC, SqlDbType.Int, ParameterDirection.Input)
+                .subAddParameter("@sNombAnexo", sNombAnexo, SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@sExtAnexo", sExtAnexo, SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@sUsuario", sCveUsuario, SqlDbType.VarChar, ParameterDirection.Input)
+
+                .funExecuteSP("paSolicitudesSAC")
+            End With
+
+
+        Catch ex As Exception
+            MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "InsertaControlAnexosSac")
+        End Try
+    End Sub
+
+#End Region
+
+
 
 #End Region
 
