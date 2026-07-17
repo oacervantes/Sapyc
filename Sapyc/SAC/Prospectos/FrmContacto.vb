@@ -1830,6 +1830,8 @@ Public Class FrmContacto
                 txtGerenteGTI.Text = dtDatosGenerales.Rows(0).Item("sGerenteRefGTI").ToString
                 txtCorreoGerenteGTI.Text = dtDatosGenerales.Rows(0).Item("sCorreoGerenteRefGTI").ToString
                 txtEstadoGTI.Text = dtDatosGenerales.Rows(0).Item("sEstadoRefGTI").ToString
+                txtOperacion.Text = dtDatosGenerales.Rows(0).Item("sOperacionEmpresa").ToString
+
 
             Else
                 lblMensajeCargaDatosGenerales.Visible = True
@@ -1958,6 +1960,7 @@ Public Class FrmContacto
                 .subAddParameter("@sGerenteRefGTI", txtGerenteGTI.Text, SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@sCorreoGerRefGTI", txtCorreoGerenteGTI.Text, SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@sEstadoRefGTI", txtEstadoGTI.Text, SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@sOperacion", txtOperacion.Text.ToUpper(), SqlDbType.VarChar, ParameterDirection.Input)
 
                 .funExecuteSP("paDatosAsignacionSACDatosGenerales")
             End With
@@ -2972,6 +2975,11 @@ Public Class FrmContacto
 
         If cboTipoEntidad.SelectedIndex = 0 Then
             sMsgDatosGenerales &= "- Especifíque el tipo de entidad del prospecto." & vbNewLine & vbNewLine
+            bValidacion = False
+        End If
+
+        If Trim(txtOperacion.Text) = "" Then
+            sMsgDatosGenerales &= "- Especifíque la operación de la empresa." & vbNewLine & vbNewLine
             bValidacion = False
         End If
 
