@@ -24,7 +24,7 @@ Public Class FrmContacto
     Private dtDatosGenerales, dtServiciosDG, dtMercantilesRS, dtMercantilesNC, dtCorreosSolicitud As New DataTable
     Private dtContactoInicial As New DataTable
     Private dtComoSeEntero, dtMedioContacto, dtAcercamiento As New DataTable
-    Private dtDomicilio, dtPaisDomicilio, dtColoniasDomicilio, dtMunicipiosDomicilio, dtEstadosDomicilio As New DataTable
+    Private dtDomicilio, dtPaisDomicilio, dtColoniasDomicilio, dtMunicipiosDomicilio, dtEstadosDomicilio, dtAnexos As New DataTable
     Private dtDatGrals, dtBolsaValores, dtEntidadReg, dtNormatividad, dtPais, dtPaisGT, dtPaisResidencia, dtTipoEntidad, dtModalidades, dtIdiomas, dtOficinas, dtDivisiones, dtSocios, dtOfGt As DataTable
     Private dtIndustria, dtSubSector, dtSubNivel As DataTable
 
@@ -111,6 +111,8 @@ Public Class FrmContacto
         ListarContactoInicial()
         '============================== CONSULTA CORREOS SOLICITUD ==============================
         ListarCorreosSolicitud()
+        '============================== CONSULTA ARCHIVOS ANEXOS==============================
+        ListarArchivosAnexos()
 
     End Sub
 
@@ -918,6 +920,40 @@ Public Class FrmContacto
 
         Catch ex As Exception
             MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "InsertaControlAnexosSac")
+        End Try
+    End Sub
+
+    Private Sub ListarArchivosAnexos()
+
+        Try
+            Dim sTabla As String = "tbAnexos"
+
+            With ds.Tables
+                LimpiarConsultaTabla(ds.Tables, sTabla)
+
+                With clsLocal
+                    .subClearParameters()
+                    .subAddParameter("@iOpcion", 20, SqlDbType.Int, ParameterDirection.Input)
+                    .subAddParameter("@idSAC", idSAC, SqlDbType.VarChar, ParameterDirection.Input)
+                End With
+
+                .Add(clsLocal.funExecuteSPDataTable("paSolicitudesSAC", sTabla))
+
+                dtAnexos = .Item(sTabla)
+            End With
+
+            If dtAnexos.Rows.Count > 0 Then
+                txtNombreAnexo.Text = dtAnexos.Rows(0).Item("sNombAnexo")
+                txtExtension.Text = dtAnexos.Rows(0).Item("sExtAnexo")
+            Else
+                txtNombreAnexo.Text = ""
+                txtExtension.Text = ""
+            End If
+
+        Catch ex As Exception
+            InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarProspectos()")
+            MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "Error")
+            dtProspectos = Nothing
         End Try
     End Sub
 
