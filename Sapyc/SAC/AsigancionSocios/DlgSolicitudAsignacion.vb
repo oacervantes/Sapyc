@@ -7,6 +7,9 @@
     Private tarjetaSeleccionada As TarjetaSocio2 = Nothing
     Private iPuntuacion = 0, iPosY = 10, iValorY As Integer = 340
 
+    Private ListaTarjetas As New List(Of TarjetaSocio2)
+    Private MiSeparador As SeparadorSocio
+
     Private sCveSocio, sNombreSocio, sCorreoSocio As String
     Private sNombreSocioEnc, sCorreoSocioEnc, sCveOfiEnc, sCveAreaEnc As String
     Private dIngreso, dMeta, dRecurrente As Decimal
@@ -87,9 +90,12 @@
         DialogResult = DialogResult.Cancel
     End Sub
 
+    Private Sub TxtBuscarSocio_TextChanged(sender As Object, e As EventArgs) Handles txtBuscarSocio.TextChanged
+        FiltrarTarjetas(txtBuscarSocio.Text.Trim())
+    End Sub
+
     Private Sub LlenarTarjetas()
         panSocios.SuspendLayout()
-        panSocios.Controls.Clear()
 
         For Each row As DataRow In dtSocios.Rows
 
@@ -115,18 +121,15 @@
                 }
 
                 AddHandler card.CardClick, AddressOf OnSocioCardClick
-                card.Location = New Point(10, iPosY)
+                ListaTarjetas.Add(card)
                 panSocios.Controls.Add(card)
-                iPosY += iValorY + 10
+
             End If
 
         Next
 
-        Dim separador As New SeparadorSocio With {
-            .Location = New Point(10, iPosY + 15)
-        }
-        panSocios.Controls.Add(separador)
-        iPosY += 33 + 35
+        MiSeparador = New SeparadorSocio()
+        panSocios.Controls.Add(MiSeparador)
 
         For Each row As DataRow In dtSocios.Rows
 
@@ -152,12 +155,14 @@
                 }
 
                 AddHandler card.CardClick, AddressOf OnSocioCardClick
-                card.Location = New Point(10, iPosY)
+                ListaTarjetas.Add(card)
                 panSocios.Controls.Add(card)
-                iPosY += iValorY + 10
+
             End If
 
         Next
+
+        ReacomodarTarjetas()
 
         panSocios.ResumeLayout()
     End Sub
@@ -301,6 +306,58 @@
             MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
             dtSocioEnc = Nothing
         End Try
+    End Sub
+
+    Private Sub FiltrarTarjetas(texto As String)
+
+        texto = texto.Trim().ToUpper()
+
+        For Each card In ListaTarjetas
+
+            card.Visible =
+            String.IsNullOrEmpty(texto) OrElse
+            card.Nombre.ToUpper().Contains(texto)
+
+        Next
+
+        ReacomodarTarjetas()
+
+    End Sub
+    Private Sub ReacomodarTarjetas()
+
+        Dim y As Integer = 10
+
+        Dim top = ListaTarjetas.
+        Where(Function(x) x.Visible AndAlso x.Puntuacion = 4)
+
+        Dim resto = ListaTarjetas.
+        Where(Function(x) x.Visible AndAlso x.Puntuacion <> 4)
+
+        For Each card In top
+
+            card.Location = New Point(10, y)
+            y += card.Height + 10
+
+        Next
+
+        MiSeparador.Visible =
+        top.Any() AndAlso resto.Any()
+
+        If MiSeparador.Visible Then
+
+            MiSeparador.Location = New Point(10, y)
+
+            y += MiSeparador.Height + 10
+
+        End If
+
+        For Each card In resto
+
+            card.Location = New Point(10, y)
+            y += card.Height + 10
+
+        Next
+
     End Sub
 
     Private Sub EnviarAsignacion()

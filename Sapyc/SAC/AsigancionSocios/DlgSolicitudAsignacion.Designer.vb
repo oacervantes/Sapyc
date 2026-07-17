@@ -28,6 +28,8 @@ Partial Class DlgSolicitudAsignacion
         Me.lblMensajeAut = New System.Windows.Forms.Label()
         Me.lblTituloProspecto = New System.Windows.Forms.Label()
         Me.panSolicitud = New System.Windows.Forms.Panel()
+        Me.lblColaborador = New System.Windows.Forms.Label()
+        Me.txtColaborador = New System.Windows.Forms.Label()
         Me.panLinea = New System.Windows.Forms.Panel()
         Me.btnDetalle = New System.Windows.Forms.Button()
         Me.lblIdSac = New System.Windows.Forms.Label()
@@ -42,8 +44,8 @@ Partial Class DlgSolicitudAsignacion
         Me.lblServicio = New System.Windows.Forms.Label()
         Me.lblProspecto = New System.Windows.Forms.Label()
         Me.btnCerrar = New System.Windows.Forms.Button()
-        Me.lblColaborador = New System.Windows.Forms.Label()
-        Me.txtColaborador = New System.Windows.Forms.Label()
+        Me.lblBuscarSocio = New System.Windows.Forms.Label()
+        Me.txtBuscarSocio = New System.Windows.Forms.TextBox()
         Me.panPrincipal.SuspendLayout()
         Me.panSolicitud.SuspendLayout()
         Me.SuspendLayout()
@@ -63,7 +65,7 @@ Partial Class DlgSolicitudAsignacion
         Me.panPrincipal.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.panPrincipal.Location = New System.Drawing.Point(0, 0)
         Me.panPrincipal.Name = "panPrincipal"
-        Me.panPrincipal.Size = New System.Drawing.Size(1127, 715)
+        Me.panPrincipal.Size = New System.Drawing.Size(1127, 730)
         Me.panPrincipal.TabIndex = 0
         '
         'btnRechazarAsignacion
@@ -76,7 +78,7 @@ Partial Class DlgSolicitudAsignacion
         Me.btnRechazarAsignacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnRechazarAsignacion.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnRechazarAsignacion.ForeColor = System.Drawing.Color.White
-        Me.btnRechazarAsignacion.Location = New System.Drawing.Point(195, 677)
+        Me.btnRechazarAsignacion.Location = New System.Drawing.Point(195, 692)
         Me.btnRechazarAsignacion.Name = "btnRechazarAsignacion"
         Me.btnRechazarAsignacion.Size = New System.Drawing.Size(170, 27)
         Me.btnRechazarAsignacion.TabIndex = 26
@@ -93,7 +95,7 @@ Partial Class DlgSolicitudAsignacion
         Me.btnEnviarAsignacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnEnviarAsignacion.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnEnviarAsignacion.ForeColor = System.Drawing.Color.White
-        Me.btnEnviarAsignacion.Location = New System.Drawing.Point(18, 677)
+        Me.btnEnviarAsignacion.Location = New System.Drawing.Point(18, 692)
         Me.btnEnviarAsignacion.Name = "btnEnviarAsignacion"
         Me.btnEnviarAsignacion.Size = New System.Drawing.Size(170, 27)
         Me.btnEnviarAsignacion.TabIndex = 25
@@ -106,7 +108,7 @@ Partial Class DlgSolicitudAsignacion
         Me.lblMensajeAut.AutoSize = True
         Me.lblMensajeAut.Font = New System.Drawing.Font("Calibri", 11.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblMensajeAut.ForeColor = System.Drawing.Color.DarkRed
-        Me.lblMensajeAut.Location = New System.Drawing.Point(18, 652)
+        Me.lblMensajeAut.Location = New System.Drawing.Point(18, 667)
         Me.lblMensajeAut.Name = "lblMensajeAut"
         Me.lblMensajeAut.Size = New System.Drawing.Size(980, 18)
         Me.lblMensajeAut.TabIndex = 17
@@ -135,6 +137,8 @@ Partial Class DlgSolicitudAsignacion
         Me.panSolicitud.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.panSolicitud.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.panSolicitud.Controls.Add(Me.lblBuscarSocio)
+        Me.panSolicitud.Controls.Add(Me.txtBuscarSocio)
         Me.panSolicitud.Controls.Add(Me.lblColaborador)
         Me.panSolicitud.Controls.Add(Me.txtColaborador)
         Me.panSolicitud.Controls.Add(Me.panLinea)
@@ -152,8 +156,30 @@ Partial Class DlgSolicitudAsignacion
         Me.panSolicitud.Controls.Add(Me.lblProspecto)
         Me.panSolicitud.Location = New System.Drawing.Point(18, 10)
         Me.panSolicitud.Name = "panSolicitud"
-        Me.panSolicitud.Size = New System.Drawing.Size(1089, 639)
+        Me.panSolicitud.Size = New System.Drawing.Size(1089, 654)
         Me.panSolicitud.TabIndex = 0
+        '
+        'lblColaborador
+        '
+        Me.lblColaborador.AutoSize = True
+        Me.lblColaborador.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblColaborador.ForeColor = System.Drawing.Color.Black
+        Me.lblColaborador.Location = New System.Drawing.Point(188, 92)
+        Me.lblColaborador.Margin = New System.Windows.Forms.Padding(0)
+        Me.lblColaborador.Name = "lblColaborador"
+        Me.lblColaborador.Size = New System.Drawing.Size(287, 18)
+        Me.lblColaborador.TabIndex = 30
+        Me.lblColaborador.Text = "COLABORADOR QUE REGISTRÓ LA SOLICITUD:"
+        '
+        'txtColaborador
+        '
+        Me.txtColaborador.AutoSize = True
+        Me.txtColaborador.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtColaborador.Location = New System.Drawing.Point(478, 92)
+        Me.txtColaborador.Name = "txtColaborador"
+        Me.txtColaborador.Size = New System.Drawing.Size(113, 18)
+        Me.txtColaborador.TabIndex = 29
+        Me.txtColaborador.Text = "[COLABORADOR]"
         '
         'panLinea
         '
@@ -168,7 +194,7 @@ Partial Class DlgSolicitudAsignacion
         'btnDetalle
         '
         Me.btnDetalle.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnDetalle.Location = New System.Drawing.Point(932, 82)
+        Me.btnDetalle.Location = New System.Drawing.Point(935, 89)
         Me.btnDetalle.Name = "btnDetalle"
         Me.btnDetalle.Size = New System.Drawing.Size(135, 25)
         Me.btnDetalle.TabIndex = 24
@@ -204,7 +230,7 @@ Partial Class DlgSolicitudAsignacion
         Me.lblSocioEncargado.AutoSize = True
         Me.lblSocioEncargado.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblSocioEncargado.ForeColor = System.Drawing.Color.Black
-        Me.lblSocioEncargado.Location = New System.Drawing.Point(276, 92)
+        Me.lblSocioEncargado.Location = New System.Drawing.Point(263, 92)
         Me.lblSocioEncargado.Margin = New System.Windows.Forms.Padding(0)
         Me.lblSocioEncargado.Name = "lblSocioEncargado"
         Me.lblSocioEncargado.Size = New System.Drawing.Size(194, 18)
@@ -232,9 +258,9 @@ Partial Class DlgSolicitudAsignacion
         Me.panSocios.AutoScrollMargin = New System.Drawing.Size(0, 10)
         Me.panSocios.BackColor = System.Drawing.Color.WhiteSmoke
         Me.panSocios.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.panSocios.Location = New System.Drawing.Point(17, 143)
+        Me.panSocios.Location = New System.Drawing.Point(17, 175)
         Me.panSocios.Name = "panSocios"
-        Me.panSocios.Size = New System.Drawing.Size(1053, 476)
+        Me.panSocios.Size = New System.Drawing.Size(1053, 464)
         Me.panSocios.TabIndex = 2
         '
         'txtDivision
@@ -277,7 +303,7 @@ Partial Class DlgSolicitudAsignacion
         '
         Me.txtSocioEncargado.AutoSize = True
         Me.txtSocioEncargado.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSocioEncargado.Location = New System.Drawing.Point(472, 92)
+        Me.txtSocioEncargado.Location = New System.Drawing.Point(459, 92)
         Me.txtSocioEncargado.Name = "txtSocioEncargado"
         Me.txtSocioEncargado.Size = New System.Drawing.Size(139, 18)
         Me.txtSocioEncargado.TabIndex = 2
@@ -288,7 +314,7 @@ Partial Class DlgSolicitudAsignacion
         '
         Me.lblServicio.AutoSize = True
         Me.lblServicio.Font = New System.Drawing.Font("Calibri", 13.5!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblServicio.Location = New System.Drawing.Point(21, 61)
+        Me.lblServicio.Location = New System.Drawing.Point(21, 58)
         Me.lblServicio.Name = "lblServicio"
         Me.lblServicio.Size = New System.Drawing.Size(93, 22)
         Me.lblServicio.TabIndex = 1
@@ -299,7 +325,7 @@ Partial Class DlgSolicitudAsignacion
         Me.lblProspecto.AutoSize = True
         Me.lblProspecto.Font = New System.Drawing.Font("Calibri", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblProspecto.ForeColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(127, Byte), Integer))
-        Me.lblProspecto.Location = New System.Drawing.Point(21, 34)
+        Me.lblProspecto.Location = New System.Drawing.Point(21, 31)
         Me.lblProspecto.Name = "lblProspecto"
         Me.lblProspecto.Size = New System.Drawing.Size(135, 27)
         Me.lblProspecto.TabIndex = 0
@@ -309,40 +335,37 @@ Partial Class DlgSolicitudAsignacion
         '
         Me.btnCerrar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnCerrar.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCerrar.Location = New System.Drawing.Point(978, 720)
+        Me.btnCerrar.Location = New System.Drawing.Point(978, 735)
         Me.btnCerrar.Name = "btnCerrar"
         Me.btnCerrar.Size = New System.Drawing.Size(130, 25)
         Me.btnCerrar.TabIndex = 1
         Me.btnCerrar.Text = "Cerrar"
         Me.btnCerrar.UseVisualStyleBackColor = True
         '
-        'lblColaborador
+        'lblBuscarSocio
         '
-        Me.lblColaborador.AutoSize = True
-        Me.lblColaborador.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblColaborador.ForeColor = System.Drawing.Color.Black
-        Me.lblColaborador.Location = New System.Drawing.Point(201, 92)
-        Me.lblColaborador.Margin = New System.Windows.Forms.Padding(0)
-        Me.lblColaborador.Name = "lblColaborador"
-        Me.lblColaborador.Size = New System.Drawing.Size(287, 18)
-        Me.lblColaborador.TabIndex = 30
-        Me.lblColaborador.Text = "COLABORADOR QUE REGISTRÓ LA SOLICITUD:"
+        Me.lblBuscarSocio.AutoSize = True
+        Me.lblBuscarSocio.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblBuscarSocio.ForeColor = System.Drawing.Color.Black
+        Me.lblBuscarSocio.Location = New System.Drawing.Point(17, 142)
+        Me.lblBuscarSocio.Margin = New System.Windows.Forms.Padding(0)
+        Me.lblBuscarSocio.Name = "lblBuscarSocio"
+        Me.lblBuscarSocio.Size = New System.Drawing.Size(87, 18)
+        Me.lblBuscarSocio.TabIndex = 32
+        Me.lblBuscarSocio.Text = "Buscar socio:"
         '
-        'txtColaborador
+        'txtBuscarSocio
         '
-        Me.txtColaborador.AutoSize = True
-        Me.txtColaborador.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtColaborador.Location = New System.Drawing.Point(491, 92)
-        Me.txtColaborador.Name = "txtColaborador"
-        Me.txtColaborador.Size = New System.Drawing.Size(113, 18)
-        Me.txtColaborador.TabIndex = 29
-        Me.txtColaborador.Text = "[COLABORADOR]"
+        Me.txtBuscarSocio.Location = New System.Drawing.Point(114, 139)
+        Me.txtBuscarSocio.Name = "txtBuscarSocio"
+        Me.txtBuscarSocio.Size = New System.Drawing.Size(956, 25)
+        Me.txtBuscarSocio.TabIndex = 31
         '
         'DlgSolicitudAsignacion
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1127, 751)
+        Me.ClientSize = New System.Drawing.Size(1127, 766)
         Me.Controls.Add(Me.panPrincipal)
         Me.Controls.Add(Me.btnCerrar)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
@@ -382,4 +405,6 @@ Partial Class DlgSolicitudAsignacion
     Friend WithEvents panLinea As Panel
     Friend WithEvents lblColaborador As Label
     Friend WithEvents txtColaborador As Label
+    Friend WithEvents lblBuscarSocio As Label
+    Friend WithEvents txtBuscarSocio As TextBox
 End Class
