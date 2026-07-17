@@ -922,7 +922,6 @@ Public Class FrmContacto
             MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, "InsertaControlAnexosSac")
         End Try
     End Sub
-
     Private Sub ListarArchivosAnexos()
 
         Try

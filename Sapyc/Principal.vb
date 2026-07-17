@@ -335,8 +335,8 @@
     End Sub
 
     Private Sub SeguimientoAPropuestasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SeguimientoAPropuestas.Click
-        Dim frm As New frmListaSeguimiento
-        AbrirPantalla(frm, "frmListaNivelRiesgo")
+        Dim frm As New FrmSeguimientoSolicitudesSAC
+        AbrirPantalla(frm, "FrmSeguimientoSolicitudesSAC")
     End Sub
 
     Private Sub AltaClienteProspectoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AltaClienteProspecto.Click
@@ -365,9 +365,9 @@
     End Sub
 
     Private Sub SeguimientoProspectosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SeguimientoProspectosToolStripMenuItem.Click
-        Dim frm As New frmListaNumSac
+        Dim frm As New FrmSeguimientoSolicitudesSAC
 
-        AbrirPantalla(frm, "frmListaNumSac")
+        AbrirPantalla(frm, "FrmSeguimientoSolicitudesSAC")
     End Sub
 
 End Class
