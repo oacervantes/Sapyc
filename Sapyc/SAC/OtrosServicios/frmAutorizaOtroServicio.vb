@@ -16,6 +16,7 @@
         txtCliente.Text = sCliente
         txtServicio.Text = "OTROS"
         txtDescripcionTrabajo.Text = sDescTrabajo
+        txtSolicito.Text = sNombreSolicito.ToUpper()
 
     End Sub
     Private Sub BtnAutoriza_Click(sender As Object, e As EventArgs) Handles btnAutoriza.Click

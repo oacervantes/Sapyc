@@ -291,7 +291,7 @@ Module Util
 
         Return lacad
     End Function
-    Public Function EnviarCorreosHTML(sCtasDestino() As String, sMensajeCorreo As String, sTitulo As String, Optional cPrioridad As Char = "N", Optional archivos As Attachment = Nothing) As Boolean
+    Public Function EnviarCorreosHTML(sCtasDestino() As String, sMensajeCorreo As String, sTitulo As String, Optional cPrioridad As Char = "N", Optional archivos As Attachment = Nothing, Optional sCtasDestinoCopia() As String = Nothing) As Boolean
         Dim bEnviado As Boolean = False
 
         If sCtasDestino.Count <= 0 Then
@@ -300,12 +300,9 @@ Module Util
         End If
 
         Try
-            'Dim correo As New MailMessage With {
-            '    .From = New MailAddress(sCorreo)
-            '}
-
-            Dim correo As New System.Net.Mail.MailMessage()
-            correo.From = New System.Net.Mail.MailAddress("siat@mx.gt.com")
+            Dim correo As New MailMessage With {
+                .From = New MailAddress(sCorreo)
+            }
 
             If cPrioridad = "A" Then
                 correo.Priority = MailPriority.High
@@ -321,6 +318,15 @@ Module Util
                     correo.To.Add(sCtasDestino(i))
                 End If
             Next
+
+            'Correos de copia
+            If sCtasDestinoCopia IsNot Nothing Then
+                For c As Integer = 0 To sCtasDestinoCopia.Count - 1
+                    If sCtasDestinoCopia(c) <> " " Then
+                        correo.CC.Add(sCtasDestinoCopia(c))
+                    End If
+                Next
+            End If
             correo.Bcc.Add("siat@mx.gt.com, Octavio.A.Cervantes@mx.gt.com, Mario.Rodriguez@mx.gt.com")
 
             Dim htmlView As AlternateView = AlternateView.CreateAlternateViewFromString(sMensajeCorreo, Nothing, "text/html")
@@ -338,17 +344,20 @@ Module Util
 
             'Configuracion del servidor
             Dim Servidor As New SmtpClient With {
-                .Host = "smtp.office365.com", 'sServidor,
-            .Port = 587, ' iPuerto,
-            .EnableSsl = True, 'bSSL,
-            .UseDefaultCredentials = False,
-            .DeliveryMethod = SmtpDeliveryMethod.Network
+                .Host = sServidor,
+                .Port = iPuerto,
+                .EnableSsl = bSSL,
+                .UseDefaultCredentials = False,
+                .DeliveryMethod = SmtpDeliveryMethod.Network
             }
             ServicePointManager.SecurityProtocol = CType(3072, SecurityProtocolType)
-            Servidor.Credentials = New NetworkCredential("siat@mx.gt.com", "mndwlbkdqkqdpbrk")
-
+            Servidor.Credentials = New NetworkCredential(sCorreo, sContraseña)
             Servidor.Send(correo)
             bEnviado = True
+
+            If archivos IsNot Nothing Then
+                archivos = Nothing
+            End If
         Catch e As Exception
             MsgBox("Error al enviar mensaje: " & e.Message, MsgBoxStyle.Critical, "Error")
         End Try

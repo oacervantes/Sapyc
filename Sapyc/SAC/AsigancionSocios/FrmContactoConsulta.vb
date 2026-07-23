@@ -1,4 +1,6 @@
-﻿Public Class FrmContactoConsulta
+﻿Imports System.IO
+
+Public Class FrmContactoConsulta
 
     Private ds As New DataSet
     Private bsPro, bsFun, bsAcc, bsCli, bsSer As New BindingSource
@@ -15,6 +17,7 @@
     Private dtContactoInicial As New DataTable
     Private dtComoSeEntero, dtMedioContacto, dtAcercamiento As New DataTable
     Private dtDomicilio, dtPaisDomicilio, dtColoniasDomicilio, dtMunicipiosDomicilio, dtEstadosDomicilio As New DataTable
+    Private dtAnexos As New DataTable
     Private dtDatGrals, dtBolsaValores, dtEntidadReg, dtNormatividad, dtPais, dtPaisGT, dtPaisResidencia, dtTipoEntidad, dtModalidades, dtIdiomas, dtOficinas, dtDivisiones, dtSocios, dtOfGt As DataTable
     Private dtIndustria, dtSubSector, dtSubNivel As DataTable
 
@@ -23,6 +26,8 @@
     Private sInd, sSS, sGTI As String
     Private iOpcionFun, iOpcionAcc, idIdioma, idPais, idPaisTenedora, idPaisGT, idPaisDom As Integer
     Private sCveInd, sCveSS, sCveGTI, sPaisDom, sNombreCliente, sCorreoSolicito, sNombreSolicito As String
+
+
     Private bOtros = False, bRefGTI = False, bCargaInfo As Boolean = False
     Private sCorreos(), sCuentaCorreo As String
 
@@ -68,6 +73,10 @@
 
         ListarDomicilio()
         If dtDomicilio Is Nothing Then Exit Sub
+
+        '============================== ANEXOS ==============================
+        ListarArchivosAnexos()
+
         '============================== DATOS GENERALES ==============================
 
         ListarBolsaValores()
@@ -97,7 +106,7 @@
         ListarCorreosSolicitud()
     End Sub
     Private Sub BtnAutorizar_Click(sender As Object, e As EventArgs) Handles btnAutorizar.Click
-        If MsgBox("Se autorizará la solicitud de asignación de socio para el cliente prospecto, ¿Desea continuar?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, My.Settings.NOM_SYS) = MsgBoxResult.Yes Then
+        If MsgBox("Se validará la solicitud de asignación de socio para el cliente prospecto, ¿Desea continuar?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, My.Settings.NOM_SYS) = MsgBoxResult.Yes Then
             AutorizarSolicitudSAC(idSAC, idPropuesta, sCveSocio)
 
             Dim Dr() As DataRow
@@ -131,11 +140,11 @@
         Dim sMotivoRechazo As String = txtMotivoRechazo.Text.Trim
 
         If sMotivoRechazo = "" Then
-            MsgBox("Al solicitar una reasignación de socio, debe proporcionar un motivo.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
+            MsgBox("Al solicitar una reconsideración de socio, debe proporcionar un motivo.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
             Exit Sub
         End If
 
-        If MsgBox("Se generará la solicitud de reasignación del socio para el cliente prospecto, ¿Desea continuar?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, My.Settings.NOM_SYS) = MsgBoxResult.Yes Then
+        If MsgBox("Se generará la solicitud de reconsideración del socio para el cliente prospecto, ¿Desea continuar?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, My.Settings.NOM_SYS) = MsgBoxResult.Yes Then
             RechazarSolicitudSAC(idSAC, idPropuesta, sMotivoRechazo)
 
             Dim Dr() As DataRow
@@ -147,10 +156,10 @@
 
                 EnvioCorreoRechazoAsignacion()
             Else
-                MsgBox("Por el momento no es posible enviar el correo de notificación de reasignación de socio.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
+                MsgBox("Por el momento no es posible enviar el correo de solicitud de reconsideración de socio.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
             End If
 
-            MsgBox("La solicitud de reasignación de socio se ha generado y enviado correctamente.", MsgBoxStyle.Information, My.Settings.NOM_SYS)
+            MsgBox("La solicitud de reconsideración de socio se ha generado y enviado correctamente.", MsgBoxStyle.Information, My.Settings.NOM_SYS)
             DialogResult = DialogResult.OK
         End If
     End Sub
@@ -158,7 +167,7 @@
         DialogResult = DialogResult.OK
     End Sub
 
-    Private Sub LnkSecciones(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lnkDatosGenerales.LinkClicked, lnkContactoInicial.LinkClicked, lnkAcercamiento.LinkClicked, lnkDireccion.LinkClicked
+    Private Sub LnkSecciones(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lnkDatosGenerales.LinkClicked, lnkContactoInicial.LinkClicked, lnkAcercamiento.LinkClicked, lnkDireccion.LinkClicked, lnkAnexos.LinkClicked
         For Each obj As Object In Controls
             If obj.GetType.Name = "Panel" Then
                 If DirectCast(obj, Panel).Name = "panMenu" Then
@@ -183,6 +192,8 @@
             Case 4
                 panDireccion.Visible = True
 
+            Case 5
+                panAnexos.Visible = True
         End Select
     End Sub
 
@@ -293,6 +304,7 @@
                 .subAddParameter("@cStatus", "T", SqlDbType.Char, ParameterDirection.Input)
                 .subAddParameter("@sTipoCte", sTipoCte, SqlDbType.Char, ParameterDirection.Input)
                 .subAddParameter("@idPeriodo", iPeriodoFirma, SqlDbType.Int, ParameterDirection.Input)
+                .subAddParameter("@sUsuario", sCveSocioEnc, SqlDbType.VarChar, ParameterDirection.Input)
 
                 .funExecuteSP("paSolicitudesSAC")
             End With
@@ -347,14 +359,14 @@
         Dim sMensaje As String
 
         Try
-            Dim sCorreos = "Octavio.A.Cervantes@mx.gt.com; Mario.Rodriguez@mx.gt.com"
-            'Dim sCorreos = sCorreoSocio
+            ' Dim sCorreos = "Octavio.A.Cervantes@mx.gt.com; Mario.Rodriguez@mx.gt.com"
+            Dim sCorreos = sCorreoSocio
             Dim sCorreo As String() = sCorreos.Split(";")
             Dim sCorreoCopia As String() = sCorreoSolicito.Split(";")
 
             sMensaje = "<html><head></head><body>" &
             "<img src='cid:imagen1' alt='Salles, Sainz - Grant Thornton' style='width:300px;height:auto;'>" &
-            "<h1 style=""height: 50px; background: #4f2d7f; font-family: Calibri, Arial; color: #FFF; padding-right: 30px; text-align: center;"">AUTORIZACIÓN DE SOCIO</h1>" & vbNewLine & vbNewLine & vbNewLine &
+            "<h1 style=""height: 50px; background: #4f2d7f; font-family: Calibri, Arial; color: #FFF; padding-right: 30px; text-align: center;"">VALIDACIÓN DE SOCIO</h1>" & vbNewLine & vbNewLine & vbNewLine &
             "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 20px; color: #4f2d7f; margin-left: 25px; margin-top: 20px; padding: 15px;"">Estimado(a) " & sNombreSocio & ", </p> " & vbNewLine & vbNewLine &
             "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 16px; margin-left: 25px; margin-top: 20px; padding: 15px;"">Por medio del presente, se le notifica que ha sido asignado(a) por parte de la Dirección General para liderar la preparación y presentación de la propuesta de servicio para el siguiente cliente prospecto:</p> " & vbNewLine & vbNewLine &
             "<table style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">" & vbNewLine &
@@ -366,7 +378,7 @@
             "<p style=""margin-left: 20px; font-style: italic; font-family: Arial; font-size: 12px;"">Este es un correo automático, favor de no responder a esta cuenta.</p>" & vbNewLine &
             "</body></html>"
 
-            EnviarCorreosHTML(sCorreo, sMensaje, "Asignación para Elaboración y Presentación de Propuesta de Servicio", "A", Nothing)
+            EnviarCorreosHTML(sCorreo, sMensaje, "Asignación para Elaboración y Presentación de Propuesta de Servicio", "A", Nothing, sCorreoCopia)
         Catch ex As Exception
             MsgBox("No ha sido posible enviar el correo debido a fallas con el servidor de correo.", MsgBoxStyle.Exclamation, "SIAT")
         End Try
@@ -376,26 +388,26 @@
         Dim sMensaje As String
 
         Try
-            Dim sCorreos = "Octavio.A.Cervantes@mx.gt.com; Mario.Rodriguez@mx.gt.com"
-            'Dim sCorreos = sCorreoSolicito
+            'Dim sCorreos = "Octavio.A.Cervantes@mx.gt.com; Mario.Rodriguez@mx.gt.com"
+            Dim sCorreos = sCorreoSolicito
             Dim sCorreo As String() = sCorreos.Split(";")
 
             sMensaje = "<html><head></head><body>" &
             "<img src='cid:imagen1' alt='Salles, Sainz - Grant Thornton' style='width:300px;height:auto;'>" &
-            "<h1 style=""height: 50px; background: #4f2d7f; font-family: Calibri, Arial; color: #FFF; padding-right: 30px; text-align: center;"">REASIGNACIÓN DE SOCIO</h1>" & vbNewLine & vbNewLine & vbNewLine &
+            "<h1 style=""height: 50px; background: #4f2d7f; font-family: Calibri, Arial; color: #FFF; padding-right: 30px; text-align: center;"">SOLICITUD DE RECONSIDERACIÓN DE ASIGNACIÓN</h1>" & vbNewLine & vbNewLine & vbNewLine &
             "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 20px; color: #4f2d7f; margin-left: 25px; margin-top: 20px; padding: 15px;"">Estimado(a): " & sNombreSolicito.TrimEnd(";") & ", </p> " & vbNewLine & vbNewLine &
-            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 16px; margin-left: 25px; margin-top: 20px; padding: 15px;"">Por medio del presente, se le informa que el socio encargado ha solicitado la reasignación de socio para la propuesta del Cliente Prospecto.</p> " & vbNewLine & vbNewLine &
+            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 16px; margin-left: 25px; margin-top: 20px; padding: 15px;"">Por medio del presente, se le informa que el socio encargado ha solicitado una reconsideración de asignación de socio para la propuesta del Cliente Prospecto.</p> " & vbNewLine & vbNewLine &
             "<table style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">" & vbNewLine &
             "<tr><td>Nombre del Prospecto:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & txtRazonSocial.Text.ToString() & "</b></td></tr>" & vbNewLine &
             "<tr><td>Servicio:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & sServicio & "</b></td></tr>" & vbNewLine &
-            "<tr><td>Motivo de solicitud de reasignación:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & txtMotivoRechazo.Text.ToString() & "</b></td></tr>" & vbNewLine &
+            "<tr><td>Motivo de solicitud de reconsideración:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & txtMotivoRechazo.Text.ToString() & "</b></td></tr>" & vbNewLine &
             "</table>" & vbNewLine &
-            "<p style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">Para realizar la reasignación, favor de ingresar al sistema SAPYC > Asignar Cliente Prospecto." & vbNewLine &
+            "<p style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">Para aplicar la solicitud de reconsideración, favor de ingresar al sistema SAPYC > Asignar Cliente Prospecto." & vbNewLine &
             "<hr>" &
             "<p style=""margin-left: 20px; font-style: italic; font-family: Arial; font-size: 12px;"">Este es un correo automático, favor de no responder a esta cuenta.</p>" & vbNewLine &
             "</body></html>"
 
-            EnviarCorreosHTML(sCorreo, sMensaje, "Reasignación de Socio")
+            EnviarCorreosHTML(sCorreo, sMensaje, "Solicitud de Reconsideración de Asignación de Socio")
         Catch ex As Exception
             MsgBox("No ha sido posible enviar el correo debido a fallas con el servidor de correo.", MsgBoxStyle.Exclamation, "SIAT")
         End Try
@@ -705,14 +717,14 @@
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsLocal
+                With clsDatos
                     .subClearParameters()
                     .subAddParameter("@iTipo", 17, SqlDbType.Int, ParameterDirection.Input)
                     .subAddParameter("@sTipoUsuario", "S", SqlDbType.VarChar, ParameterDirection.Input)
                     .subAddParameter("@sUsuario", sCveSocioEnc, SqlDbType.VarChar, ParameterDirection.Input)
                 End With
 
-                .Add(clsLocal.funExecuteSPDataTable("paConsultaTrabajoRecurrente", sTabla))
+                .Add(clsDatos.funExecuteSPDataTable("paConsultaTrabajoRecurrente", sTabla))
 
                 dtOficinas = .Item(sTabla)
             End With
@@ -733,14 +745,14 @@
             With ds.Tables
                 LimpiarConsultaTabla(ds.Tables, sTabla)
 
-                With clsLocal
+                With clsDatos
                     .subClearParameters()
                     .subAddParameter("@iTipo", 18, SqlDbType.Int, ParameterDirection.Input)
                     .subAddParameter("@sTipoUsuario", "S", SqlDbType.VarChar, ParameterDirection.Input)
                     .subAddParameter("@sUsuario", sCveSocioEnc, SqlDbType.VarChar, ParameterDirection.Input)
                 End With
 
-                .Add(clsLocal.funExecuteSPDataTable("paConsultaTrabajoRecurrente", sTabla))
+                .Add(clsDatos.funExecuteSPDataTable("paConsultaTrabajoRecurrente", sTabla))
 
                 dtDivisiones = .Item(sTabla)
             End With
@@ -900,6 +912,8 @@
                 txtGerenteGTI.Text = dtDatosGenerales.Rows(0).Item("sGerenteRefGTI").ToString
                 txtCorreoGerenteGTI.Text = dtDatosGenerales.Rows(0).Item("sCorreoGerenteRefGTI").ToString
                 txtEstadoGTI.Text = dtDatosGenerales.Rows(0).Item("sEstadoRefGTI").ToString
+                txtOperacion.Text = dtDatosGenerales.Rows(0).Item("sOperacionEmpresa").ToString
+
             End If
         Catch ex As Exception
             InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarDatosGenerales()")
@@ -1292,6 +1306,58 @@
             InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarDomicilio()")
             MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
             dtDomicilio = Nothing
+        End Try
+    End Sub
+
+#End Region
+
+#Region "ANEXOS"
+
+    Private Sub BtnVerAnexo_Click(sender As Object, e As EventArgs) Handles btnVerAnexo.Click
+        Try
+
+            If File.Exists("\\GTMEXVTS32\APLICA\SAPYC\ANEXOS\" & idSAC & "-" & txtNombreAnexo.Text & txtExtension.Text) Then
+                Process.Start("\\GTMEXVTS32\APLICA\SAPYC\ANEXOS\" & idSAC & "-" & txtNombreAnexo.Text & txtExtension.Text & " ")
+            Else
+                Process.Start(idSAC & "-" & txtNombreAnexo.Text & txtExtension.Text)
+            End If
+
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
+        End Try
+    End Sub
+
+    Private Sub ListarArchivosAnexos()
+
+        Try
+            Dim sTabla As String = "tbAnexos"
+
+            With ds.Tables
+                LimpiarConsultaTabla(ds.Tables, sTabla)
+
+                With clsLocal
+                    .subClearParameters()
+                    .subAddParameter("@iOpcion", 20, SqlDbType.Int, ParameterDirection.Input)
+                    .subAddParameter("@idSAC", idSAC, SqlDbType.VarChar, ParameterDirection.Input)
+                End With
+
+                .Add(clsLocal.funExecuteSPDataTable("paSolicitudesSAC", sTabla))
+
+                dtAnexos = .Item(sTabla)
+            End With
+
+            If dtAnexos.Rows.Count > 0 Then
+                txtNombreAnexo.Text = dtAnexos.Rows(0).Item("sNombAnexo")
+                txtExtension.Text = dtAnexos.Rows(0).Item("sExtAnexo")
+            Else
+                txtNombreAnexo.Text = ""
+                txtExtension.Text = ""
+            End If
+
+        Catch ex As Exception
+            InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarArchivosAnexos()")
+            MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
+            dtProspectos = Nothing
         End Try
     End Sub
 

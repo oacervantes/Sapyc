@@ -13,6 +13,23 @@
 
         ListarSolicitudes()
     End Sub
+    Private Sub BtnExportar_Click(sender As Object, e As EventArgs) Handles btnExportar.Click
+        Dim dlg As New dlgExcel
+
+        Try
+            If MsgBox("¿Desea exportar la información a Excel?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "Envío Excel") = MsgBoxResult.Yes Then
+                dlg.txtArchivo.Focus()
+                dlg.txtArchivo.Text = "Seguimiento de solicitudes de prospecto"
+                If dlg.ShowDialog = Windows.Forms.DialogResult.OK Then
+                    ExportarSeguimientoSolicitudesSAC(gridProspectos, dlg.txtDirectorio.Text, dlg.txtArchivo.Text)
+                Else
+                    Exit Sub
+                End If
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
+        End Try
+    End Sub
     Private Sub BtnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
         Close()
     End Sub
@@ -111,6 +128,7 @@
         End Try
     End Sub
     Private Sub FormatoGrid()
+        gridProspectos.Columns("TIPO").Visible = False
         gridProspectos.Columns("idPropuesta").Visible = False
         gridProspectos.Columns("sCveOfi").Visible = False
         gridProspectos.Columns("sCveArea").Visible = False

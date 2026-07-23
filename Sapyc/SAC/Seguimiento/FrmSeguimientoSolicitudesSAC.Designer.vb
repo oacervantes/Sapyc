@@ -40,6 +40,7 @@ Partial Class FrmSeguimientoSolicitudesSAC
         Me.panLinea = New System.Windows.Forms.Panel()
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.gridProspectos = New System.Windows.Forms.DataGridView()
+        Me.btnExportar = New System.Windows.Forms.Button()
         Me.panPrincipal.SuspendLayout()
         Me.panFiltro.SuspendLayout()
         CType(Me.gridProspectos, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -244,11 +245,23 @@ Partial Class FrmSeguimientoSolicitudesSAC
         Me.gridProspectos.Size = New System.Drawing.Size(1179, 485)
         Me.gridProspectos.TabIndex = 5
         '
+        'btnExportar
+        '
+        Me.btnExportar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnExportar.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnExportar.Location = New System.Drawing.Point(12, 675)
+        Me.btnExportar.Name = "btnExportar"
+        Me.btnExportar.Size = New System.Drawing.Size(130, 25)
+        Me.btnExportar.TabIndex = 7
+        Me.btnExportar.Text = "Exportar"
+        Me.btnExportar.UseVisualStyleBackColor = True
+        '
         'FrmSeguimientoSolicitudesSAC
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.ClientSize = New System.Drawing.Size(1203, 710)
+        Me.Controls.Add(Me.btnExportar)
         Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.panPrincipal)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
@@ -281,4 +294,5 @@ Partial Class FrmSeguimientoSolicitudesSAC
     Friend WithEvents rdSolicitudBG As RadioButton
     Friend WithEvents rdSolicitudCompleta As RadioButton
     Friend WithEvents rdSolicitudTodo As RadioButton
+    Friend WithEvents btnExportar As Button
 End Class

@@ -475,7 +475,6 @@ Module mdlExcelv2
     Private Sub nombreHoja(exc As SLDocument, sNombre As String)
         exc.RenameWorksheet(exc.GetCurrentWorksheetName, sNombre)
     End Sub
-
     Private Sub LlenarReporteTabla(exc As SLDocument, grid As DataGridView, fila As Integer, columna As Integer, colsInt() As Integer, colsDbl() As Integer, Optional colsOcu() As Integer = Nothing)
         Dim dt As New DataTable
 
@@ -521,7 +520,10 @@ Module mdlExcelv2
                                 dataRow(column.Name) = CDbl(row.Cells(column.Name).Value)
                             End If
                         Else
-                            dataRow(column.Name) = IIf(row.Cells(column.Name).Value = "", DBNull.Value, row.Cells(column.Name).Value)
+                            'dataRow(column.Name) = IIf(row.Cells(column.Name).Value = "", DBNull.Value, row.Cells(column.Name).Value)
+                            Dim cellValue As Object = row.Cells(column.Name).Value
+                            dataRow(column.Name) = If(cellValue Is Nothing OrElse cellValue Is DBNull.Value OrElse cellValue.ToString() = "", DBNull.Value, cellValue)
+
                         End If
                     End If
                 Next
@@ -903,5 +905,56 @@ Module mdlExcelv2
 
         Return sCol
     End Function
+
+    Private Sub FormatoColumnasFecha(exc As SLDocument, iFilaIni As Integer, iFilaFin As Integer, iCols() As Integer)
+        Dim sCol As String
+
+        styleCell.FormatCode = "dd/mm/yyyy"
+        styleCell.Fill.SetPatternType(Spreadsheet.PatternValues.Solid)
+        styleCell.Fill.SetPatternForegroundColor(blanco)
+        styleCell.SetHorizontalAlignment(Spreadsheet.HorizontalAlignmentValues.Left)
+        styleCell.SetVerticalAlignment(Spreadsheet.VerticalAlignmentValues.Center)
+
+        For c As Integer = 0 To iCols.Count - 1
+            sCol = ObtenerLetraColumna(iCols(c))
+            exc.SetCellStyle(sCol & iFilaIni, sCol & iFilaFin, styleCell)
+        Next
+    End Sub
+    Public Sub ExportarSeguimientoSolicitudesSAC(grid As DataGridView, sRutaArchivo As String, sNombreArchivo As String)
+        Dim exc As New SLDocument
+
+        '==================== RESUMEN ====================
+        nombreEmpresa(exc, "A1", "T2")
+        nombreReporte(exc, "A3", "T3", "SEGUIMIENTO DE SOLICITUDES DE PROSPECTOS")
+
+        nombreColumnas(exc, grid, 20)
+
+        nombreHoja(exc, "SEGUIMIENTO DE SOLICITUDES")
+        LlenarReporteTabla(exc, grid, 5, 1, {}, {})
+        FormatoColumnasTexto(exc, 5, grid.Rows.Count + 4, {1, 2, 3, 4, 5, 6, 7, 10, 11, 13, 15, 17, 18, 19, 20})
+        FormatoColumnasFecha(exc, 5, grid.Rows.Count + 4, {8, 9, 12, 14, 16})
+        MostrarTotal(exc, grid, 20)
+
+        exc.SetColumnWidth("A", 20)
+        exc.SetColumnWidth("B", 49)
+        exc.SetColumnWidth("C", "D", 20)
+        exc.SetColumnWidth("E", 49)
+        exc.SetColumnWidth("F", "G", 35)
+        exc.SetColumnWidth("H", "I", 20)
+        exc.SetColumnWidth("J", "K", 35)
+        exc.SetColumnWidth("L", 20)
+        exc.SetColumnWidth("M", 35)
+        exc.SetColumnWidth("N", 20)
+        exc.SetColumnWidth("O", 35)
+        exc.SetColumnWidth("P", 20)
+        exc.SetColumnWidth("Q", 35)
+        exc.SetColumnWidth("R", 20)
+        exc.SetColumnWidth("S", 49)
+        exc.SetColumnWidth("T", 20)
+
+        exc.SaveAs(sRutaArchivo & sNombreArchivo & ".xlsx")
+        MsgBox("La información se ha exportado correctamente.", MsgBoxStyle.Information, "SIAT")
+    End Sub
+
 
 End Module

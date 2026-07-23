@@ -43,6 +43,7 @@ Partial Class frmAutorizaOtroServicio
         Me.btnSalir = New System.Windows.Forms.Button()
         Me.btnRechaza = New System.Windows.Forms.Button()
         Me.btnAutoriza = New System.Windows.Forms.Button()
+        Me.txtSolicito = New System.Windows.Forms.TextBox()
         Me.panPrincipal.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -53,6 +54,7 @@ Partial Class frmAutorizaOtroServicio
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.panPrincipal.BackColor = System.Drawing.Color.White
         Me.panPrincipal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.panPrincipal.Controls.Add(Me.txtSolicito)
         Me.panPrincipal.Controls.Add(Me.lblIdSac)
         Me.panPrincipal.Controls.Add(Me.txtIdSac)
         Me.panPrincipal.Controls.Add(Me.lblMotivoRechazo)
@@ -195,11 +197,11 @@ Partial Class frmAutorizaOtroServicio
         'lblDescripcion
         '
         Me.lblDescripcion.AutoSize = True
-        Me.lblDescripcion.Location = New System.Drawing.Point(25, 209)
+        Me.lblDescripcion.Location = New System.Drawing.Point(226, 60)
         Me.lblDescripcion.Name = "lblDescripcion"
-        Me.lblDescripcion.Size = New System.Drawing.Size(84, 18)
+        Me.lblDescripcion.Size = New System.Drawing.Size(58, 18)
         Me.lblDescripcion.TabIndex = 17
-        Me.lblDescripcion.Text = "Descripción:"
+        Me.lblDescripcion.Text = "Solicito:"
         '
         'panLinea
         '
@@ -255,6 +257,14 @@ Partial Class frmAutorizaOtroServicio
         Me.btnAutoriza.Text = "Autoriza"
         Me.btnAutoriza.UseVisualStyleBackColor = True
         '
+        'txtSolicito
+        '
+        Me.txtSolicito.Location = New System.Drawing.Point(293, 53)
+        Me.txtSolicito.Name = "txtSolicito"
+        Me.txtSolicito.ReadOnly = True
+        Me.txtSolicito.Size = New System.Drawing.Size(507, 25)
+        Me.txtSolicito.TabIndex = 32
+        '
         'frmAutorizaOtroServicio
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -296,4 +306,5 @@ Partial Class frmAutorizaOtroServicio
     Friend WithEvents lblIdSac As Label
     Friend WithEvents txtIdSac As Label
     Friend WithEvents lblDivision As Label
+    Friend WithEvents txtSolicito As TextBox
 End Class

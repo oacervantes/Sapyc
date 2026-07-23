@@ -371,6 +371,8 @@
                 .subAddParameter("@sCveSocio", sCveSocio, SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@sCveSocioEnc", sCveSocioEnc, SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@sCveOfi", sCveOfiEnc, SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@sUsuario", sCveUsuario, SqlDbType.VarChar, ParameterDirection.Input)
+
 
                 .funExecuteSP("paDatosAsignacionSACPropuestas")
             End With
