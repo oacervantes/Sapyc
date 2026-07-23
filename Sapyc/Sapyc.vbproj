@@ -427,6 +427,12 @@
     <Compile Include="Modulos\FontsResolver.vb" />
     <Compile Include="Modulos\mdlMenus.vb" />
     <Compile Include="Modulos\mdlSAC.vb" />
+    <Compile Include="SAC\AsigancionSocios\dlgConsultaAsignacionRecurrente.Designer.vb">
+      <DependentUpon>dlgConsultaAsignacionRecurrente.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SAC\AsigancionSocios\dlgConsultaAsignacionRecurrente.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SAC\AsigancionSocios\DlgDetalleSolicitud.Designer.vb">
       <DependentUpon>DlgDetalleSolicitud.vb</DependentUpon>
     </Compile>
@@ -868,6 +874,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Independencia\Solicitudes.resx">
       <DependentUpon>Solicitudes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SAC\AsigancionSocios\dlgConsultaAsignacionRecurrente.resx">
+      <DependentUpon>dlgConsultaAsignacionRecurrente.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SAC\AsigancionSocios\DlgDetalleSolicitud.resx">
       <DependentUpon>DlgDetalleSolicitud.vb</DependentUpon>

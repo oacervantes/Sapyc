@@ -33,18 +33,22 @@ Partial Class DlgEnvioPropuesta
         Me.txtMotivo = New System.Windows.Forms.TextBox()
         Me.btnSalir = New System.Windows.Forms.Button()
         Me.btnEnviar = New System.Windows.Forms.Button()
+        Me.chkAvisoKardex = New System.Windows.Forms.CheckBox()
         Me.panFondo.SuspendLayout()
         Me.panPrincipal.SuspendLayout()
         Me.SuspendLayout()
         '
         'panFondo
         '
+        Me.panFondo.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.panFondo.BackColor = System.Drawing.Color.WhiteSmoke
         Me.panFondo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.panFondo.Controls.Add(Me.panPrincipal)
-        Me.panFondo.Location = New System.Drawing.Point(-1, 1)
+        Me.panFondo.Location = New System.Drawing.Point(0, 0)
         Me.panFondo.Name = "panFondo"
-        Me.panFondo.Size = New System.Drawing.Size(597, 281)
+        Me.panFondo.Size = New System.Drawing.Size(596, 314)
         Me.panFondo.TabIndex = 4
         '
         'panPrincipal
@@ -54,6 +58,7 @@ Partial Class DlgEnvioPropuesta
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.panPrincipal.BackColor = System.Drawing.Color.White
         Me.panPrincipal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.panPrincipal.Controls.Add(Me.chkAvisoKardex)
         Me.panPrincipal.Controls.Add(Me.txtServicio)
         Me.panPrincipal.Controls.Add(Me.panLinea)
         Me.panPrincipal.Controls.Add(Me.lblIdSac)
@@ -64,7 +69,7 @@ Partial Class DlgEnvioPropuesta
         Me.panPrincipal.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.panPrincipal.Location = New System.Drawing.Point(9, 10)
         Me.panPrincipal.Name = "panPrincipal"
-        Me.panPrincipal.Size = New System.Drawing.Size(576, 259)
+        Me.panPrincipal.Size = New System.Drawing.Size(575, 292)
         Me.panPrincipal.TabIndex = 0
         '
         'txtServicio
@@ -84,11 +89,12 @@ Partial Class DlgEnvioPropuesta
         Me.panLinea.BackColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(127, Byte), Integer))
         Me.panLinea.Location = New System.Drawing.Point(0, 46)
         Me.panLinea.Name = "panLinea"
-        Me.panLinea.Size = New System.Drawing.Size(576, 2)
+        Me.panLinea.Size = New System.Drawing.Size(575, 2)
         Me.panLinea.TabIndex = 3
         '
         'lblIdSac
         '
+        Me.lblIdSac.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblIdSac.AutoSize = True
         Me.lblIdSac.Font = New System.Drawing.Font("Calibri", 12.5!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblIdSac.ForeColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(127, Byte), Integer))
@@ -100,6 +106,7 @@ Partial Class DlgEnvioPropuesta
         '
         'txtIdSac
         '
+        Me.txtIdSac.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtIdSac.BackColor = System.Drawing.Color.WhiteSmoke
         Me.txtIdSac.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtIdSac.Font = New System.Drawing.Font("Calibri", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -127,26 +134,26 @@ Partial Class DlgEnvioPropuesta
         Me.lblMensaje.AutoSize = True
         Me.lblMensaje.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblMensaje.ForeColor = System.Drawing.Color.Black
-        Me.lblMensaje.Location = New System.Drawing.Point(11, 115)
+        Me.lblMensaje.Location = New System.Drawing.Point(11, 107)
         Me.lblMensaje.Margin = New System.Windows.Forms.Padding(0)
         Me.lblMensaje.Name = "lblMensaje"
-        Me.lblMensaje.Size = New System.Drawing.Size(399, 18)
+        Me.lblMensaje.Size = New System.Drawing.Size(330, 18)
         Me.lblMensaje.TabIndex = 5
-        Me.lblMensaje.Text = "Especifique el motivo de la asignación en caso de ser necesario:"
+        Me.lblMensaje.Text = "Especifique el motivo de la asignación de este socio:"
         '
         'txtMotivo
         '
-        Me.txtMotivo.Location = New System.Drawing.Point(11, 142)
+        Me.txtMotivo.Location = New System.Drawing.Point(11, 134)
         Me.txtMotivo.Multiline = True
         Me.txtMotivo.Name = "txtMotivo"
-        Me.txtMotivo.Size = New System.Drawing.Size(550, 91)
+        Me.txtMotivo.Size = New System.Drawing.Size(550, 116)
         Me.txtMotivo.TabIndex = 6
         '
         'btnSalir
         '
         Me.btnSalir.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnSalir.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSalir.Location = New System.Drawing.Point(447, 287)
+        Me.btnSalir.Location = New System.Drawing.Point(447, 320)
         Me.btnSalir.Name = "btnSalir"
         Me.btnSalir.Size = New System.Drawing.Size(135, 25)
         Me.btnSalir.TabIndex = 4
@@ -157,18 +164,28 @@ Partial Class DlgEnvioPropuesta
         '
         Me.btnEnviar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.btnEnviar.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnEnviar.Location = New System.Drawing.Point(9, 287)
+        Me.btnEnviar.Location = New System.Drawing.Point(9, 320)
         Me.btnEnviar.Name = "btnEnviar"
         Me.btnEnviar.Size = New System.Drawing.Size(135, 25)
         Me.btnEnviar.TabIndex = 3
         Me.btnEnviar.Text = "Enviar"
         Me.btnEnviar.UseVisualStyleBackColor = True
         '
+        'chkAvisoKardex
+        '
+        Me.chkAvisoKardex.AutoSize = True
+        Me.chkAvisoKardex.Location = New System.Drawing.Point(11, 256)
+        Me.chkAvisoKardex.Name = "chkAvisoKardex"
+        Me.chkAvisoKardex.Size = New System.Drawing.Size(304, 22)
+        Me.chkAvisoKardex.TabIndex = 7
+        Me.chkAvisoKardex.Text = "Enviar aviso a socio para completar su Kardex"
+        Me.chkAvisoKardex.UseVisualStyleBackColor = True
+        '
         'DlgEnvioPropuesta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(596, 320)
+        Me.ClientSize = New System.Drawing.Size(596, 353)
         Me.Controls.Add(Me.btnSalir)
         Me.Controls.Add(Me.panFondo)
         Me.Controls.Add(Me.btnEnviar)
@@ -196,4 +213,5 @@ Partial Class DlgEnvioPropuesta
     Friend WithEvents txtMotivo As TextBox
     Friend WithEvents btnSalir As Button
     Friend WithEvents btnEnviar As Button
+    Friend WithEvents chkAvisoKardex As CheckBox
 End Class

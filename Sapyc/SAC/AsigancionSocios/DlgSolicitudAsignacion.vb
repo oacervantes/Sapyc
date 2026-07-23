@@ -3,24 +3,23 @@
     Private ds As New DataSet()
     Private sNameRpt As String = "Selección de socios para asignar propuesta"
 
-    Private dtSocios, dtCISocios, dtPptoSocios, dtSocioEnc As New DataTable
+    Private dtSocios, dtCISocios, dtPptoSocios, dtSocioEnc, dtCorreosSolicitud As New DataTable
     Private tarjetaSeleccionada As TarjetaSocio2 = Nothing
     Private iPuntuacion = 0, iPosY = 10, iValorY As Integer = 340
 
     Private ListaTarjetas As New List(Of TarjetaSocio2)
     Private MiSeparador As SeparadorSocio
 
-    Private sCveSocio, sNombreSocio, sCorreoSocio As String
+    Public bRefGTI As Boolean
+    Private sCveSocio, sNombreSocio, sCorreoSocio, sCorreoSolicito, sCorreoSolicitante As String
     Private sNombreSocioEnc, sCorreoSocioEnc, sCveOfiEnc, sCveAreaEnc As String
     Private dIngreso, dMeta, dRecurrente As Decimal
 
     Public idSac, idPropuesta, idServicio, idIdioma, idMarco As Integer
-    Public sCveOfi, sCveArea, sOficinaEnc, sDivisionEnc, sNombreCte, sCveInd, sServicio, sCveSocioEnc, sSocioEncargado, sCorreoEncargado, sUsuario, sNombre, sCorreo As String
-
+    Public sCveOfi, sCveArea, sOficinaEnc, sDivisionEnc, sNombreCte, sTipoCte, sStatus, sCveInd, sServicio, sCveSocioEnc, sSocioEncargado, sCorreoEncargado, sUsuario, sNombre, sCorreo, sTipoPropuesta As String
     Private Sub DlgSolicitudAsignacion_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         lblProspecto.Text = $"{sNombreCte}"
         lblServicio.Text = $"{sServicio}"
-        ' txtSocioEncargado.Text = $"{sSocioEncargado}"
         txtOficina.Text = $"{sOficinaEnc}"
         txtDivision.Text = $"{sDivisionEnc}"
         txtIdSac.Text = $"{idSac}"
@@ -38,18 +37,29 @@
     End Sub
 
     Private Sub BtnDetalle_Click(sender As Object, e As EventArgs) Handles btnDetalle.Click
-        Dim dlg As New FrmContactoConsulta With {
-            .idSAC = idSac,
-            .idPropuesta = idPropuesta,
-            .iConsulta = True,
-            .sOficina = sOficinaEnc,
-            .sDivision = sDivisionEnc,
-            .idServicio = idServicio,
-            .sServicio = sServicio,
-            .sCveSocioEnc = sCveSocioEnc
-        }
+        If sTipoPropuesta = "NUEVA" Then
 
-        dlg.ShowDialog()
+            Dim dlg As New FrmContactoConsulta With {
+                .idSAC = idSac,
+                .idPropuesta = idPropuesta,
+                .iConsulta = True,
+                .sOficina = sOficinaEnc,
+                .sDivision = sDivisionEnc,
+                .idServicio = idServicio,
+                .sServicio = sServicio,
+                .sCveSocioEnc = sCveSocioEnc
+            }
+
+            dlg.ShowDialog()
+        ElseIf sTipoPropuesta = "RECURRENTE" Then
+
+            Dim dlg As New dlgConsultaAsignacionRecurrente With {
+                .idSac = idSac,
+                .idPropuesta = idPropuesta
+            }
+
+            dlg.ShowDialog()
+        End If
     End Sub
     Private Sub BtnEnviarAsignacion_Click(sender As Object, e As EventArgs) Handles btnEnviarAsignacion.Click
         If sCveSocio = "" Then
@@ -60,18 +70,33 @@
         Dim dlg As New DlgEnvioPropuesta With {
             .idSac = idSac,
             .sSocioEncargado = sSocioEncargado,
-            .idPropuesta = idPropuesta
+            .idPropuesta = idPropuesta,
+            .sCveSocio = sCveSocio,
+            .sNombreSocio = sNombreSocio,
+            .sCorreoSocio = sCorreoSocio
         }
 
         If iPuntuacion <> 4 Then
             If dlg.ShowDialog() = DialogResult.OK Then
-                EnviarAsignacion()
-                EnviarCorreoAviso()
+
+                If sStatus <> "D" Then
+                    EnviarAsignacion()
+                    EnviarCorreoAviso()
+                Else
+                    AsignarSocio()
+                End If
+
                 DialogResult = DialogResult.OK
             End If
         Else
             EnviarAsignacion()
-            EnviarCorreoAviso()
+
+            If sStatus <> "D" Then
+                EnviarCorreoAviso()
+            Else
+                AsignarSocio()
+            End If
+
             DialogResult = DialogResult.OK
         End If
 
@@ -96,6 +121,9 @@
 
     Private Sub LlenarTarjetas()
         panSocios.SuspendLayout()
+        'panSocios.Controls.Clear()
+
+        iPosY = 10
 
         For Each row As DataRow In dtSocios.Rows
 
@@ -113,7 +141,7 @@
                     .Servicio = row("sServicio").ToString(),
                     .Industrias = row("sIndustria").ToString(),
                     .Marcos = row("sNormatividad").ToString(),
-                    .Presupuesto = Presupuesto(row("CVEEMP").ToString()),
+                    .Presupuesto = Presupuesto(row("sCveOfi").ToString(), row("sCveArea").ToString(), row("CVEEMP").ToString()),
                     .Ingreso = dIngreso,
                     .Meta = dMeta,
                     .Recurrente = dRecurrente,
@@ -123,7 +151,6 @@
                 AddHandler card.CardClick, AddressOf OnSocioCardClick
                 ListaTarjetas.Add(card)
                 panSocios.Controls.Add(card)
-
             End If
 
         Next
@@ -134,6 +161,7 @@
         For Each row As DataRow In dtSocios.Rows
 
             If row("iPuntuacion") <> 4 Then
+
                 Dim card As New TarjetaSocio2() With {
                     .SocioId = row("CVEEMP").ToString(),
                     .Correo = row("CORREO").ToString(),
@@ -147,7 +175,7 @@
                     .Servicio = row("sServicio").ToString(),
                     .Industrias = row("sIndustria").ToString(),
                     .Marcos = row("sNormatividad").ToString(),
-                    .Presupuesto = Presupuesto(row("CVEEMP").ToString()),
+                    .Presupuesto = Presupuesto(row("sCveOfi").ToString(), row("sCveArea").ToString(), row("CVEEMP").ToString()),
                     .Ingreso = dIngreso,
                     .Meta = dMeta,
                     .Recurrente = dRecurrente,
@@ -155,6 +183,7 @@
                 }
 
                 AddHandler card.CardClick, AddressOf OnSocioCardClick
+
                 ListaTarjetas.Add(card)
                 panSocios.Controls.Add(card)
 
@@ -373,7 +402,6 @@
                 .subAddParameter("@sCveOfi", sCveOfiEnc, SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@sUsuario", sCveUsuario, SqlDbType.VarChar, ParameterDirection.Input)
 
-
                 .funExecuteSP("paDatosAsignacionSACPropuestas")
             End With
         Catch ex As Exception
@@ -393,7 +421,7 @@
             "<img src='cid:imagen1' alt='Salles, Sainz - Grant Thornton' style='width:300px;height:auto;'>" &
             "<h1 style=""height: 50px; background: #4f2d7f; font-family: Calibri, Arial; color: #FFF; padding-right: 30px; text-align: center;"">VALIDACIÓN DE SOCIO ASIGNADO</h1>" & vbNewLine & vbNewLine & vbNewLine &
             "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 20px; color: #4f2d7f; margin-left: 25px; margin-top: 20px; padding: 15px;"">Estimada/o: " & sNombreSocioEnc & ", </p> " & vbNewLine & vbNewLine &
-            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 16px; margin-left: 25px; margin-top: 20px; padding: 15px;"">Queremos informarle que se ha sido asignado el socio para ofrecer el servicio solicitado por el prospecto para su validación.</p> " & vbNewLine & vbNewLine &
+            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 16px; margin-left: 25px; margin-top: 20px; padding: 15px;"">Queremos informarle que ha sido asignado el socio para ofrecer el servicio solicitado por el prospecto para su validación.</p> " & vbNewLine & vbNewLine &
             "<table style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">" & vbNewLine &
             "<tr><td>Socio asignado:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & sNombreSocio & "</b></td></tr>" & vbNewLine &
             "<tr><td>Nombre del Prospecto:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & sNombreCte & "</b></td></tr>" & vbNewLine &
@@ -408,6 +436,82 @@
         Catch ex As Exception
             MsgBox("No ha sido posible enviar el correo debido a fallas con el servidor de correo.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
         End Try
+    End Sub
+    Private Sub EnvioCorreoAutorizarAsignacion() 'Este correo es para avisar al socio encargado de oficina, que se ha solicitado generar un folio con cobranza incompleta.
+        Dim sMensaje As String
+
+        Try
+            ' Dim sCorreos = "Octavio.A.Cervantes@mx.gt.com; Mario.Rodriguez@mx.gt.com"
+            Dim sCorreos = sCorreoSocio
+            Dim sCorreo As String() = sCorreos.Split(";")
+            Dim sCorreoCopia As String() = sCorreoSolicito.Split(";")
+
+            sMensaje = "<html><head></head><body>" &
+            "<img src='cid:imagen1' alt='Salles, Sainz - Grant Thornton' style='width:300px;height:auto;'>" &
+            "<h1 style=""height: 50px; background: #4f2d7f; font-family: Calibri, Arial; color: #FFF; padding-right: 30px; text-align: center;"">ASIGNACIÓN PARA ELABORACIÓN Y PRESENTACIÓN DE PROPUESTA DE SERVICIO</h1>" & vbNewLine & vbNewLine & vbNewLine &
+            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 20px; color: #4f2d7f; margin-left: 25px; margin-top: 20px; padding: 15px;"">Estimado(a) " & sNombreSocio & ", </p> " & vbNewLine & vbNewLine &
+            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 16px; margin-left: 25px; margin-top: 20px; padding: 15px;"">Por medio del presente, se le notifica que ha sido asignado(a) por parte de la Dirección General para liderar la preparación y presentación de la propuesta de servicio para el siguiente cliente prospecto:</p> " & vbNewLine & vbNewLine &
+            "<table style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">" & vbNewLine &
+            "<tr><td>Nombre del Prospecto:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & sNombreCte.ToString() & "</b></td></tr>" & vbNewLine &
+            "<tr><td>Servicio:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & sServicio & "</b></td></tr>" & vbNewLine &
+            "</table>" & vbNewLine &
+            "<p style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">Para revisar y continuar con la asignación, favor de ingresar al sistema SIAT > SAPYC > Clientes Asignados." & vbNewLine &
+            "<hr>" &
+            "<p style=""margin-left: 20px; font-style: italic; font-family: Arial; font-size: 12px;"">Este es un correo automático, favor de no responder a esta cuenta.</p>" & vbNewLine &
+            "</body></html>"
+
+            EnviarCorreosHTML(sCorreo, sMensaje, "Asignación para Elaboración y Presentación de Propuesta de Servicio", "A", Nothing, sCorreoCopia)
+        Catch ex As Exception
+            MsgBox("No ha sido posible enviar el correo debido a fallas con el servidor de correo.", MsgBoxStyle.Exclamation, "SIAT")
+        End Try
+
+    End Sub
+
+    Private Sub AutorizarSolicitudSAC(idSAC As Integer, idPropuesta As Integer, sCveSocio As String)
+        Try
+            With clsLocal
+                .subClearParameters()
+                .subAddParameter("@iOpcion", 12, SqlDbType.Int, ParameterDirection.Input)
+                .subAddParameter("@idSAC", idSAC, SqlDbType.Int, ParameterDirection.Input)
+                .subAddParameter("@idPropuesta", idPropuesta, SqlDbType.Int, ParameterDirection.Input)
+                .subAddParameter("@sCveSocio", sCveSocio, SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@cStatus", "T", SqlDbType.Char, ParameterDirection.Input)
+                .subAddParameter("@sTipoCte", sTipoCte, SqlDbType.Char, ParameterDirection.Input)
+                .subAddParameter("@idPeriodo", iPeriodoFirma, SqlDbType.Int, ParameterDirection.Input)
+                .subAddParameter("@sUsuario", sCveSocioEnc, SqlDbType.VarChar, ParameterDirection.Input)
+
+                .funExecuteSP("paSolicitudesSAC")
+            End With
+        Catch ex As Exception
+            InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "AutorizarSolicitudSAC()")
+            MsgBox("Hubo un problema al registrar la información del prospecto, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
+        End Try
+    End Sub
+    Private Sub AsignarSocio()
+        AutorizarSolicitudSAC(idSac, idPropuesta, sCveSocio)
+
+        Dim Dr() As DataRow
+        If dtCorreosSolicitud.Rows.Count > 0 Then
+            Dr = dtCorreosSolicitud.Select("sCvepersona = 'SD'")
+            sCorreoSolicito = Dr(0).Item("sCorreoPersona").ToString()
+
+            Dr = dtCorreosSolicitud.Select("sCvepersona = 'GD'")
+            sCorreoSolicito &= "; " & Dr(0).Item("sCorreoPersona").ToString()
+
+            Dr = dtCorreosSolicitud.Select("sCvepersona = 'SP'")
+            sCorreoSolicito &= "; " & Dr(0).Item("sCorreoPersona").ToString()
+
+            If bRefGTI Then
+                Dr = dtCorreosSolicitud.Select("sCvepersona = 'EG'")
+                sCorreoSolicito &= "; " & Dr(0).Item("sCorreoPersona").ToString()
+            End If
+
+            sCorreoSolicito &= "; " & sCorreoSolicitante
+
+            EnvioCorreoAutorizarAsignacion()
+        Else
+            MsgBox("Por el momento no es posible enviar el correo de notificación de reasignación de socio.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
+        End If
     End Sub
 
     Private Sub OnSocioCardClick(tarjetaActual As TarjetaSocio2)
@@ -460,8 +564,8 @@
 
         Return porcentaje
     End Function
-    Private Function Presupuesto(sCveSocio As String) As Decimal
-        Dim filas() As DataRow = dtPptoSocios.Select($"SOCIO = '{sCveSocio}'")
+    Private Function Presupuesto(sCveOfi As String, sCveArea As String, sCveSocio As String) As Decimal
+        Dim filas() As DataRow = dtPptoSocios.Select($"CVEOFI = '{sCveOfi}' AND CVEAREA = '{sCveArea}' AND SOCIO = '{sCveSocio}'")
 
         If filas.Length = 0 Then Return 0D
 
@@ -473,5 +577,12 @@
         Return porcentaje
     End Function
 
+    Private Function CumpleFiltro(row As DataRow, filtro As String) As Boolean
+        If String.IsNullOrWhiteSpace(filtro) Then Return True
+
+        Dim textoBusqueda As String = row("NOMBRE").ToString()
+
+        Return textoBusqueda.ToUpper().Contains(filtro.ToUpper())
+    End Function
 
 End Class
