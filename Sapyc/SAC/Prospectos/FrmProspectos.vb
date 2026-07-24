@@ -192,9 +192,9 @@ Public Class FrmProspectos
             With clsLocal
                 .subClearParameters()
                 .subAddParameter("@iOpcion", 2, SqlDbType.Int, ParameterDirection.Input)
-                .subAddParameter("@sUsuario", "1019", SqlDbType.VarChar, ParameterDirection.Input)
-                .subAddParameter("@sCorreoUsuario", "Tatiana.L.Lopez@mx.gt.com", SqlDbType.VarChar, ParameterDirection.Input)
-                .subAddParameter("@sNombreUsuario", "LOPEZ LOZANO TATIANA LIZBETH", SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@sUsuario", sCveUsuario, SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@sCorreoUsuario", sCorreoUsuario, SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@sNombreUsuario", sNombre, SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@idAsignacion", 0, SqlDbType.Int, ParameterDirection.Output)
 
                 .funExecuteSP("paSolicitudesSAC")

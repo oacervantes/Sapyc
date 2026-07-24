@@ -7,6 +7,7 @@
     Public clsDatosConINV As clsAccesoDatos
     Public clsDatosProp As clsAccesoDatos
     Public clsDatosSac As clsAccesoDatos
+    Friend clsDatosConUsr As clsAccesoDatos
 
     Public ds As New DataSet
 

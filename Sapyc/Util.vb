@@ -60,11 +60,11 @@ Module Util
     Public Usuario_Gpo As String
     Public Usuario_Sapyc As String
 
-    Public sServidor As String
-    Public sCorreo As String
-    Public sContraseña As String
-    Public iPuerto As Integer
-    Public bSSL As Boolean
+    Public sServidorC As String
+    Public sCorreoC As String
+    Public sContraseñaC As String
+    Public iPuertoC As Integer
+    Public bSSLC As Boolean
 
 
 
@@ -301,7 +301,7 @@ Module Util
 
         Try
             Dim correo As New MailMessage With {
-                .From = New MailAddress(sCorreo)
+                .From = New MailAddress(sCorreoC)
             }
 
             If cPrioridad = "A" Then
@@ -344,20 +344,66 @@ Module Util
 
             'Configuracion del servidor
             Dim Servidor As New SmtpClient With {
-                .Host = sServidor,
-                .Port = iPuerto,
-                .EnableSsl = bSSL,
+                .Host = sServidorC,
+                .Port = iPuertoC,
+                .EnableSsl = bSSLC,
                 .UseDefaultCredentials = False,
                 .DeliveryMethod = SmtpDeliveryMethod.Network
             }
             ServicePointManager.SecurityProtocol = CType(3072, SecurityProtocolType)
-            Servidor.Credentials = New NetworkCredential(sCorreo, sContraseña)
+            Servidor.Credentials = New NetworkCredential(sCorreoC, sContraseñaC)
             Servidor.Send(correo)
             bEnviado = True
 
             If archivos IsNot Nothing Then
                 archivos = Nothing
             End If
+        Catch e As Exception
+            MsgBox("Error al enviar mensaje: " & e.Message, MsgBoxStyle.Critical, "Error")
+        End Try
+
+        Return bEnviado
+    End Function
+    Public Function enviarCorreos(sCtasDestino() As String, sMensajeCorreo As String, sTitulo As String, Optional cPrioridad As Char = "N") As Boolean
+        Dim bEnviado As Boolean = False
+
+        If sCtasDestino.Count <= 0 Then
+            MsgBox("No se especificaron las cuentas de correo a las que se enviará el mensaje.", MsgBoxStyle.Exclamation, "Cuentas de correo faltantes")
+            Return False
+        End If
+
+        Try
+            Dim correo As New System.Net.Mail.MailMessage()
+            correo.From = New System.Net.Mail.MailAddress(sCorreo)
+
+            If cPrioridad = "A" Then
+                correo.Priority = MailPriority.High
+            ElseIf cPrioridad = "B" Then
+                correo.Priority = MailPriority.Low
+            Else
+                correo.Priority = MailPriority.Normal
+            End If
+
+            correo.Subject = sTitulo
+            For i = 0 To sCtasDestino.Count - 1
+                If sCtasDestino(i) <> " " Then
+                    correo.To.Add(sCtasDestino(i))
+                End If
+            Next
+            correo.Bcc.Add("siat@mx.gt.com")
+            correo.Body = sMensajeCorreo
+
+            'Configuracion del servidor
+            Dim Servidor As New System.Net.Mail.SmtpClient
+            Servidor.Host = sServidor
+            Servidor.Port = iPuerto
+            Servidor.EnableSsl = bSSL
+            Servidor.UseDefaultCredentials = False
+            Servidor.DeliveryMethod = SmtpDeliveryMethod.Network
+            System.Net.ServicePointManager.SecurityProtocol = CType(3072, SecurityProtocolType)
+            Servidor.Credentials = New System.Net.NetworkCredential(sCorreo, sContraseña)
+            Servidor.Send(correo)
+            bEnviado = True
         Catch e As Exception
             MsgBox("Error al enviar mensaje: " & e.Message, MsgBoxStyle.Critical, "Error")
         End Try

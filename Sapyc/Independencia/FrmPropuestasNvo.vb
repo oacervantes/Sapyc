@@ -2287,7 +2287,8 @@ Public Class FrmPropuestasNvo
             "<p style=""margin-left: 20px; font-style: italic; font-family: Arial; font-size: 12px;"">Este es un correo automático, favor de no responder a esta cuenta.</p>" & vbNewLine &
             "</body></html>"
 
-            EnviarCorreosHTML(sCorreo, sMensaje, "Propuestas Clientes - Sapyc" & " " & " " & sTipoSolicitud & " ")
+            EnviarCorreosHTML(sCorreo, sMensaje, "Propuestas Clientes - Sapyc" & " " & " " & sTipoSolicitud & " ", "A")
+
         Catch ex As Exception
             MsgBox("No ha sido posible enviar el correo debido a fallas con el servidor de correo.", MsgBoxStyle.Exclamation, "SIAT")
         End Try

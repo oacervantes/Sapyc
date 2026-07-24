@@ -12,6 +12,8 @@
             clsDatosConINV = New clsAccesoDatos("gtmexvts27\sql2016", "CONTROLINV", "Contabilidad", "Control2025%Porfis")
             clsDatosProp = New clsAccesoDatos("gtmexvts27\sql2016", "BDCTRL_PROPS", "Contabilidad", "Control2025%Porfis")
             clsDatosSac = New clsAccesoDatos("gtmexvts27\sql2016", "BDCTRL_SAC", "Contabilidad", "Control2025%Porfis")
+            clsDatosConUsr = New clsAccesoDatos("gtmexvts27\sql2016", "BDCTRL_SAC", "Contabilidad", "Control2025%Porfis")
+            clsDatosConUsr = New clsAccesoDatos("gtmexvts27\sql2016", "CONUSRSYS", "Contabilidad", "Control2025%Porfis")
 
             Hide()
 
@@ -35,6 +37,14 @@
                     OcultarMenu(sTipo)
                 End If
 
+                '========== Carga inicial de datos de correo electrónico para envío de correos desde la cuenta SIAT. ==========
+                ListarDatosCorreo()
+
+                sServidorC = dtCorreos.Rows(0).Item("sServidor").ToString
+                sCorreoC = dtCorreos.Rows(0).Item("sCorreo").ToString
+                sContraseñaC = dtCorreos.Rows(0).Item("sContraseña").ToString
+                iPuertoC = CInt(dtCorreos.Rows(0).Item("iPuerto").ToString)
+                bSSLC = CBool(dtCorreos.Rows(0).Item("bSSL").ToString)
 
                 Text = "Clientes Prospectos - Bienvenido(a): " & sNombre
                 WindowState = FormWindowState.Maximized
@@ -368,6 +378,26 @@
         Dim frm As New FrmSeguimientoSolicitudesSAC
 
         AbrirPantalla(frm, "FrmSeguimientoSolicitudesSAC")
+    End Sub
+    Private Sub ListarDatosCorreo()
+        Try
+            With ds.Tables
+                With clsDatosConUsr
+                    .subClearParameters()
+                    .subAddParameter("@iOpcion", 1, SqlDbType.Int, ParameterDirection.Input)
+                End With
+
+                If .Contains("paCorreosSistema") Then
+                    .Remove("paCorreosSistema")
+                End If
+
+                .Add(clsDatosConUsr.funExecuteSPDataTable("paCorreosSistema"))
+
+                dtCorreos = .Item("paCorreosSistema")
+            End With
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
+        End Try
     End Sub
 
 End Class
