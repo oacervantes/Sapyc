@@ -247,12 +247,12 @@ Partial Class FrmSeguimientoSolicitudesSAC
         '
         'btnExportar
         '
-        Me.btnExportar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnExportar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.btnExportar.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnExportar.Location = New System.Drawing.Point(12, 675)
         Me.btnExportar.Name = "btnExportar"
         Me.btnExportar.Size = New System.Drawing.Size(130, 25)
-        Me.btnExportar.TabIndex = 7
+        Me.btnExportar.TabIndex = 6
         Me.btnExportar.Text = "Exportar"
         Me.btnExportar.UseVisualStyleBackColor = True
         '

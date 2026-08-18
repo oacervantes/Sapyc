@@ -160,6 +160,8 @@
         ConfigurarColumnasGrid(gridProspectos, "sNombreUsuario", "GENERÓ LA SOLICITUD", 250, 1, False)
         ConfigurarColumnasGrid(gridProspectos, "dFechaAlta", "FECHA DE ALTA", 150, 1, False)
 
+        ConfigurarColumnasGrid(gridProspectos, "sSocioPrevio", "SOCIO ASIGNADO AL INICIO", 250, 1, False)
+        ConfigurarColumnasGrid(gridProspectos, "sMotivoReasigna", "MOTIVO SOLICITUD DE RECONSIDERACIÓN", 250, 1, False)
         ConfigurarColumnasGrid(gridProspectos, "sSocioAsignado", "SOCIO ASIGNADO", 250, 1, False)
         ConfigurarColumnasGrid(gridProspectos, "dFechaEnvioAsigna", "FECHA DE ASIGNACIÓN", 150, 1, False)
 
