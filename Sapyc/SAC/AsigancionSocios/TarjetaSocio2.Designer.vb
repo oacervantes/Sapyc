@@ -49,6 +49,7 @@ Partial Class TarjetaSocio2
         Me.tabDatos = New System.Windows.Forms.TableLayoutPanel()
         Me.lblDivision = New System.Windows.Forms.Label()
         Me.lblOficina = New System.Windows.Forms.Label()
+        Me.picSeleccion = New System.Windows.Forms.PictureBox()
         Me.txtPuntuacion = New System.Windows.Forms.TextBox()
         Me.txtCveOfi = New System.Windows.Forms.TextBox()
         Me.txtCveArea = New System.Windows.Forms.TextBox()
@@ -59,7 +60,6 @@ Partial Class TarjetaSocio2
         Me.Label5 = New System.Windows.Forms.Label()
         Me.txtRecurrentesPorArreglar = New System.Windows.Forms.Label()
         Me.lblAvisoAusencia = New System.Windows.Forms.Label()
-        Me.picSeleccion = New System.Windows.Forms.PictureBox()
         Me.lnkDetalle = New System.Windows.Forms.LinkLabel()
         Me.panHeader.SuspendLayout()
         Me.tabDatos.SuspendLayout()
@@ -382,6 +382,17 @@ Partial Class TarjetaSocio2
         Me.lblOficina.TabIndex = 24
         Me.lblOficina.Text = "[OFICINA_PERSONA]"
         '
+        'picSeleccion
+        '
+        Me.picSeleccion.Image = Global.Sapyc.My.Resources.Resources.check
+        Me.picSeleccion.Location = New System.Drawing.Point(16, 25)
+        Me.picSeleccion.Name = "picSeleccion"
+        Me.picSeleccion.Size = New System.Drawing.Size(32, 29)
+        Me.picSeleccion.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
+        Me.picSeleccion.TabIndex = 20
+        Me.picSeleccion.TabStop = False
+        Me.picSeleccion.Visible = False
+        '
         'txtPuntuacion
         '
         Me.txtPuntuacion.Location = New System.Drawing.Point(133, 165)
@@ -489,17 +500,6 @@ Partial Class TarjetaSocio2
         Me.lblAvisoAusencia.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.lblAvisoAusencia.Visible = False
         '
-        'picSeleccion
-        '
-        Me.picSeleccion.Image = Global.Sapyc.My.Resources.Resources.check
-        Me.picSeleccion.Location = New System.Drawing.Point(16, 25)
-        Me.picSeleccion.Name = "picSeleccion"
-        Me.picSeleccion.Size = New System.Drawing.Size(32, 29)
-        Me.picSeleccion.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
-        Me.picSeleccion.TabIndex = 20
-        Me.picSeleccion.TabStop = False
-        Me.picSeleccion.Visible = False
-        '
         'lnkDetalle
         '
         Me.lnkDetalle.ActiveLinkColor = System.Drawing.Color.MediumOrchid
@@ -514,6 +514,7 @@ Partial Class TarjetaSocio2
         Me.lnkDetalle.TabIndex = 32
         Me.lnkDetalle.TabStop = True
         Me.lnkDetalle.Text = "Ver detalle"
+        Me.lnkDetalle.Visible = False
         Me.lnkDetalle.VisitedLinkColor = System.Drawing.Color.FromArgb(CType(CType(79, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(127, Byte), Integer))
         '
         'TarjetaSocio2

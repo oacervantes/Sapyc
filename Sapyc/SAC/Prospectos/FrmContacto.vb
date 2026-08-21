@@ -269,6 +269,10 @@ Public Class FrmContacto
                     Dr = dtCorreosSolicitud.Select("sCvepersona = 'BC'")
                     sNombreEncargado = Dr(0).Item("sTipoPersona").ToString()
                     sCorreoEncargado = Dr(0).Item("sCorreoPersona").ToString()
+
+                    Dr = dtCorreosSolicitud.Select("sCvepersona = 'GD'")
+                    sCorreoEncargado &= "; " & Dr(0).Item("sCorreoPersona").ToString()
+
                     EnvioCorreoBackGround(sCorreoEncargado)
                 Else
                     MsgBox("Por el momento no es posible enviar el correo de notificación de asignación de socio.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
@@ -1128,6 +1132,9 @@ Public Class FrmContacto
                 sNombreEncargado = Dr(0).Item("sTipoPersona").ToString()
                 sCorreoEncargado = Dr(0).Item("sCorreoPersona").ToString()
                 sOtroServicios = ObtenerTextoServicioOtros()
+
+                Dr = dtCorreosSolicitud.Select("sCvepersona = 'GD'")
+                sCorreoEncargado &= "; " & Dr(0).Item("sCorreoPersona").ToString()
 
                 'Dim sCorreo As String() = sMailSocio.Split(";")
                 EnvioCorreoGestionRiesgo(sCorreoEncargado)
