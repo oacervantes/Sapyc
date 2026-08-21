@@ -30,7 +30,7 @@ Public Class FrmContactoRecurrente
     Private dtTrabajos As New DataTable
 
     Private drServicios As DataRow
-    Private sInd, sSS, sGTI As String
+    Private sInd, sSS, sGTI, sServicios, sCorreoSolicitoRegistro As String
 
     Private iOpcionFun, iOpcionAcc, idIdioma, idPais, idPaisTenedora, idPaisGT, idPaisDom As Integer
     Private sCveInd, sCveSS, sCveGTI, sPaisDom As String
@@ -279,11 +279,33 @@ Public Class FrmContactoRecurrente
                     sNombreEncargado = Dr(0).Item("sTipoPersona").ToString()
                     sCorreoEncargado = Dr(0).Item("sCorreoPersona").ToString()
 
+                    Dr = dtCorreosSolicitud.Select("sCvepersona = 'GD'")
+                    sCorreoEncargado &= "; " & Dr(0).Item("sCorreoPersona").ToString()
+
                     EnvioCorreoBackGround(sCorreoEncargado)
 
                 Else
                     MsgBox("Por el momento no es posible enviar el correo de notificación de asignación de socio.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
                 End If
+
+                '============= Enviar correo Confirmacion de primer registro ==============
+
+                Dim Dr1() As DataRow
+                If dtCorreosSolicitud.Rows.Count > 0 Then
+                    Dr1 = dtCorreosSolicitud.Select("sCvepersona = 'SD'")
+                    sCorreoSolicitoRegistro = Dr1(0).Item("sCorreoPersona").ToString()
+
+                    Dr1 = dtCorreosSolicitud.Select("sCvepersona = 'GD'")
+                    sCorreoSolicitoRegistro &= "; " & Dr1(0).Item("sCorreoPersona").ToString()
+
+                    sCorreoSolicitoRegistro &= "; " & sCorreoUsuario
+
+                    EnvioCorreoConfirmacionRegistro()
+                Else
+                    MsgBox("Por el momento no es posible enviar el correo de confirmación de registro.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
+                End If
+
+
 
                 '============= Enviar correo a Gestión de Riesgos si se seleccionó el servicio 'OTROS' ==============
                 If bOtros Then
@@ -365,7 +387,7 @@ Public Class FrmContactoRecurrente
             End If
         End If
 
-            DialogResult = DialogResult.OK
+        DialogResult = DialogResult.OK
         Close()
     End Sub
 
@@ -1173,6 +1195,9 @@ Public Class FrmContactoRecurrente
                 sNombreEncargado = Dr(0).Item("sTipoPersona").ToString()
                 sCorreoEncargado = Dr(0).Item("sCorreoPersona").ToString()
                 sOtroServicios = ObtenerTextoServicioOtros()
+
+                Dr = dtCorreosSolicitud.Select("sCvepersona = 'GD'")
+                sCorreoEncargado &= "; " & Dr(0).Item("sCorreoPersona").ToString()
 
                 'Dim sCorreo As String() = sMailSocio.Split(";")
                 EnvioCorreoGestionRiesgo(sCorreoEncargado)
@@ -3394,6 +3419,47 @@ Public Class FrmContactoRecurrente
         Catch ex As Exception
             InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "EliminarAsignacionSAC()")
             MsgBox("Hubo un problema al registrar la información del prospecto, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
+        End Try
+    End Sub
+    Private Sub EnvioCorreoConfirmacionRegistro()
+        Dim sMensaje As String
+
+        For Each ser As DataRow In dtServicios.Rows
+            sServicios &= ser("DESCRIPCION").ToString & ", "
+        Next
+        sServicios = sServicios.TrimEnd(",")
+
+        Try
+            'Dim sCorreos = "Octavio.A.Cervantes@mx.gt.com; Mario.Rodriguez@mx.gt.com"
+            Dim sCorreos = sCorreoSolicitoRegistro
+            Dim sCorreo As String() = sCorreos.Split(";")
+
+            sMensaje = "<html><head></head><body>" &
+            "<img src='cid:imagen1' alt='Salles, Sainz - Grant Thornton' style='width:300px;height:auto;'>" &
+            "<h1 style=""height: 50px; background: #4f2d7f; font-family: Calibri, Arial; color: #FFF; padding-right: 30px; text-align: center;"">CORREO DE CONFIRMACIÓN DE REGISTRO</h1>" & vbNewLine & vbNewLine & vbNewLine &
+            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 20px; color: #4f2d7f; margin-left: 25px; margin-top: 20px; padding: 15px;"">Estimado(a) " & sNombreUsuario.ToUpper() & ": </p> " & vbNewLine & vbNewLine &
+            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 16px; margin-left: 25px; margin-top: 20px; padding: 15px;"">Por medio del presente le informamos, Su información ha sido registrada exitosamente, por lo que a partir de este momento la solicitud se encuentra en proceso de revisión por parte del equipo de Background check y una vez concluida, pasará a asignación por parte del Socio Director</p> " & vbNewLine & vbNewLine &
+            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 16px; margin-left: 25px; margin-top: 20px; padding: 15px;"">A continuación les compartimos los datos con los que se registró la solicitud: </p> " & vbNewLine & vbNewLine &
+            "<table style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">" & vbNewLine &
+            "<tr><td>Nombre del cliente prospecto:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & txtRazonSocial.Text.ToUpper.Trim() & "</b></td></tr>" & vbNewLine &
+            "<tr><td>RFC:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & txtRFC.Text.ToUpper.Trim() & " </b></td></tr>" & vbNewLine &
+            "<tr><td>Servicio solicitado:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & sServicios & " </b></td></tr>" & vbNewLine &
+            "<tr><td>Giro de la empresa:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & txtIndustria.Text & " </b></td></tr>" & vbNewLine &
+            "<tr><td>Nombre del contacto:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & txtContactoInicialNombre.Text & " </b></td></tr>" & vbNewLine &
+            "<tr><td>Teléfono de contacto:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & txtContactoInicialTelefono.Text & " </b></td></tr>" & vbNewLine &
+            "<tr><td>Fecha del primer contacto:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & txtContactoInicialFecha.Value.ToShortDateString & " </b></td></tr>" & vbNewLine &
+            "<tr><td>Persona que realizó la labor inicial de prospección y/o primer contacto:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & txtContactoInicialPrimerContacto.Text & " </b></td></tr>" & vbNewLine &
+            "</table>" & vbNewLine &
+                "</table>" & vbNewLine &
+            "<p style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">Para cualquier aclaración sobre el tema contactar a Tatiana.L.Lopez@mx.gt.com" & vbNewLine &
+            "<hr>" &
+            "<p style=""margin-left: 20px; font-style: italic; font-family: Arial; font-size: 12px;"">Este es un correo automático, favor de no responder a esta cuenta.</p>" & vbNewLine &
+            "</body></html>"
+
+            EnviarCorreosHTML(sCorreo, sMensaje, "CORREO DE CONFIRMACIÓN DE REGISTRO")
+
+        Catch ex As Exception
+            MsgBox("No ha sido posible enviar el correo debido a fallas con el servidor de correo.", MsgBoxStyle.Exclamation, "SIAT")
         End Try
     End Sub
 
