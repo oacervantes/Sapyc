@@ -14,7 +14,7 @@
         ListarSolicitudes()
     End Sub
     Private Sub BtnAsignar_Click(sender As Object, e As EventArgs) Handles btnAsignar.Click
-        Dim dlg As New DlgSolicitudAsignacion()
+        Dim dlg As New DlgSolicitudAsignacionSocio()
 
         If gridProspectos.CurrentRow IsNot Nothing Then
             Dim bActivo As Boolean = gridProspectos.CurrentRow.Cells("bStatus").Value
@@ -90,7 +90,7 @@
     End Sub
 
     Private Sub GridProspectos_DoubleClick(sender As Object, e As EventArgs) Handles gridProspectos.DoubleClick
-        Dim dlg As New DlgSolicitudAsignacion()
+        Dim dlg As New DlgSolicitudAsignacionSocio()
 
         If gridProspectos.CurrentRow IsNot Nothing Then
             Dim bActivo As Boolean = gridProspectos.CurrentRow.Cells("bStatus").Value

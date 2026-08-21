@@ -43,8 +43,11 @@ Partial Class FrmContacto
         Me.btnCerrar = New System.Windows.Forms.Button()
         Me.panDatosGenerales = New System.Windows.Forms.Panel()
         Me.gpBoxDatosDG = New System.Windows.Forms.GroupBox()
+        Me.lblMensajeOperacion = New System.Windows.Forms.Label()
         Me.gridClientesSAT = New System.Windows.Forms.DataGridView()
+        Me.txtOperacion = New System.Windows.Forms.TextBox()
         Me.cboEntidadMercantilNC = New System.Windows.Forms.ComboBox()
+        Me.lblOperacionEmpresa = New System.Windows.Forms.Label()
         Me.cboEntidadMercantilRS = New System.Windows.Forms.ComboBox()
         Me.lblPais = New System.Windows.Forms.Label()
         Me.cboTipoEntidad = New System.Windows.Forms.ComboBox()
@@ -263,9 +266,6 @@ Partial Class FrmContacto
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.Label16 = New System.Windows.Forms.Label()
-        Me.lblMensajeOperacion = New System.Windows.Forms.Label()
-        Me.txtOperacion = New System.Windows.Forms.TextBox()
-        Me.lblOperacionEmpresa = New System.Windows.Forms.Label()
         Me.panMenu.SuspendLayout()
         Me.panMensajesError.SuspendLayout()
         Me.panDatosGenerales.SuspendLayout()
@@ -315,7 +315,7 @@ Partial Class FrmContacto
         Me.panMenu.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold)
         Me.panMenu.Location = New System.Drawing.Point(0, 0)
         Me.panMenu.Name = "panMenu"
-        Me.panMenu.Size = New System.Drawing.Size(212, 744)
+        Me.panMenu.Size = New System.Drawing.Size(212, 740)
         Me.panMenu.TabIndex = 0
         '
         'lnkAnexos
@@ -343,7 +343,7 @@ Partial Class FrmContacto
         Me.panMensajesError.Controls.Add(Me.txtMensaje)
         Me.panMensajesError.Controls.Add(Me.lblTituloError)
         Me.panMensajesError.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.panMensajesError.Location = New System.Drawing.Point(0, 334)
+        Me.panMensajesError.Location = New System.Drawing.Point(0, 330)
         Me.panMensajesError.Name = "panMensajesError"
         Me.panMensajesError.Size = New System.Drawing.Size(210, 408)
         Me.panMensajesError.TabIndex = 28
@@ -588,6 +588,16 @@ Partial Class FrmContacto
         Me.gpBoxDatosDG.TabIndex = 3
         Me.gpBoxDatosDG.TabStop = False
         '
+        'lblMensajeOperacion
+        '
+        Me.lblMensajeOperacion.AutoSize = True
+        Me.lblMensajeOperacion.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Italic)
+        Me.lblMensajeOperacion.Location = New System.Drawing.Point(24, 377)
+        Me.lblMensajeOperacion.Name = "lblMensajeOperacion"
+        Me.lblMensajeOperacion.Size = New System.Drawing.Size(446, 18)
+        Me.lblMensajeOperacion.TabIndex = 37
+        Me.lblMensajeOperacion.Text = "Adicionar cualquier información que facilite la asignación de la empresa." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        '
         'gridClientesSAT
         '
         Me.gridClientesSAT.AllowUserToAddRows = False
@@ -610,6 +620,14 @@ Partial Class FrmContacto
         Me.gridClientesSAT.TabIndex = 4
         Me.gridClientesSAT.Visible = False
         '
+        'txtOperacion
+        '
+        Me.txtOperacion.Location = New System.Drawing.Point(21, 302)
+        Me.txtOperacion.Multiline = True
+        Me.txtOperacion.Name = "txtOperacion"
+        Me.txtOperacion.Size = New System.Drawing.Size(905, 66)
+        Me.txtOperacion.TabIndex = 36
+        '
         'cboEntidadMercantilNC
         '
         Me.cboEntidadMercantilNC.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
@@ -619,6 +637,16 @@ Partial Class FrmContacto
         Me.cboEntidadMercantilNC.Name = "cboEntidadMercantilNC"
         Me.cboEntidadMercantilNC.Size = New System.Drawing.Size(219, 26)
         Me.cboEntidadMercantilNC.TabIndex = 7
+        '
+        'lblOperacionEmpresa
+        '
+        Me.lblOperacionEmpresa.AutoSize = True
+        Me.lblOperacionEmpresa.Font = New System.Drawing.Font("Calibri", 11.0!)
+        Me.lblOperacionEmpresa.Location = New System.Drawing.Point(19, 281)
+        Me.lblOperacionEmpresa.Name = "lblOperacionEmpresa"
+        Me.lblOperacionEmpresa.Size = New System.Drawing.Size(173, 18)
+        Me.lblOperacionEmpresa.TabIndex = 35
+        Me.lblOperacionEmpresa.Text = "Operación de la empresa*:"
         '
         'cboEntidadMercantilRS
         '
@@ -2923,39 +2951,11 @@ Partial Class FrmContacto
         Me.Label16.TabIndex = 0
         Me.Label16.Text = "ANEXOS ADJUNTOS"
         '
-        'lblMensajeOperacion
-        '
-        Me.lblMensajeOperacion.AutoSize = True
-        Me.lblMensajeOperacion.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Italic)
-        Me.lblMensajeOperacion.Location = New System.Drawing.Point(24, 377)
-        Me.lblMensajeOperacion.Name = "lblMensajeOperacion"
-        Me.lblMensajeOperacion.Size = New System.Drawing.Size(446, 18)
-        Me.lblMensajeOperacion.TabIndex = 37
-        Me.lblMensajeOperacion.Text = "Adicionar cualquier información que facilite la asignación de la empresa." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
-        '
-        'txtOperacion
-        '
-        Me.txtOperacion.Location = New System.Drawing.Point(21, 302)
-        Me.txtOperacion.Multiline = True
-        Me.txtOperacion.Name = "txtOperacion"
-        Me.txtOperacion.Size = New System.Drawing.Size(905, 66)
-        Me.txtOperacion.TabIndex = 36
-        '
-        'lblOperacionEmpresa
-        '
-        Me.lblOperacionEmpresa.AutoSize = True
-        Me.lblOperacionEmpresa.Font = New System.Drawing.Font("Calibri", 11.0!)
-        Me.lblOperacionEmpresa.Location = New System.Drawing.Point(19, 281)
-        Me.lblOperacionEmpresa.Name = "lblOperacionEmpresa"
-        Me.lblOperacionEmpresa.Size = New System.Drawing.Size(173, 18)
-        Me.lblOperacionEmpresa.TabIndex = 35
-        Me.lblOperacionEmpresa.Text = "Operación de la empresa*:"
-        '
         'FrmContacto
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        Me.ClientSize = New System.Drawing.Size(1351, 744)
+        Me.ClientSize = New System.Drawing.Size(1347, 740)
         Me.ControlBox = False
         Me.Controls.Add(Me.btnEnviarAsiganacion)
         Me.Controls.Add(Me.btnCerrar)

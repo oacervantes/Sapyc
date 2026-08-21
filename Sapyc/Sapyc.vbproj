@@ -433,6 +433,12 @@
     <Compile Include="SAC\AsigancionSocios\dlgConsultaAsignacionRecurrente.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SAC\AsigancionSocios\DlgDetalleAusencia.Designer.vb">
+      <DependentUpon>DlgDetalleAusencia.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SAC\AsigancionSocios\DlgDetalleAusencia.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SAC\AsigancionSocios\DlgDetalleSolicitud.Designer.vb">
       <DependentUpon>DlgDetalleSolicitud.vb</DependentUpon>
     </Compile>
@@ -449,6 +455,12 @@
       <DependentUpon>DlgRechazoPropuesta.vb</DependentUpon>
     </Compile>
     <Compile Include="SAC\AsigancionSocios\DlgRechazoPropuesta.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SAC\AsigancionSocios\DlgSolicitudAsignacionSocio.Designer.vb">
+      <DependentUpon>DlgSolicitudAsignacionSocio.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SAC\AsigancionSocios\DlgSolicitudAsignacionSocio.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SAC\AsigancionSocios\FrmContactoConsulta.Designer.vb">
@@ -890,6 +902,9 @@
     <EmbeddedResource Include="SAC\AsigancionSocios\dlgConsultaAsignacionRecurrente.resx">
       <DependentUpon>dlgConsultaAsignacionRecurrente.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SAC\AsigancionSocios\DlgDetalleAusencia.resx">
+      <DependentUpon>DlgDetalleAusencia.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SAC\AsigancionSocios\DlgDetalleSolicitud.resx">
       <DependentUpon>DlgDetalleSolicitud.vb</DependentUpon>
     </EmbeddedResource>
@@ -898,6 +913,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SAC\AsigancionSocios\DlgRechazoPropuesta.resx">
       <DependentUpon>DlgRechazoPropuesta.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SAC\AsigancionSocios\DlgSolicitudAsignacionSocio.resx">
+      <DependentUpon>DlgSolicitudAsignacionSocio.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SAC\AsigancionSocios\FrmContactoConsulta.resx">
       <DependentUpon>FrmContactoConsulta.vb</DependentUpon>
@@ -1086,6 +1104,7 @@
     <None Include="Resources\usuario %281%29.png" />
     <None Include="Resources\usuario %282%29.png" />
     <None Include="Resources\check.png" />
+    <None Include="Resources\pregunta_azul.png" />
     <Content Include="siat.ico" />
   </ItemGroup>
   <ItemGroup />

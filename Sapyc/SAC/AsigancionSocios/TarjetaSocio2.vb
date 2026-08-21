@@ -6,9 +6,9 @@
 
     Private dtDatosSocio As New DataTable
 
-    Private sCveSocio As String
-
-    Public bSocioReq As Boolean = True
+    Private sCveSocio, sAvisoAusencia As String
+    Private idAusencia As Integer
+    Public bVisible = True, bSocioReq As Boolean = True
 
     Public Property SocioId As String
         Get
@@ -150,10 +150,40 @@
         End Set
     End Property
 
+    Public Property AvisoAusencia As String
+        Get
+            Return lblAvisoAusencia.Text
+        End Get
+        Set(value As String)
+            lblAvisoAusencia.Text = value
+        End Set
+    End Property
+    Public Property Ausencia As Integer
+        Get
+            Return idAusencia
+        End Get
+        Set(value As Integer)
+            idAusencia = value
+        End Set
+    End Property
+
+    Public Property Mostrar As Boolean
+        Get
+            Return bVisible
+        End Get
+        Set(value As Boolean)
+            bVisible = value
+        End Set
+    End Property
+
     Public Event CardClick(sender As TarjetaSocio2)
+    Public Event DetalleClick(sender As TarjetaSocio2)
 
     Private Sub BtnAsignacion_Click(sender As Object, e As EventArgs) Handles btnAsignacion.Click
         RaiseEvent CardClick(Me)
+    End Sub
+    Private Sub LnkDetalle_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lnkDetalle.LinkClicked
+        RaiseEvent DetalleClick(Me)
     End Sub
 
     Public Sub MostrarTextoConEtiquetas(rtb As RichTextBox, texto As String)
@@ -256,12 +286,17 @@
         picSeleccion.Visible = True
         btnAsignacion.Visible = False
     End Sub
+
     Public Sub OcultarSeleccion()
         lblSeleccion.Visible = True
         lblSeleccion.Text = "Socio por asignar"
         lblSeleccion.ForeColor = Color.DimGray
         picSeleccion.Visible = False
         btnAsignacion.Visible = True
+    End Sub
+
+    Public Sub MostrarAvisoAusencia()
+        lblAvisoAusencia.Visible = True
     End Sub
 
 End Class
