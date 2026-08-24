@@ -2206,9 +2206,9 @@ Partial Class FrmContactoRecurrente
         Me.lblAcercamientoMedioContacto.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblAcercamientoMedioContacto.Location = New System.Drawing.Point(45, 69)
         Me.lblAcercamientoMedioContacto.Name = "lblAcercamientoMedioContacto"
-        Me.lblAcercamientoMedioContacto.Size = New System.Drawing.Size(131, 18)
+        Me.lblAcercamientoMedioContacto.Size = New System.Drawing.Size(236, 18)
         Me.lblAcercamientoMedioContacto.TabIndex = 4
-        Me.lblAcercamientoMedioContacto.Text = "Medio de contacto*"
+        Me.lblAcercamientoMedioContacto.Text = "Medio de contacto con el prospecto*"
         '
         'txtAcercamientoContactoOtro
         '
@@ -2955,12 +2955,12 @@ Partial Class FrmContactoRecurrente
         Me.Controls.Add(Me.btnCancelaGeneral)
         Me.Controls.Add(Me.btnCerrar)
         Me.Controls.Add(Me.panMenu)
-        Me.Controls.Add(Me.panDatosGenerales)
-        Me.Controls.Add(Me.panTrabajos)
-        Me.Controls.Add(Me.panAnexos)
         Me.Controls.Add(Me.panAcercamiento)
         Me.Controls.Add(Me.panDireccion)
         Me.Controls.Add(Me.panContactoInicial)
+        Me.Controls.Add(Me.panDatosGenerales)
+        Me.Controls.Add(Me.panTrabajos)
+        Me.Controls.Add(Me.panAnexos)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "FrmContactoRecurrente"

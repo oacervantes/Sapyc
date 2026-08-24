@@ -315,7 +315,7 @@ Partial Class FrmContacto
         Me.panMenu.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold)
         Me.panMenu.Location = New System.Drawing.Point(0, 0)
         Me.panMenu.Name = "panMenu"
-        Me.panMenu.Size = New System.Drawing.Size(212, 740)
+        Me.panMenu.Size = New System.Drawing.Size(212, 829)
         Me.panMenu.TabIndex = 0
         '
         'lnkAnexos
@@ -343,7 +343,7 @@ Partial Class FrmContacto
         Me.panMensajesError.Controls.Add(Me.txtMensaje)
         Me.panMensajesError.Controls.Add(Me.lblTituloError)
         Me.panMensajesError.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.panMensajesError.Location = New System.Drawing.Point(0, 330)
+        Me.panMensajesError.Location = New System.Drawing.Point(0, 419)
         Me.panMensajesError.Name = "panMensajesError"
         Me.panMensajesError.Size = New System.Drawing.Size(210, 408)
         Me.panMensajesError.TabIndex = 28
@@ -491,7 +491,7 @@ Partial Class FrmContacto
         Me.btnCancelaGeneral.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.btnCancelaGeneral.Enabled = False
         Me.btnCancelaGeneral.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCancelaGeneral.Location = New System.Drawing.Point(494, 714)
+        Me.btnCancelaGeneral.Location = New System.Drawing.Point(494, 800)
         Me.btnCancelaGeneral.Name = "btnCancelaGeneral"
         Me.btnCancelaGeneral.Size = New System.Drawing.Size(130, 25)
         Me.btnCancelaGeneral.TabIndex = 4
@@ -503,7 +503,7 @@ Partial Class FrmContacto
         Me.btnGuardaGeneral.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.btnGuardaGeneral.Enabled = False
         Me.btnGuardaGeneral.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnGuardaGeneral.Location = New System.Drawing.Point(360, 713)
+        Me.btnGuardaGeneral.Location = New System.Drawing.Point(360, 799)
         Me.btnGuardaGeneral.Name = "btnGuardaGeneral"
         Me.btnGuardaGeneral.Size = New System.Drawing.Size(130, 25)
         Me.btnGuardaGeneral.TabIndex = 3
@@ -514,7 +514,7 @@ Partial Class FrmContacto
         '
         Me.btnCerrar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnCerrar.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCerrar.Location = New System.Drawing.Point(1211, 714)
+        Me.btnCerrar.Location = New System.Drawing.Point(1192, 800)
         Me.btnCerrar.Name = "btnCerrar"
         Me.btnCerrar.Size = New System.Drawing.Size(130, 25)
         Me.btnCerrar.TabIndex = 5
@@ -535,9 +535,9 @@ Partial Class FrmContacto
         Me.panDatosGenerales.Controls.Add(Me.panLinea)
         Me.panDatosGenerales.Controls.Add(Me.lblTituloDatosGenerales)
         Me.panDatosGenerales.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold)
-        Me.panDatosGenerales.Location = New System.Drawing.Point(212, 0)
+        Me.panDatosGenerales.Location = New System.Drawing.Point(212, -5)
         Me.panDatosGenerales.Name = "panDatosGenerales"
-        Me.panDatosGenerales.Size = New System.Drawing.Size(1139, 703)
+        Me.panDatosGenerales.Size = New System.Drawing.Size(1139, 800)
         Me.panDatosGenerales.TabIndex = 0
         Me.panDatosGenerales.Tag = "5"
         Me.panDatosGenerales.Visible = False
@@ -1981,7 +1981,7 @@ Partial Class FrmContacto
         '
         Me.btnHabilitar.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.btnHabilitar.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnHabilitar.Location = New System.Drawing.Point(224, 713)
+        Me.btnHabilitar.Location = New System.Drawing.Point(224, 799)
         Me.btnHabilitar.Name = "btnHabilitar"
         Me.btnHabilitar.Size = New System.Drawing.Size(130, 25)
         Me.btnHabilitar.TabIndex = 2
@@ -2000,9 +2000,9 @@ Partial Class FrmContacto
         Me.panContactoInicial.Controls.Add(Me.lblTituloCI)
         Me.panContactoInicial.Controls.Add(Me.panDatosContactoInicial)
         Me.panContactoInicial.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold)
-        Me.panContactoInicial.Location = New System.Drawing.Point(212, 0)
+        Me.panContactoInicial.Location = New System.Drawing.Point(212, -5)
         Me.panContactoInicial.Name = "panContactoInicial"
-        Me.panContactoInicial.Size = New System.Drawing.Size(1143, 703)
+        Me.panContactoInicial.Size = New System.Drawing.Size(1143, 800)
         Me.panContactoInicial.TabIndex = 0
         Me.panContactoInicial.Tag = "2"
         Me.panContactoInicial.Visible = False
@@ -2263,9 +2263,9 @@ Partial Class FrmContacto
         Me.panAcercamiento.Controls.Add(Me.Panel2)
         Me.panAcercamiento.Controls.Add(Me.lblTituloAcercamiento)
         Me.panAcercamiento.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.panAcercamiento.Location = New System.Drawing.Point(212, 0)
+        Me.panAcercamiento.Location = New System.Drawing.Point(212, -5)
         Me.panAcercamiento.Name = "panAcercamiento"
-        Me.panAcercamiento.Size = New System.Drawing.Size(1159, 703)
+        Me.panAcercamiento.Size = New System.Drawing.Size(1159, 800)
         Me.panAcercamiento.TabIndex = 6
         Me.panAcercamiento.Tag = "3"
         Me.panAcercamiento.Visible = False
@@ -2301,7 +2301,7 @@ Partial Class FrmContacto
         Me.lblMensajeErrorAcercamiento.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.lblMensajeErrorAcercamiento.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblMensajeErrorAcercamiento.ForeColor = System.Drawing.Color.White
-        Me.lblMensajeErrorAcercamiento.Location = New System.Drawing.Point(0, 676)
+        Me.lblMensajeErrorAcercamiento.Location = New System.Drawing.Point(0, 773)
         Me.lblMensajeErrorAcercamiento.Name = "lblMensajeErrorAcercamiento"
         Me.lblMensajeErrorAcercamiento.Size = New System.Drawing.Size(1157, 25)
         Me.lblMensajeErrorAcercamiento.TabIndex = 4
@@ -2388,9 +2388,9 @@ Partial Class FrmContacto
         Me.lblAcercamientoMedioContacto.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblAcercamientoMedioContacto.Location = New System.Drawing.Point(45, 69)
         Me.lblAcercamientoMedioContacto.Name = "lblAcercamientoMedioContacto"
-        Me.lblAcercamientoMedioContacto.Size = New System.Drawing.Size(131, 18)
+        Me.lblAcercamientoMedioContacto.Size = New System.Drawing.Size(236, 18)
         Me.lblAcercamientoMedioContacto.TabIndex = 4
-        Me.lblAcercamientoMedioContacto.Text = "Medio de contacto*"
+        Me.lblAcercamientoMedioContacto.Text = "Medio de contacto con el prospecto*"
         '
         'txtAcercamientoContactoOtro
         '
@@ -2432,9 +2432,9 @@ Partial Class FrmContacto
         Me.panDireccion.Controls.Add(Me.gpBoxDatosDomicilio)
         Me.panDireccion.Controls.Add(Me.cboDomicilioPais)
         Me.panDireccion.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.panDireccion.Location = New System.Drawing.Point(212, 0)
+        Me.panDireccion.Location = New System.Drawing.Point(212, -5)
         Me.panDireccion.Name = "panDireccion"
-        Me.panDireccion.Size = New System.Drawing.Size(1155, 703)
+        Me.panDireccion.Size = New System.Drawing.Size(1155, 800)
         Me.panDireccion.TabIndex = 0
         Me.panDireccion.Tag = "4"
         Me.panDireccion.Visible = False
@@ -2793,7 +2793,7 @@ Partial Class FrmContacto
         Me.btnEnviarAsiganacion.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.btnEnviarAsiganacion.Enabled = False
         Me.btnEnviarAsiganacion.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnEnviarAsiganacion.Location = New System.Drawing.Point(630, 713)
+        Me.btnEnviarAsiganacion.Location = New System.Drawing.Point(630, 799)
         Me.btnEnviarAsiganacion.Name = "btnEnviarAsiganacion"
         Me.btnEnviarAsiganacion.Size = New System.Drawing.Size(177, 25)
         Me.btnEnviarAsiganacion.TabIndex = 7
@@ -2815,9 +2815,9 @@ Partial Class FrmContacto
         Me.panAnexos.Controls.Add(Me.Panel5)
         Me.panAnexos.Controls.Add(Me.Label16)
         Me.panAnexos.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.panAnexos.Location = New System.Drawing.Point(212, 0)
+        Me.panAnexos.Location = New System.Drawing.Point(212, -5)
         Me.panAnexos.Name = "panAnexos"
-        Me.panAnexos.Size = New System.Drawing.Size(1159, 703)
+        Me.panAnexos.Size = New System.Drawing.Size(1159, 800)
         Me.panAnexos.TabIndex = 30
         Me.panAnexos.Tag = "5"
         Me.panAnexos.Visible = False
@@ -2924,7 +2924,7 @@ Partial Class FrmContacto
         Me.Label11.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Label11.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label11.ForeColor = System.Drawing.Color.White
-        Me.Label11.Location = New System.Drawing.Point(0, 676)
+        Me.Label11.Location = New System.Drawing.Point(0, 773)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(1157, 25)
         Me.Label11.TabIndex = 4
@@ -2955,7 +2955,7 @@ Partial Class FrmContacto
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        Me.ClientSize = New System.Drawing.Size(1347, 740)
+        Me.ClientSize = New System.Drawing.Size(1339, 829)
         Me.ControlBox = False
         Me.Controls.Add(Me.btnEnviarAsiganacion)
         Me.Controls.Add(Me.btnCerrar)
@@ -2963,11 +2963,11 @@ Partial Class FrmContacto
         Me.Controls.Add(Me.btnGuardaGeneral)
         Me.Controls.Add(Me.btnCancelaGeneral)
         Me.Controls.Add(Me.panMenu)
-        Me.Controls.Add(Me.panDatosGenerales)
-        Me.Controls.Add(Me.panAnexos)
         Me.Controls.Add(Me.panAcercamiento)
         Me.Controls.Add(Me.panDireccion)
         Me.Controls.Add(Me.panContactoInicial)
+        Me.Controls.Add(Me.panDatosGenerales)
+        Me.Controls.Add(Me.panAnexos)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False

@@ -134,6 +134,7 @@
             "<h1 style=""height: 50px; background: #4f2d7f; font-family: Calibri, Arial; color: #FFF; padding-right: 30px; text-align: center;"">NOTIFICACIÓN PARA COMPLETAR KARDEX</h1>" & vbNewLine & vbNewLine & vbNewLine &
             "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 20px; color: #4f2d7f; margin-left: 25px; margin-top: 20px; padding: 15px;"">Estimado " & sNombreSocio.ToUpper() & ", </p> " & vbNewLine & vbNewLine &
             "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 16px; margin-left: 25px; margin-top: 20px; padding: 15px;"">Por medio del presente, se le informa que su kardex se encuentra incompleto, por lo que le solicitamos completarlo a la brevedad. </p> " & vbNewLine & vbNewLine &
+            "<tr><td>Atendiendo el siguiente motivo:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & txtMotivo.Text.ToUpper.Trim() & "</b></td></tr>" & vbNewLine &
             "<p style=""margin-left: 25px; font-family: Arial; font-size: 16px;"">Para realizar este proceso, favor de ingresar  SIAT, menú SAPYC > SAC > Kardex." & vbNewLine &
             "<p style=""margin-left: 25px; font-family: Arial; font-size: 16px;"">Para cualquier comentario sobre el tema, favor de contactar a Tatiana.L.Lopez@mx.gt.com" & vbNewLine &
             "<hr>" &
