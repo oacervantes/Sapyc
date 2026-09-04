@@ -22,7 +22,7 @@ Public Class FrmContactoRecurrente
     Private dtCvesProspectos, dtProspectos, dtRfc, dtIdSac, dtServicios, dtServiciosCarga As New DataTable
     Private dtDatosGenerales, dtServiciosDG, dtMercantilesRS, dtMercantilesNC, dtCorreosSolicitud As New DataTable
     Private dtContactoInicial, dtContactoInicialRec As New DataTable
-    Private dtComoSeEntero, dtMedioContacto, dtAcercamiento, dtAcercamientoRec As New DataTable
+    Private dtComoSeEntero, dtMedioContacto, dtAcercamiento, dtAcercamientoRec, tbMedioNosContacto As New DataTable
     Private dtDomicilio, dtPaisDomicilio, dtColoniasDomicilio, dtMunicipiosDomicilio, dtEstadosDomicilio As New DataTable
 
     Private dtCtes, dtCteFis, dtDatGrals, dtBolsaValores, dtEntidadReg, dtNormatividad, dtPais, dtPaisGT, dtPaisResidencia, dtTipoEntidad, dtModalidades, dtIdiomas, dtOficinas, dtDivisiones, dtSocios, dtOfGt As DataTable
@@ -78,6 +78,9 @@ Public Class FrmContactoRecurrente
 
         ListarMedioContactoAcerca()
         If dtMedioContacto Is Nothing Then Exit Sub
+
+        ListarMedioCualNosContacto()
+        If tbMedioNosContacto Is Nothing Then Exit Sub
 
         ListarAcercamiento()
         If dtAcercamiento Is Nothing Then Exit Sub
@@ -784,17 +787,17 @@ Public Class FrmContactoRecurrente
 
 #Region "ACERCAMIENTO"
 
-    Private Sub CboAcercamientoComoEntero_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboAcercamientoComoEntero.SelectedIndexChanged
+    Private Sub CboAcercamientoComoEntero_SelectedIndexChanged(sender As Object, e As EventArgs)
         If cboAcercamientoComoEntero.SelectedValue Is Nothing Then Exit Sub
         If cboAcercamientoComoEntero.SelectedValue Is DBNull.Value Then Exit Sub
         If TypeOf cboAcercamientoComoEntero.SelectedValue Is DataRowView Then Exit Sub
 
         SeleccionarMedioContacto(cboAcercamientoComoEntero.SelectedValue)
     End Sub
-    Private Sub CboAcercamientoComoEntero_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles cboAcercamientoComoEntero.SelectionChangeCommitted
+    Private Sub CboAcercamientoComoEntero_SelectionChangeCommitted(sender As Object, e As EventArgs)
         SeleccionarMedioContacto(cboAcercamientoComoEntero.SelectedValue)
     End Sub
-    Private Sub CboAcercamientoMedioContacto_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles cboAcercamientoMedioContacto.SelectionChangeCommitted
+    Private Sub CboAcercamientoMedioContacto_SelectionChangeCommitted(sender As Object, e As EventArgs)
         If cboAcercamientoMedioContacto.SelectedValue = 10 Then
             txtAcercamientoContactoOtro.Enabled = True
         Else
@@ -2158,6 +2161,12 @@ Public Class FrmContactoRecurrente
         End Try
     End Sub
 
+    Private Sub btnBuscaEmpleados_Click(sender As Object, e As EventArgs) Handles btnBuscaEmpleados.Click
+        Dim dlg As New dlgListaEmpleadosActivos
+        If dlg.ShowDialog = DialogResult.OK Then
+            txtContactoInicialPrimerContacto.Text = dlg.sNombre
+        End If
+    End Sub
     Private Sub ListarContactoInicialRecurrente()
         Try
             Dim sTabla As String = "tbContactoInicialRec"
@@ -2303,6 +2312,35 @@ Public Class FrmContactoRecurrente
             dtMedioContacto = Nothing
         End Try
     End Sub
+    Private Sub ListarMedioCualNosContacto()
+        Try
+            Dim sTabla As String = "tbNosContacto"
+
+            With ds.Tables
+                LimpiarConsultaTabla(ds.Tables, sTabla)
+
+                With clsLocal
+                    .subClearParameters()
+                    .subAddParameter("@iOpcion", 4, SqlDbType.Int, ParameterDirection.Input)
+                End With
+
+                .Add(clsLocal.funExecuteSPDataTable("paDatosAsignacionSACAcercamiento", sTabla))
+
+                tbMedioNosContacto = .Item(sTabla)
+            End With
+
+            If tbMedioNosContacto.Rows.Count > 0 Then
+                cmbNosContacto.DataSource = tbMedioNosContacto
+
+                cmbNosContacto.DisplayMember = "sMedio"
+                cmbNosContacto.ValueMember = "idMedio"
+            End If
+        Catch ex As Exception
+            InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarComoSeEnteroAcerca()")
+            MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
+            dtComoSeEntero = Nothing
+        End Try
+    End Sub
     Private Sub ListarAcercamiento()
         Try
             Dim sTabla As String = "tbAcercamiento"
@@ -2336,6 +2374,12 @@ Public Class FrmContactoRecurrente
                 End If
                 txtAcercamientoContactoOtro.Text = dtAcercamiento.Rows(0).Item("sOtroMedio").ToString
 
+                cboAcercamientoComoEntero.SelectedValue = CInt(dtAcercamiento.Rows(0).Item("idComoContacto").ToString)
+                If CInt(dtAcercamiento.Rows(0).Item("idComoContacto").ToString) = 10 Then
+                    txtMedio.Enabled = True
+                End If
+                txtMedio.Text = dtAcercamiento.Rows(0).Item("sOtroComoContacto").ToString
+
             Else
                 lblMensajeCargaAcercamiento.Visible = True
             End If
@@ -2356,6 +2400,10 @@ Public Class FrmContactoRecurrente
                 .subAddParameter("@sOtroAcercamiento", txtAcercamientoEnteroOtro.Text, SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@idMedio", cboAcercamientoMedioContacto.SelectedValue, SqlDbType.Int, ParameterDirection.Input)
                 .subAddParameter("@sotroMedio", txtAcercamientoContactoOtro.Text, SqlDbType.VarChar, ParameterDirection.Input)
+
+                .subAddParameter("@idComoContacto", cmbNosContacto.SelectedValue, SqlDbType.Int, ParameterDirection.Input)
+                .subAddParameter("@sOtroComoContacto", txtMedio.Text, SqlDbType.VarChar, ParameterDirection.Input)
+
                 .subAddParameter("@sUsuario", sCveUsuario, SqlDbType.VarChar, ParameterDirection.Input)
 
                 .funExecuteSP("paDatosAsignacionSACAcercamiento")

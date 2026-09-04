@@ -24,7 +24,7 @@ Public Class FrmContacto
     Private dtCvesProspectos, dtProspectos, dtRfc, dtIdSac, dtServicios, dtServiciosCarga As New DataTable
     Private dtDatosGenerales, dtServiciosDG, dtMercantilesRS, dtMercantilesNC, dtCorreosSolicitud As New DataTable
     Private dtContactoInicial As New DataTable
-    Private dtComoSeEntero, dtMedioContacto, dtAcercamiento As New DataTable
+    Private dtComoSeEntero, dtMedioContacto, dtAcercamiento, tbMedioNosContacto As New DataTable
     Private dtDomicilio, dtPaisDomicilio, dtColoniasDomicilio, dtMunicipiosDomicilio, dtEstadosDomicilio, dtAnexos As New DataTable
     Private dtDatGrals, dtBolsaValores, dtEntidadReg, dtNormatividad, dtPais, dtPaisGT, dtPaisResidencia, dtTipoEntidad, dtModalidades, dtIdiomas, dtOficinas, dtDivisiones, dtSocios, dtOfGt As DataTable
     Private dtIndustria, dtSubSector, dtSubNivel As DataTable
@@ -73,6 +73,10 @@ Public Class FrmContacto
 
         ListarMedioContactoAcerca()
         If dtMedioContacto Is Nothing Then Exit Sub
+
+        ListarMedioCualNosContacto()
+        If tbMedioNosContacto Is Nothing Then Exit Sub
+
 
         ListarAcercamiento()
         If dtAcercamiento Is Nothing Then Exit Sub
@@ -186,7 +190,7 @@ Public Class FrmContacto
             ConfigurarColumnasGrid(gridServicios, "DESCOTROS", "DESCRIPCIÓN 'OTROS'", 0, 1, False)
         End If
     End Sub
-    Private Sub BtnRegistroDatosGenerales_Click(sender As Object, e As EventArgs) Handles btnHabilitar.Click
+    Private Sub BtnRegistroDatosGenerales_Click(sender As Object, e As EventArgs) Handles btnHabilitar.Click, Button3.Click
         bCargaInfo = True
         txtMensaje.Text = ""
         panMensajesError.Visible = False
@@ -212,7 +216,7 @@ Public Class FrmContacto
         gpBoxDatosDomicilio.Enabled = True
         cboDomicilioPais.Focus()
     End Sub
-    Private Sub BtnGuardaGeneral_Click(sender As Object, e As EventArgs) Handles btnGuardaGeneral.Click
+    Private Sub BtnGuardaGeneral_Click(sender As Object, e As EventArgs) Handles btnGuardaGeneral.Click, Button2.Click
         Try
             sMsgDatosGenerales = ""
             sMsgContacto = ""
@@ -317,7 +321,7 @@ Public Class FrmContacto
             MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
         End Try
     End Sub
-    Private Sub BtnCancelaGeneral_Click(sender As Object, e As EventArgs) Handles btnCancelaGeneral.Click
+    Private Sub BtnCancelaGeneral_Click(sender As Object, e As EventArgs) Handles btnCancelaGeneral.Click, Button1.Click
         bCargaInfo = False
         txtMensaje.Text = ""
         panMensajesError.Visible = False
@@ -348,7 +352,7 @@ Public Class FrmContacto
 
         'End If
     End Sub
-    Private Sub BtnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click
+    Private Sub BtnCerrar_Click(sender As Object, e As EventArgs) Handles btnCerrar.Click, Button4.Click
         If bCargaInfo Then
             If MsgBox("¿Está seguro de que desea salir sin guardar los cambios?", MsgBoxStyle.Question + MsgBoxStyle.YesNo, "SIAT") = MsgBoxResult.No Then
                 Exit Sub
@@ -745,7 +749,14 @@ Public Class FrmContacto
         txtEmpresaTenedora.Enabled = True
         cboPaisResidencia.Enabled = True
     End Sub
+    Private Sub btnBuscaEmpleados_Click(sender As Object, e As EventArgs) Handles btnBuscaEmpleados.Click
 
+        Dim dlg As New dlgListaEmpleadosActivos
+        If dlg.ShowDialog = DialogResult.OK Then
+            txtContactoInicialPrimerContacto.Text = dlg.sNombre
+        End If
+
+    End Sub
 #End Region
 
 #Region "ACERCAMIENTO"
@@ -760,14 +771,7 @@ Public Class FrmContacto
     Private Sub CboAcercamientoComoEntero_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles cboAcercamientoComoEntero.SelectionChangeCommitted
         SeleccionarMedioContacto(cboAcercamientoComoEntero.SelectedValue)
     End Sub
-    Private Sub CboAcercamientoMedioContacto_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles cboAcercamientoMedioContacto.SelectionChangeCommitted
-        If cboAcercamientoMedioContacto.SelectedValue = 10 Then
-            txtAcercamientoContactoOtro.Enabled = True
-        Else
-            txtAcercamientoContactoOtro.Enabled = False
-            txtAcercamientoContactoOtro.Text = ""
-        End If
-    End Sub
+
 
 #End Region
 
@@ -2298,29 +2302,29 @@ Public Class FrmContacto
 
         Select Case idMedio
             Case 7
-                txtAcercamientoEnteroOtro.Enabled = True
+                ' txtAcercamientoEnteroOtro.Enabled = True
                 lblAcercamientoOtro.Text = "Socio"
 
             Case 8
-                txtAcercamientoEnteroOtro.Enabled = True
+                ' txtAcercamientoEnteroOtro.Enabled = True
                 lblAcercamientoOtro.Text = "Gerente"
 
             Case 12
-                txtAcercamientoEnteroOtro.Enabled = True
+                '  txtAcercamientoEnteroOtro.Enabled = True
                 lblAcercamientoOtro.Text = "Colaborador"
 
             Case 13
-                txtAcercamientoEnteroOtro.Enabled = True
+                '   txtAcercamientoEnteroOtro.Enabled = True
                 lblAcercamientoOtro.Text = "Otro"
 
             Case 9
                 rdReferenciaGTISi.Checked = True
                 rdReferenciaGTINo.Enabled = False
-                txtAcercamientoEnteroOtro.Enabled = False
+                '   txtAcercamientoEnteroOtro.Enabled = False
                 lblAcercamientoOtro.Text = "Otro"
 
             Case Else
-                txtAcercamientoEnteroOtro.Enabled = False
+                '   txtAcercamientoEnteroOtro.Enabled = False
                 lblAcercamientoOtro.Text = "Otro"
 
         End Select
@@ -2347,6 +2351,35 @@ Public Class FrmContacto
 
                 cboAcercamientoComoEntero.DisplayMember = "sAcercamiento"
                 cboAcercamientoComoEntero.ValueMember = "idAcercamiento"
+            End If
+        Catch ex As Exception
+            InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarComoSeEnteroAcerca()")
+            MsgBox("Hubo un problema al consultar la información en la base de datos, intente de nuevo más tarde.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
+            dtComoSeEntero = Nothing
+        End Try
+    End Sub
+    Private Sub ListarMedioCualNosContacto()
+        Try
+            Dim sTabla As String = "tbNosContacto"
+
+            With ds.Tables
+                LimpiarConsultaTabla(ds.Tables, sTabla)
+
+                With clsLocal
+                    .subClearParameters()
+                    .subAddParameter("@iOpcion", 4, SqlDbType.Int, ParameterDirection.Input)
+                End With
+
+                .Add(clsLocal.funExecuteSPDataTable("paDatosAsignacionSACAcercamiento", sTabla))
+
+                tbMedioNosContacto = .Item(sTabla)
+            End With
+
+            If tbMedioNosContacto.Rows.Count > 0 Then
+                cmbNosContacto.DataSource = tbMedioNosContacto
+
+                cmbNosContacto.DisplayMember = "sMedio"
+                cmbNosContacto.ValueMember = "idMedio"
             End If
         Catch ex As Exception
             InsertarErrorLog(100, sNameRpt, ex.Message, sCveUsuario, "ListarComoSeEnteroAcerca()")
@@ -2416,6 +2449,13 @@ Public Class FrmContacto
                 End If
                 txtAcercamientoContactoOtro.Text = dtAcercamiento.Rows(0).Item("sOtroMedio").ToString
 
+
+                cboAcercamientoComoEntero.SelectedValue = CInt(dtAcercamiento.Rows(0).Item("idComoContacto").ToString)
+                If CInt(dtAcercamiento.Rows(0).Item("idComoContacto").ToString) = 10 Then
+                    txtMedio.Enabled = True
+                End If
+                txtMedio.Text = dtAcercamiento.Rows(0).Item("sOtroComoContacto").ToString
+
             Else
                 lblMensajeCargaAcercamiento.Visible = True
             End If
@@ -2436,6 +2476,10 @@ Public Class FrmContacto
                 .subAddParameter("@sOtroAcercamiento", txtAcercamientoEnteroOtro.Text, SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@idMedio", cboAcercamientoMedioContacto.SelectedValue, SqlDbType.Int, ParameterDirection.Input)
                 .subAddParameter("@sotroMedio", txtAcercamientoContactoOtro.Text, SqlDbType.VarChar, ParameterDirection.Input)
+
+                .subAddParameter("@idComoContacto", cmbNosContacto.SelectedValue, SqlDbType.Int, ParameterDirection.Input)
+                .subAddParameter("@sOtroComoContacto", txtMedio.Text, SqlDbType.VarChar, ParameterDirection.Input)
+
                 .subAddParameter("@sUsuario", sCveUsuario, SqlDbType.VarChar, ParameterDirection.Input)
 
                 .funExecuteSP("paDatosAsignacionSACAcercamiento")
@@ -3343,7 +3387,7 @@ Public Class FrmContacto
         End Try
     End Sub
 
-    Private Sub btnEnviarAsiganacion_Click(sender As Object, e As EventArgs) Handles btnEnviarAsiganacion.Click
+    Private Sub btnEnviarAsiganacion_Click(sender As Object, e As EventArgs) Handles btnEnviarAsiganacion.Click, Button5.Click
 
         If sEstatusSolicitud = "V" Then
 

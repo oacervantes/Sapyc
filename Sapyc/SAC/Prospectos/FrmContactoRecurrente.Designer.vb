@@ -183,10 +183,11 @@ Partial Class FrmContactoRecurrente
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.panAcercamiento = New System.Windows.Forms.Panel()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.lblMensajeCargaAcercamiento = New System.Windows.Forms.Label()
-        Me.lblMensajeErrorAcercamiento = New System.Windows.Forms.Label()
         Me.gpBoxDatosAcercamiento = New System.Windows.Forms.GroupBox()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.cmbNosContacto = New System.Windows.Forms.ComboBox()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.txtMedio = New System.Windows.Forms.TextBox()
         Me.lblMedioContactoOtro = New System.Windows.Forms.Label()
         Me.lblAcercamientoOtro = New System.Windows.Forms.Label()
         Me.cboAcercamientoMedioContacto = New System.Windows.Forms.ComboBox()
@@ -195,6 +196,9 @@ Partial Class FrmContactoRecurrente
         Me.cboAcercamientoComoEntero = New System.Windows.Forms.ComboBox()
         Me.lblAcercamientoMedioContacto = New System.Windows.Forms.Label()
         Me.txtAcercamientoContactoOtro = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.lblMensajeCargaAcercamiento = New System.Windows.Forms.Label()
+        Me.lblMensajeErrorAcercamiento = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.lblTituloAcercamiento = New System.Windows.Forms.Label()
         Me.panDireccion = New System.Windows.Forms.Panel()
@@ -265,6 +269,7 @@ Partial Class FrmContactoRecurrente
         Me.gridTrabajos = New System.Windows.Forms.DataGridView()
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.lblTituloServicios = New System.Windows.Forms.Label()
+        Me.btnBuscaEmpleados = New System.Windows.Forms.Button()
         Me.panMenu.SuspendLayout()
         Me.panMensajesError.SuspendLayout()
         Me.panDatosGenerales.SuspendLayout()
@@ -2074,10 +2079,10 @@ Partial Class FrmContactoRecurrente
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.panAcercamiento.BackColor = System.Drawing.Color.White
         Me.panAcercamiento.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.panAcercamiento.Controls.Add(Me.gpBoxDatosAcercamiento)
         Me.panAcercamiento.Controls.Add(Me.Label4)
         Me.panAcercamiento.Controls.Add(Me.lblMensajeCargaAcercamiento)
         Me.panAcercamiento.Controls.Add(Me.lblMensajeErrorAcercamiento)
-        Me.panAcercamiento.Controls.Add(Me.gpBoxDatosAcercamiento)
         Me.panAcercamiento.Controls.Add(Me.Panel2)
         Me.panAcercamiento.Controls.Add(Me.lblTituloAcercamiento)
         Me.panAcercamiento.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -2088,47 +2093,12 @@ Partial Class FrmContactoRecurrente
         Me.panAcercamiento.Tag = "3"
         Me.panAcercamiento.Visible = False
         '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Italic)
-        Me.Label4.Location = New System.Drawing.Point(91, 371)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(266, 17)
-        Me.Label4.TabIndex = 13
-        Me.Label4.Text = "Los campos marcados con (*) son obligatorios."
-        '
-        'lblMensajeCargaAcercamiento
-        '
-        Me.lblMensajeCargaAcercamiento.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lblMensajeCargaAcercamiento.BackColor = System.Drawing.Color.DarkSalmon
-        Me.lblMensajeCargaAcercamiento.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblMensajeCargaAcercamiento.ForeColor = System.Drawing.Color.White
-        Me.lblMensajeCargaAcercamiento.Location = New System.Drawing.Point(0, 44)
-        Me.lblMensajeCargaAcercamiento.Name = "lblMensajeCargaAcercamiento"
-        Me.lblMensajeCargaAcercamiento.Size = New System.Drawing.Size(1102, 25)
-        Me.lblMensajeCargaAcercamiento.TabIndex = 11
-        Me.lblMensajeCargaAcercamiento.Text = "No se ha cargado información de Acercamiento para el prospecto."
-        Me.lblMensajeCargaAcercamiento.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.lblMensajeCargaAcercamiento.Visible = False
-        '
-        'lblMensajeErrorAcercamiento
-        '
-        Me.lblMensajeErrorAcercamiento.BackColor = System.Drawing.Color.FromArgb(CType(CType(233, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(65, Byte), Integer))
-        Me.lblMensajeErrorAcercamiento.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.lblMensajeErrorAcercamiento.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblMensajeErrorAcercamiento.ForeColor = System.Drawing.Color.White
-        Me.lblMensajeErrorAcercamiento.Location = New System.Drawing.Point(0, 676)
-        Me.lblMensajeErrorAcercamiento.Name = "lblMensajeErrorAcercamiento"
-        Me.lblMensajeErrorAcercamiento.Size = New System.Drawing.Size(1102, 25)
-        Me.lblMensajeErrorAcercamiento.TabIndex = 4
-        Me.lblMensajeErrorAcercamiento.Text = "Mensaje de error"
-        Me.lblMensajeErrorAcercamiento.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.lblMensajeErrorAcercamiento.Visible = False
-        '
         'gpBoxDatosAcercamiento
         '
+        Me.gpBoxDatosAcercamiento.Controls.Add(Me.Label14)
+        Me.gpBoxDatosAcercamiento.Controls.Add(Me.cmbNosContacto)
+        Me.gpBoxDatosAcercamiento.Controls.Add(Me.Label15)
+        Me.gpBoxDatosAcercamiento.Controls.Add(Me.txtMedio)
         Me.gpBoxDatosAcercamiento.Controls.Add(Me.lblMedioContactoOtro)
         Me.gpBoxDatosAcercamiento.Controls.Add(Me.lblAcercamientoOtro)
         Me.gpBoxDatosAcercamiento.Controls.Add(Me.cboAcercamientoMedioContacto)
@@ -2138,11 +2108,48 @@ Partial Class FrmContactoRecurrente
         Me.gpBoxDatosAcercamiento.Controls.Add(Me.lblAcercamientoMedioContacto)
         Me.gpBoxDatosAcercamiento.Controls.Add(Me.txtAcercamientoContactoOtro)
         Me.gpBoxDatosAcercamiento.Enabled = False
-        Me.gpBoxDatosAcercamiento.Location = New System.Drawing.Point(91, 94)
+        Me.gpBoxDatosAcercamiento.Location = New System.Drawing.Point(85, 109)
         Me.gpBoxDatosAcercamiento.Name = "gpBoxDatosAcercamiento"
-        Me.gpBoxDatosAcercamiento.Size = New System.Drawing.Size(898, 266)
-        Me.gpBoxDatosAcercamiento.TabIndex = 0
+        Me.gpBoxDatosAcercamiento.Size = New System.Drawing.Size(898, 325)
+        Me.gpBoxDatosAcercamiento.TabIndex = 14
         Me.gpBoxDatosAcercamiento.TabStop = False
+        Me.gpBoxDatosAcercamiento.Text = "Como lo contactaremos"
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.Location = New System.Drawing.Point(438, 226)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(80, 18)
+        Me.Label14.TabIndex = 10
+        Me.Label14.Text = "Descripción"
+        '
+        'cmbNosContacto
+        '
+        Me.cmbNosContacto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbNosContacto.FormattingEnabled = True
+        Me.cmbNosContacto.Location = New System.Drawing.Point(46, 252)
+        Me.cmbNosContacto.Name = "cmbNosContacto"
+        Me.cmbNosContacto.Size = New System.Drawing.Size(375, 26)
+        Me.cmbNosContacto.TabIndex = 9
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label15.Location = New System.Drawing.Point(46, 226)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(207, 18)
+        Me.Label15.TabIndex = 8
+        Me.Label15.Text = "Medio por el cual nos contactó *"
+        '
+        'txtMedio
+        '
+        Me.txtMedio.Location = New System.Drawing.Point(438, 252)
+        Me.txtMedio.Name = "txtMedio"
+        Me.txtMedio.Size = New System.Drawing.Size(350, 25)
+        Me.txtMedio.TabIndex = 11
         '
         'lblMedioContactoOtro
         '
@@ -2185,7 +2192,6 @@ Partial Class FrmContactoRecurrente
         '
         'txtAcercamientoEnteroOtro
         '
-        Me.txtAcercamientoEnteroOtro.Enabled = False
         Me.txtAcercamientoEnteroOtro.Location = New System.Drawing.Point(437, 173)
         Me.txtAcercamientoEnteroOtro.Name = "txtAcercamientoEnteroOtro"
         Me.txtAcercamientoEnteroOtro.Size = New System.Drawing.Size(350, 25)
@@ -2212,11 +2218,49 @@ Partial Class FrmContactoRecurrente
         '
         'txtAcercamientoContactoOtro
         '
-        Me.txtAcercamientoContactoOtro.Enabled = False
         Me.txtAcercamientoContactoOtro.Location = New System.Drawing.Point(437, 95)
         Me.txtAcercamientoContactoOtro.Name = "txtAcercamientoContactoOtro"
         Me.txtAcercamientoContactoOtro.Size = New System.Drawing.Size(350, 25)
         Me.txtAcercamientoContactoOtro.TabIndex = 7
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Italic)
+        Me.Label4.Location = New System.Drawing.Point(91, 463)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(266, 17)
+        Me.Label4.TabIndex = 13
+        Me.Label4.Text = "Los campos marcados con (*) son obligatorios."
+        '
+        'lblMensajeCargaAcercamiento
+        '
+        Me.lblMensajeCargaAcercamiento.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblMensajeCargaAcercamiento.BackColor = System.Drawing.Color.DarkSalmon
+        Me.lblMensajeCargaAcercamiento.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblMensajeCargaAcercamiento.ForeColor = System.Drawing.Color.White
+        Me.lblMensajeCargaAcercamiento.Location = New System.Drawing.Point(0, 44)
+        Me.lblMensajeCargaAcercamiento.Name = "lblMensajeCargaAcercamiento"
+        Me.lblMensajeCargaAcercamiento.Size = New System.Drawing.Size(1102, 25)
+        Me.lblMensajeCargaAcercamiento.TabIndex = 11
+        Me.lblMensajeCargaAcercamiento.Text = "No se ha cargado información de Acercamiento para el prospecto."
+        Me.lblMensajeCargaAcercamiento.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblMensajeCargaAcercamiento.Visible = False
+        '
+        'lblMensajeErrorAcercamiento
+        '
+        Me.lblMensajeErrorAcercamiento.BackColor = System.Drawing.Color.FromArgb(CType(CType(233, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(65, Byte), Integer))
+        Me.lblMensajeErrorAcercamiento.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.lblMensajeErrorAcercamiento.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblMensajeErrorAcercamiento.ForeColor = System.Drawing.Color.White
+        Me.lblMensajeErrorAcercamiento.Location = New System.Drawing.Point(0, 676)
+        Me.lblMensajeErrorAcercamiento.Name = "lblMensajeErrorAcercamiento"
+        Me.lblMensajeErrorAcercamiento.Size = New System.Drawing.Size(1102, 25)
+        Me.lblMensajeErrorAcercamiento.TabIndex = 4
+        Me.lblMensajeErrorAcercamiento.Text = "Mensaje de error"
+        Me.lblMensajeErrorAcercamiento.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.lblMensajeErrorAcercamiento.Visible = False
         '
         'Panel2
         '
@@ -2661,6 +2705,7 @@ Partial Class FrmContactoRecurrente
         '
         'panDatosContactoInicial
         '
+        Me.panDatosContactoInicial.Controls.Add(Me.btnBuscaEmpleados)
         Me.panDatosContactoInicial.Controls.Add(Me.lblContactoInicialObligatorios)
         Me.panDatosContactoInicial.Controls.Add(Me.lblTituloDatosContacto)
         Me.panDatosContactoInicial.Controls.Add(Me.txtContactoInicialFecha)
@@ -2729,7 +2774,7 @@ Partial Class FrmContactoRecurrente
         '
         Me.txtContactoInicialPrimerContacto.Location = New System.Drawing.Point(11, 93)
         Me.txtContactoInicialPrimerContacto.Name = "txtContactoInicialPrimerContacto"
-        Me.txtContactoInicialPrimerContacto.Size = New System.Drawing.Size(1015, 25)
+        Me.txtContactoInicialPrimerContacto.Size = New System.Drawing.Size(895, 25)
         Me.txtContactoInicialPrimerContacto.TabIndex = 3
         '
         'gpBoxDatosContactoInicial
@@ -2945,6 +2990,16 @@ Partial Class FrmContactoRecurrente
         Me.lblTituloServicios.TabIndex = 0
         Me.lblTituloServicios.Text = "SERVICIOS REALIZADOS AL CLIENTE"
         '
+        'btnBuscaEmpleados
+        '
+        Me.btnBuscaEmpleados.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnBuscaEmpleados.Location = New System.Drawing.Point(912, 94)
+        Me.btnBuscaEmpleados.Name = "btnBuscaEmpleados"
+        Me.btnBuscaEmpleados.Size = New System.Drawing.Size(50, 25)
+        Me.btnBuscaEmpleados.TabIndex = 26
+        Me.btnBuscaEmpleados.Text = "..."
+        Me.btnBuscaEmpleados.UseVisualStyleBackColor = True
+        '
         'FrmContactoRecurrente
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -2955,12 +3010,12 @@ Partial Class FrmContactoRecurrente
         Me.Controls.Add(Me.btnCancelaGeneral)
         Me.Controls.Add(Me.btnCerrar)
         Me.Controls.Add(Me.panMenu)
-        Me.Controls.Add(Me.panAcercamiento)
-        Me.Controls.Add(Me.panDireccion)
         Me.Controls.Add(Me.panContactoInicial)
         Me.Controls.Add(Me.panDatosGenerales)
         Me.Controls.Add(Me.panTrabajos)
         Me.Controls.Add(Me.panAnexos)
+        Me.Controls.Add(Me.panAcercamiento)
+        Me.Controls.Add(Me.panDireccion)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "FrmContactoRecurrente"
@@ -3190,15 +3245,6 @@ Partial Class FrmContactoRecurrente
     Friend WithEvents Label4 As Label
     Friend WithEvents lblMensajeCargaAcercamiento As Label
     Friend WithEvents lblMensajeErrorAcercamiento As Label
-    Friend WithEvents gpBoxDatosAcercamiento As GroupBox
-    Friend WithEvents lblMedioContactoOtro As Label
-    Friend WithEvents lblAcercamientoOtro As Label
-    Friend WithEvents cboAcercamientoMedioContacto As ComboBox
-    Friend WithEvents lblAcercamientoComoEntero As Label
-    Friend WithEvents txtAcercamientoEnteroOtro As TextBox
-    Friend WithEvents cboAcercamientoComoEntero As ComboBox
-    Friend WithEvents lblAcercamientoMedioContacto As Label
-    Friend WithEvents txtAcercamientoContactoOtro As TextBox
     Friend WithEvents Panel2 As Panel
     Friend WithEvents lblTituloAcercamiento As Label
     Friend WithEvents panDireccion As Panel
@@ -3270,4 +3316,18 @@ Partial Class FrmContactoRecurrente
     Friend WithEvents lblTituloServicios As Label
     Friend WithEvents gridTrabajos As DataGridView
     Friend WithEvents panTrabajosCte As Panel
+    Friend WithEvents gpBoxDatosAcercamiento As GroupBox
+    Friend WithEvents Label14 As Label
+    Friend WithEvents cmbNosContacto As ComboBox
+    Friend WithEvents Label15 As Label
+    Friend WithEvents txtMedio As TextBox
+    Friend WithEvents lblMedioContactoOtro As Label
+    Friend WithEvents lblAcercamientoOtro As Label
+    Friend WithEvents cboAcercamientoMedioContacto As ComboBox
+    Friend WithEvents lblAcercamientoComoEntero As Label
+    Friend WithEvents txtAcercamientoEnteroOtro As TextBox
+    Friend WithEvents cboAcercamientoComoEntero As ComboBox
+    Friend WithEvents lblAcercamientoMedioContacto As Label
+    Friend WithEvents txtAcercamientoContactoOtro As TextBox
+    Friend WithEvents btnBuscaEmpleados As Button
 End Class

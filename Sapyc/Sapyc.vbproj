@@ -475,6 +475,12 @@
     <Compile Include="SAC\AsigancionSocios\SeparadorSocio.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="SAC\dlgListaEmpleadosActivos.Designer.vb">
+      <DependentUpon>dlgListaEmpleadosActivos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SAC\dlgListaEmpleadosActivos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SAC\NivelRiesgo\frmAutorizaNivelRiesgo.Designer.vb">
       <DependentUpon>frmAutorizaNivelRiesgo.vb</DependentUpon>
     </Compile>
@@ -922,6 +928,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SAC\AsigancionSocios\SeparadorSocio.resx">
       <DependentUpon>SeparadorSocio.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SAC\dlgListaEmpleadosActivos.resx">
+      <DependentUpon>dlgListaEmpleadosActivos.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SAC\NivelRiesgo\frmAutorizaNivelRiesgo.resx">
       <DependentUpon>frmAutorizaNivelRiesgo.vb</DependentUpon>
