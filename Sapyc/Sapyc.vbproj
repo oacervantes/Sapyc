@@ -254,6 +254,12 @@
     <Compile Include="Folios\frmAutorizaSolicitudFolios.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Folios\frmConsultaTrabajosActivos.Designer.vb">
+      <DependentUpon>frmConsultaTrabajosActivos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Folios\frmConsultaTrabajosActivos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Folios\frmDetalleAutorizaSolicitudFolio.designer.vb">
       <DependentUpon>frmDetalleAutorizaSolicitudFolio.vb</DependentUpon>
     </Compile>
@@ -826,6 +832,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Folios\frmAutorizaSolicitudFolios.resx">
       <DependentUpon>frmAutorizaSolicitudFolios.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Folios\frmConsultaTrabajosActivos.resx">
+      <DependentUpon>frmConsultaTrabajosActivos.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Folios\frmDetalleAutorizaSolicitudFolio.resx">
       <DependentUpon>frmDetalleAutorizaSolicitudFolio.vb</DependentUpon>

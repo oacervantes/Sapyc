@@ -28,6 +28,7 @@ Partial Class Principal
         Me.mnuSalir = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuSAC = New System.Windows.Forms.ToolStripMenuItem()
         Me.AltaClienteProspecto = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AltaDeClienteProspectoRecurrenteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AsignarProspecto = New System.Windows.Forms.ToolStripMenuItem()
         Me.SeguimientoAPropuestas = New System.Windows.Forms.ToolStripMenuItem()
         Me.RevisionOtrosServicios = New System.Windows.Forms.ToolStripMenuItem()
@@ -91,7 +92,7 @@ Partial Class Principal
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.BotonAltaPropuesta = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
-        Me.AltaDeClienteProspectoRecurrenteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ConsultaClavesActivasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuSAPYC.SuspendLayout()
         Me.Barra.SuspendLayout()
         Me.SuspendLayout()
@@ -133,6 +134,13 @@ Partial Class Principal
         Me.AltaClienteProspecto.Size = New System.Drawing.Size(281, 22)
         Me.AltaClienteProspecto.Tag = "6"
         Me.AltaClienteProspecto.Text = "Alta de Cliente Prospecto"
+        '
+        'AltaDeClienteProspectoRecurrenteToolStripMenuItem
+        '
+        Me.AltaDeClienteProspectoRecurrenteToolStripMenuItem.Name = "AltaDeClienteProspectoRecurrenteToolStripMenuItem"
+        Me.AltaDeClienteProspectoRecurrenteToolStripMenuItem.Size = New System.Drawing.Size(281, 22)
+        Me.AltaDeClienteProspectoRecurrenteToolStripMenuItem.Tag = "10"
+        Me.AltaDeClienteProspectoRecurrenteToolStripMenuItem.Text = "Alta de Cliente Prospecto Recurrente"
         '
         'AsignarProspecto
         '
@@ -486,7 +494,7 @@ Partial Class Principal
         '
         'menuFolios
         '
-        Me.menuFolios.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AutorizaFoliosDeInformeToolStripMenuItem, Me.ConsultaDeFoliosDeInformeToolStripMenuItem})
+        Me.menuFolios.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AutorizaFoliosDeInformeToolStripMenuItem, Me.ConsultaDeFoliosDeInformeToolStripMenuItem, Me.ConsultaClavesActivasToolStripMenuItem})
         Me.menuFolios.Name = "menuFolios"
         Me.menuFolios.Size = New System.Drawing.Size(50, 20)
         Me.menuFolios.Tag = "6"
@@ -563,12 +571,11 @@ Partial Class Principal
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
         Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 40)
         '
-        'AltaDeClienteProspectoRecurrenteToolStripMenuItem
+        'ConsultaClavesActivasToolStripMenuItem
         '
-        Me.AltaDeClienteProspectoRecurrenteToolStripMenuItem.Name = "AltaDeClienteProspectoRecurrenteToolStripMenuItem"
-        Me.AltaDeClienteProspectoRecurrenteToolStripMenuItem.Size = New System.Drawing.Size(281, 22)
-        Me.AltaDeClienteProspectoRecurrenteToolStripMenuItem.Tag = "10"
-        Me.AltaDeClienteProspectoRecurrenteToolStripMenuItem.Text = "Alta de Cliente Prospecto Recurrente"
+        Me.ConsultaClavesActivasToolStripMenuItem.Name = "ConsultaClavesActivasToolStripMenuItem"
+        Me.ConsultaClavesActivasToolStripMenuItem.Size = New System.Drawing.Size(238, 22)
+        Me.ConsultaClavesActivasToolStripMenuItem.Text = "Consulta Claves Activas"
         '
         'Principal
         '
@@ -662,4 +669,5 @@ Partial Class Principal
     Friend WithEvents VoBoKardexSocios As ToolStripMenuItem
     Friend WithEvents SeguimientoProspectosToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AltaDeClienteProspectoRecurrenteToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ConsultaClavesActivasToolStripMenuItem As ToolStripMenuItem
 End Class

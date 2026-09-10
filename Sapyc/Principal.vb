@@ -405,4 +405,10 @@
         AbrirPantalla(frm, "FrmProspectosRecurrentes")
     End Sub
 
+    Private Sub ConsultaClavesActivasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConsultaClavesActivasToolStripMenuItem.Click
+        Dim frm As New frmConsultaTrabajosActivos
+        AbrirPantalla(frm, "frmConsultaTrabajosActivos")
+    End Sub
+
+
 End Class
