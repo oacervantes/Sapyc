@@ -6,8 +6,8 @@ Public Class frmConsultaTrabajosActivos
 
     Private dtTrabajos, DtDatos As New DataTable
     Private bsSol As New BindingSource
-    Public IdProp As Integer
-    Private sDocUno As String
+    Private IdProp As Integer
+    Private sDocUno, sDocDos As String
     Private drDat As DataRow
 
     Private Sub frmConsultaTrabajosActivos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -18,10 +18,16 @@ Public Class frmConsultaTrabajosActivos
     End Sub
 
     Private Sub crearTabla()
+
+        DtDatos.Columns.Add("AJUSTEPORCEN", GetType(System.String))
+        DtDatos.Columns.Add("IDPROPUESTA", GetType(System.String))
+        DtDatos.Columns.Add("DOCUMENTO01", GetType(System.String))
+        DtDatos.Columns.Add("DOCUMENTO02", GetType(System.String))
+        DtDatos.Columns.Add("STATUS", GetType(System.String))
+
         DtDatos.Columns.Add("CVETRA", GetType(System.String))
         DtDatos.Columns.Add("OFICINA", GetType(System.String))
         DtDatos.Columns.Add("DIVISIÓN", GetType(System.String))
-        DtDatos.Columns.Add("STATUS", GetType(System.String))
         DtDatos.Columns.Add("TIPO_STATUS", GetType(System.String))
         DtDatos.Columns.Add("DESCRIPCION", GetType(System.String))
         DtDatos.Columns.Add("FECHAALTA", GetType(System.String))
@@ -29,10 +35,7 @@ Public Class frmConsultaTrabajosActivos
         DtDatos.Columns.Add("SOCIO", GetType(System.String))
         DtDatos.Columns.Add("GERENTE", GetType(System.String))
         DtDatos.Columns.Add("TIPOCVETRA", GetType(System.String))
-        DtDatos.Columns.Add("AJUSTEPORCEN", GetType(System.String))
-        DtDatos.Columns.Add("IDPROPUESTA", GetType(System.String))
-        DtDatos.Columns.Add("DOCUMENTO01", GetType(System.String))
-        DtDatos.Columns.Add("DOCUMENTO02", GetType(System.String))
+
 
 
     End Sub
@@ -49,19 +52,19 @@ Public Class frmConsultaTrabajosActivos
 
 
         Lista.Columns("CVETRA").HeaderText = "CLAVE TRABAJO"
-        Lista.Columns("CVETRA").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        Lista.Columns("CVETRA").Width = 150
 
         Lista.Columns("DESCRIPCION").HeaderText = "DESCRIPCION"
-        Lista.Columns("DESCRIPCION").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        Lista.Columns("DESCRIPCION").Width = 250
 
         Lista.Columns("OFICINA").HeaderText = "OFICINA"
-        Lista.Columns("OFICINA").Width = 150
+        Lista.Columns("OFICINA").Width = 70
 
         Lista.Columns("DIVISIÓN").HeaderText = "DIVISIÓN"
-        Lista.Columns("DIVISIÓN").Width = 150
+        Lista.Columns("DIVISIÓN").Width = 70
 
         Lista.Columns("TIPO_STATUS").HeaderText = "STATUS"
-        Lista.Columns("TIPO_STATUS").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        Lista.Columns("TIPO_STATUS").Width = 80
 
         Lista.Columns("FECHAALTA").HeaderText = "FECHA DE ALTA TRABAJO"
         Lista.Columns("FECHAALTA").Width = 100
@@ -70,13 +73,13 @@ Public Class frmConsultaTrabajosActivos
         Lista.Columns("FECHABAJA").Width = 100
 
         Lista.Columns("SOCIO").HeaderText = "SOCIO"
-        Lista.Columns("SOCIO").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        Lista.Columns("SOCIO").Width = 250
 
         Lista.Columns("GERENTE").HeaderText = "GERENTE"
-        Lista.Columns("GERENTE").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        Lista.Columns("GERENTE").Width = 250
 
-        Lista.Columns("TIPOCVETRA").HeaderText = "TIPOCVETRA"
-        Lista.Columns("TIPOCVETRA").AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        Lista.Columns("TIPOCVETRA").HeaderText = "TIPO TRABAJO"
+        Lista.Columns("TIPOCVETRA").Width = 120
 
     End Sub
 
@@ -92,17 +95,32 @@ Public Class frmConsultaTrabajosActivos
 
                 IdProp = CInt(Lista.CurrentRow.Cells("IDPROPUESTA").Value)
                 sDocUno = Lista.CurrentRow.Cells("DOCUMENTO01").Value.ToString()
+                sDocDos = Lista.CurrentRow.Cells("DOCUMENTO02").Value.ToString()
 
-                If File.Exists("\\GTMEXVTS32\APLICA\DesarrollosFinanzas\REPACEPTACION" & IdProp & "-" & sDocUno & ".pdf") Then
-                    Process.Start("\\GTMEXVTS32\APLICA\DesarrollosFinanzas\REPACEPTACION" & IdProp & "-" & sDocUno & ".pdf")
+
+                If sDocUno = "" Then
+                    MsgBox("No existe documento carta de reaceptación.", MsgBoxStyle.Exclamation, "SAPYC")
                 Else
-                    Process.Start(IdProp & "-" & sDocUno & ".pdf")
+                    If File.Exists("\\GTMEXVTS32\APLICA\DesarrollosFinanzas\REPACEPTACION\" & sDocUno & ".pdf") Then
+                        Process.Start("\\GTMEXVTS32\APLICA\DesarrollosFinanzas\REPACEPTACION\" & sDocUno & ".pdf")
+                    Else
+                        Process.Start(sDocUno & ".pdf")
+                    End If
                 End If
 
 
-            Else
-                MsgBox("No existen propuestas registradas.", MsgBoxStyle.Exclamation, "SAPYC")
+                If sDocDos = "" Then
+                    MsgBox("No existe documento de convenio de servicios", MsgBoxStyle.Exclamation, "SAPYC")
+                Else
+                    If File.Exists("\\GTMEXVTS32\APLICA\DesarrollosFinanzas\REPACEPTACION\" & sDocDos & ".pdf") Then
+                        Process.Start("\\GTMEXVTS32\APLICA\DesarrollosFinanzas\REPACEPTACION\" & sDocDos & ".pdf")
+                    Else
+                        Process.Start(sDocDos & ".pdf")
+                    End If
+                End If
+
             End If
+
         Else
             MsgBox("Seleccione la propuesta que desea actualizar.", MsgBoxStyle.Exclamation, "SAPYC")
         End If
@@ -118,7 +136,7 @@ Public Class frmConsultaTrabajosActivos
                 dlg.txtArchivo.Text = "Trabajos activos"
                 If dlg.ShowDialog = Windows.Forms.DialogResult.OK Then
 
-                    exportarTrabajos(objExcel, Lista, dlg.txtDirectorio.Text, dlg.txtArchivo.Text)
+                    ExportaListaTrabajosPracticas(Lista, dlg.txtDirectorio.Text, dlg.txtArchivo.Text)
 
                 Else
                     Exit Sub
@@ -158,11 +176,14 @@ Public Class frmConsultaTrabajosActivos
                         drDat("OFICINA") = dr("OFICINA").ToString()
                         drDat("DIVISIÓN") = dr("DIVISIÓN").ToString()
                         drDat("TIPO_STATUS") = dr("TIPO_STATUS").ToString()
-                        drDat("FECHAALTA") = CDate(dr("FECHAALTA")).ToShortDateString()
-                        drDat("FECHABAJA") = CDate(dr("FECHABAJA")).ToShortDateString()
+                        drDat("FECHAALTA") = dr("FECHAALTA").ToString()
+                        drDat("FECHABAJA") = dr("FECHABAJA").ToString()
                         drDat("SOCIO") = dr("SOCIO").ToString()
                         drDat("GERENTE") = dr("GERENTE").ToString()
                         drDat("TIPOCVETRA") = dr("TIPOCVETRA").ToString()
+                        drDat("IDPROPUESTA") = dr("IDPROPUESTA").ToString()
+                        drDat("DOCUMENTO01") = dr("DOCUMENTO01").ToString()
+                        drDat("DOCUMENTO02") = dr("DOCUMENTO02").ToString()
 
                         DtDatos.Rows.InsertAt(drDat, DtDatos.Rows.Count)
 

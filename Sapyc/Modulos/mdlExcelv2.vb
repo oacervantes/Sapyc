@@ -956,5 +956,30 @@ Module mdlExcelv2
         MsgBox("La información se ha exportado correctamente.", MsgBoxStyle.Information, "SIAT")
     End Sub
 
+    Public Sub ExportaListaTrabajosPracticas(grid As DataGridView, sRutaArchivo As String, sNombreArchivo As String)
+        Dim exc As New SLDocument
+
+        '==================== RESUMEN ====================
+        nombreEmpresa(exc, "A1", "J2")
+        nombreReporte(exc, "A3", "J3", "TRABAJOS ACTIVOS AUDITORIA")
+
+        nombreColumnas(exc, grid, 4)
+
+        nombreHoja(exc, "TRABAJOS ACTIVOS")
+        LlenarReporteTabla(exc, grid, 5, 1, {}, {})
+        FormatoColumnasTexto(exc, 5, grid.Rows.Count + 4, {1, 2, 3, 4, 5, 8, 9, 10})
+        FormatoColumnasFecha(exc, 5, grid.Rows.Count + 4, {6, 7})
+
+        exc.SetColumnWidth("A", "D", 20)
+        exc.SetColumnWidth("E", 49)
+        exc.SetColumnWidth("F", "G", 20)
+        exc.SetColumnWidth("H", "I", 35)
+        exc.SetColumnWidth("J", 20)
+
+        exc.SaveAs(sRutaArchivo & sNombreArchivo & ".xlsx")
+        MsgBox("La información se ha exportado correctamente.", MsgBoxStyle.Information, "SIAT")
+    End Sub
+
+
 
 End Module
