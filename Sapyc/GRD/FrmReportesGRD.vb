@@ -79,6 +79,8 @@ Public Class FrmReportesGRD
     Private Sub CrearTablas()
         dtCiclos.Columns.Add("idCiclo", GetType(String))
         dtCiclos.Columns.Add("sCiclo", GetType(String))
+        dtCiclos.Columns.Add("dFechaInicio", GetType(String))
+        dtCiclos.Columns.Add("dFechaFinal", GetType(String))
     End Sub
     Private Sub FormatoGrid(id As Integer, grid As DataGridView)
         Dim dr() As DataRow
@@ -114,6 +116,8 @@ Public Class FrmReportesGRD
                     drCiclos = dtCiclos.NewRow
                     drCiclos("idCiclo") = dr.Item("idBaseDatos")
                     drCiclos("sCiclo") = dr.Item("sPeriodo")
+                    drCiclos("dFechaInicio") = dr.Item("dFechaInicio")
+                    drCiclos("dFechaFinal") = dr.Item("dFechaFinal")
                     dtCiclos.Rows.InsertAt(drCiclos, dtCiclos.Rows.Count)
                 End If
             Next
@@ -209,6 +213,8 @@ Public Class FrmReportesGRD
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 2, SqlDbType.Int, ParameterDirection.Input)
                     .subAddParameter("@iPeriodo", idCiclo, SqlDbType.Int, ParameterDirection.Input)
+                    .subAddParameter("@dFechaInicio", cboCiclo.SelectedItem("dFechaInicio"), SqlDbType.Date, ParameterDirection.Input)
+                    .subAddParameter("@dFechaFinal ", cboCiclo.SelectedItem("dFechaFinal"), SqlDbType.Date, ParameterDirection.Input)
                 End With
 
                 .Add(clsDatos.funExecuteSPDataTable(sStoredProc, sTabla))
@@ -251,6 +257,8 @@ Public Class FrmReportesGRD
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 3, SqlDbType.Int, ParameterDirection.Input)
                     .subAddParameter("@iPeriodo", idCiclo, SqlDbType.Int, ParameterDirection.Input)
+                    .subAddParameter("@dFechaInicio", cboCiclo.SelectedItem("dFechaInicio"), SqlDbType.Date, ParameterDirection.Input)
+                    .subAddParameter("@dFechaFinal ", cboCiclo.SelectedItem("dFechaFinal"), SqlDbType.Date, ParameterDirection.Input)
                 End With
 
                 .Add(clsDatos.funExecuteSPDataTable(sStoredProc, sTabla))

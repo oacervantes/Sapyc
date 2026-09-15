@@ -400,4 +400,15 @@
         End Try
     End Sub
 
+    Private Sub AltaDeClienteProspectoRecurrenteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AltaDeClienteProspectoRecurrenteToolStripMenuItem.Click
+        Dim frm As New FrmProspectosRecurrentes
+        AbrirPantalla(frm, "FrmProspectosRecurrentes")
+    End Sub
+
+    Private Sub ConsultaClavesActivasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConsultaClavesActivasToolStripMenuItem.Click
+        Dim frm As New frmConsultaTrabajosActivos
+        AbrirPantalla(frm, "frmConsultaTrabajosActivos")
+    End Sub
+
+
 End Class

@@ -297,6 +297,7 @@
 
     Public Sub MostrarAvisoAusencia()
         lblAvisoAusencia.Visible = True
+        lnkDetalle.Visible = True
     End Sub
 
 End Class

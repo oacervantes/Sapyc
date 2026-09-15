@@ -158,7 +158,7 @@
                     .CapacidadInstalada = CapacidadInstalada(row("CVEEMP").ToString())
                 }
 
-                If Not String.IsNullOrEmpty(sAvisoAusencia) Then
+                If idAusencia <> 0 Then
                     card.MostrarAvisoAusencia()
                 End If
 
@@ -207,7 +207,7 @@
                     .CapacidadInstalada = CapacidadInstalada(row("CVEEMP").ToString())
                 }
 
-                If Not String.IsNullOrEmpty(sAvisoAusencia) Then
+                If idAusencia <> 0 Then
                     card.MostrarAvisoAusencia()
                 End If
 

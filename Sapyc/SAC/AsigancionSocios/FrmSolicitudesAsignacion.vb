@@ -42,7 +42,7 @@
             Dim bRefGTI As Boolean = gridProspectos.CurrentRow.Cells("bRefGTI").Value
 
             If gridProspectos.CurrentRow.Cells("bStatus").Value IsNot Nothing AndAlso bActivo = False AndAlso sStatus = "A" Then
-                MsgBox("La solicitud se encuentra en proceso de revisión y autorización por parte del socio encargado, por lo que, no es posible asignarla en este momento.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
+                MsgBox("La solicitud se encuentra en proceso de revisión y validación por parte del socio encargado, por lo que, no es posible asignarla en este momento.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
                 Exit Sub
             ElseIf gridProspectos.CurrentRow.Cells("bStatus").Value IsNot Nothing AndAlso bActivo = False AndAlso sStatus = "R" Then
                 MsgBox("La solicitud se encuentra en revisión por servicio y no es posible asignarla en este momento.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
@@ -118,7 +118,7 @@
             Dim bRefGTI As Boolean = gridProspectos.CurrentRow.Cells("bRefGTI").Value
 
             If gridProspectos.CurrentRow.Cells("bStatus").Value IsNot Nothing AndAlso bActivo = False AndAlso sStatus = "A" Then
-                MsgBox("La solicitud se encuentra en proceso de revisión y autorización por parte del socio encargado, por lo que, no es posible asignarla en este momento.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
+                MsgBox("La solicitud se encuentra en proceso de revisión y validación por parte del socio encargado, por lo que, no es posible asignarla en este momento.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
                 Exit Sub
             ElseIf gridProspectos.CurrentRow.Cells("bStatus").Value IsNot Nothing AndAlso bActivo = False AndAlso sStatus = "R" Then
                 MsgBox("La solicitud se encuentra en revisión por servicio y no es posible asignarla en este momento.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
