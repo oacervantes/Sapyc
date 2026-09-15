@@ -266,6 +266,7 @@ Partial Class FrmContacto
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.Label16 = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
         Me.panMenu.SuspendLayout()
         Me.panMensajesError.SuspendLayout()
         Me.panDatosGenerales.SuspendLayout()
@@ -315,7 +316,7 @@ Partial Class FrmContacto
         Me.panMenu.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold)
         Me.panMenu.Location = New System.Drawing.Point(0, 0)
         Me.panMenu.Name = "panMenu"
-        Me.panMenu.Size = New System.Drawing.Size(212, 740)
+        Me.panMenu.Size = New System.Drawing.Size(212, 736)
         Me.panMenu.TabIndex = 0
         '
         'lnkAnexos
@@ -343,7 +344,7 @@ Partial Class FrmContacto
         Me.panMensajesError.Controls.Add(Me.txtMensaje)
         Me.panMensajesError.Controls.Add(Me.lblTituloError)
         Me.panMensajesError.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.panMensajesError.Location = New System.Drawing.Point(0, 330)
+        Me.panMensajesError.Location = New System.Drawing.Point(0, 326)
         Me.panMensajesError.Name = "panMensajesError"
         Me.panMensajesError.Size = New System.Drawing.Size(210, 408)
         Me.panMensajesError.TabIndex = 28
@@ -1461,6 +1462,7 @@ Partial Class FrmContacto
         '
         'gpBoxEntidadSupervisada
         '
+        Me.gpBoxEntidadSupervisada.Controls.Add(Me.Label14)
         Me.gpBoxEntidadSupervisada.Controls.Add(Me.lblEntidadSupervisadaOtra)
         Me.gpBoxEntidadSupervisada.Controls.Add(Me.lblEntidadSupervisada)
         Me.gpBoxEntidadSupervisada.Controls.Add(Me.txtEntidadSupervisadaOtro)
@@ -2951,11 +2953,21 @@ Partial Class FrmContacto
         Me.Label16.TabIndex = 0
         Me.Label16.Text = "ANEXOS ADJUNTOS"
         '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Font = New System.Drawing.Font("Calibri", 11.0!)
+        Me.Label14.Location = New System.Drawing.Point(116, 24)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(92, 18)
+        Me.Label14.TabIndex = 6
+        Me.Label14.Text = "Normatividad"
+        '
         'FrmContacto
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
-        Me.ClientSize = New System.Drawing.Size(1347, 740)
+        Me.ClientSize = New System.Drawing.Size(1343, 736)
         Me.ControlBox = False
         Me.Controls.Add(Me.btnEnviarAsiganacion)
         Me.Controls.Add(Me.btnCerrar)
@@ -3280,4 +3292,5 @@ Partial Class FrmContacto
     Friend WithEvents lblMensajeOperacion As Label
     Friend WithEvents txtOperacion As TextBox
     Friend WithEvents lblOperacionEmpresa As Label
+    Friend WithEvents Label14 As Label
 End Class
