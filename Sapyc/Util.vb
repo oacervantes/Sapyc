@@ -410,5 +410,78 @@ Module Util
 
         Return bEnviado
     End Function
+    Public Function EnviarCorreosHTMLAdjuntos(sCtasDestino() As String, sMensajeCorreo As String, sTitulo As String, ArchivoUno As Attachment, ArchivoDos As Attachment, Optional cPrioridad As Char = "N") As Boolean
+        Dim bEnviado As Boolean = False
+        Dim sEnviado As String = String.Empty
+        Dim sNombrePC As String = Environment.MachineName & "|" & Dns.GetHostName()
+
+        If sCtasDestino.Count <= 0 Then
+            MsgBox("No se especificaron las cuentas de correo a las que se enviará el mensaje.", MsgBoxStyle.Exclamation, "Cuentas de correo faltantes")
+            Return False
+        End If
+
+        Try
+            Dim correo As New MailMessage With {
+                .From = New MailAddress(sCorreoC)
+            }
+
+            If cPrioridad = "A" Then
+                correo.Priority = MailPriority.High
+            ElseIf cPrioridad = "B" Then
+                correo.Priority = MailPriority.Low
+            Else
+                correo.Priority = MailPriority.Normal
+            End If
+
+            correo.Subject = sTitulo
+            For i = 0 To sCtasDestino.Count - 1
+                If sCtasDestino(i) <> " " Then
+                    correo.To.Add(sCtasDestino(i))
+                End If
+            Next
+            correo.Bcc.Add("Octavio.A.Cervantes@mx.gt.com, Mario.Rodriguez@mx.gt.com")
+
+            Dim htmlView As AlternateView = AlternateView.CreateAlternateViewFromString(sMensajeCorreo, Nothing, "text/html")
+            Dim img As New LinkedResource("\\GTMEXVTS32\APLICA\CON2012\IMG\header_RD.jpg", "image/jpeg") With {
+                .ContentId = "imagen1"
+            }
+            htmlView.LinkedResources.Add(img)
+
+            'correo.Body = sMensajeCorreo
+
+            correo.AlternateViews.Add(htmlView)
+            correo.Attachments.Add(ArchivoUno)
+            correo.Attachments.Add(ArchivoDos)
+
+            'Configuracion del servidor
+            Dim Servidor As New SmtpClient With {
+                .Host = sServidorC,
+                .Port = iPuertoC,
+                .EnableSsl = bSSLC,
+                .UseDefaultCredentials = False,
+                .DeliveryMethod = SmtpDeliveryMethod.Network
+            }
+            ServicePointManager.SecurityProtocol = CType(3072, SecurityProtocolType)
+            Servidor.Credentials = New NetworkCredential(sCorreoC, sContraseñaC)
+            Servidor.Send(correo)
+            bEnviado = True
+            sEnviado = bEnviado & " - El correo fue enviado exitosamente."
+
+            If ArchivoUno IsNot Nothing Then
+                ArchivoUno = Nothing
+            End If
+
+            If ArchivoDos IsNot Nothing Then
+                ArchivoDos = Nothing
+            End If
+        Catch e As Exception
+            sEnviado = "Error: " & bEnviado & " - " & e.Message
+            MsgBox("Error al enviar mensaje: " & e.Message, MsgBoxStyle.Critical, "Error")
+        Finally
+
+        End Try
+
+        Return bEnviado
+    End Function
 
 End Module

@@ -32,6 +32,8 @@ Partial Class frmConsultaTrabajosActivos
         Me.btnRevisar = New System.Windows.Forms.Button()
         Me.BSalir = New System.Windows.Forms.Button()
         Me.btnExportar = New System.Windows.Forms.Button()
+        Me.btnCarga = New System.Windows.Forms.Button()
+        Me.btnEnvio = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         CType(Me.Lista, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -140,11 +142,36 @@ Partial Class frmConsultaTrabajosActivos
         Me.btnExportar.Text = "&Exportar"
         Me.btnExportar.UseVisualStyleBackColor = True
         '
+        'btnCarga
+        '
+        Me.btnCarga.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.btnCarga.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCarga.Location = New System.Drawing.Point(322, 650)
+        Me.btnCarga.Name = "btnCarga"
+        Me.btnCarga.Size = New System.Drawing.Size(137, 25)
+        Me.btnCarga.TabIndex = 60
+        Me.btnCarga.Text = "&Carga Documentos"
+        Me.btnCarga.UseVisualStyleBackColor = True
+        '
+        'btnEnvio
+        '
+        Me.btnEnvio.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.btnEnvio.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnEnvio.Location = New System.Drawing.Point(477, 650)
+        Me.btnEnvio.Name = "btnEnvio"
+        Me.btnEnvio.Size = New System.Drawing.Size(137, 25)
+        Me.btnEnvio.TabIndex = 61
+        Me.btnEnvio.Text = "&Envio Correo"
+        Me.btnEnvio.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.btnEnvio.UseVisualStyleBackColor = True
+        '
         'frmConsultaTrabajosActivos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1182, 686)
+        Me.Controls.Add(Me.btnEnvio)
+        Me.Controls.Add(Me.btnCarga)
         Me.Controls.Add(Me.btnExportar)
         Me.Controls.Add(Me.btnRevisar)
         Me.Controls.Add(Me.BSalir)
@@ -167,4 +194,6 @@ Partial Class frmConsultaTrabajosActivos
     Friend WithEvents btnRevisar As Button
     Friend WithEvents BSalir As Button
     Friend WithEvents btnExportar As Button
+    Friend WithEvents btnCarga As Button
+    Friend WithEvents btnEnvio As Button
 End Class
