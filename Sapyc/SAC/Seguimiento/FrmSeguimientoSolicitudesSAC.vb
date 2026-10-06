@@ -155,7 +155,8 @@
         ConfigurarColumnasGrid(gridProspectos, "DESCOFI", "OFICINA", 90, 3, False)
         ConfigurarColumnasGrid(gridProspectos, "DESCAREA", "DIVISIÓN", 90, 3, False)
         ConfigurarColumnasGrid(gridProspectos, "SERVICIO", "SERVICIO", 300, 1, False)
-        ConfigurarColumnasGrid(gridProspectos, "sStatus", "STATUS DE LA SOLICITUD", 250, 1, False)
+        ConfigurarColumnasGrid(gridProspectos, "SERVICIO", "SERVICIO", 300, 1, False)
+        ConfigurarColumnasGrid(gridProspectos, "sComentariosGR", "COMENTARIOS", 250, 1, False)
 
         ConfigurarColumnasGrid(gridProspectos, "sNombreUsuario", "GENERÓ LA SOLICITUD", 250, 1, False)
         ConfigurarColumnasGrid(gridProspectos, "dFechaAlta", "FECHA DE ALTA", 150, 1, False)
