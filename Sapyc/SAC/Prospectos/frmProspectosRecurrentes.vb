@@ -128,7 +128,7 @@
                 .subClearParameters()
                 .subAddParameter("@iOpcion", 2, SqlDbType.Int, ParameterDirection.Input)
                 .subAddParameter("@sUsuario", sCveUsuario, SqlDbType.VarChar, ParameterDirection.Input)
-                .subAddParameter("@sNombreUsuario", sNombreUsuario, SqlDbType.VarChar, ParameterDirection.Input)
+                .subAddParameter("@sNombreUsuario", sNombre, SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@sCorreoUsuario", sCorreoUsuario, SqlDbType.VarChar, ParameterDirection.Input)
                 .subAddParameter("@idAsignacion", 0, SqlDbType.Int, ParameterDirection.Output)
                 .subAddParameter("@cTipoSolicitud", "R", SqlDbType.Char, ParameterDirection.Input)
