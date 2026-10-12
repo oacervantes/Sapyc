@@ -83,8 +83,7 @@
         Dim sMensaje As String
 
         Try
-            'sCorreos = "Octavio.A.Cervantes@mx.gt.com, Mario.Rodriguez@mx.gt.com"
-            ' = {Correo, "mario.rodriguez@mx.gt.com"}
+            'sCorreo = {"Octavio.A.Cervantes@mx.gt.com, Mario.Rodriguez@mx.gt.com"}
 
             sMensaje = "<html><head></head><body>" &
             "<img src='cid:imagen1' alt='Salles, Sainz - Grant Thornton' style='width:300px;height:auto;'>" &
