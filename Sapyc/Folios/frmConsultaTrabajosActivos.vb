@@ -43,9 +43,8 @@ Public Class frmConsultaTrabajosActivos
         DtDatos.Columns.Add("GERENTE", GetType(System.String))
         DtDatos.Columns.Add("TIPOCVETRA", GetType(System.String))
 
-
-
     End Sub
+
     Private Sub formatoGrid()
         For Each col As DataGridViewColumn In Lista.Columns
             col.SortMode = DataGridViewColumnSortMode.NotSortable
@@ -324,7 +323,31 @@ Public Class frmConsultaTrabajosActivos
         End Try
     End Sub
 
+    Private Sub txtCveTrabajo_Enter(sender As Object, e As EventArgs) Handles txtCveTrabajo.Enter
+        If txtCveTrabajo.Text <> "" And txtCveTrabajo.Text = "Cve Trabajo..." Then
+            txtCveTrabajo.Text = ""
+            txtCveTrabajo.ForeColor = Color.Black
+        End If
+    End Sub
 
+    Private Sub txtCveTrabajo_Leave(sender As Object, e As EventArgs) Handles txtCveTrabajo.Leave
+        If DirectCast(sender, TextBox).Text = "" Then
+            DirectCast(sender, TextBox).Text = "Cve Trabajo..."
+            DirectCast(sender, TextBox).ForeColor = Color.Silver
+        End If
+    End Sub
+
+    Private Sub txtCveTrabajo_TextChanged(sender As Object, e As EventArgs) Handles txtCveTrabajo.TextChanged
+        If txtCveTrabajo.TextLength > 0 And Not txtCveTrabajo.Text.Contains("Cve Trabajo...") Then
+            bsSol.Filter = "CVETRA LIKE '%" & txtCveTrabajo.Text & "%'"
+        Else
+            If bsSol.Filter IsNot Nothing Then
+                If txtCveTrabajo.TextLength > 0 And txtCveTrabajo.Text.Contains("Cve Trabajo...") Then
+                    bsSol.Filter = ""
+                End If
+            End If
+        End If
+    End Sub
 
 
 End Class

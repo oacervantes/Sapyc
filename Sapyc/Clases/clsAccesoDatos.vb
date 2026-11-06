@@ -152,7 +152,7 @@ Public Class clsAccesoDatos
 
             cmd.CommandText = strSPName
             cmd.CommandType = CommandType.StoredProcedure
-            cmd.CommandTimeout = 360
+            cmd.CommandTimeout = 1000
 
             If Not cllParametros Is Nothing Then
                 For Each prmtr In cllParametros

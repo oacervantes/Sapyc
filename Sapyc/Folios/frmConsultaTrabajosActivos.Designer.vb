@@ -26,6 +26,8 @@ Partial Class frmConsultaTrabajosActivos
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmConsultaTrabajosActivos))
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.txtCveTrabajo = New System.Windows.Forms.TextBox()
         Me.panLinea = New System.Windows.Forms.Panel()
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.Lista = New System.Windows.Forms.DataGridView()
@@ -45,6 +47,8 @@ Partial Class frmConsultaTrabajosActivos
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BackColor = System.Drawing.Color.White
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel1.Controls.Add(Me.Label1)
+        Me.Panel1.Controls.Add(Me.txtCveTrabajo)
         Me.Panel1.Controls.Add(Me.panLinea)
         Me.Panel1.Controls.Add(Me.lblTitulo)
         Me.Panel1.Controls.Add(Me.Lista)
@@ -53,6 +57,24 @@ Partial Class frmConsultaTrabajosActivos
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1182, 643)
         Me.Panel1.TabIndex = 6
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(11, 56)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(97, 18)
+        Me.Label1.TabIndex = 5
+        Me.Label1.Text = "Clave Trabajo: "
+        '
+        'txtCveTrabajo
+        '
+        Me.txtCveTrabajo.ForeColor = System.Drawing.Color.Silver
+        Me.txtCveTrabajo.Location = New System.Drawing.Point(114, 53)
+        Me.txtCveTrabajo.Name = "txtCveTrabajo"
+        Me.txtCveTrabajo.Size = New System.Drawing.Size(1055, 26)
+        Me.txtCveTrabajo.TabIndex = 4
+        Me.txtCveTrabajo.Text = "Cve Trabajo..."
         '
         'panLinea
         '
@@ -97,7 +119,7 @@ Partial Class frmConsultaTrabajosActivos
         Me.Lista.ColumnHeadersHeight = 40
         Me.Lista.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.Lista.GridColor = System.Drawing.Color.Gainsboro
-        Me.Lista.Location = New System.Drawing.Point(10, 49)
+        Me.Lista.Location = New System.Drawing.Point(10, 87)
         Me.Lista.MultiSelect = False
         Me.Lista.Name = "Lista"
         Me.Lista.RowHeadersWidth = 25
@@ -106,7 +128,7 @@ Partial Class frmConsultaTrabajosActivos
         Me.Lista.RowsDefaultCellStyle = DataGridViewCellStyle2
         Me.Lista.RowTemplate.Height = 24
         Me.Lista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.Lista.Size = New System.Drawing.Size(1159, 577)
+        Me.Lista.Size = New System.Drawing.Size(1159, 539)
         Me.Lista.TabIndex = 2
         '
         'btnRevisar
@@ -196,4 +218,6 @@ Partial Class frmConsultaTrabajosActivos
     Friend WithEvents btnExportar As Button
     Friend WithEvents btnCarga As Button
     Friend WithEvents btnEnvio As Button
+    Friend WithEvents txtCveTrabajo As TextBox
+    Friend WithEvents Label1 As Label
 End Class

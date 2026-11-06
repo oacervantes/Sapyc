@@ -179,6 +179,7 @@ Partial Class FrmContacto
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.lblTituloCI = New System.Windows.Forms.Label()
         Me.panDatosContactoInicial = New System.Windows.Forms.Panel()
+        Me.btnBuscaEmpleados = New System.Windows.Forms.Button()
         Me.lblContactoInicialObligatorios = New System.Windows.Forms.Label()
         Me.lblTituloDatosContacto = New System.Windows.Forms.Label()
         Me.txtContactoInicialFecha = New System.Windows.Forms.DateTimePicker()
@@ -270,7 +271,6 @@ Partial Class FrmContacto
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.Label16 = New System.Windows.Forms.Label()
-        Me.btnBuscaEmpleados = New System.Windows.Forms.Button()
         Me.panMenu.SuspendLayout()
         Me.panMensajesError.SuspendLayout()
         Me.panDatosGenerales.SuspendLayout()
@@ -2062,6 +2062,16 @@ Partial Class FrmContacto
         Me.panDatosContactoInicial.Size = New System.Drawing.Size(1038, 534)
         Me.panDatosContactoInicial.TabIndex = 3
         '
+        'btnBuscaEmpleados
+        '
+        Me.btnBuscaEmpleados.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnBuscaEmpleados.Location = New System.Drawing.Point(923, 93)
+        Me.btnBuscaEmpleados.Name = "btnBuscaEmpleados"
+        Me.btnBuscaEmpleados.Size = New System.Drawing.Size(50, 25)
+        Me.btnBuscaEmpleados.TabIndex = 27
+        Me.btnBuscaEmpleados.Text = "..."
+        Me.btnBuscaEmpleados.UseVisualStyleBackColor = True
+        '
         'lblContactoInicialObligatorios
         '
         Me.lblContactoInicialObligatorios.AutoSize = True
@@ -2995,16 +3005,6 @@ Partial Class FrmContacto
         Me.Label16.TabIndex = 0
         Me.Label16.Text = "ANEXOS ADJUNTOS"
         '
-        'btnBuscaEmpleados
-        '
-        Me.btnBuscaEmpleados.Font = New System.Drawing.Font("Calibri", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnBuscaEmpleados.Location = New System.Drawing.Point(923, 93)
-        Me.btnBuscaEmpleados.Name = "btnBuscaEmpleados"
-        Me.btnBuscaEmpleados.Size = New System.Drawing.Size(50, 25)
-        Me.btnBuscaEmpleados.TabIndex = 27
-        Me.btnBuscaEmpleados.Text = "..."
-        Me.btnBuscaEmpleados.UseVisualStyleBackColor = True
-        '
         'FrmContacto
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
@@ -3016,11 +3016,11 @@ Partial Class FrmContacto
         Me.Controls.Add(Me.btnCancelaGeneral)
         Me.Controls.Add(Me.btnCerrar)
         Me.Controls.Add(Me.panMenu)
-        Me.Controls.Add(Me.panContactoInicial)
         Me.Controls.Add(Me.panDatosGenerales)
         Me.Controls.Add(Me.panAnexos)
         Me.Controls.Add(Me.panAcercamiento)
         Me.Controls.Add(Me.panDireccion)
+        Me.Controls.Add(Me.panContactoInicial)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "FrmContacto"

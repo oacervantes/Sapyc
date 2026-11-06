@@ -41,7 +41,7 @@ Public Class FrmContacto
     Private bMarco = False, bOtros = False, bOtrosCarga = False, bRefGTI = False, bCargaInfo As Boolean = False
     Private CorreosSoc, sNombSocio, sMailSocio, sNombreEncargado, sCorreoEncargado As String
     Public sCveOfi, sCveArea, sOficina, sArea, sEstatusSolicitud As String
-    Public iOrigen, iModifica, idSAC As Integer
+    Public iOrigen, iModifica, idSAC, idEntidad As Integer
     Private arPDF As Byte()
 
     Private dtAnexos As New DataTable
@@ -263,9 +263,12 @@ Public Class FrmContacto
                 sMsgAviso = "Se enviará la(s) solicitud(es) de asignación para su revisión. ¿Desea continuar?"
             End If
 
+            idEntidad = cboTipoEntidad.SelectedIndex
+
             If MsgBox(sMsgAviso, MsgBoxStyle.Question + MsgBoxStyle.YesNo, My.Settings.NOM_SYS) = MsgBoxResult.Yes Then
+
                 For Each ser As DataRow In dtServicios.Rows
-                    InsertarPropuesta(ser.Item("CVE"), ser.Item("CVEOTROS"), ser.Item("CVEOFI"), ser.Item("CVEAREA"))
+                    InsertarPropuesta(ser.Item("CVE"), ser.Item("CVEOTROS"), ser.Item("CVEOFI"), ser.Item("CVEAREA"), idEntidad)
                 Next
 
                 Dim Dr() As DataRow
@@ -306,6 +309,12 @@ Public Class FrmContacto
                 If bOtros Then
                     EnvioCorreoIndependencia()
                 End If
+
+                '============= Enviar correo a Gestión de Riesgos si se seleccionó 'Gobierno' ==============
+                If idEntidad = 2 Or sCveInd = "08" Then
+                    EnvioCorreoIndependenciaGobierno()
+                End If
+
 
                 ActualizarSolicitudSAC(idSAC)
 
@@ -1121,7 +1130,7 @@ Public Class FrmContacto
         End Try
     End Sub
 
-    Private Sub InsertarPropuesta(idServicio As Integer, bOtros As Boolean, sCveOfi As String, sCveArea As String)
+    Private Sub InsertarPropuesta(idServicio As Integer, bOtros As Boolean, sCveOfi As String, sCveArea As String, idEntidad As Integer)
         Try
             With clsLocal
                 .subClearParameters()
@@ -1136,6 +1145,8 @@ Public Class FrmContacto
 
                 If bOtros Then
                     .subAddParameter("@sStatus", "R", SqlDbType.Char, ParameterDirection.Input)
+                ElseIf idEntidad = 2 Or sCveInd = "08" Then
+                    .subAddParameter("@sStatus", "G", SqlDbType.Char, ParameterDirection.Input)
                 Else
                     .subAddParameter("@sStatus", "J", SqlDbType.Char, ParameterDirection.Input)
                 End If
@@ -1206,11 +1217,40 @@ Public Class FrmContacto
             MsgBox("No ha sido posible enviar el correo debido a fallas con el servidor de correo.", MsgBoxStyle.Exclamation, "SIAT")
         End Try
     End Sub
+    Private Sub EnvioCorreoGestionRiesgoGobierno(sMail As String)
+        Dim sMensaje As String
+
+        Try
+            'Dim sCorreos = "Octavio.A.Cervantes@mx.gt.com; Mario.Rodriguez@mx.gt.com"
+            Dim sCorreos = sMail
+            Dim sCorreo As String() = sCorreos.Split(";")
+
+            sMensaje = "<html><head></head><body>" &
+            "<img src='cid:imagen1' alt='Salles, Sainz - Grant Thornton' style='width:300px;height:auto;'>" &
+            "<h1 style=""height: 50px; background: #4f2d7f; font-family: Calibri, Arial; color: #FFF; padding-right: 30px; text-align: center;"">SOLICITUD DE REVISIÓN DE ENTIDADES GUBERNAMENTALES</h1>" & vbNewLine & vbNewLine & vbNewLine &
+            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 20px; color: #4f2d7f; margin-left: 25px; margin-top: 20px; padding: 15px;"">Estimado equipo de " & sNombreEncargado.ToUpper() & ": </p> " & vbNewLine & vbNewLine &
+            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 16px; margin-left: 25px; margin-top: 20px; padding: 15px;"">Por medio del presente, les informo que hemos realizado el primer contacto con el cliente prospecto " & txtRazonSocial.Text.ToUpper.Trim() & " " & "," & " " & cboEntidadMercantilRS.SelectedItem("sCveSociedad") & ", quien ha mostrado interés en nuestros servicios y ha solicitado recibir una propuesta formal. </p> " & vbNewLine & vbNewLine &
+            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 16px; margin-left: 25px; margin-top: 20px; padding: 15px;"">Para continuar con este proceso, solicitamos de su apoyo para llevar a cabo la revisión de la viabilidad para prestar el servicio solicitado, el cliente se encuentra clasificado como entidad Gubernamental y se detalla en la presente solicitud.</p> " & vbNewLine & vbNewLine &
+            "<table style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">" & vbNewLine &
+            "<tr><td>Cliente:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & txtRazonSocial.Text.ToUpper.Trim() & " " & "," & " " & cboEntidadMercantilRS.SelectedItem("sCveSociedad") & "</b></td></tr>" & vbNewLine &
+            "</table>" & vbNewLine &
+                "</table>" & vbNewLine &
+            "<p style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">Para cualquier aclaración sobre el tema contactar a Tatiana.L.Lopez@mx.gt.com" & vbNewLine &
+            "<hr>" &
+            "<p style=""margin-left: 20px; font-style: italic; font-family: Arial; font-size: 12px;"">Este es un correo automático, favor de no responder a esta cuenta.</p>" & vbNewLine &
+            "</body></html>"
+
+            EnviarCorreosHTML(sCorreo, sMensaje, "Solicitud de revisión de entidades gubernamentales")
+
+        Catch ex As Exception
+            MsgBox("No ha sido posible enviar el correo debido a fallas con el servidor de correo.", MsgBoxStyle.Exclamation, "SIAT")
+        End Try
+    End Sub
     Private Sub EnvioCorreoGestionRiesgo(sMail As String)
         Dim sMensaje As String
 
         Try
-            ' Dim sCorreos = "Octavio.A.Cervantes@mx.gt.com; Mario.Rodriguez@mx.gt.com"
+            'Dim sCorreos = "Octavio.A.Cervantes@mx.gt.com; Mario.Rodriguez@mx.gt.com"
             Dim sCorreos = sMail
             Dim sCorreo As String() = sCorreos.Split(";")
 
@@ -1219,10 +1259,10 @@ Public Class FrmContacto
             "<h1 style=""height: 50px; background: #4f2d7f; font-family: Calibri, Arial; color: #FFF; padding-right: 30px; text-align: center;"">SOLICITUD DE REVISIÓN DE OTROS SERVICIOS</h1>" & vbNewLine & vbNewLine & vbNewLine &
             "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 20px; color: #4f2d7f; margin-left: 25px; margin-top: 20px; padding: 15px;"">Estimado equipo de " & sNombreEncargado.ToUpper() & ": </p> " & vbNewLine & vbNewLine &
             "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 16px; margin-left: 25px; margin-top: 20px; padding: 15px;"">Por medio del presente, les informo que hemos realizado el primer contacto con el cliente prospecto " & txtRazonSocial.Text.ToUpper.Trim() & " " & "," & " " & cboEntidadMercantilRS.SelectedItem("sCveSociedad") & ", quien ha mostrado interés en nuestros servicios y ha solicitado recibir una propuesta formal. </p> " & vbNewLine & vbNewLine &
-            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 16px; margin-left: 25px; margin-top: 20px; padding: 15px;"">Para continuar con este proceso, solicitamos de su apoyo para llevar a cabo la revisión de la viabilidad para prestar el servicio solicitado, el cual se encuentra clasificado como ""Otros"" y se detalla en la presente solicitud.</p> " & vbNewLine & vbNewLine &
+            "<p style=""height: 40px; background: #FFF; font-family: Arial; font-size: 16px; margin-left: 25px; margin-top: 20px; padding: 15px;"">Para continuar con este proceso, solicitamos de su apoyo para llevar a cabo la revisión de la viabilidad para prestar el servicio solicitado, el cual se encuentra clasificado como ""Otros"" y se detalla en la presente solicitud..</p> " & vbNewLine & vbNewLine &
             "<table style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">" & vbNewLine &
             "<tr><td>Cliente:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & txtRazonSocial.Text.ToUpper.Trim() & " " & "," & " " & cboEntidadMercantilRS.SelectedItem("sCveSociedad") & "</b></td></tr>" & vbNewLine &
-            "<tr><td>Servicio:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & sOtroServicios.ToUpper() & "</b></td></tr>" & vbNewLine &
+            "<tr><td>Servicio:</td> <td></td> <td></td> <td style=""text-align: left;""><b>" & txtRazonSocial.Text.ToUpper.Trim() & " " & "," & " " & cboEntidadMercantilRS.SelectedItem("sCveSociedad") & "</b></td></tr>" & vbNewLine &
             "</table>" & vbNewLine &
                 "</table>" & vbNewLine &
             "<p style=""margin-left: 20px; font-family: Arial; font-size: 16px;"">Para cualquier aclaración sobre el tema contactar a Tatiana.L.Lopez@mx.gt.com" & vbNewLine &
@@ -1251,6 +1291,30 @@ Public Class FrmContacto
 
                 'Dim sCorreo As String() = sMailSocio.Split(";")
                 EnvioCorreoGestionRiesgo(sCorreoEncargado)
+            Else
+                MsgBox("Por el momento no es posible enviar el correo de notificación de revisión de otros servicio.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
+            End If
+
+        Catch ex As Exception
+            MsgBox(ex.Message, MsgBoxStyle.Critical, "Error")
+        End Try
+    End Sub
+
+    Private Sub EnvioCorreoIndependenciaGobierno()
+        Try
+            Dim Dr() As DataRow
+
+            If dtCorreosSolicitud.Rows.Count <> 0 Then
+                Dr = dtCorreosSolicitud.Select("sCvepersona = 'GR'")
+                sNombreEncargado = Dr(0).Item("sTipoPersona").ToString()
+                sCorreoEncargado = Dr(0).Item("sCorreoPersona").ToString()
+                sOtroServicios = ObtenerTextoServicioOtros()
+
+                Dr = dtCorreosSolicitud.Select("sCvepersona = 'GD'")
+                sCorreoEncargado &= "; " & Dr(0).Item("sCorreoPersona").ToString()
+
+                'Dim sCorreo As String() = sMailSocio.Split(";")
+                EnvioCorreoGestionRiesgoGobierno(sCorreoEncargado)
             Else
                 MsgBox("Por el momento no es posible enviar el correo de notificación de revisión de otros servicio.", MsgBoxStyle.Exclamation, My.Settings.NOM_SYS)
             End If
