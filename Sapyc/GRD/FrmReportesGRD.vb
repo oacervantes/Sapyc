@@ -35,10 +35,10 @@ Public Class FrmReportesGRD
         ListarCampos()
     End Sub
     Private Sub BtnGenerar_Click(sender As Object, e As EventArgs) Handles btnGenerar.Click
-        ListarEntidades()
+        '  ListarEntidades()
         ListarServicios()
-        ListarProveedores()
-        ListarRolesEntidad()
+        '  ListarProveedores()
+        '  ListarRolesEntidad()
     End Sub
     Private Sub BtnExportar_Click(sender As Object, e As EventArgs) Handles btnExportar.Click
         Dim dlg As New dlgExcel
@@ -213,12 +213,13 @@ Public Class FrmReportesGRD
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 2, SqlDbType.Int, ParameterDirection.Input)
                     .subAddParameter("@iPeriodo", idCiclo, SqlDbType.Int, ParameterDirection.Input)
-                    .subAddParameter("@dFechaInicio", cboCiclo.SelectedItem("dFechaInicio"), SqlDbType.Date, ParameterDirection.Input)
-                    .subAddParameter("@dFechaFinal ", cboCiclo.SelectedItem("dFechaFinal"), SqlDbType.Date, ParameterDirection.Input)
+                    .subAddParameter("@dFechaInicio", CDate(cboCiclo.SelectedItem("dFechaInicio").ToString()), SqlDbType.Date, ParameterDirection.Input)
+                    .subAddParameter("@dFechaFinal", CDate(cboCiclo.SelectedItem("dFechaFinal").ToString()), SqlDbType.Date, ParameterDirection.Input)
                 End With
 
                 .Add(clsDatos.funExecuteSPDataTable(sStoredProc, sTabla))
                 dtEnt = .Item(sTabla)
+
 
                 If dtEnt.Rows.Count > 0 Then
 
@@ -257,8 +258,8 @@ Public Class FrmReportesGRD
                     .subClearParameters()
                     .subAddParameter("@iOpcion", 3, SqlDbType.Int, ParameterDirection.Input)
                     .subAddParameter("@iPeriodo", idCiclo, SqlDbType.Int, ParameterDirection.Input)
-                    .subAddParameter("@dFechaInicio", cboCiclo.SelectedItem("dFechaInicio"), SqlDbType.Date, ParameterDirection.Input)
-                    .subAddParameter("@dFechaFinal ", cboCiclo.SelectedItem("dFechaFinal"), SqlDbType.Date, ParameterDirection.Input)
+                    .subAddParameter("@dFechaInicio", CDate(cboCiclo.SelectedItem("dFechaInicio").ToString()), SqlDbType.Date, ParameterDirection.Input)
+                    .subAddParameter("@dFechaFinal", CDate(cboCiclo.SelectedItem("dFechaFinal").ToString()), SqlDbType.Date, ParameterDirection.Input)
                 End With
 
                 .Add(clsDatos.funExecuteSPDataTable(sStoredProc, sTabla))

@@ -5,7 +5,7 @@
         Dim frm As New frmLogin
 
         Try
-            iPeriodoFirma = 11
+
             clsLocal = New clsAccesoDatos("gtmexvts27\sql2016", "SAPYC2", "Contabilidad", "Control2025%Porfis")
             clsDatos = New clsAccesoDatos("gtmexvts27\sql2016", "BDINV2627", "Contabilidad", "Control2025%Porfis")
             clsDatosInv = New clsAccesoDatos("gtmexvts27\sql2016", "BDINV2627", "Contabilidad", "Control2025%Porfis")
@@ -18,6 +18,9 @@
             Hide()
 
             listarBasesDatos()
+
+            idBD = obtenerIdBD(Now.Date())
+            iPeriodoFirma = ObtenerIdBDActual()
 
             If frm.ShowDialog = DialogResult.OK Then
                 sTipo = "Mercadotecnia"

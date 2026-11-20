@@ -705,6 +705,20 @@ Module mdlFunciones
             Throw
         End Try
     End Function
+    'Obtener el mes, año, fecha inicial y final, activo, nombre de una base de datos.
+    Public Function ObtenerIdBDActual() As Integer
+        Dim idBD As Integer
+        Dim dr() As DataRow
 
+        Try
+            dr = dtBasesDatos.Select("bActivo = 1")
+
+            idBD = dr(0).Item("idBaseDatos").ToString
+        Catch ex As Exception
+            InsertarErrorLog(202, "Función global", ex.Message, sCveUsuario, "obtenerIdBD()")
+        End Try
+
+        Return idBD
+    End Function
 
 End Module

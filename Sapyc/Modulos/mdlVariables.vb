@@ -33,7 +33,7 @@
     Friend sFmtDbl As String = "#,##0.00"
     Friend sRutaTemp As String = "C:\SALLES\TEMP\"
 
-    Friend iPeriodoFirma = 11, iAñoActAn As Integer = 2023 'BuscaCampoTextoCon("SELECT TOP (1) iAñoAnteriorAc FROM PARAMETROS_REPORTES")
+    Friend iAñoActAn As Integer = 2023 'BuscaCampoTextoCon("SELECT TOP (1) iAñoAnteriorAc FROM PARAMETROS_REPORTES")
 
     '==================== Variables para el formato de grids ====================
     Friend FuenteCelda As New Font("Calibri", 11, FontStyle.Regular)
@@ -71,5 +71,6 @@
 
     Friend diamante_Salles As Color = Color.FromArgb(250, 250, 250)
     Friend diamante_letra_Salles As Color = Color.FromArgb(170, 170, 170)
+    Friend iMesBD, iMesSigBD, iMesInicioBD, iMesFinBD, iAñoBD, iAñoSigBD, idBD, idBDActual, iPeriodoFirma, iAñoActual, iAñoAnterior As Integer
 
 End Module
