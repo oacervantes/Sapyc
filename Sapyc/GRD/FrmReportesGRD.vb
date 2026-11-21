@@ -35,10 +35,10 @@ Public Class FrmReportesGRD
         ListarCampos()
     End Sub
     Private Sub BtnGenerar_Click(sender As Object, e As EventArgs) Handles btnGenerar.Click
-        '  ListarEntidades()
+        ListarEntidades()
         ListarServicios()
-        '  ListarProveedores()
-        '  ListarRolesEntidad()
+        ListarProveedores()
+        ListarRolesEntidad()
     End Sub
     Private Sub BtnExportar_Click(sender As Object, e As EventArgs) Handles btnExportar.Click
         Dim dlg As New dlgExcel

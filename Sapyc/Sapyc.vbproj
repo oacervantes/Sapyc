@@ -284,6 +284,12 @@
     <Compile Include="frmLogin.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="GRD\dlgClienteGRD.Designer.vb">
+      <DependentUpon>dlgClienteGRD.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GRD\dlgClienteGRD.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="GRD\FrmReportesGRD.Designer.vb">
       <DependentUpon>FrmReportesGRD.vb</DependentUpon>
     </Compile>
@@ -324,6 +330,12 @@
       <DependentUpon>frmClientesConflick.vb</DependentUpon>
     </Compile>
     <Compile Include="Independencia\frmClientesConflick.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GRD\frmClientesGRD.Designer.vb">
+      <DependentUpon>frmClientesGRD.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GRD\frmClientesGRD.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Independencia\frmClientesRechazados.Designer.vb">
@@ -854,6 +866,9 @@
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GRD\dlgClienteGRD.resx">
+      <DependentUpon>dlgClienteGRD.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GRD\FrmReportesGRD.resx">
       <DependentUpon>FrmReportesGRD.vb</DependentUpon>
     </EmbeddedResource>
@@ -874,6 +889,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Independencia\frmClientesConflick.resx">
       <DependentUpon>frmClientesConflick.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GRD\frmClientesGRD.resx">
+      <DependentUpon>frmClientesGRD.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Independencia\frmClientesRechazados.resx">
       <DependentUpon>frmClientesRechazados.vb</DependentUpon>

@@ -413,5 +413,9 @@
         AbrirPantalla(frm, "frmConsultaTrabajosActivos")
     End Sub
 
+    Private Sub ClientesGRDToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClientesGRDToolStripMenuItem.Click
+        Dim frm As New frmClientesGRD
+        AbrirPantalla(frm, "frmClientesGRD")
+    End Sub
 
 End Class

@@ -85,6 +85,7 @@ Partial Class Principal
         Me.menuFolios = New System.Windows.Forms.ToolStripMenuItem()
         Me.AutorizaFoliosDeInformeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ConsultaDeFoliosDeInformeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ConsultaClavesActivasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Barra = New System.Windows.Forms.ToolStrip()
         Me.BotonSalir = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
@@ -92,7 +93,7 @@ Partial Class Principal
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.BotonAltaPropuesta = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ConsultaClavesActivasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ClientesGRDToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuSAPYC.SuspendLayout()
         Me.Barra.SuspendLayout()
         Me.SuspendLayout()
@@ -200,7 +201,7 @@ Partial Class Principal
         '
         'MnTablas
         '
-        Me.MnTablas.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TablasDelSistemaToolStripMenuItem, Me.itmTipoServicios, Me.itmReportesGRD})
+        Me.MnTablas.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TablasDelSistemaToolStripMenuItem, Me.itmTipoServicios, Me.itmReportesGRD, Me.ClientesGRDToolStripMenuItem})
         Me.MnTablas.Name = "MnTablas"
         Me.MnTablas.Size = New System.Drawing.Size(72, 20)
         Me.MnTablas.Tag = "2"
@@ -211,7 +212,7 @@ Partial Class Principal
         '
         Me.TablasDelSistemaToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GirosToolStripMenuItem, Me.ActividadToolStripMenuItem, Me.DivisionesToolStripMenuItem, Me.TiposDeServicioToolStripMenuItem, Me.ComoSeEnteroToolStripMenuItem, Me.MedioDeContactoToolStripMenuItem})
         Me.TablasDelSistemaToolStripMenuItem.Name = "TablasDelSistemaToolStripMenuItem"
-        Me.TablasDelSistemaToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
+        Me.TablasDelSistemaToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.TablasDelSistemaToolStripMenuItem.Text = "Tablas del Sistema"
         Me.TablasDelSistemaToolStripMenuItem.Visible = False
         '
@@ -254,13 +255,13 @@ Partial Class Principal
         'itmTipoServicios
         '
         Me.itmTipoServicios.Name = "itmTipoServicios"
-        Me.itmTipoServicios.Size = New System.Drawing.Size(179, 22)
+        Me.itmTipoServicios.Size = New System.Drawing.Size(180, 22)
         Me.itmTipoServicios.Text = "Tipo de Servicios"
         '
         'itmReportesGRD
         '
         Me.itmReportesGRD.Name = "itmReportesGRD"
-        Me.itmReportesGRD.Size = New System.Drawing.Size(179, 22)
+        Me.itmReportesGRD.Size = New System.Drawing.Size(180, 22)
         Me.itmReportesGRD.Text = "Reportes GRD-GTI"
         '
         'mnuProspectos
@@ -513,6 +514,12 @@ Partial Class Principal
         Me.ConsultaDeFoliosDeInformeToolStripMenuItem.Size = New System.Drawing.Size(238, 22)
         Me.ConsultaDeFoliosDeInformeToolStripMenuItem.Text = "Consulta de Folios de Informe"
         '
+        'ConsultaClavesActivasToolStripMenuItem
+        '
+        Me.ConsultaClavesActivasToolStripMenuItem.Name = "ConsultaClavesActivasToolStripMenuItem"
+        Me.ConsultaClavesActivasToolStripMenuItem.Size = New System.Drawing.Size(238, 22)
+        Me.ConsultaClavesActivasToolStripMenuItem.Text = "Consulta Claves Activas"
+        '
         'Barra
         '
         Me.Barra.AutoSize = False
@@ -571,11 +578,11 @@ Partial Class Principal
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
         Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 40)
         '
-        'ConsultaClavesActivasToolStripMenuItem
+        'ClientesGRDToolStripMenuItem
         '
-        Me.ConsultaClavesActivasToolStripMenuItem.Name = "ConsultaClavesActivasToolStripMenuItem"
-        Me.ConsultaClavesActivasToolStripMenuItem.Size = New System.Drawing.Size(238, 22)
-        Me.ConsultaClavesActivasToolStripMenuItem.Text = "Consulta Claves Activas"
+        Me.ClientesGRDToolStripMenuItem.Name = "ClientesGRDToolStripMenuItem"
+        Me.ClientesGRDToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ClientesGRDToolStripMenuItem.Text = "Clientes GRD"
         '
         'Principal
         '
@@ -670,4 +677,5 @@ Partial Class Principal
     Friend WithEvents SeguimientoProspectosToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AltaDeClienteProspectoRecurrenteToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ConsultaClavesActivasToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ClientesGRDToolStripMenuItem As ToolStripMenuItem
 End Class
