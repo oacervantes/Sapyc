@@ -47,6 +47,7 @@ Partial Class Principal
         Me.MedioDeContactoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.itmTipoServicios = New System.Windows.Forms.ToolStripMenuItem()
         Me.itmReportesGRD = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ClientesGRDToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuProspectos = New System.Windows.Forms.ToolStripMenuItem()
         Me.RegistrarProspectoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ClientesSacToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -93,7 +94,7 @@ Partial Class Principal
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.BotonAltaPropuesta = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ClientesGRDToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CargaMasivaDeCorreosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuSAPYC.SuspendLayout()
         Me.Barra.SuspendLayout()
         Me.SuspendLayout()
@@ -201,7 +202,7 @@ Partial Class Principal
         '
         'MnTablas
         '
-        Me.MnTablas.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TablasDelSistemaToolStripMenuItem, Me.itmTipoServicios, Me.itmReportesGRD, Me.ClientesGRDToolStripMenuItem})
+        Me.MnTablas.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TablasDelSistemaToolStripMenuItem, Me.itmTipoServicios, Me.itmReportesGRD, Me.ClientesGRDToolStripMenuItem, Me.CargaMasivaDeCorreosToolStripMenuItem})
         Me.MnTablas.Name = "MnTablas"
         Me.MnTablas.Size = New System.Drawing.Size(72, 20)
         Me.MnTablas.Tag = "2"
@@ -212,7 +213,7 @@ Partial Class Principal
         '
         Me.TablasDelSistemaToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GirosToolStripMenuItem, Me.ActividadToolStripMenuItem, Me.DivisionesToolStripMenuItem, Me.TiposDeServicioToolStripMenuItem, Me.ComoSeEnteroToolStripMenuItem, Me.MedioDeContactoToolStripMenuItem})
         Me.TablasDelSistemaToolStripMenuItem.Name = "TablasDelSistemaToolStripMenuItem"
-        Me.TablasDelSistemaToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.TablasDelSistemaToolStripMenuItem.Size = New System.Drawing.Size(209, 22)
         Me.TablasDelSistemaToolStripMenuItem.Text = "Tablas del Sistema"
         Me.TablasDelSistemaToolStripMenuItem.Visible = False
         '
@@ -255,14 +256,20 @@ Partial Class Principal
         'itmTipoServicios
         '
         Me.itmTipoServicios.Name = "itmTipoServicios"
-        Me.itmTipoServicios.Size = New System.Drawing.Size(180, 22)
+        Me.itmTipoServicios.Size = New System.Drawing.Size(209, 22)
         Me.itmTipoServicios.Text = "Tipo de Servicios"
         '
         'itmReportesGRD
         '
         Me.itmReportesGRD.Name = "itmReportesGRD"
-        Me.itmReportesGRD.Size = New System.Drawing.Size(180, 22)
+        Me.itmReportesGRD.Size = New System.Drawing.Size(209, 22)
         Me.itmReportesGRD.Text = "Reportes GRD-GTI"
+        '
+        'ClientesGRDToolStripMenuItem
+        '
+        Me.ClientesGRDToolStripMenuItem.Name = "ClientesGRDToolStripMenuItem"
+        Me.ClientesGRDToolStripMenuItem.Size = New System.Drawing.Size(209, 22)
+        Me.ClientesGRDToolStripMenuItem.Text = "Clientes GRD"
         '
         'mnuProspectos
         '
@@ -578,11 +585,11 @@ Partial Class Principal
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
         Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 40)
         '
-        'ClientesGRDToolStripMenuItem
+        'CargaMasivaDeCorreosToolStripMenuItem
         '
-        Me.ClientesGRDToolStripMenuItem.Name = "ClientesGRDToolStripMenuItem"
-        Me.ClientesGRDToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-        Me.ClientesGRDToolStripMenuItem.Text = "Clientes GRD"
+        Me.CargaMasivaDeCorreosToolStripMenuItem.Name = "CargaMasivaDeCorreosToolStripMenuItem"
+        Me.CargaMasivaDeCorreosToolStripMenuItem.Size = New System.Drawing.Size(209, 22)
+        Me.CargaMasivaDeCorreosToolStripMenuItem.Text = "Carga Masiva de Correos"
         '
         'Principal
         '
@@ -678,4 +685,5 @@ Partial Class Principal
     Friend WithEvents AltaDeClienteProspectoRecurrenteToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ConsultaClavesActivasToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ClientesGRDToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents CargaMasivaDeCorreosToolStripMenuItem As ToolStripMenuItem
 End Class

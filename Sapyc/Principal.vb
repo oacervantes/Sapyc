@@ -418,4 +418,8 @@
         AbrirPantalla(frm, "frmClientesGRD")
     End Sub
 
+    Private Sub CargaMasivaDeCorreosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CargaMasivaDeCorreosToolStripMenuItem.Click
+        Dim frm As New FrmCorreosTrabajos
+        AbrirPantalla(frm, "FrmCorreosTrabajos")
+    End Sub
 End Class
