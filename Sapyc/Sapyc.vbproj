@@ -290,6 +290,12 @@
     <Compile Include="GRD\dlgClienteGRD.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="GRD\FrmCorreosTrabajos.Designer.vb">
+      <DependentUpon>FrmCorreosTrabajos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GRD\FrmCorreosTrabajos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="GRD\FrmReportesGRD.Designer.vb">
       <DependentUpon>FrmReportesGRD.vb</DependentUpon>
     </Compile>
@@ -868,6 +874,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GRD\dlgClienteGRD.resx">
       <DependentUpon>dlgClienteGRD.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GRD\FrmCorreosTrabajos.resx">
+      <DependentUpon>FrmCorreosTrabajos.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GRD\FrmReportesGRD.resx">
       <DependentUpon>FrmReportesGRD.vb</DependentUpon>
