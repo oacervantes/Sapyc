@@ -35,10 +35,12 @@ Public Class FrmReportesGRD
         ListarCampos()
     End Sub
     Private Sub BtnGenerar_Click(sender As Object, e As EventArgs) Handles btnGenerar.Click
+
         ListarEntidades()
         ListarServicios()
         ListarProveedores()
         ListarRolesEntidad()
+
     End Sub
     Private Sub BtnExportar_Click(sender As Object, e As EventArgs) Handles btnExportar.Click
         Dim dlg As New dlgExcel
@@ -211,7 +213,13 @@ Public Class FrmReportesGRD
 
                 With clsDatos
                     .subClearParameters()
-                    .subAddParameter("@iOpcion", 2, SqlDbType.Int, ParameterDirection.Input)
+
+                    If idCiclo = 12 Then
+                        .subAddParameter("@iOpcion", 2, SqlDbType.Int, ParameterDirection.Input)
+                    Else
+                        .subAddParameter("@iOpcion", 7, SqlDbType.Int, ParameterDirection.Input)
+                    End If
+
                     .subAddParameter("@iPeriodo", idCiclo, SqlDbType.Int, ParameterDirection.Input)
                     .subAddParameter("@dFechaInicio", CDate(cboCiclo.SelectedItem("dFechaInicio").ToString()), SqlDbType.Date, ParameterDirection.Input)
                     .subAddParameter("@dFechaFinal", CDate(cboCiclo.SelectedItem("dFechaFinal").ToString()), SqlDbType.Date, ParameterDirection.Input)
@@ -256,7 +264,13 @@ Public Class FrmReportesGRD
 
                 With clsDatos
                     .subClearParameters()
-                    .subAddParameter("@iOpcion", 3, SqlDbType.Int, ParameterDirection.Input)
+
+                    If idCiclo = 12 Then
+                        .subAddParameter("@iOpcion", 3, SqlDbType.Int, ParameterDirection.Input)
+                    Else
+                        .subAddParameter("@iOpcion", 8, SqlDbType.Int, ParameterDirection.Input)
+                    End If
+
                     .subAddParameter("@iPeriodo", idCiclo, SqlDbType.Int, ParameterDirection.Input)
                     .subAddParameter("@dFechaInicio", CDate(cboCiclo.SelectedItem("dFechaInicio").ToString()), SqlDbType.Date, ParameterDirection.Input)
                     .subAddParameter("@dFechaFinal", CDate(cboCiclo.SelectedItem("dFechaFinal").ToString()), SqlDbType.Date, ParameterDirection.Input)
@@ -300,7 +314,12 @@ Public Class FrmReportesGRD
 
                 With clsDatos
                     .subClearParameters()
-                    .subAddParameter("@iOpcion", 4, SqlDbType.Int, ParameterDirection.Input)
+                    If idCiclo = 12 Then
+                        .subAddParameter("@iOpcion", 4, SqlDbType.Int, ParameterDirection.Input)
+                    Else
+                        .subAddParameter("@iOpcion", 9, SqlDbType.Int, ParameterDirection.Input)
+                    End If
+                    .subAddParameter("@iPeriodo", idCiclo, SqlDbType.Int, ParameterDirection.Input)
                 End With
 
                 .Add(clsDatos.funExecuteSPDataTable(sStoredProc, sTabla))
@@ -341,7 +360,15 @@ Public Class FrmReportesGRD
 
                 With clsDatos
                     .subClearParameters()
-                    .subAddParameter("@iOpcion", 5, SqlDbType.Int, ParameterDirection.Input)
+                    If idCiclo = 12 Then
+                        .subAddParameter("@iOpcion", 5, SqlDbType.Int, ParameterDirection.Input)
+                    Else
+                        .subAddParameter("@iOpcion", 10, SqlDbType.Int, ParameterDirection.Input)
+                    End If
+                    .subAddParameter("@iPeriodo", idCiclo, SqlDbType.Int, ParameterDirection.Input)
+                    .subAddParameter("@dFechaInicio", CDate(cboCiclo.SelectedItem("dFechaInicio").ToString()), SqlDbType.Date, ParameterDirection.Input)
+                    .subAddParameter("@dFechaFinal", CDate(cboCiclo.SelectedItem("dFechaFinal").ToString()), SqlDbType.Date, ParameterDirection.Input)
+
                 End With
 
                 .Add(clsDatos.funExecuteSPDataTable(sStoredProc, sTabla))
